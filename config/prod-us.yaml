@@ -1,0 +1,5 @@
+db:
+  host: "bim360-issues-prod-db.chpytkkfwagi.us-east-1.rds.amazonaws.com"
+  dbName: "bim360_issues_prod_db"
+  user: "bimrfis_prod2"
+service:

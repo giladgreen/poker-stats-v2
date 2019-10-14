@@ -1,0 +1,40 @@
+extends: airbnb-base
+plugins:
+  - "no-only-tests"
+env:
+  node: true
+  mocha: true
+overrides:
+  - files:
+      - "**/*.js"
+    rules:
+      max-len:
+        - error
+        - code: 200
+      consistent-return: off
+      func-names: off
+  - files:
+      - "**/*.js"
+    rules:
+      func-names: off
+      no-console:
+        - warn
+  - files:
+      - "services/**/api/fittings/*.js"
+    rules:
+      camelcase: off
+  - files:
+      - "services/**/tests/**/*.js"
+      - "smoke/tests/*.js"
+      - "db-migration.js"
+    rules:
+      "import/no-extraneous-dependencies":
+        - error
+        - devDependencies: true
+      prefer-arrow-callback: off
+  - files:
+      - "services/**/tests/**/*.js"
+    rules:
+      no-only-tests/no-only-tests:
+        - error
+

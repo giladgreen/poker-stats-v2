@@ -1,0 +1,113 @@
+swagger: "2.0"
+info:
+  version: "2.0.0"
+  title: Poker Stats
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /api/v2:
+    x-swagger-router-controller: general
+    post:
+      operationId: generalOperation
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/GeneralOperationDefinition"
+      responses:
+        200:
+          description: GeneralOperationResponseDefinition
+          schema:
+            $ref: "#/definitions/GeneralOperationResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+
+  getUsageResponse:
+    type: string
+    properties:
+      usage:
+        type: string
+
+  GeneralOperationDefinition:
+    type: object
+    properties:
+      requestType:
+        type: string
+        enum:
+          - CREATE
+          - READ
+          - UPDATE
+          - DELETE
+      targetType:
+        type: string
+        enum:
+          - GROUP
+          - GAME
+          - PLAYER
+          - GAMES
+          - PLAYERS
+      targetId:
+        type: string
+      data:
+        type: object
+
+  GeneralOperationResponseDefinition:
+    type: object
+    properties:
+      requestType:
+        type: string
+        enum:
+          - CREATE
+          - READ
+          - UPDATE
+          - DELETE
+      targetType:
+        type: string
+        enum:
+          - GROUP
+          - GAME
+          - PLAYER
+          - GAMES
+          - PLAYERS
+      targetId:
+        type: string
+      data:
+        type: object
+
+  ErrorResponse:
+    required:
+      - title
+    properties:
+      title:
+        type: string
+      detail:
+        type: string
+
+parameters:
+  Limit:
+    name: limit
+    description: The number of records you would like to get
+    required: false
+    default: 10
+    maximum: 200
+    in: query
+    type: integer
+  Offset:
+    name: offset
+    description: From which record should it retrieve your data? (starting point for limit)
+    default: 0
+    required: false
+    in: query
+    type: integer

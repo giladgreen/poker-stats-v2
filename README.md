@@ -1,1 +1,3 @@
-# poker-stats-v2
+# RFIs Core Service
+
+[TBD]
