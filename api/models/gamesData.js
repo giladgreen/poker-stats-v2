@@ -40,17 +40,9 @@ module.exports = function (sequelize, DataTypes) {
       field: 'deleted_at',
     },
   }, {
-    paranoid: true,
+    paranoid: false,
     tableName: 'games_data',
   });
 
-/*
-  GameData.associate = (models) => {
-    GameData.belongsTo(models.players, {
-      foreignKey: 'playerId',
-      targetKey: 'id'
-    });
-  };
- */
   return GameData;
 };

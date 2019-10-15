@@ -40,8 +40,50 @@ async function createGroup(data) {
     return getGroup(newGroup.id);
 }
 
+async function updateGroup(groupId, data) {
+
+    await getGroup(groupId);
+
+    await models.groups.update(data, {
+        where:{
+            id: groupId
+        }
+    });
+    return getGroup(groupId);
+}
+
+async function deleteGroup(groupId) {
+
+    await models.players.destroy({
+        where:{
+            groupId
+        }
+    });
+
+
+    await models.gamesData.destroy({
+        where:{
+            groupId
+        }
+    });
+
+    await models.games.destroy({
+        where:{
+            groupId
+        }
+    });
+
+    return models.groups.destroy({
+        where: {
+            id: groupId
+        }
+    });
+}
+
 module.exports = {
+    createGroup,
     getGroup,
     getGroups,
-    createGroup
+    updateGroup,
+    deleteGroup
 };

@@ -19,8 +19,8 @@ function getGames(req, res, next) {
 }
 
 function createGame(req, res, next) {
-  const { groupId } = req.getAllParams();
-  const data = req.getBody();
+    const { groupId } = req.getAllParams();
+    const data = req.getBody();
     gamesService.createGame(groupId, data)
       .then((game) => {
           res.status(HttpStatus.CREATED).send(game);
@@ -28,9 +28,29 @@ function createGame(req, res, next) {
       .catch(next);
 }
 
+function updateGame(req, res, next) {
+    const { groupId, gameId } = req.getAllParams();
+    const data = req.getBody();
+    gamesService.updateGame(groupId, gameId, data)
+        .then((game) => {
+            res.send(game);
+        })
+        .catch(next);
+}
+function deleteGame(req, res, next) {
+    const { groupId, gameId } = req.getAllParams();
+    gamesService.deleteGame(groupId, gameId)
+        .then(() => {
+            res.status(HttpStatus.NO_CONTENT).send({ deleted: true});
+        })
+        .catch(next);
+}
+
 module.exports = {
+    createGame,
     getGame,
     getGames,
-    createGame
+    updateGame,
+    deleteGame
 };
 

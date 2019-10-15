@@ -37,6 +37,7 @@ module.exports = function (sequelize, DataTypes) {
   Game.associate = (models) => {
     Game.hasMany(models.gamesData, {
       onDelete: 'cascade',
+      hooks: true,
       as: 'data',
       foreignKey: 'gameId',
       sourceKey: 'id',

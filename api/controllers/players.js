@@ -48,9 +48,9 @@ function deletePlayer(req, res, next) {
 }
 
 module.exports = {
+    createPlayer,
     getPlayer,
     getPlayers,
-    createPlayer,
     updatePlayer,
     deletePlayer
 };

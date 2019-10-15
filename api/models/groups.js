@@ -30,6 +30,7 @@ module.exports = function (sequelize, DataTypes) {
   Group.associate = (models) => {
     Group.hasMany(models.games, {
       onDelete: 'cascade',
+      hooks: true,
       as: 'games',
       foreignKey: 'groupId',
       sourceKey: 'id',
@@ -37,6 +38,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Group.hasMany(models.players, {
       onDelete: 'cascade',
+      hooks: true,
       as: 'players',
       foreignKey: 'groupId',
       sourceKey: 'id',

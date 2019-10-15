@@ -2,8 +2,8 @@ const HttpStatus = require('http-status-codes');
 const groupsService = require('../services/groups');
 
 function getGroup(req, res, next) {
-  const { groupId } = req.getAllParams();
-  groupsService.getGroup(groupId)
+    const { groupId } = req.getAllParams();
+    groupsService.getGroup(groupId)
       .then((group) => {
         res.send(group);
       })
@@ -11,7 +11,7 @@ function getGroup(req, res, next) {
 }
 
 function getGroups(req, res, next) {
-  groupsService.getGroups()
+    groupsService.getGroups()
       .then((groups) => {
         res.send({ metadata: { count: groups.length }, groups });
       })
@@ -19,17 +19,37 @@ function getGroups(req, res, next) {
 }
 
 function createGroup(req, res, next) {
-  const data = req.getBody();
-  groupsService.createGroup(data)
+    const data = req.getBody();
+    groupsService.createGroup(data)
       .then((group) => {
           res.status(HttpStatus.CREATED).send(group);
       })
       .catch(next);
 }
 
+function updateGroup(req, res, next) {
+    const { groupId } = req.getAllParams();
+    const data = req.getBody();
+    groupsService.updateGroup(groupId, data)
+        .then((group) => {
+            res.send(group);
+        })
+        .catch(next);
+}
+function deleteGroup(req, res, next) {
+    const { groupId } = req.getAllParams();
+    groupsService.deleteGroup(groupId)
+        .then(() => {
+            res.status(HttpStatus.NO_CONTENT).send({ deleted: true});
+        })
+        .catch(next);
+}
+
 module.exports = {
+    createGroup,
     getGroup,
-  getGroups,
-  createGroup
+    getGroups,
+    updateGroup,
+    deleteGroup,
 };
 

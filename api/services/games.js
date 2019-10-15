@@ -48,8 +48,45 @@ async function createGame(groupId, data) {
     return getGame({ groupId, gameId: newGame.id });
 }
 
+async function updateGame(groupId, gameId, data) {
+    await getGame({ groupId, gameId });
+
+    const { playersData } = data;
+
+    await models.games.update(data, {
+        where:{
+            groupId,
+            id: gameId
+        }
+    });
+    if (playersData) {
+        await models.gamesData.destroy({
+            where:{
+                groupId,
+                gameId
+            },
+            paranoid: false
+        });
+
+        await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId, groupId })));
+    }
+
+    return getGame({ groupId, gameId });
+}
+
+function deleteGame(groupId, gameId) {
+    return models.games.destroy({
+        where:{
+            groupId,
+            id: gameId
+        }
+    });
+}
+
 module.exports = {
+    createGame,
     getGame,
     getGames,
-    createGame
+    updateGame,
+    deleteGame
 };

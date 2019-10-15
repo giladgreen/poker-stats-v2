@@ -1,5 +1,5 @@
 const { notFound } = require('boom');
-const { players } = require('../models');
+const models = require('../models');
 const attributes = ['id', 'firstName', 'familyName', 'phone', 'email', 'imageUrl', 'birthday', 'groupId', 'createdAt'];
 const defaultValues = {
     phone: '-',
@@ -9,7 +9,7 @@ const defaultValues = {
 };
 
 async function getPlayer({ groupId, playerId }) {
-    const player = await players.findOne({
+    const player = await models.players.findOne({
         where: {
             groupId,
             id: playerId,
@@ -23,7 +23,7 @@ async function getPlayer({ groupId, playerId }) {
 }
 
 async function getPlayers(groupId) {
-    const allPlayers = await players.findAll({
+    const allPlayers = await models.players.findAll({
         where: {
             groupId,
         },
@@ -36,14 +36,14 @@ async function createPlayer(groupId, data) {
 
     const newPlayerData = { ...defaultValues, ...data, groupId};
 
-    const newPlayer = await players.create(newPlayerData);
+    const newPlayer = await models.players.create(newPlayerData);
     return getPlayer({ groupId, playerId: newPlayer.id });
 }
 async function updatePlayer(groupId, playerId, data) {
 
     await getPlayer({ groupId, playerId });
 
-    await players.update(data, {
+    await models.players.update(data, {
         where:{
             groupId,
             id: playerId
@@ -53,7 +53,7 @@ async function updatePlayer(groupId, playerId, data) {
 }
 
 function deletePlayer(groupId, playerId) {
-    return players.destroy({
+    return models.players.destroy({
         where:{
             groupId,
             id: playerId
