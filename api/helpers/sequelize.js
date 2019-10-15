@@ -38,20 +38,9 @@ function formatSequelizeRows(rows) {
 
 
 function generateConnectionString() {
-  return 'postgres://rfis:12345@localhost:5432/pokerstats';
-  /*
-  if (process.env.DATABASE_URL) {
-    return process.env.DATABASE_URL;
-  }
-  const { env: { DATABASE_URL } } = process;
-  if (!DATABASE_URL) {
-    logger.error('Could not find DATABASE_URL env var');
-    throw new Error('DATABASE_URL ENV VARIABLE IS MISSING');
-  }
-  return DATABASE_URL;
-
-   */
+  return process.env.DATABASE_URL || 'postgres://rfis:12345@localhost:5432/pokerstats';
 }
+
 function wrapArray(arr) {
   if (arr.length === 1) {
     return arr[0];
