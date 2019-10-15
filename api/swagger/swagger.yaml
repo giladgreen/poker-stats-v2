@@ -10,80 +10,92 @@ consumes:
 produces:
   - application/json
 paths:
-  /api/v2:
-    x-swagger-router-controller: general
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+  /api/v2/groups:
+    x-swagger-router-controller: groups
+    get:
+      operationId: getGroups
+      responses:
+        200:
+          description: GetGroupsResponseDefinition
+          schema:
+            $ref: "#/definitions/GetGroupsResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
     post:
-      operationId: generalOperation
+      operationId: createGroup
       parameters:
         - name: body
           in: body
+          description: The new group details
           required: true
           schema:
-            $ref: "#/definitions/GeneralOperationDefinition"
+            $ref: "#/definitions/CreateGroupRequestDefinition"
       responses:
-        200:
-          description: GeneralOperationResponseDefinition
+        201:
+          description: createGroupResponseDefinition
           schema:
-            $ref: "#/definitions/GeneralOperationResponseDefinition"
+            $ref: "#/definitions/GroupDefinition"
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /swagger:
-    x-swagger-pipe: swagger_raw
+  /api/v2/groups/{groupId}/players:
+    x-swagger-router-controller: players
+    parameters:
+      - $ref: '#/parameters/GroupId'
+    get:
+      operationId: getPlayers
+      responses:
+        200:
+          description: GetPlayersResponseDefinition
+          schema:
+            $ref: "#/definitions/GetPlayersResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: createPlayer
+      parameters:
+        - name: body
+          in: body
+          description: The new group details
+          required: true
+          schema:
+            $ref: "#/definitions/CreatePlayerRequestDefinition"
+      responses:
+        201:
+          description: createGroupResponseDefinition
+          schema:
+            $ref: "#/definitions/PlayerDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /api/v2/groups/{groupId}/players/{playerId}:
+    x-swagger-router-controller: players
+    parameters:
+      - $ref: '#/parameters/GroupId'
+      - $ref: '#/parameters/PlayerId'
+    get:
+      operationId: getPlayer
+      responses:
+        200:
+          description: PlayerDefinition
+          schema:
+            $ref: "#/definitions/PlayerDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
 definitions:
-
-  getUsageResponse:
-    type: string
-    properties:
-      usage:
-        type: string
-
-  GeneralOperationDefinition:
-    type: object
-    properties:
-      requestType:
-        type: string
-        enum:
-          - CREATE
-          - READ
-          - UPDATE
-          - DELETE
-      targetType:
-        type: string
-        enum:
-          - GROUP
-          - GAME
-          - PLAYER
-          - GAMES
-          - PLAYERS
-      targetId:
-        type: string
-      data:
-        type: object
-
-  GeneralOperationResponseDefinition:
-    type: object
-    properties:
-      requestType:
-        type: string
-        enum:
-          - CREATE
-          - READ
-          - UPDATE
-          - DELETE
-      targetType:
-        type: string
-        enum:
-          - GROUP
-          - GAME
-          - PLAYER
-          - GAMES
-          - PLAYERS
-      targetId:
-        type: string
-
   ErrorResponse:
     required:
       - title
@@ -92,20 +104,98 @@ definitions:
         type: string
       detail:
         type: string
+  GroupDefinition:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      createdAt:
+        type: string
+  PlayerDefinition:
+    type: object
+    properties:
+      id:
+        type: string
+      groupId:
+        type: string
+      firstName:
+        type: string
+      familyName:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      imageUrl:
+        type: string
+      birthday:
+        type: string
+      createdAt:
+        type: string
+  GetGroupsResponseDefinition:
+    type: object
+    properties:
+      metadata:
+        type: object
+        properties:
+          count:
+            type: integer
+      groups:
+        type: array
+        items:
+          $ref: "#/definitions/GroupDefinition"
+  GetPlayersResponseDefinition:
+    type: object
+    properties:
+      metadata:
+        type: object
+        properties:
+          count:
+            type: integer
+      players:
+        type: array
+        items:
+          $ref: "#/definitions/PlayerDefinition"
+  CreateGroupRequestDefinition:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+  CreatePlayerRequestDefinition:
+    type: object
+    required:
+      - firstName
+      - familyName
+    properties:
+      firstName:
+        type: string
+      familyName:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      imageUrl:
+        type: string
+      birthday:
+        type: string
 
 parameters:
-  Limit:
-    name: limit
-    description: The number of records you would like to get
-    required: false
-    default: 10
-    maximum: 200
-    in: query
-    type: integer
-  Offset:
-    name: offset
-    description: From which record should it retrieve your data? (starting point for limit)
-    default: 0
-    required: false
-    in: query
-    type: integer
+  GroupId:
+    name: groupId
+    in: path
+    description: The id of the group (uuid)
+    required: true
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  PlayerId:
+    name: playerId
+    in: path
+    description: The id of the player (uuid)
+    required: true
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
