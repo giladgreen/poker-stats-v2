@@ -36,15 +36,22 @@ function formatSequelizeRows(rows) {
   return rows.map(row => formatSequelizeRow(row));
 }
 
-function generateConnectionString() {
-  const { env: { DB_PASSWORD: password } } = process;
-  if (!password) {
-    logger.error('Could not find DB_PASSWORD env var');
-    throw new Error('DB_PASSWORD ENV VARIABLE IS MISSING');
-  }
-  return `postgres://${user}:${password}@${host}/${dbName}`;
-}
 
+function generateConnectionString() {
+  return 'postgres://rfis:12345@localhost:5432/pokerstats';
+  /*
+  if (process.env.DATABASE_URL) {
+    return process.env.DATABASE_URL;
+  }
+  const { env: { DATABASE_URL } } = process;
+  if (!DATABASE_URL) {
+    logger.error('Could not find DATABASE_URL env var');
+    throw new Error('DATABASE_URL ENV VARIABLE IS MISSING');
+  }
+  return DATABASE_URL;
+
+   */
+}
 function wrapArray(arr) {
   if (arr.length === 1) {
     return arr[0];

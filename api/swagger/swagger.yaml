@@ -83,8 +83,6 @@ definitions:
           - PLAYERS
       targetId:
         type: string
-      data:
-        type: object
 
   ErrorResponse:
     required:
