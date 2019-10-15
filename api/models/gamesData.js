@@ -44,5 +44,13 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'games_data',
   });
 
+/*
+  GameData.associate = (models) => {
+    GameData.belongsTo(models.players, {
+      foreignKey: 'playerId',
+      targetKey: 'id'
+    });
+  };
+ */
   return GameData;
 };

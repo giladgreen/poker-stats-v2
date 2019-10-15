@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "description": "poker-stats-v2",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "commit-and-push": "git add . && git commit -am \"a\" && git push",
+    "edit-swagger": "swagger project edit"
   },
   "main": "app.js",
   "dependencies": {

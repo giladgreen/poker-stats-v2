@@ -1,16 +1,17 @@
 const { notFound } = require('boom');
 const { players } = require('../models');
-const attributes = ['id', 'firstName', 'familyName', 'phone', 'email', 'imageUrl', 'birthday', 'groupId'];
+const attributes = ['id', 'firstName', 'familyName', 'phone', 'email', 'imageUrl', 'birthday', 'groupId', 'createdAt'];
 const defaultValues = {
     phone: '-',
     email: '-',
     imageUrl: 'anonymous',
     birthday: (new Date()).toISOString(),
-}
+};
+
 async function getPlayer({ groupId, playerId }) {
     const player = await players.findOne({
         where: {
-            groupId: groupId,
+            groupId,
             id: playerId,
         },
         attributes
@@ -24,7 +25,7 @@ async function getPlayer({ groupId, playerId }) {
 async function getPlayers(groupId) {
     const allPlayers = await players.findAll({
         where: {
-            groupId: groupId,
+            groupId,
         },
         attributes
     });
@@ -38,9 +39,32 @@ async function createPlayer(groupId, data) {
     const newPlayer = await players.create(newPlayerData);
     return getPlayer({ groupId, playerId: newPlayer.id });
 }
+async function updatePlayer(groupId, playerId, data) {
+
+    await getPlayer({ groupId, playerId });
+
+    await players.update(data, {
+        where:{
+            groupId,
+            id: playerId
+        }
+    });
+    return getPlayer({ groupId, playerId });
+}
+
+function deletePlayer(groupId, playerId) {
+    return players.destroy({
+        where:{
+            groupId,
+            id: playerId
+        }
+    });
+}
 
 module.exports = {
     getPlayer,
     getPlayers,
-    createPlayer
+    createPlayer,
+    updatePlayer,
+    deletePlayer
 };

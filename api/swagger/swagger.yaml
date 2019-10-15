@@ -45,6 +45,22 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /api/v2/groups/{groupId}:
+    x-swagger-router-controller: groups
+    parameters:
+      - $ref: '#/parameters/GroupId'
+    get:
+      operationId: getGroup
+      responses:
+        200:
+          description: GroupDefinition
+          schema:
+            $ref: "#/definitions/GroupDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups/{groupId}/players:
     x-swagger-router-controller: players
     parameters:
@@ -65,19 +81,20 @@ paths:
       parameters:
         - name: body
           in: body
-          description: The new group details
+          description: The new player details
           required: true
           schema:
             $ref: "#/definitions/CreatePlayerRequestDefinition"
       responses:
         201:
-          description: createGroupResponseDefinition
+          description: PlayerDefinition
           schema:
             $ref: "#/definitions/PlayerDefinition"
         default:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups/{groupId}/players/{playerId}:
     x-swagger-router-controller: players
     parameters:
@@ -94,8 +111,92 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    patch:
+      operationId: updatePlayer
+      parameters:
+        - name: body
+          in: body
+          description: The updated player details
+          required: true
+          schema:
+            $ref: "#/definitions/UpdatePlayerRequestDefinition"
+      responses:
+        200:
+          description: PlayerDefinition
+          schema:
+            $ref: "#/definitions/PlayerDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: deletePlayer
+      responses:
+        204:
+          description: EntityDeletedDefinition
+          schema:
+            $ref: "#/definitions/EntityDeletedDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /api/v2/groups/{groupId}/games:
+    x-swagger-router-controller: games
+    parameters:
+      - $ref: '#/parameters/GroupId'
+    get:
+      operationId: getGames
+      responses:
+        200:
+          description: GetGamesResponseDefinition
+          schema:
+            $ref: "#/definitions/GetGamesResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: createGame
+      parameters:
+        - name: body
+          in: body
+          description: The new game details
+          required: true
+          schema:
+            $ref: "#/definitions/CreateGameRequestDefinition"
+      responses:
+        201:
+          description: GameDefinition
+          schema:
+            $ref: "#/definitions/GameDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /api/v2/groups/{groupId}/games/{gameId}:
+    x-swagger-router-controller: games
+    parameters:
+      - $ref: '#/parameters/GroupId'
+      - $ref: '#/parameters/GameId'
+    get:
+      operationId: getGame
+      responses:
+        200:
+          description: GameDefinition
+          schema:
+            $ref: "#/definitions/GameDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 
 definitions:
+  EntityDeletedDefinition:
+    properties:
+      deleted:
+        type: boolean
   ErrorResponse:
     required:
       - title
@@ -110,6 +211,34 @@ definitions:
       id:
         type: string
       name:
+        type: string
+      createdAt:
+        type: string
+  PlayerGameDataDefinition:
+    type: object
+    properties:
+      playerId:
+        type: string
+      buyIn:
+        type: integer
+      cashOut:
+        type: integer
+      updatedAt:
+        type: string
+  GameDefinition:
+    type: object
+    properties:
+      id:
+        type: string
+      description:
+        type: string
+      date:
+        type: string
+      playersData:
+        type: array
+        items:
+          $ref: "#/definitions/PlayerGameDataDefinition"
+      groupId:
         type: string
       createdAt:
         type: string
@@ -146,6 +275,18 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/GroupDefinition"
+  GetGamesResponseDefinition:
+    type: object
+    properties:
+      metadata:
+        type: object
+        properties:
+          count:
+            type: integer
+      games:
+        type: array
+        items:
+          $ref: "#/definitions/GameDefinition"
   GetPlayersResponseDefinition:
     type: object
     properties:
@@ -165,11 +306,33 @@ definitions:
     properties:
       name:
         type: string
+  CreateGameRequestDefinition:
+    type: object
+    properties:
+      date:
+        type: string
+      description:
+        type: string
   CreatePlayerRequestDefinition:
     type: object
     required:
       - firstName
       - familyName
+    properties:
+      firstName:
+        type: string
+      familyName:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      imageUrl:
+        type: string
+      birthday:
+        type: string
+  UpdatePlayerRequestDefinition:
+    type: object
     properties:
       firstName:
         type: string
@@ -196,6 +359,13 @@ parameters:
     name: playerId
     in: path
     description: The id of the player (uuid)
+    required: true
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  GameId:
+    name: gameId
+    in: path
+    description: The id of the game (uuid)
     required: true
     type: string
     pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'

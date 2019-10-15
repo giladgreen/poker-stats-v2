@@ -49,14 +49,5 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'players',
   });
 
-  Player.associate = (models) => {
-    Player.hasMany(models.gamesData, {
-      onDelete: 'cascade',
-      as: 'data',
-      foreignKey: 'playerId',
-      sourceKey: 'id',
-    });
-  };
-
   return Player;
 };

@@ -1,9 +1,24 @@
 const { notFound } = require('boom');
-const { groups } = require('../models');
+const models = require('../models');
 const attributes = ['id', 'name', 'createdAt'];
 
 async function getGroup(groupId) {
-    const group = await groups.findOne({
+    const group = await models.groups.findOne({
+        include: [{
+            model: models.players,
+            as: 'players',
+            required: false,
+            where: {
+                groupId
+            }
+        }, {
+            model: models.games,
+            as: 'games',
+            required: false,
+            where: {
+                groupId
+            },
+        }],
         where: {
             id: groupId
         },
@@ -16,12 +31,12 @@ async function getGroup(groupId) {
 }
 
 async function getGroups() {
-    const allGroups = await groups.findAll({ attributes });
+    const allGroups = await models.groups.findAll({ attributes });
     return allGroups.map(group => group.toJSON());
 }
 
 async function createGroup(data) {
-    const newGroup = await groups.create(data);
+    const newGroup = await models.groups.create(data);
     return getGroup(newGroup.id);
 }
 

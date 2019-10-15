@@ -1,6 +1,15 @@
 const HttpStatus = require('http-status-codes');
 const groupsService = require('../services/groups');
 
+function getGroup(req, res, next) {
+  const { groupId } = req.getAllParams();
+  groupsService.getGroup(groupId)
+      .then((group) => {
+        res.send(group);
+      })
+      .catch(next);
+}
+
 function getGroups(req, res, next) {
   groupsService.getGroups()
       .then((groups) => {
@@ -19,6 +28,7 @@ function createGroup(req, res, next) {
 }
 
 module.exports = {
+    getGroup,
   getGroups,
   createGroup
 };
