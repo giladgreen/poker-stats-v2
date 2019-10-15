@@ -376,6 +376,10 @@ definitions:
         type: string
       description:
         type: string
+      playersData:
+        type: array
+        items:
+          $ref: "#/definitions/PlayerGameDataDefinition"
   UpdateGameRequestDefinition:
     type: object
     properties:

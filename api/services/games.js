@@ -41,10 +41,14 @@ async function getGames(groupId) {
 }
 
 async function createGame(groupId, data) {
-
+    const { playersData } = data;
     const newGameData = { ...defaultValues, ...data, groupId};
 
     const newGame = await models.games.create(newGameData);
+    if (playersData) {
+        await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId: newGame.id, groupId })));
+    }
+
     return getGame({ groupId, gameId: newGame.id });
 }
 
