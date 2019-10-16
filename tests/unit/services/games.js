@@ -1,7 +1,7 @@
 const sinon = require('sinon');
 const { isBoom } = require('boom');
 const should = require('should');
-const { games } = require('../../../api/models');
+const { games, gamesData } = require('../../../api/models');
 const gamesService = require('../../../api/services/games');
 
 describe('services: games', () => {
@@ -116,22 +116,52 @@ describe('services: games', () => {
       description: 'bla bla bla',
       date,
     };
-
-    beforeEach(async function () {
-      this.createGame = this.sandbox.stub(games, 'create').resolves({ id: 'id' });
-      this.gamesFindOne = this.sandbox.stub(games, 'findOne').resolves({
-        toJSON: () => ({ ...data }),
+    describe('without players data', () => {
+      beforeEach(async function () {
+        this.createGame = this.sandbox.stub(games, 'create').resolves({ id: 'id' });
+        this.gamesFindOne = this.sandbox.stub(games, 'findOne').resolves({
+          toJSON: () => ({ ...data }),
+        });
+      });
+      it('should return correct data back', async function () {
+        const result = await gamesService.createGame(groupId, { ...data });
+        should(result).be.eql({ ...data, playersData: [] });
+        should(games.create.called).be.eql(true);
+        should(games.findOne.called).be.eql(true);
+        const createGameArgs = this.createGame.getCall(0);
+        should(createGameArgs.args[0]).be.eql({
+          ...data,
+          groupId,
+        });
       });
     });
-    it('should return correct data back', async function () {
-      const result = await gamesService.createGame(groupId, { ...data });
-      should(result).be.eql({ ...data, playersData: [] });
-      should(games.create.called).be.eql(true);
-      should(games.findOne.called).be.eql(true);
-      const createGameArgs = this.createGame.getCall(0);
-      should(createGameArgs.args[0]).be.eql({
-        ...data,
-        groupId,
+    describe('with players data', () => {
+      const playersData = [
+        {
+          playerId: 'playerId',
+          buyIn: 50,
+          cashOut: 100,
+        },
+      ];
+      beforeEach(async function () {
+        this.createGame = this.sandbox.stub(games, 'create').resolves({ id: 'id' });
+        this.sandbox.stub(gamesData, 'create').resolves({ id: 'id' });
+        this.sandbox.stub(gamesData, 'findAll').resolves([{ toJSON: () => (playersData[0]) }]);
+        this.gamesFindOne = this.sandbox.stub(games, 'findOne').resolves({
+          toJSON: () => ({ ...data, playersData }),
+        });
+      });
+      it('should return correct data back', async function () {
+        const result = await gamesService.createGame(groupId, { ...data, playersData });
+        should(result).be.eql({ ...data, playersData });
+        should(games.create.called).be.eql(true);
+        should(gamesData.create.called).be.eql(true);
+        should(games.findOne.called).be.eql(true);
+        const createGameArgs = this.createGame.getCall(0);
+        should(createGameArgs.args[0]).be.eql({
+          ...data,
+          groupId,
+        });
       });
     });
   });

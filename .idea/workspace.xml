@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="§">
-      <change afterPath="$PROJECT_DIR$/tests/unit/services/games.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/games.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/services/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/games.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,48 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/players.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="68" column="31" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="31" />
-              <folding>
-                <element signature="n#!!block;n#getPlayer#0" />
-                <element signature="n#!!block;n#getPlayers#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit/services/players.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="190" selection-start-line="190" selection-end-line="190" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/unit/services/games.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+            <state relative-caret-position="278">
+              <caret line="152" column="15" selection-start-line="152" selection-start-column="15" selection-end-line="152" selection-end-column="15" />
               <folding>
                 <element signature="e#319#366#0" />
                 <element signature="e#393#426#0" />
+                <element signature="e#478#1783#0" />
                 <element signature="e#682#1066#0" />
+                <element signature="e#1817#3879#0" />
                 <element signature="e#5050#6687#0" />
+                <element signature="e#6725#7262#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/groups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -67,26 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/games.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="1254" column="4" selection-start-line="1254" selection-start-column="4" selection-end-line="1254" selection-end-column="4" />
+            <state relative-caret-position="327">
+              <caret line="23" column="52" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -126,6 +78,7 @@
       <find>=&gt;</find>
       <find>gameId</find>
       <find>playerId</find>
+      <find>playersData</find>
       <find>player</find>
     </findStrings>
     <dirStrings>
@@ -325,12 +278,12 @@
       <updated>1571051978929</updated>
       <workItem from="1571051980542" duration="14412000" />
       <workItem from="1571126498122" duration="429000" />
-      <workItem from="1571134438135" duration="21511000" />
+      <workItem from="1571134438135" duration="22313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36352000" />
+    <option name="totallyTimeSpent" value="37154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1347" y="-1057" width="1920" height="1057" extended-state="0" />
@@ -349,7 +302,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.39808917" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.39596602" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -365,7 +318,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/services/games.js</url>
-          <line>87</line>
+          <line>88</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
@@ -637,17 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!block;n#getPlayer#0" />
-            <element signature="n#!!block;n#getPlayers#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit/services/players.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -662,22 +604,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="68" column="31" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!block;n#getPlayer#0" />
+            <element signature="n#!!block;n#getPlayers#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/games.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+        <state relative-caret-position="327">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit/services/games.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="133" column="31" selection-start-line="133" selection-start-column="31" selection-end-line="133" selection-end-column="31" />
+        <state relative-caret-position="278">
+          <caret line="152" column="15" selection-start-line="152" selection-start-column="15" selection-end-line="152" selection-end-column="15" />
           <folding>
             <element signature="e#319#366#0" />
             <element signature="e#393#426#0" />
+            <element signature="e#478#1783#0" />
             <element signature="e#682#1066#0" />
+            <element signature="e#1817#3879#0" />
             <element signature="e#5050#6687#0" />
+            <element signature="e#6725#7262#0" />
           </folding>
         </state>
       </provider>
