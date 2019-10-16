@@ -3,12 +3,12 @@
   "version": "2.0.0",
   "description": "poker-stats-v2",
   "scripts": {
+    "test:ut": "mocha tests/unit/**/*.js --exit",
+    "test:integration": "mocha tests/integration/**/*.js --exit",
     "start": "node app.js",
     "commit-and-push": "git add . && git commit -am \"a\" && git push",
     "lint": "./node_modules/.bin/eslint \"./**/*.js\"",
-    "edit-swagger": "swagger project edit",
-    "test:ut": "mocha tests/unit/**/*.js --exit",
-    "test:integration": "mocha tests/integration/**/*.js --exit"
+    "edit-swagger": "swagger project edit"
   },
   "main": "app.js",
   "dependencies": {

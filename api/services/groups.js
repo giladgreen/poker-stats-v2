@@ -32,13 +32,23 @@ async function getGroup(groupId) {
 }
 
 async function getGroups(limit = 1000, offset = 0) {
+  const allCount = await models.groups.count();
   const allGroups = await models.groups.findAll({
     limit,
     offset,
     order: [['createdAt', 'ASC']],
     attributes,
   });
-  return allGroups.map(group => group.toJSON());
+
+  return {
+    metadata: {
+      totalResults: allCount,
+      count: allGroups.length,
+      limit,
+      offset,
+    },
+    results: allGroups.map(group => group.toJSON()),
+  };
 }
 
 async function createGroup(data) {

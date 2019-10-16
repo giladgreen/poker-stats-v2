@@ -13,8 +13,8 @@ function getGroup(req, res, next) {
 function getGroups(req, res, next) {
   const { limit, offset } = req.getAllParams();
   groupsService.getGroups(limit, offset)
-    .then((groups) => {
-      res.send({ metadata: { count: groups.length }, groups });
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 }

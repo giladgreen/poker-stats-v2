@@ -258,6 +258,16 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 
 definitions:
+  PaginationDefinition:
+    properties:
+      totalResults:
+        type: integer
+      count:
+        type: integer
+      limit:
+        type: integer
+      offset:
+        type: integer
   EntityDeletedDefinition:
     properties:
       deleted:
@@ -332,11 +342,8 @@ definitions:
     type: object
     properties:
       metadata:
-        type: object
-        properties:
-          count:
-            type: integer
-      groups:
+        $ref: '#/definitions/PaginationDefinition'
+      results:
         type: array
         items:
           $ref: "#/definitions/GroupDefinition"
@@ -344,11 +351,8 @@ definitions:
     type: object
     properties:
       metadata:
-        type: object
-        properties:
-          count:
-            type: integer
-      games:
+        $ref: '#/definitions/PaginationDefinition'
+      results:
         type: array
         items:
           $ref: "#/definitions/GameDefinition"
@@ -356,11 +360,8 @@ definitions:
     type: object
     properties:
       metadata:
-        type: object
-        properties:
-          count:
-            type: integer
-      players:
+        $ref: '#/definitions/PaginationDefinition'
+      results:
         type: array
         items:
           $ref: "#/definitions/PlayerDefinition"
@@ -459,8 +460,8 @@ parameters:
     name: limit
     description: The number of records you would like to get
     required: false
-    default: 10
-    maximum: 200
+    default: 1000
+    maximum: 1000
     in: query
     type: integer
   Offset:

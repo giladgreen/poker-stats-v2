@@ -12,8 +12,8 @@ function getPlayer(req, res, next) {
 function getPlayers(req, res, next) {
   const { groupId, limit, offset } = req.getAllParams();
   playersService.getPlayers(groupId, limit, offset)
-    .then((players) => {
-      res.send({ metadata: { count: players.length }, players });
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 }

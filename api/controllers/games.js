@@ -12,8 +12,8 @@ function getGame(req, res, next) {
 function getGames(req, res, next) {
   const { groupId, limit, offset } = req.getAllParams();
   gamesService.getGames(groupId, limit, offset)
-    .then((games) => {
-      res.send({ metadata: { count: games.length }, games });
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 }

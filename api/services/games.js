@@ -32,6 +32,7 @@ async function getGame({ groupId, gameId }) {
 }
 
 async function getGames(groupId, limit = 1000, offset = 0) {
+  const allCount = await models.games.count();
   const allGames = await models.games.findAll({
     limit,
     offset,
@@ -41,7 +42,16 @@ async function getGames(groupId, limit = 1000, offset = 0) {
     },
     attributes: gameAttributes,
   });
-  return allGames.map(game => game.toJSON());
+
+  return {
+    metadata: {
+      totalResults: allCount,
+      count: allGames.length,
+      limit,
+      offset,
+    },
+    results: allGames.map(game => game.toJSON()),
+  };
 }
 
 async function createGame(groupId, data) {
