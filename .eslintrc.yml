@@ -18,7 +18,7 @@ overrides:
     rules:
       func-names: off
       no-console:
-        - warn
+        - error
   - files:
       - "services/**/api/fittings/*.js"
     rules:
