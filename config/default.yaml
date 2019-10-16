@@ -1,8 +1,6 @@
 # Service configuration
-db:
-  host: "rfis-db"
-  dbName: "issues_development"
-  user: "rfis"
+
+
 
 # swagger configuration file
 
