@@ -57,7 +57,7 @@ async function getGames(groupId, limit = 1000, offset = 0) {
 async function createGame(groupId, data) {
   const { playersData } = data;
   const newGameData = { ...defaultValues, ...data, groupId };
-
+  delete newGameData.playersData;
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId: newGame.id, groupId })));
@@ -68,9 +68,9 @@ async function createGame(groupId, data) {
 
 async function updateGame(groupId, gameId, data) {
   await getGame({ groupId, gameId });
-
-  const { playersData } = data;
-
+  const updateData = { ...data };
+  const { playersData } = updateData;
+  delete updateData.playersData;
   await models.games.update(data, {
     where: {
       groupId,

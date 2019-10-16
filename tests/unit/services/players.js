@@ -5,8 +5,9 @@ const { players } = require('../../../api/models');
 const playersService = require('../../../api/services/players');
 
 
-describe('[unit] services:players', () => {
+describe('services: players', () => {
   const groupId = 'groupId';
+  const playerId = 'playerId';
   beforeEach(async function () {
     this.sandbox = sinon.createSandbox();
   });
@@ -16,10 +17,9 @@ describe('[unit] services:players', () => {
   describe('getPlayer()', () => {
     describe('player does not exist', () => {
       beforeEach(async function () {
-        this.playerFindOne = this.sandbox.stub(players, 'findOne').resolves(null);
+        this.sandbox.stub(players, 'findOne').resolves(null);
       });
       it('should throw correct error', async () => {
-        const playerId = 'playerId';
         try {
           await playersService.getPlayer({ groupId, playerId });
         } catch (error) {
@@ -45,7 +45,7 @@ describe('[unit] services:players', () => {
           toJSON: () => player,
         });
       });
-      it('should throw correct error', async function () {
+      it('should return correct data', async function () {
         const resultPlayer = await playersService.getPlayer({ groupId, playerId: player.id });
         should(resultPlayer).be.eql(player);
         should(players.findOne.called).be.eql(true);
@@ -145,10 +145,9 @@ describe('[unit] services:players', () => {
   describe('updatePlayer()', () => {
     describe('player does not exist', () => {
       beforeEach(async function () {
-        this.playerFindOne = this.sandbox.stub(players, 'findOne').resolves(null);
+        this.sandbox.stub(players, 'findOne').resolves(null);
       });
       it('should throw correct error', async () => {
-        const playerId = 'playerId';
         try {
           await playersService.updatePlayer(groupId, playerId, {});
         } catch (error) {
@@ -163,7 +162,6 @@ describe('[unit] services:players', () => {
       });
     });
     describe('when player exist', () => {
-      const playerId = 'playerId';
       const birthday = (new Date()).toISOString();
       const data = {
         id: playerId,
@@ -187,6 +185,18 @@ describe('[unit] services:players', () => {
         const updatePlayerArgs = this.updatePlayer.getCall(0);
         should(updatePlayerArgs.args[0]).be.eql(data);
       });
+    });
+  });
+  describe('deletePlayer()', () => {
+    beforeEach(async function () {
+      this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
+    });
+    it('should return correct data back', async function () {
+      const result = await playersService.deletePlayer(groupId, playerId);
+      should(result).be.eql(true);
+      should(players.destroy.called).be.eql(true);
+      const destroyPlayerArgs = this.destroyPlayer.getCall(0);
+      should(destroyPlayerArgs.args[0].where).be.eql({ groupId, id: playerId });
     });
   });
 });
