@@ -15,6 +15,9 @@ paths:
 
   /api/v2/groups:
     x-swagger-router-controller: groups
+    parameters:
+      - $ref: "#/parameters/Limit"
+      - $ref: "#/parameters/Offset"
     get:
       operationId: getGroups
       responses:
@@ -94,6 +97,8 @@ paths:
     x-swagger-router-controller: players
     parameters:
       - $ref: '#/parameters/GroupId'
+      - $ref: "#/parameters/Limit"
+      - $ref: "#/parameters/Offset"
     get:
       operationId: getPlayers
       responses:
@@ -174,6 +179,8 @@ paths:
     x-swagger-router-controller: games
     parameters:
       - $ref: '#/parameters/GroupId'
+      - $ref: "#/parameters/Limit"
+      - $ref: "#/parameters/Offset"
     get:
       operationId: getGames
       responses:
@@ -448,3 +455,18 @@ parameters:
     required: true
     type: string
     pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  Limit:
+    name: limit
+    description: The number of records you would like to get
+    required: false
+    default: 10
+    maximum: 200
+    in: query
+    type: integer
+  Offset:
+    name: offset
+    description: From which record should it retrieve your data? (starting point for limit)
+    default: 0
+    required: false
+    in: query
+    type: integer

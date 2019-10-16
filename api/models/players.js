@@ -1,3 +1,5 @@
+const { dateFields } = require('../helpers/sequelize');
+
 module.exports = function (sequelize, DataTypes) {
   const Player = sequelize.define('players', {
     id: {
@@ -30,20 +32,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       field: 'group_id',
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      field: 'created_at',
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      field: 'updated_at',
-    },
-    deletedAt: {
-      type: DataTypes.DATE,
-      field: 'deleted_at',
-    },
+    ...dateFields,
   }, {
     paranoid: true,
     tableName: 'players',

@@ -4,7 +4,7 @@ const { generateConnectionString } = require('../helpers/sequelize');
 
 const dbConnectionString = generateConnectionString();
 
-const sequelize = new Sequelize(dbConnectionString, { ssl:true, pool: { acquire: 2000 } });
+const sequelize = new Sequelize(dbConnectionString, { ssl: true, pool: { acquire: 2000 } });
 
 const models = fs.readdirSync(__dirname)
   .reduce((all, fileName) => {
