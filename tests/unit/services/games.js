@@ -235,11 +235,13 @@ describe('services: games', () => {
   });
   describe('deleteGame()', () => {
     beforeEach(async function () {
+      this.sandbox.stub(gamesData, 'destroy').resolves(true);
       this.destroyGame = this.sandbox.stub(games, 'destroy').resolves(true);
     });
     it('should return correct data back', async function () {
       const result = await gamesService.deleteGame(groupId, gameId);
       should(result).be.eql(true);
+      should(gamesData.destroy.called).be.eql(true);
       should(games.destroy.called).be.eql(true);
       const destroyGameArgs = this.destroyGame.getCall(0);
       should(destroyGameArgs.args[0].where).be.eql({ groupId, id: gameId });

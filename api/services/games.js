@@ -92,7 +92,14 @@ async function updateGame(groupId, gameId, data) {
   return getGame({ groupId, gameId });
 }
 
-function deleteGame(groupId, gameId) {
+async function deleteGame(groupId, gameId) {
+  await models.gamesData.destroy({
+    where: {
+      groupId,
+      gameId,
+    },
+    paranoid: false,
+  });
   return models.games.destroy({
     where: {
       groupId,
