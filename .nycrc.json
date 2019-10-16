@@ -1,0 +1,22 @@
+{
+  "check-coverage": true,
+  "per-file": true,
+  "lines": 0,
+  "statements": 0,
+  "functions": 0,
+  "branches": 0,
+  "exclude": [
+    "app.js",
+    "tests/**/*.js",
+    "coverage",
+    "**/coverage",
+    "**/tests"
+  ],
+  "report-dir": "./coverage",
+  "reporter": [
+    "json-summary",
+    "text-summary",
+    "html"
+  ],
+  "all": true
+}

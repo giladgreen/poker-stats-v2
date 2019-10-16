@@ -7,7 +7,6 @@ function getFitting() {
       method: request.method,
       url: request.url,
     });
-
     response.on('finish', () => {
       const endTime = new Date();
       log.debug('[fitting:logger]: outgoing response', {

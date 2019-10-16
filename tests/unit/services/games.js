@@ -4,7 +4,7 @@ const should = require('should');
 const { games, gamesData } = require('../../../api/models');
 const gamesService = require('../../../api/services/games');
 
-describe('services: games', () => {
+describe('services: games', function () {
   const groupId = 'groupId';
   const gameId = 'gameId';
   const playersData = [
@@ -20,12 +20,12 @@ describe('services: games', () => {
   afterEach(function () {
     this.sandbox.restore();
   });
-  describe('getGame()', () => {
-    describe('game does not exist', () => {
+  describe('getGame()', function () {
+    describe('game does not exist', function () {
       beforeEach(async function () {
         this.sandbox.stub(games, 'findOne').resolves(null);
       });
-      it('should throw correct error', async () => {
+      it('should throw correct error', async function () {
         try {
           await gamesService.getGame({ groupId, gameId });
         } catch (error) {
@@ -39,7 +39,7 @@ describe('services: games', () => {
         }
       });
     });
-    describe('game does exist', () => {
+    describe('game does exist', function () {
       const game = {
         id: 'id',
         groupId,
@@ -59,8 +59,8 @@ describe('services: games', () => {
       });
     });
   });
-  describe('getGames()', () => {
-    describe('no results', () => {
+  describe('getGames()', function () {
+    describe('no results', function () {
       beforeEach(async function () {
         this.sandbox.stub(games, 'count').resolves(0);
         this.gamesFindAll = this.sandbox.stub(games, 'findAll').resolves([]);
@@ -82,7 +82,7 @@ describe('services: games', () => {
         should(gamesFindAllArgs.args[0].where).be.eql({ groupId });
       });
     });
-    describe('paginated results', () => {
+    describe('paginated results', function () {
       const totalResults = 10;
       const count = 3;
       const limit = 5;
@@ -117,13 +117,13 @@ describe('services: games', () => {
       });
     });
   });
-  describe('createGame()', () => {
+  describe('createGame()', function () {
     const date = (new Date()).toISOString();
     const data = {
       description: 'bla bla bla',
       date,
     };
-    describe('without players data', () => {
+    describe('without players data', function () {
       beforeEach(async function () {
         this.createGame = this.sandbox.stub(games, 'create').resolves({ id: 'id' });
         this.gamesFindOne = this.sandbox.stub(games, 'findOne').resolves({
@@ -142,7 +142,7 @@ describe('services: games', () => {
         });
       });
     });
-    describe('with players data', () => {
+    describe('with players data', function () {
       beforeEach(async function () {
         this.createGame = this.sandbox.stub(games, 'create').resolves({ id: 'id' });
         this.sandbox.stub(gamesData, 'create').resolves({ id: 'id' });
@@ -166,12 +166,12 @@ describe('services: games', () => {
       });
     });
   });
-  describe('updateGame()', () => {
-    describe('game does not exist', () => {
+  describe('updateGame()', function () {
+    describe('game does not exist', function () {
       beforeEach(async function () {
         this.sandbox.stub(games, 'findOne').resolves(null);
       });
-      it('should throw correct error', async () => {
+      it('should throw correct error', async function () {
         try {
           await gamesService.updateGame(groupId, gameId, {});
         } catch (error) {
@@ -185,30 +185,30 @@ describe('services: games', () => {
         }
       });
     });
-    describe('when game exist', () => {
+    describe('when game exist', function () {
       const date = (new Date()).toISOString();
       const data = {
         description: 'bla bla bla',
         date,
       };
-      describe('update does not contain players data', () => {
+      describe('update does not contain players data', function () {
         beforeEach(async function () {
           this.gamesFindOne = this.sandbox.stub(games, 'findOne').resolves({
             id: gameId,
-            toJSON: () => data,
+            toJSON: () => ({ ...data }),
           });
           this.updateGame = this.sandbox.stub(games, 'update').resolves({});
         });
         it('should return correct data back', async function () {
-          const result = await gamesService.updateGame(groupId, gameId, data);
-          should(result).be.eql(data);
+          const result = await gamesService.updateGame(groupId, gameId, { ...data });
+          should(result).be.eql({ ...data, playersData: [] });
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
           const updateGameArgs = this.updateGame.getCall(0);
-          should(updateGameArgs.args[0]).be.eql(data);
+          should(updateGameArgs.args[0]).be.eql({ ...data });
         });
       });
-      describe('update contain players data', () => {
+      describe('update contain players data', function () {
         beforeEach(async function () {
           this.sandbox.stub(gamesData, 'destroy').resolves({});
           this.sandbox.stub(gamesData, 'create').resolves({ id: 'id' });
@@ -233,7 +233,7 @@ describe('services: games', () => {
       });
     });
   });
-  describe('deleteGame()', () => {
+  describe('deleteGame()', function () {
     beforeEach(async function () {
       this.sandbox.stub(gamesData, 'destroy').resolves(true);
       this.destroyGame = this.sandbox.stub(games, 'destroy').resolves(true);

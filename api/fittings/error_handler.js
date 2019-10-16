@@ -3,7 +3,7 @@ const logger = require('../services/logger');
 
 function getFitting() {
   const errorHandler = new ErrorHandler(logger);
-  return function errorHandlerer({ error, request, response }, next) {
+  return function errHandler({ error, request, response }, next) {
     errorHandler.middleware(error, request, response, next);
   };
 }

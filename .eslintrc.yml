@@ -24,7 +24,7 @@ overrides:
     rules:
       camelcase: off
   - files:
-      - "services/**/tests/**/*.js"
+      - "tests/**/*.js"
       - "smoke/tests/*.js"
       - "db-migration.js"
     rules:
@@ -33,7 +33,7 @@ overrides:
         - devDependencies: true
       prefer-arrow-callback: off
   - files:
-      - "services/**/tests/**/*.js"
+      - "tests/**/*.js"
     rules:
       no-only-tests/no-only-tests:
         - error
