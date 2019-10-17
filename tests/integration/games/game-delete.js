@@ -4,7 +4,8 @@ const should = require('should');
 const { server } = require('../../../app');
 
 const { stubGroup, clearAllData } = require('../../helpers/groups');
-const { deleteGroupPlayers, stubPlayer } = require('../../helpers/players');
+const { stubPlayer } = require('../../helpers/players');
+const { deleteGroupGames, stubGame } = require('../../helpers/games');
 
 
 const acceptHeader = 'Accept';
@@ -17,16 +18,16 @@ describe('delete player', function () {
   afterEach(async function () {
     await clearAllData();
   });
-  describe('DELETE api/v2/groups/{groupId}/players/{playerId}', function () {
+  describe('DELETE api/v2/groups/{groupId}/games/{gameId}', function () {
     beforeEach(async function () {
-      this.player = await stubPlayer(this.group.id);
+      this.game = await stubGame(this.group.id, this.player.id);
     });
     afterEach(async function () {
-      await deleteGroupPlayers(this.group.id);
+      await deleteGroupGames(this.group.id);
     });
     it('should return correct status', async function () {
       const { body } = await request(server)
-        .delete(`/api/v2/groups/${this.group.id}/players/${this.player.id}`)
+        .delete(`/api/v2/groups/${this.group.id}/games/${this.game.id}`)
         .set(acceptHeader, 'application/json')
         .expect(204);
 

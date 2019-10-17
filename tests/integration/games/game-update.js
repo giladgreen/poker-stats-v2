@@ -5,50 +5,94 @@ const should = require('should');
 const { server } = require('../../../app');
 
 const { stubGroup, clearAllData } = require('../../helpers/groups');
-const { stubPlayer, deleteGroupPlayers } = require('../../helpers/players');
+const { stubPlayer } = require('../../helpers/players');
+const { deleteGroupGames, stubGame } = require('../../helpers/games');
 
 
 const acceptHeader = 'Accept';
 const contentTypeHeader = 'Content-Type';
-describe('update player', function () {
+describe('update game', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
     this.player = await stubPlayer(this.group.id);
+    this.player2 = await stubPlayer(this.group.id);
   });
   afterEach(async function () {
     await clearAllData();
   });
-  describe('PATCH api/v2/groups/{groupId}/players/{playerId}', function () {
+  describe('PATCH api/v2/groups/{groupId}/games/{gameId}', function () {
     beforeEach(async function () {
-      this.player = await stubPlayer(this.group.id);
+      this.game = await stubGame(this.group.id);
     });
     afterEach(async function () {
-      await deleteGroupPlayers(this.group.id);
+      await deleteGroupGames(this.group.id);
     });
-    it('should return 404 error in case of wrong player id', async function () {
-      const playerId = uuid();
+    it('should return 404 error in case of wrong game id', async function () {
+      const gameId = uuid();
       const { body } = await request(server)
-        .patch(`/api/v2/groups/${this.group.id}/players/${playerId}`)
+        .patch(`/api/v2/groups/${this.group.id}/games/${gameId}`)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(404);
       body.should.have.property('title').which.is.a.String();
-      should(body.title).eql('player not found');
+      should(body.title).eql('game not found');
     });
-    it('should return updated details', async function () {
+    it('when not passing in playersData - should return updated details', async function () {
       const payload = {
-        familyName: 'new name',
+        date: new Date(),
+        description: 'new description',
       };
       const { body } = await request(server)
-        .patch(`/api/v2/groups/${this.group.id}/players/${this.player.id}`)
+        .patch(`/api/v2/groups/${this.group.id}/games/${this.game.id}`)
         .set(acceptHeader, 'application/json')
         .send(payload)
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);
 
       should(body).be.an.Object();
-      body.should.have.property('familyName').which.is.a.String().eql(payload.familyName);
+      body.should.have.property('date').which.is.a.String();
+      body.should.have.property('description').which.is.a.String().eql(payload.description);
+      body.should.have.property('groupId').which.is.a.String().eql(this.group.id);
+      body.should.have.property('playersData').which.is.a.Array();
+      should(body.playersData.length).eql(0);
+    });
+    it('when passing in playersData - should return updated details', async function () {
+      const payload = {
+        date: new Date(),
+        description: 'new description 2',
+        playersData: [
+          {
+            playerId: this.player.id,
+            buyIn: 500,
+            cashOut: 0,
+          },
+          {
+            playerId: this.player2.id,
+            buyIn: 100,
+            cashOut: 30,
+          },
+        ],
+      };
+      const { body } = await request(server)
+        .patch(`/api/v2/groups/${this.group.id}/games/${this.game.id}`)
+        .set(acceptHeader, 'application/json')
+        .send(payload)
+        .expect(contentTypeHeader, 'application/json; charset=utf-8')
+        .expect(200);
+
+      should(body).be.an.Object();
+      body.should.have.property('date').which.is.a.String();
+      body.should.have.property('description').which.is.a.String().eql(payload.description);
+      body.should.have.property('groupId').which.is.a.String().eql(this.group.id);
+      body.should.have.property('playersData').which.is.a.Array();
+      should(body.playersData.length).eql(2);
+      should(body.playersData[0].playerId).eql(payload.playersData[0].playerId);
+      should(body.playersData[0].buyIn).eql(payload.playersData[0].buyIn);
+      should(body.playersData[0].cashOut).eql(payload.playersData[0].cashOut);
+      should(body.playersData[1].playerId).eql(payload.playersData[1].playerId);
+      should(body.playersData[1].buyIn).eql(payload.playersData[1].buyIn);
+      should(body.playersData[1].cashOut).eql(payload.playersData[1].cashOut);
     });
   });
 });

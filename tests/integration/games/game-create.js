@@ -8,7 +8,7 @@ const { stubPlayer } = require('../../helpers/players');
 
 const acceptHeader = 'Accept';
 const contentTypeHeader = 'Content-Type';
-describe('create player', function () {
+describe('create game', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
@@ -17,37 +17,50 @@ describe('create player', function () {
   afterEach(async function () {
     await clearAllData();
   });
-  describe('POST api/v2/groups/{groupId}/players', function () {
-    it('when ilegal payload - should return BAD REQUEST error', async function () {
+  describe('POST api/v2/groups/{groupId}/games', function () {
+    it('when not passing any players data - should return created game', async function () {
       const payload = {
-        someIlegalData: true,
+        date: new Date(),
+        description: 'description',
       };
       const { body } = await request(server)
-        .post(`/api/v2/groups/${this.group.id}/players`)
-        .set(acceptHeader, 'application/json')
-        .send(payload)
-        .expect(contentTypeHeader, 'application/json; charset=utf-8')
-        .expect(400);
-      body.should.have.property('title').which.is.a.String();
-      should(body.title).eql('Request validation failed: Parameter (body) failed schema validation');
-    });
-    it('should return created player', async function () {
-      const payload = {
-        firstName: 'gilad',
-        familyName: 'green',
-      };
-      const { body } = await request(server)
-        .post(`/api/v2/groups/${this.group.id}/players`)
+        .post(`/api/v2/groups/${this.group.id}/games`)
         .set(acceptHeader, 'application/json')
         .send(payload)
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(201);
-      body.should.have.property('firstName').which.is.a.String().eql(payload.firstName);
-      body.should.have.property('familyName').which.is.a.String().eql(payload.familyName);
-      body.should.have.property('email').which.is.a.String().eql('-');
-      body.should.have.property('phone').which.is.a.String().eql('-');
-      body.should.have.property('imageUrl').which.is.a.String().eql('anonymous');
-      body.should.have.property('id').which.is.a.String();
+      body.should.have.property('date').which.is.a.String();
+      body.should.have.property('description').which.is.a.String().eql(payload.description);
+      body.should.have.property('groupId').which.is.a.String().eql(this.group.id);
+      body.should.have.property('playersData').which.is.a.Array();
+      should(body.playersData.length).eql(0);
+    });
+    it('when passing players data - should return created game', async function () {
+      const payload = {
+        date: new Date(),
+        description: 'description',
+        playersData: [
+          {
+            playerId: this.player.id,
+            buyIn: 50,
+            cashOut: 200,
+          },
+        ],
+      };
+      const { body } = await request(server)
+        .post(`/api/v2/groups/${this.group.id}/games`)
+        .set(acceptHeader, 'application/json')
+        .send(payload)
+        .expect(contentTypeHeader, 'application/json; charset=utf-8')
+        .expect(201);
+      body.should.have.property('date').which.is.a.String();
+      body.should.have.property('description').which.is.a.String().eql(payload.description);
+      body.should.have.property('groupId').which.is.a.String().eql(this.group.id);
+      body.should.have.property('playersData').which.is.a.Array();
+      should(body.playersData.length).eql(1);
+      should(body.playersData[0].playerId).eql(payload.playersData[0].playerId);
+      should(body.playersData[0].buyIn).eql(payload.playersData[0].buyIn);
+      should(body.playersData[0].cashOut).eql(payload.playersData[0].cashOut);
     });
   });
 });

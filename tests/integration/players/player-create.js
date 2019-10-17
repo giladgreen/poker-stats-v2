@@ -16,7 +16,7 @@ describe('create player', function () {
     await clearAllData();
   });
   describe('POST api/v2/groups/{groupId}/players', function () {
-    it('when ilegal payload - should return BAD REQUEST error', async function () {
+    it('when illegal payload - should return BAD REQUEST error', async function () {
       const payload = {
         someIlegalData: true,
       };

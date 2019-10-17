@@ -15,7 +15,7 @@ describe('create group', function () {
     await clearAllData();
   });
   describe('POST api/v2/groups', function () {
-    it('when ilegal payload - should return BAD REQUEST error', async function () {
+    it('when illegal payload - should return BAD REQUEST error', async function () {
       const payload = {
         someIlegalData: true,
       };
