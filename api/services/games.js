@@ -80,6 +80,14 @@ async function createGame(groupId, data) {
 
 async function updateGame(groupId, gameId, data) {
   await getGame({ groupId, gameId });
+  await models.gamesData.destroy({
+    where: {
+      groupId,
+      gameId,
+    },
+    paranoid: false,
+  });
+
   const updateData = { ...data };
   const { playersData } = updateData;
   const ready = gameHelper.isGameReady(playersData);
@@ -91,14 +99,6 @@ async function updateGame(groupId, gameId, data) {
     },
   });
   if (playersData) {
-    await models.gamesData.destroy({
-      where: {
-        groupId,
-        gameId,
-      },
-      paranoid: false,
-    });
-
     await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId, groupId })));
   }
 

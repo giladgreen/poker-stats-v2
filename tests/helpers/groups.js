@@ -7,14 +7,10 @@ const mockedGroupPayload = {
 };
 
 async function clearAllData() {
-  await models.players.destroy({ where: {} });
-
-
-  await models.gamesData.destroy({ where: {} });
-
-  await models.games.destroy({ where: {} });
-
-  return models.groups.destroy({ where: {} });
+  await models.sequelize.query('DELETE from games_data');
+  await models.sequelize.query('DELETE from games');
+  await models.sequelize.query('DELETE from players');
+  return models.sequelize.query('DELETE from groups');
 }
 function stubGroup() {
   return models.groups.create(mockedGroupPayload);
