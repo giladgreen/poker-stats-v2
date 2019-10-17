@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="§">
-      <change afterPath="$PROJECT_DIR$/migration/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migration/mongoToPostgres.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nycrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.nycrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="§" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -34,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state relative-caret-position="116">
+              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -342,7 +333,7 @@
       <updated>1571051978929</updated>
       <workItem from="1571051980542" duration="14412000" />
       <workItem from="1571126498122" duration="429000" />
-      <workItem from="1571134438135" duration="54073000" />
+      <workItem from="1571134438135" duration="54458000" />
     </task>
     <servers />
   </component>
@@ -379,18 +370,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68914000" />
+    <option name="totallyTimeSpent" value="69299000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1351" y="-1057" width="1920" height="972" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1353" y="-1057" width="1920" height="972" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14164004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5332555" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29638273" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.50875145" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31621936" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -398,7 +388,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.46324387" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.46324387" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -830,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state relative-caret-position="116">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>

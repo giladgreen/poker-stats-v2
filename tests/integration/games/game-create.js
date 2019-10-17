@@ -94,12 +94,6 @@ describe('create game', function () {
       body.should.have.property('ready').which.is.a.Boolean().eql(true);
       body.should.have.property('playersData').which.is.a.Array();
       should(body.playersData.length).eql(2);
-      should(body.playersData[0].playerId).eql(payload.playersData[0].playerId);
-      should(body.playersData[0].buyIn).eql(payload.playersData[0].buyIn);
-      should(body.playersData[0].cashOut).eql(payload.playersData[0].cashOut);
-      should(body.playersData[1].playerId).eql(payload.playersData[1].playerId);
-      should(body.playersData[1].buyIn).eql(payload.playersData[1].buyIn);
-      should(body.playersData[1].cashOut).eql(payload.playersData[1].cashOut);
     });
   });
 });
