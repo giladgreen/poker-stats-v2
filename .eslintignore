@@ -1,4 +1,7 @@
 node_modules/
+public/
+migration/
+**/migration/
 **/node_modules/
 **/*.min.js
 **/coverage/**/*.js

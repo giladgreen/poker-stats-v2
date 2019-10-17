@@ -7,6 +7,8 @@
   "branches": 0,
   "exclude": [
     "app.js",
+    "migration/*.js",
+    "migration/*.json",
     "tests/**/*.js",
     "coverage",
     "**/coverage",

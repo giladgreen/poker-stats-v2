@@ -1,6 +1,38 @@
 const SwaggerExpress = require('swagger-express-mw');
-const app = require('express')();
+const express = require('express');
+
+const app = express();
+const path = require('path');
+const compression = require('compression');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
+const rateLimit = require('express-rate-limit');
 const logger = require('./api/services/logger');
+
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 5000, // limit each IP to 5000 requests per windowMs
+});
+
+const PUBLIC = path.join(__dirname, 'public');
+const faviconPath = path.join(PUBLIC, 'favicon.png');
+app.use(compression());
+app.use(express.static(PUBLIC));
+app.use(favicon(faviconPath));
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+app.use(bodyParser.json({ limit: '50mb', type: 'application/json' }));
+app.disable('x-powered-by');
+app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+app.use(limiter);
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PATCH');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, *');
+  next();
+});
 
 logger.info('app started..');
 /**
