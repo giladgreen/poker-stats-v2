@@ -18,6 +18,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       field: 'group_id',
     },
+    ready: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     ...dateFields,
   }, {
     paranoid: true,

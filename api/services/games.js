@@ -1,7 +1,8 @@
 const { notFound } = require('boom');
 const models = require('../models');
+const gameHelper = require('../helpers/game');
 
-const gameAttributes = ['id', 'description', 'date', 'groupId', 'createdAt'];
+const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'updatedAt'];
 
 const defaultValues = {
@@ -56,7 +57,10 @@ async function getGames(groupId, limit = 1000, offset = 0) {
 
 async function createGame(groupId, data) {
   const { playersData } = data;
-  const newGameData = { ...defaultValues, ...data, groupId };
+  const ready = gameHelper.isGameReady(playersData);
+  const newGameData = {
+    ...defaultValues, ...data, ready, groupId,
+  };
   delete newGameData.playersData;
   const newGame = await models.games.create(newGameData);
   if (playersData) {
@@ -70,8 +74,9 @@ async function updateGame(groupId, gameId, data) {
   await getGame({ groupId, gameId });
   const updateData = { ...data };
   const { playersData } = updateData;
+  const ready = gameHelper.isGameReady(playersData);
   delete updateData.playersData;
-  await models.games.update(data, {
+  await models.games.update({ ...data, ready }, {
     where: {
       groupId,
       id: gameId,

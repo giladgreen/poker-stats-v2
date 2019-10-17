@@ -138,6 +138,7 @@ describe('services: games', function () {
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
           ...data,
+          ready: false,
           groupId,
         });
       });
@@ -161,6 +162,7 @@ describe('services: games', function () {
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
           ...data,
+          ready: false,
           groupId,
         });
       });
@@ -205,7 +207,7 @@ describe('services: games', function () {
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
           const updateGameArgs = this.updateGame.getCall(0);
-          should(updateGameArgs.args[0]).be.eql({ ...data });
+          should(updateGameArgs.args[0]).be.eql({ ...data, ready: false });
         });
       });
       describe('update contain players data', function () {
@@ -228,7 +230,7 @@ describe('services: games', function () {
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
           const updateGameArgs = this.updateGame.getCall(0);
-          should(updateGameArgs.args[0]).be.eql(data);
+          should(updateGameArgs.args[0]).be.eql({ ...data, ready: false });
         });
       });
     });
