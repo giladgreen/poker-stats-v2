@@ -61,7 +61,7 @@ async function doStuff() {
            } ;
         });
         return {
-            data: convertDate(name),
+            date: convertDate(name),
             playersData,
             groupId
         };
