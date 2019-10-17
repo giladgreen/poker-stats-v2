@@ -33,5 +33,13 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'games_data',
   });
 
+  GameData.associate = (models) => {
+    GameData.belongsTo(models.games, {
+      foreignKey: 'gameId',
+      as: 'playersData',
+      onDelete: 'CASCADE',
+    });
+  };
+
   return GameData;
 };

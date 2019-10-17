@@ -5,21 +5,6 @@ const attributes = ['id', 'name', 'createdAt'];
 
 async function getGroup(groupId) {
   const group = await models.groups.findOne({
-    include: [{
-      model: models.players,
-      as: 'players',
-      required: false,
-      where: {
-        groupId,
-      },
-    }, {
-      model: models.games,
-      as: 'games',
-      required: false,
-      where: {
-        groupId,
-      },
-    }],
     where: {
       id: groupId,
     },

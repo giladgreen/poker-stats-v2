@@ -38,6 +38,14 @@ async function getGames(groupId, limit = 1000, offset = 0) {
     limit,
     offset,
     order: [['createdAt', 'ASC']],
+    include: [{
+      model: models.gamesData,
+      as: 'playersData',
+      required: false,
+      where: {
+        groupId,
+      },
+    }],
     where: {
       groupId,
     },

@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     Game.hasMany(models.gamesData, {
       onDelete: 'cascade',
       hooks: true,
-      as: 'data',
+      as: 'playersData',
       foreignKey: 'gameId',
       sourceKey: 'id',
     });
