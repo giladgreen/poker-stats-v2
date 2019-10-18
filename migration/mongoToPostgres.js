@@ -1,7 +1,7 @@
 const models = require('../api/models');
 const {createGame} = require('../api/services/games');
 const data = require('./data');
-
+const mapping = {};
 function convertDate(date){
     if (!date || date ==='null') {
         return new Date();
@@ -13,16 +13,15 @@ function convertDate(date){
     return result;
 }
 
-async function doStuff() {
+async function clearAllDataFromDB(){
     await models.sequelize.query('DELETE from games_data');
     await models.sequelize.query('DELETE from games');
     await models.sequelize.query('DELETE from players');
     await models.sequelize.query('DELETE from groups');
+}
 
-    const mapping = {};
-    const group = await models.groups.create({name: data.name});
-    const groupId = group.id;
-    console.error('## group created:', data.name);
+async function createPlayers(groupId){
+
     const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, phone, imageUrl, birthdate})=>{
         const birthday = new Date(convertDate(birthdate));
         return {
@@ -43,9 +42,9 @@ async function doStuff() {
         mapping[Object.values(data.players)[index].id] = player.id;
         console.error('##     ', player.firstName, ' ', player.familyName);
     });
-
-
-    const gamesToCreate = data.games.map(({name, players})=>{
+}
+async function createGames(groupId) {
+    const gamesToCreate = data.games.map(({name, extraData, players})=>{
         const playersData = players.map(({id, exit,enter}) =>{
             const playerId = mapping[id];
             if (!playerId) {
@@ -54,14 +53,15 @@ async function doStuff() {
             const buyIn = parseInt(enter);
             const cashOut = parseInt(exit);
 
-           return {
-               playerId,
-               buyIn,
-               cashOut,
-           } ;
+            return {
+                playerId,
+                buyIn,
+                cashOut,
+            } ;
         });
         return {
             date: convertDate(name),
+            description: extraData,
             playersData,
             groupId
         };
@@ -71,8 +71,20 @@ async function doStuff() {
 
     console.error('## games created:', games.length);
     games.forEach((game, index)=>{
-        console.error('##     ', game.description, ' ', game.date);
+        console.error(`##  ${(index+1)})   `, game.description, ' ', game.date);
     });
+}
+async function doStuff() {
+
+    await clearAllDataFromDB();
+
+    const group = await models.groups.create({name: data.name});
+    const groupId = group.id;
+    console.error('## group created:', data.name);
+
+    await createPlayers(groupId);
+    await createGames(groupId);
+
 
     console.log('########')
     console.log('DONE')

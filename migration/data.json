@@ -1547,7 +1547,7 @@
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 0
+          "exit": 200
         },
         {
           "skip": true,
@@ -1571,7 +1571,7 @@
           "skip": true,
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 50,
-          "exit": "22"
+          "exit": 20
         }
       ],
       "groupId": "orig"
