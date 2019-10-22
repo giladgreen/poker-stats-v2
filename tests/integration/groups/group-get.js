@@ -11,6 +11,7 @@ const contentTypeHeader = 'Content-Type';
 describe('get single group', function () {
   beforeEach(async function () {
     await clearAllData();
+    process.env.test = true;
   });
   describe('GET api/v2/groups/{groupId}', function () {
     beforeEach(async function () {

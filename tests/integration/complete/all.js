@@ -255,7 +255,7 @@ async function createGame(groupId, description, players) {
   return body.id;
 }
 
-
+process.env.test = true;
 describe('create group', function () {
   describe('complete flow', function () {
     it('should create/get/update/delete all as expected', async function () {

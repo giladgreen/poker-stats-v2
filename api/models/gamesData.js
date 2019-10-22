@@ -3,7 +3,7 @@ const { dateFields } = require('../helpers/sequelize');
 module.exports = function (sequelize, DataTypes) {
   const GameData = sequelize.define('gamesData', {
     id: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },

@@ -1,16 +1,16 @@
 const request = require('supertest');
 const should = require('should');
-
 const { server } = require('../../../app');
-
 const { stubGroups, deleteStubGroup, clearAllData } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
 const contentTypeHeader = 'Content-Type';
+
 describe('get groups list', function () {
   beforeEach(async function () {
     await clearAllData();
     this.groups = await stubGroups(10);
+    process.env.test = true;
   });
   afterEach(async function () {
     await Promise.all(this.groups.map(group => deleteStubGroup(group)));

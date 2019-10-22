@@ -1,7 +1,7 @@
 const { dateFields } = require('../helpers/sequelize');
 
 module.exports = function (sequelize, DataTypes) {
-  const Player = sequelize.define('players', {
+  const User = sequelize.define('users', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -15,9 +15,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       field: 'family_name',
     },
-    phone: {
-      type: DataTypes.TEXT,
-    },
     email: {
       type: DataTypes.TEXT,
     },
@@ -25,18 +22,19 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       field: 'image_url',
     },
-    birthday: {
-      type: DataTypes.DATE,
+    token: {
+      type: DataTypes.TEXT,
+      defaultValue: null,
     },
-    groupId: {
-      type: DataTypes.STRING,
-      field: 'group_id',
+    tokenExpiration: {
+      type: DataTypes.DATE,
+      field: 'token_expiration',
     },
     ...dateFields,
   }, {
     paranoid: true,
-    tableName: 'players',
+    tableName: 'users',
   });
 
-  return Player;
+  return User;
 };

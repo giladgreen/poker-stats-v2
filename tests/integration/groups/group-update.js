@@ -11,6 +11,7 @@ const contentTypeHeader = 'Content-Type';
 describe('update group', function () {
   beforeEach(async function () {
     await clearAllData();
+    process.env.test = true;
   });
   describe('PATCH api/v2/groups/{groupId}', function () {
     beforeEach(async function () {

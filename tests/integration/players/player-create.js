@@ -11,6 +11,7 @@ describe('create player', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
+    process.env.test = true;
   });
   afterEach(async function () {
     await clearAllData();

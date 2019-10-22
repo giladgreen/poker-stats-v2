@@ -14,6 +14,7 @@ describe('create game', function () {
     this.group = await stubGroup();
     this.player = await stubPlayer(this.group.id);
     this.player2 = await stubPlayer(this.group.id);
+    process.env.test = true;
   });
   afterEach(async function () {
     await clearAllData();

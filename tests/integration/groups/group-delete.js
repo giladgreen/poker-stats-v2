@@ -9,6 +9,7 @@ const acceptHeader = 'Accept';
 describe('delete group', function () {
   beforeEach(async function () {
     await clearAllData();
+    process.env.test = true;
   });
   describe('DELETE api/v2/groups/{groupId}', function () {
     beforeEach(async function () {

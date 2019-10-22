@@ -10,6 +10,7 @@ const contentTypeHeader = 'Content-Type';
 describe('create group', function () {
   beforeEach(async function () {
     await clearAllData();
+    process.env.test = true;
   });
   afterEach(async function () {
     await clearAllData();

@@ -3,12 +3,12 @@ const { dateFields } = require('../helpers/sequelize');
 module.exports = function (sequelize, DataTypes) {
   const Group = sequelize.define('groups', {
     id: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     ...dateFields,
   }, {

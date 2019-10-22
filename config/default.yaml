@@ -30,6 +30,7 @@ swagger:
       - logger
       - utils
       - onError: error_handler
+      - user_context
       - cors
 
     # pipe for all swagger-node controllers

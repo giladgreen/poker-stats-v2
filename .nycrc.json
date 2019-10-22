@@ -7,6 +7,9 @@
   "branches": 0,
   "exclude": [
     "app.js",
+    "api/fittings/user_context.js",
+    "api/helpers/google-auth.js",
+    "api/helpers/facebook-auth.js",
     "public/*.js",
     "public/**/*.js",
     "migration/*.js",
