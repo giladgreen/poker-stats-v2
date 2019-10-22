@@ -3,10 +3,8 @@ const { OAuth2Strategy } = require('passport-oauth/lib');
 const _passportOauth = require('passport-oauth');
 
 const options = {
-  // eslint-disable-next-line global-require
-  clientID: process.env.FACEBOOK_AUTH_CLIENT_ID || require('../../facebook-config').clientID,
-  // eslint-disable-next-line global-require
-  clientSecret: process.env.FACEBOOK_AUTH_CLIENT_SECRET || require('../../facebook-config').clientSecret,
+  clientID: process.env.FACEBOOK_AUTH_CLIENT_ID || 'xxx',
+  clientSecret: process.env.FACEBOOK_AUTH_CLIENT_SECRET || 'xxx',
   authorizationURL: 'https://www.facebook.com/v2.6/dialog/oauth',
   tokenURL: 'https://graph.facebook.com/v2.6/oauth/access_token',
 };

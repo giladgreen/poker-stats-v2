@@ -1,10 +1,8 @@
 const { OAuth2Strategy, InternalOAuthError } = require('passport-oauth/lib');
 
 const options = {
-  // eslint-disable-next-line global-require
-  clientID: process.env.GOOGLE_AUTH_CLIENT_ID || require('../../google-config').clientID,
-  // eslint-disable-next-line global-require
-  clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET || require('../../google-config').clientSecret,
+  clientID: process.env.GOOGLE_AUTH_CLIENT_ID || 'xxx',
+  clientSecret: process.env.GOOGLE_AUTH_CLIENT_SECRET || 'xxx',
   authorizationURL: 'https://accounts.google.com/o/oauth2/auth',
   tokenURL: 'https://accounts.google.com/o/oauth2/token',
 };
