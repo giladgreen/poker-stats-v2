@@ -38,7 +38,7 @@ async function validateRequestPermissions(request) {
     if (!request.userContext.inGroup) {
       logger.info(`[validateRequestPermissions] user context: ${JSON.stringify(request.userContext)} `);
       throw forbidden('user not belong to group', { groupId });
-    } else if (request.method !== 'GET' && request.method !== 'OPTIONS' && !request.userContext.isAdmin) {
+    } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
       throw forbidden('user not admin of group', { groupId });
     }
   }
@@ -46,6 +46,10 @@ async function validateRequestPermissions(request) {
 function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
+      if (request.method === 'OPTIONS') {
+        logger.info('[UserContext:fitting] OPTIONS request.');
+        return next();
+      }
       const { headers } = request;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
