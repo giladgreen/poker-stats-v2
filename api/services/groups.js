@@ -1,6 +1,5 @@
 const { notFound } = require('boom');
 const models = require('../models');
-const logger = require('./logger');
 
 const attributes = ['id', 'name', 'createdAt'];
 
@@ -27,23 +26,16 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
     order: [['createdAt', 'ASC']],
     attributes,
   });
-  logger.info(`***** getGroups: userContext${JSON.stringify(userContext)}`);
-  logger.info(`***** getGroups: allGroups: ${allGroups.length}`);
 
   const results = allGroups.map((g) => {
     const group = g.toJSON();
-    logger.info(`***** group: ${JSON.stringify(group)}`);
-
     const userGroupData = userContext.groups[group.id];
-    logger.info(`***** group.id: ${group.id}  userGroupData: ${userGroupData ? JSON.stringify(userGroupData) : 'null'}`);
     const result = { ...group, userInGroup: !!userGroupData };
     if (result.userInGroup) {
       result.isAdmin = userGroupData.isAdmin;
     }
-    logger.info(`***** result:${JSON.stringify(result)}`);
     return result;
   });
-  logger.info(`***** getGroups: results: ${results.length}`);
 
   return {
     metadata: {
