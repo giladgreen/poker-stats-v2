@@ -46,10 +46,11 @@ async function validateRequestPermissions(request) {
 function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
+      logger.info(`[UserContext:fitting] ${request.method} request.`);
       if (request.method === 'OPTIONS') {
-        logger.info('[UserContext:fitting] OPTIONS request.');
         return next();
       }
+
       const { headers } = request;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
