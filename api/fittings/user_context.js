@@ -102,9 +102,9 @@ function getFitting() {
       await validateRequestPermissions(request);
 
       try {
-        response.setHeader('x-user-context', JSON.stringify(request.userContext));
+        response.setHeader('x-user-context', encodeURI(JSON.stringify(request.userContext)));
       } catch (e) {
-        response.setHeader('x-user-context', JSON.stringify({ email: request.userContext.email, token: request.userContext.token }));
+        response.setHeader('x-user-context', encodeURI(JSON.stringify({ email: request.userContext.email, token: request.userContext.token })));
       }
 
       return next();
