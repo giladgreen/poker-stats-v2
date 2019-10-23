@@ -3,6 +3,7 @@ const { unauthorized, forbidden } = require('boom');
 
 const { Op } = require('sequelize');
 const models = require('../models');
+const logger = require('../services/logger');
 const googleTokenStrategy = require('../helpers/google-auth');
 const facebookTokenStrategy = require('../helpers/facebook-auth');
 
@@ -33,9 +34,11 @@ async function validateRequestPermissions(request) {
   request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
 
   if (groupId) {
+    logger.info(`[validateRequestPermissions] groupId: ${groupId}   request.method: ${request.method}`);
     if (!request.userContext.inGroup) {
+      logger.info(`[validateRequestPermissions] user context: ${JSON.stringify(request.userContext)} `);
       throw forbidden('user not belong to group', { groupId });
-    } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
+    } else if (request.method !== 'GET' && request.method !== 'OPTIONS' && !request.userContext.isAdmin) {
       throw forbidden('user not admin of group', { groupId });
     }
   }
@@ -46,8 +49,10 @@ function getFitting() {
       const { headers } = request;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
+      logger.info(`[UserContext:fitting] provider:${provider} `);
+      logger.info(`[UserContext:fitting] accessToken:${accessToken} `);
       if (!provider || !accessToken || !LEGAL_PROVIDERS.includes(provider)) {
-        return next(unauthorized('did not pass auth tokens'));
+        return next(unauthorized('missing token headers'));
       }
       const existingUser = await models.users.findOne({
         where: {
@@ -59,6 +64,7 @@ function getFitting() {
       });
       if (existingUser) {
         request.userContext = existingUser.toJSON();
+        logger.info(`[UserContext:fitting] user exist: ${JSON.stringify(request.userContext)} `);
         await validateRequestPermissions(request);
 
         await models.users.update({
@@ -98,6 +104,8 @@ function getFitting() {
 
       return next();
     } catch (error) {
+      logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
+
       return next(unauthorized('did not pass auth tokens'));
     }
   };
