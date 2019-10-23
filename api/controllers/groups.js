@@ -12,9 +12,6 @@ function getGroup(req, res, next) {
 }
 
 function getGroups(req, res, next) {
-  if (req.method === 'OPTIONS') {
-    res.send({});
-  }
   const { userContext } = req;
   const { limit, offset } = req.getAllParams();
   groupsService.getGroups(userContext, limit, offset)
