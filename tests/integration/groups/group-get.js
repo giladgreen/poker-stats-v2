@@ -1,10 +1,14 @@
 const request = require('supertest');
 const uuid = require('uuid/v4');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { stubGroup, deleteStubGroup, clearAllData } = require('../../helpers/groups');
+const {
+  stubGroup, deleteStubGroup, clearAllData, mockGoogleTokenStrategy,
+} = require('../../helpers/groups');
+const { stubPlayerUser } = require('../../helpers/players');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -15,15 +19,17 @@ const token = 'token';
 describe('get single group', function () {
   beforeEach(async function () {
     await clearAllData();
+    this.sandbox = sinon.createSandbox();
+    this.group = await stubGroup();
+    const userId = await stubPlayerUser(this.group.id);
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
+  });
+  afterEach(async function () {
+    await deleteStubGroup(this.group);
+    this.sandbox.restore();
   });
   describe('GET api/v2/groups/{groupId}', function () {
-    beforeEach(async function () {
-      this.group = await stubGroup();
-    });
-    afterEach(async function () {
-      await deleteStubGroup(this.group);
-    });
-    it('should return 404 error in case of wrong groupId', async function () {
+    it('should return 401 error in case of wrong groupId', async function () {
       const groupId = uuid();
       const { body } = await request(server)
         .get(`/api/v2/groups/${groupId}`)
@@ -31,9 +37,9 @@ describe('get single group', function () {
         .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
-        .expect(404);
+        .expect(401);
       body.should.have.property('title').which.is.a.String();
-      should(body.title).eql('group not found');
+      should(body.title).eql('did not pass auth tokens');
     });
     it('should return group details', async function () {
       const { body } = await request(server)

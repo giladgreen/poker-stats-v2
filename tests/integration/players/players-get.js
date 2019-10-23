@@ -1,10 +1,11 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { clearAllData, stubGroup } = require('../../helpers/groups');
-const { deleteGroupPlayers, stubPlayers } = require('../../helpers/players');
+const { clearAllData, stubGroup, mockGoogleTokenStrategy } = require('../../helpers/groups');
+const { deleteGroupPlayers, stubPlayers, stubPlayerUser } = require('../../helpers/players');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -17,9 +18,13 @@ describe('get players list', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
+    this.sandbox = sinon.createSandbox();
+    const userId = await stubPlayerUser(this.group.id);
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
     await clearAllData();
+    this.sandbox.restore();
   });
   describe('GET api/v2/groups/{groupId}/players', function () {
     beforeEach(async function () {
@@ -40,10 +45,10 @@ describe('get players list', function () {
       body.should.have.property('results').which.is.a.Array();
       body.should.have.property('metadata').which.is.a.Object();
 
-      should(body.results.length).eql(10);
+      should(body.results.length).eql(11);
       should(body.metadata).eql({
-        totalResults: 10,
-        count: 10,
+        totalResults: 11,
+        count: 11,
         limit: 1000,
         offset: 0,
       });
@@ -59,10 +64,10 @@ describe('get players list', function () {
       body.should.have.property('results').which.is.a.Array();
       body.should.have.property('metadata').which.is.a.Object();
 
-      should(body.results.length).eql(2);
+      should(body.results.length).eql(3);
       should(body.metadata).eql({
-        totalResults: 10,
-        count: 2,
+        totalResults: 11,
+        count: 3,
         limit: 5,
         offset: 8,
       });

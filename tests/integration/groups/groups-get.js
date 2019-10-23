@@ -1,7 +1,11 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
+
 const { server } = require('../../../app');
-const { stubGroups, deleteStubGroup, clearAllData } = require('../../helpers/groups');
+const {
+  stubGroups, deleteStubGroup, clearAllData, mockGoogleTokenStrategy,
+} = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -14,8 +18,12 @@ describe('get groups list', function () {
   beforeEach(async function () {
     await clearAllData();
     this.groups = await stubGroups(10);
+    this.sandbox = sinon.createSandbox();
+    const userId = 'userId';
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
+    this.sandbox.restore();
     await Promise.all(this.groups.map(group => deleteStubGroup(group)));
   });
   describe('GET api/v2/groups', function () {

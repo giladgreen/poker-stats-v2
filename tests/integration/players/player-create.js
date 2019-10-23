@@ -1,9 +1,11 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { clearAllData, stubGroup } = require('../../helpers/groups');
+const { clearAllData, stubGroup, mockGoogleTokenStrategy } = require('../../helpers/groups');
+const { stubPlayerUser } = require('../../helpers/players');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -15,9 +17,13 @@ describe('create player', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
+    this.sandbox = sinon.createSandbox();
+    const userId = await stubPlayerUser(this.group.id);
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
     await clearAllData();
+    this.sandbox.restore();
   });
   describe('POST api/v2/groups/{groupId}/players', function () {
     it('when illegal payload - should return BAD REQUEST error', async function () {

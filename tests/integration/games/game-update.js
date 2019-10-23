@@ -1,11 +1,12 @@
 const request = require('supertest');
 const uuid = require('uuid/v4');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { stubGroup, clearAllData } = require('../../helpers/groups');
-const { stubPlayer } = require('../../helpers/players');
+const { stubGroup, clearAllData, mockGoogleTokenStrategy } = require('../../helpers/groups');
+const { stubPlayer, stubPlayerUser } = require('../../helpers/players');
 const { deleteGroupGames, stubGame } = require('../../helpers/games');
 
 
@@ -21,9 +22,13 @@ describe('update game', function () {
     this.group = await stubGroup();
     this.player = await stubPlayer(this.group.id);
     this.player2 = await stubPlayer(this.group.id);
+    this.sandbox = sinon.createSandbox();
+    const userId = await stubPlayerUser(this.group.id, this.player.id);
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
     await clearAllData();
+    this.sandbox.restore();
   });
   describe('PATCH api/v2/groups/{groupId}/games/{gameId}', function () {
     beforeEach(async function () {

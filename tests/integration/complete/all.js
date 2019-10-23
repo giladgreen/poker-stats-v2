@@ -2,8 +2,7 @@ const request = require('supertest');
 const should = require('should');
 const sinon = require('sinon');
 const { server } = require('../../../app');
-const { clearAllData } = require('../../helpers/groups');
-const googleTokenStrategy = require('../../../api/helpers/google-auth');
+const { clearAllData, mockGoogleTokenStrategy } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -305,13 +304,8 @@ async function createGame(groupId, description, players) {
 describe('create group', function () {
   beforeEach(async function () {
     this.sandbox = sinon.createSandbox();
-    this.sandbox.stub(googleTokenStrategy, 'authenticate').resolves({
-      provider: GOOGLE,
-      email,
-      firstName,
-      familyName,
-      imageUrl,
-      token,
+    mockGoogleTokenStrategy(this.sandbox, {
+      email, firstName, familyName, imageUrl, token,
     });
   });
   afterEach(function () {

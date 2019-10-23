@@ -24,12 +24,26 @@ async function getGroups(userContext) {
   return result;
 }
 
+async function validateRequestPermissions(request) {
+  const { groupId: groupIdObject } = request.swagger.params;
+  const groupId = groupIdObject ? groupIdObject.value : null;
+
+  request.userContext.groups = await getGroups(request.userContext);
+  request.userContext.inGroup = groupId && request.userContext.groups[groupId];
+  request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
+
+  if (groupId) {
+    if (!request.userContext.inGroup) {
+      throw forbidden('user not belong to group', { groupId });
+    } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
+      throw forbidden('user not admin of group', { groupId });
+    }
+  }
+}
 function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
       const { headers } = request;
-      const { groupId: groupIdObject } = request.swagger.params;
-      const groupId = groupIdObject ? groupIdObject.value : null;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
       if (!provider || !accessToken || !LEGAL_PROVIDERS.includes(provider)) {
@@ -45,7 +59,7 @@ function getFitting() {
       });
       if (existingUser) {
         request.userContext = existingUser.toJSON();
-        request.userContext.groups = await getGroups(request.userContext) || [];
+        await validateRequestPermissions(request);
 
         await models.users.update({
           tokenExpiration: moment().add(1, 'days').toDate(),
@@ -74,17 +88,7 @@ function getFitting() {
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
       }
       request.userContext = user.toJSON();
-      request.userContext.groups = await getGroups(request.userContext) || [];
-      request.userContext.inGroup = groupId && request.userContext.groups[groupId];
-      request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
-
-      if (groupId) {
-        if (!request.userContext.inGroup) {
-          throw forbidden('user not belong to group', { groupId });
-        } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
-          throw forbidden('user not admin of group', { groupId });
-        }
-      }
+      await validateRequestPermissions(request);
 
       try {
         response.setHeader('x-user-context', JSON.stringify(request.userContext));

@@ -1,9 +1,10 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { clearAllData } = require('../../helpers/groups');
+const { clearAllData, mockGoogleTokenStrategy } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -14,9 +15,13 @@ const token = 'token';
 describe('create group', function () {
   beforeEach(async function () {
     await clearAllData();
+    this.sandbox = sinon.createSandbox();
+    const userId = 'userId';
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
     await clearAllData();
+    this.sandbox.restore();
   });
   describe('POST api/v2/groups', function () {
     it('when illegal payload - should return BAD REQUEST error', async function () {

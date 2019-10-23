@@ -1,10 +1,11 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
 
 const { server } = require('../../../app');
 
-const { clearAllData, stubGroup } = require('../../helpers/groups');
-const { stubPlayer } = require('../../helpers/players');
+const { clearAllData, stubGroup, mockGoogleTokenStrategy } = require('../../helpers/groups');
+const { stubPlayer, stubPlayerUser } = require('../../helpers/players');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -15,12 +16,16 @@ const token = 'token';
 
 describe('create game', function () {
   beforeEach(async function () {
+    this.sandbox = sinon.createSandbox();
     await clearAllData();
     this.group = await stubGroup();
     this.player = await stubPlayer(this.group.id);
     this.player2 = await stubPlayer(this.group.id);
+    const userId = await stubPlayerUser(this.group.id, this.player.id);
+    mockGoogleTokenStrategy(this.sandbox, { token, userId });
   });
   afterEach(async function () {
+    this.sandbox.restore();
     await clearAllData();
   });
   describe('POST api/v2/groups/{groupId}/games', function () {
