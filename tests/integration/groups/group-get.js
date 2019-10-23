@@ -7,11 +7,14 @@ const { server } = require('../../../app');
 const { stubGroup, deleteStubGroup, clearAllData } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
 const contentTypeHeader = 'Content-Type';
+const token = 'token';
 describe('get single group', function () {
   beforeEach(async function () {
     await clearAllData();
-    process.env.test = true;
   });
   describe('GET api/v2/groups/{groupId}', function () {
     beforeEach(async function () {
@@ -24,6 +27,8 @@ describe('get single group', function () {
       const groupId = uuid();
       const { body } = await request(server)
         .get(`/api/v2/groups/${groupId}`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(404);
@@ -33,6 +38,8 @@ describe('get single group', function () {
     it('should return group details', async function () {
       const { body } = await request(server)
         .get(`/api/v2/groups/${this.group.id}`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);

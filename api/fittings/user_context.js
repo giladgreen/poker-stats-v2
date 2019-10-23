@@ -1,5 +1,6 @@
 const moment = require('moment');
-const { unauthorized } = require('boom');
+const { unauthorized, forbidden } = require('boom');
+
 const { Op } = require('sequelize');
 const models = require('../models');
 const googleTokenStrategy = require('../helpers/google-auth');
@@ -7,17 +8,28 @@ const facebookTokenStrategy = require('../helpers/facebook-auth');
 
 const LEGAL_PROVIDERS = ['facebook', 'google'];
 
+async function getGroups(userContext) {
+  const userPlayers = await models.usersPlayers.findAll({
+    where: {
+      userId: userContext.id,
+    },
+  });
+
+  const result = {};
+  const groups = userPlayers.forEach(({ groupId, isAdmin }) => {
+    result[groupId] = {
+      isAdmin,
+    };
+  });
+  return groups;
+}
+
 function getFitting() {
   return async function UserContext({ request, response }, next) {
-    if (process.env.test) {
-      request.userContext = {
-        email: 'email',
-        token: 'token',
-      };
-      return next();
-    }
     try {
       const { headers } = request;
+      const { groupId: groupIdObject } = request.swagger.params;
+      const groupId = groupIdObject ? groupIdObject.value : null;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
       if (!provider || !accessToken || !LEGAL_PROVIDERS.includes(provider)) {
@@ -33,6 +45,8 @@ function getFitting() {
       });
       if (existingUser) {
         request.userContext = existingUser.toJSON();
+        request.userContext.groups = await getGroups(request.userContext) || [];
+
         await models.users.update({
           tokenExpiration: moment().add(1, 'days').toDate(),
         },
@@ -49,17 +63,29 @@ function getFitting() {
         ? googleTokenStrategy.authenticate(accessToken)
         : facebookTokenStrategy.authenticate(accessToken));
 
-      request.userContext = profile;
 
       // create/update user in db
-      const user = await models.users.findOne({
+      let user = await models.users.findOne({
         where: {
           email: profile.email,
         },
       });
       if (!user) {
-        await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
+        user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
       }
+      request.userContext = user.toJSON();
+      request.userContext.groups = await getGroups(request.userContext) || [];
+      request.userContext.inGroup = groupId && request.userContext.groups[groupId];
+      request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
+
+      if (groupId) {
+        if (!request.userContext.inGroup) {
+          throw forbidden('user not belong to group', { groupId });
+        } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
+          throw forbidden('user not admin of group', { groupId });
+        }
+      }
+
       try {
         response.setHeader('x-user-context', JSON.stringify(request.userContext));
       } catch (e) {

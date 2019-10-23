@@ -4,13 +4,16 @@ const { server } = require('../../../app');
 const { stubGroups, deleteStubGroup, clearAllData } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
 const contentTypeHeader = 'Content-Type';
+const token = 'token';
 
 describe('get groups list', function () {
   beforeEach(async function () {
     await clearAllData();
     this.groups = await stubGroups(10);
-    process.env.test = true;
   });
   afterEach(async function () {
     await Promise.all(this.groups.map(group => deleteStubGroup(group)));
@@ -19,6 +22,8 @@ describe('get groups list', function () {
     it('should be able to get groups with default pagination', async function () {
       const { body } = await request(server)
         .get('/api/v2/groups')
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);
@@ -36,6 +41,8 @@ describe('get groups list', function () {
     it('should be able to get groups with custom pagination', async function () {
       const { body } = await request(server)
         .get('/api/v2/groups?limit=5&offset=8')
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);

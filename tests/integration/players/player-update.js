@@ -7,14 +7,16 @@ const { server } = require('../../../app');
 const { stubGroup, clearAllData } = require('../../helpers/groups');
 const { stubPlayer, deleteGroupPlayers } = require('../../helpers/players');
 
-
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
 const contentTypeHeader = 'Content-Type';
+const token = 'token';
 describe('update player', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
-    process.env.test = true;
   });
   afterEach(async function () {
     await clearAllData();
@@ -30,6 +32,8 @@ describe('update player', function () {
       const playerId = uuid();
       const { body } = await request(server)
         .patch(`/api/v2/groups/${this.group.id}/players/${playerId}`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(404);
@@ -42,6 +46,8 @@ describe('update player', function () {
       };
       const { body } = await request(server)
         .patch(`/api/v2/groups/${this.group.id}/players/${this.player.id}`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .send(payload)
         .expect(contentTypeHeader, 'application/json; charset=utf-8')

@@ -8,13 +8,16 @@ const { stubPlayer } = require('../../helpers/players');
 const { stubGames, deleteGroupGames } = require('../../helpers/games');
 
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
 const contentTypeHeader = 'Content-Type';
+const token = 'token';
 describe('get games list', function () {
   beforeEach(async function () {
     await clearAllData();
     this.group = await stubGroup();
     this.player = await stubPlayer(this.group.id);
-    process.env.test = true;
   });
   afterEach(async function () {
     await clearAllData();
@@ -30,6 +33,8 @@ describe('get games list', function () {
     it('should be able to get games with default pagination', async function () {
       const { body } = await request(server)
         .get(`/api/v2/groups/${this.group.id}/games`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);
@@ -47,6 +52,8 @@ describe('get games list', function () {
     it('should be able to get players with custom pagination', async function () {
       const { body } = await request(server)
         .get(`/api/v2/groups/${this.group.id}/games?limit=5&offset=8`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(200);

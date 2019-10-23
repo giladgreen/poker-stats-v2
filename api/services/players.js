@@ -48,7 +48,6 @@ async function getPlayers(groupId, limit = 1000, offset = 0) {
 
 async function createPlayer(groupId, data) {
   const newPlayerData = { ...defaultValues, ...data, groupId };
-
   const newPlayer = await models.players.create(newPlayerData);
   return getPlayer({ groupId, playerId: newPlayer.id });
 }

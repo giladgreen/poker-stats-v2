@@ -1,14 +1,26 @@
 const request = require('supertest');
 const should = require('should');
+const sinon = require('sinon');
 const { server } = require('../../../app');
 const { clearAllData } = require('../../helpers/groups');
+const googleTokenStrategy = require('../../../api/helpers/google-auth');
 
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
 const contentTypeHeader = 'Content-Type';
+const email = 'email';
+const firstName = 'firstName';
+const familyName = 'familyName';
+const imageUrl = 'imageUrl';
+const token = 'token';
 
 async function listGroups(count) {
   const { body } = await request(server)
     .get('/api/v2/groups')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -27,6 +39,8 @@ async function listGroups(count) {
 async function getGroup(groupId, name) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -38,6 +52,8 @@ async function getGroup(groupId, name) {
 function validateMissingGroup(groupId) {
   request(server)
     .get(`/api/v2/groups/${groupId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(404);
@@ -46,6 +62,8 @@ function validateMissingGroup(groupId) {
 async function deleteGroup(groupId) {
   const { body } = await request(server)
     .delete(`/api/v2/groups/${groupId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(204);
   should(body).be.an.Object();
@@ -58,6 +76,8 @@ async function createGroup(name) {
   const { body } = await request(server)
     .post('/api/v2/groups')
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(201);
@@ -73,6 +93,8 @@ async function updateGroup(groupId, name) {
   const { body } = await request(server)
     .patch(`/api/v2/groups/${groupId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -83,6 +105,8 @@ async function updateGroup(groupId, name) {
 async function listPlayers(groupId, count) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/players`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -98,21 +122,25 @@ async function listPlayers(groupId, count) {
   });
 }
 
-async function getPlayer(groupId, playerId, firstName, familyName) {
+async function getPlayer(groupId, playerId, FirstName, FamilyName) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/players/${playerId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
 
   should(body).be.an.Object();
-  body.should.have.property('firstName').which.is.a.String().eql(firstName);
-  body.should.have.property('familyName').which.is.a.String().eql(familyName);
+  body.should.have.property('firstName').which.is.a.String().eql(FirstName);
+  body.should.have.property('familyName').which.is.a.String().eql(FamilyName);
 }
 
 function validateMissingPlayer(groupId, playerId) {
   request(server)
     .get(`/api/v2/groups/${groupId}/players/${playerId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(404);
@@ -121,18 +149,22 @@ function validateMissingPlayer(groupId, playerId) {
 async function deletePlayer(groupId, playerId) {
   const { body } = await request(server)
     .delete(`/api/v2/groups/${groupId}/players/${playerId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(204);
 
   should(body).be.an.Object();
 }
-async function updatePlayer(groupId, playerId, firstName) {
+async function updatePlayer(groupId, playerId, FirstName) {
   const payload = {
-    firstName,
+    firstName: FirstName,
   };
   const { body } = await request(server)
     .patch(`/api/v2/groups/${groupId}/players/${playerId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -140,14 +172,16 @@ async function updatePlayer(groupId, playerId, firstName) {
   should(body).be.an.Object();
   body.should.have.property('firstName').which.is.a.String().eql(payload.firstName);
 }
-async function createPlayer(groupId, firstName, familyName) {
+async function createPlayer(groupId, FirstName, FamilyName) {
   const payload = {
-    firstName,
-    familyName,
+    firstName: FirstName,
+    familyName: FamilyName,
   };
   const { body } = await request(server)
     .post(`/api/v2/groups/${groupId}/players`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(201);
@@ -164,6 +198,8 @@ async function listGames(groupId, count) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/games`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
   body.should.have.property('results').which.is.a.Array();
@@ -182,6 +218,8 @@ async function getGame(groupId, gameId, description) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/games/${gameId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
 
@@ -197,6 +235,8 @@ function validateMissingGame(groupId, gameId) {
   request(server)
     .get(`/api/v2/groups/${groupId}/games/${gameId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(404);
 }
@@ -204,6 +244,8 @@ function validateMissingGame(groupId, gameId) {
 async function deleteGame(groupId, gameId) {
   const { body } = await request(server)
     .delete(`/api/v2/groups/${groupId}/games/${gameId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .set(acceptHeader, 'application/json')
     .expect(204);
 
@@ -218,6 +260,8 @@ async function updateGame(groupId, gameId, description, players) {
   const { body } = await request(server)
     .patch(`/api/v2/groups/${groupId}/games/${gameId}`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -240,6 +284,8 @@ async function createGame(groupId, description, players) {
   const { body } = await request(server)
     .post(`/api/v2/groups/${groupId}/games/`)
     .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(201);
@@ -255,8 +301,22 @@ async function createGame(groupId, description, players) {
   return body.id;
 }
 
-process.env.test = true;
+
 describe('create group', function () {
+  beforeEach(async function () {
+    this.sandbox = sinon.createSandbox();
+    this.sandbox.stub(googleTokenStrategy, 'authenticate').resolves({
+      provider: GOOGLE,
+      email,
+      firstName,
+      familyName,
+      imageUrl,
+      token,
+    });
+  });
+  afterEach(function () {
+    this.sandbox.restore();
+  });
   describe('complete flow', function () {
     it('should create/get/update/delete all as expected', async function () {
       await clearAllData();
@@ -272,17 +332,17 @@ describe('create group', function () {
       await listGroups(1);
       await validateMissingGroup(groupId);
 
-      await listPlayers(groupId, 0);
+      await listPlayers(groupId, 1);
       const playerId = await createPlayer(groupId, 'first', 'family');
       await getPlayer(groupId, playerId, 'first', 'family');
       await updatePlayer(groupId, playerId, 'new first name');
       await getPlayer(groupId, playerId, 'new first name', 'family');
       const player2Id = await createPlayer(groupId, 'player to delete', 'family');
 
-      await listPlayers(groupId, 2);
+      await listPlayers(groupId, 3);
       await deletePlayer(groupId, player2Id);
 
-      await listPlayers(groupId, 1);
+      await listPlayers(groupId, 2);
       await validateMissingPlayer(groupId, player2Id);
       const player3Id = await createPlayer(groupId, 'second', 'family');
 

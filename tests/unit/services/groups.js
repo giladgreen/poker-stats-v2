@@ -2,13 +2,22 @@ const sinon = require('sinon');
 const { isBoom } = require('boom');
 const should = require('should');
 const {
-  groups, players, gamesData, games,
+  groups, players, gamesData, games, usersPlayers,
 } = require('../../../api/models');
 const groupsService = require('../../../api/services/groups');
 
 
 describe('services: groups', function () {
   const groupId = 'groupId';
+  const userContext = {
+    id: 'userId',
+    firstName: 'firstName',
+    familyName: 'familyName',
+    email: 'email',
+    imageUrl: 'imageUrl',
+    isAdmin: true,
+    groups: {},
+  };
   beforeEach(async function () {
     this.sandbox = sinon.createSandbox();
   });
@@ -22,7 +31,7 @@ describe('services: groups', function () {
       });
       it('should throw correct error', async function () {
         try {
-          await groupsService.getGroup(groupId);
+          await groupsService.getGroup(userContext, groupId);
         } catch (error) {
           should(isBoom(error)).be.eql(true);
           should(error.data).be.eql({ groupId });
@@ -45,8 +54,8 @@ describe('services: groups', function () {
         });
       });
       it('should return correct data', async function () {
-        const resultGroup = await groupsService.getGroup(groupId);
-        should(resultGroup).be.eql(group);
+        const resultGroup = await groupsService.getGroup(userContext, groupId);
+        should(resultGroup).be.eql({ ...group, isAdmin: true });
         should(groups.findOne.called).be.eql(true);
         const groupFindOneArgs = this.groupFindOne.getCall(0);
         should(groupFindOneArgs.args[0].where).be.eql({ id: groupId });
@@ -60,7 +69,7 @@ describe('services: groups', function () {
         this.sandbox.stub(groups, 'findAll').resolves([]);
       });
       it('should return correct data back', async function () {
-        const resultObject = await groupsService.getGroups();
+        const resultObject = await groupsService.getGroups(userContext);
         should(resultObject).be.eql({
           metadata: {
             totalResults: 0,
@@ -89,7 +98,7 @@ describe('services: groups', function () {
         this.groupsFindAll = this.sandbox.stub(groups, 'findAll').resolves(resultGroups.map(group => ({ toJSON: () => group })));
       });
       it('should return correct data back', async function () {
-        const resultObject = await groupsService.getGroups(limit, offset);
+        const resultObject = await groupsService.getGroups(userContext, limit, offset);
         should(resultObject).be.eql({
           metadata: {
             totalResults,
@@ -97,7 +106,7 @@ describe('services: groups', function () {
             limit,
             offset,
           },
-          results: resultGroups,
+          results: resultGroups.map(group => ({ ...group, userInGroup: false })),
         });
         should(groups.count.called).be.eql(true);
         should(groups.findAll.called).be.eql(true);
@@ -113,18 +122,37 @@ describe('services: groups', function () {
     };
 
     beforeEach(async function () {
-      this.createGroup = this.sandbox.stub(groups, 'create').resolves({ id: 'id' });
+      this.createGroup = this.sandbox.stub(groups, 'create').resolves({ id: 'groupId' });
+      this.createPlayer = this.sandbox.stub(players, 'create').resolves({ id: 'playerId' });
+      this.createUserPlayer = this.sandbox.stub(usersPlayers, 'create').resolves({});
       this.sandbox.stub(groups, 'findOne').resolves({
         toJSON: () => data,
       });
     });
     it('should return correct data back', async function () {
-      const result = await groupsService.createGroup(data);
+      const result = await groupsService.createGroup(userContext, data);
       should(result).be.eql(data);
       should(groups.create.called).be.eql(true);
       should(groups.findOne.called).be.eql(true);
       const createGroupArgs = this.createGroup.getCall(0);
       should(createGroupArgs.args[0]).be.eql(data);
+
+      const createPlayerArgs = this.createPlayer.getCall(0);
+      should(createPlayerArgs.args[0]).be.eql({
+        firstName: 'firstName',
+        familyName: 'familyName',
+        email: 'email',
+        imageUrl: 'imageUrl',
+        groupId: 'groupId',
+      });
+
+      const createUserPlayerArgs = this.createUserPlayer.getCall(0);
+      should(createUserPlayerArgs.args[0]).be.eql({
+        userId: 'userId',
+        playerId: 'playerId',
+        groupId: 'groupId',
+        isAdmin: true,
+      });
     });
   });
   describe('updateGroups()', function () {
@@ -134,7 +162,7 @@ describe('services: groups', function () {
       });
       it('should throw correct error', async function () {
         try {
-          await groupsService.updateGroup(groupId, {});
+          await groupsService.updateGroup(userContext, groupId, {});
         } catch (error) {
           should(isBoom(error)).be.eql(true);
           should(error.data).be.eql({ groupId });
@@ -160,7 +188,7 @@ describe('services: groups', function () {
         this.updateGroup = this.sandbox.stub(groups, 'update').resolves({});
       });
       it('should return correct data back', async function () {
-        const result = await groupsService.updateGroup(groupId, data);
+        const result = await groupsService.updateGroup(userContext, groupId, data);
         should(result).be.eql(data);
         should(groups.update.called).be.eql(true);
         should(groups.findOne.called).be.eql(true);

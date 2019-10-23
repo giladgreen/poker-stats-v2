@@ -6,10 +6,13 @@ const { server } = require('../../../app');
 const { stubGroup, deleteStubGroup, clearAllData } = require('../../helpers/groups');
 
 const acceptHeader = 'Accept';
+const provider = 'provider';
+const GOOGLE = 'google';
+const authTokenHeader = 'x-auth-token';
+const token = 'token';
 describe('delete group', function () {
   beforeEach(async function () {
     await clearAllData();
-    process.env.test = true;
   });
   describe('DELETE api/v2/groups/{groupId}', function () {
     beforeEach(async function () {
@@ -21,6 +24,8 @@ describe('delete group', function () {
     it('should return correct status', async function () {
       const { body } = await request(server)
         .delete(`/api/v2/groups/${this.group.id}`)
+        .set(provider, GOOGLE)
+        .set(authTokenHeader, token)
         .set(acceptHeader, 'application/json')
         .expect(204);
 

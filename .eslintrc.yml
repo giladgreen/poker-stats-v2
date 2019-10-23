@@ -13,6 +13,7 @@ overrides:
         - code: 200
       consistent-return: off
       func-names: off
+      no-param-reassign: off
   - files:
       - "**/*.js"
     rules:

@@ -2,8 +2,9 @@ const HttpStatus = require('http-status-codes');
 const gamesService = require('../services/games');
 
 function getGame(req, res, next) {
+  const { userContext } = req;
   const { groupId, gameId } = req.getAllParams();
-  gamesService.getGame({ groupId, gameId })
+  gamesService.getGame({ userContext, groupId, gameId })
     .then((game) => {
       res.send(game);
     })

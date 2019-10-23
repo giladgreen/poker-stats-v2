@@ -2,8 +2,9 @@ const HttpStatus = require('http-status-codes');
 const groupsService = require('../services/groups');
 
 function getGroup(req, res, next) {
+  const { userContext } = req;
   const { groupId } = req.getAllParams();
-  groupsService.getGroup(groupId)
+  groupsService.getGroup(userContext, groupId)
     .then((group) => {
       res.send(group);
     })
@@ -11,8 +12,9 @@ function getGroup(req, res, next) {
 }
 
 function getGroups(req, res, next) {
+  const { userContext } = req;
   const { limit, offset } = req.getAllParams();
-  groupsService.getGroups(limit, offset)
+  groupsService.getGroups(userContext, limit, offset)
     .then((result) => {
       res.send(result);
     })
@@ -20,8 +22,9 @@ function getGroups(req, res, next) {
 }
 
 function createGroup(req, res, next) {
+  const { userContext } = req;
   const data = req.getBody();
-  groupsService.createGroup(data)
+  groupsService.createGroup(userContext, data)
     .then((group) => {
       res.status(HttpStatus.CREATED).send(group);
     })
@@ -29,9 +32,10 @@ function createGroup(req, res, next) {
 }
 
 function updateGroup(req, res, next) {
+  const { userContext } = req;
   const { groupId } = req.getAllParams();
   const data = req.getBody();
-  groupsService.updateGroup(groupId, data)
+  groupsService.updateGroup(userContext, groupId, data)
     .then((group) => {
       res.send(group);
     })
