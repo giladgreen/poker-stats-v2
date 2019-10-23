@@ -16,12 +16,12 @@ async function getGroups(userContext) {
   });
 
   const result = {};
-  const groups = userPlayers.forEach(({ groupId, isAdmin }) => {
+  userPlayers.forEach(({ groupId, isAdmin }) => {
     result[groupId] = {
       isAdmin,
     };
   });
-  return groups;
+  return result;
 }
 
 function getFitting() {

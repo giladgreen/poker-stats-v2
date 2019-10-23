@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/groups.js" afterDir="false" />
-    </list>
+    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="67">
@@ -49,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/groups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="29" column="76" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
+            <state relative-caret-position="218">
+              <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -69,7 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>verify</find>
       <find>notFound</find>
       <find>unauthorized</find>
       <find>Unauthorized</find>
@@ -99,6 +95,7 @@
       <find>console.err</find>
       <find>no-param-reassign</find>
       <find>201</find>
+      <find>only</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -328,10 +325,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Node.js.migration" />
-      <item itemvalue="Node.js.run" />
       <item itemvalue="Mocha.integretaion tests" />
       <item itemvalue="Mocha.ut" />
+      <item itemvalue="Node.js.migration" />
+      <item itemvalue="Node.js.run" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -386,10 +383,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96116000" />
+    <option name="totallyTimeSpent" value="96418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1333" y="-1057" width="1920" height="972" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1171459" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -830,6 +828,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
@@ -849,13 +854,6 @@
             <element signature="n#!!block;n#updateGame#0" />
             <element signature="n#!!block;n#createGame#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="29" column="76" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
         </state>
       </provider>
     </entry>
