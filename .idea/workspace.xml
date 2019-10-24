@@ -31,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
-              <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+              <caret line="280" selection-start-line="280" selection-end-line="280" />
               <folding>
                 <element signature="e#223#1189#0" />
                 <element signature="e#1175#2391#0" />
@@ -57,17 +57,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="n#!!block;n#getUserPlayer#0" />
                 <element signature="n#!!block;n#getRejectLinkAddress#0" />
                 <element signature="n#!!block;n#getLinkAddress#0" />
                 <element signature="n#!!block;n#getExistingInvitationRequestById#0" />
                 <element signature="n#!!block;n#updateInventionsRequest#0" />
-                <element signature="n#!!block;n#handleUserAlreadyInGroup#0" />
                 <element signature="n#!!block;n#createUserPlayer#0" />
-                <element signature="n#!!block;n#answerInvitationRequest#0" />
               </folding>
             </state>
           </provider>
@@ -130,7 +128,7 @@
         <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="344">
-              <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+              <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -147,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.err</find>
       <find>no-param-reassign</find>
       <find>only</find>
       <find>201</find>
@@ -177,6 +174,7 @@
       <find>createHtml</find>
       <find>sendEmail</find>
       <find>users.</find>
+      <find>localhost:5000</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -448,10 +446,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120666000" />
+    <option name="totallyTimeSpent" value="120874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1334" y="-1056" width="1920" height="972" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1171459" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -811,7 +810,7 @@
     <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+          <caret line="280" selection-start-line="280" selection-end-line="280" />
           <folding>
             <element signature="e#223#1189#0" />
             <element signature="e#1175#2391#0" />
@@ -848,7 +847,7 @@
     <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
-          <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -878,17 +877,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="n#!!block;n#getUserPlayer#0" />
             <element signature="n#!!block;n#getRejectLinkAddress#0" />
             <element signature="n#!!block;n#getLinkAddress#0" />
             <element signature="n#!!block;n#getExistingInvitationRequestById#0" />
             <element signature="n#!!block;n#updateInventionsRequest#0" />
-            <element signature="n#!!block;n#handleUserAlreadyInGroup#0" />
             <element signature="n#!!block;n#createUserPlayer#0" />
-            <element signature="n#!!block;n#answerInvitationRequest#0" />
           </folding>
         </state>
       </provider>

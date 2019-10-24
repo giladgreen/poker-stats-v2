@@ -7,8 +7,8 @@ const INVITATION_REQUESTED = 'invitation requested';
 const INVITATION_APPROVED = 'invitation approved';
 const INVITATION_REJECTED = 'invitation rejected';
 
-const pokerStatsUrlPrefix = 'http://localhost:5000/api/v2';
-// const pokerStatsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
+// const pokerStatsUrlPrefix = 'http://localhost:5000/api/v2';
+const pokerStatsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
 
 async function validateGroup(groupId) {
   const group = await models.groups.findOne({
