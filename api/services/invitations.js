@@ -233,6 +233,29 @@ function createUserPlayer(setAsAdmin, inventionsRequestPlayerId, groupId, userId
   });
 }
 
+async function sendUserUpdateEmail(userId, groupName, approved) {
+  const userDetails = await getUser(userId);
+  const subject = `your request to join group "${groupName}"`;
+  const html = `<!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                  </head>
+                  <body>
+                    <div>
+                        Hey ${userDetails.firstName},<br/><br/><br/><br/>
+                        
+                        Your request to join group "${groupName}" has been ${approved ? 'approved' : 'rejected'}.<br/><br/><br/><br/><br/><br/>
+                        
+                        ${approved ? 'if you log in now you should see this group data..' : ''}
+                  
+                    </div>
+                    
+                  </body>
+                </html>`;
+  sendHtmlMail(subject, html, userDetails.email);
+}
+
 async function answerInvitationRequest(inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin) {
   logger.info(`[Invitation-service] answerInvitationRequest. ${JSON.stringify(inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin)}`);
 
@@ -248,10 +271,12 @@ async function answerInvitationRequest(inventionsRequestId, inventionsRequestPla
     return `invitation already ${inventionsRequest.status.replace('invitation ', '')}`;
   }
   const { groupId, userId } = inventionsRequest;
+  const { name: groupName } = await validateGroup(groupId);
   /* istanbul ignore next */
   if (!approved) {
     logger.info('[Invitation-service] answerInvitationRequest. invitation was rejected.');
     await updateInventionsRequest(inventionsRequestId, INVITATION_REJECTED);
+    await sendUserUpdateEmail(userId, groupName, false);
     return INVITATION_REJECTED;
   }
 
@@ -265,8 +290,11 @@ async function answerInvitationRequest(inventionsRequestId, inventionsRequestPla
     await createUserPlayer(setAsAdmin, inventionsRequestPlayerId, groupId, userId);
   }
   await updateInventionsRequest(inventionsRequestId, INVITATION_APPROVED);
+  await sendUserUpdateEmail(userId, groupName, true);
+
   return INVITATION_APPROVED;
 }
+
 
 module.exports = {
   createInvitationRequest,
