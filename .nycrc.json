@@ -10,6 +10,7 @@
     "api/fittings/user_context.js",
     "api/helpers/google-auth.js",
     "api/helpers/facebook-auth.js",
+    "api/services/emails.js",
     "public/*.js",
     "public/**/*.js",
     "migration/*.js",

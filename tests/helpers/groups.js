@@ -28,7 +28,8 @@ async function clearAllData() {
   await models.sequelize.query('DELETE from players');
   await models.sequelize.query('DELETE from users_players');
   await models.sequelize.query('DELETE from users');
-  return models.sequelize.query('DELETE from groups');
+  await models.sequelize.query('DELETE from groups');
+  return models.sequelize.query('DELETE from invitations_requests');
 }
 function stubGroup() {
   return models.groups.create(mockedGroupPayload);

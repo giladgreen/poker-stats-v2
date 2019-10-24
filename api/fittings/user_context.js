@@ -47,7 +47,7 @@ function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
       logger.info(`[UserContext:fitting] ${request.method} request.`);
-      if (request.method === 'OPTIONS') {
+      if (request.method === 'OPTIONS' || request.url.includes('approved=')) {
         return next();
       }
 

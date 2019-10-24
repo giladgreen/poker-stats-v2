@@ -13,6 +13,7 @@ paths:
   /swagger:
     x-swagger-pipe: swagger_raw
 
+
   /api/v2/groups:
     x-swagger-router-controller: groups
     parameters:
@@ -257,6 +258,44 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /api/v2/inventions-requests:
+    x-swagger-router-controller: invitation
+    post:
+      operationId: createInvitationRequest
+      parameters:
+        - name: body
+          in: body
+          description: the invitation request data
+          required: true
+          schema:
+            $ref: "#/definitions/CreateInvitationRequestDefinition"
+      responses:
+        201:
+          description: InvitationRequestResponseDefinition
+          schema:
+            $ref: "#/definitions/InvitationRequestResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /api/v2/inventions-requests/{inventionsRequestId}:
+    x-swagger-router-controller: invitation
+    parameters:
+      - $ref: '#/parameters/InventionsRequestId'
+      - $ref: '#/parameters/Approved'
+      - $ref: '#/parameters/SetAsAdmin'
+    get:
+      operationId: answerInvitationRequest
+      responses:
+        200:
+          description: InvitationRequestAnswerResponseDefinition
+          schema:
+            $ref: "#/definitions/InvitationRequestAnswerResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 definitions:
   PaginationDefinition:
     properties:
@@ -338,6 +377,18 @@ definitions:
         type: string
       createdAt:
         type: string
+  InvitationRequestResponseDefinition:
+    type: object
+    properties:
+      status:
+        type: string
+      invitationRequestId:
+        type: string
+  InvitationRequestAnswerResponseDefinition:
+    type: object
+    properties:
+      status:
+        type: string
   GetGroupsResponseDefinition:
     type: object
     properties:
@@ -388,6 +439,11 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/PlayerGameDataDefinition"
+  CreateInvitationRequestDefinition:
+    type: object
+    properties:
+      groupId:
+        type: string
   UpdateGameRequestDefinition:
     type: object
     properties:
@@ -471,3 +527,32 @@ parameters:
     required: false
     in: query
     type: integer
+  InventionsRequestId:
+    name: inventionsRequestId
+    in: path
+    description: The id of the inventions Request (uuid)
+    required: true
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  InventionsRequestPlayerId:
+    name: inventionsRequestPlayerId
+    in: query
+    description: The id of the player (uuid)
+    required: true
+    type: string
+    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+  Approved:
+    name: approved
+    description: whether or not the request is approved
+    default: false
+    required: true
+    in: query
+    type: boolean
+  SetAsAdmin:
+    name: setAsAdmin
+    description: whether or not the user will be admin
+    default: false
+    required: true
+    in: query
+    type: boolean
+

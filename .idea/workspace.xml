@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/controllers/invitation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/models/invitationsRequests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/services/emails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/services/invitations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nycrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.nycrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/helpers/groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/helpers/groups.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/complete/all.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/complete/all.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,46 +28,109 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/passport-facebook-token/lib/index.js">
+        <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="162" column="117" selection-start-line="162" selection-start-column="111" selection-end-line="162" selection-end-column="117" />
+            <state relative-caret-position="234">
+              <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+              <folding>
+                <element signature="e#223#1189#0" />
+                <element signature="e#1175#2391#0" />
+                <element signature="e#2395#3411#0" />
+                <element signature="e#3415#4698#0" />
+                <element signature="e#4702#5698#0" />
+                <element signature="e#5702#6959#0" />
+                <element signature="e#6964#7598#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/controllers/invitation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/helpers/facebook-auth.js">
+        <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="36" column="75" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
+            <state relative-caret-position="192">
+              <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+              <folding>
+                <element signature="n#!!block;n#getUserPlayer#0" />
+                <element signature="n#!!block;n#getRejectLinkAddress#0" />
+                <element signature="n#!!block;n#getLinkAddress#0" />
+                <element signature="n#!!block;n#getExistingInvitationRequestById#0" />
+                <element signature="n#!!block;n#updateInventionsRequest#0" />
+                <element signature="n#!!block;n#handleUserAlreadyInGroup#0" />
+                <element signature="n#!!block;n#createUserPlayer#0" />
+                <element signature="n#!!block;n#answerInvitationRequest#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/integration/players/players-get.js">
+        <entry file="file://$PROJECT_DIR$/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="17" column="482" selection-start-line="17" selection-start-column="482" selection-end-line="17" selection-end-column="482" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/integration/groups/group-get.js">
+        <entry file="file://$PROJECT_DIR$/api/models/invitationsRequests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="41" column="33" selection-start-line="41" selection-end-line="42" />
+            <state relative-caret-position="225">
+              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/integration/groups/group-update.js">
+        <entry file="file://$PROJECT_DIR$/api/models/groups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            <state relative-caret-position="427">
+              <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/services/groups.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/models/index.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5495">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+              <folding>
+                <element signature="n#!!block;n#listGroups#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -67,41 +141,42 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_profileURL</find>
-      <find>_passportOauth</find>
-      <find>convertProfileFields</find>
-      <find>profileURL</find>
-      <find>const sinon = require('sinon');</find>
-      <find>Forbidden</find>
-      <find>process.env.test</find>
-      <find>process.env.test = true;</find>
-      <find>sinon</find>
-      <find>sandbox</find>
-      <find>some unexpected error happened</find>
-      <find>'1234'</find>
-      <find>userGroupData</find>
-      <find>console.log</find>
-      <find>birth</find>
-      <find>listPlayers</find>
-      <find>GOOGLE</find>
       <find>console.err</find>
       <find>no-param-reassign</find>
       <find>only</find>
       <find>201</find>
       <find>when not passing any players data - should return created game</find>
       <find>googleTokenStrategy</find>
-      <find>mockGoogleTokenStrategy</find>
       <find>stubPlayerUser</find>
       <find>.only</find>
       <find>x-</find>
       <find>GET</find>
       <find>Access-Control-Allow-Methods</find>
       <find>/picture</find>
+      <find>GetGroupsResponseDefinition</find>
+      <find>InvitationGroupId</find>
+      <find>InvitationRequestAnswerResponseDefinition</find>
+      <find>validateGroup</find>
+      <find>playersLinks</find>
+      <find>logger</find>
+      <find>sinon</find>
+      <find>enum</find>
+      <find>sandbox</find>
+      <find>CreateInvitationRequestDefinition</find>
+      <find>mockGoogleTokenStrategy</find>
+      <find>createInvitationRequest</find>
+      <find>getGroup</find>
+      <find>InvitationRequestResponseDefinition</find>
+      <find>getExistingInvitationRequest</find>
+      <find>createHtml</find>
+      <find>sendEmail</find>
+      <find>users.</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -119,12 +194,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/migration/data.json" />
-        <option value="$PROJECT_DIR$/migration/mongoToPostgres.js" />
-        <option value="$PROJECT_DIR$/node_modules/nyc/node_modules/convert-source-map/index.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/api/models/usersPlayers.js" />
         <option value="$PROJECT_DIR$/api/models/players.js" />
         <option value="$PROJECT_DIR$/api/models/groups.js" />
         <option value="$PROJECT_DIR$/api/models/gamesData.js" />
@@ -135,7 +204,6 @@
         <option value="$PROJECT_DIR$/config/default.yaml" />
         <option value="$PROJECT_DIR$/facebook-config.json" />
         <option value="$PROJECT_DIR$/api/helpers/fb.js" />
-        <option value="$PROJECT_DIR$/.nycrc.json" />
         <option value="$PROJECT_DIR$/google-config.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/api/helpers/google-auth.js" />
@@ -144,12 +212,9 @@
         <option value="$PROJECT_DIR$/api/services/games.js" />
         <option value="$PROJECT_DIR$/api/controllers/games.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/groups.js" />
-        <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
         <option value="$PROJECT_DIR$/.eslintrc.yml" />
         <option value="$PROJECT_DIR$/api/swagger/errorHandler.js" />
         <option value="$PROJECT_DIR$/api/services/groups.js" />
-        <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
-        <option value="$PROJECT_DIR$/tests/helpers/groups.js" />
         <option value="$PROJECT_DIR$/tests/integration/games/game-create.js" />
         <option value="$PROJECT_DIR$/tests/helpers/players.js" />
         <option value="$PROJECT_DIR$/tests/integration/groups/group-create.js" />
@@ -168,8 +233,18 @@
         <option value="$PROJECT_DIR$/tests/integration/players/players-get.js" />
         <option value="$PROJECT_DIR$/api/controllers/groups.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
         <option value="$PROJECT_DIR$/api/helpers/facebook-auth.js" />
+        <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
+        <option value="$PROJECT_DIR$/api/services/emails.js" />
+        <option value="$PROJECT_DIR$/.nycrc.json" />
+        <option value="$PROJECT_DIR$/api/controllers/invitation.js" />
+        <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
+        <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
+        <option value="$PROJECT_DIR$/api/models/invitations-requests.js" />
+        <option value="$PROJECT_DIR$/tests/helpers/groups.js" />
+        <option value="$PROJECT_DIR$/api/models/invitationsRequests.js" />
+        <option value="$PROJECT_DIR$/test.html" />
+        <option value="$PROJECT_DIR$/api/services/invitations.js" />
       </list>
     </option>
   </component>
@@ -206,25 +281,25 @@
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="passport-facebook-token" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="passport-facebook-token" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+              <item name="complete" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -234,11 +309,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/models" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -247,17 +323,17 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/models" />
+      <recent name="$PROJECT_DIR$/api/services" />
+      <recent name="$PROJECT_DIR$/api/controllers" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/api/helpers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/helpers" />
       <recent name="$PROJECT_DIR$/tests/integration/complete" />
       <recent name="$PROJECT_DIR$/tests/unit/swagger" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/api/helpers" />
-      <recent name="$PROJECT_DIR$/api/models" />
-      <recent name="$PROJECT_DIR$/tests/helpers" />
-      <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -272,7 +348,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.run">
+  <component name="RunManager" selected="Mocha.integretaion tests">
     <configuration name="migration" type="NodeJSConfigurationType" path-to-js-file="migration/mongoToPostgres.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -282,6 +358,8 @@
         <env name="GOOGLE_AUTH_CLIENT_SECRET" value="gmShvAj5RWhJttYSg54bO1sw" />
         <env name="FACEBOOK_AUTH_CLIENT_ID" value="730256507438642" />
         <env name="FACEBOOK_AUTH_CLIENT_SECRET" value="05d11626af86bfc30e69406e482a1536" />
+        <env name="emailUser" value="green.gilad@gmail.com" />
+        <env name="emailPassword" value="czgfamvpkajhanat" />
       </envs>
       <method v="2" />
     </configuration>
@@ -338,58 +416,57 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="integretaion_tests - 2019.10.17 at 13h 39m 09s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 05m 11s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.17 at 13h 40m 15s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 05m 53s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.17 at 13h 40m 21s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 06m 14s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.17 at 13h 40m 31s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 07m 06s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.17 at 15h 44m 21s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 08m 00s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="ut - 2019.10.23 at 13h 18m 11s.xml">
-      <configuration name="ut" configurationId="mocha-javascript-test-runner" />
-    </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.23 at 13h 18m 43s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 09m 09s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.23 at 13h 19m 34s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 10m 52s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.23 at 13h 19m 48s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 23m 57s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
-    <history-entry file="integretaion_tests - 2019.10.23 at 13h 20m 27s.xml">
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 25m 44s.xml">
+      <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="integretaion_tests - 2019.10.24 at 15h 26m 11s.xml">
       <configuration name="integretaion tests" configurationId="mocha-javascript-test-runner" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106908000" />
+    <option name="totallyTimeSpent" value="120666000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1336" y="-1057" width="1920" height="972" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1334" y="-1056" width="1920" height="972" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1171459" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.40723455" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3722287" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43990666" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6674446" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30688447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.25670946" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3757293" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -417,6 +494,16 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
+        <expression-string>html</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>models.users</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>request.swagger.params.groupId.value</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
@@ -436,56 +523,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.eslintignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit/services/logger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/fittings/logger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="28" column="11" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/facebook-config.json" />
-    <entry file="file://$PROJECT_DIR$/google-config.json" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.huskyrc.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.nycrc.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/boom/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -517,20 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/games.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit/services/groups.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
@@ -549,31 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="337" column="20" selection-start-line="337" selection-start-column="20" selection-end-line="337" selection-end-column="20" />
-          <folding>
-            <element signature="e#8426#8652#0" />
-            <element signature="e#8655#8879#0" />
-            <element signature="e#8882#9110#0" />
-            <element signature="e#9113#9235#0" />
-            <element signature="e#9238#9333#0" />
-            <element signature="e#9336#9581#0" />
-            <element signature="e#9584#9829#0" />
-            <element signature="e#9833#10166#0" />
-            <element signature="e#10169#10451#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -602,56 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="307" column="25" lean-forward="true" selection-start-line="307" selection-start-column="25" selection-end-line="307" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!block;n#listGroups#0" />
-            <element signature="n#!!block;n#getGroup#0" />
-            <element signature="n#!!block;n#validateMissingGroup#0" />
-            <element signature="n#!!block;n#deleteGroup#0" />
-            <element signature="n#!!block;n#updateGroup#0" />
-            <element signature="n#!!block;n#listPlayers#0" />
-            <element signature="n#!!block;n#getPlayer#0" />
-            <element signature="n#!!block;n#validateMissingPlayer#0" />
-            <element signature="n#!!block;n#deletePlayer#0" />
-            <element signature="n#!!block;n#updatePlayer#0" />
-            <element signature="n#!!block;n#createPlayer#0" />
-            <element signature="n#!!block;n#listGames#0" />
-            <element signature="n#!!block;n#getGame#0" />
-            <element signature="n#!!block;n#validateMissingGame#0" />
-            <element signature="n#!!block;n#deleteGame#0" />
-            <element signature="n#!!block;n#updateGame#0" />
-            <element signature="n#!!block;n#createGame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/users.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/usersPlayers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="13" selection-start-line="17" selection-start-column="3" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -774,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="106" column="142" selection-start-line="106" selection-start-column="142" selection-end-line="106" selection-end-column="142" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -797,8 +738,158 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/helpers/facebook-auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="246">
           <caret line="36" column="75" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/games.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/games.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/usersPlayers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.nycrc.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/emails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/users.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+          <folding>
+            <element signature="e#223#1189#0" />
+            <element signature="e#1175#2391#0" />
+            <element signature="e#2395#3411#0" />
+            <element signature="e#3415#4698#0" />
+            <element signature="e#4702#5698#0" />
+            <element signature="e#5702#6959#0" />
+            <element signature="e#6964#7598#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/invitation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="47" column="6" lean-forward="true" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/invitationsRequests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="482" selection-start-line="17" selection-start-column="482" selection-end-line="17" selection-end-column="482" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5495">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!block;n#listGroups#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!block;n#getUserPlayer#0" />
+            <element signature="n#!!block;n#getRejectLinkAddress#0" />
+            <element signature="n#!!block;n#getLinkAddress#0" />
+            <element signature="n#!!block;n#getExistingInvitationRequestById#0" />
+            <element signature="n#!!block;n#updateInventionsRequest#0" />
+            <element signature="n#!!block;n#handleUserAlreadyInGroup#0" />
+            <element signature="n#!!block;n#createUserPlayer#0" />
+            <element signature="n#!!block;n#answerInvitationRequest#0" />
+          </folding>
         </state>
       </provider>
     </entry>

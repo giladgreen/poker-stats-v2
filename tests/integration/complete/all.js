@@ -3,6 +3,7 @@ const should = require('should');
 const sinon = require('sinon');
 const { server } = require('../../../app');
 const { clearAllData, mockGoogleTokenStrategy } = require('../../helpers/groups');
+const models = require('../../../api/models');
 
 const acceptHeader = 'Accept';
 const provider = 'provider';
@@ -14,6 +15,7 @@ const firstName = 'firstName';
 const familyName = 'familyName';
 const imageUrl = 'imageUrl';
 const token = 'token';
+const differentToken = 'differentToken';
 
 async function listGroups(count) {
   const { body } = await request(server)
@@ -35,17 +37,14 @@ async function listGroups(count) {
   });
 }
 
-async function getGroup(groupId, name) {
-  const { body } = await request(server)
+async function getGroup(groupId, expectedStatus = 200, Token = token) {
+  await request(server)
     .get(`/api/v2/groups/${groupId}`)
     .set(provider, GOOGLE)
-    .set(authTokenHeader, token)
+    .set(authTokenHeader, Token)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
-    .expect(200);
-
-  should(body).be.an.Object();
-  body.should.have.property('name').which.is.a.String().eql(name);
+    .expect(expectedStatus);
 }
 
 function validateMissingGroup(groupId) {
@@ -300,6 +299,48 @@ async function createGame(groupId, description, players) {
   return body.id;
 }
 
+async function createUser(FirstName, FamilyName, Email) {
+  const { id } = await models.users.create({
+    firstName: FirstName,
+    familyName: FamilyName,
+    email: Email,
+    imageUrl: 'imageUrl',
+    token: 'token',
+    tokenExpiration: new Date(),
+  });
+  return id;
+}
+
+async function sendInvitationRequest(groupId) {
+  const payload = {
+    groupId,
+  };
+  const { body } = await request(server)
+    .post('/api/v2/inventions-requests')
+    .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, differentToken)
+    .send(payload)
+    .expect(contentTypeHeader, 'application/json; charset=utf-8')
+    .expect(201);
+
+  should(body).be.an.Object();
+  body.should.have.property('status').which.is.a.String().eql('invitation requested');
+  body.should.have.property('invitationRequestId').which.is.a.String();
+  return body.invitationRequestId;
+}
+
+async function sendInvitationRequestApproval(invitationRequestId, inventionsRequestPlayerId) {
+  const { body } = await request(server)
+    .get(`/api/v2/inventions-requests/${invitationRequestId}?inventionsRequestPlayerId=${inventionsRequestPlayerId}&approved=true`)
+    .set(acceptHeader, 'application/json')
+    .expect(contentTypeHeader, 'application/json; charset=utf-8')
+    .expect(200);
+
+  should(body).be.an.Object();
+  body.should.have.property('status').which.is.a.String().eql('invitation approved');
+}
+
 
 describe('create group', function () {
   beforeEach(async function () {
@@ -317,9 +358,9 @@ describe('create group', function () {
 
       await listGroups(0);
       const groupId = await createGroup('name');
-      await getGroup(groupId, 'name');
+      await getGroup(groupId);
       await updateGroup(groupId, 'new name');
-      await getGroup(groupId, 'new name');
+      await getGroup(groupId);
       const group2Id = await createGroup('group to delete');
       await listGroups(2);
       await deleteGroup(group2Id);
@@ -350,6 +391,23 @@ describe('create group', function () {
       await deleteGame(groupId, game2Id);
       await listGames(groupId, 1);
       await validateMissingGame(groupId, game2Id);
+
+      const userId = await createUser('new', 'User', 'new.user@gmail.com');
+
+      this.sandbox.restore();
+
+      mockGoogleTokenStrategy(this.sandbox, {
+        userId, email: 'new.user@gmail.com', firstName: 'new', familyName: 'User', token: differentToken,
+      });
+
+      await getGroup(groupId, 401, differentToken);
+
+
+      const invitationRequestId = await sendInvitationRequest(groupId);
+      const inventionsRequestPlayerId = player3Id;
+      await sendInvitationRequestApproval(invitationRequestId, inventionsRequestPlayerId);
+
+      await getGroup(groupId, 200);
     });
   });
 });
