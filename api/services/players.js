@@ -1,12 +1,10 @@
 const { notFound } = require('boom');
 const models = require('../models');
 
-const attributes = ['id', 'firstName', 'familyName', 'phone', 'email', 'imageUrl', 'birthday', 'groupId', 'createdAt'];
+const attributes = ['id', 'name', 'email', 'groupId', 'createdAt'];
 const defaultValues = {
-  phone: '-',
   email: '-',
   imageUrl: 'anonymous',
-  birthday: (new Date()).toISOString(),
 };
 
 async function getPlayer({ groupId, playerId }) {
@@ -35,6 +33,32 @@ async function getPlayers(groupId, limit = 1000, offset = 0) {
     attributes,
   });
 
+  const usersPlayers = await models.usersPlayers.findAll({
+    where: {
+      groupId,
+    },
+  });
+
+  const results = await Promise.all(allPlayers.map(async (p) => {
+    const player = p.toJSON();
+    const userPlayer = usersPlayers.find(us => us.playerId === player.id);
+    if (userPlayer) {
+      const user = await models.users.findOne({
+        where: {
+          id: userPlayer.userId,
+        },
+      });
+      if (user) {
+        player.email = user.email || player.email;
+        player.imageUrl = user.imageUrl || player.imageUrl;
+        player.firstName = user.firstName;
+        player.familyName = user.familyName;
+      }
+    }
+
+    return player;
+  }));
+
   return {
     metadata: {
       totalResults: allCount,
@@ -42,7 +66,7 @@ async function getPlayers(groupId, limit = 1000, offset = 0) {
       limit,
       offset,
     },
-    results: allPlayers.map(player => player.toJSON()),
+    results,
   };
 }
 

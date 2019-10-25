@@ -114,11 +114,9 @@ describe('services: players', function () {
     });
   });
   describe('createPlayer()', function () {
-    const birthday = (new Date()).toISOString();
     const data = {
       firstName: 'firstName',
       familyName: 'familyName',
-      birthday,
     };
 
     beforeEach(async function () {
@@ -135,7 +133,6 @@ describe('services: players', function () {
       const createPlayerArgs = this.createPlayer.getCall(0);
       should(createPlayerArgs.args[0]).be.eql({
         ...data,
-        phone: '-',
         email: '-',
         imageUrl: 'anonymous',
         groupId,
@@ -162,12 +159,10 @@ describe('services: players', function () {
       });
     });
     describe('when player exist', function () {
-      const birthday = (new Date()).toISOString();
       const data = {
         id: playerId,
         firstName: 'firstName',
         familyName: 'familyName',
-        birthday,
       };
 
       beforeEach(async function () {

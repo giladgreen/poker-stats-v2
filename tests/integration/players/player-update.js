@@ -47,7 +47,7 @@ describe('update player', function () {
     });
     it('should return updated details', async function () {
       const payload = {
-        familyName: 'new name',
+        name: 'new name',
       };
       const { body } = await request(server)
         .patch(`/api/v2/groups/${this.group.id}/players/${this.player.id}`)
@@ -59,7 +59,7 @@ describe('update player', function () {
         .expect(200);
 
       should(body).be.an.Object();
-      body.should.have.property('familyName').which.is.a.String().eql(payload.familyName);
+      body.should.have.property('name').which.is.a.String().eql(payload.name);
     });
   });
 });

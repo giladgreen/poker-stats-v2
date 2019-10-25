@@ -51,10 +51,8 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
 async function createGroup(userContext, data) {
   const newGroup = await models.groups.create(data);
   const playerData = {
-    firstName: userContext.firstName,
-    familyName: userContext.familyName,
+    name: `${userContext.firstName} ${userContext.familyName}`,
     email: userContext.email,
-    imageUrl: userContext.imageUrl,
     groupId: newGroup.id,
   };
   const newPlayer = await models.players.create(playerData);

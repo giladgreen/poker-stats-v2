@@ -14,6 +14,6 @@ module.exports = {
   },
   error: (...args) => {
     // eslint-disable-next-line no-console
-    console.error(...args);
+    console.error('>>>', ...args);
   },
 };

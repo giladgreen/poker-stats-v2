@@ -13,7 +13,6 @@ const contentTypeHeader = 'Content-Type';
 const email = 'email';
 const firstName = 'firstName';
 const familyName = 'familyName';
-const imageUrl = 'imageUrl';
 const token = 'token';
 const differentToken = 'differentToken';
 
@@ -120,7 +119,7 @@ async function listPlayers(groupId, count) {
   });
 }
 
-async function getPlayer(groupId, playerId, FirstName, FamilyName) {
+async function getPlayer(groupId, playerId, name) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/players/${playerId}`)
     .set(acceptHeader, 'application/json')
@@ -130,8 +129,7 @@ async function getPlayer(groupId, playerId, FirstName, FamilyName) {
     .expect(200);
 
   should(body).be.an.Object();
-  body.should.have.property('firstName').which.is.a.String().eql(FirstName);
-  body.should.have.property('familyName').which.is.a.String().eql(FamilyName);
+  body.should.have.property('name').which.is.a.String().eql(name);
 }
 
 function validateMissingPlayer(groupId, playerId) {
@@ -154,9 +152,9 @@ async function deletePlayer(groupId, playerId) {
 
   should(body).be.an.Object();
 }
-async function updatePlayer(groupId, playerId, FirstName) {
+async function updatePlayer(groupId, playerId, name) {
   const payload = {
-    firstName: FirstName,
+    name,
   };
   const { body } = await request(server)
     .patch(`/api/v2/groups/${groupId}/players/${playerId}`)
@@ -168,12 +166,12 @@ async function updatePlayer(groupId, playerId, FirstName) {
     .expect(200);
 
   should(body).be.an.Object();
-  body.should.have.property('firstName').which.is.a.String().eql(payload.firstName);
+  body.should.have.property('name').which.is.a.String().eql(name);
 }
-async function createPlayer(groupId, FirstName, FamilyName) {
+async function createPlayer(groupId, name) {
   const payload = {
-    firstName: FirstName,
-    familyName: FamilyName,
+    name,
+    email,
   };
   const { body } = await request(server)
     .post(`/api/v2/groups/${groupId}/players`)
@@ -183,11 +181,8 @@ async function createPlayer(groupId, FirstName, FamilyName) {
     .send(payload)
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(201);
-  body.should.have.property('firstName').which.is.a.String().eql(payload.firstName);
-  body.should.have.property('familyName').which.is.a.String().eql(payload.familyName);
-  body.should.have.property('email').which.is.a.String().eql('-');
-  body.should.have.property('phone').which.is.a.String().eql('-');
-  body.should.have.property('imageUrl').which.is.a.String().eql('anonymous');
+  body.should.have.property('name').which.is.a.String().eql(payload.name);
+  body.should.have.property('email').which.is.a.String().eql(email);
   body.should.have.property('id').which.is.a.String();
   return body.id;
 }
@@ -342,11 +337,12 @@ async function sendInvitationRequestApproval(invitationRequestId, inventionsRequ
 }
 
 
-describe('create group', function () {
+describe('full integration test,', function () {
+  this.timeout(8000);
   beforeEach(async function () {
     this.sandbox = sinon.createSandbox();
     mockGoogleTokenStrategy(this.sandbox, {
-      email, firstName, familyName, imageUrl, token,
+      email, firstName, familyName, token,
     });
   });
   afterEach(function () {
@@ -368,18 +364,19 @@ describe('create group', function () {
       await validateMissingGroup(groupId);
 
       await listPlayers(groupId, 1);
-      const playerId = await createPlayer(groupId, 'first', 'family');
-      await getPlayer(groupId, playerId, 'first', 'family');
-      await updatePlayer(groupId, playerId, 'new first name');
-      await getPlayer(groupId, playerId, 'new first name', 'family');
-      const player2Id = await createPlayer(groupId, 'player to delete', 'family');
+
+      const playerId = await createPlayer(groupId, 'first family');
+      await getPlayer(groupId, playerId, 'first family');
+      await updatePlayer(groupId, playerId, 'new first name family');
+      await getPlayer(groupId, playerId, 'new first name family');
+      const player2Id = await createPlayer(groupId, 'player to delete family');
 
       await listPlayers(groupId, 3);
       await deletePlayer(groupId, player2Id);
 
       await listPlayers(groupId, 2);
       await validateMissingPlayer(groupId, player2Id);
-      const player3Id = await createPlayer(groupId, 'second', 'family');
+      const player3Id = await createPlayer(groupId, 'second family');
 
       await listGames(groupId, 0);
       const gameId = await createGame(groupId, 'description', [playerId, player3Id]);

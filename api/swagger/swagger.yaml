@@ -367,13 +367,9 @@ definitions:
         type: string
       groupId:
         type: string
-      firstName:
-        type: string
-      familyName:
+      name:
         type: string
       email:
-        type: string
-      imageUrl:
         type: string
       createdAt:
         type: string
@@ -459,36 +455,22 @@ definitions:
   CreatePlayerRequestDefinition:
     type: object
     required:
-      - firstName
-      - familyName
+      - name
     properties:
-      firstName:
-        type: string
-      familyName:
-        type: string
-      phone:
+      name:
         type: string
       email:
-        type: string
-      imageUrl:
         type: string
       birthday:
         type: string
   UpdatePlayerRequestDefinition:
     type: object
     properties:
-      firstName:
-        type: string
-      familyName:
-        type: string
-      phone:
+      name:
         type: string
       email:
         type: string
-      imageUrl:
-        type: string
-      birthday:
-        type: string
+
 
 parameters:
   GroupId:

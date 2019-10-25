@@ -88,7 +88,6 @@ function getFitting() {
         ? googleTokenStrategy.authenticate(accessToken)
         : facebookTokenStrategy.authenticate(accessToken));
 
-
       // create/update user in db
       let user = await models.users.findOne({
         where: {

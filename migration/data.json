@@ -2,6 +2,7 @@
   "name": "The Original Friendly",
   "players": {
     "1493450940989_orig_Gilad_Green": {
+      "isAdmin": true,
       "aList": true,
       "firstName": "Gilad",
       "familyName": "Green",

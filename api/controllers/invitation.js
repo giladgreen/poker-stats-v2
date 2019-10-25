@@ -2,7 +2,8 @@ const HttpStatus = require('http-status-codes');
 const invitationsService = require('../services/invitations');
 
 function createInvitationRequest(req, res, next) {
-  const { groupId } = req.getBody();
+  const body = req.getBody();
+  const { groupId } = body;
   const { userContext } = req;
   const userId = userContext.id;
   invitationsService.createInvitationRequest(groupId, userId)

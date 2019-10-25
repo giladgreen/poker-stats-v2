@@ -43,8 +43,8 @@ describe('create player', function () {
     });
     it('should return created player', async function () {
       const payload = {
-        firstName: 'gilad',
-        familyName: 'green',
+        name: 'gilad green',
+        email: 'green.gilad@mail.com',
       };
       const { body } = await request(server)
         .post(`/api/v2/groups/${this.group.id}/players`)
@@ -54,11 +54,8 @@ describe('create player', function () {
         .send(payload)
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(201);
-      body.should.have.property('firstName').which.is.a.String().eql(payload.firstName);
-      body.should.have.property('familyName').which.is.a.String().eql(payload.familyName);
-      body.should.have.property('email').which.is.a.String().eql('-');
-      body.should.have.property('phone').which.is.a.String().eql('-');
-      body.should.have.property('imageUrl').which.is.a.String().eql('anonymous');
+      body.should.have.property('name').which.is.a.String().eql(payload.name);
+      body.should.have.property('email').which.is.a.String().eql(payload.email);
       body.should.have.property('id').which.is.a.String();
     });
   });

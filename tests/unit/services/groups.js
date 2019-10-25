@@ -139,10 +139,8 @@ describe('services: groups', function () {
 
       const createPlayerArgs = this.createPlayer.getCall(0);
       should(createPlayerArgs.args[0]).be.eql({
-        firstName: 'firstName',
-        familyName: 'familyName',
+        name: 'firstName familyName',
         email: 'email',
-        imageUrl: 'imageUrl',
         groupId: 'groupId',
       });
 

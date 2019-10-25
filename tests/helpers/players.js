@@ -1,12 +1,8 @@
 const models = require('../../api/models');
 
 const mockedPlayerPayload = {
-  firstName: 'firstName',
-  familyName: 'familyName',
+  name: 'firstName familyName',
   email: 'email',
-  phone: 'phone',
-  imageUrl: 'imageUrl',
-  birthday: new Date(),
   createdAt: new Date(),
   updatedAt: new Date(),
 };
@@ -15,9 +11,7 @@ const mockedUserPayload = {
   firstName: 'firstName',
   familyName: 'familyName',
   email: 'email',
-  phone: 'phone',
   imageUrl: 'imageUrl',
-  birthday: new Date(),
   createdAt: new Date(),
   updatedAt: new Date(),
   token: 'token',

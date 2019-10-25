@@ -17,20 +17,21 @@ async function clearAllDataFromDB(){
     await models.sequelize.query('DELETE from games_data');
     await models.sequelize.query('DELETE from games');
     await models.sequelize.query('DELETE from players');
+    await models.sequelize.query('DELETE from users_players');
+    await models.sequelize.query('DELETE from users');
     await models.sequelize.query('DELETE from groups');
+    await models.sequelize.query('DELETE from invitations_requests');
 }
 
 async function createPlayers(groupId){
 
-    const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, phone, imageUrl, birthdate})=>{
-        const birthday = new Date(convertDate(birthdate));
+    const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, imageUrl,isAdmin})=>{
         return {
+            name: `${firstName} ${familyName}`,
+            email,
             firstName,
             familyName,
-            email,
-            phone,
-            imageUrl,
-            birthday,
+            imageUrl,isAdmin,
             groupId
         };
     });
@@ -38,10 +39,39 @@ async function createPlayers(groupId){
         console.log(err)
     })));
     console.error('## players created:', players.length);
-    players.forEach((player, index)=>{
+    await Promise.all(players.map(async (player, index)=>{
         mapping[Object.values(data.players)[index].id] = player.id;
-        console.error('##     ', player.firstName, ' ', player.familyName);
-    });
+
+
+        if (player.email && player.email.length>2){
+            const p = playersToCreate.find(pl=>pl.email === player.email);
+
+            const userData = {
+                firstName: p.firstName,
+                familyName: p.familyName,
+                email: p.email,
+                imageUrl: p.imageUrl,
+                token: 'xx',
+                tokenExpiration: new Date()
+            };
+            const user = await models.users.create(userData);
+            const userPlayer = {
+                    userId: user.id,
+                    playerId: player.id,
+                    groupId,
+                    isAdmin:!!p.isAdmin
+            };
+
+            await models.usersPlayers.create(userPlayer);
+
+        }
+        console.error('##     ', player.name, player.email);
+
+
+    }));
+
+
+
 }
 async function createGames(groupId) {
     const gamesToCreate = data.games.map(({name, extraData, players})=>{

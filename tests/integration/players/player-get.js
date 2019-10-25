@@ -55,11 +55,8 @@ describe('get single player', function () {
         .expect(200);
 
       should(body).be.an.Object();
-      body.should.have.property('firstName').which.is.a.String().eql('firstName');
-      body.should.have.property('familyName').which.is.a.String().eql('familyName');
+      body.should.have.property('name').which.is.a.String().eql('firstName familyName');
       body.should.have.property('email').which.is.a.String().eql('email');
-      body.should.have.property('phone').which.is.a.String().eql('phone');
-      body.should.have.property('imageUrl').which.is.a.String().eql('imageUrl');
       body.should.have.property('groupId').which.is.a.String().eql(this.group.id);
     });
   });
