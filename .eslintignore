@@ -5,4 +5,5 @@ migration/
 **/node_modules/
 **/*.min.js
 **/coverage/**/*.js
+**/test-client/**/*.js
 **/Gruntfile.js

@@ -13,6 +13,8 @@
     "api/services/emails.js",
     "public/*.js",
     "public/**/*.js",
+    "test-client/*.js",
+    "test-client/**/*.js",
     "migration/*.js",
     "migration/*.json",
     "tests/**/*.js",

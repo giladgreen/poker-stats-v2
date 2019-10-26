@@ -80,7 +80,7 @@ function getFitting() {
             id: existingUser.id,
           },
         });
-        response.setHeader('x-user-context', JSON.stringify(request.userContext));
+        response.setHeader('x-user-context', encodeURI(JSON.stringify(request.userContext)));
         return next();
       }
 
