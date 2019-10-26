@@ -2,13 +2,13 @@ const { notFound } = require('boom');
 const models = require('../models');
 const logger = require('./logger');
 const { sendHtmlMail } = require('./emails');
+const { URL_PREFIX } = require('./../../config.js');
 
 const INVITATION_REQUESTED = 'invitation requested';
 const INVITATION_APPROVED = 'invitation approved';
 const INVITATION_REJECTED = 'invitation rejected';
 
-// const pokerStatsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
-const pokerStatsUrlPrefix = process.env.URL_PREFIX;
+const pokerStatsUrlPrefix = URL_PREFIX;
 
 async function validateGroup(groupId) {
   const group = await models.groups.findOne({
@@ -53,6 +53,7 @@ async function createInvitationRequestInDB(groupId, userId) {
   const newInvitationRequest = await models.invitationsRequests.create({
     groupId,
     userId,
+    status: INVITATION_REQUESTED,
   });
   return newInvitationRequest.id;
 }

@@ -88,8 +88,8 @@ async function updatePlayer(groupId, playerId, data) {
   return getPlayer({ groupId, playerId });
 }
 
-function deletePlayer(groupId, playerId) {
-  return models.players.destroy({
+async function deletePlayer(groupId, playerId) {
+  await models.players.destroy({
     where: {
       groupId,
       id: playerId,

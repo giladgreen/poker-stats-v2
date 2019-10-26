@@ -187,8 +187,7 @@ describe('services: players', function () {
       this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
     });
     it('should return correct data back', async function () {
-      const result = await playersService.deletePlayer(groupId, playerId);
-      should(result).be.eql(true);
+      await playersService.deletePlayer(groupId, playerId);
       should(players.destroy.called).be.eql(true);
       const destroyPlayerArgs = this.destroyPlayer.getCall(0);
       should(destroyPlayerArgs.args[0].where).be.eql({ groupId, id: playerId });

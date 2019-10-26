@@ -1,9 +1,9 @@
-const uuidV4 = require('uuid/v4');
+const uuid = require('uuid');
 
 function getFitting() {
   return function TransactionId({ request, response }, next) {
     try {
-      request.tid = uuidV4();
+      request.tid = uuid();
       response.setHeader('Transaction-ID', request.tid);
       next();
     } catch (error) {

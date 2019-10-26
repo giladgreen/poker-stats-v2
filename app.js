@@ -7,6 +7,7 @@ const compression = require('compression');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
+const { NODE_ENV, SERVER_PORT } = require('./config.js');
 const logger = require('./api/services/logger');
 
 const limiter = rateLimit({
@@ -43,14 +44,14 @@ const config = {
 };
 
 logger.info('[lifecycle]: core service is booting up', {
-  environment: process.env.NODE_ENV,
+  environment: NODE_ENV,
 });
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
   swaggerExpress.register(app);
 
-  const port = process.env.PORT || 5000;
+  const port = SERVER_PORT;
   logger.info('port', port);
   app.listen(port);
   logger.info('[lifecycle]: core service is now listening', {

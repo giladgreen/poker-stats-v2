@@ -18,11 +18,6 @@ const dateFields = {
   },
 };
 
-function generateConnectionString() {
-  return process.env.DATABASE_URL || 'postgres://rfis:12345@localhost:5432/pokerstats';
-}
-
 module.exports = {
   dateFields,
-  generateConnectionString,
 };
