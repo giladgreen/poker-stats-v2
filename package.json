@@ -23,6 +23,7 @@
     "express": "^4.12.3",
     "express-rate-limit": "^3.3.2",
     "http-status-codes": "1.0.6",
+    "image-pixels": "^2.2.2",
     "js-yaml": "^3.13.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "4.17.10",
@@ -41,6 +42,7 @@
     "serve-favicon": "^2.5.0",
     "swagger-express-mw": "^0.1.0",
     "url": "^0.11.0",
+    "utils": "^0.3.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

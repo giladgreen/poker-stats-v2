@@ -1,4 +1,5 @@
 const SwaggerExpress = require('swagger-express-mw');
+
 const express = require('express');
 
 const app = express();
@@ -46,10 +47,29 @@ const config = {
 logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
+
+
+/*
+createMiddleware('PetStore.yaml', app, function(err, middleware) {
+  app.use(middleware.metadata());
+  app.use(middleware.CORS());
+
+  // Show the CORS headers as HTML
+  app.use(function(req, res, next) {
+    res.send('<pre>' + util.inspect(res._headers) + '</pre>');
+  });
+
+  app.listen(8000, function() {
+    console.log('Go to http://localhost:8000/pets');
+  });
+});
+*/
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
+
   swaggerExpress.register(app);
+
 
   const port = SERVER_PORT;
   logger.info('port', port);

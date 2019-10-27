@@ -14,6 +14,27 @@ paths:
     x-swagger-pipe: swagger_raw
 
 
+  /api/v2/player-stack-image:
+    x-swagger-router-controller: playerStackImage
+    post:
+      operationId: getplayerStackImage
+      parameters:
+        - name: body
+          in: body
+          description: The test
+          required: true
+          schema:
+            $ref: "#/definitions/TestRequestDefinition"
+      responses:
+        200:
+          description: TestResponseDefinition
+          schema:
+            $ref: "#/definitions/TestResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups:
     x-swagger-router-controller: groups
     parameters:
@@ -297,6 +318,20 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 definitions:
+  TestRequestDefinition:
+    properties:
+      image:
+        type: string
+
+  TestResponseDefinition:
+    properties:
+      dimentions:
+        type: string
+      data:
+        type: string
+      stack:
+        type: string
+
   PaginationDefinition:
     properties:
       totalResults:
