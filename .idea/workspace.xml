@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="" />
+    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="103">
+              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
                 <element signature="e#945#1792#0" />
@@ -27,7 +30,6 @@
                 <element signature="e#1151#1206#0" />
                 <element signature="e#1235#1295#0" />
                 <element signature="e#1330#1383#0" />
-                <element signature="e#1413#1442#0" />
                 <element signature="e#1482#2426#0" />
                 <element signature="e#2461#2670#0" />
                 <element signature="e#2709#2811#0" />
@@ -51,6 +53,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
@@ -62,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            <state relative-caret-position="165">
+              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -105,15 +116,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/controllers/groups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="23" selection-start-line="14" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/controllers/invitation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -143,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>context</find>
-      <find>myWidth,myHeight</find>
       <find>setupVideo</find>
       <find>snapshot</find>
       <find>TestRequestDefinition</find>
@@ -172,6 +172,8 @@
       <find>server response wa</find>
       <find>console</find>
       <find>x-</find>
+      <find>alert</find>
+      <find>alert(</find>
       <find>stackSize</find>
     </findStrings>
     <replaceStrings>
@@ -191,7 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/integration/groups/group-delete.js" />
         <option value="$PROJECT_DIR$/tests/integration/groups/group-get.js" />
         <option value="$PROJECT_DIR$/tests/integration/groups/group-update.js" />
         <option value="$PROJECT_DIR$/tests/integration/players/players-get.js" />
@@ -241,6 +242,7 @@
         <option value="$PROJECT_DIR$/api/services/playerStackImage.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/groups.js" />
         <option value="$PROJECT_DIR$/test-client/src/App.js" />
+        <option value="$PROJECT_DIR$/public/poker.js" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -268,28 +270,6 @@
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="fittings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="test-client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="test-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -431,7 +411,7 @@
       <workItem from="1572184382272" duration="7290000" />
       <workItem from="1572264733638" duration="19000" />
       <workItem from="1572274328850" duration="3391000" />
-      <workItem from="1572334408554" duration="35517000" />
+      <workItem from="1572334408554" duration="35962000" />
     </task>
     <servers />
   </component>
@@ -468,17 +448,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190488000" />
+    <option name="totallyTimeSpent" value="190933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1680" height="946" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18620269" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18620269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4134727" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.41516244" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16245487" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6016847" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -486,7 +467,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4572804" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.19013236" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -571,13 +552,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/helpers/sequelize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/helpers/groups.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
@@ -694,13 +668,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/image-contrast/src/utils.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/image-contrast/src/index.js" />
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/App.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -873,10 +840,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/poker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="17" column="20232" selection-start-line="17" selection-start-column="20232" selection-end-line="17" selection-end-column="20232" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="103">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
             <element signature="e#945#1792#0" />
@@ -886,7 +867,6 @@
             <element signature="e#1151#1206#0" />
             <element signature="e#1235#1295#0" />
             <element signature="e#1330#1383#0" />
-            <element signature="e#1413#1442#0" />
             <element signature="e#1482#2426#0" />
             <element signature="e#2461#2670#0" />
             <element signature="e#2709#2811#0" />
@@ -908,17 +888,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="47" />
+        <state relative-caret-position="150">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="165">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
