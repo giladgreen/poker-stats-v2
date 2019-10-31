@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/services/groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/groups.js" afterDir="false" />
-    </list>
+    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -435,7 +431,7 @@
       <workItem from="1572184382272" duration="7290000" />
       <workItem from="1572264733638" duration="19000" />
       <workItem from="1572274328850" duration="3391000" />
-      <workItem from="1572334408554" duration="35318000" />
+      <workItem from="1572334408554" duration="35517000" />
     </task>
     <servers />
   </component>
@@ -472,13 +468,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190289000" />
+    <option name="totallyTimeSpent" value="190488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1680" height="946" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18620269" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18620269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -491,7 +486,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4572804" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4572804" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
