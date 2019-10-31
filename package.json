@@ -2,6 +2,9 @@
   "name": "poker-stats",
   "version": "2.0.0",
   "description": "poker-stats-v2",
+  "engines": {
+    "node": "8.9.0"
+  },
   "scripts": {
     "test:ut": "mocha tests/unit/**/*.js --exit",
     "test:integration": "mocha tests/integration/**/*.js --exit",

@@ -128,7 +128,8 @@ describe('services: groups', function () {
 
       this.sandbox.stub(groups, 'findOne')
         .onFirstCall().returns(Promise.resolve(null))
-        .onSecondCall().returns(Promise.resolve({ toJSON: () => data }));
+        .onSecondCall()
+        .returns(Promise.resolve({ toJSON: () => data }));
     });
     it('should return correct data back', async function () {
       const result = await groupsService.createGroup(userContext, data);
