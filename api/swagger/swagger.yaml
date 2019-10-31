@@ -553,13 +553,6 @@ parameters:
     required: true
     type: string
     pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
-  InventionsRequestPlayerId:
-    name: inventionsRequestPlayerId
-    in: query
-    description: The id of the player (uuid)
-    required: true
-    type: string
-    pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
   Approved:
     name: approved
     description: whether or not the request is approved
