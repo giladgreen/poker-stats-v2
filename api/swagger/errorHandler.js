@@ -85,7 +85,7 @@ class ErrorHandler {
      */
   handleGenericError(error) {
     if (error instanceof Error) {
-      this.logger.error('[module:swagger-error-handler]: some unexpected error happened', JSON.stringify(error));
+      this.logger.error('[module:swagger-error-handler]: some unexpected error happened', error);
       return {
         statusCode: 500,
         body: { title: 'An internal server error occurred' },
@@ -101,7 +101,7 @@ class ErrorHandler {
      * @returns {Object|Boolean}
      */
   handleUnknownError(error) {
-    this.logger.error('[module:swagger-error-handler]: some unexpected error happened, which is not an instance of Error class', JSON.stringify(error));
+    this.logger.error('[module:swagger-error-handler]: some unexpected error happened, which is not an instance of Error class', error);
     return {
       statusCode: 500,
       body: { title: 'An internal server error occurred' },

@@ -1,5 +1,87 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: sans-serif;
+}
+.MainSection {
+padding-left: 10px;
+
+}
+.login-page{
+  text-align: center;
+}
+.blue-text{
+  color: blue;
+}
+.white-text{
+  color: white;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+.imageCanvas{
+  visibility: hidden;
+}
+.errorSection{
+  font-size: 1.3em;
+  font-weight: bold;
+  color: red;
+  padding-left: 10px;
+}
+#about-link{
+position: absolute;
+  right:2vw;
+  top:0;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+#logout-link{
+  position: absolute;
+  font-size: 0.8em;
+  right:2vw;
+  top:3.5vh;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.logged-in-header{
+
+  font-weight: bold;
+  font-size: 1.8em;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.user-image {
+  height: 40px;
+  width: 32px;
+padding-right: 10px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+
+#loader{
+  color: black;
+  font-weight: bold;
+  font-size: 5em;
+  position: absolute;
+  top: 30vh;
+  left: 34vw;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

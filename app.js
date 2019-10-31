@@ -49,21 +49,6 @@ logger.info('[lifecycle]: core service is booting up', {
 });
 
 
-/*
-createMiddleware('PetStore.yaml', app, function(err, middleware) {
-  app.use(middleware.metadata());
-  app.use(middleware.CORS());
-
-  // Show the CORS headers as HTML
-  app.use(function(req, res, next) {
-    res.send('<pre>' + util.inspect(res._headers) + '</pre>');
-  });
-
-  app.listen(8000, function() {
-    console.log('Go to http://localhost:8000/pets');
-  });
-});
-*/
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 

@@ -17,19 +17,19 @@ paths:
   /api/v2/player-stack-image:
     x-swagger-router-controller: playerStackImage
     post:
-      operationId: getplayerStackImage
+      operationId: getPlayerStackSizeFromImage
       parameters:
         - name: body
           in: body
           description: The test
           required: true
           schema:
-            $ref: "#/definitions/TestRequestDefinition"
+            $ref: "#/definitions/PlayerStackImageRequestDefinition"
       responses:
         200:
           description: TestResponseDefinition
           schema:
-            $ref: "#/definitions/TestResponseDefinition"
+            $ref: "#/definitions/PlayerStackImageesponseDefinition"
         default:
           description: Error
           schema:
@@ -318,19 +318,21 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 definitions:
-  TestRequestDefinition:
+  PlayerStackImageRequestDefinition:
     properties:
       image:
         type: string
+  InfoObjectDefinition:
+    type: object
 
-  TestResponseDefinition:
+  PlayerStackImageesponseDefinition:
     properties:
-      dimentions:
-        type: string
-      data:
-        type: string
+      info:
+        type: array
+        items:
+          $ref: "#/definitions/InfoObjectDefinition"
       stack:
-        type: string
+        type: integer
 
   PaginationDefinition:
     properties:

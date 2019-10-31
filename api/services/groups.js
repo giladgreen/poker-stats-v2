@@ -1,4 +1,4 @@
-const { notFound } = require('boom');
+const { notFound, badRequest } = require('boom');
 const models = require('../models');
 
 const attributes = ['id', 'name', 'createdAt'];
@@ -19,6 +19,11 @@ async function getGroup(userContext, groupId) {
 }
 
 async function getGroups(userContext, limit = 1000, offset = 0) {
+  const invitations = await models.invitationsRequests.findAll({
+    where: {
+      userId: userContext.id,
+    },
+  });
   const allCount = await models.groups.count();
   const allGroups = await models.groups.findAll({
     limit,
@@ -33,6 +38,13 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
     const result = { ...group, userInGroup: !!userGroupData };
     if (result.userInGroup) {
       result.isAdmin = userGroupData.isAdmin;
+    } else {
+      result.invitationRequested = false;
+      const invitation = invitations.find(i => i.groupId === group.id);
+      if (invitation) {
+        result.invitationRequested = true;
+        result.invitationStatus = invitation.status;
+      }
     }
     return result;
   });
@@ -49,6 +61,15 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
 }
 
 async function createGroup(userContext, data) {
+  const existingGroup = await models.groups.findOne({
+    where: {
+      name: data.name,
+    },
+  });
+  if (existingGroup) {
+    throw badRequest(`Name ${data.name} already in use.`, { name: data.name });
+  }
+
   const newGroup = await models.groups.create(data);
   const playerData = {
     name: `${userContext.firstName} ${userContext.familyName}`,

@@ -106,7 +106,7 @@ describe('services: groups', function () {
             limit,
             offset,
           },
-          results: resultGroups.map(group => ({ ...group, userInGroup: false })),
+          results: resultGroups.map(group => ({ ...group, userInGroup: false, invitationRequested: false })),
         });
         should(groups.count.called).be.eql(true);
         should(groups.findAll.called).be.eql(true);
@@ -125,9 +125,11 @@ describe('services: groups', function () {
       this.createGroup = this.sandbox.stub(groups, 'create').resolves({ id: 'groupId' });
       this.createPlayer = this.sandbox.stub(players, 'create').resolves({ id: 'playerId' });
       this.createUserPlayer = this.sandbox.stub(usersPlayers, 'create').resolves({});
-      this.sandbox.stub(groups, 'findOne').resolves({
-        toJSON: () => data,
-      });
+
+      this.sandbox.stub(groups, 'findOne')
+        .onFirstCall().returns(Promise.resolve(null))
+        .onSecondCall()
+        .returns(Promise.resolve({ toJSON: () => data }));
     });
     it('should return correct data back', async function () {
       const result = await groupsService.createGroup(userContext, data);
