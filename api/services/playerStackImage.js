@@ -2,6 +2,8 @@ const moment = require('moment');
 const Jimp = require('jimp');
 const fs = require('fs');
 const logger = require('./logger');
+const { badRequest } = require('boom');
+
 
 const existingData = {};
 const colorMappings = {
@@ -44,7 +46,7 @@ function processImage(colorsData, userId, baseChipColor, numberOfBaseChips) {
   }
   const baseChipSize = existingData[userId].count;
   if (baseChipSize === 0) {
-    throw new Error(`Did not found any ${baseChipColor} chips`);
+    throw badRequest(`Did not found any ${baseChipColor} chips`, { });
   }
   logger.info(`base chip color: ${baseChipColor}, number of base chips:${numberOfBaseChips}, base Chip pixel count: ${baseChipSize}`);
   let val = 0;
