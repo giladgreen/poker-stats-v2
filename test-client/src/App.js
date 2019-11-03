@@ -6,8 +6,8 @@ import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json';
 
-const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
-//const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
+//const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
+const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
 let mediaStream, context, myWidth,myHeight;
 const intervalTime = 2000;
 async function setupVideo(){
@@ -41,7 +41,7 @@ class App extends Component {
 
     constructor() {
         super();
-        this.state = { loading: false, isAuthenticated: false, user: null, token: null, groups:[],group:null, newGroupName:'', provider:'', error:null, videoPage:false, takingSnapshots: false, stackSize: null, interval:5000};
+        this.state = { loading: false, isAuthenticated: false, user: null, token: null, groups:[],group:null, newGroupName:'', provider:'', error:null, videoPage:false, takingSnapshots: false, stackSize: null, interval:30000, baseChipColor: "Black", numberOfBaseChips: 1 };
     }
 
     logout = () => {
@@ -350,8 +350,7 @@ class App extends Component {
             <div className="logged-in-header">
                 <img alt="" src={this.state.user.imageUrl}  className="user-image" />
                 <span className="logged-in-header-text">you are logged in as <span className="blue-text"> {this.state.user.firstName} {this.state.user.familyName} </span> ({this.state.user.email})</span>
-                <a id="about-link" href={"/about"} >About</a>
-                <a id="logout-link" onClick={this.logout} > Log out </a>
+                <button className="button" onClick={this.logout}> Log out </button>
 
             </div>
             <hr/>
@@ -359,7 +358,7 @@ class App extends Component {
     };
 
     takeOneSnapshot = async() =>{
-        const {provider, token} = this.state;
+        const {provider, token, baseChipColor, numberOfBaseChips } = this.state;
         const video = document.querySelector('video');
         context.fillRect(0,0,myWidth,myHeight);
         context.drawImage(video,0,0,myWidth,myHeight);
@@ -373,7 +372,7 @@ class App extends Component {
                 "x-auth-token": token,
                 "Content-Type":'application/json'
             },
-            body: JSON.stringify({ image })
+            body: JSON.stringify({ image, baseChipColor, numberOfBaseChips })
         };
 
         request(options, (error, response, body) =>{
@@ -388,10 +387,33 @@ class App extends Component {
         });
     };
 
+    resetChipBase = ()=>{
+        const {provider, token} = this.state;
+        const options = {
+            url: `${pokerStatsGroupsUrlPrefix}/player-stack-image/`,
+            method:'DELETE',
+            headers:{
+                provider: provider,
+                "x-auth-token": token,
+                "Content-Type":'application/json'
+            }
+        };
+
+        request(options, (error, response, body) =>{
+            if (response.statusCode>=400){
+                const bodyObj = JSON.parse(body) ;
+                console.log('error', bodyObj);
+            } else {
+                const bodyObj = JSON.parse(body) ;
+                this.setState({stackSize: null, info:[]  });
+            }
+        });
+    };
+
     startTakingSnapshots = ()=>{
+        this.takeOneSnapshot();
         const intervalId = setInterval(this.takeOneSnapshot, this.state.interval);
         this.setState({takingSnapshots:true, intervalId});
-
     };
 
     stopTakingSnapshots = ()=>{
@@ -404,6 +426,13 @@ class App extends Component {
     handleIntervalChange = (event) =>{
         this.setState({error:null,interval: event.target.value});
     };
+    handleNumberOfBaseChipsChange = (event) =>{
+        this.setState({error:null,numberOfBaseChips: event.target.value});
+    };
+
+    handleBaseChipColorChange = (event) =>{
+        this.setState({error:null,baseChipColor: event.target.value});
+    };
 
     VideoPage = () => {
         setTimeout(setupVideo,700);
@@ -413,14 +442,22 @@ class App extends Component {
                 <div>
                     <button className="button" onClick={this.backToGroupPage}> back to group page</button>
                 </div>
-                <hr/>>
+                <hr/>
+                <div>
+                    <button className="button" onClick={this.resetChipBase}> Reset </button>
+                </div>
+                <hr/>
                 <div>
 
-                    interval: <input type="number" id="intervalTime" value={this.state.interval} onChange={this.handleIntervalChange}/>
-
+                    interval: <input type="number" id="intervalTime" value={this.state.interval} onChange={this.handleIntervalChange}/><br/>
+                    number of base chips: <input type="number" id="numberOfBaseChips" value={this.state.numberOfBaseChips} onChange={this.handleNumberOfBaseChipsChange}/><br/>
+                    base chip color: <input type="text" id="baseChipColor" value={this.state.baseChipColor} onChange={this.handleBaseChipColorChange}/>
+                </div>
+                <hr/>
+                <div>
                     <button className="button" onClick={()=> (takingSnapshots ? this.stopTakingSnapshots() : this.startTakingSnapshots())}> {takingSnapshots ?'stop': 'start taking snapshots'}</button>
                 </div>
-                <video/>
+                <video id="videoOfChips"/>
                 <h1>{ this.state.stackSize || this.state.stackSize === 0 ? `stack size: ${this.state.stackSize}` : ''}</h1>
                 <div>
                     {this.state.info ? (<ul>{ this.state.info.map(item=>(<li key={item.color}>{JSON.stringify(item)}</li>)) }  </ul>) : <div/>}
@@ -456,6 +493,10 @@ class App extends Component {
 
     render() {
         const { Header, GroupsInfo, About, LoaderPage, LoginPage, GroupPage, VideoPage } = this;
+        if (this.state.videoPage) {
+            return <VideoPage/>;
+        }
+
         return (
             <div className="App">
                 <Header/>
@@ -471,10 +512,8 @@ class App extends Component {
                             <Route path="/" >
                                 { (this.state.loading && <LoaderPage/>) ||
                                 (!this.state.isAuthenticated && <LoginPage/>) ||
-                                (this.state.videoPage && <VideoPage/>) ||
                                 (this.state.group && <GroupPage/>) ||
-
-                                <GroupsInfo/>}
+                                    <GroupsInfo/>}
                             </Route>
                         </Switch>
                     </Router>

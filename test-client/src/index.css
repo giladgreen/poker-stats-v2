@@ -6,6 +6,12 @@ body {
 padding-left: 10px;
 
 }
+.button{
+  padding-left: 10px;
+}
+.logged-in-header-text{
+  font-size: 0.7em;
+}
 .login-page{
   text-align: center;
 }
@@ -71,17 +77,20 @@ padding-right: 10px;
   font-size: large;
 }
 
-
-
 #loader{
   color: black;
   font-weight: bold;
-  font-size: 5em;
-  position: absolute;
-  top: 30vh;
-  left: 34vw;
+  font-size: 3em;
+  position: center;
+  vertical-align: center;
+  horiz-align: center;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#videoOfChips{
+  width: 80vw;
+  padding-left: 10vw;
 }

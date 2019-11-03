@@ -9,9 +9,12 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.TEXT,
+      defaultValue: '',
+
     },
     email: {
       type: DataTypes.TEXT,
+      defaultValue: '',
     },
     groupId: {
       type: DataTypes.STRING,

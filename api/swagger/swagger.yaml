@@ -29,7 +29,18 @@ paths:
         200:
           description: TestResponseDefinition
           schema:
-            $ref: "#/definitions/PlayerStackImageesponseDefinition"
+            $ref: "#/definitions/PlayerStackImageResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: resetPlayerBaseChipCount
+      responses:
+        200:
+          description: GeneralResponseDefinition
+          schema:
+            $ref: "#/definitions/GeneralResponseDefinition"
         default:
           description: Error
           schema:
@@ -318,14 +329,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 definitions:
+  GeneralResponseDefinition:
+    type: object
+
   PlayerStackImageRequestDefinition:
     properties:
       image:
         type: string
+      baseChipColor:
+        type: string
+        default: "Black"
+        enum:
+          - Black
+          - Grey
+          - Red
+          - Green
+          - Blue
+      numberOfBaseChips:
+        type: integer
+        default: 1
+
   InfoObjectDefinition:
     type: object
 
-  PlayerStackImageesponseDefinition:
+  PlayerStackImageResponseDefinition:
     properties:
       info:
         type: array

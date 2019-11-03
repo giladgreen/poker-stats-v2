@@ -52,6 +52,12 @@ async function getGames(groupId, limit = 1000, offset = 0) {
     attributes: gameAttributes,
   });
 
+  const results = allGames.map(game => game.toJSON()).map((game) => {
+    if (!game.description) {
+      game.description = '';
+    }
+    return game;
+  });
   return {
     metadata: {
       totalResults: allCount,
@@ -59,7 +65,7 @@ async function getGames(groupId, limit = 1000, offset = 0) {
       limit,
       offset,
     },
-    results: allGames.map(game => game.toJSON()),
+    results,
   };
 }
 

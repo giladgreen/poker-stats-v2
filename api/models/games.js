@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     description: {
       type: DataTypes.TEXT,
+      defaultValue: '',
     },
     date: {
       type: DataTypes.DATE,
