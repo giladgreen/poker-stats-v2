@@ -43,6 +43,9 @@ function processImage(colorsData, userId, baseChipColor, numberOfBaseChips) {
     };
   }
   const baseChipSize = existingData[userId].count;
+  if (baseChipSize === 0) {
+    throw new Error(`Did not found any ${baseChipColor} chips`);
+  }
   logger.info(`base chip color: ${baseChipColor}, number of base chips:${numberOfBaseChips}, base Chip pixel count: ${baseChipSize}`);
   let val = 0;
   const info = Object.keys(colorsData)
