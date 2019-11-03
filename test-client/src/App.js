@@ -9,7 +9,6 @@ import config from './config.json';
 //const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
 const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
 let mediaStream, context, myWidth,myHeight;
-const intervalTime = 2000;
 async function setupVideo(){
     if (context) return;
     try {
@@ -379,6 +378,8 @@ class App extends Component {
             if (response.statusCode>=400){
                 const bodyObj = JSON.parse(body) ;
                 console.log('error', bodyObj);
+                this.setState({error: bodyObj.title});
+
             } else {
                 const bodyObj = JSON.parse(body) ;
                 this.setState({stackSize: bodyObj.stack, info:bodyObj.info  });
@@ -456,6 +457,9 @@ class App extends Component {
                 <hr/>
                 <div>
                     <button className="button" onClick={()=> (takingSnapshots ? this.stopTakingSnapshots() : this.startTakingSnapshots())}> {takingSnapshots ?'stop': 'start taking snapshots'}</button>
+                </div>
+                <div className="errorSection">
+                    {this.state.error}
                 </div>
                 <video id="videoOfChips"/>
                 <h1>{ this.state.stackSize || this.state.stackSize === 0 ? `stack size: ${this.state.stackSize}` : ''}</h1>
