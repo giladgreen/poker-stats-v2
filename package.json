@@ -41,6 +41,7 @@
     "pg-hstore": "^2.3.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "rgb-hex": "^3.0.0",
     "sequelize": "^5.0.0-beta.16",
     "serve-favicon": "^2.5.0",
     "swagger-express-mw": "^0.1.0",

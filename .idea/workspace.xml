@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/helpers/colors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/b16a313f-c085-4fb1-9cf7-c343d8c1cdc3_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-client/build/static/js/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fittings/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/services/playerStackImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/playerStackImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.27426495.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.27426495.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/static/css/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.979cc2d4.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.979cc2d4.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/index.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,38 +44,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/playerStackImage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
+            <state relative-caret-position="3153">
+              <caret line="267" selection-start-line="267" selection-end-line="267" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintrc.yml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/helpers/colors.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/jimp/types/index.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5175">
-              <caret line="345" column="4" selection-start-line="345" selection-start-column="4" selection-end-line="345" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="354" column="13" selection-start-line="354" selection-start-column="8" selection-end-line="354" selection-end-column="13" />
+            <state relative-caret-position="234">
+              <caret line="1576" column="37" lean-forward="true" selection-end-line="1610" />
             </state>
           </provider>
         </entry>
@@ -57,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+            <state relative-caret-position="120">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -67,46 +75,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit/swagger/errorHandler.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="45" column="35" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="35" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/test-client/package.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/groups.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-697">
-              <caret line="69" column="55" lean-forward="true" selection-start-line="69" selection-end-line="70" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/test-client/src/config.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/test-client/src/App.css">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-client/src/components/login.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1380">
-              <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/controllers/playerStackImage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+            <state relative-caret-position="17">
+              <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -123,36 +115,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PlayerGameDataDefinition:</find>
-      <find>descr</find>
-      <find>seti</find>
-      <find>crop</find>
-      <find>autocrop</find>
-      <find>isWhite</find>
-      <find>PlayerStackImageesponseDefinition</find>
-      <find>existingData</find>
-      <find>stackSize</find>
-      <find>butt</find>
-      <find>logged-in-header-text</find>
-      <find>loading</find>
-      <find>loader</find>
-      <find>rightColumnWhiteCounter</find>
-      <find>button</find>
-      <find>colorMappings</find>
-      <find>save(</find>
-      <find>videoOfChips</find>
-      <find>log</find>
-      <find>cropNonWhiteBorder</find>
-      <find>output</find>
-      <find>post</find>
-      <find>PlayerStackImageRequestDefinition</find>
       <find>baseChipColor</find>
       <find>clerifyImageAndCount</find>
-      <find>stack</find>
       <find>intervalTime</find>
       <find>badreq</find>
-      <find>error:</find>
       <find>badRequest</find>
+      <find>stack</find>
+      <find>error:</find>
+      <find>throw</find>
+      <find>cont</find>
+      <find>PlayerStackImageRequestDefinition</find>
+      <find>&quot;maroon&quot;</find>
+      <find>gra</find>
+      <find>green</find>
+      <find>blue</find>
+      <find>Ivory</find>
+      <find>Papaya</find>
+      <find>input</find>
+      <find>Lemon</find>
+      <find>Heath</find>
+      <find>Peach</find>
+      <find>Romance</find>
+      <find>Cioccolato</find>
+      <find>math.</find>
+      <find>grey</find>
+      <find>Fern</find>
+      <find>Golden g</find>
+      <find>existingData</find>
+      <find>ColorsService</find>
+      <find>Off Yellow</find>
+      <find>videoOfChips</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -173,8 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/integration/players/players-get.js" />
-        <option value="$PROJECT_DIR$/api/controllers/groups.js" />
         <option value="$PROJECT_DIR$/api/models/invitations-requests.js" />
         <option value="$PROJECT_DIR$/api/models/invitationsRequests.js" />
         <option value="$PROJECT_DIR$/test.html" />
@@ -209,7 +199,6 @@
         <option value="$PROJECT_DIR$/test-client/src/App.css" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/api/swagger/errorHandler.js" />
-        <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/groups.js" />
         <option value="$PROJECT_DIR$/public/poker.js" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -220,10 +209,13 @@
         <option value="$PROJECT_DIR$/api/models/players.js" />
         <option value="$PROJECT_DIR$/api/controllers/playerStackImage.js" />
         <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
-        <option value="$PROJECT_DIR$/test-client/src/index.css" />
         <option value="$PROJECT_DIR$/.eslintrc.yml" />
-        <option value="$PROJECT_DIR$/test-client/src/App.js" />
+        <option value="$PROJECT_DIR$/api/fittings/logger.js" />
+        <option value="$PROJECT_DIR$/api/helpers/colors.js" />
+        <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
+        <option value="$PROJECT_DIR$/test-client/src/index.css" />
         <option value="$PROJECT_DIR$/api/services/playerStackImage.js" />
+        <option value="$PROJECT_DIR$/test-client/src/App.js" />
       </list>
     </option>
   </component>
@@ -233,11 +225,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-1333" />
-    <option name="y" value="-1056" />
-    <option name="width" value="1920" />
-    <option name="height" value="976" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="210" />
+    <option name="y" value="141" />
+    <option name="width" value="1260" />
+    <option name="height" value="710" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -261,7 +253,13 @@
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="fittings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
@@ -272,19 +270,26 @@
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger" type="462c0819:PsiDirectoryNode" />
+              <item name="test-client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="test-client" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="test-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="test-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
@@ -444,7 +449,8 @@
       <workItem from="1572264733638" duration="19000" />
       <workItem from="1572274328850" duration="3391000" />
       <workItem from="1572334408554" duration="48214000" />
-      <workItem from="1572772485577" duration="1156000" />
+      <workItem from="1572772485577" duration="13881000" />
+      <workItem from="1572874899361" duration="6756000" />
     </task>
     <servers />
   </component>
@@ -481,19 +487,19 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204341000" />
+    <option name="totallyTimeSpent" value="223822000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1333" y="-1056" width="1920" height="976" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="946" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.16240682" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.18620269" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.4134727" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26248547" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4390244" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4134727" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25752106" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.6242038" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -501,7 +507,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32171893" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.40673888" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -529,6 +535,18 @@
           <line>70</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/api/services/playerStackImage.js</url>
+          <line>288</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception">
@@ -543,52 +561,62 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>imageData.data.length === imageData.width * imageData.height * 4</expression-string>
+        <expression-string>this.color[0][0][0]</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>imageData.data.width</expression-string>
+        <expression-string>this.color[0][0]</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>imageData.data.width * imageData.data.height * 4</expression-string>
+        <expression-string>this.color[0]</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>imageData.data.length</expression-string>
+        <expression-string>this.color</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>imageData.data.length === imageData.data.width * imageData.data.height * 4</expression-string>
+        <expression-string>color.substring(0, 2)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>imageData.data.length === imageData.data.width * imageData.data.height</expression-string>
+        <expression-string>color.substring(1, 3)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>html</expression-string>
+        <expression-string>parseInt( color.substring(1, 3))</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>models.users</expression-string>
+        <expression-string>parseInt('0x' + color.substring(1, 3))</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>request.swagger.params.groupId.value</expression-string>
+        <expression-string>[r,g,b].join('.')</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>color === '800000'</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>item[1]===&quot;Maroon&quot;</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>body.results.length !== count</expression-string>
         <language-id>JavaScript</language-id>
@@ -597,20 +625,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.html" />
-    <entry file="file://$PROJECT_DIR$/test-client/src/components/login.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/build/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/build/static/css/main.65027555.css" />
     <entry file="file://$PROJECT_DIR$/api/swagger/utils.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -634,9 +648,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/image-contrast/src/utils.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/image-contrast/src/index.js" />
-    <entry file="file://$PROJECT_DIR$/test-client/src/App.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/models/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -677,23 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/fittings/error_handler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/swagger/errorHandler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -703,9 +697,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/games.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -735,13 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="130" column="23" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -822,20 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/playerStackImage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -843,27 +813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="354" column="13" selection-start-line="354" selection-start-column="8" selection-end-line="354" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -877,14 +830,99 @@
     <entry file="file://$PROJECT_DIR$/api/services/groups.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-697">
-          <caret line="69" column="55" lean-forward="true" selection-start-line="69" selection-end-line="70" />
+          <caret line="69" column="55" selection-start-line="69" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/fittings/logger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/playerStackImage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="347" column="23" selection-start-line="347" selection-start-column="6" selection-end-line="347" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/helpers/facebook-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" selection-start-line="53" selection-end-line="53" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/fittings/error_handler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/errorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/playerStackImage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
+        <state relative-caret-position="3153">
+          <caret line="267" selection-start-line="267" selection-end-line="267" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/App.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/components/login.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/helpers/colors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="1576" column="37" lean-forward="true" selection-end-line="1610" />
         </state>
       </provider>
     </entry>

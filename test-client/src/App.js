@@ -439,7 +439,7 @@ class App extends Component {
         setTimeout(setupVideo,700);
         const {takingSnapshots} = this.state;
         return (
-            <div className="App">
+            <div className="App videoPage">
                 <div>
                     <button className="button" onClick={this.backToGroupPage}> back to group page</button>
                 </div>
@@ -463,7 +463,7 @@ class App extends Component {
                 </div>
                 <video id="videoOfChips"/>
                 <h1>{ this.state.stackSize || this.state.stackSize === 0 ? `stack size: ${this.state.stackSize}` : ''}</h1>
-                <div>
+                <div className="stackInfo">
                     {this.state.info ? (<ul>{ this.state.info.map(item=>(<li key={item.color}>{JSON.stringify(item)}</li>)) }  </ul>) : <div/>}
                  </div>
                 <canvas id="canvas" className="imageCanvas" width="600" height="300"/>

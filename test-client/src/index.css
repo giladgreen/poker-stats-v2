@@ -94,3 +94,34 @@ padding-right: 10px;
   width: 80vw;
   padding-left: 10vw;
 }
+.stackInfo{
+  font-size: 1em;
+}
+.videoPage{
+  padding-left: 2px;
+}
+@media screen and (max-width: 800px) {
+  #videoOfChips{
+    width: 40vw;
+    padding-right: 1vw;
+    position: absolute;
+    top:10px;
+    right: 0px;
+  }
+
+  .stackInfo{
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #videoOfChips{
+    width: 90vw;
+    position: absolute;
+    top:50vh;
+    right: 5vw;
+  }
+  .stackInfo{
+    font-size: 1em;
+  }
+}

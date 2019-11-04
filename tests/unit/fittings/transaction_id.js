@@ -3,7 +3,7 @@ const getFitting = require('../../../api/fittings/transaction_id');
 
 describe('fittings:transaction_id', function () {
   it('should set transaction id', (done) => {
-    const request = {};
+    const request = {url:""};
     const response = {
       headers: {},
       setHeader: (key, value) => {

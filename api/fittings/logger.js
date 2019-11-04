@@ -3,15 +3,21 @@ const log = require('../services/logger');
 function getFitting() {
   return function logger({ request, response }, next) { // this is a global middleware
     const startTime = new Date();
-    log.debug('[fitting:logger]: incoming request', {
-      method: request.method,
-      url: request.url,
-    });
-    response.on('finish', () => {
-      const endTime = new Date();
-      log.debug('[fitting:logger]: outgoing response', {
-        method: request.method, url: request.url, status: response.statusCode, duration: endTime - startTime,
+    const imageCall = request.url.indexOf('player-stack-image') >= 0 && request.method.toLowerCase() === 'post';
+    if (!imageCall) {
+      log.debug('[fitting:logger]: incoming request', {
+        method: request.method,
+        url: request.url,
       });
+    }
+
+    response.on('finish', () => {
+      if (!imageCall || response.statusCode > 200) {
+        const endTime = new Date();
+        log.debug('[fitting:logger]: outgoing response', {
+          method: request.method, url: request.url, status: response.statusCode, duration: endTime - startTime,
+        });
+      }
     });
     next();
   };

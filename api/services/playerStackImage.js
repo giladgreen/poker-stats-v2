@@ -1,14 +1,20 @@
 const moment = require('moment');
 const Jimp = require('jimp');
 const fs = require('fs');
-const logger = require('./logger');
 const { badRequest } = require('boom');
+const logger = require('./logger');
 
+const WHITE = 255;
+const BLACK = 0;
+const GRAY = 90;
+const RED = 180;
+const GREEN = 180;
+const BLUE = 180;
 
 const existingData = {};
 const colorMappings = {
   White: { value: 0, name: 'White' },
-  Grey: { value: 1, name: 'Grey' },
+  Gray: { value: 1, name: 'Gray' },
   Red: { value: 5, name: 'Red' },
   Black: { value: 10, name: 'Black' },
   Green: { value: 25, name: 'Green' },
@@ -161,69 +167,121 @@ function cropNonWhiteBorder(image) {
   return image;
 }
 
-function clerifyImageAndCount(image, userId) {
-  function _isWhite(red, green, blue) {
-    return red > 200 && blue > 200 && green > 200;
+function clerifyImageAndCount(image) {
+  function allSmallerThen(red, green, blue, x) {
+    return red < x && blue < x && green < x;
   }
-  function _isGrey(red, green, blue) {
-    return red > 145 && blue > 145 && green > 145 && !_isWhite(red, green, blue);
+  function allBiggerThen(red, green, blue, x) {
+    return red > x && blue > x && green > x;
+  }
+  function allDiffLessThen(red, green, blue, x) {
+    return Math.abs(blue - green) < x && Math.abs(blue - red) < x && Math.abs(red - green) < x;
+  }
+
+  function _isGray(red, green, blue) {
+    return allBiggerThen(red, green, blue, 70) && allSmallerThen(red, green, blue, 185) && allDiffLessThen(red, green, blue, 40);
   }
 
   function _isRed(red, green, blue) {
-    return red < 180 && red > 60 && (red - green > 15) && (red - blue > 15);
+    return red > 90 && (red - green > 40) && (red - blue > 40);
   }
 
   function _isGreen(red, green, blue) {
-    return green < 180 && green > 60 && (green - red > 15) && (green - blue > 15);
+    return green > 60 && (green - red > 15) && (green - blue > 15);
   }
 
   function _isBlue(red, green, blue) {
-    return blue < 180 && blue > 60 && (blue - red > 15) && (blue - green > 15);
+    return blue > 50 && (blue - green > 5) && (blue - red > 5);
   }
   function _isBlack(red, green, blue) {
-    return (red < 70 && blue < 70 && green < 70);
+    return allSmallerThen(red, green, blue, 85);
   }
 
   const ratio = image.bitmap.width / image.bitmap.height;
   const newHeight = 380;
   const newWidth = newHeight * ratio;
-  const newImage = cropNonWhiteBorder(image.clone().resize(newWidth, newHeight).contrast(0.2)).write(`output/${userId}_image_2.png`);
+  const newImage = cropNonWhiteBorder(image.clone().resize(newWidth, newHeight).contrast(0.2));
   const colorsData = {
-    White: 0,
-    Grey: 0,
+    Gray: 0,
     Red: 0,
     Black: 0,
     Green: 0,
     Blue: 0,
   };
   const { data, width, height } = newImage.bitmap;
-  for (let i = 0; i < width * 4; i += 4) {
-    for (let j = 0; j < height; j += 1) {
-      const idx = i + (j * width * 4);
-      const red = data[idx + 0];
-      const green = data[idx + 1];
-      const blue = data[idx + 2];
-      const isWhite = _isWhite(red, green, blue);
-      const isGrey = _isGrey(red, green, blue);
-      const isRed = _isRed(red, green, blue);
-      const isGreen = _isGreen(red, green, blue);
-      const isBlue = _isBlue(red, green, blue);
-      const isBlack = _isBlack(red, green, blue);
-      if (isWhite) {
-        colorsData.White++;
-      } else if (isBlack) {
-        colorsData.Black++;
-      } else if (isRed) {
-        colorsData.Red++;
-      } else if (isGreen) {
-        colorsData.Green++;
-      } else if (isBlue) {
-        colorsData.Blue++;
-      } else if (isGrey) {
-        colorsData.Grey++;
+
+  function updateData(Data, w, h) {
+    for (let i = 0; i < w * 4; i += 4) {
+      for (let j = 0; j < h; j += 1) {
+        const idx = i + (j * w * 4);
+        const red = Data[idx + 0];
+        const green = Data[idx + 1];
+        const blue = Data[idx + 2];
+
+        // let isWhite =  _isWhite(red, green, blue);
+        const isGray = _isGray(red, green, blue);
+        const isRed = _isRed(red, green, blue);
+        const isGreen = _isGreen(red, green, blue);
+        const isBlue = _isBlue(red, green, blue);
+        const isBlack = _isBlack(red, green, blue);
+
+
+        if (isRed) {
+          Data[idx + 0] = RED;
+          Data[idx + 1] = 0;
+          Data[idx + 2] = 0;
+        } else if (isGreen) {
+          Data[idx + 0] = 0;
+          Data[idx + 1] = GREEN;
+          Data[idx + 2] = 0;
+        } else if (isBlue) {
+          Data[idx + 0] = 0;
+          Data[idx + 1] = 0;
+          Data[idx + 2] = BLUE;
+        } else if (isGray) {
+          Data[idx + 0] = GRAY;
+          Data[idx + 1] = GRAY;
+          Data[idx + 2] = GRAY;
+        } else if (isBlack) {
+          Data[idx + 0] = BLACK;
+          Data[idx + 1] = BLACK;
+          Data[idx + 2] = BLACK;
+        } else {
+          Data[idx + 0] = WHITE;
+          Data[idx + 1] = WHITE;
+          Data[idx + 2] = WHITE;
+        }
       }
     }
   }
+  function getColorsData(Data, w, h) {
+    for (let i = 0; i < w * 4; i += 4) {
+      for (let j = 0; j < h; j += 1) {
+        const idx = i + (j * w * 4);
+        const red = Data[idx + 0];
+        const green = Data[idx + 1];
+        const blue = Data[idx + 2];
+
+        const isGray = red === GRAY && green === GRAY && blue === GRAY;
+        const isRed = red === RED && green === 0 && blue === 0;
+        const isGreen = red === 0 && green === GREEN && blue === 0;
+        const isBlue = red === 0 && green === 0 && blue === BLUE;
+        const isBlack = red === BLACK && green === BLACK && blue === BLACK;
+
+        colorsData.Gray += isGray ? 1 : 0;
+        colorsData.Black += isBlack ? 1 : 0;
+        colorsData.Red += isRed ? 1 : 0;
+        colorsData.Green += isGreen ? 1 : 0;
+        colorsData.Blue += isBlue ? 1 : 0;
+      }
+    }
+  }
+
+  updateData(data, width, height);
+  getColorsData(data, width, height);
+  // newImage.write('output/out.png');
+
+  logger.debug('colorsData', colorsData);
   return colorsData;
 }
 
@@ -255,7 +313,6 @@ async function saveFileLocally(image, userId) {
 
   const fileName = `output/${userId}_image.${type}`;
   await save(fileName, base64Data);
-
   return Jimp.read(fileName);
 }
 
