@@ -12,7 +12,7 @@ let mediaStream, context, myWidth,myHeight;
 async function setupVideo(){
     if (context) return;
     try {
-        mediaStream = await navigator.mediaDevices.getUserMedia({audio:false,  video: true});
+        mediaStream = await navigator.mediaDevices.getUserMedia({audio:false,  video: { facingMode: { exact: "environment" }}  });
         const video = document.querySelector('video');
         video.srcObject = mediaStream;
         video.onloadedmetadata = function(event,error) {
@@ -357,7 +357,8 @@ class App extends Component {
     };
 
     takeOneSnapshot = async() =>{
-        const {provider, token, baseChipColor, numberOfBaseChips } = this.state;
+        const {provider, token, baseChipColor, numberOfBaseChips: NumberOfBaseChips } = this.state;
+        const numberOfBaseChips = parseInt(NumberOfBaseChips);
         const video = document.querySelector('video');
         context.fillRect(0,0,myWidth,myHeight);
         context.drawImage(video,0,0,myWidth,myHeight);
@@ -425,10 +426,10 @@ class App extends Component {
     };
 
     handleIntervalChange = (event) =>{
-        this.setState({error:null,interval: event.target.value});
+        this.setState({error:null,interval: parseInt(event.target.value)});
     };
     handleNumberOfBaseChipsChange = (event) =>{
-        this.setState({error:null,numberOfBaseChips: event.target.value});
+        this.setState({error:null,numberOfBaseChips: parseInt(event.target.value)});
     };
 
     handleBaseChipColorChange = (event) =>{
