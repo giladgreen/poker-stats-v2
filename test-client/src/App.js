@@ -6,8 +6,8 @@ import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json';
 
-//const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
-const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
+const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
+//const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
 let mediaStream, context, myWidth,myHeight;
 async function setupVideo(){
     if (context) return;

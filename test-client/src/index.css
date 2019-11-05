@@ -1,13 +1,23 @@
 body {
   margin: 0;
   font-family: sans-serif;
+  background: #eaeaea;
+  color: black;
 }
 .MainSection {
 padding-left: 10px;
 
 }
+button {
+  color: black;
+  background: antiquewhite;
+  border-bottom-color: black;
+
+  border-radius: 5px;
+
+}
 .button{
-  padding-left: 10px;
+  padding: 5px;
 }
 .logged-in-header-text{
   font-size: 0.7em;
@@ -112,6 +122,18 @@ padding-right: 10px;
   .stackInfo{
     font-size: 1em;
   }
+
+  body {
+    background: black;
+    color: white;
+  }
+
+  button {
+    color: white;
+    border-bottom-color: white;
+    background: black;
+
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -123,5 +145,15 @@ padding-right: 10px;
   }
   .stackInfo{
     font-size: 1em;
+  }
+
+  body {
+    background: black;
+    color: white;
+  }
+  button {
+    color: white;
+    border-bottom-color: white;
+    background: black;
   }
 }

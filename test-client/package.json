@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "copy": "mv -f /Users/giladgreen/dev/temp/poker-stats-v2/test-client/build/static/js/* /Users/giladgreen/dev/temp/poker-stats-v2/public && mv -f /Users/giladgreen/dev/temp/poker-stats-v2/test-client/build/static/css/* /Users/giladgreen/dev/temp/poker-stats-v2/public",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
