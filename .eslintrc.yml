@@ -16,6 +16,8 @@ overrides:
       no-param-reassign: off
       no-underscore-dangle: off
       no-plusplus: off
+      radix: off
+      prefer-destructuring: off
   - files:
       - "**/*.js"
     rules:

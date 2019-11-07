@@ -12,7 +12,7 @@ let mediaStream, context, myWidth,myHeight;
 async function setupVideo(){
     if (context) return;
     try {
-        mediaStream = await navigator.mediaDevices.getUserMedia({audio:false,  video: { facingMode: { exact: "environment" }}  });
+        mediaStream = await navigator.mediaDevices.getUserMedia({audio:false,  video: true  });
         const video = document.querySelector('video');
         video.srcObject = mediaStream;
         video.onloadedmetadata = function(event,error) {
@@ -40,7 +40,7 @@ class App extends Component {
 
     constructor() {
         super();
-        this.state = { loading: false, isAuthenticated: false, user: null, token: null, groups:[],group:null, newGroupName:'', provider:'', error:null, videoPage:false, takingSnapshots: false, stackSize: null, interval:30000, baseChipColor: "Black", numberOfBaseChips: 1 };
+        this.state = { loading: false, isAuthenticated: false, user: null, token: null, groups:[],group:null, newGroupName:'', provider:'', error:null, videoPage:false, takingSnapshots: false, stackSize: null, interval:30000, baseChipColor: "Black", numberOfBaseChips: 1, stackImage: null };
     }
 
     logout = () => {
@@ -79,10 +79,18 @@ class App extends Component {
         };
 
         request(options, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
+
+            if (error || response.statusCode>=400){
+                if (error){
+                    this.setState({loading:false, error: 'failed to connect, server might be down', isAuthenticated: false, user: null,});
+                    return;
+                }else{
+                    const bodyObj = JSON.parse(body) ;
+                    console.log('error', bodyObj);
+                    this.setState({loading:false, error: bodyObj.title, isAuthenticated: false, user: null,});
+                    return
+                }
+
             }
 
             if (response && response.headers && response.headers['x-user-context']){
@@ -94,6 +102,8 @@ class App extends Component {
     };
 
     LoginResponse = (r, name) => {
+        console.log('accessToken:')
+        console.log(r.accessToken);
         navigator.clipboard.writeText( r.accessToken);
 
         this.setState({error:null,loading:true, isAuthenticated: true, token: r.accessToken});
@@ -383,7 +393,7 @@ class App extends Component {
 
             } else {
                 const bodyObj = JSON.parse(body) ;
-                this.setState({stackSize: bodyObj.stack, info:bodyObj.info  });
+                this.setState({stackSize: bodyObj.stack, info:bodyObj.info, stackImage: bodyObj.image  });
                 console.log('server response was OK', bodyObj)
             }
         });
@@ -463,6 +473,7 @@ class App extends Component {
                     {this.state.error}
                 </div>
                 <video id="videoOfChips"/>
+                { this.state.stackImage ? <img className="imageOfStack" src={this.state.stackImage}/> : <span/>}
                 <h1>{ this.state.stackSize || this.state.stackSize === 0 ? `stack size: ${this.state.stackSize}` : ''}</h1>
                 <div className="stackInfo">
                     {this.state.info ? (<ul>{ this.state.info.map(item=>(<li key={item.color}>{JSON.stringify(item)}</li>)) }  </ul>) : <div/>}

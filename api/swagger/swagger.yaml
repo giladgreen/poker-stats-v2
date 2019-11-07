@@ -360,6 +360,8 @@ definitions:
           $ref: "#/definitions/InfoObjectDefinition"
       stack:
         type: integer
+      image:
+        type: string
 
   PaginationDefinition:
     properties:

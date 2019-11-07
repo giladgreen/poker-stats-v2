@@ -45,7 +45,7 @@ button {
   padding-left: 10px;
 }
 #about-link{
-position: absolute;
+  position: absolute;
   right:2vw;
   top:0;
   font-size: 0.8em;
@@ -101,8 +101,18 @@ padding-right: 10px;
 }
 
 #videoOfChips{
-  width: 80vw;
-  padding-left: 10vw;
+  width: 64vw;
+  height: 48vh;
+  position: absolute;
+  top:10vh;
+  right: 2vw;
+}
+.imageOfStack{
+  width: 32vw;
+  height: 24vh;
+  position: absolute;
+  top:60vh;
+  right: 2vw;
 }
 .stackInfo{
   font-size: 1em;
@@ -115,13 +125,22 @@ padding-right: 10px;
     color: white;
   }
   #videoOfChips{
-    width: 40vw;
+    width: 60vw;
+    height: 50vh;
+    position: absolute;
+    top:1vh;
+    right: 0;
+    left:50vw;
+
+  }
+  .imageOfStack{
+    width: 30vw;
+    height: 20vw;
     padding-right: 1vw;
     position: absolute;
-    top:10px;
-    right: 0px;
+    top:54vh;
+    right: 0;
   }
-
   .stackInfo{
     font-size: 1em;
   }
@@ -144,12 +163,24 @@ padding-right: 10px;
     color: white;
   }
 
+
+
   #videoOfChips{
-    width: 90vw;
+    width: 80vw;
+    height: 60vw;
     position: absolute;
     top:50vh;
-    right: 5vw;
+    left:10vw;
   }
+  .imageOfStack{
+    width: 60vw;
+    height: 20vh;
+    padding-right: 1vw;
+    position: absolute;
+    top:90vh;
+    left:10vw;
+  }
+
   .stackInfo{
     font-size: 1em;
   }

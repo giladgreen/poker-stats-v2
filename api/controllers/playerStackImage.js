@@ -4,8 +4,8 @@ function getPlayerStackSizeFromImage(req, res, next) {
   const { userContext: { id: userId } } = req;
   const { image, baseChipColor, numberOfBaseChips } = req.getBody();
   playerStackImageService.getPlayerStackSizeFromImage(image, userId, baseChipColor, numberOfBaseChips)
-    .then(({ info, stack }) => {
-      res.send({ info, stack });
+    .then((result) => {
+      res.send(result);
     })
     .catch(next);
 }

@@ -1,8 +1,11 @@
 const moment = require('moment');
 const Jimp = require('jimp');
 const fs = require('fs');
+const cannyEdgeDetector = require('canny-edge-detector');
+const { Image } = require('image-js');
 const { badRequest } = require('boom');
 const logger = require('./logger');
+const ColorsService = require('../helpers/colors');
 
 const WHITE = 255;
 const BLACK = 0;
@@ -45,6 +48,9 @@ function processImage(colorsData, userId, baseChipColor, numberOfBaseChips) {
     }
   }
   if (!existingData[userId]) {
+    if (colorsData[baseChipColor] === 0) {
+      throw badRequest(`Did not found any ${baseChipColor} chips`, { });
+    }
     existingData[userId] = {
       count: colorsData[baseChipColor] / numberOfBaseChips,
       expiration: moment().add(10, 'hours').toDate(),
@@ -61,7 +67,6 @@ function processImage(colorsData, userId, baseChipColor, numberOfBaseChips) {
     .sort((keyA, keyB) => (colorsData[keyA] > colorsData[keyB] ? -1 : 1))
     .map((key) => {
       const count = colorsData[key];
-
 
       const ratio = Math.round(count / baseChipSize);
       const { value } = colorMappings[key];
@@ -82,125 +87,29 @@ function processImage(colorsData, userId, baseChipColor, numberOfBaseChips) {
   };
 }
 
-function cropNonWhiteBorder(image) {
-  function isWhitePixel(red, green, blue) {
-    return red > 145 && blue > 145 && green > 145;
-  }
-  function getFirstRowIsMostlyWhite(img) {
-    const { data, width } = img.bitmap;
-    let firstRowWhiteCounter = 0;
-    for (let i = 0; i < width * 4; i += 4) {
-      const red = data[i + 0];
-      const green = data[i + 1];
-      const blue = data[i + 2];
-      const isWhite = isWhitePixel(red, green, blue);
-      if (isWhite) {
-        firstRowWhiteCounter += 1;
-      }
-    }
-    return (firstRowWhiteCounter >= (width / 2));
-  }
-  function getRightColumnIsMostlyWhite(img) {
-    const { data, width, height } = img.bitmap;
-    let rightColumnWhiteCounter = 0;
-    for (let i = width * 4; i < data.length; i += (width * 4)) {
-      const red = data[i - 4];
-      const green = data[i - 3];
-      const blue = data[i - 2];
-      const isWhite = isWhitePixel(red, green, blue);
-      if (isWhite) {
-        rightColumnWhiteCounter += 1;
-      }
-    }
-    return (rightColumnWhiteCounter >= (height / 2));
-  }
-  function getLastRowIsMostlyWhite(img) {
-    const { data, width, height } = img.bitmap;
-    let lastRowWhiteCounter = 0;
-    for (let i = ((height - 1) * (width * 4)); i < ((height) * (width * 4)); i += 4) {
-      const red = data[i + 0];
-      const green = data[i + 1];
-      const blue = data[i + 2];
-      const isWhite = isWhitePixel(red, green, blue);
-      if (isWhite) {
-        lastRowWhiteCounter += 1;
-      }
-    }
-    return (lastRowWhiteCounter >= (width / 2));
-  }
-  function getLeftColumnIsMostlyWhite(img) {
-    const { data, width, height } = img.bitmap;
-    let leftColumnWhiteCounter = 0;
-    for (let i = 0; i < data.length; i += (width * 4)) {
-      const red = data[i + 0];
-      const green = data[i + 1];
-      const blue = data[i + 2];
-      const isWhite = isWhitePixel(red, green, blue);
-      if (isWhite) {
-        leftColumnWhiteCounter += 1;
-      }
-    }
-    return (leftColumnWhiteCounter >= (height / 2));
-  }
-
-  const { width, height } = image.bitmap;
-  if (width < 20 || height < 20) {
-    return image;
-  }
-  const cropStepSize = 10;
-  if (!getFirstRowIsMostlyWhite(image)) {
-    const newImage = image.clone().crop(0, cropStepSize, width, height - cropStepSize);
-    return cropNonWhiteBorder(newImage);
-  }
-  if (!getRightColumnIsMostlyWhite(image)) {
-    const newImage = image.clone().crop(0, 0, width - cropStepSize, height);
-    return cropNonWhiteBorder(newImage);
-  }
-  if (!getLastRowIsMostlyWhite(image)) {
-    const newImage = image.clone().crop(0, 0, width, height - cropStepSize);
-    return cropNonWhiteBorder(newImage);
-  }
-  if (!getLeftColumnIsMostlyWhite(image)) {
-    const newImage = image.clone().crop(cropStepSize, 0, width - cropStepSize, height);
-    return cropNonWhiteBorder(newImage);
-  }
-  return image;
-}
-
 function clerifyImageAndCount(image) {
-  function allSmallerThen(red, green, blue, x) {
-    return red < x && blue < x && green < x;
-  }
-  function allBiggerThen(red, green, blue, x) {
-    return red > x && blue > x && green > x;
-  }
-  function allDiffLessThen(red, green, blue, x) {
-    return Math.abs(blue - green) < x && Math.abs(blue - red) < x && Math.abs(red - green) < x;
-  }
-
   function _isGray(red, green, blue) {
-    return allBiggerThen(red, green, blue, 70) && allSmallerThen(red, green, blue, 185) && allDiffLessThen(red, green, blue, 40);
+    return ColorsService.rgbName(red, green, blue).toLowerCase().indexOf('gray') >= 0;
   }
-
   function _isRed(red, green, blue) {
-    return red > 90 && (red - green > 40) && (red - blue > 40);
+    return ColorsService.rgbName(red, green, blue).toLowerCase().indexOf('red') >= 0;
   }
-
   function _isGreen(red, green, blue) {
-    return green > 60 && (green - red > 15) && (green - blue > 15);
+    return ColorsService.rgbName(red, green, blue).toLowerCase().indexOf('green') >= 0;
   }
-
   function _isBlue(red, green, blue) {
-    return blue > 50 && (blue - green > 5) && (blue - red > 5);
+    return ColorsService.rgbName(red, green, blue).toLowerCase().indexOf('blue') >= 0;
   }
   function _isBlack(red, green, blue) {
-    return allSmallerThen(red, green, blue, 85);
+    return ColorsService.rgbName(red, green, blue).toLowerCase().indexOf('black') >= 0;
   }
 
   const ratio = image.bitmap.width / image.bitmap.height;
   const newHeight = 380;
   const newWidth = newHeight * ratio;
-  const newImage = cropNonWhiteBorder(image.clone().resize(newWidth, newHeight).contrast(0.2));
+  const newImage = image.clone().resize(newWidth, newHeight).contrast(0.15).brightness(0.2)
+    .write('output/1.png');
+
   const colorsData = {
     Gray: 0,
     Red: 0,
@@ -218,7 +127,6 @@ function clerifyImageAndCount(image) {
         const green = Data[idx + 1];
         const blue = Data[idx + 2];
 
-        // let isWhite =  _isWhite(red, green, blue);
         const isGray = _isGray(red, green, blue);
         const isRed = _isRed(red, green, blue);
         const isGreen = _isGreen(red, green, blue);
@@ -278,8 +186,9 @@ function clerifyImageAndCount(image) {
   }
 
   updateData(data, width, height);
+
+  newImage.write('output/2.png');
   getColorsData(data, width, height);
-  // newImage.write('output/out.png');
 
   logger.debug('colorsData', colorsData);
   return colorsData;
@@ -290,7 +199,144 @@ async function getImageData(image, userId, baseChipColor, numberOfBaseChips) {
   return processImage(colorsData, userId, baseChipColor, numberOfBaseChips);
 }
 
+function getCropDimentions(croppedGreyscale) {
+  let mostLeftWhitePixelIndex = croppedGreyscale.bitmap.width + 2;
+  let mostTopWhitePixelIndex = croppedGreyscale.bitmap.height + 2;
+
+  let mostRigthWhitePixelIndex = -1;
+  let mostBottomWhitePixelIndex = -1;
+
+  for (let i = 0; i < croppedGreyscale.bitmap.width * 4; i += 4) {
+    for (let j = 0; j < croppedGreyscale.bitmap.height; j += 1) {
+      const idx = i + (j * croppedGreyscale.bitmap.width * 4);
+      const red = croppedGreyscale.bitmap.data[idx + 0];
+      const green = croppedGreyscale.bitmap.data[idx + 1];
+      const blue = croppedGreyscale.bitmap.data[idx + 2];
+      const isWhite = (red > 222 && green > 222 && blue > 222);
+      if (isWhite) {
+        if (j < mostTopWhitePixelIndex) {
+          mostTopWhitePixelIndex = j;
+        }
+        if (j > mostBottomWhitePixelIndex) {
+          mostBottomWhitePixelIndex = j;
+        }
+        if (i / 4 < mostLeftWhitePixelIndex) {
+          mostLeftWhitePixelIndex = i / 4;
+        }
+        if (i / 4 > mostRigthWhitePixelIndex) {
+          mostRigthWhitePixelIndex = i / 4;
+        }
+      }
+    }
+  }
+
+  mostLeftWhitePixelIndex = mostLeftWhitePixelIndex - 4 < 0 ? 0 : mostLeftWhitePixelIndex - 4;
+  mostTopWhitePixelIndex = mostTopWhitePixelIndex - 4 < 0 ? 0 : mostTopWhitePixelIndex - 4;
+
+  mostRigthWhitePixelIndex = mostRigthWhitePixelIndex + 4 > croppedGreyscale.bitmap.width ? croppedGreyscale.bitmap.width : mostRigthWhitePixelIndex + 4;
+  mostBottomWhitePixelIndex = mostBottomWhitePixelIndex + 4 > croppedGreyscale.bitmap.height ? croppedGreyscale.bitmap.height : mostBottomWhitePixelIndex + 4;
+
+
+  logger.info('mostLeftWhitePixelIndex', mostLeftWhitePixelIndex);
+  logger.info('mostTopWhitePixelIndex', mostTopWhitePixelIndex);
+  logger.info('mostRigthWhitePixelIndex', mostRigthWhitePixelIndex);
+  logger.info('mostBottomWhitePixelIndex', mostBottomWhitePixelIndex);
+
+  return {
+    mostLeftWhitePixelIndex,
+    mostTopWhitePixelIndex,
+    mostRigthWhitePixelIndex,
+    mostBottomWhitePixelIndex,
+  };
+}
+
 async function saveFileLocally(image, userId) {
+  function cropNonWhiteBorder(imag) {
+    function isWhitePixel(red, green, blue) {
+      return red > 145 && blue > 145 && green > 145;
+    }
+    function getFirstRowIsMostlyWhite(img) {
+      const { data, width } = img.bitmap;
+      let firstRowWhiteCounter = 0;
+      for (let i = 0; i < width * 4; i += 4) {
+        const red = data[i + 0];
+        const green = data[i + 1];
+        const blue = data[i + 2];
+        const isWhite = isWhitePixel(red, green, blue);
+        if (isWhite) {
+          firstRowWhiteCounter += 1;
+        }
+      }
+      return (firstRowWhiteCounter >= (width / 2));
+    }
+    function getRightColumnIsMostlyWhite(img) {
+      const { data, width, height } = img.bitmap;
+      let rightColumnWhiteCounter = 0;
+      for (let i = width * 4; i < data.length; i += (width * 4)) {
+        const red = data[i - 4];
+        const green = data[i - 3];
+        const blue = data[i - 2];
+        const isWhite = isWhitePixel(red, green, blue);
+        if (isWhite) {
+          rightColumnWhiteCounter += 1;
+        }
+      }
+      return (rightColumnWhiteCounter >= (height / 2));
+    }
+    function getLastRowIsMostlyWhite(img) {
+      const { data, width, height } = img.bitmap;
+      let lastRowWhiteCounter = 0;
+      for (let i = ((height - 1) * (width * 4)); i < ((height) * (width * 4)); i += 4) {
+        const red = data[i + 0];
+        const green = data[i + 1];
+        const blue = data[i + 2];
+        const isWhite = isWhitePixel(red, green, blue);
+        if (isWhite) {
+          lastRowWhiteCounter += 1;
+        }
+      }
+      return (lastRowWhiteCounter >= (width / 2));
+    }
+    function getLeftColumnIsMostlyWhite(img) {
+      const { data, width, height } = img.bitmap;
+      let leftColumnWhiteCounter = 0;
+      for (let i = 0; i < data.length; i += (width * 4)) {
+        const red = data[i + 0];
+        const green = data[i + 1];
+        const blue = data[i + 2];
+        const isWhite = isWhitePixel(red, green, blue);
+        if (isWhite) {
+          leftColumnWhiteCounter += 1;
+        }
+      }
+      return (leftColumnWhiteCounter >= (height / 2));
+    }
+
+    const { width, height } = imag.bitmap;
+    if (width < 20 || height < 20) {
+      return imag;
+    }
+    const cropStepSize = 10;
+    if (!getFirstRowIsMostlyWhite(imag)) {
+      const newImage = imag.clone().crop(0, cropStepSize, width, height - cropStepSize);
+      return cropNonWhiteBorder(newImage);
+    }
+    if (!getRightColumnIsMostlyWhite(imag)) {
+      const newImage = imag.clone().crop(0, 0, width - cropStepSize, height);
+      return cropNonWhiteBorder(newImage);
+    }
+    if (!getLastRowIsMostlyWhite(imag)) {
+      const newImage = imag.clone().crop(0, 0, width, height - cropStepSize);
+      return cropNonWhiteBorder(newImage);
+    }
+    if (!getLeftColumnIsMostlyWhite(imag)) {
+      const newImage = imag.clone().crop(cropStepSize, 0, width - cropStepSize, height);
+      return cropNonWhiteBorder(newImage);
+    }
+    return imag;
+  }
+
+
   const png = image.indexOf('png;') > 0;
   const jpg = image.indexOf('jpg;') > 0;
   const jpeg = image.indexOf('jpeg;') > 0;
@@ -313,25 +359,48 @@ async function saveFileLocally(image, userId) {
 
   const fileName = `output/${userId}_image.${type}`;
   await save(fileName, base64Data);
-  return Jimp.read(fileName);
+
+
+  try {
+    const originalImage = await Jimp.read(fileName);
+    const originalImageWithFirstCrop = cropNonWhiteBorder(originalImage).write(fileName);
+    originalImageWithFirstCrop.brightness(0.3).contrast(0.8).write(`output/${userId}_image_cropped.${type}`);
+    const croppedImage = await Image.load(`output/${userId}_image_cropped.${type}`);
+    const greyCroppedImage = croppedImage.grey();
+    await (cannyEdgeDetector(greyCroppedImage).save(`output/${userId}croppedGreyscale.png`));
+    const croppedGreyscale = await Jimp.read(`output/${userId}croppedGreyscale.png`);
+
+    const {
+      mostLeftWhitePixelIndex,
+      mostTopWhitePixelIndex,
+      mostRigthWhitePixelIndex,
+      mostBottomWhitePixelIndex,
+    } = getCropDimentions(croppedGreyscale);
+
+    const result = await Jimp.read(fileName);
+    logger.info('result image size:', result.bitmap.width, 'x', result.bitmap.height);
+    return result.crop(mostLeftWhitePixelIndex,
+      mostTopWhitePixelIndex,
+      mostRigthWhitePixelIndex - mostLeftWhitePixelIndex,
+      mostBottomWhitePixelIndex - mostTopWhitePixelIndex).write('output/croppedAfter.png');
+  } catch (e) {
+    return Jimp.read(fileName);
+  }
 }
 
 
 async function getPlayerStackSizeFromImage(image, userId, baseChipColor, numberOfBaseChips) {
-  try {
-    const start = (new Date()).getTime();
-    const newImage = await saveFileLocally(image, userId);
-
-    const { stack, info } = await getImageData(newImage, userId, baseChipColor, numberOfBaseChips);
-    const end = (new Date()).getTime();
-    logger.info('finished in:', end - start, 'milli');
-    return {
-      info,
-      stack,
-    };
-  } catch (e) {
-    throw e.message;
-  }
+  const start = (new Date()).getTime();
+  const newImage = await saveFileLocally(image, userId);
+  const returnImage = await newImage.getBase64Async(Jimp.MIME_PNG);
+  const { stack, info } = await getImageData(newImage, userId, baseChipColor, numberOfBaseChips);
+  const end = (new Date()).getTime();
+  logger.info('finished in:', end - start, 'milli');
+  return {
+    info,
+    stack,
+    image: returnImage,
+  };
 }
 
 async function resetPlayerBaseChipCount(userId) {
