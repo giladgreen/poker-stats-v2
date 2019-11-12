@@ -2,41 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/helpers/colors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/orig.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/22391f9f-702a-44be-9c30-98d89ec9c0ab_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/22391f9f-702a-44be-9c30-98d89ec9c0ab_image_cropped.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/22391f9f-702a-44be-9c30-98d89ec9c0abcroppedGreyscale.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/cropped.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/croppedAfter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/croppedGreyscale.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/gilad_image.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/gilad_image_cropped.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/giladcroppedGreyscale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/playerStackImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/playerStackImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/playerStackImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/playerStackImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/playerStackImage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/playerStackImage.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/631fe6a1-20d7-453c-8999-2f73e16b053c_image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/b16a313f-c085-4fb1-9cf7-c343d8c1cdc3_image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/index.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,23 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/playerStackImage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="317" column="5" lean-forward="true" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!block;n#isWhitePixel#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
-                <element signature="n#!!block;n#getFirstRowIsMostlyWhite#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
-                <element signature="n#!!block;n#getRightColumnIsMostlyWhite#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
-                <element signature="n#!!block;n#getLastRowIsMostlyWhite#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
-                <element signature="n#!!block;n#getLeftColumnIsMostlyWhite#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -94,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/helpers/colors.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
+            <state relative-caret-position="24135">
               <caret line="1611" column="16" selection-start-line="1611" selection-start-column="16" selection-end-line="1611" selection-end-column="16" />
               <folding>
                 <element signature="n#!!block;n#_isBlack#0" />
@@ -122,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="543">
+              <caret line="44" column="21" lean-forward="true" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -135,10 +89,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
+        <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="176" column="14" selection-start-line="176" selection-start-column="14" selection-end-line="176" selection-end-column="14" />
+            <state relative-caret-position="4455">
+              <caret line="297" column="12" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
+              <folding>
+                <element signature="e#9781#9966#0" />
+                <element signature="e#9969#10046#0" />
+                <element signature="e#10049#10176#0" />
+                <element signature="e#10179#10408#0" />
+                <element signature="e#10411#10616#0" />
+                <element signature="e#10619#10956#0" />
+                <element signature="e#10959#11181#0" />
+                <element signature="e#11184#11336#0" />
+                <element signature="e#11339#11449#0" />
+                <element signature="e#11452#11678#0" />
+                <element signature="e#11681#11905#0" />
+                <element signature="e#11908#12136#0" />
+                <element signature="e#12139#12261#0" />
+                <element signature="e#12264#12359#0" />
+                <element signature="e#12362#12607#0" />
+                <element signature="e#12610#12713#0" />
+                <element signature="e#12716#12961#0" />
+                <element signature="e#12965#13159#0" />
+                <element signature="e#13162#13292#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -155,9 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Heath</find>
-      <find>Peach</find>
-      <find>Romance</find>
       <find>Cioccolato</find>
       <find>math.</find>
       <find>grey</find>
@@ -185,6 +157,9 @@
       <find>getCropDimentions</find>
       <find>Image</find>
       <find>console</find>
+      <find>video</find>
+      <find>InfoObjectDefinition</find>
+      <find>GeneralResponseDefinition</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -249,7 +224,6 @@
         <option value="$PROJECT_DIR$/tests/unit/fittings/transaction_id.js" />
         <option value="$PROJECT_DIR$/tests/unit/fittings/logger.js" />
         <option value="$PROJECT_DIR$/test-client/package.json" />
-        <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
         <option value="$PROJECT_DIR$/api/controllers/playerStackImage.js" />
         <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
         <option value="$PROJECT_DIR$/test-client/src/index.css" />
@@ -257,6 +231,7 @@
         <option value="$PROJECT_DIR$/.eslintrc.yml" />
         <option value="$PROJECT_DIR$/api/services/playerStackImage.js" />
         <option value="$PROJECT_DIR$/test-client/src/App.js" />
+        <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
       </list>
     </option>
   </component>
@@ -299,18 +274,6 @@
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="fittings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -318,35 +281,6 @@
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="swagger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="boom" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="boom" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="poker.js" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
@@ -539,13 +473,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244964000" />
+    <option name="totallyTimeSpent" value="245353000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1334" y="-1056" width="1920" height="976" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="954" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.13099042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.15811966" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -575,38 +509,22 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
           <line>41</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
           <line>22</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
           <line>25</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
           <line>30</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/api/services/playerStackImage.js</url>
-          <line>51</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/api/services/playerStackImage.js</url>
-          <line>60</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -885,24 +803,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="362" column="12" selection-start-line="362" selection-start-column="12" selection-end-line="362" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/jimp/types/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="133" column="2" selection-start-line="133" selection-start-column="2" selection-end-line="133" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/playerStackImage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -943,7 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
+        <state relative-caret-position="2640">
           <caret line="176" column="14" selection-start-line="176" selection-start-column="14" selection-end-line="176" selection-end-column="14" />
         </state>
       </provider>
@@ -954,19 +858,12 @@
     <entry file="file://$PROJECT_DIR$/.huskyrc.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/api/helpers/colors.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
+        <state relative-caret-position="24135">
           <caret line="1611" column="16" selection-start-line="1611" selection-start-column="16" selection-end-line="1611" selection-end-column="16" />
           <folding>
             <element signature="n#!!block;n#_isBlack#0" />
@@ -981,10 +878,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/playerStackImage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="44" column="21" lean-forward="true" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4455">
+          <caret line="297" column="12" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
+          <folding>
+            <element signature="e#9781#9966#0" />
+            <element signature="e#9969#10046#0" />
+            <element signature="e#10049#10176#0" />
+            <element signature="e#10179#10408#0" />
+            <element signature="e#10411#10616#0" />
+            <element signature="e#10619#10956#0" />
+            <element signature="e#10959#11181#0" />
+            <element signature="e#11184#11336#0" />
+            <element signature="e#11339#11449#0" />
+            <element signature="e#11452#11678#0" />
+            <element signature="e#11681#11905#0" />
+            <element signature="e#11908#12136#0" />
+            <element signature="e#12139#12261#0" />
+            <element signature="e#12264#12359#0" />
+            <element signature="e#12362#12607#0" />
+            <element signature="e#12610#12713#0" />
+            <element signature="e#12716#12961#0" />
+            <element signature="e#12965#13159#0" />
+            <element signature="e#13162#13292#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/playerStackImage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="317" column="5" lean-forward="true" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
+          <caret line="317" column="5" selection-start-line="317" selection-start-column="5" selection-end-line="317" selection-end-column="5" />
           <folding>
             <element signature="n#!!block;n#isWhitePixel#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
             <element signature="n#!!block;n#getFirstRowIsMostlyWhite#0;n#!!block;n#cropNonWhiteBorder#0;n#!!block;n#saveFileLocally#0" />
@@ -995,20 +944,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="14" />
         </state>
       </provider>
     </entry>
