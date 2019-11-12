@@ -3,7 +3,7 @@ const models = require('../models');
 
 const attributes = ['id', 'name', 'email', 'groupId', 'createdAt'];
 const defaultValues = {
-  email: '-',
+  email: '',
   imageUrl: 'anonymous',
 };
 

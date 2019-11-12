@@ -6,7 +6,7 @@ const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'create
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'updatedAt'];
 
 const defaultValues = {
-  description: '-',
+  description: '',
   date: (new Date()).toISOString(),
 };
 
@@ -53,9 +53,7 @@ async function getGames(groupId, limit = 1000, offset = 0) {
   });
 
   const results = allGames.map(game => game.toJSON()).map((game) => {
-    if (!game.description) {
-      game.description = '';
-    }
+    game.description = game.description || '';
     return game;
   });
   return {

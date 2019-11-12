@@ -120,7 +120,6 @@ describe('services: games', function () {
   describe('createGame()', function () {
     const date = (new Date()).toISOString();
     const data = {
-      description: 'bla bla bla',
       date,
     };
     describe('without players data', function () {
@@ -138,6 +137,7 @@ describe('services: games', function () {
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
           ...data,
+          description: '',
           ready: false,
           groupId,
         });
@@ -162,6 +162,7 @@ describe('services: games', function () {
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
           ...data,
+          description: '',
           ready: false,
           groupId,
         });

@@ -133,7 +133,7 @@ describe('services: players', function () {
       const createPlayerArgs = this.createPlayer.getCall(0);
       should(createPlayerArgs.args[0]).be.eql({
         ...data,
-        email: '-',
+        email: '',
         imageUrl: 'anonymous',
         groupId,
       });
