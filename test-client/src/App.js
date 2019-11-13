@@ -1,14 +1,12 @@
 import { URL_PREFIX } from '../../config.js';
 import React, { Component } from 'react';
 import request from 'request';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json';
-
-const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
-//const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
-
+const ONE_DAY = 1000 * 60 * 60 * 24;
+//const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
+const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
 
 class App extends Component {
 
@@ -68,11 +66,19 @@ class App extends Component {
                 const userContextString = response.headers['x-user-context'];
                 const userContext = JSON.parse(decodeURI(userContextString));
                 this.setState({error:null, loading:false, isAuthenticated: true, user: userContext, groups: JSON.parse(body).results});
+                const authData = localStorage.getItem('authData');
+                let issueDate=  new Date();
+                if (authData){
+                    issueDate = JSON.parse(authData).issueDate;
+                }
+                localStorage.setItem('authData', JSON.stringify({provider: name, token, issueDate }));
+
             }
         });
     };
 
     LoginResponse = (r, name) => {
+        this.setProvider(name);
         console.log('accessToken:')
         console.log(r.accessToken);
         navigator.clipboard.writeText( r.accessToken);
@@ -85,16 +91,33 @@ class App extends Component {
     };
 
     facebookResponse = (response) => {
-        this.setProvider('facebook');
         return this.LoginResponse(response, 'facebook');
     };
 
     googleResponse = (response) => {
-        this.setProvider('google');
         return this.LoginResponse(response, 'google');
     };
 
     LoginPage = () => {
+        const authData = localStorage.getItem('authData');
+        if (authData){
+            console.log('authData',authData);
+            const {provider, token, issueDate } = JSON.parse(authData);
+            const timePassed = (new Date()).getTime() - (new Date(issueDate)).getTime();
+            console.log('time Passed:', timePassed)
+            if (timePassed > ONE_DAY){
+                console.log("deleting auth data from local storage..")
+                localStorage.removeItem('authData');
+            } else{
+                console.log("using auth data from local storage..");
+                const response = {
+                    accessToken: token
+                };
+                this.LoginResponse(response, provider);
+            }
+
+        }
+
         return (
             <div className="App login-page">
                 <div>
@@ -362,7 +385,13 @@ class App extends Component {
     };
 
     render() {
-        const { Header, GroupsInfo, About, LoaderPage, LoginPage, GroupPage } = this;
+        const { Header, GroupsInfo, LoaderPage, LoginPage, GroupPage } = this;
+
+        const mainSection = (this.state.loading && <LoaderPage/>) ||
+            (!this.state.isAuthenticated && <LoginPage/>) ||
+            (this.state.group && <GroupPage/>) ||
+            <GroupsInfo/>;
+
 
         return (
             <div className="App">
@@ -371,19 +400,7 @@ class App extends Component {
                     {this.state.error}
                 </div>
                 <div className="MainSection">
-                    <Router className="MainSection">
-                        <Switch>
-                            <Route path="/about" >
-                                <About/>
-                            </Route>
-                            <Route path="/" >
-                                { (this.state.loading && <LoaderPage/>) ||
-                                (!this.state.isAuthenticated && <LoginPage/>) ||
-                                (this.state.group && <GroupPage/>) ||
-                                    <GroupsInfo/>}
-                            </Route>
-                        </Switch>
-                    </Router>
+                    {mainSection}
                 </div>
             </div>);
 
