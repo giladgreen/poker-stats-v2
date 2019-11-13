@@ -1,171 +1,37 @@
 import { URL_PREFIX } from '../../config.js';
 import React, { Component } from 'react';
 import request from 'request';
-import FacebookLogin from 'react-facebook-login';
-import { GoogleLogin } from 'react-google-login';
-import config from './config.json';
-const ONE_DAY = 1000 * 60 * 60 * 24;
-//const pokerStatsGroupsUrlPrefix = URL_PREFIX;//'http://localhost:5000/api/v2';
-const pokerStatsGroupsUrlPrefix = 'https://poker-stats.herokuapp.com/api/v2';
+
+import Groups from './components/Groups';
+import Login from './components/Login';
+import Loading from './containers/Loading';
+import Header from './containers/Header';
 
 class App extends Component {
 
 
     constructor() {
         super();
-        this.state = { loading: false, isAuthenticated: false, user: null, token: null, groups:[],group:null, newGroupName:'', provider:'', error:null};
+        this.state = { loading: false, isAuthenticated: false, user: null, groups:[], group:null, provider:'', error:null, token:null};
     }
 
     logout = () => {
-        this.setState({isAuthenticated: false, token: null, user: null, groups:[],group:null, error:null})
+        localStorage.removeItem('authData');
+        this.setState({isAuthenticated: false, user: null, groups:[],group:null, error:null})
     };
 
-
-    backToGroupPage = () => {
-        this.setState({error:null })
-    };
-
-    backToMainPage = () => {
-        this.setState({group:null, error:null})
-    };
-
-    setProvider = (provider) => {
-        this.setState({provider, error:null})
-    };
 
     onFailure = (error) => {
-        alert(error);
+        console.log('App onFailure', error)
+        this.setState({error })
     };
 
-    performLogin = (name, token) => {
-        const options = {
-            url: `${pokerStatsGroupsUrlPrefix}/groups/`,
-            headers:{
-                provider: name,
-                "x-auth-token": token,
-                "Content-Type":'application/json'
-            }
-        };
-
-        request(options, (error, response, body) =>{
-
-            if (error || response.statusCode>=400){
-                if (error){
-                    this.setState({loading:false, error: 'failed to connect, server might be down', isAuthenticated: false, user: null,});
-                    return;
-                }else{
-                    const bodyObj = JSON.parse(body) ;
-                    console.log('error', bodyObj);
-                    this.setState({loading:false, error: bodyObj.title, isAuthenticated: false, user: null,});
-                    return
-                }
-
-            }
-
-            if (response && response.headers && response.headers['x-user-context']){
-                const userContextString = response.headers['x-user-context'];
-                const userContext = JSON.parse(decodeURI(userContextString));
-                this.setState({error:null, loading:false, isAuthenticated: true, user: userContext, groups: JSON.parse(body).results});
-                const authData = localStorage.getItem('authData');
-                let issueDate=  new Date();
-                if (authData){
-                    issueDate = JSON.parse(authData).issueDate;
-                }
-                localStorage.setItem('authData', JSON.stringify({provider: name, token, issueDate }));
-
-            }
-        });
-    };
-
-    LoginResponse = (r, name) => {
-        this.setProvider(name);
-        console.log('accessToken:')
-        console.log(r.accessToken);
-        navigator.clipboard.writeText( r.accessToken);
-
-        this.setState({error:null,loading:true, isAuthenticated: true, token: r.accessToken});
-
-        this.performLogin(name, r.accessToken);
-
-
-    };
-
-    facebookResponse = (response) => {
-        return this.LoginResponse(response, 'facebook');
-    };
-
-    googleResponse = (response) => {
-        return this.LoginResponse(response, 'google');
-    };
-
-    LoginPage = () => {
-        const authData = localStorage.getItem('authData');
-        if (authData){
-            console.log('authData',authData);
-            const {provider, token, issueDate } = JSON.parse(authData);
-            const timePassed = (new Date()).getTime() - (new Date(issueDate)).getTime();
-            console.log('time Passed:', timePassed)
-            if (timePassed > ONE_DAY){
-                console.log("deleting auth data from local storage..")
-                localStorage.removeItem('authData');
-            } else{
-                console.log("using auth data from local storage..");
-                const response = {
-                    accessToken: token
-                };
-                this.LoginResponse(response, provider);
-            }
-
-        }
-
-        return (
-            <div className="App login-page">
-                <div>
-                    <h1>Log in to PokerStats!</h1>
-                    <h2> Log in with:</h2>
-                </div>
-
-                <div>
-                     <div>
-
-                            <FacebookLogin
-                                appId={config.FACEBOOK_APP_ID}
-                                autoLoad={false}
-
-                                fields="name,email,picture"
-                                callback={this.facebookResponse} />
-                     </div>
-                    <br/>
-                    <div>
-                            <GoogleLogin
-                                clientId={config.GOOGLE_CLIENT_ID}
-                                buttonText="Login with Google"
-                                onSuccess={this.googleResponse}
-                                onFailure={this.onFailure}
-                            />
-
-
-
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    LoaderPage = () => {
-        return (
-            <div className="App">
-                <p id="loader">Please wait...</p>
-            </div>
-        );
-    };
-
-    createNewGroup = () =>{
+    createNewGroup = (newGroupName) =>{
 
         const options = {
             method:'POST',
-            url: `${pokerStatsGroupsUrlPrefix}/groups/`,
-            body:JSON.stringify({name:this.state.newGroupName}),
+            url: `${URL_PREFIX}/groups/`,
+            body:JSON.stringify({name:newGroupName}),
             headers:{
                 provider: this.state.provider,
                 "x-auth-token": this.state.token,
@@ -178,68 +44,11 @@ class App extends Component {
             if (response.statusCode>=400){
                 const bodyObj = JSON.parse(body) ;
                 console.log('error', bodyObj);
-              this.setState({error: bodyObj.title});
-
-            } else{
-                this.performLogin(this.state.provider, this.state.token);
-            }
-
-        });
-    };
-
-    onGetInventionsRequestsClicked = (groupId) =>{
-        const body = JSON.stringify({
-            groupId
-        });
-
-        const options = {
-            method: 'POST',
-            url: `${pokerStatsGroupsUrlPrefix}/inventions-requests/`,
-            headers:{
-                provider: 'google',
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            },
-            body
-        };
-        const groups = {...this.state.groups};
-        const group = Object.values(groups).find(g=>g.id === groupId);
-
-        request(options, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
                 this.setState({error: bodyObj.title});
             }else{
-                try {
-                    const {status} = JSON.parse(body);
-                    if (group && status){
-                        group.invitationRequested = true;
-                        group.invitationStatus = status;
-                        this.setState({error:null, groups});
-                    }
-                } catch (e) {
-                }
+                this.setState({ loading: false, isAuthenticated: false});
             }
-
-
-
         });
-    };
-
-    handleNewGameNameChange = (event) =>{
-        this.setState({error:null,newGroupName: event.target.value});
-    };
-
-    getNewGroupSection = () => {
-        return (<div>
-            <h1> Create a new group. </h1>
-            Group name: <input type="text" id="newGroupName" value={this.state.newGroupName} onChange={this.handleNewGameNameChange}/>
-
-            <button className="button" onClick={this.createNewGroup}> Create </button>
-            <br/><br/> <hr/><br/><br/>
-
-        </div>);
     };
 
     onGroupClicked = (group) => {
@@ -247,18 +56,18 @@ class App extends Component {
 
         const playersOptions = {
             method: 'GET',
-            url: `${pokerStatsGroupsUrlPrefix}/groups/${group.id}/players/`,
+            url: `${URL_PREFIX}/groups/${group.id}/players/`,
             headers:{
-                provider: 'google',
+                provider: this.state.provider,
                 "x-auth-token": this.state.token,
                 "Content-Type":'application/json'
             }
         };
         const gamesOptions = {
             method: 'GET',
-            url: `${pokerStatsGroupsUrlPrefix}/groups/${group.id}/games/`,
+            url: `${URL_PREFIX}/groups/${group.id}/games/`,
             headers:{
-                provider: 'google',
+                provider: this.state.provider,
                 "x-auth-token": this.state.token,
                 "Content-Type":'application/json'
             }
@@ -292,74 +101,18 @@ class App extends Component {
         });
     };
 
-    GroupsInfo = () => {
-
-        const {groups} = this.state;
-        if (!groups || groups.length === 0){
-            return (<div>
-                <b><u>No groups. </u></b> <br/><br/> <br/><br/>
-                {this.getNewGroupSection()}
-            </div>);
-        }
-        const userGroups = groups.filter(group => group.userInGroup).map(group =>{
-            return (<div key={`userInGroup_${group.id}`}>
-                        -  <button className="button" onClick={()=> this.onGroupClicked(group)}>{group.name}   </button>  {group.isAdmin ? ' (you are a group admin.)' : ''}
-                <br/><br/>
-                    </div>);
-        });
-
-        const nonUserGroups = groups.filter(group => !group.userInGroup).map(group =>{
-            const { invitationRequested, invitationStatus } = group;
-            const button =  <button className="button" onClick={()=> this.onGetInventionsRequestsClicked(group.id)}> ask invitation to this group</button>;
-            return (<div key={`userNotInGroup_${group.id}`}>
-                - Group: <b> {group.name} </b>.  { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
-                    <br/><br/>
-                </div>);
-        });
-        return (
-            <div>
-                {this.getNewGroupSection()}
-                <div>
-                    <b><u> You belong to {userGroups.length} groups:</u></b>
-                    <br/><br/>
-                    {userGroups}
-                    <br/><br/>
-                </div>
-                <div>
-                    <hr/>
-                </div>
-                <div>
-                    <b><u> there are {nonUserGroups.length} groups you do not belong to:</u></b>
-                    <br/><br/>
-                    {nonUserGroups}
-                    <br/><br/><br/><br/>
-                </div>
-            </div> );
-
-
-
+    updateGroups = (groups) => {
+        this.setState({groups});
     };
 
-    About = ()=>{
-        return 'About..';
-    }
-
-    Header = ()=>{
-        const {loading, isAuthenticated}  = this.state;
-        if (loading || !isAuthenticated){
-            return <div/>;
-        }
-        return ( <div>
-            <div className="logged-in-header">
-                <img alt="" src={this.state.user.imageUrl}  className="user-image" />
-                <span className="logged-in-header-text">you are logged in as <span className="blue-text"> {this.state.user.firstName} {this.state.user.familyName} </span> ({this.state.user.email})</span>
-                <button className="button" onClick={this.logout}> Log out </button>
-
-            </div>
-            <hr/>
-        </div>);
+    backToMainPage = () => {
+        this.setState({group:null, players:null,games:null});
     };
 
+    onLogin = ({userContext, provider, token, groups}) => {
+        console.log('on login', 'userContext',userContext, 'groups',groups);
+        this.setState({user: userContext, groups, loading: false, isAuthenticated: true, error:null, provider, token})
+    };
 
     GroupPage = () => {
         const {group} = this.state;
@@ -385,17 +138,23 @@ class App extends Component {
     };
 
     render() {
-        const { Header, GroupsInfo, LoaderPage, LoginPage, GroupPage } = this;
 
-        const mainSection = (this.state.loading && <LoaderPage/>) ||
-            (!this.state.isAuthenticated && <LoginPage/>) ||
-            (this.state.group && <GroupPage/>) ||
-            <GroupsInfo/>;
+        const {loading, isAuthenticated, group}  = this.state;
+        if (loading){
+            return  <Loading/>;
+        }
+        if (!isAuthenticated){
+            return  <Login onFailure={this.onFailure} onLogin={this.onLogin} />;
+        }
+
+        const mainSection = group ?
+            this.GroupPage() :
+            <Groups groups={this.state.groups} createNewGroup={this.createNewGroup}  onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
 
 
         return (
             <div className="App">
-                <Header/>
+                <Header user={this.state.user} logout={this.logout}/>
                 <div className="errorSection">
                     {this.state.error}
                 </div>
