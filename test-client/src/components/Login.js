@@ -10,8 +10,13 @@ class Login extends Component {
     performLogin = async (provider, token) => {
         try{
             const result = await login(provider, token);
+            const authData = localStorage.getItem('authData');
+            const issueDate  = authData ? JSON.parse(authData).issueDate : new Date();
+
+            localStorage.setItem('authData', JSON.stringify({provider, token, issueDate }));
             return this.props.onLogin(result);
         }catch(error){
+            localStorage.removeItem('authData');
             return this.props.onFailure(error);
         }
     };
@@ -21,7 +26,8 @@ class Login extends Component {
     };
 
     googleResponse = (response) => {
-        this.performLogin('google', response.accessToken);    };
+        this.performLogin('google', response.accessToken);
+    };
 
     render() {
         const authData = localStorage.getItem('authData');

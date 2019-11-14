@@ -8,6 +8,7 @@ class Utils {
      * @returns {Map<String, String>}
      */
   static getAllParams(request) {
+    const base = { ...request.query };
     return Object.keys(request.swagger.params).reduce((all, param) => {
       if (param === 'body') {
         return {
@@ -19,7 +20,7 @@ class Utils {
         ...all,
         [param]: request.swagger.params[param].value,
       };
-    }, {});
+    }, base);
   }
 
   /**

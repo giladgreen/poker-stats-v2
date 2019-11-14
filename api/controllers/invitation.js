@@ -15,9 +15,10 @@ function createInvitationRequest(req, res, next) {
 
 function answerInvitationRequest(req, res, next) {
   const {
-    inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin,
+    invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin,
   } = req.getAllParams();
-  invitationsService.answerInvitationRequest(inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin)
+
+  invitationsService.answerInvitationRequest(invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin)
     .then((status) => {
       res.status(HttpStatus.OK).send({ status });
     })

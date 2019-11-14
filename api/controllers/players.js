@@ -39,7 +39,9 @@ function updatePlayer(req, res, next) {
 }
 function deletePlayer(req, res, next) {
   const { groupId, playerId } = req.getAllParams();
-  playersService.deletePlayer(groupId, playerId)
+  const { userContext } = req;
+  const userId = userContext.id;
+  playersService.deletePlayer(groupId, userId, playerId)
     .then(() => {
       res.status(HttpStatus.NO_CONTENT).send({ deleted: true });
     })

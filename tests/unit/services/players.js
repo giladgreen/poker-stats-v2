@@ -1,13 +1,14 @@
 const sinon = require('sinon');
 const { isBoom } = require('boom');
 const should = require('should');
-const { players } = require('../../../api/models');
+const { players, usersPlayers, gamesData } = require('../../../api/models');
 const playersService = require('../../../api/services/players');
 
 
 describe('services: players', function () {
   const groupId = 'groupId';
   const playerId = 'playerId';
+  const userId = 'userId';
   beforeEach(async function () {
     this.sandbox = sinon.createSandbox();
   });
@@ -115,14 +116,19 @@ describe('services: players', function () {
   });
   describe('createPlayer()', function () {
     const data = {
-      firstName: 'firstName',
-      familyName: 'familyName',
+      name: 'firstName familyName',
     };
 
     beforeEach(async function () {
       this.createPlayer = this.sandbox.stub(players, 'create').resolves({ id: 'id' });
-      this.playerFindOne = this.sandbox.stub(players, 'findOne').resolves({
-        toJSON: () => data,
+
+      this.playerFindOne = this.sandbox.stub(players, 'findOne').callsFake(function findOne(options) {
+        if (options.where.name) {
+          return null;
+        }
+        return {
+          toJSON: () => data,
+        };
       });
     });
     it('should return correct data back', async function () {
@@ -183,14 +189,62 @@ describe('services: players', function () {
     });
   });
   describe('deletePlayer()', function () {
-    beforeEach(async function () {
-      this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
+    describe('when player is the current user', function () {
+      beforeEach(async function () {
+        this.destroyPlayer = this.sandbox.stub(gamesData, 'count').resolves(0);
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'findOne').resolves({});
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'destroy').resolves(null);
+        this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
+      });
+      it('should return correct data back', async function () {
+        try {
+          await playersService.deletePlayer(groupId, userId, playerId);
+        } catch (error) {
+          should(isBoom(error)).be.eql(true);
+          should(error.data).be.eql({ groupId, userId, playerId });
+          should(error.output.payload).be.eql({
+            statusCode: 400,
+            error: 'Bad Request',
+            message: 'you can not delete yourself.',
+          });
+        }
+      });
     });
-    it('should return correct data back', async function () {
-      await playersService.deletePlayer(groupId, playerId);
-      should(players.destroy.called).be.eql(true);
-      const destroyPlayerArgs = this.destroyPlayer.getCall(0);
-      should(destroyPlayerArgs.args[0].where).be.eql({ groupId, id: playerId });
+    describe('when player is not the current user, but appears in an existing game', function () {
+      const gamesCount = 3;
+      beforeEach(async function () {
+        this.destroyPlayer = this.sandbox.stub(gamesData, 'count').resolves(gamesCount);
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'findOne').resolves(null);
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'destroy').resolves(null);
+        this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
+      });
+      it('should return correct data back', async function () {
+        try {
+          await playersService.deletePlayer(groupId, userId, playerId);
+        } catch (error) {
+          should(isBoom(error)).be.eql(true);
+          should(error.data).be.eql({ groupId, playerId, gamesCount });
+          should(error.output.payload).be.eql({
+            statusCode: 400,
+            error: 'Bad Request',
+            message: 'you can not delete player, remove it from existing games first.',
+          });
+        }
+      });
+    });
+    describe('when player is not the current user and not in any game', function () {
+      beforeEach(async function () {
+        this.destroyPlayer = this.sandbox.stub(gamesData, 'count').resolves(0);
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'findOne').resolves(null);
+        this.destroyPlayer = this.sandbox.stub(usersPlayers, 'destroy').resolves(null);
+        this.destroyPlayer = this.sandbox.stub(players, 'destroy').resolves(true);
+      });
+      it('should return correct data back', async function () {
+        await playersService.deletePlayer(groupId, userId, playerId);
+        should(players.destroy.called).be.eql(true);
+        const destroyPlayerArgs = this.destroyPlayer.getCall(0);
+        should(destroyPlayerArgs.args[0].where).be.eql({ groupId, id: playerId });
+      });
     });
   });
 });

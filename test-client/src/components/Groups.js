@@ -1,112 +1,62 @@
-import { URL_PREFIX } from '../../../config';
 import React, { Component } from 'react';
-import request from 'request';
+import createGroup from "../actions/createGroup";
+import deleteGroup from "../actions/deleteGroup";
+import requestInvitation from "../actions/requestInvitation";
 
 class Groups extends Component {
-
 
     constructor() {
         super();
         this.state = { newGroupName:'' };
     }
 
-    onGetInventionsRequestsClicked = (groupId) =>{
+    onGetInvitationRequestsClicked = async (groupId) => {
+        try {
+            const {status} = await requestInvitation(groupId, this.props.provider, this.props.token);
+            const groupsClone = [...this.props.groups];
+            const group = Object.values(groupsClone).find(g => g.id === groupId);
 
-        const options = {
-            method: 'POST',
-            url: `${URL_PREFIX}/inventions-requests/`,
-            headers:{
-                provider: 'google',
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            },
-            body: JSON.stringify({
-                groupId
-            })
-        };
-
-
-        request(options, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                return this.props.onFailure(bodyObj.title);
-
-            }else{
-                try {
-                    const {status} = JSON.parse(body);
-                    const groupsClone = [...this.props.groups];
-                    const group = Object.values(groupsClone).find(g=>g.id === groupId);
-
-                    if (group && status){
-                        group.invitationRequested = true;
-                        group.invitationStatus = status;
-                        this.props.updateGroups(groupsClone);
-                    }
-                } catch (e) {
-                    console.log(e.message);
-                    return this.props.onFailure('error while asking for invitation');
-                }
+            if (group && status) {
+                group.invitationRequested = true;
+                group.invitationStatus = status;
+                this.props.updateGroups(groupsClone);
             }
-
-
-
-        });
-    };
+        } catch (error) {
+            console.error('requestInvitation error', error);
+            this.props.onFailure(error);
+        }
+    }
 
     handleNewGameNameChange = (event) =>{
-        this.setState({error:null,newGroupName: event.target.value});
+        this.setState({newGroupName: event.target.value});
     };
 
-
-
     onGroupClicked = (group) => {
-        this.setState({group, loading:true, error:null});
+        this.props.updateGroup(group);
+    };
 
-        const playersOptions = {
-            method: 'GET',
-            url: `${URL_PREFIX}/groups/${group.id}/players/`,
-            headers:{
-                provider: this.state.provider,
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            }
-        };
-        const gamesOptions = {
-            method: 'GET',
-            url: `${URL_PREFIX}/groups/${group.id}/games/`,
-            headers:{
-                provider: this.state.provider,
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            }
-        };
-        let players;
-        let games;
-        request(playersOptions, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
-            }else{
-                players = JSON.parse(body).results;
-                const group = { ...this.state.group, players};
-                this.setState({group, loading:!players || !games, error:null});
-            }
+    deleteGroupById = async (groupId) => {
+        try{
+            await deleteGroup(groupId, this.props.provider, this.props.token);
+            const groupsClone = [...this.props.groups].filter(group => group.id !== groupId);
+            this.props.updateGroups(groupsClone);
+        }catch(error){
+            console.error('createNewGroup error',error);
+            this.props.onFailure(error);
+        }
+    };
 
-
-        });
-        request(gamesOptions, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
-            }else{
-                games = JSON.parse(body).results;
-                const group = { ...this.state.group, games};
-                this.setState({group, loading:!players || !games, error:null});
-            }
-
-        });
+    createNewGroup = async () =>{
+        try{
+            const newGroup = await createGroup(this.state.newGroupName, this.props.provider, this.props.token);
+            newGroup.userInGroup = true;
+            const groupsClone = [...this.props.groups];
+            groupsClone.push(newGroup);
+            this.props.updateGroups(groupsClone);
+        }catch(error){
+            console.error('createNewGroup error',error);
+            this.props.onFailure(error);
+        }
     };
 
     getNewGroupSection = () => {
@@ -114,11 +64,12 @@ class Groups extends Component {
             <h1> Create a new group. </h1>
             Group name: <input type="text" id="newGroupName" value={this.state.newGroupName} onChange={this.handleNewGameNameChange}/>
 
-            <button className="button" onClick={()=>this.props.createNewGroup(this.state.newGroupName)}> Create </button>
+            <button className="button" onClick={this.createNewGroup}> Create </button>
             <br/><br/> <hr/><br/><br/>
 
         </div>);
     };
+
     render() {
         const {groups} = this.props;
         if (!groups || groups.length === 0){
@@ -128,15 +79,16 @@ class Groups extends Component {
             </div>);
         }
         const userGroups = groups.filter(group => group.userInGroup).map(group =>{
+            const deleteGroupButton = group.isAdmin ?  <button className="button" onClick={()=> this.deleteGroupById(group.id)}> Delete group   </button> : <span/>;
             return (<div key={`userInGroup_${group.id}`}>
-                -  <button className="button" onClick={()=> this.props.onGroupClicked(group)}>{group.name}   </button>  {group.isAdmin ? ' (you are a group admin.)' : ''}
+                -  <button className="button" onClick={()=> this.onGroupClicked(group)}>{group.name}   </button>  {group.isAdmin ? ' (you are a group admin.)' : ''}{deleteGroupButton}
                 <br/><br/>
             </div>);
         });
 
         const nonUserGroups = groups.filter(group => !group.userInGroup).map(group =>{
             const { invitationRequested, invitationStatus } = group;
-            const button =  <button className="button" onClick={()=> this.onGetInventionsRequestsClicked(group.id)}> ask invitation to this group</button>;
+            const button =  <button className="button" onClick={()=> this.onGetInvitationRequestsClicked(group.id)}> ask invitation to this group</button>;
             return (<div key={`userNotInGroup_${group.id}`}>
                 - Group: <b> {group.name} </b>.  { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
                 <br/><br/>

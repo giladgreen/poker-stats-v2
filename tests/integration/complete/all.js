@@ -311,7 +311,7 @@ async function sendInvitationRequest(groupId) {
     groupId,
   };
   const { body } = await request(server)
-    .post('/api/v2/inventions-requests')
+    .post('/api/v2/invitations-requests')
     .set(acceptHeader, 'application/json')
     .set(provider, GOOGLE)
     .set(authTokenHeader, differentToken)
@@ -325,9 +325,9 @@ async function sendInvitationRequest(groupId) {
   return body.invitationRequestId;
 }
 
-async function sendInvitationRequestApproval(invitationRequestId, inventionsRequestPlayerId) {
+async function sendInvitationRequestApproval(invitationRequestId, invitationRequestPlayerId) {
   const { body } = await request(server)
-    .get(`/api/v2/inventions-requests/${invitationRequestId}?inventionsRequestPlayerId=${inventionsRequestPlayerId}&approved=true`)
+    .get(`/api/v2/invitations-requests/${invitationRequestId}?invitationRequestPlayerId=${invitationRequestPlayerId}&approved=true`)
     .set(acceptHeader, 'application/json')
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
     .expect(200);
@@ -401,8 +401,9 @@ describe('full integration test,', function () {
 
 
       const invitationRequestId = await sendInvitationRequest(groupId);
-      const inventionsRequestPlayerId = player3Id;
-      await sendInvitationRequestApproval(invitationRequestId, inventionsRequestPlayerId);
+      const invitationRequestPlayerId = player3Id;
+
+      await sendInvitationRequestApproval(invitationRequestId, invitationRequestPlayerId);
 
       await getGroup(groupId, 200);
     });

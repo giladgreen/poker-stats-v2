@@ -1,11 +1,12 @@
-import { URL_PREFIX } from '../../config.js';
 import React, { Component } from 'react';
-import request from 'request';
 
 import Groups from './components/Groups';
+import Group from './components/Group';
 import Login from './components/Login';
 import Loading from './containers/Loading';
 import Header from './containers/Header';
+import getGroupData from './actions/getGroupData';
+
 
 class App extends Component {
 
@@ -22,95 +23,32 @@ class App extends Component {
 
 
     onFailure = (error) => {
-        console.log('App onFailure', error)
+        console.error('App onFailure', error)
         this.setState({error })
     };
 
-    createNewGroup = (newGroupName) =>{
-
-        const options = {
-            method:'POST',
-            url: `${URL_PREFIX}/groups/`,
-            body:JSON.stringify({name:newGroupName}),
-            headers:{
-                provider: this.state.provider,
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            }
-        };
-
-        request(options, (error, response, body) =>{
-
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
-            }else{
-                this.setState({ loading: false, isAuthenticated: false});
-            }
-        });
+    updateGroupInMem = async (group) => {
+        this.setState({group,error:null});
     };
-
-    onGroupClicked = (group) => {
-        this.setState({group, loading:true, error:null});
-
-        const playersOptions = {
-            method: 'GET',
-            url: `${URL_PREFIX}/groups/${group.id}/players/`,
-            headers:{
-                provider: this.state.provider,
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            }
-        };
-        const gamesOptions = {
-            method: 'GET',
-            url: `${URL_PREFIX}/groups/${group.id}/games/`,
-            headers:{
-                provider: this.state.provider,
-                "x-auth-token": this.state.token,
-                "Content-Type":'application/json'
-            }
-        };
-        let players;
-        let games;
-        request(playersOptions, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
-            }else{
-                players = JSON.parse(body).results;
-                const group = { ...this.state.group, players};
-                this.setState({group, loading:!players || !games, error:null});
-            }
-
-
-        });
-        request(gamesOptions, (error, response, body) =>{
-            if (response.statusCode>=400){
-                const bodyObj = JSON.parse(body) ;
-                console.log('error', bodyObj);
-                this.setState({error: bodyObj.title});
-            }else{
-                games = JSON.parse(body).results;
-                const group = { ...this.state.group, games};
-                this.setState({group, loading:!players || !games, error:null});
-            }
-
-        });
+    updateGroup = async (group) => {
+        try {
+            const updatedGroup = await getGroupData(group,this.state.provider, this.state.token)
+            this.setState({group: updatedGroup,error:null});
+        }catch(error){
+            console.error('updateGroup error', error);
+            this.setState({error});
+        }
     };
 
     updateGroups = (groups) => {
-        this.setState({groups});
+        this.setState({groups,error:null});
     };
 
     backToMainPage = () => {
-        this.setState({group:null, players:null,games:null});
+        this.setState({group:null, players:null,games:null,error:null});
     };
 
     onLogin = ({userContext, provider, token, groups}) => {
-        console.log('on login', 'userContext',userContext, 'groups',groups);
         this.setState({user: userContext, groups, loading: false, isAuthenticated: true, error:null, provider, token})
     };
 
@@ -148,9 +86,8 @@ class App extends Component {
         }
 
         const mainSection = group ?
-            this.GroupPage() :
-            <Groups groups={this.state.groups} createNewGroup={this.createNewGroup}  onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
-
+            <Group group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroupInMem} onFailure={this.onFailure} /> :
+            <Groups groups={this.state.groups} provider={this.state.provider} token={this.state.token} updateGroup={this.updateGroup} onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
 
         return (
             <div className="App">

@@ -98,19 +98,19 @@ async function getGroupPlayersData(groupId) {
   }));
 }
 
-function getRejectLinkAddress(inventionsRequestId) {
-  return `${pokerStatsUrlPrefix}/inventions-requests/${inventionsRequestId}?approved=false`;
+function getRejectLinkAddress(invitationRequestId) {
+  return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?approved=false`;
 }
 
-function getLinkAddress(inventionsRequestId, playerId, approved, setAsAdmin) {
-  return `${pokerStatsUrlPrefix}/inventions-requests/${inventionsRequestId}?inventionsRequestPlayerId=${playerId}&approved=${approved}&setAsAdmin=${setAsAdmin}`;
+function getLinkAddress(invitationRequestId, playerId, approved, setAsAdmin) {
+  return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?invitationRequestPlayerId=${playerId}&approved=${approved}&setAsAdmin=${setAsAdmin}`;
 }
 
-function createHtml(inventionsRequestId, groupId, groupName, userDetails, userName, adminName, players) {
-  const rejectAddress = getRejectLinkAddress(inventionsRequestId);
+function createHtml(invitationRequestId, groupId, groupName, userDetails, userName, adminName, players) {
+  const rejectAddress = getRejectLinkAddress(invitationRequestId);
   const playersLinks = players.map((player) => {
-    const nonAdminApproveAddress = getLinkAddress(inventionsRequestId, player.id, true, false);
-    const adminApproveAddress = getLinkAddress(inventionsRequestId, player.id, true, true);
+    const nonAdminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, false);
+    const adminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, true);
     /* istanbul ignore next */
     const playerEmail = (player.email && player.email.length > 3 && player.email.indexOf('@') > 1) ? player.email : '';
     const playerName = `${player.name} ${playerEmail} `;
@@ -145,12 +145,12 @@ function createHtml(inventionsRequestId, groupId, groupName, userDetails, userNa
   return html;
 }
 
-async function sendEmail(inventionsRequestId, groupId, groupName, userDetails, admins, players) {
+async function sendEmail(invitationRequestId, groupId, groupName, userDetails, admins, players) {
   const userName = `${userDetails.firstName} ${userDetails.familyName}`;
   const subject = `user [${userName}] has requested to join group [${groupName}]`;
 
   admins.forEach((admin) => {
-    const html = createHtml(inventionsRequestId, groupId, groupName, userDetails, userName, admin.name, players);
+    const html = createHtml(invitationRequestId, groupId, groupName, userDetails, userName, admin.name, players);
     sendHtmlMail(subject, html, admin.email);
   });
 }
@@ -195,27 +195,27 @@ async function createInvitationRequest(groupId, userId) {
   return { status: INVITATION_REQUESTED, invitationRequestId };
 }
 
-function getExistingInvitationRequestById(inventionsRequestId) {
+function getExistingInvitationRequestById(invitationRequestId) {
   return models.invitationsRequests.findOne({
     where: {
-      id: inventionsRequestId,
+      id: invitationRequestId,
     },
   });
 }
 
-function updateInventionsRequest(inventionsRequestId, status) {
+function updateInvitationRequest(invitationRequestId, status) {
   return models.invitationsRequests.update({ status }, {
     where: {
-      id: inventionsRequestId,
+      id: invitationRequestId,
     },
   });
 }
 
 /* istanbul ignore next */
-async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, inventionsRequestPlayerId) {
-  if (existingUserPlayer.isAdmin !== setAsAdmin || existingUserPlayer.playerId !== inventionsRequestPlayerId) {
+async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitationRequestPlayerId) {
+  if (existingUserPlayer.isAdmin !== setAsAdmin || existingUserPlayer.playerId !== invitationRequestPlayerId) {
     logger.info('[Invitation-service] answerInvitationRequest. updating user in group (either isAdmin or different player)');
-    await models.usersPlayers.update({ isAdmin: setAsAdmin, playerId: inventionsRequestPlayerId }, {
+    await models.usersPlayers.update({ isAdmin: setAsAdmin, playerId: invitationRequestPlayerId }, {
       where: {
         id: existingUserPlayer.id,
       },
@@ -225,10 +225,10 @@ async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, inventio
   }
 }
 
-function createUserPlayer(setAsAdmin, inventionsRequestPlayerId, groupId, userId) {
+function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId) {
   return models.usersPlayers.create({
     isAdmin: setAsAdmin,
-    playerId: inventionsRequestPlayerId,
+    playerId: invitationRequestPlayerId,
     groupId,
     userId,
   });
@@ -257,26 +257,28 @@ async function sendUserUpdateEmail(userId, groupName, approved) {
   sendHtmlMail(subject, html, userDetails.email);
 }
 
-async function answerInvitationRequest(inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin) {
-  logger.info(`[Invitation-service] answerInvitationRequest. ${JSON.stringify(inventionsRequestId, inventionsRequestPlayerId, approved, setAsAdmin)}`);
+async function answerInvitationRequest(invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin) {
+  logger.info(`[Invitation-service] answerInvitationRequest. ${JSON.stringify({
+    invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin,
+  })}`);
 
-  const inventionsRequest = await getExistingInvitationRequestById(inventionsRequestId);
+  const invitationRequest = await getExistingInvitationRequestById(invitationRequestId);
   /* istanbul ignore next */
-  if (!inventionsRequest) {
-    logger.error(`[Invitation-service] answerInvitationRequest. did not found inventionsRequest in DB. ${inventionsRequestId}`);
-    return `did not found inventionsRequest in DB (${inventionsRequestId})`;
+  if (!invitationRequest) {
+    logger.error(`[Invitation-service] answerInvitationRequest. did not found invitationRequest in DB. ${invitationRequestId}`);
+    return `did not found invitationRequest in DB (${invitationRequestId})`;
   }
   /* istanbul ignore next */
-  if (inventionsRequest.status !== INVITATION_REQUESTED) {
-    logger.info(`[Invitation-service] answerInvitationRequest. invitation already ${inventionsRequest.status.replace('invitation ', '')}`);
-    return `invitation already ${inventionsRequest.status.replace('invitation ', '')}`;
+  if (invitationRequest.status !== INVITATION_REQUESTED) {
+    logger.info(`[Invitation-service] answerInvitationRequest. invitation already ${invitationRequest.status.replace('invitation ', '')}`);
+    return `invitation already ${invitationRequest.status.replace('invitation ', '')}`;
   }
-  const { groupId, userId } = inventionsRequest;
+  const { groupId, userId } = invitationRequest;
   const { name: groupName } = await validateGroup(groupId);
   /* istanbul ignore next */
   if (!approved) {
     logger.info('[Invitation-service] answerInvitationRequest. invitation was rejected.');
-    await updateInventionsRequest(inventionsRequestId, INVITATION_REJECTED);
+    await updateInvitationRequest(invitationRequestId, INVITATION_REJECTED);
     await sendUserUpdateEmail(userId, groupName, false);
     return INVITATION_REJECTED;
   }
@@ -285,12 +287,12 @@ async function answerInvitationRequest(inventionsRequestId, inventionsRequestPla
   /* istanbul ignore next */
   if (existingUserPlayer) {
     logger.info('[Invitation-service] answerInvitationRequest. user already in group...');
-    await handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, inventionsRequestPlayerId);
+    await handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitationRequestPlayerId);
   } else {
     logger.info('[Invitation-service] answerInvitationRequest. user not in group. - adding it');
-    await createUserPlayer(setAsAdmin, inventionsRequestPlayerId, groupId, userId);
+    await createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId);
   }
-  await updateInventionsRequest(inventionsRequestId, INVITATION_APPROVED);
+  await updateInvitationRequest(invitationRequestId, INVITATION_APPROVED);
   await sendUserUpdateEmail(userId, groupName, true);
 
   return INVITATION_APPROVED;

@@ -11,6 +11,6 @@ module.exports = {
   STORAGE: process.env.STORAGE || 'LOCAL',
   DATABASE_URL: process.env.DATABASE_URL || 'postgres://rfis:12345@localhost:5432/pokerstats',
   URL_PREFIX: process.env.URL_PREFIX || 'http://localhost:5000/api/v2' || 'https://poker-stats.herokuapp.com/api/v2',
-  GOOGLE_CLIENT_ID: "819855379342-19qbfif99mdphll36hl6tbndrvquj89m.apps.googleusercontent.com",
-  FACEBOOK_APP_ID: "730256507438642"
+  GOOGLE_CLIENT_ID: '819855379342-19qbfif99mdphll36hl6tbndrvquj89m.apps.googleusercontent.com',
+  FACEBOOK_APP_ID: '730256507438642',
 };

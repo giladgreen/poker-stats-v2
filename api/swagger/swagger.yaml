@@ -257,7 +257,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /api/v2/inventions-requests:
+  /api/v2/invitations-requests:
     x-swagger-router-controller: invitation
     post:
       operationId: createInvitationRequest
@@ -278,10 +278,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /api/v2/inventions-requests/{inventionsRequestId}:
+  /api/v2/invitations-requests/{invitationRequestId}:
     x-swagger-router-controller: invitation
     parameters:
-      - $ref: '#/parameters/InventionsRequestId'
+      - $ref: '#/parameters/InvitationRequestId'
       - $ref: '#/parameters/Approved'
       - $ref: '#/parameters/SetAsAdmin'
     get:
@@ -508,10 +508,10 @@ parameters:
     required: false
     in: query
     type: integer
-  InventionsRequestId:
-    name: inventionsRequestId
+  InvitationRequestId:
+    name: invitationRequestId
     in: path
-    description: The id of the inventions Request (uuid)
+    description: The id of the Invitations Request (uuid)
     required: true
     type: string
     pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'

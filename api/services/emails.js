@@ -2,12 +2,15 @@ const nodemailer = require('nodemailer');
 const logger = require('./logger');
 
 const from = 'info@pokerStats.com';
+process.env.EMAIL_USER = 'green.gilad@gmail.com';// TODO:remove this
+process.env.EMAIL_PASSWORD = 'czgfamvpkajhanat';// TODO:remove this
+
 const { EMAIL_USER } = process.env;
 const { EMAIL_PASSWORD } = process.env;
 
 function sendHtmlMail(subject, html, to) {
   if (!EMAIL_USER || !EMAIL_PASSWORD) {
-    logger.info('[Email-service] no emaul user/password, email will not be sent');
+    logger.info('[Email-service] no email user/password, email will not be sent');
     return;
   }
   const mailOptions = {
