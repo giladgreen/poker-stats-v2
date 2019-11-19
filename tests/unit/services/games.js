@@ -118,7 +118,7 @@ describe('services: games', function () {
     });
   });
   describe('createGame()', function () {
-    const date = (new Date(2019,0,25,12,0,0)).toISOString();
+    const date = (new Date(2019, 0, 25, 12, 0, 0)).toISOString();
     const data = {
       date,
     };
@@ -136,7 +136,7 @@ describe('services: games', function () {
         should(games.findOne.called).be.eql(true);
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
-          date: new Date(2019,0,25,14,0,0),
+          date: new Date(2019, 0, 25, 14, 0, 0),
           description: '',
           ready: false,
           groupId,
@@ -161,7 +161,7 @@ describe('services: games', function () {
         should(games.findOne.called).be.eql(true);
         const createGameArgs = this.createGame.getCall(0);
         should(createGameArgs.args[0]).be.eql({
-          date: new Date(2019,0,25,14,0,0),
+          date: new Date(2019, 0, 25, 14, 0, 0),
           description: '',
           ready: false,
           groupId,
@@ -189,7 +189,7 @@ describe('services: games', function () {
       });
     });
     describe('when game exist', function () {
-      const date = (new Date(2019,0,25,12,0,0)).toISOString();
+      const date = (new Date(2019, 0, 25, 12, 0, 0)).toISOString();
       const data = {
         description: 'bla bla bla',
         date,
@@ -208,7 +208,7 @@ describe('services: games', function () {
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
           const updateGameArgs = this.updateGame.getCall(0);
-          should(updateGameArgs.args[0]).be.eql({ ...data,date: new Date(2019,0,25,14,0,0), ready: false });
+          should(updateGameArgs.args[0]).be.eql({ ...data, date: new Date(2019, 0, 25, 14, 0, 0), ready: false });
         });
       });
       describe('update contain players data', function () {
@@ -231,7 +231,7 @@ describe('services: games', function () {
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
           const updateGameArgs = this.updateGame.getCall(0);
-          should(updateGameArgs.args[0]).be.eql({ ...data, date: new Date(2019,0,25,14,0,0), ready: false });
+          should(updateGameArgs.args[0]).be.eql({ ...data, date: new Date(2019, 0, 25, 14, 0, 0), ready: false });
         });
       });
     });

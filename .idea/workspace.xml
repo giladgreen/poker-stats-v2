@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test-client/src/actions/createGame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-client/src/actions/deleteGame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-client/src/actions/updateGame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-client/src/actions/updatePlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/games.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/migration/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/mongoToPostgres.js" beforeDir="false" afterPath="$PROJECT_DIR$/migration/mongoToPostgres.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.93d1d823.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.93d1d823.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.9213038c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.9213038c.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/actions/createGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/actions/createGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/actions/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/actions/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/components/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/components/Group.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/components/Groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/components/Groups.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/groups/group-get.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/groups/group-get.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/groups/group-update.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/groups/group-update.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/services/games.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -76,20 +46,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="35" />
+              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/unit/services/games.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="191" column="30" selection-start-line="191" selection-start-column="20" selection-end-line="191" selection-end-column="30" />
+            <state relative-caret-position="172">
+              <caret line="210" column="91" lean-forward="true" selection-start-line="210" selection-start-column="91" selection-end-line="210" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -151,7 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>editPlayer</find>
       <find>console</find>
       <find>moment</find>
       <find>***</find>
@@ -181,6 +150,7 @@
       <find>viewGame</find>
       <find>editPlayerPopupInner</find>
       <find>user not belong to group</find>
+      <find>only</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -250,12 +220,12 @@
         <option value="$PROJECT_DIR$/test-client/src/components/Group.js" />
         <option value="$PROJECT_DIR$/test-client/src/index.css" />
         <option value="$PROJECT_DIR$/migration/data.json" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.eslintrc.yml" />
         <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
         <option value="$PROJECT_DIR$/tests/integration/groups/group-get.js" />
         <option value="$PROJECT_DIR$/tests/integration/groups/group-update.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/games.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -478,7 +448,7 @@
       <workItem from="1573052799126" duration="4780000" />
       <workItem from="1573997808967" duration="6975000" />
       <workItem from="1574074152525" duration="12901000" />
-      <workItem from="1574172405305" duration="806000" />
+      <workItem from="1574172405305" duration="996000" />
     </task>
     <servers />
   </component>
@@ -515,7 +485,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297017000" />
+    <option name="totallyTimeSpent" value="297207000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1333" y="-1057" width="1920" height="976" extended-state="0" />
@@ -535,7 +505,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3124274" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3379791" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -969,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1101">
@@ -999,8 +962,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit/services/games.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="191" column="30" selection-start-line="191" selection-start-column="20" selection-end-line="191" selection-end-column="30" />
+        <state relative-caret-position="172">
+          <caret line="210" column="91" lean-forward="true" selection-start-line="210" selection-start-column="91" selection-end-line="210" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
