@@ -32,7 +32,8 @@ async function createPlayers(groupId){
             email,
             firstName,
             familyName,
-            imageUrl,isAdmin,
+            imageUrl,
+            isAdmin,
             groupId
         };
     });
