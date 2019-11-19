@@ -35,7 +35,6 @@ class Group extends Component {
 
     addCurrentPlayerToGame = () =>{
         if (!this.state.existingPlayerId){
-            console.log('this.state.existingPlayerId is empty..');
             return;
         }
         const {group} = this.props;
@@ -69,7 +68,6 @@ class Group extends Component {
         });
         const playa = group.players.find(player => !GAME_PLAYERS[player.id])
 
-        console.log('findPlayerNotInGame, returning', playa ? playa.id : null)
         return playa ? playa.id : null;
 
     }
@@ -80,11 +78,9 @@ class Group extends Component {
     }
 
     editGame = async (game) => {
-        console.log('editGame',game)
         let existingPlayerId;
         if (game){
             existingPlayerId = this.findPlayerNotInGame(game)
-            console.log('editGame, existingPlayerId:',existingPlayerId)
         }
 
         this.setState({game, existingPlayerId});
@@ -96,7 +92,6 @@ class Group extends Component {
             try{
                 await deletePlayer(this.props.group.id, playerId, this.props.provider, this.props.token);
                 const groupClone = {...this.props.group};
-                //console.log('deletePlayerById')
                 groupClone.players = groupClone.players.filter(player => player.id !== playerId);
                 this.props.updateGroup(groupClone);
             }catch(error){
@@ -111,7 +106,6 @@ class Group extends Component {
             try{
                 await deleteGame(this.props.group.id, gameId, this.props.provider, this.props.token);
                 const groupClone = {...this.props.group};
-                //console.log('deletePlayerById')
                 groupClone.games = groupClone.games.filter(game => game.id !== gameId);
                 this.props.updateGroup(groupClone);
             }catch(error){
@@ -175,11 +169,13 @@ class Group extends Component {
         const {group} = this.props;
         const {players, games, isAdmin} = group;
         return players.map(player=>{
-
             const playersGames = games.filter(game=> {
                 return game.playersData.find(data => data.playerId === player.id);
             });
             const gamesCount = playersGames.length;
+            return {...player, gamesCount};
+        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player=>{
+            const { gamesCount } = player;
             const deletePlayerButton = isAdmin && (this.props.user.playerId!==player.id) && gamesCount === 0 ?  <button className="button" onClick={()=> this.deletePlayerById(player.id)}> Delete    </button> : <span/>;
             const editPlayerButton = isAdmin ?  <button className="button" onClick={()=> this.editPlayer(player)}> Edit  </button> : <span/>;
 
@@ -196,7 +192,6 @@ class Group extends Component {
         return games.map(game=>{
             const {date,description, playersData, ready, id:gameId} = game;
 
-           // console.log('game',game);
            //TODO: anyone can delete/edit un-finished game
            const deleteGameButton = isAdmin || !ready ?  <button className="button" onClick={()=> this.deleteGameById(gameId)}> Delete    </button> : <span/>;
            const editGameButton = isAdmin || !ready ?  <button className="button" onClick={()=> this.editGame({...game, nameAsDatePicker: game.date.AsDatePicker()})}> Edit  </button> : <span/>;
@@ -240,7 +235,6 @@ class Group extends Component {
         const groupId = group.id;
         try {
             const updatedGame = await updateGame(groupId, gameId, game, provider, token);
-            //console.log('updatedGame',updatedGame)
             updatedGame.date = new Date(updatedGame.date);
             const groupClone = {...this.props.group};
             groupClone.games = groupClone.games.map(gameItem=>{
@@ -344,7 +338,6 @@ class Group extends Component {
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
         if (ready){
-            console.log('game.playersData',game.playersData)
             const playersData = game.playersData.map(playerData=>{
                return {
                    playerId: playerData.playerId,
@@ -355,7 +348,6 @@ class Group extends Component {
                }
             });
             playersData.sort((a,b)=> a.balance >b.balance ? -1 : 1);
-            console.log('playersData',playersData)
             const players = playersData.map(playerData=>{
                 return (<div key={`_playerViewData_${playerData.playerId}`} className="viewGamePlayerSection">
                     {playerData.name} |
@@ -364,7 +356,6 @@ class Group extends Component {
                     balance: {playerData.balance}
                 </div>);
             });
-            console.log('retuning gameData..');
             return (<div className="popupOuter">
                 <div className="viewGamePopupInner">
                     <div>
@@ -413,10 +404,8 @@ class Group extends Component {
             PLAYERS[player.id] = player;
         });
         game.playersData.forEach(player=>{
-            console.log('getEditGamePopup player:',player)
             GAME_PLAYERS[player.playerId] = player;
         });
-        console.log('PLAYERS',PLAYERS)
         const players = game.playersData.map(playerData=>{
 
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
@@ -496,11 +485,11 @@ class Group extends Component {
 
     render() {
         const {group} = this.props;
+        const {isAdmin} = group;
 
         const editPlayerPopup = this.getEditPlayerPopup();
         const editGamePopup = this.getEditGamePopup();
         const viewGamePopup = this.getViewGamePopup();
-        console.log('viewGamePopup',viewGamePopup)
         const newPlayerSection = this.getNewPlayerSection();
         const newGameSection = this.getNewGameSection();
         const players = this.getPlayers();
@@ -514,6 +503,7 @@ class Group extends Component {
                 </div>
                 <div>
                     <h1> Group: {group.name}</h1>
+                    {isAdmin ? <h3>logged in as admin</h3> : <span/>}
                 </div>
                 <div>
                     {newPlayerSection}
