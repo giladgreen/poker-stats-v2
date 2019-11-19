@@ -88,7 +88,6 @@ Object.keys(models).forEach((modelName) => {
     models[modelName].associate(models);
   }
 });
-
 module.exports = {
   sequelize,
   Sequelize,

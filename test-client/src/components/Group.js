@@ -181,7 +181,7 @@ class Group extends Component {
 
             const image = player.imageUrl ? <img alt={player.name} className="playersListImage" src={player.imageUrl}/> : <span/>;
             return (<div className="playersListItem" key={`player_${player.id}`}>
-                <h3> * {player.name}{image} {editPlayerButton} {deletePlayerButton} ({gamesCount} games)</h3>
+                <h3>  {image} {player.name} {editPlayerButton} {deletePlayerButton} ({gamesCount} games)</h3>
             </div>);
         })
     };
@@ -508,7 +508,7 @@ class Group extends Component {
                 <div>
                     {newPlayerSection}
                     <h2>  {group.players.length} players</h2>
-                    {players}
+                    <div className="groupPlayersList"> {players} </div>
                 </div>
                 <div>
                     <hr/>
@@ -516,7 +516,8 @@ class Group extends Component {
                 <div>
                     {newGameSection}
                     <h2>  {group.games.length} games</h2>
-                    {games}
+                    <div className="groupGamesList"> {games} </div>
+
                 </div>
                 {editPlayerPopup}
                 {editGamePopup}

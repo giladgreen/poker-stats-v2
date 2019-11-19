@@ -1,4 +1,5 @@
 const models = require('../api/models');
+console.log('models',models)
 const {createGame} = require('../api/services/games');
 const data = require('./data');
 const mapping = {};
@@ -15,6 +16,7 @@ function convertDate(date){
 }
 
 async function clearAllDataFromDB(){
+    console.log('clearAllDataFromDB start');
     await models.sequelize.query('DELETE from games_data');
     await models.sequelize.query('DELETE from games');
     await models.sequelize.query('DELETE from players');
@@ -22,6 +24,8 @@ async function clearAllDataFromDB(){
     await models.sequelize.query('DELETE from users');
     await models.sequelize.query('DELETE from groups');
     await models.sequelize.query('DELETE from invitations_requests');
+    console.log('clearAllDataFromDB end');
+
 }
 
 async function createPlayers(groupId){
