@@ -27,6 +27,15 @@ async function clearAllDataFromDB(){
 async function createPlayers(groupId){
 
     const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, imageUrl,isAdmin})=>{
+        if (isAdmin){
+            console.log('********');
+            console.log('********');
+            console.log('********');
+            console.log('  ' + firstName + ' is admin')
+            console.log('********');
+            console.log('********');
+            console.log('********');
+        }
         return {
             name: `${firstName} ${familyName}`,
             email,
