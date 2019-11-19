@@ -1024,7 +1024,7 @@
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": "160"
+          "exit": 160
         },
         {
           "skip": true,
@@ -1042,7 +1042,7 @@
           "skip": true,
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 100,
-          "exit": "0"
+          "exit": 0
         }
       ],
       "groupId": "orig"
@@ -1092,13 +1092,13 @@
           "skip": true,
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 100,
-          "exit": "150"
+          "exit": 150
         },
         {
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
-          "exit": "260"
+          "exit": 260
         },
         {
           "skip": true,
@@ -1147,7 +1147,7 @@
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
-          "exit": "100"
+          "exit": 100
         },
         {
           "skip": true,
@@ -1159,19 +1159,19 @@
           "skip": true,
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": "60"
+          "exit": 60
         },
         {
           "skip": true,
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 50,
-          "exit": "70"
+          "exit": 70
         },
         {
           "skip": true,
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 50,
-          "exit": "250"
+          "exit": 250
         },
         {
           "skip": true,
@@ -1183,7 +1183,7 @@
           "skip": true,
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
-          "exit": "300"
+          "exit": 300
         }
       ],
       "groupId": "orig"
@@ -1214,13 +1214,13 @@
           "skip": true,
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": "90"
+          "exit": 90
         },
         {
           "skip": true,
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 50,
-          "exit": "60"
+          "exit": 60
         }
       ],
       "groupId": "orig"
@@ -1251,7 +1251,7 @@
           "skip": true,
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": "40"
+          "exit": 40
         },
         {
           "skip": true,
@@ -1281,7 +1281,7 @@
           "skip": true,
           "id": "1493450940986_orig_Eli_Fraimovich",
           "enter": 50,
-          "exit": "10"
+          "exit": 10
         }
       ],
       "groupId": "orig"
@@ -1306,7 +1306,7 @@
           "skip": true,
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": "300"
+          "exit": 300
         },
         {
           "skip": true,
@@ -1324,7 +1324,7 @@
           "skip": true,
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 150,
-          "exit": "20"
+          "exit": 20
         },
         {
           "skip": true,
@@ -1361,7 +1361,7 @@
           "skip": true,
           "id": "1493450940990_orig_Keren_Pikali",
           "enter": 50,
-          "exit": "160"
+          "exit": 160
         },
         {
           "skip": true,
@@ -1373,7 +1373,7 @@
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": "290"
+          "exit": 290
         },
         {
           "skip": true,
@@ -1422,7 +1422,7 @@
           "skip": true,
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 200,
-          "exit": "0"
+          "exit": 0
         },
         {
           "skip": true,
@@ -1440,7 +1440,7 @@
           "skip": true,
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 150,
-          "exit": "0"
+          "exit": 0
         },
         {
           "skip": true,
@@ -1581,7 +1581,7 @@
           "skip": true,
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 300,
-          "exit": 0
+          "exit": 200
         },
         {
           "skip": true,
@@ -1599,7 +1599,7 @@
           "skip": true,
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 50,
-          "exit": "22"
+          "exit": 20
         }
       ],
       "groupId": "orig"

@@ -1,4 +1,5 @@
-const { notFound } = require('boom');
+const { notFound, unauthorized } = require('boom');
+
 const moment = require('moment');
 const models = require('../models');
 const gameHelper = require('../helpers/game');
@@ -84,8 +85,22 @@ async function createGame(groupId, data) {
 
   return getGame({ groupId, gameId: newGame.id });
 }
-
-async function updateGame(groupId, gameId, data) {
+async function validateUserCanEditGame(groupId, gameId, isAdmin) {
+  const existingGame = await models.gamesData.findOne({
+    where: {
+      groupId,
+      gameId,
+    },
+  });
+  if (existingGame) {
+    const { ready } = existingGame;
+    if (ready && !isAdmin) {
+      throw unauthorized('user not admin of group');
+    }
+  }
+}
+async function updateGame(userContext, groupId, gameId, data) {
+  await validateUserCanEditGame(groupId, gameId, userContext.isAdmin);
   await getGame({ groupId, gameId });
   const date = moment(new Date(`${data.date}`.substr(0, 10))).add(12, 'hours').toDate();
 
@@ -114,7 +129,8 @@ async function updateGame(groupId, gameId, data) {
   return getGame({ groupId, gameId });
 }
 
-async function deleteGame(groupId, gameId) {
+async function deleteGame(userContext, groupId, gameId) {
+  await validateUserCanEditGame(groupId, gameId, userContext.isAdmin);
   await models.gamesData.destroy({
     where: {
       groupId,

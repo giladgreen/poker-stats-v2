@@ -32,7 +32,9 @@ function createGame(req, res, next) {
 function updateGame(req, res, next) {
   const { groupId, gameId } = req.getAllParams();
   const data = req.getBody();
-  gamesService.updateGame(groupId, gameId, data)
+  const { userContext } = req;
+
+  gamesService.updateGame(userContext, groupId, gameId, data)
     .then((game) => {
       res.send(game);
     })
@@ -40,7 +42,9 @@ function updateGame(req, res, next) {
 }
 function deleteGame(req, res, next) {
   const { groupId, gameId } = req.getAllParams();
-  gamesService.deleteGame(groupId, gameId)
+  const { userContext } = req;
+
+  gamesService.deleteGame(userContext, groupId, gameId)
     .then(() => {
       res.status(HttpStatus.NO_CONTENT).send({ deleted: true });
     })

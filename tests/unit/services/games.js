@@ -176,7 +176,7 @@ describe('services: games', function () {
       });
       it('should throw correct error', async function () {
         try {
-          await gamesService.updateGame(groupId, gameId, {});
+          await gamesService.updateGame({}, groupId, gameId, {});
         } catch (error) {
           should(isBoom(error)).be.eql(true);
           should(error.data).be.eql({ groupId, gameId });
@@ -203,7 +203,7 @@ describe('services: games', function () {
           this.updateGame = this.sandbox.stub(games, 'update').resolves({});
         });
         it('should return correct data back', async function () {
-          const result = await gamesService.updateGame(groupId, gameId, { ...data });
+          const result = await gamesService.updateGame({}, groupId, gameId, { ...data });
           should(result).be.eql({ ...data, playersData: [] });
           should(games.update.called).be.eql(true);
           should(games.findOne.called).be.eql(true);
@@ -223,7 +223,7 @@ describe('services: games', function () {
           this.updateGame = this.sandbox.stub(games, 'update').resolves({});
         });
         it('should return correct data back', async function () {
-          const result = await gamesService.updateGame(groupId, gameId, { ...data, playersData });
+          const result = await gamesService.updateGame({}, groupId, gameId, { ...data, playersData });
           should(result).be.eql({ ...data, playersData });
           should(gamesData.destroy.called).be.eql(true);
           should(gamesData.create.called).be.eql(true);
@@ -242,7 +242,7 @@ describe('services: games', function () {
       this.destroyGame = this.sandbox.stub(games, 'destroy').resolves(true);
     });
     it('should return correct data back', async function () {
-      const result = await gamesService.deleteGame(groupId, gameId);
+      const result = await gamesService.deleteGame({}, groupId, gameId);
       should(result).be.eql(true);
       should(gamesData.destroy.called).be.eql(true);
       should(games.destroy.called).be.eql(true);
