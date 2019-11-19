@@ -3,7 +3,6 @@ import request from 'request';
 
 async function createGroup(name, provider, token){
     return new Promise((resolve,reject)=>{
-        console.log('createGroup action. name:',name,'provider',provider,'token',token)
         const options = {
             method:'POST',
             url: `${URL_PREFIX}/groups/`,
@@ -16,7 +15,6 @@ async function createGroup(name, provider, token){
         };
 
         request(options, (error, response, body) =>{
-            console.log('createGroup cb   body',body)
             if (error || response.statusCode>=400){
                 if (error){
                     console.error('request cb error', error);

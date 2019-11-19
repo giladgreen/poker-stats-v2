@@ -9,8 +9,9 @@ function convertDate(date){
     const day = parseInt(date.substr(0,2));
     const month = parseInt(date.substr(3,2));
     const year = parseInt(date.substr(6,4));
-    const result = new Date(`${year}-${month}-${day}`);
-    return result;
+    return `${year}-${month}-${day}`;
+  //  const result = new Date(year, month-1,day,0,0,0);
+  //  return result;
 }
 
 async function clearAllDataFromDB(){
@@ -41,7 +42,6 @@ async function createPlayers(groupId){
     console.error('## players created:', players.length);
     await Promise.all(players.map(async (player, index)=>{
         mapping[Object.values(data.players)[index].id] = player.id;
-
 
         if (player.email && player.email.length>2){
             const p = playersToCreate.find(pl=>pl.email === player.email);
@@ -96,6 +96,8 @@ async function createGames(groupId) {
             groupId
         };
     });
+    console.log('games to create:');
+
 
     const games = await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
 
@@ -105,7 +107,7 @@ async function createGames(groupId) {
     });
 }
 async function doStuff() {
-
+    console.log('doStuff')
     await clearAllDataFromDB();
 
     const group = await models.groups.create({name: data.name});

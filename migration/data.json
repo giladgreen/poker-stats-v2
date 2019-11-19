@@ -2,7 +2,6 @@
   "name": "The Original Friendly",
   "players": {
     "1493450940989_orig_Gilad_Green": {
-      "isAdmin": true,
       "aList": true,
       "firstName": "Gilad",
       "familyName": "Green",
@@ -502,15 +501,15 @@
     "1510857388951_orig_Matan": {
       "skip": true,
       "firstName": "Matan",
-      "familyName": ".",
+      "familyName": "",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857388951_orig_Ccc_.png",
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1510857388951_orig_Matan.png",
       "groupId": "orig",
       "private": false,
       "id": "1510857388951_orig_Matan",
       "birthdate": "null",
-      "url": null,
+      "url": "http://green-pokerstats.herokuapp.com/images/1510857388951_orig_Matan.png",
       "password": "2263aj"
     },
     "1511462548892_orig_Daniel_Cohen": {
@@ -829,7 +828,9 @@
       "canHost": false,
       "getNotifications": false,
       "id": "1557418517860_orig_Michael_Ee",
-      "password": "7861no"
+      "password": "7861no",
+      "url": "http://green-pokerstats.herokuapp.com/images/1557418517860_orig_Michael_Ee.png",
+      "imageFile": null
     },
     "1557418541562_orig_Daniel_Bb": {
       "skip": true,
@@ -980,6 +981,32 @@
       "id": "1571250554198_orig_Yoav_Gross",
       "url": "",
       "password": "2192sg"
+    },
+    "1571937030030_orig_Barak_Pearlman": {
+      "firstName": "Barak",
+      "familyName": "Pearlman",
+      "phone": "",
+      "email": "",
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
+      "groupId": "orig",
+      "birthdate": "01-01-1985",
+      "canHost": false,
+      "getNotifications": false,
+      "id": "1571937030030_orig_Barak_Pearlman",
+      "password": "0031fy"
+    },
+    "1573150027429_orig_Peleg_Ya": {
+      "firstName": "Peleg",
+      "familyName": "Ya",
+      "phone": "",
+      "email": "",
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
+      "groupId": "orig",
+      "birthdate": "01-01-1985",
+      "canHost": false,
+      "getNotifications": false,
+      "id": "1573150027429_orig_Peleg_Ya",
+      "password": "7430wq"
     }
   },
   "games": [
@@ -1548,7 +1575,7 @@
           "skip": true,
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 200
+          "exit": 0
         },
         {
           "skip": true,
@@ -1572,7 +1599,7 @@
           "skip": true,
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 50,
-          "exit": 20
+          "exit": "22"
         }
       ],
       "groupId": "orig"
@@ -7578,6 +7605,203 @@
       ],
       "groupId": "orig",
       "id": "1570750853818_orig_26-09-2019"
+    },
+    {
+      "name": "17-10-2019",
+      "extraData": "hosted by michael ",
+      "players": [
+        {
+          "id": "1493450940989_orig_Gilad_Green",
+          "enter": 150,
+          "exit": 880
+        },
+        {
+          "id": "1493940234005_orig_Michael_Nos",
+          "enter": 470,
+          "exit": 0
+        },
+        {
+          "id": "1510857274810_orig_Ori_yankovitz",
+          "enter": 120,
+          "exit": 130
+        },
+        {
+          "id": "1511473738065_orig_Bar_Nashalsky",
+          "enter": 300,
+          "exit": 0
+        },
+        {
+          "id": "1521764031554_orig_Hagai_Galai",
+          "enter": 150,
+          "exit": 180
+        },
+        {
+          "id": "1493450940989_orig_Roee_Enbar",
+          "enter": 100,
+          "exit": 590
+        },
+        {
+          "id": "1571250554198_orig_Yoav_Gross",
+          "enter": 400,
+          "exit": 150
+        },
+        {
+          "id": "1493450940984_orig_Tal_Amar",
+          "enter": 80,
+          "exit": 0
+        },
+        {
+          "id": "1493450940987_orig_Ran_Eylat",
+          "enter": 200,
+          "exit": 40
+        }
+      ],
+      "groupId": "orig",
+      "id": "1571353896744_orig_17-10-2019"
+    },
+    {
+      "name": "24-10-2019",
+      "extraData": "hosted by michael ",
+      "players": [
+        {
+          "id": "1493450940989_orig_Gilad_Green",
+          "enter": 250,
+          "exit": 240
+        },
+        {
+          "id": "1493940234005_orig_Michael_Nos",
+          "enter": 260,
+          "exit": 700
+        },
+        {
+          "id": "1571937030030_orig_Barak_Pearlman",
+          "enter": 350,
+          "exit": 0
+        },
+        {
+          "id": "1571250554198_orig_Yoav_Gross",
+          "enter": 350,
+          "exit": 0
+        },
+        {
+          "id": "1565268804732_orig_eliran_regev",
+          "enter": 300,
+          "exit": 440
+        },
+        {
+          "id": "1493450940989_orig_Roee_Enbar",
+          "enter": 300,
+          "exit": 90
+        },
+        {
+          "id": "1510857274810_orig_Ori_yankovitz",
+          "enter": 250,
+          "exit": 440
+        },
+        {
+          "id": "1521764031554_orig_Hagai_Galai",
+          "enter": 50,
+          "exit": 0
+        },
+        {
+          "id": "1493450940984_orig_Tal_Amar",
+          "enter": 130,
+          "exit": 330
+        }
+      ],
+      "groupId": "orig",
+      "id": "1571981948033_orig_24-10-2019"
+    },
+    {
+      "name": "31-10-2019",
+      "extraData": "hosted by michael ",
+      "players": [
+        {
+          "id": "1493450940987_orig_Ran_Eylat",
+          "enter": 50,
+          "exit": 250
+        },
+        {
+          "id": "1493940234005_orig_Michael_Nos",
+          "enter": 550,
+          "exit": 130
+        },
+        {
+          "id": "1510857274810_orig_Ori_yankovitz",
+          "enter": 150,
+          "exit": 900
+        },
+        {
+          "id": "1569472944980_orig_Erez_Ofori",
+          "enter": 320,
+          "exit": 340
+        },
+        {
+          "id": "1521764031554_orig_Hagai_Galai",
+          "enter": 250,
+          "exit": 0
+        },
+        {
+          "id": "1573150027429_orig_Peleg_Ya",
+          "enter": 600,
+          "exit": 300
+        }
+      ],
+      "groupId": "orig",
+      "id": "1573150259278_orig_31-10-2019"
+    },
+    {
+      "name": "07-11-2019",
+      "extraData": "hosted by michael ",
+      "players": [
+        {
+          "id": "1493450940987_orig_Ran_Eylat",
+          "enter": 150,
+          "exit": 310
+        },
+        {
+          "id": "1493450388517_orig_Saar_Schweid",
+          "enter": 50,
+          "exit": 240
+        },
+        {
+          "id": "1493450940989_orig_Gilad_Green",
+          "enter": 50,
+          "exit": 180
+        },
+        {
+          "id": "1493940234005_orig_Michael_Nos",
+          "enter": 450,
+          "exit": 550
+        },
+        {
+          "id": "1493450940984_orig_Tal_Amar",
+          "enter": 200,
+          "exit": 290
+        },
+        {
+          "id": "1521764031554_orig_Hagai_Galai",
+          "enter": 80,
+          "exit": 0
+        },
+        {
+          "id": "1511473738065_orig_Bar_Nashalsky",
+          "enter": 80,
+          "exit": 0
+        },
+        {
+          "id": "1569472944980_orig_Erez_Ofori",
+          "enter": 350,
+          "exit": 120
+        },
+        {
+          "id": "1510857274810_orig_Ori_yankovitz",
+          "enter": 280,
+          "exit": 0
+        }
+      ],
+      "groupId": "orig",
+      "id": "1573172197520_orig_07-11-2019"
     }
   ]
 }

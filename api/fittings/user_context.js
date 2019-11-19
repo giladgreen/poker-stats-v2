@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { unauthorized, forbidden } = require('boom');
+const { unauthorized } = require('boom');
 
 const { Op } = require('sequelize');
 const models = require('../models');
@@ -37,9 +37,9 @@ async function validateRequestPermissions(request) {
     logger.info(`[validateRequestPermissions] groupId: ${groupId}   request.method: ${request.method}`);
     if (!request.userContext.inGroup) {
       logger.info(`[validateRequestPermissions] user context: ${JSON.stringify(request.userContext)} `);
-      throw forbidden('user not belong to group', { groupId });
+      throw 'user not belong to group';
     } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
-      throw forbidden('user not admin of group', { groupId });
+      throw 'user not admin of group';
     }
   }
 }
@@ -57,7 +57,7 @@ function getFitting() {
       logger.info(`[UserContext:fitting] provider:${provider} `);
       logger.info(`[UserContext:fitting] accessToken:${accessToken} `);
       if (!provider || !accessToken || !LEGAL_PROVIDERS.includes(provider)) {
-        return next(unauthorized('missing token headers'));
+        throw 'missing token headers';
       }
       const existingUser = await models.users.findOne({
         where: {
@@ -98,6 +98,20 @@ function getFitting() {
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
       }
       request.userContext = user.toJSON();
+      const { groupId } = request.getAllParams();
+      if (groupId) {
+        const userPlayer = await models.usersPlayers.findOne({
+          where: {
+            groupId,
+            userId: user.id,
+          },
+        });
+        if (userPlayer) {
+          request.userContext.playerId = userPlayer.playerId;
+        }
+      }
+
+
       await validateRequestPermissions(request);
 
       try {
@@ -108,8 +122,11 @@ function getFitting() {
 
       return next();
     } catch (error) {
-      logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
+      if (typeof error === 'string') {
+        return next(unauthorized(error));
+      }
 
+      logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
       return next(unauthorized('did not pass auth tokens'));
     }
   };

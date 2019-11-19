@@ -36,7 +36,9 @@ async function getGroupData(group, provider, token){
             }else{
                 players = JSON.parse(body).results;
                 if (players && games){
-                    return resolve({ ...group, players, games});
+                    const userContextString = response.headers['x-user-context'];
+                    const userContext = JSON.parse(decodeURI(userContextString));
+                    return resolve({ ...group, players, games, userContext});
                 }
             }
         });
@@ -51,9 +53,17 @@ async function getGroupData(group, provider, token){
                     return reject(bodyObj.title);
                 }
             }else{
-                games = JSON.parse(body).results;
+                games = (JSON.parse(body).results).map(game=>{
+                    return {
+                        ...game,
+                        date: new Date(game.date)
+                    }
+                });
                 if (players && games){
-                    return resolve({ ...group, players, games});
+                    const userContextString = response.headers['x-user-context'];
+                    const userContext = JSON.parse(decodeURI(userContextString));
+
+                    return resolve({ ...group, players, games, userContext});
                 }
             }
         });

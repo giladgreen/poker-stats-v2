@@ -12,9 +12,9 @@ button {
   color: black;
   background: antiquewhite;
   border-bottom-color: black;
-
+  padding-left: 20px;
   border-radius: 5px;
-
+margin-left: 10px;
 }
 .button{
   padding: 5px;
@@ -42,7 +42,12 @@ button {
   color: red;
   padding-left: 10px;
 }
-
+.gamesListItemReady{
+  color: darkgreen;
+}
+.gamesListItemNotReady{
+  color: darkred;
+}
 #logout-link{
   position: absolute;
   font-size: 0.8em;
@@ -67,10 +72,10 @@ padding-right: 10px;
 }
 
 .App-header {
-  background-color: #222;
+
   height: 150px;
   padding: 20px;
-  color: white;
+
 }
 
 .App-intro {
@@ -91,6 +96,67 @@ padding-right: 10px;
 }
 
 
+.editPlayerInput{
+  width: 40vw;
+  padding: 5px;
+}
+.popupOuter{
+  position: absolute;
+  left:0vw;
+  top:0vh;
+  width: 100vw;
+  height: 100vh;
+  background: #000000DD;
+}
+
+.editPlayerPopupInner{
+  padding: 40px;
+  position: absolute;
+  left:10vw;
+  top:10vh;
+  width: 60vw;
+  height: 60vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
+}
+.editGamePopupInner{
+  padding: 40px;
+  position: absolute;
+  left:10vw;
+  top:5vh;
+  width: 60vw;
+  height: 80vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
+}
+
+.viewGamePopupInner{
+  padding: 40px;
+  position: absolute;
+  left:5vw;
+  top:5vh;
+  width: 85vw;
+  height: 80vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
+}
+
+.editGameInput{
+  width: 40vw;
+  padding: 5px;
+}
+.editGamePlayerSection{
+  padding: 10px;
+}
+.backButton{
+  padding-top: 50px;
+}
+.viewGamePlayerSection{
+  padding: 10px;
+}
 .playersListItem{
   padding-left: 6px;
   padding-bottom:0px;
@@ -103,77 +169,50 @@ padding-right: 10px;
   padding-left: 5px;
 }
 @media screen and (max-width: 800px) {
-  #loader{
-    color: white;
-  }
-  #videoOfChips{
-    width: 60vw;
-    height: 50vh;
-    position: absolute;
-    top:1vh;
-    right: 0;
-    left:50vw;
 
-  }
-  .imageOfStack{
+  .editPlayerInput{
     width: 30vw;
-    height: 20vw;
-    padding-right: 1vw;
-    position: absolute;
-    top:54vh;
-    right: 0;
-  }
-  .stackInfo{
-    font-size: 1em;
-  }
-
-  body {
-    background: black;
-    color: white;
+    padding: 2px;
   }
 
   button {
-    color: white;
-    border-bottom-color: white;
-    background: black;
-
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-left: 2px;
   }
-}
-
-@media screen and (max-width: 500px) {
-  #loader{
-    color: white;
+  .button{
+    padding: 2px;
   }
 
-
-
-  #videoOfChips{
-    width: 80vw;
-    height: 60vw;
-    position: absolute;
-    top:50vh;
-    left:10vw;
-  }
-  .imageOfStack{
-    width: 60vw;
-    height: 20vh;
-    padding-right: 1vw;
-    position: absolute;
-    top:90vh;
-    left:10vw;
+  .popupOuter{
+    width: 120vw;
+    height: 4000vh;
   }
 
-  .stackInfo{
-    font-size: 1em;
+  .editPlayerPopupInner{
+    padding: 20px;
+    left:4vw;
+    top:2vh;
+    height: 84vh;
+    width: 70vw;
+    font-size: 0.8em;
+  }
+  .editGamePopupInner{
+    padding: 20px;
+    left:1vw;
+    top:1vh;
+    height: 130vh;
+    font-size: 0.6em;
+    width: 86vw;
   }
 
-  body {
-    background: black;
-    color: white;
+  .viewGamePopupInner{
+    padding: 13px;
+    left:2vw;
+    top:3vw;
+    height: 90vh;
+    width: 87vw;
+    font-size: 0.7em;
   }
-  button {
-    color: white;
-    border-bottom-color: white;
-    background: black;
-  }
+
 }

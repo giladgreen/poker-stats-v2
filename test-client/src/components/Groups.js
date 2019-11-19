@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import createGroup from "../actions/createGroup";
 import deleteGroup from "../actions/deleteGroup";
 import requestInvitation from "../actions/requestInvitation";
+import getGroupData from '../actions/getGroupData';
 
 class Groups extends Component {
 
@@ -31,19 +32,23 @@ class Groups extends Component {
         this.setState({newGroupName: event.target.value});
     };
 
-    onGroupClicked = (group) => {
-        this.props.updateGroup(group);
+    onGroupClicked = async (group) => {
+        const updatedGroup = await getGroupData(group,this.props.provider, this.props.token)
+        this.props.updateGroup(updatedGroup);
     };
 
     deleteGroupById = async (groupId) => {
-        try{
-            await deleteGroup(groupId, this.props.provider, this.props.token);
-            const groupsClone = [...this.props.groups].filter(group => group.id !== groupId);
-            this.props.updateGroups(groupsClone);
-        }catch(error){
-            console.error('createNewGroup error',error);
-            this.props.onFailure(error);
+        if (confirm("Are you sure?")){
+            try{
+                await deleteGroup(groupId, this.props.provider, this.props.token);
+                const groupsClone = [...this.props.groups].filter(group => group.id !== groupId);
+                this.props.updateGroups(groupsClone);
+            }catch(error){
+                console.error('createNewGroup error',error);
+                this.props.onFailure(error);
+            }
         }
+
     };
 
     createNewGroup = async () =>{

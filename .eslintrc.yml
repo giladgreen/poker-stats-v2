@@ -18,6 +18,7 @@ overrides:
       no-plusplus: off
       radix: off
       prefer-destructuring: off
+      no-throw-literal: off
   - files:
       - "**/*.js"
     rules:

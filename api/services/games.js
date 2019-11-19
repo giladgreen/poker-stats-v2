@@ -1,4 +1,5 @@
 const { notFound } = require('boom');
+const moment = require('moment');
 const models = require('../models');
 const gameHelper = require('../helpers/game');
 
@@ -70,8 +71,10 @@ async function getGames(groupId, limit = 1000, offset = 0) {
 async function createGame(groupId, data) {
   const { playersData } = data;
   const ready = gameHelper.isGameReady(playersData);
+  const date = moment(new Date(`${data.date}`.substr(0, 10))).add(12, 'hours').toDate();
+
   const newGameData = {
-    ...defaultValues, ...data, ready, groupId,
+    ...defaultValues, ...data, ready, groupId, date,
   };
   delete newGameData.playersData;
   const newGame = await models.games.create(newGameData);
@@ -84,6 +87,8 @@ async function createGame(groupId, data) {
 
 async function updateGame(groupId, gameId, data) {
   await getGame({ groupId, gameId });
+  const date = moment(new Date(`${data.date}`.substr(0, 10))).add(12, 'hours').toDate();
+
   await models.gamesData.destroy({
     where: {
       groupId,
@@ -96,7 +101,7 @@ async function updateGame(groupId, gameId, data) {
   const { playersData } = updateData;
   const ready = gameHelper.isGameReady(playersData);
   delete updateData.playersData;
-  await models.games.update({ ...data, ready }, {
+  await models.games.update({ ...data, date, ready }, {
     where: {
       groupId,
       id: gameId,

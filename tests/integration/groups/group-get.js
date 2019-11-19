@@ -39,7 +39,7 @@ describe('get single group', function () {
         .expect(contentTypeHeader, 'application/json; charset=utf-8')
         .expect(401);
       body.should.have.property('title').which.is.a.String();
-      should(body.title).eql('did not pass auth tokens');
+      should(body.title).eql('user not belong to group');
     });
     it('should return group details', async function () {
       const { body } = await request(server)

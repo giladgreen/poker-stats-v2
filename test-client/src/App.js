@@ -5,11 +5,30 @@ import Group from './components/Group';
 import Login from './components/Login';
 import Loading from './containers/Loading';
 import Header from './containers/Header';
-import getGroupData from './actions/getGroupData';
+
+String.prototype.datePickerToDate = function() {
+    const stringValue =  this;//2017-11-23
+    const day = stringValue.substr(8,2);
+    const month = stringValue.substr(5,2);
+    const year = stringValue.substr(0,4);
+    return new Date(year, month-1, day, 12, 0, 0);
+};
+
+
+Date.prototype.AsDatePicker = function() {
+    return this.toISOString().substr(0,10);
+};
+
+Date.prototype.AsGameName = function() {
+    const stringValue = this.toISOString().substr(0,10);
+    const day = stringValue.substr(8,2);
+    const month = stringValue.substr(5,2);
+    const year = stringValue.substr(0,4);
+    return `${day}/${month}/${year}`;
+};
 
 
 class App extends Component {
-
 
     constructor() {
         super();
@@ -21,26 +40,18 @@ class App extends Component {
         this.setState({isAuthenticated: false, user: null, groups:[],group:null, error:null})
     };
 
-
     onFailure = (error) => {
         console.error('App onFailure', error)
         this.setState({error })
     };
 
-    updateGroupInMem = async (group) => {
-        this.setState({group,error:null});
-    };
     updateGroup = async (group) => {
-        try {
-            const updatedGroup = await getGroupData(group,this.state.provider, this.state.token)
-            this.setState({group: updatedGroup,error:null});
-        }catch(error){
-            console.error('updateGroup error', error);
-            this.setState({error});
-        }
+        this.setState({group,user:group.userContext, error:null});
     };
 
+
     updateGroups = (groups) => {
+
         this.setState({groups,error:null});
     };
 
@@ -50,29 +61,6 @@ class App extends Component {
 
     onLogin = ({userContext, provider, token, groups}) => {
         this.setState({user: userContext, groups, loading: false, isAuthenticated: true, error:null, provider, token})
-    };
-
-    GroupPage = () => {
-        const {group} = this.state;
-        return (
-            <div className="App">
-                <div>
-                    <button className="button" onClick={this.backToMainPage}> back to all groups</button>
-
-                </div>
-                <div>
-                    <h1> Group: {group.name}</h1>
-                </div>
-                <div>
-                    <h2>  {group.players.length} players</h2>
-                </div>
-                <div>
-                    <hr/>
-                </div>
-                <div>
-                    <h2>  {group.games.length} games</h2>
-                </div>
-            </div>);
     };
 
     render() {
@@ -86,7 +74,7 @@ class App extends Component {
         }
 
         const mainSection = group ?
-            <Group group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroupInMem} onFailure={this.onFailure} /> :
+            <Group  user={this.state.user} group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroup} onFailure={this.onFailure} /> :
             <Groups groups={this.state.groups} provider={this.state.provider} token={this.state.token} updateGroup={this.updateGroup} onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
 
         return (
