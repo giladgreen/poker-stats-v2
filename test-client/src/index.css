@@ -110,35 +110,35 @@ padding-right: 10px;
 }
 
 .editPlayerPopupInner{
-  padding: 40px;
+  padding: 30px;
   position: absolute;
-  left:10vw;
-  top:10vh;
-  width: 60vw;
+  left:5vw;
+  top:5vh;
+  width: 85vw;
   height: 60vh;
   background: ghostwhite;
   border: 3px solid darkslategrey;
   border-radius: 10px;
 }
 .editGamePopupInner{
-  padding: 40px;
+  padding: 30px;
   position: absolute;
-  left:10vw;
+  left:5vw;
   top:5vh;
-  width: 60vw;
-  height: 80vh;
+  width: 85vw;
+  height: 160vh;
   background: ghostwhite;
   border: 3px solid darkslategrey;
   border-radius: 10px;
 }
 
 .viewGamePopupInner{
-  padding: 40px;
+  padding: 20px;
   position: absolute;
-  left:5vw;
-  top:5vh;
-  width: 85vw;
-  height: 80vh;
+  left:2vw;
+  top:2vh;
+  width: 90vw;
+  height: 90vh;
   background: ghostwhite;
   border: 3px solid darkslategrey;
   border-radius: 10px;
@@ -164,8 +164,8 @@ padding-right: 10px;
 
 }
 .playersListImage{
-  height: 25px;
-  width: 18px;
+  height: 28px;
+  width: 30px;
   padding-left: 5px;
   padding-right: 7px;
 }
@@ -184,6 +184,22 @@ padding-right: 10px;
 .balanceWithCurrencyNegative{
   color: darkred;
 }
+.activeGameTextSize{
+  font-size: 100%;
+  color: black;
+  font-weight: bold;
+}
+.centeredText{
+  text-align: center;
+}
+.activeGameSmallHeaderTextSize{
+  font-size: 130%;
+  color: rgb(211, 131, 39);
+  font-weight: bold;
+  margin-top:-20px;
+  margin-bottom:-10px;
+}
+
 @media screen and (max-width: 800px) {
 
   .editPlayerInput{

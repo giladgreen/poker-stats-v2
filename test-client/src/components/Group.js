@@ -1,4 +1,5 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
+import { ANON_URL } from '../../../config';
 
 import createPlayer from "../actions/createPlayer";
 import deletePlayer from "../actions/deletePlayer";
@@ -6,8 +7,7 @@ import updateGame from "../actions/updateGame";
 import updatePlayer from "../actions/updatePlayer";
 import createGame from "../actions/createGame";
 import deleteGame from "../actions/deleteGame";
-
-const ANON_URL= "https://green-pokerstats.herokuapp.com/images/anonymous2.png";
+import OnGoingGame from "./OnGoingGame";
 
 class Group extends Component {
 
@@ -199,7 +199,7 @@ class Group extends Component {
             };
             const playerName = player.name;
 
-            const image = player.imageUrl ? <img alt={playerName} className="playersListImage" src={player.imageUrl}  onError={onImageError} /> : <img alt={player.name} className="playersListImage" src={ANON_URL}/>;
+            const image =  <img alt={playerName} className="playersListImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
             const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
             return (<div className="playersListItem" key={`player_${player.id}`}>
                 <h3>  {image} {playerName} {editPlayerButton} {deletePlayerButton} ({gamesCount} games) <span className={balance >0 ? 'balanceWithCurrencyPositive' : 'balanceWithCurrencyNegative'}>{balanceWithCurrency}</span> </h3>
@@ -210,7 +210,7 @@ class Group extends Component {
     getGames = ()=>{
         const {group} = this.props;
         const {games, isAdmin} = group;
-        return games.map(game=>{
+        return games.sort((a,b)=>(a.date < b.date ? 1:-1)).map(game=>{
             const {date,description, playersData, ready, id:gameId} = game;
 
            //TODO: anyone can delete/edit un-finished game
@@ -382,7 +382,7 @@ class Group extends Component {
                 const playerName = playerData.name;
                 console.log('playerName',playerName)
                 return (<div key={`_playerViewData_${playerData.playerId}`} className="viewGamePlayerSection">
-                    <img alt={playerName} className="playersListImage" src={ playerData.imageUrl}  onError={onImageError} />
+                    <img alt={playerName} className="playersListImage" src={ playerData.imageUrl || ANON_URL}  onError={onImageError} />
                     {playerName} |
                     buy-in: {playerData.buyIn} |
                     cash-out: {playerData.cashOut} |
@@ -397,7 +397,7 @@ class Group extends Component {
                     <hr/>
                     <div>
                         <h2>Game date: {game.date.AsGameName()}</h2>
-                        <h2>{game.description && game.description.length>0 ? `Game description: ${game.description}`: ''}</h2>
+                        <h2>{game.description && game.description.length>0 ? ` ${game.description}`: ''}</h2>
                         <h3>{game.playersData.length} Players</h3>
                         <h4>{totalBuyIn} In Pot</h4>
                     </div>
@@ -411,16 +411,8 @@ class Group extends Component {
                 </div>
             </div>);
         } else{
-            return (<div className="popupOuter">
-                <div className="viewGamePopupInner">
-                    <div>
-                        <h1>Ongoing game..</h1>
-                    </div>
-                    <div className="backButton">
-                        <button className="button" onClick={()=>this.viewGame(null)}> Back</button>
-                    </div>
-                </div>
-            </div>);
+
+           return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.viewGame(null)}/>
         }
 
     }
@@ -453,7 +445,7 @@ class Group extends Component {
                 }
             };
 
-            const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl}  onError={onImageError} /> ;
+            const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL}  onError={onImageError} /> ;
 
             console.log('playerName',playerName)
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">

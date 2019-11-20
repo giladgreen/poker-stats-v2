@@ -1,4 +1,5 @@
 {
   "GOOGLE_CLIENT_ID": "819855379342-19qbfif99mdphll36hl6tbndrvquj89m.apps.googleusercontent.com",
-  "FACEBOOK_APP_ID": "730256507438642"
+  "FACEBOOK_APP_ID": "730256507438642",
+  "ANON_URL": "https://green-pokerstats.herokuapp.com/images/anonymous2.png"
 }
