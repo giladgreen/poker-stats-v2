@@ -7,7 +7,7 @@ import updatePlayer from "../actions/updatePlayer";
 import createGame from "../actions/createGame";
 import deleteGame from "../actions/deleteGame";
 
-
+const ANON_URL= "https://green-pokerstats.herokuapp.com/images/anonymous2.png";
 
 class Group extends Component {
 
@@ -15,6 +15,8 @@ class Group extends Component {
         super();
         this.state = { newPlayerName:'', newGameDate:(new Date()).AsDatePicker().datePickerToDate().AsDatePicker() ,player:null, buyIn: 50, cashOut: 50};
     }
+
+
 
     scrollTop = () => {
         window.scrollTo(0, 0);
@@ -166,22 +168,41 @@ class Group extends Component {
     };
 
     getPlayers = ()=>{
+
         const {group} = this.props;
         const {players, games, isAdmin} = group;
         return players.map(player=>{
+            let balance = 0;
             const playersGames = games.filter(game=> {
-                return game.playersData.find(data => data.playerId === player.id);
+                const play = game.playersData.find(data => data.playerId === player.id);
+                if (play){
+                    balance += play.cashOut;
+                    balance -= play.buyIn;
+                }
+                return play;
             });
             const gamesCount = playersGames.length;
-            return {...player, gamesCount};
-        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player=>{
-            const { gamesCount } = player;
+
+            return {...player, gamesCount, balance};
+        }).sort((a,b)=>  a.gamesCount === b.gamesCount ? ((a.balance > b.balance ? -1 : 1)) : (a.gamesCount > b.gamesCount ? -1 : 1)).map(player=>{
+            const { gamesCount, balance } = player;
             const deletePlayerButton = isAdmin && (this.props.user.playerId!==player.id) && gamesCount === 0 ?  <button className="button" onClick={()=> this.deletePlayerById(player.id)}> Delete    </button> : <span/>;
             const editPlayerButton = isAdmin ?  <button className="button" onClick={()=> this.editPlayer(player)}> Edit  </button> : <span/>;
 
-            const image = player.imageUrl ? <img alt={player.name} className="playersListImage" src={player.imageUrl}/> : <span/>;
+            const onImageError = (ev)=>{
+                if (!ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src=player.imageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+            const playerName = player.name;
+
+            const image = player.imageUrl ? <img alt={playerName} className="playersListImage" src={player.imageUrl}  onError={onImageError} /> : <img alt={player.name} className="playersListImage" src={ANON_URL}/>;
+            const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
             return (<div className="playersListItem" key={`player_${player.id}`}>
-                <h3>  {image} {player.name} {editPlayerButton} {deletePlayerButton} ({gamesCount} games)</h3>
+                <h3>  {image} {playerName} {editPlayerButton} {deletePlayerButton} ({gamesCount} games) <span className={balance >0 ? 'balanceWithCurrencyPositive' : 'balanceWithCurrencyNegative'}>{balanceWithCurrency}</span> </h3>
             </div>);
         })
     };
@@ -342,6 +363,7 @@ class Group extends Component {
                return {
                    playerId: playerData.playerId,
                    name: PLAYERS[playerData.playerId].name,
+                   imageUrl: PLAYERS[playerData.playerId].imageUrl,
                    buyIn: playerData.buyIn,
                    cashOut: playerData.cashOut,
                    balance: playerData.cashOut - playerData.buyIn
@@ -349,8 +371,19 @@ class Group extends Component {
             });
             playersData.sort((a,b)=> a.balance >b.balance ? -1 : 1);
             const players = playersData.map(playerData=>{
+                const onImageError = (ev)=>{
+                    if (!ev.target.secondTry){
+                        ev.target.secondTry = true;
+                        ev.target.src= playerData.imageUrl;
+                    }else{
+                        ev.target.src=ANON_URL;
+                    }
+                };
+                const playerName = playerData.name;
+                console.log('playerName',playerName)
                 return (<div key={`_playerViewData_${playerData.playerId}`} className="viewGamePlayerSection">
-                    {playerData.name} |
+                    <img alt={playerName} className="playersListImage" src={ playerData.imageUrl}  onError={onImageError} />
+                    {playerName} |
                     buy-in: {playerData.buyIn} |
                     cash-out: {playerData.cashOut} |
                     balance: {playerData.balance}
@@ -408,8 +441,24 @@ class Group extends Component {
         });
         const players = game.playersData.map(playerData=>{
 
+
+            const playerName = PLAYERS[playerData.playerId].name;
+            const playerImageUrl = PLAYERS[playerData.playerId].imageUrl;
+            const onImageError = (ev)=>{
+                if (!ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src= playerImageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+
+            const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl}  onError={onImageError} /> ;
+
+            console.log('playerName',playerName)
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
-                {PLAYERS[playerData.playerId].name} |
+                {image}
+                {playerName} |
                 buy-in: {playerData.buyIn} |
                 cash-out: {playerData.cashOut} |
                 balance: {playerData.cashOut - playerData.buyIn}
@@ -505,18 +554,20 @@ class Group extends Component {
                     <h1> Group: {group.name}</h1>
                     {isAdmin ? <h3>logged in as admin</h3> : <span/>}
                 </div>
-                <div>
-                    {newPlayerSection}
-                    <h2>  {group.players.length} players</h2>
-                    <div className="groupPlayersList"> {players} </div>
-                </div>
+                    {newGameSection}
+                    <h2>  {group.games.length} games</h2>
+                    <div className="groupGamesList"> {games} </div>
+
                 <div>
                     <hr/>
                 </div>
                 <div>
-                    {newGameSection}
-                    <h2>  {group.games.length} games</h2>
-                    <div className="groupGamesList"> {games} </div>
+                    <div>
+                        {newPlayerSection}
+                        <h2>  {group.players.length} players</h2>
+                        <div className="groupPlayersList"> {players} </div>
+                    </div>
+
 
                 </div>
                 {editPlayerPopup}
