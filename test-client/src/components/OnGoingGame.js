@@ -184,15 +184,15 @@ class OnGoingGame extends Component {
                 <div>
                     <h3>Ongoing game. {game.date.AsGameName()}</h3>
                     <h4>{game.description}. {game.playersData.length} Players</h4>
-                    <h3>{totalBuyIn} In Pot</h3>
+
                     <div className="backButton">
                         <button className="button" onClick={onBack}> Back</button>
                     </div>
 
                 </div>
-                <div>
-                    {players}
-                </div>
+                {players}
+                 <div className="potInTheMiddle"><h1>{totalBuyIn} In Pot</h1></div>
+
 
             </div>
         </div>);

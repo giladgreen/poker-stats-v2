@@ -131,7 +131,11 @@ padding-right: 10px;
   border: 3px solid darkslategrey;
   border-radius: 10px;
 }
-
+.potInTheMiddle{
+  position: absolute;
+  left:25vw;
+  top:30vh;
+}
 .viewGamePopupInner{
   padding: 20px;
   position: absolute;
