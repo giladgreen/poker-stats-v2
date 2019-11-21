@@ -23,17 +23,10 @@ const baseLocations = (new Array(10)).fill(0,0,10).map((item, totalPlayers) =>{
     });
 });
 
-
-console.log('baseLocations',baseLocations);
-
 const locations = baseLocations.map(arr=>arr.map(({left, top})=>({ left: (left * widthRatio)+widthLeftPad  , top: (top* heightRatio)+heightTopPad })));
 
 
 class OnGoingGame extends Component {
-
-    constructor() {
-        super();
-    }
 
     createPlayerRow = (playerData) =>{
         const { game, group: { players: groupPlayers }  } = this.props;
@@ -45,8 +38,7 @@ class OnGoingGame extends Component {
         const buyInValue = `${buyIn>0?'+':''}${buyIn}₪`;
         const cashOutValue = `${cashOut>0?'+':''}${cashOut}₪`;
         const bottomLineValue = `${bottomLine>0?'+':''}${bottomLine}₪`;
-        console.log('bottomLine',bottomLine)
-        console.log('bottomLineValue',bottomLineValue)
+
         const onImageError = (ev)=>{
             if (imageUrl && imageUrl.length>1 && !ev.target.secondTry){
                 ev.target.secondTry = true;
@@ -82,7 +74,6 @@ class OnGoingGame extends Component {
         const cashOutValue = `${cashOut>0?'+':''}${cashOut}₪`;
 
         const { name, imageUrl } = groupPlayers.find(p=>p.id === playerData.playerId);
-        console.log('imageUrl',imageUrl)
         const onImageError = (ev)=>{
             if (imageUrl && imageUrl.length>1 && !ev.target.secondTry){
                 ev.target.secondTry = true;
@@ -163,9 +154,19 @@ class OnGoingGame extends Component {
         );
     }
 
+    onBackClicked = ()=>{
+        if ( this.interval ){
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+        this.props.onBack();
+    }
     render = () =>{
-        const {onBack, game} = this.props;
+        if (!this.interval ){
+            this.interval = setInterval(this.props.updateOnProgressGame,10000);
+        }
 
+        const {onBack, game} = this.props;
         if (!game){
             return (
                 <div>
@@ -186,7 +187,7 @@ class OnGoingGame extends Component {
                     <h4>{game.description}. {game.playersData.length} Players</h4>
 
                     <div className="backButton">
-                        <button className="button" onClick={onBack}> Back</button>
+                        <button className="button" onClick={this.onBackClicked}> Back</button>
                     </div>
 
                 </div>

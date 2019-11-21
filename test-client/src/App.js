@@ -14,7 +14,6 @@ String.prototype.datePickerToDate = function() {
     return new Date(year, month-1, day, 12, 0, 0);
 };
 
-
 Date.prototype.AsDatePicker = function() {
     return this.toISOString().substr(0,10);
 };

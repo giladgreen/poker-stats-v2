@@ -7,6 +7,7 @@ import updateGame from "../actions/updateGame";
 import updatePlayer from "../actions/updatePlayer";
 import createGame from "../actions/createGame";
 import deleteGame from "../actions/deleteGame";
+import getGame from "../actions/getGame";
 import OnGoingGame from "./OnGoingGame";
 
 class Group extends Component {
@@ -16,7 +17,20 @@ class Group extends Component {
         this.state = { newPlayerName:'', newGameDate:(new Date()).AsDatePicker().datePickerToDate().AsDatePicker() ,player:null, buyIn: 50, cashOut: 50};
     }
 
-
+    updateOnProgressGame = async()=>{
+        const {group} = this.props;
+        const onGoingGameId = this.state.viewGame.id;
+        const viewGame = await getGame(group.id, onGoingGameId, this.props.provider, this.props.token);
+        viewGame.date = new Date(viewGame.date);
+        const groupClone = {...this.props.group};
+        groupClone.games = groupClone.games.map(game =>{
+            if (game.id === viewGame.id){
+                return viewGame;
+            }
+            return game;
+        });
+        this.props.updateGroup(groupClone);
+    }
 
     scrollTop = () => {
         window.scrollTo(0, 0);
@@ -380,7 +394,6 @@ class Group extends Component {
                     }
                 };
                 const playerName = playerData.name;
-                console.log('playerName',playerName)
                 return (<div key={`_playerViewData_${playerData.playerId}`} className="viewGamePlayerSection">
                     <img alt={playerName} className="playersListImage" src={ playerData.imageUrl || ANON_URL}  onError={onImageError} />
                     {playerName} |
@@ -412,7 +425,7 @@ class Group extends Component {
             </div>);
         } else{
 
-           return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.viewGame(null)}/>
+           return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.viewGame(null)} updateOnProgressGame={this.updateOnProgressGame}/>
         }
 
     }
@@ -447,7 +460,6 @@ class Group extends Component {
 
             const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL}  onError={onImageError} /> ;
 
-            console.log('playerName',playerName)
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
                 {image}
                 {playerName} |
