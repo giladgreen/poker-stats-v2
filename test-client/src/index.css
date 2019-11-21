@@ -133,8 +133,9 @@ padding-right: 10px;
 }
 .potInTheMiddle{
   position: absolute;
-  left:25vw;
-  top:30vh;
+  left:37vw;
+  top:37vh;
+font-size: 3em;
 }
 .viewGamePopupInner{
   padding: 20px;

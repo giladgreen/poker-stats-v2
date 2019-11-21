@@ -191,7 +191,7 @@ class OnGoingGame extends Component {
 
                 </div>
                 {players}
-                 <div className="potInTheMiddle"><h1>{totalBuyIn} In Pot</h1></div>
+                 <div className="potInTheMiddle">{totalBuyIn} In Pot</div>
 
 
             </div>
