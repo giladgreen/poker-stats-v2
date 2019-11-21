@@ -187,7 +187,7 @@ class Group extends Component {
         const {players, isAdmin} = group;
         return players.map(player=>{
             const { gamesCount, balance } = player;
-            console.log('player',player)
+
             const deletePlayerButton = isAdmin && (this.props.user.playerId!==player.id) && gamesCount === 0 ?  <button className="button" onClick={()=> this.deletePlayerById(player.id)}> Delete    </button> : <span/>;
             const editPlayerButton = isAdmin ?  <button className="button" onClick={()=> this.editPlayer(player)}> Edit  </button> : <span/>;
 
@@ -371,8 +371,8 @@ class Group extends Component {
                    balance: playerData.cashOut - playerData.buyIn
                }
             });
-            playersData.sort((a,b)=> a.balance >b.balance ? -1 : 1);
-            const players = playersData.map(playerData=>{
+
+            const players = playersData.sort((a,b)=> a.balance >b.balance ? -1 : 1).map(playerData=>{
                 const onImageError = (ev)=>{
                     if (!ev.target.secondTry){
                         ev.target.secondTry = true;

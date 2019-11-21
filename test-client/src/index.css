@@ -131,23 +131,8 @@ padding-right: 10px;
   border: 3px solid darkslategrey;
   border-radius: 10px;
 }
-.potInTheMiddle{
-  position: absolute;
-  left:37vw;
-  top:37vh;
-font-size: 3em;
-}
-.viewGamePopupInner{
-  padding: 20px;
-  position: absolute;
-  left:2vw;
-  top:2vh;
-  width: 90vw;
-  height: 90vh;
-  background: ghostwhite;
-  border: 3px solid darkslategrey;
-  border-radius: 10px;
-}
+
+
 
 .editGameInput{
   width: 40vw;

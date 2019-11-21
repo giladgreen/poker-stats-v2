@@ -123,36 +123,60 @@ class OnGoingGame extends Component {
         );
     }
     getAsTable = () =>{
-        const { game} = this.props;
+        const { game, group: { players:  groupPlayers}} = this.props;
 
-        const playersHeader = (
-            <div className="col-xs-12 activeGameSmallHeaderTextSize">
-                <div className="col-xs-6 centeredText">
-                    Player
-                </div>
-                <div className="col-xs-2 ">
-                    Buy-in
-                </div>
-                <div className="col-xs-2 ">
-                    Cash-out
-                </div>
-                <div className="col-xs-2 ">
-                    Balance
-                </div>
-            </div>
-        );
-        const players = game.playersData.map(this.createPlayerRow);
+        const players = game.playersData.map(player=>{
+            let all = player.bank;
+            const blues =  (50 * (Math.floor(all/50)));
+            all = all - blues;
+            const hasBlue = blues>0;
+            const greens =  (25 * (Math.floor(all/25)));
+            all = all - greens;
+            const hasGreen = greens>0;
+            const blacks =  (10 * (Math.floor(all/10)));
+            all = all - blacks;
+            const hasBlack = blacks>0;
+            const reds =  (5 * (Math.floor(all/5)));
+            all = all - reds;
+            const hasRed = reds>0;
+            const hasGray = all >0;
+            const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
+            return {...player, hasBlue,hasGreen,hasBlack,hasRed,hasGray, name, imageUrl}
+        }).map((player, index)=>{
+            const onImageError = (ev)=>{
+                if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src=player.imageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+            const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
+           return  (<div>
+                        <div className={`player player-${(index + 1)}`}>
+                           <div className="bank">
+                               <div className="bank-value">{ player.buyIn}</div>
+                               <div className="jetons v-50" v-if="value.hasBlue"></div>
+                               <div className="jetons v-25" v-if="value.hasGreen"></div>
+                               <div className="jetons v-10" v-if="value.hasBlack"></div>
+                               <div className="jetons v-5" v-if="value.hasRed"></div>
+                               <div className="jetons v-1" v-if="value.hasGray"></div>
+                           </div>
+                           <div className="avatar">{image}</div>
+                           <div className="name">{player.name}</div>
+                        </div>
+                    </div>);
+        });
 
-        return (
-            <div className="row activeGameTextSize">
-                <hr/>
-                {playersHeader}
-                <hr/>
-                {players}
-
-            </div>
-        );
-    }
+       return (
+           <div className="vue-container">
+               <div className="table">
+                   <div className="players">
+                       {players}
+                   </div>
+                </div>
+           </div>);
+    };
 
     onBackClicked = ()=>{
         if ( this.interval ){
@@ -178,7 +202,7 @@ class OnGoingGame extends Component {
         }
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
-        const players = this.getAsCircle();
+        const players = game.playersData.length> 5? this.getAsTable() :this.getAsCircle();
 
         return (<div className="popupOuter">
             <div className="viewGamePopupInner">
@@ -192,7 +216,7 @@ class OnGoingGame extends Component {
 
                 </div>
                 {players}
-                 <div className="potInTheMiddle">{totalBuyIn} In Pot</div>
+                 <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>
 
 
             </div>

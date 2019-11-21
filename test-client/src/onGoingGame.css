@@ -1,0 +1,271 @@
+.vue-container{
+    width:100vw;
+    height:100vh;
+}
+.viewGamePopupInner{
+    padding: 20px;
+    position: absolute;
+    left:1vw;
+    top:1vh;
+    width: 95vw;
+    height: 100vh;
+    background: ghostwhite;
+    border: 3px solid darkslategrey;
+    border-radius: 10px;
+}
+.activeGameCircleImage{
+    width: 120px;
+    height: 130px;
+    border-radius: 100%;
+    position: relative;
+    z-index: 20;
+
+}
+
+.potInTheMiddle{
+    position: absolute;
+    left:33vw;
+    top:37vh;
+    font-size: 6em;
+    color: #96e296;
+}
+.bank {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 100px;
+    right: 0;
+    z-index: 10;
+}
+.bank .bank-value {
+    position: absolute;
+    font-family: "Houschka Rounded";
+    right: -72px;
+    top: 10px;
+    font-weight: bold;
+    font-size: 27px;
+    color: #96e296;
+}
+.bank .bank-value:after {
+    content: "₪";
+}
+.bank .v-50 {
+    top: -12px;
+    right: -20px;
+    background-color: blue;
+}
+.bank .v-25 {
+    top: 6px;
+    right: -2px;
+    background-color: green;
+}
+.bank .v-10 {
+    top: 19px;
+    right: 22px;
+    background-color: black;
+}
+.bank .v-5 {
+    top: 27px;
+    right: 47px;
+    background-color: red;
+}
+.bank .v-1 {
+    top: 30px;
+    left: -60px;
+    background-color: gray;
+}
+.jetons {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    border: 2px white dotted;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.jetons.v-50 {
+    background-color: blue;
+}
+.jetons.v-25 {
+    background-color: green;
+}
+.jetons.v-10 {
+    background-color: black;
+}
+.jetons.v-5 {
+    background-color: red;
+}
+.jetons.v-1 {
+    background-color: gray;
+}
+.table {
+    width: 70vw;
+    height: 70vh;
+    background-color: #4aad4a;
+    position: absolute;
+    left: 45%;
+    top: 30%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 150px;
+    position: relative;
+    border: 15px solid #a95555;
+}
+.table:before {
+    content: '';
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 71vw;
+    height: 71vh;
+    border-radius: 150px;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
+.table:after {
+    content: '';
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 69vw;
+    height: 69vh;
+    border-radius: 130px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.players {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.players .player {
+    position: absolute;
+}
+.players .player .avatar {
+    width: 120px;
+    height: 120px;
+    background-color: lightcoral;
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 2px 10px 0px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+}
+.players .player .avatar:after {
+    content: '';
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translatex(-50%) translatey(-50%);
+    border-radius: 100%;
+    box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.players .player .name {
+    font-family: "Houschka Rounded";
+    text-align: center;
+    width: 100px;
+    color: #96e296;
+    padding: 5px 0;
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 2px solid #96e296;
+    border-radius: 5px;
+    margin-top: 25px;
+    text-overflow: ellipsis;
+    font-size: 25px;
+    font-weight: bold;
+    overflow: hidden;
+    position: relative;
+}
+.players .player.playing:before {
+    content: '...';
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    background-color: #76daff;
+    display: inline-block;
+    line-height: 0px;
+    height: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+.players .player.player-1 {
+    top: 0px;
+    left: 58%;
+    transform: translatex(-50%) translatey(-50%);
+}
+.players .player.player-2 {
+    bottom: 0px;
+    left: 53%;
+    transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.players .player.player-2 .name {
+    transform: rotatez(180deg);
+}
+.players .player.player-2 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-2 .mise-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-3 {
+    top: 50%;
+    left: 0px;
+    transform: translatex(-50%) translatey(-50%) rotatez(-90deg);
+}
+.players .player.player-3 .name {
+    transform: rotatez(0deg);
+}
+.players .player.player-4 {
+    top: 50%;
+    right: 0px;
+    transform: translatex(50%) translatey(-50%) rotatez(90deg);
+}
+.players .player.player-4 .name {
+    transform: rotatez(0deg);
+}
+.players .player.player-5 {
+    top: 0px;
+    left: 35%;
+    transform: translatex(-50%) translatey(-50%);
+}
+.players .player.player-6 {
+    bottom: 0px;
+    left: 79%;
+    transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.players .player.player-6 .name {
+    transform: rotatez(180deg);
+}
+.players .player.player-6 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-6 .mise-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-7 {
+    top: 0px;
+    left: 81%;
+    transform: translatex(-50%) translatey(-50%);
+}
+.players .player.player-8 {
+    bottom: 0px;
+    left: 25%;
+    transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.players .player.player-8 .name {
+    transform: rotatez(180deg);
+}
+.players .player.player-8 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-8 .mise-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-9 {
+    top: 18px;
+    left: 11%;
+    transform: translatex(-50%) translatey(-50%);
+}
