@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const { NODE_ENV, SERVER_PORT } = require('./config.js');
 const logger = require('./api/services/logger');
+const terminate = require('./api/helpers/terminate');
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
@@ -67,3 +68,10 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
 module.exports = {
   server: app,
 };
+const exitHandler = terminate(app, {
+  coredump: false, timeout: 500,
+});
+process.on('uncaughtException', exitHandler(1, 'Uncaught Exception'));
+process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'));
+process.on('SIGTERM', exitHandler(0, 'SIGTERM'));
+process.on('SIGINT', exitHandler(0, 'SIGINT'));

@@ -7,3 +7,4 @@ migration/
 **/coverage/**/*.js
 **/test-client/**/*.js
 **/Gruntfile.js
+**/terminate.js
