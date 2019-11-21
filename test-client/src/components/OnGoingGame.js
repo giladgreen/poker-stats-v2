@@ -178,13 +178,13 @@ class OnGoingGame extends Component {
         }
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
-        const players = (game.playersData.length >3 && game.playersData.length < 10) ? this.getAsCircle() : this.getAsTable();
+        const players = this.getAsCircle();
 
         return (<div className="popupOuter">
             <div className="viewGamePopupInner">
                 <div>
                     <h3>Ongoing game. {game.date.AsGameName()}</h3>
-                    <h4>{game.description}. {game.playersData.length} Players</h4>
+                    <h4>{game.playersData.length} Players. {game.description} </h4>
 
                     <div className="backButton">
                         <button className="button" onClick={this.onBackClicked}> Back</button>
