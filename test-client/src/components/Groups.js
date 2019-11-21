@@ -33,7 +33,22 @@ class Groups extends Component {
     };
 
     onGroupClicked = async (group) => {
-        const updatedGroup = await getGroupData(group,this.props.provider, this.props.token)
+        const updatedGroup = await getGroupData(group,this.props.provider, this.props.token);
+
+        updatedGroup.players = updatedGroup.players.map(player=>{
+            let balance = 0;
+            const playersGames = updatedGroup.games.filter(game=> {
+                const play = game.playersData.find(data => data.playerId === player.id);
+                if (play){
+                    balance += play.cashOut;
+                    balance -= play.buyIn;
+                }
+                return play;
+            });
+            const gamesCount = playersGames.length;
+
+            return {...player, gamesCount, balance};
+        }).sort((a,b)=>  a.gamesCount === b.gamesCount ? ((a.balance > b.balance ? -1 : 1)) : (a.gamesCount > b.gamesCount ? -1 : 1));
         this.props.updateGroup(updatedGroup);
     };
 

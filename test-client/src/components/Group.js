@@ -184,22 +184,10 @@ class Group extends Component {
     getPlayers = ()=>{
 
         const {group} = this.props;
-        const {players, games, isAdmin} = group;
+        const {players, isAdmin} = group;
         return players.map(player=>{
-            let balance = 0;
-            const playersGames = games.filter(game=> {
-                const play = game.playersData.find(data => data.playerId === player.id);
-                if (play){
-                    balance += play.cashOut;
-                    balance -= play.buyIn;
-                }
-                return play;
-            });
-            const gamesCount = playersGames.length;
-
-            return {...player, gamesCount, balance};
-        }).sort((a,b)=>  a.gamesCount === b.gamesCount ? ((a.balance > b.balance ? -1 : 1)) : (a.gamesCount > b.gamesCount ? -1 : 1)).map(player=>{
             const { gamesCount, balance } = player;
+            console.log('player',player)
             const deletePlayerButton = isAdmin && (this.props.user.playerId!==player.id) && gamesCount === 0 ?  <button className="button" onClick={()=> this.deletePlayerById(player.id)}> Delete    </button> : <span/>;
             const editPlayerButton = isAdmin ?  <button className="button" onClick={()=> this.editPlayer(player)}> Edit  </button> : <span/>;
 
