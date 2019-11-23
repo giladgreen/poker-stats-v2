@@ -1,0 +1,71 @@
+CREATE TABLE groups (
+    id text PRIMARY KEY,
+    name text,
+    description text DEFAULT '',
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);
+CREATE TABLE games (
+    id text PRIMARY KEY,
+    description text,
+    date timestamp without time zone,
+    group_id text REFERENCES groups(id),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone,
+    ready boolean DEFAULT false
+);
+CREATE TABLE players (
+    id text PRIMARY KEY,
+    name text,
+    email text,
+    image_url text,
+    group_id text REFERENCES groups(id),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);
+CREATE TABLE games_data (
+    id text PRIMARY KEY,
+    game_id text REFERENCES games(id),
+    player_id text REFERENCES players(id),
+    cash_out integer,
+    buy_in integer,
+    group_id text REFERENCES groups(id),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);
+CREATE TABLE users (
+    id text PRIMARY KEY,
+    first_name text,
+    family_name text,
+    email text,
+    image_url text,
+    token text,
+    token_expiration timestamp without time zone NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);
+CREATE TABLE users_players (
+    id text PRIMARY KEY,
+    player_id text,
+    user_id text,
+    group_id text,
+    is_admin boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);
+
+CREATE TABLE invitations_requests (
+    id text PRIMARY KEY,
+    user_id text,
+    group_id text,
+    Status text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    deleted_at timestamp without time zone
+);

@@ -10,6 +10,10 @@ module.exports = function (sequelize, DataTypes) {
     name: {
       type: DataTypes.TEXT,
     },
+    description: {
+      type: DataTypes.TEXT,
+      defaultValue: '',
+    },
     ...dateFields,
   }, {
     paranoid: true,

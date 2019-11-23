@@ -15,6 +15,108 @@ function convertDate(date){
   //  return result;
 }
 
+async function createTables(){
+    console.log('createTables start');
+
+    try {
+        await models.sequelize.query(`
+        CREATE TABLE groups (
+                id text PRIMARY KEY,
+                name text,
+                description text DEFAULT '',
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+        `);
+
+        await models.sequelize.query(`
+        CREATE TABLE games (
+                id text PRIMARY KEY,
+                description text,
+                date timestamp without time zone,
+                group_id text REFERENCES groups(id),
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone,
+                ready boolean DEFAULT false
+            );
+        `);
+
+        await models.sequelize.query(`
+        CREATE TABLE players (
+                id text PRIMARY KEY,
+                name text,
+                email text,
+                image_url text,
+                group_id text REFERENCES groups(id),
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+       `);
+
+        await models.sequelize.query(`
+        CREATE TABLE games_data (
+                id text PRIMARY KEY,
+                game_id text REFERENCES games(id),
+                player_id text REFERENCES players(id),
+                cash_out integer,
+                buy_in integer,
+                group_id text REFERENCES groups(id),
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+       `);
+
+        await models.sequelize.query(`
+        CREATE TABLE users (
+                id text PRIMARY KEY,
+                first_name text,
+                family_name text,
+                email text,
+                image_url text,
+                token text,
+                token_expiration timestamp without time zone NOT NULL,
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+       `);
+
+        await models.sequelize.query(`
+        CREATE TABLE users_players (
+                id text PRIMARY KEY,
+                player_id text,
+                user_id text,
+                group_id text,
+                is_admin boolean,
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+       `);
+
+        await models.sequelize.query(`
+        CREATE TABLE invitations_requests (
+                id text PRIMARY KEY,
+                user_id text,
+                group_id text,
+                Status text,
+                created_at timestamp without time zone NOT NULL,
+                updated_at timestamp without time zone NOT NULL,
+                deleted_at timestamp without time zone
+            );
+       `);
+
+    } catch (e) {
+        console.error('createTables',e)
+    }
+    console.log('createTables end');
+
+}
+
 async function clearAllDataFromDB(){
     console.log('clearAllDataFromDB start');
     await models.sequelize.query('DELETE from games_data');
@@ -31,15 +133,7 @@ async function clearAllDataFromDB(){
 async function createPlayers(groupId){
 
     const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, imageUrl,isAdmin})=>{
-        if (isAdmin){
-            console.log('********');
-            console.log('********');
-            console.log('********');
-            console.log('  ' + firstName + ' is admin')
-            console.log('********');
-            console.log('********');
-            console.log('********');
-        }
+
         return {
             name: `${firstName} ${familyName}`,
             email,
@@ -51,9 +145,9 @@ async function createPlayers(groupId){
         };
     });
     const players = await Promise.all(playersToCreate.map(player => models.players.create(player).catch(err=>{
-        console.log(err)
+        console.error(err)
     })));
-    console.error('## players created:', players.length);
+    console.log('## players created:', players.length);
     await Promise.all(players.map(async (player, index)=>{
         mapping[Object.values(data.players)[index].id] = player.id;
 
@@ -79,7 +173,7 @@ async function createPlayers(groupId){
             await models.usersPlayers.create(userPlayer);
 
         }
-        console.error('##     ', player.name, player.email);
+        console.log('##     ', player.name, player.email);
 
 
     }));
@@ -117,16 +211,18 @@ async function createGames(groupId) {
 
     console.error('## games created:', games.length);
     games.forEach((game, index)=>{
-        console.error(`##  ${(index+1)})   `, game.description, ' ', game.date);
+        console.log(`##  ${(index+1)})   `, game.description, ' ', game.date);
     });
 }
 async function doStuff() {
-    console.log('doStuff')
+    console.log('migration start')
+    console.log('################')
+    await createTables();
     await clearAllDataFromDB();
 
     const group = await models.groups.create({name: data.name});
     const groupId = group.id;
-    console.error('## group created:', data.name);
+    console.log('## group created:', data.name);
 
     await createPlayers(groupId);
     await createGames(groupId);

@@ -16,6 +16,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       defaultValue: '',
     },
+    imageUrl: {
+      type: DataTypes.TEXT,
+      field: 'image_url',
+    },
     groupId: {
       type: DataTypes.STRING,
       field: 'group_id',

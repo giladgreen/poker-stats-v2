@@ -2,529 +2,267 @@
   "name": "The Original Friendly",
   "players": {
     "1493450940989_orig_Gilad_Green": {
-      "aList": true,
       "isAdmin": true,
       "firstName": "Gilad",
       "familyName": "Green",
       "phone": "0587869910",
       "email": "green.gilad@gmail.com",
-      "getNotifications": true,
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif",
-      "groupId": "orig",
-      "id": "1493450940989_orig_Gilad_Green",
-      "birthdate": "05-09-1984",
-      "url": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif",
-      "password": "kush1984",
-      "canHost": true,
-      "developer": true,
-      "testHost": false,
-      "addressCity": "Tel-Aviv",
-      "addressStreet": "Faibel",
-      "addressStreetNumber": "12",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif"
     },
     "1493450940989_orig_Noam_Tal": {
       "firstName": "Noam",
       "familyName": "Tal",
       "phone": "0523342222",
       "email": "noamtal@outlook.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Noam_Tal.png",
-      "groupId": "orig",
-      "id": "1493450940989_orig_Noam_Tal",
-      "birthdate": "01-07-1977",
-      "password": "2222pu",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Noam_Tal.png"
     },
     "1493450940977_orig_Noam_Alon": {
       "firstName": "Noam",
       "familyName": "Alon",
       "phone": "0543113672",
       "email": "noamalon98@gmail.com",
-      "getNotifications": true,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940977_orig_Noam_Alon.gif",
-      "groupId": "orig",
-      "private": false,
-      "id": "1493450940977_orig_Noam_Alon",
-      "birthdate": "17-05-1997",
-      "password": "3672aa",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940977_orig_Noam_Alon.gif"
     },
     "1493450940987_orig_Shahar_Orbach": {
       "firstName": "Shahar",
       "familyName": "Orbach",
       "phone": "0545633384",
       "email": "sorbach@zahav.net.il",
-      "getNotifications": true,
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940987_orig_Shahar_Orbach.gif",
-      "groupId": "orig",
-      "private": false,
-      "id": "1493450940987_orig_Shahar_Orbach",
-      "birthdate": "17-05-1980",
-      "password": "Iddqd",
-      "skip": true,
-      "url": "http://green-pokerstats.herokuapp.com/images/1493450940987_orig_Shahar_Orbach.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940987_orig_Shahar_Orbach.gif"
     },
     "1493450940984_orig_Tal_Amar": {
-      "aList": true,
       "firstName": "Tal",
       "familyName": "Amar ",
       "phone": "0542070990",
       "email": "mental.amar@gmail.com",
-      "getNotifications": true,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif",
-      "groupId": "orig",
-      "id": "1493450940984_orig_Tal_Amar",
-      "birthdate": "08-04-1981",
-      "password": "0990ej",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif"
     },
     "1495127664904_orig_Igor_Butner": {
       "firstName": "Igor",
       "familyName": "Butner",
       "phone": "0526794379",
       "email": "Butneri@yahoo.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1495127664904_orig_Igor_Butner.gif",
-      "groupId": "orig",
-      "id": "1495127664904_orig_Igor_Butner",
-      "birthdate": "21-04-1982",
-      "password": "4379nd",
-      "getNotifications": true,
-      "hasAutoAproveOption": false,
-      "autoAproveOption": false
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1495127664904_orig_Igor_Butner.gif"
     },
     "1498173377481_orig_Emil_Greenshpen": {
       "firstName": "Emil",
       "familyName": "Greenshpen",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous4.png",
-      "groupId": "orig",
-      "private": true,
-      "birthdate": "23-06-1984",
-      "id": "1498173377481_orig_Emil_Greenshpen",
-      "password": "2263dq",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous4.png"
     },
     "1493450940989_orig_Roee_Enbar": {
       "firstName": "Roee",
       "familyName": "Enbar",
       "phone": "0506392927",
       "email": "roee.enbar@gmail.com",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Roee_Enbar.png",
-      "groupId": "orig",
-      "id": "1493450940989_orig_Roee_Enbar",
-      "birthdate": "13-09-1984",
-      "password": "2927lk",
-      "getNotifications": true,
-      "canHost": true,
-      "addressCity": "Tel aviv",
-      "addressStreet": "Dizingof ",
-      "addressStreetNumber": "120",
-      "url": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Roee_Enbar.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Roee_Enbar.png"
     },
     "1493450940986_orig_Amit_Bar-shai": {
       "firstName": "Amit",
       "familyName": "Bar-shai",
       "phone": "0545331911",
       "email": "amitbs28@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940986_orig_Amit_Bar-shai.gif",
-      "groupId": "orig",
-      "id": "1493450940986_orig_Amit_Bar-shai",
-      "birthdate": "28-01-1985",
-      "password": "1911ve",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940986_orig_Amit_Bar-shai.gif"
     },
     "1493940234005_orig_Michael_Nos": {
-      "aList": true,
+      "isAdmin": true,
       "firstName": "Michael",
       "familyName": "Nos",
       "phone": "0546507746",
       "email": "nos.michael@gmail.com",
-      "getNotifications": true,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif",
-      "groupId": "orig",
-      "birthdate": "16-11-1985",
-      "id": "1493940234005_orig_Michael_Nos",
-      "password": "7746qq",
-      "canHost": true,
-      "developer": true,
-      "addressCity": "Ramat Gan",
-      "addressStreet": "Jabotinsky",
-      "addressStreetNumber": "95",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif"
     },
     "1493450940986_orig_Eli_Fraimovich": {
       "firstName": "Eli",
       "familyName": "Fraimovich",
       "phone": "0547576367",
       "email": "ellifr@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940986_orig_Eli_Fraimovich.png",
-      "groupId": "orig",
-      "id": "1493450940986_orig_Eli_Fraimovich",
-      "birthdate": "13-05-1986",
-      "password": "6367ui",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940986_orig_Eli_Fraimovich.png"
     },
     "1493450940988_orig_Shlomi_Pikali": {
       "firstName": "Shlomi",
       "familyName": "Pikali",
       "phone": "0548117600",
       "email": "Shlomipik@gmail.com",
-      "getNotifications": true,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940988_orig_Shlomi_Pikali.gif",
-      "groupId": "orig",
-      "id": "1493450940988_orig_Shlomi_Pikali",
-      "birthdate": "07-07-1986",
-      "password": "7600dj",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940988_orig_Shlomi_Pikali.gif"
     },
     "1493450940987_orig_Adar_Kaisar": {
-      "skip": true,
       "firstName": "Adar",
       "familyName": "Kaisar",
       "phone": "0545345236",
       "email": "adark3@gmail.com",
       "getNotifications": false,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Adar_Kaisar.gif",
-      "groupId": "orig",
-      "id": "1493450940987_orig_Adar_Kaisar",
-      "birthdate": "23-02-1987",
-      "password": "5236ag"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Adar_Kaisar.gif"
     },
     "1498173411959_orig_Alon_MaaleEdomim": {
-      "skip": true,
       "firstName": "Alon",
       "familyName": "  ",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous2.png",
-      "groupId": "orig",
-      "private": true,
-      "id": "1498173411959_orig_Alon_MaaleEdomim",
-      "birthdate": "23-06-1987",
-      "password": "2263ri"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous2.png"
     },
     "1493450388517_orig_Saar_Schweid": {
-      "aList": true,
       "firstName": "Saar",
       "familyName": "Schweid",
       "phone": "0545724938",
-      "getNotifications": true,
       "email": "umang3@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif",
-      "groupId": "orig",
-      "id": "1493450388517_orig_Saar_Schweid",
-      "birthdate": "24-10-1987",
-      "canHost": true,
-      "addressCity": "Holon",
-      "addressStreet": "Mifratz Shlomo",
-      "addressStreetNumber": "2",
-      "password": "4938at",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif"
     },
     "1493450940989_orig_Lev_Fraimovich": {
-      "skip": true,
       "firstName": "Lev",
       "familyName": "Fraimovich",
       "phone": "0528629932",
       "email": "leff.fr@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Lev_Fraimovich.gif",
-      "groupId": "orig",
-      "id": "1493450940989_orig_Lev_Fraimovich",
-      "birthdate": "14-01-1988",
-      "password": "9932fp"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940989_orig_Lev_Fraimovich.gif"
     },
     "1493450940987_orig_Ran_Eylat": {
-      "aList": true,
       "firstName": "Ran",
       "familyName": "Eylat",
       "phone": "0525530805",
       "email": "Raneylat88@walla.com",
-      "getNotifications": true,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif",
-      "imageFile": null,
-      "groupId": "orig",
-      "id": "1493450940987_orig_Ran_Eylat",
-      "birthdate": "10-07-1988",
-      "password": "0805jt",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif"
     },
     "1493830474963_orig_Daniel_Maksakov": {
       "firstName": "Daniel",
       "familyName": "Maksakov",
       "phone": "0545983778",
       "email": "",
-      "getNotifications": true,
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493830474963_orig_Daniel_Maksakov.png",
-      "groupId": "orig",
-      "birthdate": "18-03-1993",
-      "id": "1493830474963_orig_Daniel_Maksakov",
-      "password": "jac123",
-      "url": "https://green-pokerstats.herokuapp.com/images/1493830474963_orig_Daniel_Maksakov.gif"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1493830474963_orig_Daniel_Maksakov.png"
     },
     "1496952451637_orig_Ron_Cohen": {
-      "skip": true,
       "firstName": "Ron",
       "familyName": "Cohen",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "private": true,
-      "id": "1496952451637_orig_Ron_Cohen",
-      "birthdate": "11-04-1994",
-      "password": "2263nu"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1493940234005_orig_Dvir_Shapira": {
-      "skip": true,
       "firstName": "Dvir",
       "familyName": "Shapira",
       "phone": "0525785266",
       "email": "dvirshapira7@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Dvir_Shapira.gif",
-      "groupId": "orig",
-      "birthdate": "11-08-1995",
-      "id": "1493940234005_orig_Dvir_Shapira",
-      "password": "5266ko"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Dvir_Shapira.gif"
     },
     "1493450940989_orig_Lahav_": {
-      "skip": true,
       "firstName": "Lahav",
       "familyName": " ",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous3.png",
-      "groupId": "orig",
-      "private": true,
-      "id": "1493450940989_orig_Lahav_",
-      "birthdate": "01-06-2017",
-      "password": "2263vq"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous3.png"
     },
     "1493450940990_orig_Keren_Pikali": {
-      "skip": true,
+
       "firstName": "Keren",
       "familyName": " Pikali",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940990_orig_Keren_Pikali.png",
-      "groupId": "orig",
-      "private": true,
-      "id": "1493450940990_orig_Keren_Pikali",
-      "birthdate": "10-06-2017",
-      "url": "https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-9/11960263_10153567808921613_692365119944506846_n.jpg?oh=6722fdea1fb560424f181448ce4b2518&oe=59C8F4FA",
-      "password": "2263ma"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450940990_orig_Keren_Pikali.png"
     },
     "1501802340276_orig_Eli_Saar's friend": {
-      "skip": true,
       "firstName": "Eli",
       "familyName": "Saar's friend",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450388518_orig_aeli_Saar_friend.png",
-      "imageFile": null,
-      "groupId": "orig",
-      "private": false,
-      "birthdate": "04-08-2017",
-      "id": "1501802340276_orig_Eli_Saar's friend",
-      "password": "2263yh"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1493450388518_orig_aeli_Saar_friend.png"
     },
     "1502883900856_orig_amir_sherman": {
-      "skip": true,
       "id": "1502883900856_orig_amir_sherman",
       "firstName": "amir",
       "familyName": "sherman",
       "phone": "",
-      "email": "",
-      "groupId": "orig",
-      "birthdate": "31-10-1987",
-      "private": false,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1502883900856_orig_amir_sherman.png",
-      "password": "2263li"
+      "email": ""
     },
     "1502884311690_orig_Elad_Eylat": {
-      "skip": true,
       "firstName": "Elad",
       "familyName": "Eylat",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1502884311690_orig_Elad_Eylat.png",
-      "imageFile": null,
-      "groupId": "orig",
-      "private": false,
-      "id": "1502884311690_orig_Elad_Eylat",
-      "birthdate": "23-01-1991",
-      "url": "https://fb-s-c-a.akamaihd.net/h-ak-fbx/v/t1.0-9/fr/cp0/e15/q65/11149583_10205675662223083_1369226293651141542_n.jpg?efg=eyJpIjoidCJ9&oh=a5bbcce54cfd08e3b949e8262d12529f&oe=5A1A30A3&__gda__=1512588635_6c6f5cc47af798fd5f2ee35ea89fc6d8",
-      "password": "2263ev"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1502884311690_orig_Elad_Eylat.png"
     },
     "1504076980752_orig_Asaf_Blum": {
-      "skip": true,
       "id": "1504076980752_orig_Asaf_Blum",
       "firstName": "Asaf",
       "familyName": "Blum",
       "phone": "0508193868",
-      "email": "asaf.blum@outlook.com",
-      "groupId": "orig",
-      "birthdate": "27-09-1985",
-      "private": false,
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1504076980752_orig_Asaf_Blum.png",
-      "password": "3868vc"
+      "email": "asaf.blum@outlook.com"
     },
     "1504103928507_orig_Sergei_Olshanetski": {
-      "skip": true,
       "firstName": "Sergei",
       "familyName": "Olshanetski",
       "phone": " 0546346505",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1504103928507_orig_Sergei_Olshanetski.gif",
-      "imageFile": null,
-      "groupId": "orig",
-      "private": false,
-      "id": "1504103928507_orig_Sergei_Olshanetski",
-      "birthdate": "30-08-2017",
-      "url": "http://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13473362_1715070335411630_1614510520_n.jpg?ig_cache_key=MTI4MDk5MTE4NDcwMTAyNzg5NA%3D%3D.2",
-      "password": "6505zz"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1504103928507_orig_Sergei_Olshanetski.gif"
     },
     "1504717770382_orig_Yuval_Kuperberg": {
-      "skip": true,
       "firstName": "Yuval",
       "familyName": "Kuperberg",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1504717770382_orig_Yuval_Kuperberg.png",
-      "groupId": "orig",
-      "private": false,
-      "birthdate": "30-07-1989",
-      "id": "1504717770382_orig_Yuval_Kuperberg",
-      "url": null,
-      "password": "2263oj"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1504717770382_orig_Yuval_Kuperberg.png"
     },
     "1504973573265_orig_Amit_Oz": {
-      "skip": true,
       "firstName": "Amit",
       "familyName": "Oz",
       "phone": "null",
-      "email": "",
-      "groupId": "orig",
-      "birthdate": "null",
-      "private": false,
-      "id": "1504973573265_orig_Amit_Oz",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "password": "2263xc"
+      "email": ""
     },
     "1506621814733_orig_Jennie_Lobovsky": {
-      "skip": true,
       "firstName": "Jennie",
       "familyName": "Lobovsky",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1506621814733_orig_Jennie_Lobovsky.png",
-      "groupId": "orig",
-      "private": false,
-      "birthdate": "28-09-2017",
-      "id": "1506621814733_orig_Jennie_Lobovsky",
-      "url": null,
-      "password": "2263gp"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1506621814733_orig_Jennie_Lobovsky.png"
     },
     "1506622009849_orig_Yevgeny_Tkach": {
-      "skip": true,
       "firstName": "Yevgeny",
       "familyName": "Tkach",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1506622009849_orig_Yevgeny_Tkach.png",
-      "groupId": "orig",
-      "private": false,
-      "birthdate": "28-09-2017",
-      "id": "1506622009849_orig_Yevgeny_Tkach",
-      "url": null,
-      "password": "2263qi"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1506622009849_orig_Yevgeny_Tkach.png"
     },
     "1510857214969_orig_Gilad_Yona": {
-      "skip": true,
       "firstName": "Gilad",
       "familyName": "Yona",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857214969_orig_Gilad_.png",
-      "groupId": "orig",
-      "private": false,
-      "id": "1510857214969_orig_Gilad_Yona",
-      "birthdate": "23-03-1984",
-      "password": "2263ok"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857214969_orig_Gilad_.png"
     },
     "1510857274810_orig_Ori_yankovitz": {
       "firstName": "Ori",
       "familyName": "Yankovitch",
       "phone": "0506928448",
       "email": "oriyanco3@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif",
-      "groupId": "orig",
-      "birthdate": "null",
-      "private": false,
-      "id": "1510857274810_orig_Ori_yankovitz",
-      "password": "8448fs",
-      "getNotifications": true,
-      "hasAutoAproveOption": true,
-      "autoAproveOption": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif"
     },
     "1510857327452_orig_Eran": {
-      "skip": true,
+
       "firstName": "Eran",
       "familyName": ".",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857327452_orig_Bbb_.png",
-      "groupId": "orig",
-      "private": false,
-      "id": "1510857327452_orig_Eran",
-      "birthdate": "null",
-      "url": null,
-      "password": "2263fb"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857327452_orig_Bbb_.png"
     },
     "1510857370232_orig_Nir_Paz": {
       "firstName": "Nir",
       "familyName": "Paz",
       "phone": "0522512185",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857370232_orig_Nir_Paz.png",
-      "groupId": "orig",
-      "private": false,
-      "id": "1510857370232_orig_Nir_Paz",
-      "birthdate": "10-10-1977",
-      "skip": true,
-      "password": "2185ib"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1510857370232_orig_Nir_Paz.png"
     },
     "1510857388951_orig_Matan": {
-      "skip": true,
       "firstName": "Matan",
       "familyName": "",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1510857388951_orig_Matan.png",
-      "groupId": "orig",
-      "private": false,
-      "id": "1510857388951_orig_Matan",
-      "birthdate": "null",
-      "url": "http://green-pokerstats.herokuapp.com/images/1510857388951_orig_Matan.png",
-      "password": "2263aj"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1510857388951_orig_Matan.png"
     },
     "1511462548892_orig_Daniel_Cohen": {
-      "skip": true,
       "firstName": "Daniel",
       "familyName": "Cohen",
       "phone": "0505432105",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1511462548892_orig_Daniel_Cohen.png",
-      "groupId": "orig",
-      "private": false,
-      "id": "1511462548892_orig_Daniel_Cohen",
-      "birthdate": "12-09-1995",
-      "password": "2105cr"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1511462548892_orig_Daniel_Cohen.png"
     },
     "1511473738065_orig_Bar_Nashalsky": {
       "id": "1511473738065_orig_Bar_Nashalsky",
@@ -532,482 +270,247 @@
       "familyName": "Nashalsky",
       "phone": "052-6020198",
       "email": "barg2303@gmail.com",
-      "getNotifications": true,
-      "groupId": "orig",
       "birthdate": "17-04-1998",
       "private": false,
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1511473738065_orig_Bar_Nashalsky.gif",
-      "password": "2263am",
-      "url": "https://green-pokerstats.herokuapp.com/images/1511473738065_orig_Bar_Nashalsky.gif",
-      "hasAutoAproveOption": true,
-      "autoAproveOption": false,
-      "canHost": true,
-      "addressCity": "חולון",
-      "addressStreet": "יעקב פיכמן",
-      "addressStreetNumber": "11"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1511473738065_orig_Bar_Nashalsky.gif"
     },
     "1511462934877_orig_Ziv_Tirosh": {
-      "skip": true,
       "firstName": "Ziv",
       "familyName": "Tirosh",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "imageFile": null,
-      "groupId": "orig",
-      "private": false,
-      "birthdate": "23-11-2017",
-      "id": "1511462934877_orig_Ziv_Tirosh",
-      "password": "2263wa"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1515088979752_orig_Aviv_Ron-el": {
-      "skip": true,
       "firstName": "Aviv",
       "familyName": "Ron-el",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1515088979752_orig_Aviv_Ron-el.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1998",
-      "id": "1515088979752_orig_Aviv_Ron-el",
-      "password": "9754zb",
-      "url": "https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.0-9/fr/cp0/e15/q65/10421162_4331905871866_8994375910522157640_n.jpg?efg=eyJpIjoidCJ9&oh=f70f850b7cad06c519e1d6d6b7210518&oe=5AF417F7"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1515088979752_orig_Aviv_Ron-el.png"
     },
     "1519330769096_orig_Kirill_Chudinov": {
       "firstName": "Kirill",
       "familyName": "Chudinov",
       "phone": "0508167174",
       "email": "kirill.chudinov24@gmail.com",
-      "getNotifications": false,
-      "groupId": "orig",
-      "private": false,
-      "id": "1519330769096_orig_Kirill_Chudinov",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.png",
-      "birthdate": "24-05-1992",
-      "password": "9096gy",
-      "url": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.png"
     },
     "1521142800364_orig_Alex_Po": {
-      "skip": true,
       "firstName": "Alex",
       "familyName": "  ",
       "phone": "0544930367",
       "email": "anton@.io",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1521142800364_orig_Alex_Po.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "id": "1521142800364_orig_Alex_Po",
-      "url": "https://green-pokerstats.herokuapp.com/images/1521142800364_orig_Alex_Po.png",
-      "password": "0367pv"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1521142800364_orig_Alex_Po.png"
     },
     "1521764031554_orig_Hagai_Galai": {
       "firstName": "Hagai",
       "familyName": "Galai",
       "phone": "0508857073",
       "email": "hagaigalai@gmail.com",
-      "getNotifications": true,
-      "groupId": "orig",
-      "private": false,
-      "id": "1521764031554_orig_Hagai_Galai",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_A.gif",
-      "birthdate": "17-04-1983",
-      "password": "Aa123456",
-      "url": "https://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_A.gif",
-      "canHost": true,
-      "addressCity": "Ganei Tikva",
-      "addressStreet": "Derech HaYam",
-      "addressStreetNumber": "10"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_A.gif"
     },
     "1524179335530_orig_Idan_Saar": {
       "firstName": "Idan",
       "familyName": "Vizel",
       "phone": "",
       "email": "",
-      "groupId": "orig",
-      "private": false,
-      "id": "1524179335530_orig_Idan_Saar",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1524179335530_orig_Idan_Saar.png",
-      "birthdate": "null",
-      "password": "5530ji",
-      "skip": true,
-      "url": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1524179335530_orig_Idan_Saar.png"
     },
     "1524804690632_orig_Roee_F": {
       "firstName": "Roee",
       "familyName": "F",
       "phone": "",
       "email": "",
-      "groupId": "orig",
-      "private": false,
-      "id": "1524804690632_orig_Roee_F",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "birthdate": "null",
-      "password": "0632jr",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1524804690633_orig_Lior_F": {
       "firstName": "Lior",
       "familyName": "F",
       "phone": "",
       "email": "",
-      "groupId": "orig",
-      "private": false,
-      "id": "1524804690633_orig_Lior_F",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "birthdate": "null",
-      "password": "0633ad",
-      "skip": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1525946627442_orig_Dmitry_Kudryavtsev": {
       "firstName": "Dmitry",
       "familyName": "Kudryavtsev",
       "phone": "052-6493481",
       "email": "ko.dmitri@gmail.com",
-      "groupId": "orig",
-      "private": false,
-      "id": "1525946627442_orig_Dmitry_Kudryavtsev",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1525946627442_orig_Dmitry_Kudryavtsev.png",
-      "birthdate": "01-01-1988",
-      "skip": true,
-      "password": "7443gg",
-      "url": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "getNotifications": true
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1525946627442_orig_Dmitry_Kudryavtsev.png"
     },
     "1526018232838_orig_Tomer_h": {
       "firstName": "Tomer",
-      "skip": true,
       "familyName": "h",
       "phone": "",
       "email": "",
-      "groupId": "orig",
-      "private": false,
-      "id": "1526018232838_orig_Tomer_h",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "birthdate": "null",
-      "password": "2838kn"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1529004396693_orig_Shani_Nashalsky": {
       "firstName": "Shani",
       "familyName": "Nashalsky",
       "phone": "",
       "email": "",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1529004396693_orig_Shani_Nashalsky.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1993",
-      "canHost": false,
-      "skip": true,
-      "getNotifications": false,
-      "id": "1529004396693_orig_Shani_Nashalsky",
-      "url": "https://green-pokerstats.herokuapp.com/images/1529004396693_orig_Shani_Nashalsky.png",
-      "password": "6695so"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1529004396693_orig_Shani_Nashalsky.png"
     },
     "1532626517905_orig_Kobi_Bobi": {
       "firstName": "Kobi",
       "familyName": "Bobi",
       "phone": "0522645244",
       "email": "kobib18@gmail.com",
-      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1532626517905_orig_Kobi_Bobi.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": true,
-      "id": "1532626517905_orig_Kobi_Bobi",
-      "password": "jac123",
-      "url": "https://green-pokerstats.herokuapp.com/images/1532626517905_orig_Kobi_Bobi.png"
+      "imageUrl": "https://green-pokerstats.herokuapp.com/images/1532626517905_orig_Kobi_Bobi.png"
     },
     "1537804776395_orig_Moshe_Anonymous": {
       "firstName": "Moshe",
       "familyName": "Poystro",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1537804776395_orig_Moshe_Anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1537804776395_orig_Moshe_Anonymous",
-      "password": "6396ll",
-      "skip": true,
-      "url": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1537804776395_orig_Moshe_Anonymous.png"
     },
     "1539893262542_orig_Gilad_Papo": {
       "firstName": "Gilad",
       "familyName": "Papo",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1539893262542_orig_Gilad_Papo.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1539893262542_orig_Gilad_Papo",
-      "url": "http://green-pokerstats.herokuapp.com/images/1539893262542_orig_Gilad_Papo.png",
-      "password": "2545cl",
-      "skip": true
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1539893262542_orig_Gilad_Papo.png"
     },
     "1539893274927_orig_Shimon_Anonymous": {
       "firstName": "Shimon",
       "familyName": "Anonymous",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "imageFile": null,
-      "id": "1539893274927_orig_Shimon_Anonymous",
-      "password": "4930ct",
-      "skip": true
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1547141214869_orig_Rafi_Ofran": {
       "firstName": "Rafi",
       "familyName": "Ofran",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": true,
-      "getNotifications": false,
-      "id": "1547141214869_orig_Rafi_Ofran",
-      "password": "4870eh",
-      "addressCity": "Tel aviv",
-      "addressStreet": "Shlomo hamelech",
-      "addressStreetNumber": "67"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1548982175683_orig_Amit_Diamant": {
       "firstName": "Amit",
       "familyName": "Diamant",
       "phone": "",
       "email": "",
-      "groupId": "orig",
-      "private": false,
-      "id": "1548982175683_orig_Amit_Diamant",
-      "imageUrl": "https://scontent.ftlv2-1.fna.fbcdn.net/v/t1.0-9/428064_10150666893975798_250647326_n.jpg?_nc_cat=111&_nc_ht=scontent.ftlv2-1.fna&oh=3e876f8bd81efc80195ab717be2f0bd9&oe=5CBEAFCA",
-      "birthdate": "null",
-      "password": "5683wu",
-      "skip": true
+      "imageUrl": "https://scontent.ftlv2-1.fna.fbcdn.net/v/t1.0-9/428064_10150666893975798_250647326_n.jpg?_nc_cat=111&_nc_ht=scontent.ftlv2-1.fna&oh=3e876f8bd81efc80195ab717be2f0bd9&oe=5CBEAFCA"
     },
     "1550165063749_orig_Eran_Ofran": {
       "firstName": "Eran",
-      "skip": true,
       "familyName": "Ofran",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1550165063749_orig_Eran_Ofran",
-      "password": "3751ad"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1551291068226_orig_Nir_Sadon": {
-      "skip": true,
       "firstName": "Nir",
       "familyName": "Sadon",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1551291068226_orig_Nir_Sadon",
-      "password": "8227xp"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1557418517860_orig_Michael_Ee": {
-      "skip": true,
       "firstName": "Michael",
       "familyName": "Ee",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1557418517860_orig_Michael_Ee",
-      "password": "7861no",
-      "url": "http://green-pokerstats.herokuapp.com/images/1557418517860_orig_Michael_Ee.png",
-      "imageFile": null
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1557418541562_orig_Daniel_Bb": {
-      "skip": true,
       "firstName": "Daniel",
       "familyName": "Bb",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1557418541562_orig_Daniel_Bb",
-      "password": "1563lh"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1557418574443_orig_Amir_Sl": {
-      "skip": true,
       "firstName": "Amir",
       "familyName": "Sl",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1557418574443_orig_Amir_Sl",
-      "password": "4444vc"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1558036413074_orig_Yaniv_Ofmoshe": {
-      "skip": true,
       "firstName": "Yaniv",
       "familyName": "Ofmoshe",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1558036413074_orig_Yaniv_Ofmoshe",
-      "password": "3075al"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1563470520350_orig_Eliran_Michalelov": {
       "firstName": "Eliran",
       "familyName": "Michalelov",
       "phone": "0526116290",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1563470520350_orig_Eliran_Michalelov.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1563470520350_orig_Eliran_Michalelov",
-      "password": "0351ib",
-      "url": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1563470520350_orig_Eliran_Michalelov.png"
     },
     "1564676419966_orig_Daniel_ofsaar": {
       "firstName": "Daniel",
       "familyName": "Ofsaar",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1564676419966_orig_Daniel_ofsaar",
-      "password": "9967kn"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1564686935087_orig_Tamir_Ofsaar": {
       "firstName": "Tamir",
       "familyName": "Ofsaar",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1564686935087_orig_Tamir_Ofsaar",
-      "password": "5089rr"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1565268804732_orig_eliran_regev": {
       "firstName": "Eliran",
       "familyName": "Regev",
       "phone": "0545848469",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1565268804732_orig_eliran_regev.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1565268804732_orig_eliran_regev",
-      "password": "8469sc",
-      "url": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1565268804732_orig_eliran_regev.png"
     },
     "1565891961837_orig_Adi_Ofyaniv": {
       "firstName": "Adi",
       "familyName": "Ofyaniv",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1565891961837_orig_Adi_Ofyaniv.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1565891961837_orig_Adi_Ofyaniv",
-      "password": "1838nq",
-      "url": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1565891961837_orig_Adi_Ofyaniv.png"
     },
     "1569472944980_orig_Erez_Ofori": {
       "firstName": "Erez",
       "familyName": "Ofori",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1569472944980_orig_Erez_Ofori",
-      "password": "4981mc"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1569472996982_orig_Omri_Aharon": {
       "firstName": "Omri",
       "familyName": "Aharon",
       "phone": "0542138433",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1569472996982_orig_Omri_Aharon",
-      "password": "8433di"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1571250554198_orig_Yoav_Gross": {
       "firstName": "Yoav",
       "familyName": "Gross",
       "phone": "0545912192",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1571250554198_orig_Yoav_Gross.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1571250554198_orig_Yoav_Gross",
-      "url": "",
-      "password": "2192sg"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1571250554198_orig_Yoav_Gross.png"
     },
     "1571937030030_orig_Barak_Pearlman": {
       "firstName": "Barak",
       "familyName": "Pearlman",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1571937030030_orig_Barak_Pearlman",
-      "password": "0031fy"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
     },
     "1573150027429_orig_Peleg_Ya": {
       "firstName": "Peleg",
       "familyName": "Ya",
       "phone": "",
       "email": "",
-      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-      "groupId": "orig",
-      "birthdate": "01-01-1985",
-      "canHost": false,
-      "getNotifications": false,
-      "id": "1573150027429_orig_Peleg_Ya",
-      "password": "7430wq"
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
+    },
+    "1574362464506_orig_Avi_Etsioni": {
+      "firstName": "Avi",
+      "familyName": "Etsioni",
+      "phone": "",
+      "email": "",
+      "imageUrl": "http://green-pokerstats.herokuapp.com/images/1574362464506_orig_Avi_Etsioni.png"
     }
   },
   "games": [
@@ -1016,1164 +519,1146 @@
       "name": "01-01-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 100,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 160
+          "exit": "160"
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 140
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 100,
-          "exit": 0
+          "exit": "0"
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086254_orig_06-01-2017",
       "name": "06-01-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 150,
           "exit": 140
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 110
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 200
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 100,
           "exit": 0
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086255_orig_18-01-2017",
       "name": "18-01-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 100,
-          "exit": 150
+          "exit": "150"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
-          "exit": 260
+          "exit": "260"
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 50,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lahav_",
           "enter": 100,
           "exit": 0
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086255_orig_10-02-2017",
       "name": "10-02-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
-          "exit": 100
+          "exit": "100"
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 20
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 60
+          "exit": "60"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 50,
-          "exit": 70
+          "exit": "70"
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 50,
-          "exit": 250
+          "exit": "250"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Noam_Tal",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
-          "exit": 300
+          "exit": "300"
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086256_orig_23-02-2017",
       "name": "23-02-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 100,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 300
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 90
+          "exit": "90"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 50,
-          "exit": 60
+          "exit": "60"
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086256_orig_15-03-2017",
       "name": "15-03-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 230
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 40
+          "exit": "40"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 50,
           "exit": 110
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 100,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 50,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Eli_Fraimovich",
           "enter": 50,
-          "exit": 10
+          "exit": "10"
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086256_orig_31-03-2017",
       "name": "31-03-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 50,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 300
+          "exit": "300"
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 120,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 100,
           "exit": 50
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 150,
-          "exit": 20
+          "exit": "20"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Roee_Enbar",
           "enter": 100,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 50,
           "exit": 50
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493455086257_orig_14-04-2017",
       "name": "14-04-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 170
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 150,
           "exit": 130
         },
         {
-          "skip": true,
+
           "id": "1493450940990_orig_Keren_Pikali",
           "enter": 50,
-          "exit": 160
+          "exit": "160"
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 100,
           "exit": 30
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 290
+          "exit": "290"
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Lev_Fraimovich",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 50,
           "exit": 80
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 130
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1493940434605_orig_05-04-2017",
       "name": "04-05-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 560
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 200,
-          "exit": 0
+          "exit": "0"
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 100,
           "exit": 330
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 150,
-          "exit": 0
+          "exit": "0"
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
           "exit": 160
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1495153060064_orig_19-05-2017",
       "name": "19-05-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
           "exit": 110
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
           "exit": 140
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 250,
           "exit": 230
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 270
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 250,
           "exit": 550
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 150,
           "exit": 0
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1495596205922_orig_23-05-2017",
       "name": "23-05-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 100,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
           "exit": 340
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 150,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 300,
           "exit": 650
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1496308294256_orig_31-05-2017",
       "name": "31-05-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 80
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 200,
           "exit": 390
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 300,
           "exit": 200
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 110
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 250
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 50,
           "exit": 20
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1496956926715_orig_08-06-2017",
       "name": "08-06-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 50,
           "exit": 180
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 440
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1496952451637_orig_Ron_Cohen",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 150,
           "exit": 590
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1498173604014_orig_22-06-2017",
       "name": "22-06-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 100,
           "exit": 350
         },
         {
-          "skip": true,
+
           "id": "1498173377481_orig_Emil_Greenshpen",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 480
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1498173411959_orig_Alon_MaaleEdomim",
           "enter": 100,
           "exit": 320
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 150,
           "exit": 0
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1498935174990_orig_01-07-2017",
       "name": "01-07-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 270
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 810
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 100,
           "exit": 860
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 550,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940990_orig_Keren_Pikali",
           "enter": 150,
           "exit": 50
         }
-      ],
-      "groupId": "orig"
+      ]
     },
     {
       "id": "1499386217841_orig_06-07-2017",
       "name": "06-07-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 240
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 150,
           "exit": 290
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 90
         },
         {
-          "skip": true,
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 120,
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "extraData": "Hosted by Rani"
     },
     {
       "name": "14-07-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 210,
           "exit": 130
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 180
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 50,
           "exit": 50
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 70
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 50,
           "exit": 190
         }
       ],
-      "groupId": "orig",
+
       "id": "1500010399305_orig_14-07-2017"
     },
     {
       "name": "20-07-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 160
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 160,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 300,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 50,
           "exit": 500
         }
       ],
-      "groupId": "orig",
+
       "id": "1500591917321_orig_20-07-2017"
     },
     {
       "name": "27-07-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 350
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 250,
           "exit": 70
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 100,
           "exit": 250
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 50,
           "exit": 580
         }
       ],
-      "groupId": "orig",
+
       "id": "1501197285063_orig_27-07-2017"
     },
     {
       "name": "03-08-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 250,
           "exit": 120
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 50
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 870
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 50,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 100,
           "exit": 210
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1501802340276_orig_Eli_Saar's friend",
           "enter": 100,
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1501802258351_orig_03-08-2017"
     },
     {
       "name": "10-08-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 100,
           "exit": 470
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 350,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 50,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 120,
           "exit": 290
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 180,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 50,
           "exit": 200
         }
       ],
-      "id": "1502410753529_undefined_11-08-2017",
-      "groupId": "orig"
+      "id": "1502410753529_undefined_11-08-2017"
     },
     {
       "name": "17-08-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 220,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 350,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
           "exit": 440
         },
         {
-          "skip": true,
+
           "id": "1502884311690_orig_Elad_Eylat",
           "enter": 50,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1502883900856_orig_amir_sherman",
           "enter": 50,
           "exit": 210
         }
       ],
-      "id": "1502920473175_undefined_17-08-2017",
-      "groupId": "orig"
+      "id": "1502920473175_undefined_17-08-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "24-08-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 330,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 170,
           "exit": 640
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 120,
           "exit": 760
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 210,
           "exit": 230
@@ -2182,23 +1667,23 @@
       "id": "1503609002222_orig_25-08-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "31-08-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 350
         },
         {
-          "skip": true,
+
           "id": "1504076980752_orig_Asaf_Blum",
           "enter": 100,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 240
@@ -2206,23 +1691,21 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 240,
-          "exit": 180,
-          "skip": true
+          "exit": 180
         },
         {
           "id": "1504103928507_orig_Sergei_Olshanetski",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 190,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
@@ -2232,53 +1715,53 @@
       "extraData": "Hosted by Gilad"
     },
     {
-      "groupId": "orig",
+
       "name": "09-09-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 200
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 180,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 770
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 420,
           "exit": 380
         },
         {
-          "skip": true,
+
           "id": "1504076980752_orig_Asaf_Blum",
           "enter": 100,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1504973573265_orig_Amit_Oz",
           "enter": 50,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1504717770382_orig_Yuval_Kuperberg",
           "enter": 100,
           "exit": 0
@@ -2290,105 +1773,105 @@
       "name": "14-09-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 450
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 360,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 500,
           "exit": 110
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 250,
           "exit": 390
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 300,
           "exit": 450
         }
       ],
-      "groupId": "orig",
+
       "id": "1505465385208_orig_14-09-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "29-09-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 250,
           "exit": 390
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 150,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 50,
           "exit": 360
         },
         {
-          "skip": true,
+
           "id": "1493450940990_orig_Keren_Pikali",
           "enter": 50,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1506621814733_orig_Jennie_Lobovsky",
           "enter": 50,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1506622009849_orig_Yevgeny_Tkach",
           "enter": 50,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1504076980752_orig_Asaf_Blum",
           "enter": 150,
           "exit": 0
@@ -2397,65 +1880,65 @@
       "id": "1506636930789_orig_29-09-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "08-10-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 180,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 190,
           "exit": 210
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 240,
           "exit": 290
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 70
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 370,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 50,
           "exit": 200
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 100,
           "exit": 420
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 90,
           "exit": 430
         },
         {
-          "skip": true,
+
           "id": "1502883900856_orig_amir_sherman",
           "enter": 100,
           "exit": 0
@@ -2464,47 +1947,47 @@
       "id": "1507419657990_orig_08-10-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "12-10-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 180,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 400,
           "exit": 80
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 200,
           "exit": 380
         },
         {
-          "skip": true,
+
           "id": "1504103928507_orig_Sergei_Olshanetski",
           "enter": 100,
           "exit": 60
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 360
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 350,
           "exit": 360
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 90
@@ -2513,53 +1996,53 @@
       "id": "1507868847541_orig_13-10-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "19-10-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 160
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 150,
           "exit": 310
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 200,
           "exit": 20
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 120,
           "exit": 530
@@ -2571,94 +2054,94 @@
       "name": "26-10-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 240
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 650
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 380
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 370,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 350,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 50,
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1509061259350_orig_26-10-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "02-11-2017",
       "extraData": "Hosted by Saar",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 40
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 50
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 160
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Adar_Kaisar",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 50,
           "exit": 80
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
           "exit": 670
@@ -2667,66 +2150,66 @@
       "id": "1509670995563_orig_02-11-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "09-11-2017",
       "extraData": "Hosted by Saar",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 250,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 510
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
           "exit": 440
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 850,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
           "exit": 890
         },
         {
-          "skip": true,
+
           "id": "1493450940986_orig_Amit_Bar-shai",
           "enter": 90,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 320,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 70,
           "exit": 220
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 620,
           "exit": 330
@@ -2735,66 +2218,66 @@
       "id": "1510273940751_orig_09-11-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "16-11-2017",
       "extraData": "Hosted by Saar",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 90
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 210,
           "exit": 410
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 340,
           "exit": 540
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 150,
           "exit": 50
         },
         {
-          "skip": true,
+
           "id": "1510857327452_orig_Eran",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857214969_orig_Gilad_Yona",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 150,
           "exit": 300
         },
         {
-          "skip": true,
+
           "id": "1510857370232_orig_Nir_Paz",
           "enter": 300,
           "exit": 410
         },
         {
-          "skip": true,
+
           "id": "1510857388951_orig_Matan",
           "enter": 50,
           "exit": 0
@@ -2803,66 +2286,66 @@
       "id": "1510878870414_orig_17-11-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "23-11-2017",
       "extraData": "Hosted by Saar",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 140,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
           "exit": 650
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 210,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 250,
           "exit": 170
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 400
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
           "exit": 400
         },
         {
-          "skip": true,
+
           "id": "1511462548892_orig_Daniel_Cohen",
           "enter": 250,
           "exit": 100
         },
         {
-          "skip": true,
+
           "id": "1511462934877_orig_Ziv_Tirosh",
           "enter": 150,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 120,
           "exit": 0
@@ -2871,60 +2354,60 @@
       "id": "1511481301766_orig_24-11-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "29-11-2017",
       "extraData": "Hosted by Michael",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
           "exit": 770
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 160,
           "exit": 360
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 160
         },
         {
-          "skip": true,
+
           "id": "1504103928507_orig_Sergei_Olshanetski",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 70
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 250,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 200,
           "exit": 180
         },
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 80,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 0
@@ -2933,60 +2416,60 @@
       "id": "1511994257254_orig_30-11-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "07-12-2017",
       "extraData": "Hosted by Saar",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 250,
           "exit": 80
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 150,
           "exit": 210
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 200,
           "exit": 260
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 850,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 250,
           "exit": 470
         },
         {
-          "skip": true,
+
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 150,
           "exit": 300
         },
         {
-          "skip": true,
+
           "id": "1511462548892_orig_Daniel_Cohen",
           "enter": 150,
           "exit": 1180
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 100
@@ -2995,60 +2478,60 @@
       "id": "1512691448224_orig_08-12-2017"
     },
     {
-      "groupId": "orig",
+
       "extraData": "Hosted by Michael",
       "name": "14-12-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 240
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 220,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 320,
           "exit": 470
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 370
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 670
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
           "exit": 500
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Dvir_Shapira",
           "enter": 950,
           "exit": 320
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
           "exit": 170
@@ -3057,54 +2540,54 @@
       "id": "1513319943825_orig_15-12-2017"
     },
     {
-      "groupId": "orig",
+
       "name": "21-12-2017",
       "extraData": "Hosted by Michael",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 190
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
           "exit": 310
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 200,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 330,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
           "exit": 490
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 100,
           "exit": 520
         },
         {
-          "skip": true,
+
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 280,
           "exit": 0
@@ -3113,60 +2596,60 @@
       "id": "1513897983073_orig_22-12-2017"
     },
     {
-      "groupId": "orig",
+
       "extraData": "Hosted by Saar",
       "name": "28-12-2017",
       "players": [
         {
-          "skip": true,
+
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
           "exit": 170
         },
         {
-          "skip": true,
+
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 230,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 260,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
           "exit": 150
         },
         {
-          "skip": true,
+
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 130,
           "exit": 0
         },
         {
-          "skip": true,
+
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
           "exit": 410
         },
         {
-          "skip": true,
+
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 50,
           "exit": 270
         },
         {
-          "skip": true,
+
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 250,
           "exit": 170
@@ -3219,11 +2702,11 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1515130997939_orig_04-01-2018"
     },
     {
-      "groupId": "orig",
+
       "extraData": "Hosted by Michael",
       "name": "11-01-2018",
       "players": [
@@ -3271,7 +2754,7 @@
       "id": "1515738639446_orig_11-01-2018"
     },
     {
-      "groupId": "orig",
+
       "extraData": "Hosted by Saar",
       "name": "18-01-2018",
       "players": [
@@ -3378,7 +2861,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1516927181393_orig_25-01-2018"
     },
     {
@@ -3426,7 +2909,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1517529856785_orig_01-02-2018"
     },
     {
@@ -3479,7 +2962,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1518155702587_orig_08-02-2018"
     },
     {
@@ -3527,7 +3010,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1518739078737_orig_15-02-2018"
     },
     {
@@ -3585,7 +3068,7 @@
           "exit": 280
         }
       ],
-      "groupId": "orig",
+
       "id": "1519330769096_orig_22-02-2018"
     },
     {
@@ -3633,7 +3116,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1519953241222_orig_01-03-2018"
     },
     {
@@ -3686,7 +3169,7 @@
           "exit": 450
         }
       ],
-      "groupId": "orig",
+
       "id": "1520557699951_orig_08-03-2018"
     },
     {
@@ -3725,7 +3208,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1521160328050_orig_15-03-2018"
     },
     {
@@ -3773,7 +3256,7 @@
           "exit": 110
         }
       ],
-      "groupId": "orig",
+
       "id": "1521764031554_orig_22-03-2018"
     },
     {
@@ -3826,7 +3309,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1522214393576_orig_27-03-2018"
     },
     {
@@ -3876,8 +3359,7 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -3885,7 +3367,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1522974618433_orig_05-04-2018"
     },
     {
@@ -3938,7 +3420,7 @@
           "exit": 70
         }
       ],
-      "groupId": "orig",
+
       "id": "1523574735724_orig_12-04-2018"
     },
     {
@@ -3991,7 +3473,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1524179335531_orig_19-04-2018"
     },
     {
@@ -4044,7 +3526,7 @@
           "exit": 480
         }
       ],
-      "groupId": "orig",
+
       "id": "1524804690633_orig_26-04-2018"
     },
     {
@@ -4097,7 +3579,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1525414713762_orig_04-05-2018"
     },
     {
@@ -4150,7 +3632,7 @@
           "exit": 220
         }
       ],
-      "groupId": "orig",
+
       "id": "1526018232839_orig_10-05-2018"
     },
     {
@@ -4203,7 +3685,7 @@
           "exit": 150
         }
       ],
-      "groupId": "orig",
+
       "id": "1526604033861_orig_17-05-2018"
     },
     {
@@ -4224,8 +3706,7 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 150,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -4240,8 +3721,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 270,
-          "exit": 100,
-          "skip": true
+          "exit": 100
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
@@ -4259,7 +3739,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1527223643350_orig_24-05-2018"
     },
     {
@@ -4289,8 +3769,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -4300,8 +3779,7 @@
         {
           "id": "1524179335530_orig_Idan_Saar",
           "enter": 450,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
@@ -4311,11 +3789,10 @@
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 400,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1527807861863_orig_31-05-2018"
     },
     {
@@ -4350,8 +3827,7 @@
         {
           "id": "1524179335530_orig_Idan_Saar",
           "enter": 290,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -4366,11 +3842,10 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 400,
-          "skip": true
+          "exit": 400
         }
       ],
-      "groupId": "orig",
+
       "id": "1528433839455_orig_07-06-2018"
     },
     {
@@ -4400,20 +3875,17 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 50,
-          "exit": 50,
-          "skip": true
+          "exit": 50
         },
         {
           "id": "1529004396693_orig_Shani_Nashalsky",
           "enter": 50,
-          "exit": 50,
-          "skip": true
+          "exit": 50
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 200,
-          "exit": 110,
-          "skip": true
+          "exit": 110
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -4426,7 +3898,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1529018034522_orig_14-06-2018"
     },
     {
@@ -4466,14 +3938,12 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -4481,7 +3951,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1529626966097_orig_21-06-2018"
     },
     {
@@ -4491,14 +3961,12 @@
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 100,
-          "exit": 520,
-          "skip": false
+          "exit": 520
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 450,
-          "skip": true
+          "exit": 450
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -4528,17 +3996,15 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 330,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1530248674612_orig_28-06-2018"
     },
     {
@@ -4578,23 +4044,20 @@
         {
           "id": "1529004396693_orig_Shani_Nashalsky",
           "enter": 200,
-          "exit": 100,
-          "skip": true
+          "exit": 100
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 190,
-          "skip": false
+          "exit": 190
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 700,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1530863229152_orig_05-07-2018"
     },
     {
@@ -4619,8 +4082,7 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 320,
-          "exit": 650,
-          "skip": true
+          "exit": 650
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -4635,8 +4097,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
@@ -4646,17 +4107,15 @@
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 500,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1531459356171_orig_12-07-2018"
     },
     {
@@ -4681,8 +4140,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -4702,17 +4160,15 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 210,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 350,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1532045481106_orig_20-07-2018"
     },
     {
@@ -4752,14 +4208,12 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 150,
-          "exit": 480,
-          "skip": true
+          "exit": 480
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
@@ -4767,7 +4221,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1532671814446_orig_26-07-2018"
     },
     {
@@ -4807,8 +4261,7 @@
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 250,
-          "exit": 130,
-          "skip": true
+          "exit": 130
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
@@ -4818,11 +4271,10 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 90,
-          "exit": 180,
-          "skip": true
+          "exit": 180
         }
       ],
-      "groupId": "orig",
+
       "id": "1533274340423_orig_02-08-2018",
       "firstGame": true
     },
@@ -4848,8 +4300,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 540,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -4859,14 +4310,12 @@
         {
           "id": "1524179335530_orig_Idan_Saar",
           "enter": 300,
-          "exit": 220,
-          "skip": true
+          "exit": 220
         },
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 50,
-          "exit": 220,
-          "skip": true
+          "exit": 220
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
@@ -4879,7 +4328,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1533856460422_orig_09-08-2018"
     },
     {
@@ -4914,14 +4363,12 @@
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 350,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
@@ -4931,11 +4378,10 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1534482302290_orig_16-08-2018"
     },
     {
@@ -4970,8 +4416,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 230,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -4981,8 +4426,7 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 350,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -4990,7 +4434,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1535069085456_orig_23-08-2018"
     },
     {
@@ -5010,14 +4454,12 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -5037,11 +4479,10 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1536300871051_orig_06-09-2018"
     },
     {
@@ -5071,8 +4512,7 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 350,
-          "exit": 370,
-          "skip": true
+          "exit": 370
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -5087,11 +4527,10 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         }
       ],
-      "groupId": "orig",
+
       "id": "1536940141331_orig_13-09-2018"
     },
     {
@@ -5116,8 +4555,7 @@
         {
           "id": "1493450940987_orig_Shahar_Orbach",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
@@ -5127,17 +4565,15 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 300,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         },
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 470,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1537486022286_orig_20-09-2018"
     },
     {
@@ -5147,38 +4583,32 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 170,
-          "exit": 570,
-          "skip": false
+          "exit": 570
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 400,
-          "exit": 500,
-          "skip": false
+          "exit": 500
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 290,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
-          "exit": 50,
-          "skip": false
+          "exit": 50
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 150,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
-          "exit": 610,
-          "skip": false
+          "exit": 610
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -5193,11 +4623,10 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1538094100049_orig_27-09-2018"
     },
     {
@@ -5237,23 +4666,20 @@
         {
           "id": "1493450940977_orig_Noam_Alon",
           "enter": 140,
-          "exit": 150,
-          "skip": true
+          "exit": 150
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 150,
-          "exit": 350,
-          "skip": true
+          "exit": 350
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 330,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1538696974344_orig_04-10-2018"
     },
     {
@@ -5306,7 +4732,7 @@
           "exit": 370
         }
       ],
-      "groupId": "orig",
+
       "id": "1539321308994_orig_11-10-2018"
     },
     {
@@ -5317,8 +4743,7 @@
         {
           "id": "1539893262542_orig_Gilad_Papo",
           "enter": 210,
-          "exit": 670,
-          "skip": true
+          "exit": 670
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -5338,8 +4763,7 @@
         {
           "id": "1539893274927_orig_Shimon_Anonymous",
           "enter": 200,
-          "exit": 140,
-          "skip": true
+          "exit": 140
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
@@ -5349,14 +4773,12 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
@@ -5364,7 +4786,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1539909842636_orig_18-10-2018"
     },
     {
@@ -5384,8 +4806,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -5408,7 +4829,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1540534267229_orig_25-10-2018"
     },
     {
@@ -5423,8 +4844,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 230,
-          "exit": 110,
-          "skip": true
+          "exit": 110
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -5449,8 +4869,7 @@
         {
           "id": "1524179335530_orig_Idan_Saar",
           "enter": 400,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -5460,11 +4879,10 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
-          "exit": 540,
-          "skip": true
+          "exit": 540
         }
       ],
-      "groupId": "orig",
+
       "id": "1541118087872_orig_01-11-2018"
     },
     {
@@ -5479,8 +4897,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -5505,27 +4922,24 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 310,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 60,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 200,
-          "skip": true
+          "exit": 200
         }
       ],
-      "groupId": "orig",
+
       "id": "1541726475024_orig_08-11-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "15-11-2018",
       "extraData": "Hosted by Saar",
       "players": [
@@ -5552,14 +4966,12 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1537804776395_orig_Moshe_Anonymous",
           "enter": 150,
-          "exit": 460,
-          "skip": true
+          "exit": 460
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -5570,7 +4982,7 @@
       "id": "1542327023714_orig_15-11-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "22-11-2018",
       "extraData": "Hosted by michael ",
       "players": [
@@ -5592,8 +5004,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -5609,7 +5020,7 @@
       "id": "1543514524017_orig_22-11-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "29-11-2018",
       "extraData": "Hosted by michael ",
       "players": [
@@ -5631,8 +5042,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
-          "exit": 90,
-          "skip": true
+          "exit": 90
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -5642,8 +5052,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -5653,14 +5062,13 @@
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 320,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
       "id": "1543538421126_orig_29-11-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "06-12-2018",
       "extraData": "Hosted by Michael",
       "players": [
@@ -5677,8 +5085,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 500,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
@@ -5698,8 +5105,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
-          "exit": 80,
-          "skip": true
+          "exit": 80
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -5709,14 +5115,13 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
       "id": "1544144025151_orig_6-12-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "13-12-2018",
       "extraData": "Hosted by michael ",
       "players": [
@@ -5724,63 +5129,55 @@
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
           "exit": 530,
-          "image": "https://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_A.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_A.gif"
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 200,
           "exit": 430,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif"
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
           "exit": 100,
-          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif"
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 150,
           "exit": 150,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif"
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 100,
           "exit": 90,
-          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif"
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 240,
           "exit": 140,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif"
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 210,
           "exit": 0,
-          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif",
-          "skip": false
+          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif"
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 390,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif"
         }
       ],
       "id": "1544767464009_orig_13-12-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "27-12-2018",
       "extraData": "Hosted by Michael",
       "players": [
@@ -5788,56 +5185,49 @@
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
           "exit": 780,
-          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif",
-          "skip": false
+          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif"
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 220,
           "exit": 60,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif"
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 300,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493940234005_orig_Michael_Nos.gif"
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
           "exit": 220,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif"
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 240,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif"
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 420,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif"
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
           "exit": 320,
-          "image": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_Galai.png",
-          "skip": true
+          "image": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_Galai.png"
         }
       ],
       "id": "1545955489611_orig_27-12-2018"
     },
     {
-      "groupId": "orig",
+
       "name": "03-01-2019",
       "firstGame": true,
       "extraData": "Hosted by Michael",
@@ -5845,56 +5235,48 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 50,
-          "exit": 200,
-          "skip": false
+          "exit": 200
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 250,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 160,
-          "exit": 760,
-          "skip": false
+          "exit": 760
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
-          "exit": 250,
-          "skip": false
+          "exit": 250
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 100,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 190,
-          "exit": 40,
-          "skip": true
+          "exit": 40
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 250,
-          "exit": 0,
-          "skip": false
+          "exit": 0
         }
       ],
       "id": "1546587898493_orig_03-01-2019"
     },
     {
-      "groupId": "orig",
+
       "name": "10-01-2019",
       "extraData": "Hosted by Gilad",
       "players": [
@@ -5902,57 +5284,49 @@
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450940987_orig_Ran_Eylat.gif"
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 220,
           "exit": 350,
-          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1510857274810_orig_ori_yankovitz.gif"
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 220,
           "exit": 220,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450388517_orig_Saar_Schweid.gif"
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 300,
           "exit": 840,
-          "image": "http://green-pokerstats.herokuapp.com/images/anonymous.png",
-          "skip": true
+          "image": "http://green-pokerstats.herokuapp.com/images/anonymous.png"
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 470,
           "exit": 0,
-          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif",
-          "skip": false
+          "image": "http://green-pokerstats.herokuapp.com/images/1493450940989_orig_Gilad_Green.gif"
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 150,
           "exit": 400,
-          "image": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_Galai.png",
-          "skip": true
+          "image": "http://green-pokerstats.herokuapp.com/images/1521764031554_orig_Hagai_Galai.png"
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 300,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif",
-          "skip": false
+          "image": "https://green-pokerstats.herokuapp.com/images/1519330769096_orig_Kirill_Chudinov.gif"
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
           "exit": 0,
-          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif",
-          "skip": true
+          "image": "https://green-pokerstats.herokuapp.com/images/1493450940984_orig_Tal_Amar.gif"
         }
       ],
       "id": "1547165606566_orig_10-01-2019"
@@ -5969,8 +5343,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 220,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -5995,11 +5368,10 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1547772334583_orig_17-01-2019"
     },
     {
@@ -6014,8 +5386,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -6040,23 +5411,20 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 170,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 190,
-          "exit": 620,
-          "skip": true
+          "exit": 620
         }
       ],
-      "groupId": "orig",
+
       "id": "1548374907483_orig_24-01-2019"
     },
     {
@@ -6076,8 +5444,7 @@
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 250,
-          "exit": 310,
-          "skip": true
+          "exit": 310
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -6087,8 +5454,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -6098,14 +5464,12 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1548982175683_orig_Amit_Diamant",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
@@ -6113,7 +5477,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1548981725864_orig_31-01-2019"
     },
     {
@@ -6138,8 +5502,7 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 450,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
@@ -6149,8 +5512,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -6160,11 +5522,10 @@
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 150,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         }
       ],
-      "groupId": "orig",
+
       "id": "1549628791061_orig_07-02-2019"
     },
     {
@@ -6184,8 +5545,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -6195,8 +5555,7 @@
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 100,
-          "exit": 570,
-          "skip": true
+          "exit": 570
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -6206,11 +5565,10 @@
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 500,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1550205219108_orig_14-02-2019"
     },
     {
@@ -6225,14 +5583,12 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 80,
-          "skip": true
+          "exit": 80
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
@@ -6242,23 +5598,20 @@
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 170,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 400,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1550165063749_orig_Eran_Ofran",
           "enter": 50,
-          "exit": 520,
-          "skip": true
+          "exit": 520
         }
       ],
-      "groupId": "orig",
+
       "id": "1550917910332_orig_21-02-2019"
     },
     {
@@ -6273,8 +5626,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -6284,8 +5636,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 170,
-          "exit": 20,
-          "skip": true
+          "exit": 20
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -6300,14 +5651,12 @@
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 450,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1550165063749_orig_Eran_Ofran",
           "enter": 150,
-          "exit": 900,
-          "skip": true
+          "exit": 900
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
@@ -6315,7 +5664,7 @@
           "exit": 220
         }
       ],
-      "groupId": "orig",
+
       "id": "1551399291243_orig_28-02-2019"
     },
     {
@@ -6330,8 +5679,7 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 250,
-          "exit": 100,
-          "skip": true
+          "exit": 100
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
@@ -6341,8 +5689,7 @@
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 190,
-          "skip": true
+          "exit": 190
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
@@ -6365,7 +5712,7 @@
           "exit": 440
         }
       ],
-      "groupId": "orig",
+
       "id": "1552000802126_orig_07-03-2019"
     },
     {
@@ -6375,53 +5722,45 @@
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 200,
-          "exit": 120,
-          "skip": true
+          "exit": 120
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 100,
-          "exit": 180,
-          "skip": true
+          "exit": 180
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 300,
-          "exit": 520,
-          "skip": true
+          "exit": 520
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 320,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1550165063749_orig_Eran_Ofran",
           "enter": 200,
-          "exit": 630,
-          "skip": true
+          "exit": 630
         },
         {
           "id": "1537804776395_orig_Moshe_Anonymous",
           "enter": 300,
-          "exit": 420,
-          "skip": true
+          "exit": 420
         }
       ],
-      "groupId": "orig",
+
       "id": "1552608920261_orig_14-03-2019"
     },
     {
@@ -6431,59 +5770,50 @@
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 100,
-          "exit": 420,
-          "skip": true
+          "exit": 420
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 120,
-          "exit": 440,
-          "skip": true
+          "exit": 440
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 400,
-          "exit": 500,
-          "skip": true
+          "exit": 500
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 320,
-          "exit": 450,
-          "skip": true
+          "exit": 450
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
-          "exit": 200,
-          "skip": true
+          "exit": 200
         },
         {
           "id": "1537804776395_orig_Moshe_Anonymous",
           "enter": 250,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 230,
-          "exit": 30,
-          "skip": true
+          "exit": 30
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 600,
-          "exit": 80,
-          "skip": true
+          "exit": 80
         }
       ],
-      "groupId": "orig",
+
       "id": "1553212321074_orig_21-03-2019"
     },
     {
@@ -6493,59 +5823,50 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 110,
-          "exit": 220,
-          "skip": true
+          "exit": 220
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 400,
-          "exit": 100,
-          "skip": true
+          "exit": 100
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
-          "exit": 630,
-          "skip": true
+          "exit": 630
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 200,
-          "exit": 440,
-          "skip": true
+          "exit": 440
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1553834285571_orig_28-03-2019"
     },
     {
@@ -6555,44 +5876,37 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 240,
-          "exit": 370,
-          "skip": true
+          "exit": 370
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 210,
-          "skip": true
+          "exit": 210
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 220,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
-          "exit": 250,
-          "skip": true
+          "exit": 250
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 260,
-          "skip": true
+          "exit": 260
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493830474963_orig_Daniel_Maksakov",
           "enter": 150,
-          "exit": 240,
-          "skip": true
+          "exit": 240
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
@@ -6605,7 +5919,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1554421428709_orig_04-04-2019"
     },
     {
@@ -6615,59 +5929,50 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 230,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 90,
-          "exit": 70,
-          "skip": true
+          "exit": 70
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 100,
-          "exit": 280,
-          "skip": true
+          "exit": 280
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 250,
-          "exit": 50,
-          "skip": true
+          "exit": 50
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 440,
-          "skip": true
+          "exit": 440
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 250,
-          "exit": 140,
-          "skip": true
+          "exit": 140
         },
         {
           "id": "1539893262542_orig_Gilad_Papo",
           "enter": 100,
-          "exit": 240,
-          "skip": true
+          "exit": 240
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 200,
-          "exit": 180,
-          "skip": true
+          "exit": 180
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         }
       ],
-      "groupId": "orig",
+
       "id": "1555020682594_orig_11-04-2019"
     },
     {
@@ -6677,59 +5982,50 @@
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 50,
-          "exit": 1400,
-          "skip": true
+          "exit": 1400
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 230,
-          "skip": true
+          "exit": 230
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 140,
-          "exit": 230,
-          "skip": true
+          "exit": 230
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 350,
-          "exit": 210,
-          "skip": true
+          "exit": 210
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1519330769096_orig_Kirill_Chudinov",
           "enter": 240,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 390,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 400,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1556874333222_orig_02-05-2019"
     },
     {
@@ -6739,59 +6035,50 @@
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 150,
-          "exit": 550,
-          "skip": true
+          "exit": 550
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 600,
-          "exit": 860,
-          "skip": true
+          "exit": 860
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 260,
-          "exit": 510,
-          "skip": true
+          "exit": 510
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 60,
-          "skip": true
+          "exit": 60
         },
         {
           "id": "1557418574443_orig_Amir_Sl",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1557418541562_orig_Daniel_Bb",
           "enter": 150,
-          "exit": 70,
-          "skip": true
+          "exit": 70
         },
         {
           "id": "1557418517860_orig_Michael_Ee",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 500,
-          "exit": 60,
-          "skip": true
+          "exit": 60
         }
       ],
-      "groupId": "orig",
+
       "id": "1557475100635_orig_09-05-2019"
     },
     {
@@ -6801,59 +6088,50 @@
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
-          "exit": 200,
-          "skip": true
+          "exit": 200
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 170,
-          "exit": 740,
-          "skip": true
+          "exit": 740
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 550,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 500,
-          "exit": 600,
-          "skip": true
+          "exit": 600
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 200,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1537804776395_orig_Moshe_Anonymous",
           "enter": 300,
-          "exit": 370,
-          "skip": true
+          "exit": 370
         },
         {
           "id": "1558036413074_orig_Yaniv_Ofmoshe",
           "enter": 200,
-          "exit": 600,
-          "skip": true
+          "exit": 600
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 400,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 200,
-          "exit": 110,
-          "skip": true
+          "exit": 110
         }
       ],
-      "groupId": "orig",
+
       "id": "1558079853664_orig_16-05-2019"
     },
     {
@@ -6863,59 +6141,50 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 280,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 140,
-          "exit": 200,
-          "skip": true
+          "exit": 200
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 370,
-          "exit": 380,
-          "skip": true
+          "exit": 380
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
-          "exit": 380,
-          "skip": true
+          "exit": 380
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 130,
-          "exit": 150,
-          "skip": true
+          "exit": 150
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 200,
-          "exit": 490,
-          "skip": true
+          "exit": 490
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1558652748114_orig_23-05-2019"
     },
     {
@@ -6925,53 +6194,45 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
-          "exit": 240,
-          "skip": true
+          "exit": 240
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
-          "exit": 380,
-          "skip": true
+          "exit": 380
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 350,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 450,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 260,
-          "exit": 340,
-          "skip": true
+          "exit": 340
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 80,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1558036413074_orig_Yaniv_Ofmoshe",
           "enter": 100,
-          "exit": 360,
-          "skip": true
+          "exit": 360
         }
       ],
-      "groupId": "orig",
+
       "id": "1559255817376_orig_30-05-2019"
     },
     {
@@ -6981,53 +6242,45 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 230,
-          "exit": 100,
-          "skip": true
+          "exit": 100
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 200,
-          "exit": 850,
-          "skip": true
+          "exit": 850
         },
         {
           "id": "1495127664904_orig_Igor_Butner",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 400,
-          "exit": 540,
-          "skip": true
+          "exit": 540
         },
         {
           "id": "1547141214869_orig_Rafi_Ofran",
           "enter": 650,
-          "exit": 400,
-          "skip": true
+          "exit": 400
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 50,
-          "exit": 290,
-          "skip": true
+          "exit": 290
         }
       ],
-      "groupId": "orig",
+
       "id": "1560485550902_orig_13-06-2019"
     },
     {
@@ -7037,47 +6290,40 @@
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 300,
-          "exit": 570,
-          "skip": true
+          "exit": 570
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 50,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 120,
-          "exit": 230,
-          "skip": true
+          "exit": 230
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 320,
-          "exit": 290,
-          "skip": true
+          "exit": 290
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 420,
-          "exit": 350,
-          "skip": true
+          "exit": 350
         },
         {
           "id": "1551291068226_orig_Nir_Sadon",
           "enter": 150,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 250,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1562281344153_orig_04-07-2019"
     },
     {
@@ -7087,53 +6333,45 @@
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 150,
-          "exit": 490,
-          "skip": true
+          "exit": 490
         },
         {
           "id": "1493450940988_orig_Shlomi_Pikali",
           "enter": 150,
-          "exit": 440,
-          "skip": true
+          "exit": 440
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 280,
-          "skip": true
+          "exit": 280
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 50,
-          "exit": 190,
-          "skip": true
+          "exit": 190
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 400,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 450,
-          "exit": 150,
-          "skip": true
+          "exit": 150
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1562864504525_orig_20-06-2019"
     },
     {
@@ -7143,53 +6381,45 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 830,
-          "skip": true
+          "exit": 830
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 270,
-          "skip": true
+          "exit": 270
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 390,
-          "exit": 340,
-          "skip": true
+          "exit": 340
         },
         {
           "id": "1510857274810_orig_Ori_yankovitz",
           "enter": 100,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 100,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940989_orig_Roee_Enbar",
           "enter": 100,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 170,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1532626517905_orig_Kobi_Bobi",
           "enter": 330,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1562881753638_orig_11-07-2019"
     },
     {
@@ -7199,53 +6429,45 @@
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 250,
-          "exit": 170,
-          "skip": true
+          "exit": 170
         },
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 200,
-          "exit": 630,
-          "skip": true
+          "exit": 630
         },
         {
           "id": "1493450388517_orig_Saar_Schweid",
           "enter": 50,
-          "exit": 610,
-          "skip": true
+          "exit": 610
         },
         {
           "id": "1521764031554_orig_Hagai_Galai",
           "enter": 250,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 360,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940989_orig_Roee_Enbar",
           "enter": 250,
-          "exit": 190,
-          "skip": true
+          "exit": 190
         },
         {
           "id": "1563470520350_orig_Eliran_Michalelov",
           "enter": 570,
-          "exit": 130,
-          "skip": true
+          "exit": 130
         }
       ],
-      "groupId": "orig",
+
       "id": "1563530834024_orig_18-07-2019"
     },
     {
@@ -7288,7 +6510,7 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1564696989193_orig_01-08-2019"
     },
     {
@@ -7346,7 +6568,7 @@
           "exit": 540
         }
       ],
-      "groupId": "orig",
+
       "id": "1565308679132_orig_08-08-2019"
     },
     {
@@ -7356,53 +6578,45 @@
         {
           "id": "1493450940989_orig_Gilad_Green",
           "enter": 150,
-          "exit": 670,
-          "skip": true
+          "exit": 670
         },
         {
           "id": "1493450940984_orig_Tal_Amar",
           "enter": 100,
-          "exit": 90,
-          "skip": true
+          "exit": 90
         },
         {
           "id": "1493450940987_orig_Ran_Eylat",
           "enter": 500,
-          "exit": 450,
-          "skip": true
+          "exit": 450
         },
         {
           "id": "1493940234005_orig_Michael_Nos",
           "enter": 300,
-          "exit": 320,
-          "skip": true
+          "exit": 320
         },
         {
           "id": "1511473738065_orig_Bar_Nashalsky",
           "enter": 300,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         },
         {
           "id": "1493450940989_orig_Roee_Enbar",
           "enter": 200,
-          "exit": 300,
-          "skip": true
+          "exit": 300
         },
         {
           "id": "1565891961837_orig_Adi_Ofyaniv",
           "enter": 400,
-          "exit": 470,
-          "skip": true
+          "exit": 470
         },
         {
           "id": "1558036413074_orig_Yaniv_Ofmoshe",
           "enter": 350,
-          "exit": 0,
-          "skip": true
+          "exit": 0
         }
       ],
-      "groupId": "orig",
+
       "id": "1565928335511_orig_15-08-2019"
     },
     {
@@ -7455,7 +6669,7 @@
           "exit": 280
         }
       ],
-      "groupId": "orig",
+
       "id": "1567727268665_orig_05-09-2019"
     },
     {
@@ -7508,7 +6722,6 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
       "id": "1568936579832_orig_19-09-2019"
     },
     {
@@ -7556,7 +6769,6 @@
           "exit": 450
         }
       ],
-      "groupId": "orig",
       "id": "1569539439984_orig_26-09-2019"
     },
     {
@@ -7604,7 +6816,6 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
       "id": "1570750853818_orig_26-09-2019"
     },
     {
@@ -7657,7 +6868,6 @@
           "exit": 40
         }
       ],
-      "groupId": "orig",
       "id": "1571353896744_orig_17-10-2019"
     },
     {
@@ -7710,7 +6920,6 @@
           "exit": 330
         }
       ],
-      "groupId": "orig",
       "id": "1571981948033_orig_24-10-2019"
     },
     {
@@ -7748,7 +6957,6 @@
           "exit": 300
         }
       ],
-      "groupId": "orig",
       "id": "1573150259278_orig_31-10-2019"
     },
     {
@@ -7801,8 +7009,54 @@
           "exit": 0
         }
       ],
-      "groupId": "orig",
       "id": "1573172197520_orig_07-11-2019"
+    },
+    {
+      "name": "21-11-2019",
+      "extraData": "hosted by michael. ",
+      "players": [
+        {
+          "id": "1493450940984_orig_Tal_Amar",
+          "enter": 180,
+          "exit": 80
+        },
+        {
+          "id": "1565268804732_orig_eliran_regev",
+          "enter": 300,
+          "exit": 0
+        },
+        {
+          "id": "1493940234005_orig_Michael_Nos",
+          "enter": 50,
+          "exit": 450
+        },
+        {
+          "id": "1493450940989_orig_Roee_Enbar",
+          "enter": 50,
+          "exit": 300
+        },
+        {
+          "id": "1493450940987_orig_Ran_Eylat",
+          "enter": 350,
+          "exit": 0
+        },
+        {
+          "id": "1510857274810_orig_Ori_yankovitz",
+          "enter": 100,
+          "exit": 550
+        },
+        {
+          "id": "1493450940989_orig_Gilad_Green",
+          "enter": 230,
+          "exit": 100
+        },
+        {
+          "id": "1574362464506_orig_Avi_Etsioni",
+          "enter": 220,
+          "exit": 0
+        }
+      ],
+      "id": "1574422267339_orig_21-11-2019"
     }
   ]
 }
