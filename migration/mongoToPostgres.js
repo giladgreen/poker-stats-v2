@@ -147,9 +147,9 @@ async function createPlayers(groupId){
     const players = await Promise.all(playersToCreate.map(player => models.players.create(player).catch(err=>{
         console.error(err)
     })));
-    console.log('## players created:', players.length);
+   // console.log('## players created:', players.length);
     await Promise.all(players.map(async (player, index)=>{
-        mapping[Object.values(data.players)[index].id] = player.id;
+        mapping[Object.keys(data.players)[index]] = player.id;
 
         if (player.email && player.email.length>2){
             const p = playersToCreate.find(pl=>pl.email === player.email);
@@ -173,7 +173,7 @@ async function createPlayers(groupId){
             await models.usersPlayers.create(userPlayer);
 
         }
-        console.log('##     ', player.name, player.email);
+      //  console.log('##     ', player.name, player.email);
 
 
     }));
@@ -204,14 +204,14 @@ async function createGames(groupId) {
             groupId
         };
     });
-    console.log('games to create:');
+   // console.log('games to create:');
 
 
     const games = await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
 
-    console.error('## games created:', games.length);
+    //console.error('## games created:', games.length);
     games.forEach((game, index)=>{
-        console.log(`##  ${(index+1)})   `, game.description, ' ', game.date);
+      //  console.log(`##  ${(index+1)})   `, game.description, ' ', game.date);
     });
 }
 async function doStuff() {
@@ -222,7 +222,7 @@ async function doStuff() {
 
     const group = await models.groups.create({name: data.name});
     const groupId = group.id;
-    console.log('## group created:', data.name);
+  //  console.log('## group created:', data.name);
 
     await createPlayers(groupId);
     await createGames(groupId);
