@@ -30,6 +30,7 @@ async function getGame({ groupId, gameId }) {
       gameId,
     },
     attributes: gameDataAttributes,
+    order: [['createdAt', 'ASC']],
   })).map(data => data.toJSON());
   return game;
 }

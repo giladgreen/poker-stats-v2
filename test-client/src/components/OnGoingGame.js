@@ -124,7 +124,7 @@ class OnGoingGame extends Component {
     }
     getAsTable = () =>{
         const { game, group: { players:  groupPlayers}} = this.props;
-
+        console.log(' game.playersData ', game.playersData)
         const players = game.playersData.map(player=>{
             let all = player.bank;
             const blues =  (50 * (Math.floor(all/50)));
@@ -202,7 +202,7 @@ class OnGoingGame extends Component {
         }
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
-        const players = game.playersData.length> 5? this.getAsTable() :this.getAsCircle();
+        const players =this.getAsTable();// game.playersData.length> 5? this.getAsTable() :this.getAsCircle();
 
         return (<div className="popupOuter">
             <div className="viewGamePopupInner">
