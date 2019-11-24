@@ -122,7 +122,7 @@ class OnGoingGame extends Component {
             </div>
         );
     }
-    getAsTable = () =>{
+    getAsPokerTable = () =>{
         const { game, group: { players:  groupPlayers}} = this.props;
         console.log(' game.playersData ', game.playersData)
         const players = game.playersData.map(player=>{
@@ -163,7 +163,7 @@ class OnGoingGame extends Component {
                                <div className="jetons v-1" v-if="value.hasGray"></div>
                            </div>
                            <div className="avatar">{image}</div>
-                           <div className="name">{player.name}</div>
+                           <div className="name">{player.name.split(' ')[0]}</div>
                         </div>
                     </div>);
         });
@@ -202,7 +202,7 @@ class OnGoingGame extends Component {
         }
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
-        const players =this.getAsTable();// game.playersData.length> 5? this.getAsTable() :this.getAsCircle();
+        const players =  this.getAsPokerTable() ;
 
         return (<div className="popupOuter">
             <div className="viewGamePopupInner">

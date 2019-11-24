@@ -24,8 +24,8 @@
 
 .potInTheMiddle{
     position: absolute;
-    left:33vw;
-    top:37vh;
+    left:31vw;
+    top:40vh;
     font-size: 6em;
     color: #96e296;
 }
@@ -40,10 +40,10 @@
 .bank .bank-value {
     position: absolute;
     font-family: "Houschka Rounded";
-    right: -72px;
+    right: -88px;
     top: 10px;
     font-weight: bold;
-    font-size: 27px;
+    font-size: 40px;
     color: #96e296;
 }
 .bank .bank-value:after {
@@ -163,7 +163,7 @@
 .players .player .name {
     font-family: "Houschka Rounded";
     text-align: center;
-    width: 100px;
+    width: 140px;
     color: #96e296;
     padding: 5px 0;
     margin-left: 10px;
@@ -172,84 +172,67 @@
     border-radius: 5px;
     margin-top: 25px;
     text-overflow: ellipsis;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
     overflow: hidden;
     position: relative;
 }
-.players .player.playing:before {
-    content: '...';
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    background-color: #76daff;
-    display: inline-block;
-    line-height: 0px;
-    height: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    z-index: 100;
-}
 
 
 .players .player.player-1 {
-   background: black;
-}
-.players .player.player-1 {
-    bottom: 0px;
-    left: 53%;
-    transform: translatex(-50%) translatey(50%) rotatez(180deg);
-}
-.players .player.player-1 .name {
-    transform: rotatez(180deg);
-}
-.players .player.player-1 .bank-value {
-    transform: rotatez(180deg);
-}
-.players .player.player-1 .mise-value {
-    transform: rotatez(180deg);
-}
-
-
-.players .player.player-2 {
     top: 0px;
     left: 35%;
     transform: translatex(-50%) translatey(-50%);
 }
-.players .player.player-3 {
-    bottom: 0px;
-    left: 25%;
-    transform: translatex(-50%) translatey(50%) rotatez(180deg);
-}
-.players .player.player-3 .name {
-    transform: rotatez(180deg);
-}
-.players .player.player-3 .bank-value {
-    transform: rotatez(180deg);
-}
-.players .player.player-3 .mise-value {
-    transform: rotatez(180deg);
-}
 
-.players .player.player-4 {
+.players .player.player-2 {
     top: 0px;
     left: 58%;
     transform: translatex(-50%) translatey(-50%);
 }
 
-
-.players .player.player-5 {
-    top: 50%;
-    left: 0px;
-    transform: translatex(-50%) translatey(-50%) rotatez(-90deg);
+.players .player.player-3 {
+    top: 0px;
+    left: 81%;
+    transform: translatex(-50%) translatey(-50%);
 }
-.players .player.player-5 .name {
+
+.players .player.player-4 .name {
     transform: rotatez(0deg);
 }
+.players .player.player-4 {
+    top: 50%;
+    right: 20px;
+    transform: translatex(50%) translatey(-50%) rotatez(90deg);
+}
+.players .player.player-4 .avatar {
+    transform: rotatez(-90deg);
+}
+
+.players .player.player-4 .bank-value {
+    transform: rotatez(-90deg);
+    left: -10px;
+}
+
+.players .player.player-5 {
+    bottom: 0px;
+    left: 79%;
+    transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.players .player.player-5 .name {
+    transform: rotatez(180deg);
+}
+.players .player.player-5 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-5 .avatar {
+    transform: rotatez(180deg);
+}
+
 
 .players .player.player-6 {
     bottom: 0px;
-    left: 79%;
+    left: 53%;
     transform: translatex(-50%) translatey(50%) rotatez(180deg);
 }
 .players .player.player-6 .name {
@@ -258,26 +241,45 @@
 .players .player.player-6 .bank-value {
     transform: rotatez(180deg);
 }
-.players .player.player-6 .mise-value {
+.players .player.player-6 .avatar {
     transform: rotatez(180deg);
 }
 
+
+
 .players .player.player-7 {
-    top: 0px;
-    left: 81%;
-    transform: translatex(-50%) translatey(-50%);
+    bottom: 0px;
+    left: 25%;
+    transform: translatex(-50%) translatey(50%) rotatez(180deg);
+}
+.players .player.player-7 .name {
+    transform: rotatez(180deg);
+}
+.players .player.player-7 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-7 .avatar {
+    transform: rotatez(180deg);
 }
 
 
 .players .player.player-8 {
     top: 50%;
-    right: 0px;
-    transform: translatex(50%) translatey(-50%) rotatez(90deg);
+    left: 40px;
+    transform: translatex(-80%) translatey(-50%) rotatez(-90deg);
 }
 .players .player.player-8 .name {
     transform: rotatez(0deg);
 }
+.players .player.player-8 .avatar {
+    transform: rotatez(90deg);
+}
 
+.players .player.player-8 .bank-value {
+    transform: rotatez(90deg);
+    padding-top:30px;
+    padding-left:30px;
+}
 
 .players .player.player-9 {
     top: 18px;
