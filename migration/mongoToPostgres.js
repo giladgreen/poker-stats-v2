@@ -63,6 +63,7 @@ async function createTables(){
                 player_id text REFERENCES players(id),
                 cash_out integer,
                 buy_in integer,
+                index integer,
                 group_id text REFERENCES groups(id),
                 created_at timestamp without time zone NOT NULL,
                 updated_at timestamp without time zone NOT NULL,
@@ -204,15 +205,8 @@ async function createGames(groupId) {
             groupId
         };
     });
-   // console.log('games to create:');
 
-
-    const games = await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
-
-    //console.error('## games created:', games.length);
-    games.forEach((game, index)=>{
-      //  console.log(`##  ${(index+1)})   `, game.description, ' ', game.date);
-    });
+    await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
 }
 async function doStuff() {
     console.log('migration start')
@@ -222,7 +216,6 @@ async function doStuff() {
 
     const group = await models.groups.create({name: data.name});
     const groupId = group.id;
-  //  console.log('## group created:', data.name);
 
     await createPlayers(groupId);
     await createGames(groupId);
