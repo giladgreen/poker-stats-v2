@@ -81,7 +81,7 @@ async function createGame(groupId, data) {
   delete newGameData.playersData;
   const newGame = await models.games.create(newGameData);
   if (playersData) {
-    await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId: newGame.id, groupId })));
+    await Promise.all(playersData.map((playerData, index) => models.gamesData.create({ index, ...playerData, gameId: newGame.id, groupId })));
   }
 
   return getGame({ groupId, gameId: newGame.id });

@@ -101,7 +101,6 @@
     width: 70vw;
     height: 70vh;
     background-color: #4aad4a;
-    position: absolute;
     left: 45%;
     top: 30%;
     transform: translateX(-50%) translateY(-50%);
@@ -111,10 +110,10 @@
 }
 .table:before {
     content: '';
-    border: 7px solid rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(0, 0, 0, 0.1);
     display: block;
-    width: 71vw;
-    height: 71vh;
+    width: 70vw;
+    height: 70vh;
     border-radius: 150px;
     position: absolute;
     top: -15px;
@@ -122,14 +121,14 @@
 }
 .table:after {
     content: '';
-    border: 7px solid rgba(0, 0, 0, 0.1);
+    border: 4px solid rgba(0, 0, 0, 0.1);
     display: block;
-    width: 69vw;
-    height: 69vh;
+    width: 68.5vw;
+    height: 67vh;
     border-radius: 130px;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -3px;
 }
 .players {
     position: relative;
@@ -194,6 +193,9 @@
 
 
 .players .player.player-1 {
+   background: black;
+}
+.players .player.player-1 {
     bottom: 0px;
     left: 53%;
     transform: translatex(-50%) translatey(50%) rotatez(180deg);
@@ -207,6 +209,8 @@
 .players .player.player-1 .mise-value {
     transform: rotatez(180deg);
 }
+
+
 .players .player.player-2 {
     top: 0px;
     left: 35%;
