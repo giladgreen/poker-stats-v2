@@ -198,6 +198,8 @@ class Group extends Component {
         const groupId = group.id;
         try {
             const updatedPlayer = await updatePlayer(groupId, playerId, player, provider, token);
+            updatedPlayer.balance = player.balance;
+            updatedPlayer.gamesCount = player.gamesCount;
             const groupClone = {...this.props.group};
             groupClone.players = groupClone.players.map(playerItem=>{
                 if (playerId!==playerItem.id){

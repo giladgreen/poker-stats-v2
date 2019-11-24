@@ -209,7 +209,7 @@ class Game extends Component {
             </div>);
         } else{
 
-           return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.viewGame(null)} updateOnProgressGame={this.updateOnProgressGame}/>
+           return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.props.updateViewGame(null)} updateOnProgressGame={this.updateOnProgressGame}/>
         }
 
     }
