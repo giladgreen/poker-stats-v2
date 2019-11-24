@@ -44,7 +44,8 @@ class Game extends Component {
             cashOut: 0,
             gameId: game.id,
             groupId: group.id,
-            playerId: this.state.existingPlayerId
+            playerId: this.state.existingPlayerId,
+            index: newGame.playersData.length,
         });
 
         this.setState({existingPlayerId:this.findPlayerNotInGame(newGame),game: newGame});

@@ -30,7 +30,7 @@ async function getGame({ groupId, gameId }) {
       gameId,
     },
     attributes: gameDataAttributes,
-    order: [['index', 'ASC'],['createdAt', 'ASC']],
+    order: [['index', 'ASC'], ['createdAt', 'ASC']],
   })).map(data => data.toJSON());
   return game;
 }
@@ -126,7 +126,7 @@ async function updateGame(userContext, groupId, gameId, data) {
     },
   });
   if (playersData) {
-    await Promise.all(playersData.map(playerData => models.gamesData.create({ ...playerData, gameId, groupId })));
+    await Promise.all(playersData.map((playerData, index,) => models.gamesData.create({ index, ...playerData, gameId, groupId })));
   }
 
   return getGame({ groupId, gameId });
