@@ -95,10 +95,32 @@ padding-right: 10px;
   to { transform: rotate(360deg); }
 }
 
-
+.editPlayerInputDiv{
+  padding: 1px 15px 10px 5px;
+}
 .editPlayerInput{
-  width: 40vw;
-  padding: 5px;
+  width: 60vw;
+padding-left: 5px;
+  font-size: 1.3em;
+  height: 41px;
+}
+.editPlayerImage{
+  width: 120px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+}
+
+.editPlayerPopupInner{
+  padding: 30px;
+  position: absolute;
+  left:5vw;
+  top:5vh;
+  width: 85vw;
+  height: 67vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
 }
 .popupOuter{
   position: absolute;
@@ -109,17 +131,6 @@ padding-right: 10px;
   background: #000000DD;
 }
 
-.editPlayerPopupInner{
-  padding: 30px;
-  position: absolute;
-  left:5vw;
-  top:5vh;
-  width: 85vw;
-  height: 60vh;
-  background: ghostwhite;
-  border: 3px solid darkslategrey;
-  border-radius: 10px;
-}
 .editGamePopupInner{
   padding: 30px;
   position: absolute;
@@ -131,7 +142,6 @@ padding-right: 10px;
   border: 3px solid darkslategrey;
   border-radius: 10px;
 }
-
 
 
 .editGameInput{
@@ -193,7 +203,8 @@ padding-right: 10px;
 @media screen and (max-width: 800px) {
 
   .editPlayerInput{
-    width: 30vw;
+
+    height: 45px;
     padding: 2px;
   }
 
