@@ -95,6 +95,15 @@ padding-right: 10px;
   to { transform: rotate(360deg); }
 }
 
+.editGroupInputDiv{
+  padding: 1px 15px 10px 5px;
+}
+.editGroupInput{
+  width: 60vw;
+  padding-left: 5px;
+  font-size: 1.3em;
+  height: 41px;
+}
 .editPlayerInputDiv{
   padding: 1px 15px 10px 5px;
 }
@@ -112,6 +121,17 @@ padding-left: 5px;
 }
 
 .editPlayerPopupInner{
+  padding: 30px;
+  position: absolute;
+  left:5vw;
+  top:5vh;
+  width: 85vw;
+  height: 67vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
+}
+.editGroupPopupInner{
   padding: 30px;
   position: absolute;
   left:5vw;

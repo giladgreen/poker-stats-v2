@@ -26,6 +26,41 @@ Date.prototype.AsGameName = function() {
     return `${day}/${month}/${year}`;
 };
 
+const keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault)
+        e.preventDefault();
+    e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+    if (window.addEventListener) // older FF
+        window.addEventListener('DOMMouseScroll', preventDefault, false);
+    document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+    window.onwheel = preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+    window.ontouchmove  = preventDefault; // mobile
+    document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+}
+
 
 class App extends Component {
 
@@ -62,6 +97,14 @@ class App extends Component {
         this.setState({user: userContext, groups, loading: false, isAuthenticated: true, error:null, provider, token})
     };
 
+    updateGroupNameAndDescription = ({name, description}) => {
+        const {group}  = this.state;
+        const updatedGroup = {...group};
+        updatedGroup.name = name;
+        updatedGroup.description = description;
+        this.setState({group: updatedGroup});
+    };
+
     render() {
 
         const {loading, isAuthenticated, group}  = this.state;
@@ -73,7 +116,7 @@ class App extends Component {
         }
 
         const mainSection = group ?
-            <Group  user={this.state.user} group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroup} onFailure={this.onFailure} /> :
+            <Group updateGroupNameAndDescription={this.updateGroupNameAndDescription} disableScroll={disableScroll} enableScroll={enableScroll}  user={this.state.user} group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroup} onFailure={this.onFailure} /> :
             <Groups groups={this.state.groups} provider={this.state.provider} token={this.state.token} updateGroup={this.updateGroup} onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
 
         return (

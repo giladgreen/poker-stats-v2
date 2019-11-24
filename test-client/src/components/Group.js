@@ -5,6 +5,7 @@ import createPlayer from "../actions/createPlayer";
 import deletePlayer from "../actions/deletePlayer";
 import updateGame from "../actions/updateGame";
 import updatePlayer from "../actions/updatePlayer";
+import updateGroup from "../actions/updateGroup";
 import createGame from "../actions/createGame";
 import deleteGame from "../actions/deleteGame";
 import getGame from "../actions/getGame";
@@ -14,7 +15,7 @@ class Group extends Component {
 
     constructor() {
         super();
-        this.state = { newPlayerName:'', newGameDate:(new Date()).AsDatePicker().datePickerToDate().AsDatePicker() ,player:null, buyIn: 50, cashOut: 50};
+        this.state = { inGroupEditMode:false, groupName: '',groupDescription:'', newPlayerName:'', newGameDate:(new Date()).AsDatePicker().datePickerToDate().AsDatePicker() ,player:null, buyIn: 50, cashOut: 50};
     }
 
     updateOnProgressGame = async()=>{
@@ -30,11 +31,12 @@ class Group extends Component {
             return game;
         });
         this.props.updateGroup(groupClone);
-    }
+    };
 
     scrollTop = () => {
         window.scrollTo(0, 0);
-    }
+
+    };
 
     handleNewPlayerNameChange = (event) =>{
         this.setState({newPlayerName: event.target.value});
@@ -47,18 +49,35 @@ class Group extends Component {
     editPlayer = async (player) => {
         this.setState({player});
         this.scrollTop();
+        player ? this.props.disableScroll() : this.props.enableScroll();
+    };
+
+    updateGroupData = async ()=>{
+        const {group, provider, token} = this.props;
+        const { groupName,groupDescription } = this.state;
+        const updatedGroup = await updateGroup(group.id, { name: groupName,description: groupDescription }, provider, token);
+        this.props.updateGroupNameAndDescription(updatedGroup);
+        this.updateInGroupEditMode(false);
     };
 
     updateGame = async (game) => {
         this.setState({ game });
-    }
+    };
+    updateInGroupEditMode = async (inGroupEditMode) => {
+        this.setState({ inGroupEditMode, groupName: this.props.group.name ,groupDescription: this.props.group.description });
+        this.scrollTop();
+        inGroupEditMode ? this.props.disableScroll() : this.props.enableScroll();
+    };
     updateViewGame = async (viewGame) => {
         this.setState({ viewGame });
-    }
-    viewGame = async (game) => {
-        this.setState({viewGame: game});
         this.scrollTop();
-    }
+        viewGame ? this.props.disableScroll() : this.props.enableScroll();
+    };
+    viewGame = async (viewGame) => {
+        this.setState({viewGame});
+        this.scrollTop();
+        viewGame ? this.props.disableScroll() : this.props.enableScroll();
+    };
 
     editGame = async (game) => {
         this.setState({game});
@@ -213,7 +232,7 @@ class Group extends Component {
             this.props.onFailure(e);
 
         }
-    }
+    };
 
     updateSelectedGame = async () =>{
         const {group, provider, token} = this.props;
@@ -233,14 +252,37 @@ class Group extends Component {
                 } else{
                     return updatedGame;
                 }
-            })
+            });
             this.props.updateGroup(groupClone);
         } catch (e) {
             this.props.onFailure(e);
 
         }
-    }
+    };
 
+    getEditGroupPopup = ()=> {
+        const {inGroupEditMode} = this.state;
+        if (!inGroupEditMode){
+            return <div/>
+        }
+        return (<div className="popupOuter">
+            <div className="editGroupPopupInner">
+                <div><h1>Edit Group:</h1></div>
+                <hr/>
+                <div  className="editGroupInputDiv">
+                    Group name: <input className="editGroupInput" type="text" id="groupName" value={this.state.groupName} onChange={(event)=>this.setState({groupName: event.target.value})}/>
+                </div>
+                <div  className="editGroupInputDiv">
+                    Group Description: <input className="editGroupInput"  type="text" id="groupDescription" value={this.state.groupDescription} onChange={(event)=>this.setState({groupDescription: event.target.value})}/>
+                </div>
+                <div>
+                    <button className="button" onClick={this.updateGroupData}> Save</button>
+                    <button className="button" onClick={()=>this.updateInGroupEditMode(false)}> Cancel</button>
+
+                </div>
+            </div>
+        </div>);
+    };
     getEditPlayerPopup = ()=> {
         const {player} = this.state;
         if (!player){
@@ -278,7 +320,7 @@ class Group extends Component {
         const updatedGame = {...game};
         updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId);
         this.setState({ game: updatedGame})
-    }
+    };
 
     addToBuyIn = (playerId)=> {
         const {game} = this.state;
@@ -291,7 +333,7 @@ class Group extends Component {
             }
         });
         this.setState({ game: updatedGame})
-    }
+    };
 
     addToCashOut = (playerId)=> {
         const {game} = this.state;
@@ -304,20 +346,21 @@ class Group extends Component {
             }
         });
         this.setState({ game: updatedGame})
-    }
+    };
 
     isGameReady = (game)=>{
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
         const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
         const ready = totalBuyIn === totalCashOut && game.playersData.length >1;
         return ready;
-    }
+    };
 
     render() {
         const {group, provider, token } = this.props;
         const {isAdmin} = group;
         const {game, viewGame} = this.state;
 
+        const editGroupPopup = this.getEditGroupPopup();
         const editPlayerPopup = this.getEditPlayerPopup();
         const gamePopup = <Game game={game} viewGame={viewGame} group={group} provider={provider} token={token}  updateGroup={this.props.updateGroup} onFailure={this.props.onFailure} updateGame={this.updateGame} updateViewGame={this.updateViewGame}/>;
         const newPlayerSection = this.getNewPlayerSection();
@@ -330,8 +373,9 @@ class Group extends Component {
                     <button className="button" onClick={this.props.backToMainPage}> back to all groups</button>
                 </div>
                 <div>
-                    <h1> Group: {group.name}</h1>
-                    {isAdmin ? <h3>logged in as admin</h3> : <span/>}
+                    <h1> Group: {group.name}   </h1>
+                    {isAdmin ? <h3>logged in as admin</h3> : <div/>}
+                    {isAdmin ? <button className="button" onClick={()=>this.updateInGroupEditMode(true)}> edit group </button> : <div/>}
                 </div>
                 <div>
                     {newGameSection}
@@ -348,6 +392,7 @@ class Group extends Component {
                         {players}
                     </div>
                 </div>
+                {editGroupPopup}
                 {editPlayerPopup}
                 {gamePopup}
             </div>);

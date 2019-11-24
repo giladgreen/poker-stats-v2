@@ -1,7 +1,7 @@
 const { notFound, badRequest } = require('boom');
 const models = require('../models');
 
-const attributes = ['id', 'name', 'createdAt'];
+const attributes = ['id', 'name', 'createdAt', 'description'];
 
 async function getGroup(userContext, groupId) {
   const group = await models.groups.findOne({
