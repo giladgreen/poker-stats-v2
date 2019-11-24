@@ -11,6 +11,9 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.NUMBER,
       field: 'cash_out',
     },
+    index: {
+      type: DataTypes.NUMBER,
+    },
     buyIn: {
       type: DataTypes.NUMBER,
       field: 'buy_in',

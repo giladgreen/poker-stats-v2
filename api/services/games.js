@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index: playerData.index || index, gameId: newGame.id, groupId,
+      ...playerData, index, gameId: newGame.id, groupId,
     })));
   }
 
@@ -126,9 +126,10 @@ async function updateGame(userContext, groupId, gameId, data) {
     },
   });
   if (playersData) {
-    await Promise.all(playersData.map((playerData, index) => models.gamesData.create({ ...playerData, index: playerData.index || index, gameId, groupId })));
+    await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
+      ...playerData, index, gameId, groupId,
+    })));
   }
-
   return getGame({ groupId, gameId });
 }
 
