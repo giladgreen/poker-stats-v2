@@ -59,6 +59,14 @@ async function getGroupData(group, provider, token){
                         date: new Date(game.date)
                     }
                 });
+                games.forEach(game=>{
+                    game.playersData = game.playersData.map((data,index)=>{
+                        return {
+                            ...data,
+                            index: data.index || index
+                        }
+                    })
+                });
                 if (players && games){
                     const userContextString = response.headers['x-user-context'];
                     const userContext = JSON.parse(decodeURI(userContextString));

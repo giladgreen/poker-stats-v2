@@ -81,6 +81,7 @@ class Game extends Component {
         const gameId = game.id;
         const groupId = group.id;
         try {
+            console.log('updateSelectedGame game',game);
             const updatedGame = await updateGame(groupId, gameId, game, provider, token);
             updatedGame.date = new Date(updatedGame.date);
             const groupClone = {...this.props.group};
