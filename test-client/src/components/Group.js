@@ -184,11 +184,24 @@ class Group extends Component {
             };
             const playerName = player.name;
 
-            const image =  <img alt={playerName} className="playersListImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
+            const image =  <img alt={playerName} className="playersListImageBig" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
             const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
-            return (<div className="playersListItem" key={`player_${player.id}`}>
-                <h3>  {image} {playerName} {editPlayerButton} {deletePlayerButton} ({gamesCount} games) <span className={balance >0 ? 'balanceWithCurrencyPositive' : 'balanceWithCurrencyNegative'}>{balanceWithCurrency}</span> </h3>
-            </div>);
+            return (<div className="playersListItem col-xm-2" key={`player_${player.id}`}>
+                    {image}
+                    <div className="paddingLeft">
+                        <h3> {playerName}</h3>
+                        <div className={balance >0 ? 'balanceWithCurrencyPositive' : 'balanceWithCurrencyNegative'} >
+                            <h2>{balanceWithCurrency}</h2>
+                        </div>
+                        <div>
+                            <h2>{gamesCount} games</h2>
+                        </div>
+                        <div>
+                            {editPlayerButton} {deletePlayerButton}
+                        </div>
+                    </div>
+
+                </div>);
         })
     };
 
@@ -389,7 +402,7 @@ class Group extends Component {
                 <div>
                     {newPlayerSection}
                     <h2>  {group.players.length} players</h2>
-                    <div className="groupPlayersList">
+                    <div className="groupPlayersList row">
                         {players}
                     </div>
                 </div>
