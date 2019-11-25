@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { ANON_URL } from '../../../config';
-
-import createPlayer from "../actions/createPlayer";
-import deletePlayer from "../actions/deletePlayer";
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import updateGame from "../actions/updateGame";
-import updatePlayer from "../actions/updatePlayer";
-import createGame from "../actions/createGame";
-import deleteGame from "../actions/deleteGame";
 import getGame from "../actions/getGame";
 import OnGoingGame from "./OnGoingGame";
 
@@ -14,9 +10,22 @@ class Game extends Component {
 
     constructor() {
         super();
-        this.state = { buyIn: 50, cashOut: 50};
+        this.state = { buyIn: { min: 0, max: 10000 },cashOut: { min: 0, max: 10000 }, playerId: null};
     }
 
+    updateSelectedGamePlayerData = async()=>{
+        const {game} = this.props;
+        const updatedGame = {...game};
+        updatedGame.playersData = game.playersData.map(item => {
+            if (item.playerId !== this.state.playerId){
+                return {...item};
+            } else{
+                return {...item, buyIn: this.state.buyIn, cashOut: this.state.cashOut};
+            }
+        });
+        this.props.updateGame(updatedGame);
+        this.editGamePlayer(null);
+    };
     updateOnProgressGame = async()=>{
         const {group} = this.props;
         const onGoingGameId = this.props.viewGame.id;
@@ -30,7 +39,7 @@ class Game extends Component {
             return game;
         });
         this.props.updateGroup(groupClone);
-    }
+    };
 
     addCurrentPlayerToGame = () =>{
         if (!this.state.existingPlayerId){
@@ -49,7 +58,7 @@ class Game extends Component {
         });
 
         this.setState({existingPlayerId:this.findPlayerNotInGame(newGame),game: newGame});
-    }
+    };
 
     findPlayerNotInGame = (game)=>{
         const {group} = this.props;
@@ -70,7 +79,7 @@ class Game extends Component {
 
         return playa ? playa.id : null;
 
-    }
+    };
 
     updateSelectedGame = async () =>{
         const {group, provider, token} = this.props;
@@ -98,53 +107,45 @@ class Game extends Component {
             this.props.onFailure(e);
 
         }
-    }
+    };
 
+    editGamePlayer = (playerId)=> {
+        const {game} = this.props;
+        if (game && playerId){
+            const playerData = game.playersData.find(p=>p.playerId===playerId);
+            this.setState({playerId, buyIn: playerData.buyIn,cashOut: playerData.cashOut });
+            this.props.disableScroll();
+        } else{
+            this.setState({playerId});
+            this.props.enableScroll();
+        }
+    };
     removePlayerFromGame = (playerId)=> {
-        const {game} = this.props;
-        const updatedGame = {...game};
-        updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId);
-        this.props.updateGame(updatedGame);
-    }
-    addToBuyIn = (playerId)=> {
-        const {game} = this.props;
-        const updatedGame = {...game};
-        updatedGame.playersData = game.playersData.map(item => {
-            if (item.playerId !== playerId){
-                return {...item};
-            } else{
-                return {...item, buyIn: item.buyIn + this.state.buyIn}
-            }
-        });
-        this.props.updateGame(updatedGame);
-    }
-
-
-    addToCashOut = (playerId)=> {
-        const {game} = this.props;
-        const updatedGame = {...game};
-        updatedGame.playersData = game.playersData.map(item => {
-            if (item.playerId !== playerId){
-                return {...item};
-            } else{
-                return {...item, cashOut: item.cashOut + this.state.cashOut}
-            }
-        });
-        this.props.updateGame(updatedGame);
-    }
+        if (confirm("Are you sure?")){
+            const {game} = this.props;
+            const updatedGame = {...game};
+            updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId);
+            this.props.updateGame(updatedGame);
+        }
+    };
 
 
     handleNewPlayerChange = (existingPlayerId)=> {
         this.setState({existingPlayerId});
-    }
+    };
 
     isGameReady = (game)=>{
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
         const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
-        const ready = totalBuyIn === totalCashOut && game.playersData.length >1;
-        return ready;
-    }
+        const diff = totalBuyIn - totalCashOut;
+        const ready = diff === 0 && game.playersData.length >1;
+        return { ready, diff };
+    };
     getViewGamePopup = ()=> {
+        const {playerId} = this.state;
+        if (playerId){
+            return <div/>;
+        }
         const {viewGame: game} = this.props;
         if (!game){
             return <div/>
@@ -155,7 +156,7 @@ class Game extends Component {
             PLAYERS[player.id] = player;
         });
 
-        const ready = this.isGameReady(game);
+        const { ready } = this.isGameReady(game);
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
         if (ready){
@@ -214,9 +215,83 @@ class Game extends Component {
            return <OnGoingGame group={group} gameId={game.id} game={group.games.find(g=>g.id === game.id)} onBack={()=>this.props.updateViewGame(null)} updateOnProgressGame={this.updateOnProgressGame}/>
         }
 
-    }
+    };
+    getEditPlayerPopup = ()=> {
+        const {playerId} = this.state;
+        const {game, group} = this.props;
+        if (!game || !playerId) return <div/>;
+
+        const player = group.players.find(p=>p.id===playerId);
+
+        const onImageError = (ev)=>{
+            if (!ev.target.secondTry){
+                ev.target.secondTry = true;
+                ev.target.src= player.imageUrl;
+            }else{
+                ev.target.src=ANON_URL;
+            }
+        };
+
+        const image = <img alt={player.name} className="playersListImage" src={player.imageUrl || ANON_URL}  onError={onImageError} /> ;
+        const currentPlayerData = game.playersData.find(d=>d.playerId===this.state.playerId);
+        const currentPlayerBuyIn = currentPlayerData.buyIn;
+        const currentPlayerCashOut = currentPlayerData.cashOut;
+        const maxBuyInRange = currentPlayerBuyIn+300;
+        const maxCashOut = game.playersData.map(data=> data.buyIn - data.cashOut).reduce((all,item)=>(all+item),0);
+
+        const maxCashOutRange = currentPlayerCashOut + maxCashOut;
+
+        return (<div className="popupOuter">
+                    <div className="editGamePlayerPopupInner">
+                        <div>
+                            <h2>edit player game data:</h2>
+                            <h1>{image}{player.name}</h1>
+                        </div>
+                        <hr/>
+                        <div>
+                            buy-in:   <input className="editPlayerInput" type="number"  id="buyIn" value={this.state.buyIn} onChange={(event)=>this.setState({buyIn: parseInt(event.target.value)})}/>
+                            <br/>
+                            <br/>
+                            <InputRange className="InputRange"
+                                step={10}
+                                formatLabel={value => `${value}₪`}
+                                maxValue={maxBuyInRange}
+                                minValue={0}
+                                value={this.state.buyIn}
+                                onChange={buyIn => this.setState({ buyIn })} />
+                            <br/>
+                            <br/>  <br/>
+                            <br/>
+                        </div>
+                        <div>
+                            cash-out:  <input className="editPlayerInput" type="number"  id="cashOut" value={this.state.cashOut} onChange={(event)=>this.setState({cashOut: parseInt(event.target.value)})}/>
+                            <br/>
+                            <br/>
+                            <InputRange className="InputRange"
+                                step={10}
+                                formatLabel={value => `${value}₪`}
+                                maxValue={maxCashOutRange}
+                                minValue={0}
+                                value={this.state.cashOut}
+                                onChange={cashOut => this.setState({ cashOut })} />
+                        </div>
+                        <div>
+                            <br/> <br/>
+                            balance: {this.state.cashOut - this.state.buyIn}
+                        </div>
+                        <div>
+                            <button className="button saveButton" onClick={this.updateSelectedGamePlayerData}> Save</button>
+                            <button className="button" onClick={()=> this.editGamePlayer(null)}> Cancel</button>
+                        </div>
+                    </div>
+                </div>);
+    };
     getEditGamePopup = ()=> {
 
+        const {playerId} = this.state;
+        if (playerId){
+            return <div/>;
+        }
         const {game} = this.props;
         if (!game){
             return <div/>
@@ -250,14 +325,14 @@ class Game extends Component {
             const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL}  onError={onImageError} /> ;
 
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
+                <button className="button" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </button>
                 {image}
                 {playerName} |
                 buy-in: {playerData.buyIn} |
                 cash-out: {playerData.cashOut} |
                 balance: {playerData.cashOut - playerData.buyIn}
                 <button className="button" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </button>
-                <button className="button" disabled={playerData.buyIn + this.state.buyIn < 0} onClick={()=>this.addToBuyIn(playerData.playerId)}> add to buy in </button>
-                <button className="button" disabled={playerData.cashOut + this.state.cashOut < 0} onClick={()=>this.addToCashOut(playerData.playerId)}> add to cash out </button>
+
             </div>);
         });
 
@@ -268,7 +343,7 @@ class Game extends Component {
                 </option>
             )
         );
-        const ready = this.isGameReady(this.props.game);
+        const { ready, diff } = this.isGameReady(this.props.game);
         return (<div className="popupOuter">
                     <div className="editGamePopupInner">
                         <div>
@@ -291,18 +366,7 @@ class Game extends Component {
                                 {players}
                             </div>
                         </div>
-                        <div>
-                            Buy In:
-                        </div>
-                        <div>
-                            <input className="editPlayerInput" type="number" step={10} id="buyIn" value={this.state.buyIn} onChange={(event)=>this.setState({buyIn: parseInt(event.target.value)})}/>
-                        </div>
-                        <div>
-                            Cash out:
-                        </div>
-                        <div>
-                            <input className="editPlayerInput" type="number" step={10} id="cashOut" value={this.state.cashOut} onChange={(event)=>this.setState({cashOut: parseInt(event.target.value)})}/>
-                        </div>
+
                         <hr/>
                         {
                             comboVals.length >0 ? (
@@ -319,17 +383,20 @@ class Game extends Component {
                             <button className="button" onClick={()=> this.props.updateGame(null)}> Cancel</button>
                         </div>
                         <div>
-                            <h3>{ready ? '' : 'game still not done'}</h3>
+                            <br/>
+                            <h3>{ready ? '' : `game still not done (${diff>0 ? diff : -1*diff} ${diff>0 ? 'still in pot':'missing from pot'}).`}</h3>
                         </div>
                     </div>
                 </div>);
     };
 
     render() {
+        const editPlayerPopup = this.getEditPlayerPopup();
         const editGamePopup = this.getEditGamePopup();
         const viewGamePopup = this.getViewGamePopup();
         return (
             <div className="gamePage">
+                {editPlayerPopup}
                 {editGamePopup}
                 {viewGamePopup}
             </div>);

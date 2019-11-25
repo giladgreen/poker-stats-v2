@@ -106,7 +106,6 @@ class App extends Component {
     };
 
     render() {
-
         const {loading, isAuthenticated, group}  = this.state;
         if (loading){
             return  <Loading/>;

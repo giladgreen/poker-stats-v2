@@ -101,7 +101,7 @@ class Groups extends Component {
         const userGroups = groups.filter(group => group.userInGroup).map(group =>{
             const deleteGroupButton = group.isAdmin ?  <button className="button" onClick={()=> this.deleteGroupById(group.id)}> Delete group   </button> : <span/>;
             return (<div key={`userInGroup_${group.id}`}>
-                -  <button className="button" onClick={()=> this.onGroupClicked(group)}>{group.name}   </button>  {group.isAdmin ? ' (you are a group admin.)' : ''}{deleteGroupButton}
+                -  <button className="button" onClick={()=> this.onGroupClicked(group)}>{group.name}   </button> {group.description} {group.isAdmin ? ' (you are a group admin.)' : ''}{deleteGroupButton}
                 <br/><br/>
             </div>);
         });
@@ -110,7 +110,7 @@ class Groups extends Component {
             const { invitationRequested, invitationStatus } = group;
             const button =  <button className="button" onClick={()=> this.onGetInvitationRequestsClicked(group.id)}> ask invitation to this group</button>;
             return (<div key={`userNotInGroup_${group.id}`}>
-                - Group: <b> {group.name} </b>.  { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
+                - Group: <b> {group.name} </b>.{group.description}  { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
                 <br/><br/>
             </div>);
         });

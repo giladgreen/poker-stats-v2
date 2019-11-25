@@ -276,7 +276,7 @@ class Group extends Component {
                     Group Description: <input className="editGroupInput"  type="text" id="groupDescription" value={this.state.groupDescription} onChange={(event)=>this.setState({groupDescription: event.target.value})}/>
                 </div>
                 <div>
-                    <button className="button" onClick={this.updateGroupData}> Save</button>
+                    <button className="button saveButton" onClick={this.updateGroupData}> Save</button>
                     <button className="button" onClick={()=>this.updateInGroupEditMode(false)}> Cancel</button>
 
                 </div>
@@ -362,7 +362,7 @@ class Group extends Component {
 
         const editGroupPopup = this.getEditGroupPopup();
         const editPlayerPopup = this.getEditPlayerPopup();
-        const gamePopup = <Game game={game} viewGame={viewGame} group={group} provider={provider} token={token}  updateGroup={this.props.updateGroup} onFailure={this.props.onFailure} updateGame={this.updateGame} updateViewGame={this.updateViewGame}/>;
+        const gamePopup = <Game disableScroll={this.props.disableScroll} enableScroll={this.props.enableScroll} game={game} viewGame={viewGame} group={group} provider={provider} token={token}  updateGroup={this.props.updateGroup} onFailure={this.props.onFailure} updateGame={this.updateGame} updateViewGame={this.updateViewGame}/>;
         const newPlayerSection = this.getNewPlayerSection();
         const newGameSection = this.getNewGameSection();
         const players = this.getPlayers();
@@ -373,7 +373,8 @@ class Group extends Component {
                     <button className="button" onClick={this.props.backToMainPage}> back to all groups</button>
                 </div>
                 <div>
-                    <h1> Group: {group.name}   </h1>
+                    <h1> <b><u>{group.name} </u></b></h1>
+                    <h2>  {group.description}   </h2>
                     {isAdmin ? <h3>logged in as admin</h3> : <div/>}
                     {isAdmin ? <button className="button" onClick={()=>this.updateInGroupEditMode(true)}> edit group </button> : <div/>}
                 </div>

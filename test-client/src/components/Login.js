@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from 'react-google-login';
 import login from '../actions/login';
+import Loader from "../containers/Loading";
 const ONE_DAY = 1000 * 60 * 60 * 24;
 
 class Login extends Component {
@@ -38,7 +39,7 @@ class Login extends Component {
                 localStorage.removeItem('authData');
             } else{
                 this.performLogin(provider, token);
-                return <h1>logging in..</h1>;
+                return <Loader />;
             }
         }
 
