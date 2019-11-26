@@ -98,6 +98,10 @@ function getFitting() {
       });
       if (!user) {
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
+      } else{
+        if (!user.imageUrl){
+             await models.users.update({ imageUrl: profile.imageUrl },{where:{ id: user.id }});
+        }
       }
       request.userContext = user.toJSON();
       const { groupId } = request.getAllParams();
