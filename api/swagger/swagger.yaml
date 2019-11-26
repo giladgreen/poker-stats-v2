@@ -368,8 +368,6 @@ definitions:
         type: string
       name:
         type: string
-      email:
-        type: string
       createdAt:
         type: string
   InvitationRequestResponseDefinition:
