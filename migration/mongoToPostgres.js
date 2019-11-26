@@ -112,18 +112,20 @@ async function createTables(){
        `);
 
     } catch (e) {
-        console.error('createTables',e)
+        console.error('createTables error')
     }
     console.log('createTables end');
 
 }
 
-async function clearAllDataFromDB(groupId){
+async function clearAllDataFromDB(){
 
     const group = await models.groups.findOne({name: data.name});
+
     if (group){
+        console.log(`clearAllDataFromDB group name: ${data.name},  `,group.toJSON());
         const groupId = group.id;
-        console.log('clearAllDataFromDB start');
+        console.log('clearAllDataFromDB start.   groupId',groupId);
         await models.sequelize.query(`DELETE from games_data where group_id = '${groupId}'`);
         await models.sequelize.query(`DELETE from games where group_id = '${groupId}'`);
         await models.sequelize.query(`DELETE from players where group_id = '${groupId}'`);
@@ -133,6 +135,7 @@ async function clearAllDataFromDB(groupId){
         await models.sequelize.query(`DELETE from groups where id = '${groupId}'`);
         console.log('clearAllDataFromDB end');
     }else{
+        console.log(`clearAllDataFromDB group name: ${data.name}  - not in db` );
         console.log('clearAllDataFromDB skip');
     }
 
@@ -141,24 +144,30 @@ async function clearAllDataFromDB(groupId){
 
 async function createPlayers(groupId){
 
-    const playersToCreate = Object.values(data.players).map(({firstName, familyName,isAdmin})=>{
-
+    const playersToCreate = Object.values(data.players).map(({firstName, familyName,isAdmin,email})=>{
         return {
             name: `${firstName} ${familyName}`,
             firstName,
             familyName,
             isAdmin,
-            groupId
+            groupId,
+            email
         };
     });
-    const players = await Promise.all(playersToCreate.map(player => models.players.create(player).catch(err=>{
-        console.error(err)
-    })));
-    // console.log('## players created:', players.length);
+    let players;
+
+    try {
+        players = await Promise.all(playersToCreate.map(player => models.players.create({...player, email:null})));
+    } catch (err) {
+        console.error('failed to create player');
+        console.error(err);
+        process.exit(-1);
+    }
+    console.log('## players created:', players.length);
     await Promise.all(players.map(async (player, index)=>{
         mapping[Object.keys(data.players)[index]] = player.id;
-
-        if (player.email && player.email.length>2){
+        const email = playersToCreate[index].email;
+        if (email && email.length>2){
             const p = playersToCreate.find(pl=>pl.email === player.email);
             const isAdmin = !!p.isAdmin;
             if (isAdmin){
@@ -211,12 +220,13 @@ async function createGames(groupId) {
     await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
 }
 async function doStuff() {
+    console.log('################')
     console.log('migration start')
     console.log('################')
     await createTables();
     await clearAllDataFromDB();
 
-    const group = await models.groups.create({name: data.name});
+    const group = await models.groups.create({name: data.name, description: data.description});
     const groupId = group.id;
 
     await createPlayers(groupId);
