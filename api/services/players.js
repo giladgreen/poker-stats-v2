@@ -4,7 +4,6 @@ const models = require('../models');
 const attributes = ['id', 'name', 'email', 'groupId', 'createdAt', 'imageUrl'];
 const defaultValues = {
   email: '',
-  imageUrl: 'anonymous',
 };
 
 async function getPlayer({ groupId, playerId }) {

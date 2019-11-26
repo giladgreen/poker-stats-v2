@@ -118,29 +118,35 @@ async function createTables(){
 
 }
 
-async function clearAllDataFromDB(){
-    console.log('clearAllDataFromDB start');
-    await models.sequelize.query('DELETE from games_data');
-    await models.sequelize.query('DELETE from games');
-    await models.sequelize.query('DELETE from players');
-    await models.sequelize.query('DELETE from users_players');
-    await models.sequelize.query('DELETE from users');
-    await models.sequelize.query('DELETE from groups');
-    await models.sequelize.query('DELETE from invitations_requests');
-    console.log('clearAllDataFromDB end');
+async function clearAllDataFromDB(groupId){
+
+    const group = await models.groups.findOne({name: data.name});
+    if (group){
+        const groupId = group.id;
+        console.log('clearAllDataFromDB start');
+        await models.sequelize.query(`DELETE from games_data where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from games where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from players where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from users_players where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from games_data where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from invitations_requests where group_id = '${groupId}'`);
+        await models.sequelize.query(`DELETE from groups where id = '${groupId}'`);
+        console.log('clearAllDataFromDB end');
+    }else{
+        console.log('clearAllDataFromDB skip');
+    }
+
 
 }
 
 async function createPlayers(groupId){
 
-    const playersToCreate = Object.values(data.players).map(({firstName, familyName, email, imageUrl,isAdmin})=>{
+    const playersToCreate = Object.values(data.players).map(({firstName, familyName,isAdmin})=>{
 
         return {
             name: `${firstName} ${familyName}`,
-            email,
             firstName,
             familyName,
-            imageUrl,
             isAdmin,
             groupId
         };
@@ -148,38 +154,9 @@ async function createPlayers(groupId){
     const players = await Promise.all(playersToCreate.map(player => models.players.create(player).catch(err=>{
         console.error(err)
     })));
-   // console.log('## players created:', players.length);
-    await Promise.all(players.map(async (player, index)=>{
+    players.map((player, index)=>{
         mapping[Object.keys(data.players)[index]] = player.id;
-
-        if (player.email && player.email.length>2){
-            const p = playersToCreate.find(pl=>pl.email === player.email);
-
-            const userData = {
-                firstName: p.firstName,
-                familyName: p.familyName,
-                email: p.email,
-                imageUrl: p.imageUrl,
-                token: 'xx',
-                tokenExpiration: new Date()
-            };
-            const user = await models.users.create(userData);
-            const userPlayer = {
-                    userId: user.id,
-                    playerId: player.id,
-                    groupId,
-                    isAdmin:!!p.isAdmin
-            };
-
-            await models.usersPlayers.create(userPlayer);
-
-        }
-      //  console.log('##     ', player.name, player.email);
-
-
-    }));
-
-
+    });
 
 }
 async function createGames(groupId) {
