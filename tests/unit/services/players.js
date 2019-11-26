@@ -140,7 +140,6 @@ describe('services: players', function () {
       should(createPlayerArgs.args[0]).be.eql({
         ...data,
         email: '',
-        imageUrl: 'anonymous',
         groupId,
       });
     });

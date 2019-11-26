@@ -225,12 +225,19 @@ async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitati
   }
 }
 
-function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId) {
-  return models.usersPlayers.create({
+async function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId) {
+  await models.usersPlayers.create({
     isAdmin: setAsAdmin,
     playerId: invitationRequestPlayerId,
     groupId,
     userId,
+  });
+
+  const { imageUrl, email } = await models.users.findOne({ where: { id: userId } });
+  return models.players.update({ imageUrl, email }, {
+    where: {
+      id: invitationRequestPlayerId,
+    },
   });
 }
 
@@ -290,6 +297,7 @@ async function answerInvitationRequest(invitationRequestId, invitationRequestPla
     await handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitationRequestPlayerId);
   } else {
     logger.info('[Invitation-service] answerInvitationRequest. user not in group. - adding it');
+
     await createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId);
   }
   await updateInvitationRequest(invitationRequestId, INVITATION_APPROVED);

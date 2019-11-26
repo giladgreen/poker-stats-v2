@@ -154,9 +154,34 @@ async function createPlayers(groupId){
     const players = await Promise.all(playersToCreate.map(player => models.players.create(player).catch(err=>{
         console.error(err)
     })));
-    players.map((player, index)=>{
+    // console.log('## players created:', players.length);
+    await Promise.all(players.map(async (player, index)=>{
         mapping[Object.keys(data.players)[index]] = player.id;
-    });
+
+        if (player.email && player.email.length>2){
+            const p = playersToCreate.find(pl=>pl.email === player.email);
+            const isAdmin = !!p.isAdmin;
+            if (isAdmin){
+                const userData = {
+                    firstName: p.firstName,
+                    familyName: p.familyName,
+                    email: p.email,
+                    imageUrl: p.imageUrl,
+                    token: 'xx',
+                    tokenExpiration: new Date()
+                };
+                const user = await models.users.create(userData);
+                const userPlayer = {
+                    userId: user.id,
+                    playerId: player.id,
+                    groupId,
+                    isAdmin: true
+                };
+
+                await models.usersPlayers.create(userPlayer);
+            }
+        }
+    }));
 
 }
 async function createGames(groupId) {
