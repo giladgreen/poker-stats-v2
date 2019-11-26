@@ -1,5 +1,5 @@
+const terminate = require('../api/helpers/terminate');
 const models = require('../api/models');
-console.log('models',models)
 const {createGame} = require('../api/services/games');
 const data = require('./data');
 const mapping = {};
@@ -14,6 +14,16 @@ function convertDate(date){
   //  const result = new Date(year, month-1,day,0,0,0);
   //  return result;
 }
+
+const exitHandler = terminate(null, {
+    coredump: false, timeout: 500,
+});
+process.on('uncaughtException', exitHandler(1, 'Uncaught Exception'));
+process.on('unhandledRejection', exitHandler(1, 'Unhandled Promise'));
+process.on('SIGTERM', exitHandler(0, 'SIGTERM'));
+process.on('SIGINT', exitHandler(0, 'SIGINT'));
+
+
 
 async function createTables(){
     console.log('createTables start');
@@ -168,7 +178,7 @@ async function createPlayers(groupId){
         mapping[Object.keys(data.players)[index]] = player.id;
         const email = playersToCreate[index].email;
         if (email && email.length>2){
-            const p = playersToCreate.find(pl=>pl.email === player.email);
+            const p = playersToCreate[index];
             const isAdmin = !!p.isAdmin;
             if (isAdmin){
                 const userData = {
