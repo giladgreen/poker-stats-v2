@@ -99,7 +99,12 @@ function getFitting() {
       if (!user) {
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
       } else if (!user.imageUrl) {
-        await models.users.update({ imageUrl: profile.imageUrl }, { where: { id: user.id } });
+        await models.users.update({ imageUrl: profile.imageUrl, email: profile.email }, { where: { id: user.id } });
+        user = await models.users.findOne({
+          where: {
+            email: profile.email,
+          },
+        });
       }
       request.userContext = user.toJSON();
       const { groupId } = request.getAllParams();
