@@ -13,7 +13,7 @@ async function requestInvitation(groupId, provider, token){
                 "Content-Type":'application/json'
             },
             body: JSON.stringify({
-                groupId
+                requestedGroupId: groupId
             })
         };
 
