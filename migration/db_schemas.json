@@ -1,0 +1,97 @@
+{
+    "tables": [
+        {
+            "tableName":  "groups",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "name text",
+                "description text DEFAULT ''",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "games",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "description text",
+                "date timestamp without time zone",
+                "group_id text REFERENCES groups(id)",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone",
+                "ready boolean DEFAULT false"
+            ]
+        },
+        {
+            "tableName":  "players",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "name text",
+                "email text",
+                "image_url text",
+                "group_id text REFERENCES groups(id)",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "games_data",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "game_id text REFERENCES games(id)",
+                "player_id text REFERENCES players(id)",
+                "cash_out integer",
+                "buy_in integer",
+                "index integer",
+                "group_id text REFERENCES groups(id)",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "users",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "first_name text",
+                "family_name text",
+                "email text",
+                "image_url text",
+                "token text",
+                "token_expiration timestamp without time zone NOT NULL",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "users_players",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "player_id text",
+                "user_id text",
+                "group_id text",
+                "is_admin boolean",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "invitations_requests",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "user_id text",
+                "group_id text",
+                "Status text",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        }
+    ]
+}
+

@@ -139,7 +139,7 @@ padding-left: 5px;
   left:5vw;
   top:5vh;
   width: 85vw;
-  height: 67vh;
+  height: 70vh;
   background: ghostwhite;
   border: 3px solid darkslategrey;
   border-radius: 10px;
@@ -201,7 +201,15 @@ padding-left: 5px;
   padding-left: 20px;
   padding-right: 20px;
 }
-
+.gamesListItem{
+  border: 2px solid black;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 2px;
+  margin: 2px;
+  width: 12vw;
+}
 .playersListItem{
   border: 2px solid black;
   border-radius: 30px;
@@ -209,6 +217,7 @@ padding-left: 5px;
   font-size: 1.2em;
   padding: 2px;
   margin: 2px;
+  max-width: 16vw;
 }
 .playersListImage{
   height: 28px;
@@ -218,9 +227,9 @@ padding-left: 5px;
 }
 .playersListImageBig{
   width: 100%;
-  max-height: 220px;
   border-radius: 30px;
-
+  max-width: 16vw;
+  max-height: 16vw;
 }
 .balanceWithCurrencyPositive{
   color: darkgreen;
@@ -252,11 +261,12 @@ padding-left: 5px;
 @media screen and (max-width: 800px) {
 
   .editPlayerInput{
-
-    height: 45px;
+    height: 40px;
     padding: 2px;
   }
-
+  .editPlayerInputDiv{
+    padding: 1px 15px 7px 5px;
+  }
   button {
     padding-left: 10px;
     border-radius: 5px;
@@ -275,8 +285,8 @@ padding-left: 5px;
     padding: 20px;
     left:4vw;
     top:2vh;
-    height: 84vh;
-    width: 70vw;
+    height: 120vh;
+    width: 90vw;
     font-size: 0.8em;
   }
   .editGamePopupInner{
@@ -296,5 +306,27 @@ padding-left: 5px;
     width: 87vw;
     font-size: 0.7em;
   }
-
+  .playersListItem{
+    border: 1px solid black;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 2px;
+    margin: 2px;
+    max-width: 45vw;
+  }
+  .playersListImageBig{
+    width: 100%;
+    border-radius: 14px;
+    max-width: 45vw;
+    max-height: 45vw;
+  }
+  .gamesListItem{
+    border: 1px solid black;
+    border-radius: 14px;
+    font-size: 0.9em;
+    padding: 2px;
+    margin: 2px;
+    width: 45vw;
+  }
 }

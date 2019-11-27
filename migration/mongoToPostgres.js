@@ -1,5 +1,6 @@
 const terminate = require('../api/helpers/terminate');
 const models = require('../api/models');
+const dbSchemas = require('./db_schemas');
 const {createGame} = require('../api/services/games');
 const data = require('./data');
 const mapping = {};
@@ -27,103 +28,17 @@ process.on('SIGINT', exitHandler(0, 'SIGINT'));
 
 async function createTables(){
     console.log('createTables start');
-
-    try {
-        await models.sequelize.query(`
-        CREATE TABLE groups (
-                id text PRIMARY KEY,
-                name text,
-                description text DEFAULT '',
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-        `);
-
-        await models.sequelize.query(`
-        CREATE TABLE games (
-                id text PRIMARY KEY,
-                description text,
-                date timestamp without time zone,
-                group_id text REFERENCES groups(id),
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone,
-                ready boolean DEFAULT false
-            );
-        `);
-
-        await models.sequelize.query(`
-        CREATE TABLE players (
-                id text PRIMARY KEY,
-                name text,
-                email text,
-                image_url text,
-                group_id text REFERENCES groups(id),
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-       `);
-
-        await models.sequelize.query(`
-        CREATE TABLE games_data (
-                id text PRIMARY KEY,
-                game_id text REFERENCES games(id),
-                player_id text REFERENCES players(id),
-                cash_out integer,
-                buy_in integer,
-                index integer,
-                group_id text REFERENCES groups(id),
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-       `);
-
-        await models.sequelize.query(`
-        CREATE TABLE users (
-                id text PRIMARY KEY,
-                first_name text,
-                family_name text,
-                email text,
-                image_url text,
-                token text,
-                token_expiration timestamp without time zone NOT NULL,
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-       `);
-
-        await models.sequelize.query(`
-        CREATE TABLE users_players (
-                id text PRIMARY KEY,
-                player_id text,
-                user_id text,
-                group_id text,
-                is_admin boolean,
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-       `);
-
-        await models.sequelize.query(`
-        CREATE TABLE invitations_requests (
-                id text PRIMARY KEY,
-                user_id text,
-                group_id text,
-                Status text,
-                created_at timestamp without time zone NOT NULL,
-                updated_at timestamp without time zone NOT NULL,
-                deleted_at timestamp without time zone
-            );
-       `);
-
-    } catch (e) {
-        console.error('createTables error')
+    for (const tableData of dbSchemas.tables){
+        try {
+            console.log('adding table:',tableData.tableName);
+            await models.sequelize.query(`CREATE TABLE ${tableData.tableName} (${tableData.columns.join(',')});`);
+            console.log('table added. ',tableData.tableName);
+            console.log('');
+        } catch (e) {
+            console.error(e.message)
+        }
     }
+
     console.log('createTables end');
 
 }
@@ -189,7 +104,10 @@ async function createPlayers(groupId){
                     token: 'xx',
                     tokenExpiration: new Date()
                 };
-                const user = await models.users.create(userData);
+                let user = await models.users.findOne({where:{email:p.email}});
+                if (!user){
+                    user = await models.users.create(userData);
+                }
                 const userPlayer = {
                     userId: user.id,
                     playerId: player.id,
@@ -230,9 +148,9 @@ async function createGames(groupId) {
     await Promise.all(gamesToCreate.map(game => createGame(groupId, game)));
 }
 async function doStuff() {
-    console.log('################')
-    console.log('migration start')
-    console.log('################')
+    console.log('################');
+    console.log('migration start');
+    console.log('################');
     await createTables();
     await clearAllDataFromDB();
 
@@ -243,7 +161,8 @@ async function doStuff() {
     await createGames(groupId);
 
 
-    console.log('########')
-    console.log('DONE')
+    console.log('########');
+    console.log('DONE');
+    process.exit(0);
 }
 doStuff();

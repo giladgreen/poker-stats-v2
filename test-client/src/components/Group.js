@@ -186,7 +186,7 @@ class Group extends Component {
 
             const image =  <img alt={playerName} className="playersListImageBig" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
             const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
-            return (<div className="playersListItem col-xm-2" key={`player_${player.id}`}>
+            return (<div className="playersListItem col-xm-1" key={`player_${player.id}`}>
                     {image}
                     <div className="paddingLeft">
                         <h3> {playerName}</h3>
@@ -216,8 +216,11 @@ class Group extends Component {
            const editGameButton = isAdmin || !ready ?  <button className="button" onClick={()=> this.editGame({...game, nameAsDatePicker: game.date.AsDatePicker()})}> Edit  </button> : <span/>;
            const viewGameButton = <button className="button" onClick={()=> this.viewGame(game)}> View  </button> ;
 
-            return (<div className={`gamesListItem ${ready ? 'gamesListItemReady': 'gamesListItemNotReady'}`} key={`games_${game.id}`}>
-                <h3> * {date.AsGameName()} {description && description.length>0 ? ` - ${description}`:''} - ({playersData.length} players) {editGameButton}{deleteGameButton} {viewGameButton}</h3>
+            return (<div className={`col-xm-1 gamesListItem ${ready ? 'gamesListItemReady': 'gamesListItemNotReady'}`} key={`games_${game.id}`}>
+                <h3> {date.AsGameName()} </h3>
+                <h3> {description && description.length>0 ? ` - ${description}`:''} </h3>
+                <h4> {playersData.length} players </h4>
+                <div> {editGameButton}{deleteGameButton} {viewGameButton}</div>
             </div>);
         })
     };
@@ -394,7 +397,7 @@ class Group extends Component {
                 <div>
                     {newGameSection}
                     <h2><u>{group.games.length} games</u></h2>
-                    <div className="groupGamesList">
+                    <div className="groupGamesList row">
                         {games}
                     </div>
                 </div>

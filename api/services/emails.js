@@ -2,8 +2,6 @@ const nodemailer = require('nodemailer');
 const logger = require('./logger');
 
 const from = 'info@pokerStats.com';
-process.env.EMAIL_USER = 'green.gilad@gmail.com';// TODO:remove this
-process.env.EMAIL_PASSWORD = 'czgfamvpkajhanat';// TODO:remove this
 
 const { EMAIL_USER } = process.env;
 const { EMAIL_PASSWORD } = process.env;

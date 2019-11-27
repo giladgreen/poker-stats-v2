@@ -3,10 +3,10 @@ const invitationsService = require('../services/invitations');
 
 function createInvitationRequest(req, res, next) {
   const body = req.getBody();
-  const { groupId } = body;
+  const { requestedGroupId } = body;
   const { userContext } = req;
   const userId = userContext.id;
-  invitationsService.createInvitationRequest(groupId, userId)
+  invitationsService.createInvitationRequest(requestedGroupId, userId)
     .then((result) => {
       res.status(HttpStatus.CREATED).send(result);
     })

@@ -308,7 +308,7 @@ async function createUser(FirstName, FamilyName, Email) {
 
 async function sendInvitationRequest(groupId) {
   const payload = {
-    groupId,
+    requestedGroupId: groupId,
   };
   const { body } = await request(server)
     .post('/api/v2/invitations-requests')
@@ -357,6 +357,7 @@ describe('full integration test,', function () {
       await getGroup(groupId);
       await updateGroup(groupId, 'new name');
       await getGroup(groupId);
+
       const group2Id = await createGroup('group to delete');
       await listGroups(2);
       await deleteGroup(group2Id);
@@ -385,26 +386,21 @@ describe('full integration test,', function () {
       await getGame(groupId, gameId, 'new description', [playerId, player3Id]);
       const game2Id = await createGame(groupId, 'description 2', [player3Id, playerId]);
       await listGames(groupId, 2);
+
       await deleteGame(groupId, game2Id);
       await listGames(groupId, 1);
       await validateMissingGame(groupId, game2Id);
 
       const userId = await createUser('new', 'User', 'new.user@gmail.com');
-
       this.sandbox.restore();
-
       mockGoogleTokenStrategy(this.sandbox, {
         userId, email: 'new.user@gmail.com', firstName: 'new', familyName: 'User', token: differentToken,
       });
-
       await getGroup(groupId, 401, differentToken);
-
 
       const invitationRequestId = await sendInvitationRequest(groupId);
       const invitationRequestPlayerId = player3Id;
-
       await sendInvitationRequestApproval(invitationRequestId, invitationRequestPlayerId);
-
       await getGroup(groupId, 200);
     });
   });

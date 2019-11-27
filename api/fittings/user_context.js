@@ -1,8 +1,10 @@
 const moment = require('moment');
 const { unauthorized } = require('boom');
 
+const { EMAIL_USER } = process.env;
 const { Op } = require('sequelize');
 const models = require('../models');
+const { sendHtmlMail } = require('../services/emails');
 const logger = require('../services/logger');
 const googleTokenStrategy = require('../helpers/google-auth');
 const facebookTokenStrategy = require('../helpers/facebook-auth');
@@ -26,9 +28,7 @@ async function getGroups(userContext) {
 }
 
 async function validateRequestPermissions(request) {
-  const { groupId: groupIdObject } = request.swagger.params;
-  const groupId = groupIdObject ? groupIdObject.value : null;
-
+  const { groupId } = request.getAllParams();
   request.userContext.groups = await getGroups(request.userContext);
   request.userContext.inGroup = groupId && request.userContext.groups[groupId];
   request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
@@ -45,6 +45,35 @@ async function validateRequestPermissions(request) {
     }
   }
 }
+function getProfile(provider, accessToken) {
+  return (provider === 'google'
+    ? googleTokenStrategy.authenticate(accessToken)
+    : facebookTokenStrategy.authenticate(accessToken));
+}
+function getHtmlBody(user, provider) {
+  return `
+  <div>
+        <h1>new user has logged in.</h1>
+      <div>
+          provider: ${provider}
+      </div>
+       <div>
+          user name: ${user.firstName} ${user.familyName}
+      </div>
+      <div>
+          user email: ${user.email} 
+      </div>
+      <div>
+          <div>
+          user image: ${user.imageUrl} 
+            </div>
+            <div>
+          <img src="${user.imageUrl}"/>
+            </div>
+      </div>
+    </div>
+  `;
+}
 function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
@@ -56,10 +85,11 @@ function getFitting() {
       const { headers } = request;
       const { provider } = headers;
       const accessToken = headers['x-auth-token'];
-      logger.info(`[UserContext:fitting] provider:${provider} `);
-      logger.info(`[UserContext:fitting] accessToken:${accessToken} `);
-      if (!provider || !accessToken || !LEGAL_PROVIDERS.includes(provider)) {
+      if (!provider || !accessToken) {
         throw 'missing token headers';
+      }
+      if (!LEGAL_PROVIDERS.includes(provider)) {
+        throw `unknown provider: ${provider}`;
       }
       const existingUser = await models.users.findOne({
         where: {
@@ -69,6 +99,7 @@ function getFitting() {
           },
         },
       });
+
       if (existingUser) {
         request.userContext = existingUser.toJSON();
         logger.info(`[UserContext:fitting] user exist: ${JSON.stringify(request.userContext)} `);
@@ -86,9 +117,7 @@ function getFitting() {
         return next();
       }
 
-      const profile = await (provider === 'google'
-        ? googleTokenStrategy.authenticate(accessToken)
-        : facebookTokenStrategy.authenticate(accessToken));
+      const profile = await getProfile(provider, accessToken);
 
       // create/update user in db
       let user = await models.users.findOne({
@@ -96,16 +125,15 @@ function getFitting() {
           email: profile.email,
         },
       });
+
       if (!user) {
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
-      } else if (!user.imageUrl) {
-        await models.users.update({ imageUrl: profile.imageUrl, email: profile.email }, { where: { id: user.id } });
-        user = await models.users.findOne({
-          where: {
-            email: profile.email,
-          },
-        });
+        sendHtmlMail('new user has logged in', getHtmlBody(user, provider), EMAIL_USER);
+      } else {
+        const [, results] = await models.users.update({ ...profile }, { where: { id: user.id }, returning: true });
+        user = results[0];
       }
+
       request.userContext = user.toJSON();
       const { groupId } = request.getAllParams();
       if (groupId) {
@@ -119,7 +147,6 @@ function getFitting() {
           request.userContext.playerId = userPlayer.playerId;
         }
       }
-
 
       await validateRequestPermissions(request);
 
@@ -136,7 +163,7 @@ function getFitting() {
       }
 
       logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
-      return next(unauthorized('did not pass auth tokens'));
+      return next(unauthorized('failed to create user context'));
     }
   };
 }
