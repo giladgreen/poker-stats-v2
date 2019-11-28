@@ -111,7 +111,7 @@ class App extends Component {
             return  <Loading/>;
         }
         if (!isAuthenticated){
-            return  <Login onFailure={this.onFailure} onLogin={this.onLogin} />;
+            return  <Login onLogin={this.onLogin} />;
         }
 
         const mainSection = group ?

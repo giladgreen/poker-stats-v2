@@ -8,6 +8,11 @@ const ONE_DAY = 1000 * 60 * 60 * 24;
 
 class Login extends Component {
 
+    onFailure = (error) => {
+        console.error('App onFailure', error);
+        this.setState({ error });
+    };
+
     performLogin = async (provider, token) => {
         try{
             const result = await login(provider, token);
@@ -15,19 +20,30 @@ class Login extends Component {
             const issueDate  = authData ? JSON.parse(authData).issueDate : new Date();
 
             localStorage.setItem('authData', JSON.stringify({provider, token, issueDate }));
+            this.setState({ error: null });
             return this.props.onLogin(result);
         }catch(error){
             localStorage.removeItem('authData');
-            return this.props.onFailure(error);
+            return this.onFailure(error);
         }
     };
 
     facebookResponse = (response) => {
-        this.performLogin('facebook', response.accessToken);
+        if (response.accessToken){
+            this.performLogin('facebook', response.accessToken);
+        }else{
+            this.onFailure('login failed')
+        }
+
     };
 
     googleResponse = (response) => {
-        this.performLogin('google', response.accessToken);
+        if (response.accessToken){
+            this.performLogin('google', response.accessToken);
+        }else{
+            this.onFailure('login failed')
+        }
+
     };
 
     render() {
@@ -63,9 +79,12 @@ class Login extends Component {
                             clientId={GOOGLE_CLIENT_ID}
                             buttonText="Login with Google"
                             onSuccess={this.googleResponse}
-                            onFailure={this.props.onFailure}
+                            onFailure={this.onFailure}
                         />
                     </div>
+                </div>
+                <div className="errorSection">
+                    {this.state.error}
                 </div>
             </div>
         );
