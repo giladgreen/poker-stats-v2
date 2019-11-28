@@ -50,12 +50,13 @@ logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
 
-app.get('/.well-known/acme-challenge/:content', (req, res) => {
+app.get('/*', (req, res) => {
   logger.info('acme-challenge..');
-  res.send('GMum63fjDZh9T1Z1osB_ZfcOpiL3Y4lwj3JGIxxuVBU.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
+  res.send('oV6qxLxXcBO2arW0xpebwmVEqH-_ahJgOZNDNaVAN6Y.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
 });
-
-app.listen(SERVER_PORT);
+const port = SERVER_PORT;
+logger.info('port', port);
+app.listen(port);
 /*
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
