@@ -38,7 +38,6 @@ app.use((req, res, next) => {
 });
 
 
-
 logger.info('app started..');
 /**
  * Swagger initialization on top of express
@@ -51,8 +50,13 @@ logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
 
+app.get('/.well-known/acme-challenge/:content', (req, res) => {
+  logger.info('acme-challenge..');
+  res.send('GMum63fjDZh9T1Z1osB_ZfcOpiL3Y4lwj3JGIxxuVBU.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
+});
 
-
+app.listen(SERVER_PORT);
+/*
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
@@ -66,12 +70,9 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   logger.info('[lifecycle]: core service is now listening', {
     port,
   });
-  app.get('/.well-known/acme-challenge/:content', (req, res) => {
-    logger.info('acme-challenge..');
-    res.send('GMum63fjDZh9T1Z1osB_ZfcOpiL3Y4lwj3JGIxxuVBU.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
-  });
-});
 
+});
+*/
 module.exports = {
   server: app,
 };
