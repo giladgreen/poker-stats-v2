@@ -14,4 +14,8 @@ module.exports = {
   GOOGLE_CLIENT_ID: '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.googleusercontent.com',
   FACEBOOK_APP_ID: '2487592561563671',
   ANON_URL: 'https://green-pokerstats.herokuapp.com/images/anonymous2.png',
+  GREEN: 'https://green-pokerstats.herokuapp.com/images/green.png',
+  RED: 'https://green-pokerstats.herokuapp.com/images/red.png',
+  WHITE: 'https://green-pokerstats.herokuapp.com/images/white.png',
+  TRANSPARENT: 'https://green-pokerstats.herokuapp.com/images/transparent.png',
 };

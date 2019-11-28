@@ -20,7 +20,7 @@ async function getPlayer({ groupId, playerId }) {
   return player.toJSON();
 }
 
-async function getPlayers(groupId, limit = 1000, offset = 0) {
+async function getPlayers(groupId, userId, limit = 1000, offset = 0) {
   const allCount = await models.players.count();
   const allPlayers = await models.players.findAll({
     limit,
@@ -54,6 +54,7 @@ async function getPlayers(groupId, limit = 1000, offset = 0) {
         player.familyName = user.familyName;
         player.name = `${user.firstName} ${user.familyName}`;
         player.userConnected = true;
+        player.isMe = user.id === userId;
       }
     }
 

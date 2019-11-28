@@ -5,6 +5,7 @@ import 'react-input-range/lib/css/index.css';
 import updateGame from "../actions/updateGame";
 import getGame from "../actions/getGame";
 import OnGoingGame from "./OnGoingGame";
+import GameData from "./GameData";
 
 class Game extends Component {
 
@@ -195,18 +196,26 @@ class Game extends Component {
                         <h1>Game Summary:</h1>
                     </div>
                     <hr/>
-                    <div>
-                        <h2>Game date: {game.date.AsGameName()}</h2>
-                        <h2>{game.description && game.description.length>0 ? ` ${game.description}`: ''}</h2>
-                        <h3>{game.playersData.length} Players</h3>
-                        <h4>{totalBuyIn} In Pot</h4>
-                    </div>
-                    <div>
-                        {players}
-                    </div>
-                    <div className="backButton">
-                        <button className="button" onClick={()=>this.props.updateViewGame(null)}> Back</button>
-                    </div>
+                   <div className="row">
+                       <div className="col-xs-4">
+                           <div>
+                               <h2>Game date: {game.date.AsGameName()}</h2>
+                               <h2>{game.description && game.description.length>0 ? ` ${game.description}`: ''}</h2>
+                               <h3>{game.playersData.length} Players</h3>
+                               <h4>{totalBuyIn} In Pot</h4>
+                           </div>
+                           <div>
+                               {players}
+                           </div>
+                           <div className="backButton">
+                               <button className="button" onClick={()=>this.props.updateViewGame(null)}> Back</button>
+                           </div>
+
+                        </div>
+                        <div className="col-xs-8">
+                            <GameData Group={group} Game={game} />
+                        </div>
+                   </div>
 
                 </div>
             </div>);

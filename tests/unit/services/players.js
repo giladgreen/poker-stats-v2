@@ -95,7 +95,7 @@ describe('services: players', function () {
         this.playerFindAll = this.sandbox.stub(players, 'findAll').resolves(resultPlayers.map(player => ({ toJSON: () => player })));
       });
       it('should return correct data back', async function () {
-        const resultObject = await playersService.getPlayers(groupId, limit, offset);
+        const resultObject = await playersService.getPlayers(groupId, userId, limit, offset);
         should(resultObject).be.eql({
           metadata: {
             totalResults,

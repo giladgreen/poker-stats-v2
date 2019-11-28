@@ -11,7 +11,9 @@ function getPlayer(req, res, next) {
 }
 function getPlayers(req, res, next) {
   const { groupId, limit, offset } = req.getAllParams();
-  playersService.getPlayers(groupId, limit, offset)
+  const { userContext } = req;
+  const userId = userContext.id;
+  playersService.getPlayers(groupId, userId, limit, offset)
     .then((result) => {
       res.send(result);
     })

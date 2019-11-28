@@ -42,12 +42,7 @@ margin-left: 10px;
   color: red;
   padding-left: 10px;
 }
-.gamesListItemReady{
-  color: darkgreen;
-}
-.gamesListItemNotReady{
-  color: darkred;
-}
+
 #logout-link{
   position: absolute;
   font-size: 0.8em;
@@ -210,9 +205,16 @@ padding-left: 5px;
   margin: 2px;
   width: 12vw;
 }
+.gamesListItemReady{
+  color: darkgreen;
+}
+.gamesListItemNotReady{
+  color: darkred;
+  border: 2px dashed black;
+}
+
 .playersListItem{
   border: 2px dashed black;
-
   border-radius: 30px;
   text-align: center;
   font-size: 1.2em;
