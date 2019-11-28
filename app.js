@@ -37,10 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/.well-known/acme-challenge/:content', (req, res) => {
-  logger.info('acme-challenge..');
-  res.send('5zTSEzXEcTkS8Cma4OtvxVtLFB7-Z6eq6lcxd-U_l2I.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
-});
+
 
 logger.info('app started..');
 /**
@@ -55,6 +52,7 @@ logger.info('[lifecycle]: core service is booting up', {
 });
 
 
+
 SwaggerExpress.create(config, (err, swaggerExpress) => {
   if (err) { throw err; }
 
@@ -67,6 +65,10 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   app.listen(port);
   logger.info('[lifecycle]: core service is now listening', {
     port,
+  });
+  app.get('/.well-known/acme-challenge/:content', (req, res) => {
+    logger.info('acme-challenge..');
+    res.send('GMum63fjDZh9T1Z1osB_ZfcOpiL3Y4lwj3JGIxxuVBU.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
   });
 });
 
