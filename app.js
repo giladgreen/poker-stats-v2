@@ -64,7 +64,6 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   logger.info('[lifecycle]: core service is now listening', {
     port,
   });
-
 });
 
 module.exports = {
