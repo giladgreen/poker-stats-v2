@@ -26,7 +26,6 @@ class Login extends Component {
             const issueDate  = authData ? JSON.parse(authData).issueDate : new Date();
 
             localStorage.setItem('authData', JSON.stringify({provider, token, issueDate }));
-            this.setState({ error: null });
             return this.props.onLogin(result);
         }catch(error){
             localStorage.removeItem('authData');
