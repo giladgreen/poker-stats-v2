@@ -20,7 +20,7 @@ const limiter = rateLimit({
 const PUBLIC = path.join(__dirname, 'public');
 const faviconPath = path.join(PUBLIC, 'favicon.png');
 app.use(compression());
-app.use(express.static(PUBLIC));
+//app.use(express.static(PUBLIC));
 app.use(favicon(faviconPath));
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -50,8 +50,12 @@ logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
 
-app.get('/.well-known/*', (req, res) => {
-  logger.info('acme-challenge..');
+app.get('/*', (req, res) => {
+  logger.info('acme-challenge..1');
+  res.send('oV6qxLxXcBO2arW0xpebwmVEqH-_ahJgOZNDNaVAN6Y.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
+});
+app.get('/', (req, res) => {
+  logger.info('acme-challenge..2');
   res.send('oV6qxLxXcBO2arW0xpebwmVEqH-_ahJgOZNDNaVAN6Y.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
 });
 const port = SERVER_PORT;
