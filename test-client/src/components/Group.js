@@ -186,7 +186,7 @@ class Group extends Component {
 
             const image =  <img alt={playerName} className="playersListImageBig" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
             const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
-            return (<div className="playersListItem col-xm-1" key={`player_${player.id}`}>
+            return (<div className={`playersListItem ${player.userConnected ? 'connectedUser' : ''} col-xm-1`} key={`player_${player.id}`}>
                     {image}
                     <div className="paddingLeft">
                         <h3> {playerName}</h3>

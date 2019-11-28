@@ -53,6 +53,7 @@ async function getPlayers(groupId, limit = 1000, offset = 0) {
         player.firstName = user.firstName;
         player.familyName = user.familyName;
         player.name = `${user.firstName} ${user.familyName}`;
+        player.userConnected = true;
       }
     }
 

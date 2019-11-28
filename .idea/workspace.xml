@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/Group.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/components/Group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/index.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,23 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-client/src/actions/requestInvitation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="292">
+              <caret line="223" column="1" lean-forward="true" selection-start-line="223" selection-start-column="1" selection-end-line="223" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -55,19 +41,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/players.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+            <state relative-caret-position="183">
+              <caret line="60" column="6" lean-forward="true" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
+        <entry file="file://$PROJECT_DIR$/test-client/src/actions/getGroupData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+            <state relative-caret-position="646">
+              <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-client/src/components/Groups.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
-                <element signature="n#!!block;n#sendUserUpdateEmail#0" />
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!block;n#constructor#0;n#Groups#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-client/src/components/Group.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="188" column="52" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/components/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+            <state relative-caret-position="-331">
+              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -98,34 +106,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/services/logger.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
-              <caret line="125" column="22" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="125" selection-end-column="22" />
+              <caret line="125" column="22" selection-start-line="123" selection-start-column="14" selection-end-line="125" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#constructor#0;n#App#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/controllers/invitation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="262" column="42" selection-start-line="262" selection-start-column="19" selection-end-line="262" selection-end-column="42" />
-              <folding>
-                <element signature="e#1175#2391#0" />
               </folding>
             </state>
           </provider>
@@ -143,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>col-</find>
       <find>playersListImage</find>
       <find>border:</find>
       <find>radiuo</find>
@@ -173,6 +164,7 @@
       <find>createInvitationRequest</find>
       <find>edgroupid</find>
       <find>URL_PREFIX</find>
+      <find>getGroupData</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -228,7 +220,6 @@
         <option value="$PROJECT_DIR$/test-client/src/loader.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/test-client/src/config.json" />
-        <option value="$PROJECT_DIR$/api/services/players.js" />
         <option value="$PROJECT_DIR$/api/services/invitations.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/players.js" />
         <option value="$PROJECT_DIR$/migration/data.json" />
@@ -239,8 +230,6 @@
         <option value="$PROJECT_DIR$/migration/db_schemas.json" />
         <option value="$PROJECT_DIR$/migration/mongoToPostgres.js" />
         <option value="$PROJECT_DIR$/api/services/emails.js" />
-        <option value="$PROJECT_DIR$/test-client/src/components/Group.js" />
-        <option value="$PROJECT_DIR$/test-client/src/index.css" />
         <option value="$PROJECT_DIR$/api/controllers/invitation.js" />
         <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
         <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
@@ -249,6 +238,9 @@
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/test-client/src/App.js" />
         <option value="$PROJECT_DIR$/test-client/src/components/Login.js" />
+        <option value="$PROJECT_DIR$/api/services/players.js" />
+        <option value="$PROJECT_DIR$/test-client/src/components/Group.js" />
+        <option value="$PROJECT_DIR$/test-client/src/index.css" />
       </list>
     </option>
   </component>
@@ -258,11 +250,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1148" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1333" />
     <option name="y" value="-1057" />
-    <option name="width" value="1680" />
-    <option name="height" value="946" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -276,6 +268,17 @@
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
@@ -459,7 +462,7 @@
       <workItem from="1574593851247" duration="18510000" />
       <workItem from="1574692256573" duration="12373000" />
       <workItem from="1574836585299" duration="6469000" />
-      <workItem from="1574863825886" duration="2050000" />
+      <workItem from="1574863825886" duration="2505000" />
     </task>
     <servers />
   </component>
@@ -496,10 +499,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="371077000" />
+    <option name="totallyTimeSpent" value="371532000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1333" y="-1057" width="1920" height="1057" extended-state="6" />
+    <frame x="-1333" y="-1057" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.16666667" />
@@ -516,7 +519,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.42250532" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3481953" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -649,13 +652,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/models/groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/integration/players/player-get.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -667,13 +663,6 @@
             <element signature="e#1161#1215#0" />
             <element signature="e#1827#2443#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/actions/getGroupData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -724,17 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/components/Groups.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="103" column="131" selection-start-line="103" selection-start-column="131" selection-end-line="103" selection-end-column="131" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#Groups#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,23 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/components/Group.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="222" column="20" selection-start-line="222" selection-start-column="20" selection-end-line="222" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3045">
-          <caret line="203" selection-start-line="203" selection-end-line="204" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5265">
@@ -995,13 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1022,7 +976,7 @@
     <entry file="file://$PROJECT_DIR$/test-client/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
-          <caret line="125" column="22" lean-forward="true" selection-start-line="123" selection-start-column="14" selection-end-line="125" selection-end-column="22" />
+          <caret line="125" column="22" selection-start-line="123" selection-start-column="14" selection-end-line="125" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#App#0" />
@@ -1032,11 +986,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/components/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+        <state relative-caret-position="-331">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
             <element signature="e#0#68#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/logger.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/actions/getGroupData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="60" column="6" lean-forward="true" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/components/Groups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#Groups#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/components/Group.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="188" column="52" selection-start-line="188" selection-start-column="37" selection-end-line="188" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="223" column="1" lean-forward="true" selection-start-line="223" selection-start-column="1" selection-end-line="223" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -219,6 +219,9 @@ padding-left: 5px;
   margin: 2px;
   max-width: 16vw;
 }
+.connectedUser{
+  border: 2px solid darkslategrey;
+}
 .playersListImage{
   height: 28px;
   width: 30px;
