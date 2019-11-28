@@ -220,7 +220,7 @@ padding-left: 5px;
   max-width: 16vw;
 }
 .connectedUser{
-  border: 2px solid darkslategrey;
+  border: 2px dashed green;
 }
 .playersListImage{
   height: 28px;
