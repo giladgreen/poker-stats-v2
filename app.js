@@ -38,7 +38,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/.well-known/acme-challenge/:content', (req, res) => {
-  res.send('D9Nj2an_zJ6fh1KF3S8DunbZvPTCMd51LOL2m8PImhc.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
+  logger.info('acme-challenge..');
+  res.send('5zTSEzXEcTkS8Cma4OtvxVtLFB7-Z6eq6lcxd-U_l2I.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
 });
 
 logger.info('app started..');
