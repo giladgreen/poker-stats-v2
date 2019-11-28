@@ -14,7 +14,7 @@ class GameData extends Component{
         const key = `${playerInfo.playerId}_item_image`;
 
         const imgWidth = playerWidth - margin;
-        const imgHeight = imgWidth * 1.36;
+        const imgHeight = imgWidth * 1.1;
         const ImgStyleObject = {
             width:imgWidth,
             height: imgHeight,
@@ -32,13 +32,13 @@ class GameData extends Component{
             }
         };
         const playerName = playerInfo.name;
-
-        return (<img key={key}  alt={playerName} style={ImgStyleObject} className="GamePlayerImage" src={playerInfo.imageUrl} onError={onImageError} />);
+        const imageUrl = playerInfo.imageUrl || ANON_URL;
+        return (<img key={key}  alt={playerName} style={ImgStyleObject} className="GamePlayerImage" src={imageUrl} onError={onImageError} />);
     }
 
     getNamesSection(playersData, playerWidth, margin, first){
         return playersData.map(playerData=>{
-            console.log('playerData',playerData);
+
             const key = `${playerData.playerId}_item_name`;
             let displayName= playerData.name.trim();
 
@@ -80,15 +80,15 @@ class GameData extends Component{
             data.name = playerObject.name;
             return data;
         }).sort((a,b)=> a.dif > b.dif ? -1 : 1);
-
+        console.log('playersInfo',playersInfo)
 
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
         const margin =isMobile ? 2: 5;
 
         const hasNegatives = playersInfo.filter(p=>p.dif<=0).length > 0;
 
-
-        const playerWidth = Width / players.length;
+        const width = isMobile ? 0.80 * Width :  0.63 * Width;
+        const playerWidth = width / playersInfo.length;
         const PlayerImages = playersInfo.map((playerInfo)=> this.getPlayerImage(playerInfo, playerWidth, margin));
 
         const PlayerNames1 =  this.getNamesSection(playersInfo,playerWidth,margin,true);
@@ -128,11 +128,11 @@ class GameData extends Component{
         const positiveRatio =  100/maxPositive;
         let GamePlayerPositives = playersInfo.map((playerInfo)=>{
 
-            const key = `$playerInfo.playerId}_item_positiveDiv`;
+            const key = `${playerInfo.playerId}_item_positiveDiv`;
             let imageUrl = playerInfo.dif > 0 ? GREEN : TRANSPARENT;
-            const height =  playerInfo.dif>0 ? positiveRatio* playerInfo.dif : 100;
+            const height =  playerInfo.dif>0 ? positiveRatio* playerInfo.dif : 150;
             const barsStyleObject = {
-                marginTop:(100 - height),
+                marginTop:(150 - height),
                 width:playerWidth-margin,
                 marginRight:margin,
                 height
@@ -148,10 +148,10 @@ class GameData extends Component{
         let GamePlayerNegatives = playersInfo.map(playerInfo=>{
             let imageUrl = playerInfo.dif < 0 ? RED: TRANSPARENT;
             const key = `${playerInfo.playerId}_item_negativeDiv`;
-            const height = playerInfo.dif>0 ? 100 : negativeRatio* playerInfo.dif;
+            const height = playerInfo.dif>0 ? 150 : negativeRatio* playerInfo.dif;
 
             const barsStyleObject = {
-                marginTop:-1*(100 - height),
+                marginTop:-1*(150 - height),
                 width:playerWidth-margin,
                 marginRight:margin,
                 height
@@ -170,7 +170,7 @@ class GameData extends Component{
         </div>) : <div/>
 
         return (
-            <div className="allPlayersSummary col-xs-12">
+            <div className="allPlayersSummary">
                 <div className="GamePlayerNames">
                     {PlayerNames1}
                 </div>

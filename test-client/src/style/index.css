@@ -158,7 +158,17 @@ padding-left: 5px;
   height: 100vh;
   background: #000000DD;
 }
-
+.viewGamePopupInner{
+  padding: 20px;
+  position: absolute;
+  left:1vw;
+  top:1vh;
+  width: 95vw;
+  height: 100vh;
+  background: ghostwhite;
+  border: 3px solid darkslategrey;
+  border-radius: 10px;
+}
 .editGamePopupInner{
   padding: 30px;
   position: absolute;
@@ -308,7 +318,7 @@ padding-left: 5px;
     padding: 13px;
     left:2vw;
     top:3vw;
-    height: 90vh;
+    height: 190vh;
     width: 87vw;
     font-size: 0.7em;
   }
