@@ -50,7 +50,7 @@ logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
 
-app.get('/*', (req, res) => {
+app.get('/.well-known/*', (req, res) => {
   logger.info('acme-challenge..');
   res.send('oV6qxLxXcBO2arW0xpebwmVEqH-_ahJgOZNDNaVAN6Y.Bg_u6_8Y9h2wMdbDqX-PdfYXcfiJi4zRuGRFERBJjak');
 });
