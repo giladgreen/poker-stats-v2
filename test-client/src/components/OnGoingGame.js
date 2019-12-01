@@ -153,9 +153,11 @@ class OnGoingGame extends Component {
                 }
             };
             const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
-           return  (<div>
+            const positive = player.cashOut - player.buyIn;
+            const balance = `${positive ? '+':''}${player.cashOut - player.buyIn}₪`;
+                return  (<div>
                         <div className={`player player-${(index + 1)}`}>
-                            <div> {player.cashOut ? <div className="cashOut-value">{player.cashOut}</div> :<div/>}</div>
+                            <div className="balance-value">{balance}</div>
                            <div className="bank">
                                <div className="bank-value">{ player.buyIn}</div>
                                {player.hasBlue ? <div className="jetons v-50"></div> :<div/>}

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="" />
+    <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/OnGoingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/components/OnGoingGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/onGoingGame.css" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/style/onGoingGame.css" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -88,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test-client/src/components/OnGoingGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="209" column="44" selection-start-line="209" selection-start-column="44" selection-end-line="209" selection-end-column="44" />
+            <state relative-caret-position="208">
+              <caret line="158" column="72" lean-forward="true" selection-start-line="158" selection-start-column="72" selection-end-line="158" selection-end-column="72" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#419#804#0" />
@@ -101,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-client/src/style/onGoingGame.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+            <state relative-caret-position="175">
+              <caret line="53" column="15" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -123,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getGroupData</find>
       <find>game</find>
       <find>sizes</find>
       <find>positiveBalanceColor</find>
@@ -153,6 +155,7 @@
       <find>jetons</find>
       <find>URL_PREFIX</find>
       <find>60000</find>
+      <find>cashOut</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -230,8 +233,8 @@
         <option value="$PROJECT_DIR$/test-client/src/actions/updateGroup.js" />
         <option value="$PROJECT_DIR$/test-client/src/actions/updatePlayer.js" />
         <option value="$PROJECT_DIR$/test-client/src/url.js" />
-        <option value="$PROJECT_DIR$/test-client/src/components/OnGoingGame.js" />
         <option value="$PROJECT_DIR$/test-client/src/style/onGoingGame.css" />
+        <option value="$PROJECT_DIR$/test-client/src/components/OnGoingGame.js" />
       </list>
     </option>
   </component>
@@ -464,7 +467,7 @@
       <workItem from="1574836585299" duration="6469000" />
       <workItem from="1574863825886" duration="10926000" />
       <workItem from="1574940167937" duration="3798000" />
-      <workItem from="1575180235694" duration="8476000" />
+      <workItem from="1575180235694" duration="9269000" />
     </task>
     <servers />
   </component>
@@ -501,10 +504,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392227000" />
+    <option name="totallyTimeSpent" value="393020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1334" y="-1057" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.16666667" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
@@ -1068,21 +1072,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/style/onGoingGame.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="53" column="15" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/components/OnGoingGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="209" column="44" selection-start-line="209" selection-start-column="44" selection-end-line="209" selection-end-column="44" />
+        <state relative-caret-position="208">
+          <caret line="158" column="72" lean-forward="true" selection-start-line="158" selection-start-column="72" selection-end-line="158" selection-end-column="72" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#419#804#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/style/onGoingGame.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
         </state>
       </provider>
     </entry>

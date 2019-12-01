@@ -20,7 +20,7 @@
     color: lightgreen;
     font-weight: bold;
 }
-.cashOut-value{
+.balance-value{
     color: black;
     font-weight: bold;
     font-size: 18px;
@@ -29,12 +29,7 @@
     right: 20px;
     top: -35px;
 }
-.cashOut-value:before {
-    content: "+";
-}
-.cashOut-value:after {
-    content: "₪";
-}
+
 .bank {
     position: absolute;
     width: 35px;
@@ -243,7 +238,7 @@
 .players .player.player-5 .avatar {
     transform: rotatez(180deg);
 }
-.players .player.player-5 .cashOut-value {
+.players .player.player-5 .balance-value {
     transform: rotatez(180deg);
 }
 .players .player.player-6 {
@@ -259,7 +254,7 @@
 .players .player.player-6 .bank-value {
     transform: rotatez(180deg);
 }
-.players .player.player-6 .cashOut-value {
+.players .player.player-6 .balance-value {
     transform: rotatez(180deg);
 }
 .players .player.player-6 .avatar {
@@ -283,7 +278,7 @@
 .players .player.player-7 .avatar {
     transform: rotatez(180deg);
 }
-.players .player.player-7 .cashOut-value {
+.players .player.player-7 .balance-value {
     transform: rotatez(180deg);
 }
 
