@@ -126,7 +126,7 @@ class OnGoingGame extends Component {
         const { game, group: { players:  groupPlayers}} = this.props;
         console.log(' game.playersData ', game.playersData)
         const players = game.playersData.map(player=>{
-            let all = player.bank;
+            let all = player.buyIn;
             const blues =  (50 * (Math.floor(all/50)));
             all = all - blues;
             const hasBlue = blues>0;
@@ -143,6 +143,7 @@ class OnGoingGame extends Component {
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
             return {...player, hasBlue,hasGreen,hasBlack,hasRed,hasGray, name, imageUrl}
         }).map((player, index)=>{
+            console.log('player',player)
             const onImageError = (ev)=>{
                 if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
                     ev.target.secondTry = true;
@@ -154,16 +155,18 @@ class OnGoingGame extends Component {
             const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
            return  (<div>
                         <div className={`player player-${(index + 1)}`}>
+                            <div> {player.cashOut ? <div className="cashOut-value">{player.cashOut}</div> :<div/>}</div>
                            <div className="bank">
                                <div className="bank-value">{ player.buyIn}</div>
-                               <div className="jetons v-50" v-if="value.hasBlue"></div>
-                               <div className="jetons v-25" v-if="value.hasGreen"></div>
-                               <div className="jetons v-10" v-if="value.hasBlack"></div>
-                               <div className="jetons v-5" v-if="value.hasRed"></div>
-                               <div className="jetons v-1" v-if="value.hasGray"></div>
+                               {player.hasBlue ? <div className="jetons v-50"></div> :<div/>}
+                               {player.hasGreen ?<div className="jetons v-25"></div> :<div/>}
+                               {player.hasBlack ?<div className="jetons v-10"></div> :<div/>}
+                               {player.hasRed ?<div className="jetons v-5"></div> :<div/>}
+                               {player.hasGray ?<div className="jetons v-1"></div> :<div/>}
                            </div>
                            <div className="avatar">{image}</div>
                            <div className="name">{player.name.split(' ')[0]}</div>
+
                         </div>
                     </div>);
         });
@@ -187,7 +190,7 @@ class OnGoingGame extends Component {
     }
     render = () =>{
         if (!this.interval ){
-            this.interval = setInterval(this.props.updateOnProgressGame,10000);
+            this.interval = setInterval(this.props.updateOnProgressGame,60000);
         }
 
         const {onBack, game} = this.props;
@@ -209,7 +212,7 @@ class OnGoingGame extends Component {
                 <div>
                     <h3>Ongoing game. {game.date.AsGameName()}</h3>
                     <h4>{game.playersData.length} Players. {game.description} </h4>
-
+                    <br/>
                     <div className="backButton">
                         <button className="button" onClick={this.onBackClicked}> Back</button>
                     </div>

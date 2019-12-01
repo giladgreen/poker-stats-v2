@@ -14,27 +14,46 @@
 
 .potInTheMiddle{
     position: absolute;
-    left:31vw;
-    top:40vh;
-    font-size: 6em;
-    color: #96e296;
+    left:29vw;
+    top:38vh;
+    font-size: 7em;
+    color: lightgreen;
+    font-weight: bold;
+}
+.cashOut-value{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    font-family: "Houschka Rounded";
+    right: 20px;
+    top: -35px;
+}
+.cashOut-value:before {
+    content: "cash-out:";
+}
+.cashOut-value:after {
+    content: "₪";
 }
 .bank {
     position: absolute;
     width: 35px;
     height: 35px;
-    top: 100px;
+    top: 90px;
     right: 0;
     z-index: 10;
 }
 .bank .bank-value {
     position: absolute;
     font-family: "Houschka Rounded";
-    right: -88px;
-    top: 10px;
+    right: 0px;
+    top: 40px;
     font-weight: bold;
-    font-size: 40px;
-    color: #96e296;
+    font-size: 55px;
+    color: #B7e4A7;
+    box-sizing: border-box;
+    border: 2px solid #96e296;
+    border-radius: 5px;
 }
 .bank .bank-value:after {
     content: "₪";
@@ -50,17 +69,17 @@
     background-color: green;
 }
 .bank .v-10 {
-    top: 19px;
-    right: 22px;
+    top: 26px;
+    right: 20px;
     background-color: black;
 }
 .bank .v-5 {
-    top: 27px;
+    top: 35px;
     right: 47px;
     background-color: red;
 }
 .bank .v-1 {
-    top: 30px;
+    top: 40px;
     left: -60px;
     background-color: gray;
 }
@@ -156,11 +175,8 @@
     width: 140px;
     color: #96e296;
     padding: 5px 0;
-    margin-left: 10px;
-    box-sizing: border-box;
-    border: 2px solid #96e296;
-    border-radius: 5px;
-    margin-top: 25px;
+    margin-left: -10px;
+    margin-top: 100px;
     text-overflow: ellipsis;
     font-size: 35px;
     font-weight: bold;
@@ -170,19 +186,19 @@
 
 
 .players .player.player-1 {
-    top: 0px;
+    top: 65px;
     left: 35%;
     transform: translatex(-50%) translatey(-50%);
 }
 
 .players .player.player-2 {
-    top: 0px;
+    top: 65px;
     left: 58%;
     transform: translatex(-50%) translatey(-50%);
 }
 
 .players .player.player-3 {
-    top: 0px;
+    top: 65px;
     left: 81%;
     transform: translatex(-50%) translatey(-50%);
 }
@@ -192,7 +208,7 @@
 }
 .players .player.player-4 {
     top: 50%;
-    right: 20px;
+    right: 65px;
     transform: translatex(50%) translatey(-50%) rotatez(90deg);
 }
 .players .player.player-4 .avatar {
@@ -201,16 +217,25 @@
 
 .players .player.player-4 .bank-value {
     transform: rotatez(-90deg);
-    left: -10px;
+    left: -85px;
+    top: 75px;
+}
+
+.players .player.player-4 .name {
+    transform: rotatez(-90deg);
+    left: 85px;
+    top: -50px;
 }
 
 .players .player.player-5 {
-    bottom: 0px;
+    bottom: 65px;
     left: 79%;
     transform: translatex(-50%) translatey(50%) rotatez(180deg);
 }
 .players .player.player-5 .name {
     transform: rotatez(180deg);
+    bottom: 10px;
+    left: 10px;
 }
 .players .player.player-5 .bank-value {
     transform: rotatez(180deg);
@@ -218,17 +243,23 @@
 .players .player.player-5 .avatar {
     transform: rotatez(180deg);
 }
-
-
+.players .player.player-5 .cashOut-value {
+    transform: rotatez(180deg);
+}
 .players .player.player-6 {
-    bottom: 0px;
+    bottom: 65px;
     left: 53%;
     transform: translatex(-50%) translatey(50%) rotatez(180deg);
 }
 .players .player.player-6 .name {
     transform: rotatez(180deg);
+    bottom: 10px;
+    left: 10px;
 }
 .players .player.player-6 .bank-value {
+    transform: rotatez(180deg);
+}
+.players .player.player-6 .cashOut-value {
     transform: rotatez(180deg);
 }
 .players .player.player-6 .avatar {
@@ -236,14 +267,15 @@
 }
 
 
-
 .players .player.player-7 {
-    bottom: 0px;
+    bottom: 65px;
     left: 25%;
     transform: translatex(-50%) translatey(50%) rotatez(180deg);
 }
 .players .player.player-7 .name {
     transform: rotatez(180deg);
+    bottom: 10px;
+    left: 10px;
 }
 .players .player.player-7 .bank-value {
     transform: rotatez(180deg);
@@ -251,11 +283,13 @@
 .players .player.player-7 .avatar {
     transform: rotatez(180deg);
 }
-
+.players .player.player-7 .cashOut-value {
+    transform: rotatez(180deg);
+}
 
 .players .player.player-8 {
-    top: 50%;
-    left: 40px;
+    top: 60%;
+    left: 105px;
     transform: translatex(-80%) translatey(-50%) rotatez(-90deg);
 }
 .players .player.player-8 .name {
@@ -270,9 +304,18 @@
     padding-top:30px;
     padding-left:30px;
 }
+.players .player.player-8 .name {
+    transform: rotatez(90deg);
+    left: -85px;
+    top: -50px;
+}
 
 .players .player.player-9 {
-    top: 18px;
-    left: 11%;
+    top: 92px;
+    left: 69px;
     transform: translatex(-50%) translatey(-50%);
+}
+.players .player.player-9 .name {
+    left: 16px;
+    top: -10px;
 }

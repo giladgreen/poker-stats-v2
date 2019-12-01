@@ -63,29 +63,30 @@ class Login extends Component {
                 return <Loader />;
             }
         }
-
+        console.log('window.location.protocol:',window.location.protocol);
+        const google = (<GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login with Google"
+            onSuccess={this.googleResponse}
+            onFailure={this.onFailure}
+        />);
+        const facebook = window.location.protocol === 'http:' ? <span>(use the <a href="https://www.poker-stats.com">https version </a> to log in with facebook)</span> : ( <FacebookLogin
+            appId={FACEBOOK_APP_ID}
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={this.facebookResponse} />);
         return (
             <div className="login-page">
                 <div>
                     <h1>Log in to PokerStats!</h1>
-                    <h2> Log in with:</h2>
                 </div>
                 <div>
                     <div>
-                        <FacebookLogin
-                            appId={FACEBOOK_APP_ID}
-                            autoLoad={false}
-                            fields="name,email,picture"
-                            callback={this.facebookResponse} />
+                        {google}
                     </div>
                     <br/>
                     <div>
-                        <GoogleLogin
-                            clientId={GOOGLE_CLIENT_ID}
-                            buttonText="Login with Google"
-                            onSuccess={this.googleResponse}
-                            onFailure={this.onFailure}
-                        />
+                        {facebook}
                     </div>
                 </div>
                 <div className="errorSection">

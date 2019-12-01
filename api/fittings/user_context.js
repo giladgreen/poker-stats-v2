@@ -19,9 +19,10 @@ async function getGroups(userContext) {
   });
 
   const result = {};
-  userPlayers.forEach(({ groupId, isAdmin }) => {
+  userPlayers.forEach(({ groupId, isAdmin,playerId }) => {
     result[groupId] = {
       isAdmin,
+      playerId
     };
   });
   return result;
@@ -32,11 +33,12 @@ async function validateRequestPermissions(request) {
   request.userContext.groups = await getGroups(request.userContext);
   request.userContext.inGroup = groupId && request.userContext.groups[groupId];
   request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
+  request.userContext.playerId = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].playerId;
 
   if (groupId) {
     logger.info(`[validateRequestPermissions] groupId: ${groupId}   request.method: ${request.method}`);
     if (!request.userContext.inGroup) {
-      logger.info(`[validateRequestPermissions] user context: ${JSON.stringify(request.userContext)} `);
+      logger.info(`[validateRequestPermissions] user not belong to group. user context: ${JSON.stringify(request.userContext)} `);
       throw 'user not belong to group';
     } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
       if (!request.url.includes('/games/')) {
@@ -46,6 +48,8 @@ async function validateRequestPermissions(request) {
   }
 }
 function getProfile(provider, accessToken) {
+  logger.info(`[UserContext:fitting] getProfile, provider:${provider}.`);
+
   return (provider === 'google'
     ? googleTokenStrategy.authenticate(accessToken)
     : facebookTokenStrategy.authenticate(accessToken));
@@ -102,8 +106,9 @@ function getFitting() {
       });
 
       if (existingUser) {
-        request.userContext = existingUser.toJSON();
-        logger.info(`[UserContext:fitting] user exist: ${JSON.stringify(request.userContext)} `);
+        const userContext = existingUser.toJSON();
+        request.userContext = userContext;
+        logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
         await validateRequestPermissions(request);
 
         await models.users.update({
@@ -114,11 +119,12 @@ function getFitting() {
             id: existingUser.id,
           },
         });
-        response.setHeader('x-user-context', encodeURI(JSON.stringify(request.userContext)));
+        response.setHeader('x-user-context', encodeURI(JSON.stringify(userContext)));
         return next();
       }
 
       const profile = await getProfile(provider, accessToken);
+      logger.info(`[UserContext:fitting] user request by: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
       // create/update user in db
       let user = await models.users.findOne({
@@ -128,26 +134,18 @@ function getFitting() {
       });
 
       if (!user) {
+        logger.info(`[UserContext:fitting] creating new user: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
+
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
-        sendHtmlMail('new user has logged in', getHtmlBody(user, provider), EMAIL_USER);
+        sendHtmlMail('A new user has logged in', getHtmlBody(user, provider), EMAIL_USER);
       } else {
+        logger.info(`[UserContext:fitting] user already in db: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
+
         const [, results] = await models.users.update({ ...profile }, { where: { id: user.id }, returning: true });
         user = results[0];
       }
 
       request.userContext = user.toJSON();
-      const { groupId } = request.getAllParams();
-      if (groupId) {
-        const userPlayer = await models.usersPlayers.findOne({
-          where: {
-            groupId,
-            userId: user.id,
-          },
-        });
-        if (userPlayer) {
-          request.userContext.playerId = userPlayer.playerId;
-        }
-      }
 
       await validateRequestPermissions(request);
 
@@ -160,6 +158,8 @@ function getFitting() {
       return next();
     } catch (error) {
       if (typeof error === 'string') {
+        logger.error(`[UserContext:fitting] error: ${error} `);
+
         return next(unauthorized(error));
       }
 

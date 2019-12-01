@@ -104,7 +104,7 @@ padding-right: 10px;
 }
 .editPlayerInput{
   width: 60vw;
-padding-left: 5px;
+  padding-left: 5px;
   font-size: 1.3em;
   height: 41px;
 }
@@ -119,7 +119,7 @@ padding-left: 5px;
   position: absolute;
   left:3vw;
   top:2vh;
-  width: 94vw;
+  width: 93vw;
   height: 97vh;
   background: ghostwhite;
   border: 3px solid darkslategrey;
@@ -277,6 +277,7 @@ padding-left: 5px;
 @media screen and (max-width: 800px) {
 
   .editPlayerInput{
+    width: 25vw;
     height: 40px;
     padding: 2px;
   }
@@ -293,7 +294,6 @@ padding-left: 5px;
   }
 
   .popupOuter{
-    width: 120vw;
     height: 4000vh;
   }
 
@@ -301,7 +301,7 @@ padding-left: 5px;
     padding: 20px;
     left:4vw;
     top:2vh;
-    height: 120vh;
+    height: 320vh;
     width: 90vw;
     font-size: 0.8em;
   }
@@ -309,7 +309,7 @@ padding-left: 5px;
     padding: 20px;
     left:1vw;
     top:1vh;
-    height: 130vh;
+    height: 330vh;
     font-size: 0.6em;
     width: 86vw;
   }
@@ -318,7 +318,7 @@ padding-left: 5px;
     padding: 13px;
     left:2vw;
     top:3vw;
-    height: 190vh;
+    height: 390vh;
     width: 87vw;
     font-size: 0.7em;
   }
@@ -344,5 +344,11 @@ padding-left: 5px;
     padding: 2px;
     margin: 2px;
     width: 45vw;
+  }
+
+  .editGamePlayerPopupInner{
+    padding: 10px;
+    width: 90vw;
+    height: 97vh;
   }
 }

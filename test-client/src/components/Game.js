@@ -121,11 +121,28 @@ class Game extends Component {
             this.props.enableScroll();
         }
     };
+    movePlayerToEnd = (playerId)=> {
+        const {game} = this.props;
+        const updatedGame = {...game};
+        const player = game.playersData.find(item=>item.playerId === playerId);
+        updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId).sort((a,b)=>a.index<b.index ? -1 : 1).map((item, index)=>{
+            return {
+                ...item, index
+            }
+        });
+        updatedGame.playersData.push({...player,  index: updatedGame.playersData.length });
+        this.props.updateGame(updatedGame);
+
+    };
     removePlayerFromGame = (playerId)=> {
         if (confirm("Are you sure?")){
             const {game} = this.props;
             const updatedGame = {...game};
-            updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId);
+            updatedGame.playersData = game.playersData.filter(item => item.playerId !== playerId).sort((a,b)=>a.index<b.index ? -1 : 1).map((item, index)=>{
+                return {
+                    ...item, index
+                }
+            });
             this.props.updateGame(updatedGame);
         }
     };
@@ -258,7 +275,7 @@ class Game extends Component {
                         </div>
                         <hr/>
                         <div>
-                            buy-in:   <input className="editPlayerInput" type="number"  id="buyIn" value={this.state.buyIn} onChange={(event)=>this.setState({buyIn: parseInt(event.target.value)})}/>
+                            buy-in:   <input className="editPlayerInput" type="number"  id="buyIn" value={this.state.buyIn} onChange={(event)=>this.setState({buyIn: parseInt(event.target.value)})}/> <button className="button saveButton" onClick={()=>this.setState({ buyIn: this.state.buyIn + 10 })}> +10 </button>
                             <br/>
                             <br/>
                             <InputRange className="InputRange"
@@ -268,12 +285,13 @@ class Game extends Component {
                                 minValue={0}
                                 value={this.state.buyIn}
                                 onChange={buyIn => this.setState({ buyIn })} />
+
                             <br/>
                             <br/>  <br/>
                             <br/>
                         </div>
                         <div>
-                            cash-out:  <input className="editPlayerInput" type="number"  id="cashOut" value={this.state.cashOut} onChange={(event)=>this.setState({cashOut: parseInt(event.target.value)})}/>
+                            cash-out:  <input className="editPlayerInput" type="number"  id="cashOut" value={this.state.cashOut} onChange={(event)=>this.setState({cashOut: parseInt(event.target.value)})}/>  <button className="button saveButton" onClick={()=>this.setState({ cashOut: this.state.cashOut + 10 })}> +10 </button>
                             <br/>
                             <br/>
                             <InputRange className="InputRange"
@@ -283,6 +301,7 @@ class Game extends Component {
                                 minValue={0}
                                 value={this.state.cashOut}
                                 onChange={cashOut => this.setState({ cashOut })} />
+
                         </div>
                         <div>
                             <br/> <br/>
@@ -340,6 +359,7 @@ class Game extends Component {
                 buy-in: {playerData.buyIn} |
                 cash-out: {playerData.cashOut} |
                 balance: {playerData.cashOut - playerData.buyIn}
+                <button className="button" onClick={()=>this.movePlayerToEnd(playerData.playerId)}> V </button>
                 <button className="button" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </button>
 
             </div>);
