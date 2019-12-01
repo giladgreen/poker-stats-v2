@@ -296,6 +296,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
 definitions:
   PaginationDefinition:
     properties:
@@ -465,8 +466,6 @@ definitions:
     type: object
     properties:
       name:
-        type: string
-      email:
         type: string
 
 parameters:
