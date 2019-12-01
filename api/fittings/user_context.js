@@ -19,10 +19,10 @@ async function getGroups(userContext) {
   });
 
   const result = {};
-  userPlayers.forEach(({ groupId, isAdmin,playerId }) => {
+  userPlayers.forEach(({ groupId, isAdmin, playerId }) => {
     result[groupId] = {
       isAdmin,
-      playerId
+      playerId,
     };
   });
   return result;

@@ -1,8 +1,12 @@
-import { URL_PREFIX } from '../../../config';
+
+import URL_PREFIX from '../url';
+
 import request from 'request';
 
 async function login(provider, token){
     return new Promise((resolve,reject)=>{
+        console.log('login URL_PREFIX',URL_PREFIX)
+
         const options = {
             url: `${URL_PREFIX}/groups/`,
             headers:{

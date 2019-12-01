@@ -1,4 +1,5 @@
-import { URL_PREFIX } from '../../../config';
+
+import URL_PREFIX from '../url';
 import request from 'request';
 
 async function deleteGroup(groupId, provider, token){
