@@ -30,7 +30,7 @@
     top: -35px;
 }
 .cashOut-value:before {
-    content: "cash-out:";
+    content: "+";
 }
 .cashOut-value:after {
     content: "₪";
