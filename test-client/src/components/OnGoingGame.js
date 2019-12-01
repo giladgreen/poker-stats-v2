@@ -190,7 +190,7 @@ class OnGoingGame extends Component {
     }
     render = () =>{
         if (!this.interval ){
-            this.interval = setInterval(this.props.updateOnProgressGame,60000);
+            this.interval = setInterval(this.props.updateOnProgressGame,10000);
         }
 
         const {onBack, game} = this.props;
