@@ -373,15 +373,18 @@ class Group extends Component {
     };
 
     createPlayersDataAsFakeGame = () => {
+        const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
+        const max = isMobile ? 7 : 11;
         const { group: { players} } = this.props;
         let playersData = [];
-        if (players.length <10){
+        if (players.length <max){
             playersData = players.map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance}));
         }else{
 
             let playersSortedByBalance = players.sort((a,b)=> a.balance > b.balance ? -1 :1);
             let playersSortedByGamesCount = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1);
-            while (playersData.length < 10){
+            while (playersData.length < max){
                 const playerWithBalance = playersSortedByBalance[0];
                 playersSortedByBalance = playersSortedByBalance.slice(1);
                 if (!playersData.find(p=>p.playerId===playerWithBalance.id)) {
@@ -394,7 +397,6 @@ class Group extends Component {
                 }
             }
         }
-        console.log()
         return {
             playersData
         }
@@ -403,7 +405,7 @@ class Group extends Component {
         const {group, provider, token } = this.props;
         const {isAdmin} = group;
         const {game, viewGame} = this.state;
-        const fakeGameData = this.createPlayersDataAsFakeGame()
+        const fakeGameData = this.createPlayersDataAsFakeGame();
         const editGroupPopup = this.getEditGroupPopup();
         const editPlayerPopup = this.getEditPlayerPopup();
         const gamePopup = <Game disableScroll={this.props.disableScroll} enableScroll={this.props.enableScroll} game={game} viewGame={viewGame} group={group} provider={provider} token={token}  updateGroup={this.props.updateGroup} onFailure={this.props.onFailure} updateGame={this.updateGame} updateViewGame={this.updateViewGame}/>;
