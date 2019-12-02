@@ -119,6 +119,20 @@ padding-left: 2vw;
     text-align: center;
     color: rgb(51, 51, 51);
 }
+.GamePlayerNames{
+    clear: both;
+}
+
+.GamePlayerImages{
+    clear: both;
+}
+.groupSummary{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background: white;
+    border: 3px solid black;
+    border-radius: 20px;
+}
 .GamePlayerBalace{
     font-size: 1.8em;
     font-weight: bold;

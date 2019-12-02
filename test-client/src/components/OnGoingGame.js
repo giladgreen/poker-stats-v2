@@ -1,31 +1,6 @@
 import React, { Component } from 'react';
 import { ANON_URL } from '../../../config';
 
-import Size from '../sizes';
-const  {Width,Height} = Size;
-const widthLeftPad = (Width * 0.42);
-const heightTopPad = (Height * 0.35);
-
-const widthRatio = ((Width / 100) * 80) / 100;
-const heightRatio = ((Height / 100) * 60) /100;
-
-const baseRadius = 50;
-const baseLocations = (new Array(10)).fill(0,0,10).map((item, totalPlayers) =>{
-    const stepSize = 360 / totalPlayers;
-    return (new Array(totalPlayers)).fill(0,0, totalPlayers).map((b, index)=>{
-        const degree = (450 - (stepSize* index)) % 360;
-        const x = Math.cos(degree * Math.PI / 180) * baseRadius;
-        const y = Math.sin(degree * Math.PI / 180) * baseRadius;
-        return {
-            left: x,
-            top: y
-        };
-    });
-});
-
-const locations = baseLocations.map(arr=>arr.map(({left, top})=>({ left: (left * widthRatio)+widthLeftPad  , top: (top* heightRatio)+heightTopPad })));
-
-
 class OnGoingGame extends Component {
 
     createPlayerRow = (playerData) =>{
@@ -66,65 +41,8 @@ class OnGoingGame extends Component {
         );
     }
 
-    createPlayerCircleElement = (playerData) => {
-        const { game, group: { players:  groupPlayers} } = this.props;
-        const playersCount = game.playersData.length-2;
-        const { buyIn, cashOut} = playerData;
-        const buyInValue = `${buyIn>0?'+':''}${buyIn}₪`;
-        const cashOutValue = `${cashOut>0?'+':''}${cashOut}₪`;
-
-        const { name, imageUrl } = groupPlayers.find(p=>p.id === playerData.playerId);
-        const onImageError = (ev)=>{
-            if (imageUrl && imageUrl.length>1 && !ev.target.secondTry){
-                ev.target.secondTry = true;
-                ev.target.src=imageUrl;
-            }else{
-                ev.target.src=ANON_URL;
-            }
-        };
-        let imgHeight = (60 / playersCount)-0.5;
-        imgHeight = imgHeight>16 ? 15 : imgHeight;
-        const imageStyle = {height: `${imgHeight}vh`};
-        return (
-            <div className="activeGamePlayerCircleItem">
-                <div className="centeredText">
-                    { name }
-                </div>
-                <div>
-                    <img alt={name} className="activeGameCircleImage" style={imageStyle}  src={imageUrl || ANON_URL}  onError={onImageError} />
-
-                </div>
-                <div className="centeredText">
-                    { buyInValue} / { cashOutValue}
-                </div>
-            </div>
-        );
-
-    }
-
-    getAsCircle = () =>{
-        const { game} = this.props;
-        const playersLocations = locations[game.playersData.length];
-        const players = game.playersData.map(this.createPlayerCircleElement).map((player, index)=>{
-            const elementStyle = {
-                position: 'absolute',
-                ...playersLocations[index]
-            };
-            return (  <div style={elementStyle} >
-                {player}
-            </div>);
-        });
-
-        return (
-            <div className="row activeGameTextSize">
-                <hr/>
-                {players}
-            </div>
-        );
-    }
     getAsPokerTable = () =>{
         const { game, group: { players:  groupPlayers}} = this.props;
-        console.log(' game.playersData ', game.playersData)
         const players = game.playersData.map(player=>{
             let all = player.buyIn;
             const blues =  (50 * (Math.floor(all/50)));
@@ -143,7 +61,6 @@ class OnGoingGame extends Component {
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
             return {...player, hasBlue,hasGreen,hasBlack,hasRed,hasGray, name, imageUrl}
         }).map((player, index)=>{
-            console.log('player',player)
             const onImageError = (ev)=>{
                 if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
                     ev.target.secondTry = true;
@@ -189,7 +106,8 @@ class OnGoingGame extends Component {
             this.interval = null;
         }
         this.props.onBack();
-    }
+    };
+
     render = () =>{
         if (!this.interval ){
             this.interval = setInterval(this.props.updateOnProgressGame,10000);
@@ -208,6 +126,7 @@ class OnGoingGame extends Component {
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
         const players =  this.getAsPokerTable() ;
+        const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         return (<div className="popupOuter">
             <div className="viewGamePopupInner">
@@ -220,7 +139,7 @@ class OnGoingGame extends Component {
                     </div>
 
                 </div>
-                {players}
+                { isMobile ? <span/> : players}
                  <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>
 
 

@@ -164,7 +164,7 @@ function getFitting() {
       }
 
       logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
-      return next(unauthorized('failed to create user context'));
+      return next(unauthorized('failed to login'));
     }
   };
 }

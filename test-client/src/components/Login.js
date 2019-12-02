@@ -19,7 +19,7 @@ class Login extends Component {
         this.setState({ error });
     };
 
-    performLogin = async (provider, token) => {
+    performLogin = async (provider, token, showError = true) => {
         try{
             const result = await login(provider, token);
             const authData = localStorage.getItem('authData');
@@ -29,13 +29,17 @@ class Login extends Component {
             return this.props.onLogin(result);
         }catch(error){
             localStorage.removeItem('authData');
-            return this.onFailure(error);
+            if (showError){
+                return this.onFailure(error);
+            } else{
+                return this.onFailure(null);
+            }
         }
     };
 
     facebookResponse = (response) => {
         if (response.accessToken){
-            this.performLogin('facebook', response.accessToken);
+            this.performLogin('facebook', response.accessToken, true);
         }else{
             this.onFailure('login failed')
         }
@@ -44,7 +48,7 @@ class Login extends Component {
 
     googleResponse = (response) => {
         if (response.accessToken){
-            this.performLogin('google', response.accessToken);
+            this.performLogin('google', response.accessToken, true);
         }else{
             this.onFailure('login failed')
         }
@@ -59,7 +63,7 @@ class Login extends Component {
             if (timePassed > ONE_DAY){
                 localStorage.removeItem('authData');
             } else{
-                this.performLogin(provider, token);
+                this.performLogin(provider, token, false);
                 return <Loader />;
             }
         }

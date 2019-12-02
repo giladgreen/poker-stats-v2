@@ -57,7 +57,6 @@ class GameData extends Component{
                 width:playerWidth-margin,
                 marginRight:margin,
             };
-
             return  (
                 <div key={key} style={styleObject} className={className}>
                     {displayName}
@@ -67,7 +66,7 @@ class GameData extends Component{
     }
 
     render(){
-        const {Group, Game} = this.props;
+        const {Group, Game, IsGroupSummary} = this.props;
         const {players} = Group;
         const {playersData} = Game;
         const playersInfo = playersData.map(playerData=>{
@@ -80,7 +79,6 @@ class GameData extends Component{
             data.name = playerObject.name;
             return data;
         }).sort((a,b)=> a.dif > b.dif ? -1 : 1);
-        console.log('playersInfo',playersInfo)
 
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
         const margin =isMobile ? 2: 5;
@@ -170,13 +168,21 @@ class GameData extends Component{
         </div>) : <div/>
 
         return (
-            <div className="allPlayersSummary">
+            <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
+                <div>
+                    <b><u><h1>
+                        {IsGroupSummary ? 'Group summary' : ''}
+                    </h1></u></b>
+                </div>
+
                 <div className="GamePlayerNames">
                     {PlayerNames1}
                 </div>
+
                 <div className="GamePlayerNames">
                     {PlayerNames2}
                 </div>
+
                 <div className="GamePlayerImages">
                     {PlayerImages}
                 </div>

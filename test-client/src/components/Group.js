@@ -10,6 +10,7 @@ import createGame from "../actions/createGame";
 import deleteGame from "../actions/deleteGame";
 import getGame from "../actions/getGame";
 import Game from "./Game";
+import GameData from "./GameData";
 
 class Group extends Component {
 
@@ -371,11 +372,38 @@ class Group extends Component {
         return ready;
     };
 
+    createPlayersDataAsFakeGame = () => {
+        const { group: { players} } = this.props;
+        let playersData = [];
+        if (players.length <10){
+            playersData = players.map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance}));
+        }else{
+
+            let playersSortedByBalance = players.sort((a,b)=> a.balance > b.balance ? -1 :1);
+            let playersSortedByGamesCount = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1);
+            while (playersData.length < 10){
+                const playerWithBalance = playersSortedByBalance[0];
+                playersSortedByBalance = playersSortedByBalance.slice(1);
+                if (!playersData.find(p=>p.playerId===playerWithBalance.id)) {
+                    playersData.push({playerId: playerWithBalance.id, buyIn: 0, cashOut: playerWithBalance.balance})
+                }
+                const playerWithGamesCount = playersSortedByGamesCount[0];
+                playersSortedByGamesCount = playersSortedByGamesCount.slice(1);
+                if (!playersData.find(p=>p.playerId===playerWithGamesCount.id)){
+                    playersData.push({playerId: playerWithGamesCount.id, buyIn:0, cashOut: playerWithGamesCount.balance })
+                }
+            }
+        }
+        console.log()
+        return {
+            playersData
+        }
+    };
     render() {
         const {group, provider, token } = this.props;
         const {isAdmin} = group;
         const {game, viewGame} = this.state;
-
+        const fakeGameData = this.createPlayersDataAsFakeGame()
         const editGroupPopup = this.getEditGroupPopup();
         const editPlayerPopup = this.getEditPlayerPopup();
         const gamePopup = <Game disableScroll={this.props.disableScroll} enableScroll={this.props.enableScroll} game={game} viewGame={viewGame} group={group} provider={provider} token={token}  updateGroup={this.props.updateGroup} onFailure={this.props.onFailure} updateGame={this.updateGame} updateViewGame={this.updateViewGame}/>;
@@ -393,6 +421,9 @@ class Group extends Component {
                     <h2>  {group.description}   </h2>
                     {isAdmin ? <h3>logged in as admin</h3> : <div/>}
                     {isAdmin ? <button className="button" onClick={()=>this.updateInGroupEditMode(true)}> edit group </button> : <div/>}
+                </div>
+                <div>
+                    <GameData Group={group} Game={fakeGameData} IsGroupSummary={true}/>
                 </div>
                 <div>
                     {newGameSection}
