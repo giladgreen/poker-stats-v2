@@ -102,12 +102,17 @@ function getRejectLinkAddress(invitationRequestId) {
   return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?approved=false`;
 }
 
+function getNewPlayerAddress(invitationRequestId) {
+  return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?approved=true`;
+}
+
 function getLinkAddress(invitationRequestId, playerId, approved, setAsAdmin) {
   return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?invitationRequestPlayerId=${playerId}&approved=${approved}&setAsAdmin=${setAsAdmin}`;
 }
 
 function createHtml(invitationRequestId, groupId, groupName, userDetails, userName, adminName, players) {
   const rejectAddress = getRejectLinkAddress(invitationRequestId);
+  const newPlayerAddress = getNewPlayerAddress(invitationRequestId);
   const playersLinks = players.map((player) => {
     const nonAdminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, false);
     const adminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, true);
@@ -135,6 +140,12 @@ function createHtml(invitationRequestId, groupId, groupName, userDetails, userNa
                     </div>
                      <div>
                       ${playersLinks.join('')}
+                      
+                    </div>
+                    
+                     <div>
+                       OR,  <a href="${newPlayerAddress}"> create a new player for him </a>.
+                      
                       
                     </div>
                     
@@ -226,6 +237,17 @@ async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitati
 }
 
 async function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId) {
+  const { imageUrl, email , firstName, familyName} = await models.users.findOne({ where: { id: userId } });
+
+  if (!invitationRequestPlayerId){
+      const newPlayer = await models.players.create({
+        name: `${firstName} ${familyName}`,
+        email,
+        imageUrl,
+        groupId
+      });
+    invitationRequestPlayerId = newPlayer.id;
+  }
   await models.usersPlayers.create({
     isAdmin: setAsAdmin,
     playerId: invitationRequestPlayerId,
@@ -233,7 +255,6 @@ async function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, 
     userId,
   });
 
-  const { imageUrl, email } = await models.users.findOne({ where: { id: userId } });
   return models.players.update({ imageUrl, email }, {
     where: {
       id: invitationRequestPlayerId,
