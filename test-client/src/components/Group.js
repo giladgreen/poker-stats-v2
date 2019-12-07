@@ -154,15 +154,14 @@ class Group extends Component {
     };
 
     getNewGameSection = () => {
-        const {isAdmin} = this.props.group;
-        return isAdmin ? (<div>
+        return (<div>
             <h1> Create a new game. </h1>
             Game date: <input type="date" id="newGameDate" min="2010-01-01" max="2050-01-01" value={this.state.newGameDate} onChange={this.handleNewGameDateChange}/>
 
             <button className="button"  onClick={this.createNewGame}> Create </button>
             <br/> <hr/><br/>
 
-        </div>):<div/>;
+        </div>);
     };
 
     getPlayers = ()=>{
