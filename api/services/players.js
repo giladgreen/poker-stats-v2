@@ -52,7 +52,7 @@ async function getPlayers(groupId, userId, limit = 1000, offset = 0) {
         player.imageUrl = player.imageUrl || user.imageUrl;
         player.firstName = user.firstName;
         player.familyName = user.familyName;
-        player.name = `${user.firstName} ${user.familyName}`;
+        player.name = player.name || `${user.firstName} ${user.familyName}`;
         player.userConnected = true;
         player.isMe = user.id === userId;
       }

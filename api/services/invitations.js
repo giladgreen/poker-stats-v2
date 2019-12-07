@@ -237,15 +237,17 @@ async function handleUserAlreadyInGroup(existingUserPlayer, setAsAdmin, invitati
 }
 
 async function createUserPlayer(setAsAdmin, invitationRequestPlayerId, groupId, userId) {
-  const { imageUrl, email , firstName, familyName} = await models.users.findOne({ where: { id: userId } });
+  const {
+    imageUrl, email, firstName, familyName,
+  } = await models.users.findOne({ where: { id: userId } });
 
-  if (!invitationRequestPlayerId){
-      const newPlayer = await models.players.create({
-        name: `${firstName} ${familyName}`,
-        email,
-        imageUrl,
-        groupId
-      });
+  if (!invitationRequestPlayerId) {
+    const newPlayer = await models.players.create({
+      name: `${firstName} ${familyName}`,
+      email,
+      imageUrl,
+      groupId,
+    });
     invitationRequestPlayerId = newPlayer.id;
   }
   await models.usersPlayers.create({
