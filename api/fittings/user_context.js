@@ -79,16 +79,15 @@ function getHtmlBody(user, provider) {
   `;
 }
 const cache = {};
-function shouldSendMail(user){
-  if (cache[user.id]){
+function shouldSendMail(user) {
+  if (cache[user.id]) {
     return false;
   }
   cache[user.id] = true;
-  setTimeout(()=>{
+  setTimeout(() => {
     cache[user.id] = false;
-  },1000 * 60 * 60);
+  }, 1000 * 60 * 60);
   return true;
-
 }
 function getFitting() {
   return async function UserContext({ request, response }, next) {
@@ -148,17 +147,16 @@ function getFitting() {
       if (!user) {
         logger.info(`[UserContext:fitting] creating new user: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
-        user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate() });
+        user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate(),  token: accessToken });
         sendHtmlMail('A new user has logged in', getHtmlBody(user, provider), EMAIL_USER);
       } else {
         logger.info(`[UserContext:fitting] user already in db: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
-        if (shouldSendMail(user)){
+        if (shouldSendMail(user)) {
           sendHtmlMail('An existing user has logged in', getHtmlBody(user, provider), EMAIL_USER);
         }
 
-
-        const [, results] = await models.users.update({ ...profile }, { where: { id: user.id }, returning: true });
+        const [, results] = await models.users.update({ ...profile,  tokenExpiration: moment().add(3, 'hours').toDate(), token: accessToken }, { where: { id: user.id }, returning: true });
         user = results[0];
       }
 
