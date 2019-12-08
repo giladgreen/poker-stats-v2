@@ -54,10 +54,10 @@ function getProfile(provider, accessToken) {
     ? googleTokenStrategy.authenticate(accessToken)
     : facebookTokenStrategy.authenticate(accessToken));
 }
-function getHtmlBody(user, provider) {
+function getHtmlBody(user, provider, newUser = true) {
   return `
   <div>
-        <h1>new user has logged in.</h1>
+        <h1>${newUser ? 'new':''} user has logged in.</h1>
       <div>
           provider: ${provider}
       </div>
@@ -72,7 +72,7 @@ function getHtmlBody(user, provider) {
           user image: ${user.imageUrl} 
             </div>
             <div>
-          <img src="${user.imageUrl}"/>
+          <img style="max-width:150px;" src="${user.imageUrl}"/>
             </div>
       </div>
     </div>
@@ -80,6 +80,10 @@ function getHtmlBody(user, provider) {
 }
 const cache = {};
 function shouldSendMail(user) {
+  if (user && user.email === EMAIL_USER){
+    return false;
+  }
+
   if (cache[user.id]) {
     return false;
   }
@@ -153,7 +157,7 @@ function getFitting() {
         logger.info(`[UserContext:fitting] user already in db: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
         if (shouldSendMail(user)) {
-          sendHtmlMail('An existing user has logged in', getHtmlBody(user, provider), EMAIL_USER);
+          sendHtmlMail('An existing user has logged in', getHtmlBody(user, provider, false), EMAIL_USER);
         }
 
         const [, results] = await models.users.update({ ...profile, tokenExpiration: moment().add(3, 'hours').toDate(), token: accessToken }, { where: { id: user.id }, returning: true });
