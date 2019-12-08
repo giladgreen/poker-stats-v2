@@ -57,7 +57,7 @@ function getProfile(provider, accessToken) {
 function getHtmlBody(user, provider, newUser = true) {
   return `
   <div>
-        <h1>${newUser ? 'new':''} user has logged in.</h1>
+        <h1>${newUser ? 'new' : ''} user has logged in.</h1>
       <div>
           provider: ${provider}
       </div>
@@ -80,7 +80,7 @@ function getHtmlBody(user, provider, newUser = true) {
 }
 const cache = {};
 function shouldSendMail(user) {
-  if (user && user.email === EMAIL_USER){
+  if (user && user.email === EMAIL_USER) {
     return false;
   }
 

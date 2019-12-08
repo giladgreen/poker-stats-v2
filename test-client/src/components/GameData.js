@@ -77,6 +77,7 @@ class GameData extends Component{
             data.imageUrl = playerObject.imageUrl;
             data.isMe = playerObject.isMe;
             data.name = playerObject.name;
+            data.gamesCount = playerObject.gamesCount;
             return data;
         }).sort((a,b)=> a.dif > b.dif ? -1 : 1);
 
@@ -85,7 +86,7 @@ class GameData extends Component{
 
         const hasNegatives = playersInfo.filter(p=>p.dif<=0).length > 0;
 
-        const width = isMobile ? 0.80 * Width :  0.63 * Width;
+        const width = IsGroupSummary ? 0.84 * Width : (  isMobile ? 0.80 * Width :  0.63 * Width);
         const playerWidth = playersInfo.length < 3 ? width / 4 :  width / playersInfo.length;
         const PlayerImages = playersInfo.map((playerInfo)=> this.getPlayerImage(playerInfo, playerWidth, margin));
 
@@ -103,6 +104,18 @@ class GameData extends Component{
             return  (
                 <div key={key} style={styleObject} className="GamePlayerBalace"  >
                     {val}<span className="GamePlayerBalaceCurrencySign">{CurrencySign}</span>
+                </div>
+            );
+        });
+        const PlayerGameCount = playersInfo.map(playerInfo=>{
+            const key = `${playerInfo.playerId}_item_gamesCount`;
+            const styleObject = {
+                width:playerWidth-margin,
+                marginRight:margin,
+            };
+            return  (
+                <div key={key} style={styleObject} className="GamePlayerGamesCount"  >
+                    {playerInfo.gamesCount} games
                 </div>
             );
         });
@@ -146,10 +159,9 @@ class GameData extends Component{
         let GamePlayerNegatives = playersInfo.map(playerInfo=>{
             let imageUrl = playerInfo.dif < 0 ? RED: TRANSPARENT;
             const key = `${playerInfo.playerId}_item_negativeDiv`;
-            console.log('playerInfo',playerInfo)
-            console.log('negativeRatio',negativeRatio)
+
             const height = playerInfo.dif>0 ? 150 : negativeRatio* playerInfo.dif;
-            console.log('height',height)
+
             const barsStyleObject = {
                 marginTop:-1*(150 - height),
                 width:playerWidth-margin,
@@ -191,6 +203,7 @@ class GameData extends Component{
                 <div className="GamePlayerBalance">
                     {PlayerBalance}
                 </div>
+                {IsGroupSummary ?<div className="GamePlayersGamesCount"> {PlayerGameCount} </div> : <div/> }
                 <br/>
                 <br/>
                 {GamePlayerPositives}

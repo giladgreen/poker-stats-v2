@@ -91,6 +91,7 @@
 }
 
 .allPlayersSummary{
+
 padding-left: 2vw;
     padding-top: 2vh;
 }
@@ -126,6 +127,19 @@ padding-left: 2vw;
 .GamePlayerImages{
     clear: both;
 }
+.GamePlayerBalance{
+    clear: both;
+}
+.GamePlayerGamesCount{
+    font-size: 0.8em;
+    float: left;
+    text-align: center;
+    color: rgb(10, 11, 48);
+}
+
+.GamePlayersGamesCount{
+    clear: both;
+}
 .groupSummary{
     margin-top: 10px;
     margin-bottom: 30px;
@@ -140,6 +154,7 @@ padding-left: 2vw;
     text-align: center;
     color: rgb(10, 11, 48);
 }
+
 .GamePlayerBalaceCurrencySign{
     font-size: 0.5em;
 }
@@ -164,6 +179,10 @@ padding-left: 2vw;
         font-size: 0.7em;
 
     }
+    .GamePlayerGamesCount{
+        font-size: 0.6em;
+    }
+
 }
 @media screen and (max-width: 500px) {
 
@@ -172,6 +191,9 @@ padding-left: 2vw;
     }
 
     .GamePlayerBalace {
+        font-size: 0.5em;
+    }
+    .GamePlayerGamesCount{
         font-size: 0.5em;
     }
 }

@@ -208,20 +208,25 @@ class Group extends Component {
 
     getGames = ()=>{
         const {group} = this.props;
-        const {games, isAdmin} = group;
+        const {games, isAdmin, players} = group;
         return games.sort((a,b)=>(a.date < b.date ? 1:-1)).map(game=>{
             const {date,description, playersData, ready, id:gameId} = game;
 
-           //TODO: anyone can delete/edit un-finished game
            const deleteGameButton = isAdmin || !ready ?  <button className="button" onClick={()=> this.deleteGameById(gameId)}> Delete    </button> : <span/>;
            const editGameButton = isAdmin || !ready ?  <button className="button" onClick={()=> this.editGame({...game, nameAsDatePicker: game.date.AsDatePicker()})}> Edit  </button> : <span/>;
            const viewGameButton = <button className="button" onClick={()=> this.viewGame(game)}> View  </button> ;
+            //const winnerObj = playersData.sort((a,b)=>a.cashOut-a.buyIn > b.cashOut-b.buyIn ? -1 : 1)[0];
+            //const winner = players.find(p=>p.id === winnerObj.playerId);
+            //const winnerImageUrl = winner ? winner.imageUrl : ANON_URL;// TODO
 
             return (<div className={`col-xm-1 gamesListItem ${ready ? 'gamesListItemReady': 'gamesListItemNotReady'}`} key={`games_${game.id}`}>
-                <h3> {date.AsGameName()} </h3>
-                <h3> {description && description.length>0 ? ` - ${description}`:''} </h3>
-                <h4> {playersData.length} players </h4>
-                <div> {editGameButton}{deleteGameButton} {viewGameButton}</div>
+                    <div>
+                        <h3> {date.AsGameName()} </h3>
+                        <h3> {description && description.length>0 ? ` - ${description}`:''} </h3>
+                        <h4> {playersData.length} players </h4>
+                        <div> {editGameButton}{deleteGameButton} {viewGameButton}</div>
+                    </div>
+
             </div>);
         })
     };
@@ -375,7 +380,7 @@ class Group extends Component {
     createPlayersDataAsFakeGame = () => {
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
-        const max = isMobile ? 7 : 11;
+        const max = isMobile ? 7 : 14;
         const { group: { players} } = this.props;
         let playersData = [];
         if (players.length <max){
