@@ -115,7 +115,7 @@ class App extends Component {
         }
 
         const mainSection = group ?
-            <Group updateGroupNameAndDescription={this.updateGroupNameAndDescription} disableScroll={disableScroll} enableScroll={enableScroll}  user={this.state.user} group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroup} onFailure={this.onFailure} /> :
+            <Group  groups={this.state.groups} updateGroupNameAndDescription={this.updateGroupNameAndDescription} disableScroll={disableScroll} enableScroll={enableScroll}  user={this.state.user} group={this.state.group} provider={this.state.provider} token={this.state.token} backToMainPage={this.backToMainPage} updateGroup={this.updateGroup} updateGroups={this.updateGroups} onFailure={this.onFailure} /> :
             <Groups groups={this.state.groups} provider={this.state.provider} token={this.state.token} updateGroup={this.updateGroup} onGroupClicked={this.onGroupClicked} onFailure={this.onFailure} updateGroups={this.updateGroups}/>;
 
         return (

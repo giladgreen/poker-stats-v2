@@ -11,6 +11,7 @@ import deleteGame from "../actions/deleteGame";
 import getGame from "../actions/getGame";
 import Game from "./Game";
 import GameData from "./GameData";
+import deleteGroup from "../actions/deleteGroup";
 
 class Group extends Component {
 
@@ -186,7 +187,7 @@ class Group extends Component {
 
             const image =  <img alt={playerName} className="playersListImageBig" src={player.imageUrl || ANON_URL}  onError={onImageError} />;
             const balanceWithCurrency = balance > 0 ? `+${balance}₪` : `${balance}₪`;
-            return (<div className={`playersListItem ${player.userConnected ? 'connectedUser' : ''} col-xm-1`} key={`player_${player.id}`}>
+            return (<div className={`playersListItem ${player.userConnected ? 'connectedUser' : ''} col-xs-1`} key={`player_${player.id}`}>
                     {image}
                     <div className="paddingLeft">
                         <h3> {playerName}</h3>
@@ -400,6 +401,24 @@ class Group extends Component {
             playersData
         }
     };
+
+    deleteGroupById = async (groupId) => {
+        console.log('groupId',groupId)
+        if (confirm("Are you sure?")){
+            try{
+                await deleteGroup(groupId, this.props.provider, this.props.token);
+                console.log('this.props.groups',this.props.groups)
+                const groupsClone = [...this.props.groups].filter(group => group.id !== groupId);
+                this.props.updateGroups(groupsClone);
+                this.props.backToMainPage();
+            }catch(error){
+                console.error('createNewGroup error',error);
+                this.props.onFailure(error);
+            }
+        }
+
+    };
+
     render() {
         const {group, provider, token } = this.props;
         const {isAdmin} = group;
@@ -421,7 +440,8 @@ class Group extends Component {
                     <h1> <b><u>{group.name} </u></b></h1>
                     <h2>  {group.description}   </h2>
                     {isAdmin ? <h3>logged in as admin</h3> : <div/>}
-                    {isAdmin ? <button className="button" onClick={()=>this.updateInGroupEditMode(true)}> edit group </button> : <div/>}
+                    {isAdmin ? <button className="button green-button" onClick={()=>this.updateInGroupEditMode(true)}> edit group </button> : <div/>}
+                    {isAdmin ? <button className="button red-button" onClick={()=>this.deleteGroupById(group.id)}> delete group </button> : <div/>}
                 </div>
                 <div>
                     <GameData Group={group} Game={fakeGameData} IsGroupSummary={true}/>

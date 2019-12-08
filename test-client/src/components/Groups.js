@@ -52,19 +52,7 @@ class Groups extends Component {
         this.props.updateGroup(updatedGroup);
     };
 
-    deleteGroupById = async (groupId) => {
-        if (confirm("Are you sure?")){
-            try{
-                await deleteGroup(groupId, this.props.provider, this.props.token);
-                const groupsClone = [...this.props.groups].filter(group => group.id !== groupId);
-                this.props.updateGroups(groupsClone);
-            }catch(error){
-                console.error('createNewGroup error',error);
-                this.props.onFailure(error);
-            }
-        }
 
-    };
 
     createNewGroup = async () =>{
         try{
@@ -99,9 +87,12 @@ class Groups extends Component {
             </div>);
         }
         const userGroups = groups.filter(group => group.userInGroup).map(group =>{
-            const deleteGroupButton = group.isAdmin ?  <button className="button" onClick={()=> this.deleteGroupById(group.id)}> Delete group   </button> : <span/>;
-            return (<div key={`userInGroup_${group.id}`}>
-                -  <button className="button" onClick={()=> this.onGroupClicked(group)}>{group.name}   </button> {group.description} {group.isAdmin ? ' (you are a group admin.)' : ''}{deleteGroupButton}
+            return (<div className="col-xs-3 groupBox" key={`userInGroup_${group.id}`} onClick={()=> this.onGroupClicked(group)}>
+                <h1> <b> {group.name} </b>    </h1>
+                <h2> {group.description} </h2>
+                <h3>{group.isAdmin ? ' (you are a group admin.)' : ''}</h3>
+
+
                 <br/><br/>
             </div>);
         });
@@ -109,29 +100,41 @@ class Groups extends Component {
         const nonUserGroups = groups.filter(group => !group.userInGroup).map(group =>{
             const { invitationRequested, invitationStatus } = group;
             const button =  <button className="button" onClick={()=> this.onGetInvitationRequestsClicked(group.id)}> ask invitation to this group</button>;
-            return (<div key={`userNotInGroup_${group.id}`}>
-                - Group: <b> {group.name} </b>.{group.description}  { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
+            return (<div className="col-xs-3 groupBox nonGroupBox" key={`userNotInGroup_${group.id}`}>
+                <h1> <b> {group.name} </b></h1>
+                <h2> {group.description}</h2>
+                { invitationRequested ? (<span>Status: <b> {invitationStatus}</b></span>) : button }
                 <br/><br/>
             </div>);
         });
+        const youBelongToText = userGroups.length === 0 ? 'You are not in any group yet.' : (userGroups.length === 1 ? 'You belong to one group:':`You belong to ${ userGroups.length} groups:`);
+        const youDoNotBelongToText = nonUserGroups.length === 0 ? '' : (userGroups.length === 1 ? 'There is one group you do not belong to:':`there are ${ nonUserGroups.length} groups you do not belong to:`);
         return (
             <div>
-                {this.getNewGroupSection()}
-                <div>
-                    <b><u> You belong to {userGroups.length} groups:</u></b>
-                    <br/><br/>
+                <div className="col-xs-12">
+                    <b><u> {youBelongToText}</u></b>
+                    <br/>
+                </div>
+                <div className="row" id="user-groups">
                     {userGroups}
-                    <br/><br/>
                 </div>
                 <div>
+
                     <hr/>
                 </div>
                 <div>
-                    <b><u> there are {nonUserGroups.length} groups you do not belong to:</u></b>
-                    <br/><br/>
-                    {nonUserGroups}
-                    <br/><br/><br/><br/>
+                    <b><u> {youDoNotBelongToText}</u></b>
                 </div>
+                <div className="row" id="user-non-groups">
+
+                    {nonUserGroups}
+
+                </div>
+                <div>
+                    <br/>
+                    <hr/>
+                </div>
+                {this.getNewGroupSection()}
             </div> );
 
 

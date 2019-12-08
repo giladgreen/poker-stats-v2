@@ -86,7 +86,7 @@ class GameData extends Component{
         const hasNegatives = playersInfo.filter(p=>p.dif<=0).length > 0;
 
         const width = isMobile ? 0.80 * Width :  0.63 * Width;
-        const playerWidth = width / playersInfo.length;
+        const playerWidth = playersInfo.length < 3 ? width / 4 :  width / playersInfo.length;
         const PlayerImages = playersInfo.map((playerInfo)=> this.getPlayerImage(playerInfo, playerWidth, margin));
 
         const PlayerNames1 =  this.getNamesSection(playersInfo,playerWidth,margin,true);
@@ -123,7 +123,7 @@ class GameData extends Component{
 
         const maxPositive = playersInfo[0].dif;
 
-        const positiveRatio =  100/maxPositive;
+        const positiveRatio = maxPositive === 0 ? 10 : 100/maxPositive;
         let GamePlayerPositives = playersInfo.map((playerInfo)=>{
 
             const key = `${playerInfo.playerId}_item_positiveDiv`;
@@ -141,13 +141,15 @@ class GameData extends Component{
             );
         });
         const maxNegative = playersInfo[playersInfo.length-1].dif;
-        const negativeRatio =   100 / maxNegative;
+        const negativeRatio = maxNegative ===0 ? 10 :   100 / maxNegative;
 
         let GamePlayerNegatives = playersInfo.map(playerInfo=>{
             let imageUrl = playerInfo.dif < 0 ? RED: TRANSPARENT;
             const key = `${playerInfo.playerId}_item_negativeDiv`;
+            console.log('playerInfo',playerInfo)
+            console.log('negativeRatio',negativeRatio)
             const height = playerInfo.dif>0 ? 150 : negativeRatio* playerInfo.dif;
-
+            console.log('height',height)
             const barsStyleObject = {
                 marginTop:-1*(150 - height),
                 width:playerWidth-margin,

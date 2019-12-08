@@ -198,7 +198,6 @@ async function createInvitationRequest(groupId, userId) {
   /* istanbul ignore next */
   if (players.length === 0) {
     logger.warn(`[Invitation-service] createInvitationRequest. group has no un-assigned players.. (${groupId})`);
-    return { status: 'oops.. this group has no admin to approve you..', invitationRequestId: null };
   }
 
   await sendEmail(invitationRequestId, groupId, groupName, userDetails, admins, players);
