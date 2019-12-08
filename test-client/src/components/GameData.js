@@ -21,7 +21,7 @@ class GameData extends Component{
             marginRight:margin,
         };
         if (isLoggedInPlayer){
-            ImgStyleObject.border="4px solid yellow"
+            ImgStyleObject.border="1px solid yellow"
         }
         const onImageError = (ev)=>{
             if (!ev.target.secondTry){
