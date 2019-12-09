@@ -6,7 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import login from '../actions/login';
 import Loader from "../containers/Loading";
 const ONE_DAY = 1000 * 60 * 60 * 24;
-
+let loginwithfacebookinitialized = false;
 class Login extends Component {
 
     constructor() {
@@ -77,8 +77,14 @@ class Login extends Component {
                 <button id="google-login-button"  className="login-button"  onClick={renderProps.onClick}>Google</button>
             )}
         />);
+        const https = window.location.protocol === 'http:';
+        console.log(' window.location.search', window.location.search);
+        console.log(' window.location.origin', window.location.origin);
+        const cameFromNonHttpFacebookClick = window.location.search.indexOf('loginwithfacebook')>0;
+        console.log('cameFromNonHttpFacebookClick',cameFromNonHttpFacebookClick);
 
-         const facebook = window.location.protocol === 'http:' ? <span>(use the <a href="https://www.poker-stats.com">https version </a> to log in with facebook)</span> :( <FacebookLogin
+        const httpsUrl = `${window.location.origin.replace('http', 'https')}?loginwithfacebook=true`;
+         const facebook = https ?  (<button id="facebook-login-button" className="login-button" onClick={ ()=>{ window.location.href = httpsUrl; } }>Facebook</button>) :( <FacebookLogin
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
             fields="name,email,picture"
@@ -87,6 +93,14 @@ class Login extends Component {
                 <button id="facebook-login-button" className="login-button" onClick={renderProps.onClick}>Facebook</button>
             )}
         />);
+
+         if (!loginwithfacebookinitialized && cameFromNonHttpFacebookClick){
+             loginwithfacebookinitialized = true;
+             setTimeout(()=>{
+                 document.getElementById("facebook-login-button").click();
+             },1000)
+         }
+
         return (
             <div className="login-page">
                 <div id="login-header">
