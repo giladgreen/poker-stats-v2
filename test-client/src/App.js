@@ -61,6 +61,16 @@ function enableScroll() {
     window.ontouchmove = null;
 }
 
+function deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
 
 class App extends Component {
 
@@ -72,7 +82,13 @@ class App extends Component {
     logout = () => {
         localStorage.removeItem('authData');
         this.setState({isAuthenticated: false, user: null, groups:[],group:null, error:null})
-        sessionStorage.clear();
+        try {
+            sessionStorage.clear();
+            localStorage.clear();
+            deleteAllCookies();
+        } catch (e) {
+            console.log('ERROR',e)
+        }
 
     };
 
