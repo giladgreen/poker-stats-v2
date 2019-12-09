@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import login from '../actions/login';
 import Loader from "../containers/Loading";
 const ONE_DAY = 1000 * 60 * 60 * 24;
+import { version } from '../../package';
 let loginwithfacebookinitialized = false;
 class Login extends Component {
 
@@ -13,8 +14,7 @@ class Login extends Component {
         super();
         this.state = { error: null };
     }
-
-
+    
     onFailure = (error) => {
         console.error('App onFailure', error);
         this.setState({ error });
@@ -117,6 +117,9 @@ class Login extends Component {
                 </div>
                 <div className="errorSection">
                     {this.state.error ? this.state.error : ''}
+                </div>
+                <div id="version">
+                    version: {version}
                 </div>
             </div>
         );

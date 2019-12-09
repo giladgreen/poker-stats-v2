@@ -23,12 +23,19 @@ margin-left: 10px;
   font-size: 0.7em;
 }
 .login-page{
+  position: relative;
   padding: 20px;
   text-align: center;
 }
 #login-header{
   padding: 30px;
   font-size: 2.7em;
+}
+#version{
+  color: grey;
+  position: absolute;
+  top: 10px;
+  left: 20px;
 }
 .login-button{
   padding: 0.3em;
@@ -337,7 +344,10 @@ margin-left: 10px;
   cursor: default;
 }
 @media screen and (max-width: 800px) {
-
+  #version{
+    top: 95vh;
+    left: 14px;
+  }
   .editPlayerInput{
     width: 25vw;
     height: 40px;

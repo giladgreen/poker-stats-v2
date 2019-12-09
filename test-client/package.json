@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "img-color-extractor": "^1.0.7",
@@ -12,14 +12,15 @@
     "react-input-range": "^1.3.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "0.9.x",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "semver": "6.3.0"
   },
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "copy": "mv -f /Users/giladgreen/dev/temp/poker-stats-v2/test-client/build/static/js/* /Users/giladgreen/dev/temp/poker-stats-v2/public && mv -f /Users/giladgreen/dev/temp/poker-stats-v2/test-client/build/static/css/* /Users/giladgreen/dev/temp/poker-stats-v2/public",
-    "deploy": "npm run build build && node rename && npm run copy && cd .. && npm run commit-and-push",
+    "deploy": "node upgrade-version && npm run build build && node rename && npm run copy && cd .. && npm run commit-and-push",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
