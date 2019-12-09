@@ -86,7 +86,7 @@ class GameData extends Component{
 
         const hasNegatives = playersInfo.filter(p=>p.dif<=0).length > 0;
 
-        const width = IsGroupSummary ? 0.84 * Width : (  isMobile ? 0.80 * Width :  0.63 * Width);
+        const width = IsGroupSummary ? (isMobile ? 0.9 * Width : 0.84 * Width) : (  isMobile ? 0.80 * Width :  0.63 * Width);
         const playerWidth = playersInfo.length < 3 ? width / 4 :  width / playersInfo.length;
         const PlayerImages = playersInfo.map((playerInfo)=> this.getPlayerImage(playerInfo, playerWidth, margin));
 

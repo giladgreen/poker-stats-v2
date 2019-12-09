@@ -380,7 +380,7 @@ class Group extends Component {
     createPlayersDataAsFakeGame = () => {
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
-        const max = isMobile ? 7 : 14;
+        const max = isMobile ? 6 : 14;
         const { group: { players} } = this.props;
         let playersData = [];
         if (players.length <max){
