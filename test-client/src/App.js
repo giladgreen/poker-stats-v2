@@ -72,6 +72,8 @@ class App extends Component {
     logout = () => {
         localStorage.removeItem('authData');
         this.setState({isAuthenticated: false, user: null, groups:[],group:null, error:null})
+        sessionStorage.clear();
+
     };
 
     onFailure = (error) => {
