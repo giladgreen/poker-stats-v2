@@ -1,6 +1,7 @@
 import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '../../../config';
 import React, { Component } from 'react';
-import FacebookLogin from 'react-facebook-login';
+//import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from  'react-facebook-login/dist/facebook-login-render-props';
 import { GoogleLogin } from 'react-google-login';
 import login from '../actions/login';
 import Loader from "../containers/Loading";
@@ -70,19 +71,26 @@ class Login extends Component {
         console.log('window.location.protocol:',window.location.protocol);
         const google = (<GoogleLogin
             clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login with Google"
             onSuccess={this.googleResponse}
             onFailure={this.onFailure}
+            render={renderProps => (
+                <button id="google-login-button"  className="login-button"  onClick={renderProps.onClick}>Google</button>
+            )}
         />);
-        const facebook = window.location.protocol === 'http:' ? <span>(use the <a href="https://www.poker-stats.com">https version </a> to log in with facebook)</span> : ( <FacebookLogin
+
+         const facebook = window.location.protocol === 'http:' ? <span>(use the <a href="https://www.poker-stats.com">https version </a> to log in with facebook)</span> :( <FacebookLogin
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
             fields="name,email,picture"
-            callback={this.facebookResponse} />);
+            callback={this.facebookResponse}
+            render={renderProps => (
+                <button id="facebook-login-button" className="login-button" onClick={renderProps.onClick}>Facebook</button>
+            )}
+        />);
         return (
             <div className="login-page">
-                <div>
-                    <h1>Log in to PokerStats!</h1>
+                <div id="login-header">
+                   Log in to <b> P&#1465;o&#1462;ker&#1456;S&#1463;tats</b> using
                 </div>
                 <div>
                     <div>

@@ -23,8 +23,32 @@ margin-left: 10px;
   font-size: 0.7em;
 }
 .login-page{
+  padding: 20px;
   text-align: center;
 }
+#login-header{
+  padding: 30px;
+  font-size: 2.7em;
+}
+.login-button{
+  padding: 0.3em;
+  border-radius: 0.5em;
+  text-decoration: none;
+  color: white;
+  font-size: 2em;
+}
+
+#google-login-button{
+   background-color: #F44336;
+}
+
+
+#facebook-login-button{
+  background-color: #3b5998;
+}
+
+
+
 .blue-text{
   color: blue;
 }

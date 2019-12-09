@@ -113,7 +113,7 @@ function getLinkAddress(invitationRequestId, playerId, approved, setAsAdmin) {
 function createHtml(invitationRequestId, groupId, groupName, userDetails, userName, adminName, players) {
   const rejectAddress = getRejectLinkAddress(invitationRequestId);
   const newPlayerAddress = getNewPlayerAddress(invitationRequestId);
-  const playersLinks = players.sort((a,b)=> a.name < b.name ? -1 : 1).map((player) => {
+  const playersLinks = players.sort((a, b) => (a.name < b.name ? -1 : 1)).map((player) => {
     const nonAdminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, false);
     const adminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, true);
     /* istanbul ignore next */
