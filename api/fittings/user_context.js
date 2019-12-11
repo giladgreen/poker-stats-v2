@@ -41,7 +41,7 @@ async function validateRequestPermissions(request) {
       logger.info(`[validateRequestPermissions] user not belong to group. user context: ${JSON.stringify(request.userContext)} `);
       throw 'user not belong to group';
     } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
-      if (!request.url.includes('/games/')) {
+      if (!request.url.includes('/games')) {
         throw 'user not admin of group';
       }
     }
