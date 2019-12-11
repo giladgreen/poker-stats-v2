@@ -35,18 +35,34 @@ async function validateRequestPermissions(request) {
   request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
   request.userContext.playerId = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].playerId;
 
-  if (groupId) {
-    logger.info(`[validateRequestPermissions] groupId: ${groupId}   request.method: ${request.method}`);
-    if (!request.userContext.inGroup) {
-      logger.info(`[validateRequestPermissions] user not belong to group. user context: ${JSON.stringify(request.userContext)} `);
-      throw 'user not belong to group';
-    } else if (request.method !== 'GET' && !request.userContext.isAdmin) {
-      if (!request.url.includes('/games')) {
-        throw 'user not admin of group';
-      }
-    }
+  if (groupId && !request.userContext.inGroup) {
+    logger.info(`[validateRequestPermissions] user not belong to group. user context: ${JSON.stringify(request.userContext)} `);
+    throw 'user not belong to group';
   }
+
+  if (request.method === 'GET') {
+    return;
+  }
+  if (request.userContext.isAdmin) {
+    return;
+  }
+  if (request.method === 'POST' && request.url.includes('/players')) {
+    return;
+  }
+  if (request.method === 'POST' && request.url.includes('/groups')) {
+    return;
+  }
+  if (request.method === 'POST' && request.url.includes('/invitations-requests')) {
+    return;
+  }
+  if (request.url.includes('/games')) {
+    return;
+  }
+
+  logger.info(`[validateRequestPermissions] bad creds user context: ${JSON.stringify(request.userContext)} `);
+  throw 'operation not allowed';
 }
+
 function getProfile(provider, accessToken) {
   logger.info(`[UserContext:fitting] getProfile, provider:${provider}.`);
 

@@ -353,7 +353,9 @@ describe('full integration test,', function () {
       await clearAllData();
 
       await listGroups(0);
+
       const groupId = await createGroup('name');
+
       await getGroup(groupId);
       await updateGroup(groupId, 'new name');
       await getGroup(groupId);
@@ -368,6 +370,7 @@ describe('full integration test,', function () {
 
       const playerId = await createPlayer(groupId, 'first family');
       await getPlayer(groupId, playerId, 'first family');
+
       await updatePlayer(groupId, playerId, 'new first name family');
       await getPlayer(groupId, playerId, 'new first name family');
       const player2Id = await createPlayer(groupId, 'player to delete family');
@@ -400,6 +403,7 @@ describe('full integration test,', function () {
 
       const invitationRequestId = await sendInvitationRequest(groupId);
       const invitationRequestPlayerId = player3Id;
+
       await sendInvitationRequestApproval(invitationRequestId, invitationRequestPlayerId);
       await getGroup(groupId, 200);
     });
