@@ -52,14 +52,14 @@ async function validateRequestPermissions(request) {
   if (request.method === 'POST' && request.url.includes('/groups')) {
     return;
   }
-  if (request.method === 'POST' && request.url.includes('/invitations-requests')) {
+  if (request.url.includes('/invitations-requests')) {
     return;
   }
   if (request.url.includes('/games')) {
     return;
   }
 
-  logger.info(`[validateRequestPermissions] bad creds user context: ${JSON.stringify(request.userContext)} `);
+  logger.info(`[validateRequestPermissions] bad credentials user context: ${JSON.stringify(request.userContext)} `);
   throw 'operation not allowed';
 }
 
