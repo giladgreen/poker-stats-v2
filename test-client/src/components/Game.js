@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ANON_URL } from '../../../config';
+import { ANON_URL } from '../../config';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import updateGame from "../actions/updateGame";

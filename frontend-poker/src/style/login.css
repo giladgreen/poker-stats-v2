@@ -1,0 +1,140 @@
+#login-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 99999;
+    color: black;
+    text-align: center;
+    font-size: 1em;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+#loginErrorSection{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: red;
+    padding-top: 5px;
+}
+
+#rect-img{
+    width: 10vw;
+    position: absolute;
+    top:3.4vh;
+    left:45vw;
+}
+#volunteer-img{
+    width: 25vw;
+    position: absolute;
+    top:25.5vh;
+    left:37vw;
+}
+#hand-img{
+    width: 14vw;
+    position: absolute;
+    top:28vh;
+    left:42vw;
+}
+.login-app-name{
+    font-size: 4.0em;
+    font-family: serif;
+
+}
+.login-app-name-space{
+    font-size: 1em;
+    color:white;
+}
+#version{
+    font-size: 1em;
+    color: grey;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+}
+.login-button{
+    text-decoration: none;
+    font-size: 3em;
+    width: 44vw;
+    background: #151135;
+    border-radius: 10px;
+    color: white;
+    margin-top: 1vh;
+    margin-left: 28vw;
+    padding: 10px;
+    cursor: pointer;
+}
+#login-space1{
+    height: 18vh;
+}
+#login-space2{
+    height: 20vh;
+}
+@media screen and (max-width: 800px) {
+
+    #login-page {
+
+        font-size: 1em;
+        padding-top: 40vw;
+    }
+    #loginErrorSection{
+        padding-top: 5px;
+        font-size: 1em;
+    }
+
+    #rect-img{
+        width: 30vw;
+        top:8vh;
+        left:35vw;
+    }
+    #volunteer-img{
+        width: 80vw;
+        height: 33vh;
+        position: absolute;
+        top:32vh;
+        left:10vw;
+    }
+    #hand-img{
+        width: 27vw;
+        position: absolute;
+        top:34vh;
+        left:36vw;
+    }
+    .login-app-name{
+        margin-top: 100px;
+        font-size: 2.2em;
+        margin-bottom: 40vh;
+    }
+    .login-app-name-space{
+        font-size: 2px;
+    }
+
+    #login-space1{
+        height: 0vh;
+    }
+    #login-space2{
+        height: 37vh;
+    }
+    #version{
+        font-size: 0.9em;
+        top: 2px;
+        left: 4px;
+    }
+    .login-button{
+        margin-top: 1vh;
+
+        font-size: 1.1em;
+        width: 80vw;
+
+        border-radius: 10px;
+
+        margin-left: 10vw;
+        padding: 10px;
+
+
+    }
+
+}

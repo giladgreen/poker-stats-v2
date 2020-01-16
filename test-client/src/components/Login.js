@@ -1,4 +1,4 @@
-import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '../../../config';
+import { FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from '../../config';
 import React, { Component } from 'react';
 //import FacebookLogin from 'react-facebook-login';
 import FacebookLogin from  'react-facebook-login/dist/facebook-login-render-props';
@@ -14,7 +14,7 @@ class Login extends Component {
         super();
         this.state = { error: null };
     }
-    
+
     onFailure = (error) => {
         console.error('App onFailure', error);
         this.setState({ error });

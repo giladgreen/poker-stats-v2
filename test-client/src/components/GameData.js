@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ANON_URL, GREEN, RED, TRANSPARENT } from '../../../config';
+import { ANON_URL, GREEN, RED, TRANSPARENT } from '../../config';
 
 import Size from '../sizes';
 const  {Width} = Size;

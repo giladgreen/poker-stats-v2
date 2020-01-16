@@ -106,7 +106,9 @@ describe('services: groups', function () {
             limit,
             offset,
           },
-          results: resultGroups.map(group => ({ ...group, userInGroup: false, invitationRequested: false })),
+          results: resultGroups.map(group => ({
+            ...group, userInGroup: false, invitationRequested: false, playersCount: 0, gamesCount: 0,
+          })),
         });
         should(groups.count.called).be.eql(true);
         should(groups.findAll.called).be.eql(true);

@@ -6,5 +6,6 @@ migration/
 **/*.min.js
 **/coverage/**/*.js
 **/test-client/**/*.js
+**/frontend-poker/**/*.js
 **/Gruntfile.js
 **/terminate.js

@@ -1,0 +1,71 @@
+#user-groups{
+
+}
+
+.group-item-div{
+    -webkit-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    -moz-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    border-radius: 50px;
+    width: 20vw;
+    height: 20vw;
+    margin: 1.8vw;
+    cursor: pointer;
+}
+
+.group-item-div-inner{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius-top: 50px;
+    padding: 10px;
+    width: 20vw;
+    height: 14vw;
+    font-size: 2.7em;
+}
+.group-description{
+    font-size: 0.7em;
+}
+.my-group{
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.group-extra-data{
+    font-size: 2.2em;
+    color: black;
+    margin-left: 50px;
+}
+@media only screen and (max-width: 480px) {
+
+    #user-groups{
+        margin-left:-20px;
+    }
+
+    .group-item-div{
+        -webkit-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+        -moz-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+        box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+        border-radius: 5px;
+        width: 40vw;
+        height: 40vw;
+        margin: 2.9vw;
+
+
+    }
+
+    .group-item-div-inner{
+        text-shadow: 2px 2px black;
+        font-size: 1em;
+        border-radius-top: 5px;
+        padding: 5px;
+        width: 40vw;
+        height: 25vw;
+    }
+
+    .group-extra-data{
+        font-size: 1.2em;
+        color: black;
+        margin-left: 10px;
+    }
+
+}

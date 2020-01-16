@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ANON_URL } from '../../../config';
+import { ANON_URL } from '../../config';
 
 class OnGoingGame extends Component {
 

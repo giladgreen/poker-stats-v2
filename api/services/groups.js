@@ -49,6 +49,11 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
     return result;
   });
 
+  await Promise.all(results.map(async (group) => {
+    group.gamesCount = await models.games.count({ where: { groupId: group.id } });
+    group.playersCount = await models.players.count({ where: { groupId: group.id } });
+  }));
+
   return {
     metadata: {
       totalResults: allCount,
