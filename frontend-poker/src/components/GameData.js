@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import { ANON_URL, GREEN, RED, TRANSPARENT} from '../CONSTS';
+import CONSTS from '../CONSTS';
+const { ANON_URL, GREEN, RED, TRANSPARENT} = CONSTS;
+console.log('ANON_URL',ANON_URL)
 import Size from '../sizes';
 const  {Width} = Size;
 class GameData extends Component{

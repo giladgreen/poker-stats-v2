@@ -13,7 +13,8 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
 // import OnGoingGame from './OnGoingGame';
-import { ANON_URL } from '../CONSTS';
+import CONSTS from '../CONSTS';
+const { ANON_URL } = CONSTS;
 
 class GroupPage extends Component {
 

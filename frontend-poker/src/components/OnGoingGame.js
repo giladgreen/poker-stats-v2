@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ANON_URL} from '../CONSTS';
-
+import CONSTS from '../CONSTS';
+const { ANON_URL } = CONSTS;
 
 class OnGoingGame extends Component {
 
