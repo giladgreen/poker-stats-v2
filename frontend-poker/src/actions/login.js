@@ -14,6 +14,7 @@ async function login(provider, token) {
         'Content-Type': 'application/json',
       },
     };
+    console.log('login options', options)
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
         if (error) {
