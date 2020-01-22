@@ -281,28 +281,50 @@ class GroupPage extends Component {
 
 
     getPlayerSummary = () =>{
+        const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
         const { group } = this.props;
         const { isAdmin} = group;
+        const player = this.state.playerSummary;
+        const playerId = player.id;
+        const playerGames = group.games.map(game=>{
+            const playerData = game.playersData.find(p=>p.playerId ===playerId);
+            return playerData ? { game, playerData } : false;
+        }).filter(x=>!!x).map(({ game, playerData })=>{
+            return <div key={game.date} className="player-game-data">
+                {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}  <span className="gray-seprator"> |</span>
+                {isMobile && game.description }
+                {isMobile &&  <span className="gray-seprator"> |</span> }
+                {isMobile &&  <br/> }
+                buy-in: {playerData.buyIn}  <span className="gray-seprator"> |</span>
+                cash-out: {playerData.cashOut}  <span className="gray-seprator"> |</span>
+                balance: {playerData.cashOut - playerData.buyIn}
+                {!isMobile &&   <span className="gray-seprator"> |</span>}
+                {!isMobile &&  game.description}
 
+
+            </div>
+        });
 
         return (
             <div className="playerSummary">
                 <div className="playerSummaryHeader">
                     <div>
-                        name: {this.state.playerSummary.name}
+                        name: {player.name}
                     </div>
                     <div>
-                        email: {this.state.playerSummary.email}
+                        email: {player.email}
                     </div>
-                    <div>
-                        image: {this.state.playerSummary.imageUrl}
-                    </div>
-                    {this.state.playerSummary.imageUrl && this.state.playerSummary.imageUrl.length >0 && <img alt="" className="playerPageImage" src={this.state.playerSummary.imageUrl}/>}
+                    <img alt="" className="playerPageImage" src={player.imageUrl || ANON_URL}/>
+
+                </div>
+                <div className="playerGames">
+                    <div><u>{playerGames.length} games:</u></div>
+                    {playerGames}
                 </div>
                 <div className="buttons-section">
                     <button onClick={()=>this.setState({playerSummary:null})}>Back</button>
-                    {isAdmin && <button onClick={()=>this.onPlayerEditClick(this.state.playerSummary)} className="left-margin">Edit</button>}
-                    {isAdmin && <button onClick={()=>this.onPlayerDeleteClick(this.state.playerSummary.id)} className="left-margin">Delete</button>}
+                    {isAdmin && <button onClick={()=>this.onPlayerEditClick(player)} className="left-margin">Edit</button>}
+                    {isAdmin && <button onClick={()=>this.onPlayerDeleteClick(playerId)} className="left-margin">Delete</button>}
                 </div>
 
 

@@ -135,7 +135,7 @@ class OnGoingGame extends Component {
         return (
             <div className="viewGamePopupInner">
                 <div>
-                    <h3>Ongoing game. {game.date.AsGameName()}</h3>
+                    <h3>Ongoing game. {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}</h3>
                     <h4>{game.playersData.length} Players. {game.description} </h4>
                     <br/>
                     <div className="backButton">

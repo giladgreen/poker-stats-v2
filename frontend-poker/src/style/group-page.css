@@ -435,6 +435,12 @@ select{
 .game-not-ready-text{
     font-size: 0.7em;
 }
+.player-game-data{
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 @media screen and (max-width: 800px) {
 
     #group-image-title {
