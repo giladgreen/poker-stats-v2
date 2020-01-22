@@ -95,8 +95,8 @@ class Login extends Component {
         return (
             <div id="login-page">
 
-                <img id="rect-img" src="sheep.png" alt='sheep'/>
-                <img id="volunteer-img" src="Casino-Poker-Chips.png" alt='Chips'/>
+                <img id="sheep-img" src="sheep.png" alt='sheep'/>
+                <img id="chips-img" src="Casino-Poker-Chips.png" alt='Chips'/>
                 <div id="login-space1"/>
                 <span className="login-app-name">PokerStats</span>
                 <div id="login-space2"/>

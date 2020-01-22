@@ -64,3 +64,4 @@ typings/
 .idea*
 .idea/*
 .idea/workspace.xml
+.npmrc

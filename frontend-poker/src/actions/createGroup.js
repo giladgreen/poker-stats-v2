@@ -2,12 +2,12 @@
 import request from 'request';
 import URL_PREFIX from '../url';
 
-async function createGroup(name, provider, token) {
+async function createGroup(group, provider, token) {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'POST',
-      url: `${URL_PREFIX}/groups/`,
-      body: JSON.stringify({ name }),
+      url: `${URL_PREFIX}/groups`,
+      body: JSON.stringify(group),
       headers: {
         provider,
         'x-auth-token': token,

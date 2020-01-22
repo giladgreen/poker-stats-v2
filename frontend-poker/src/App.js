@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
+import requestInvitation from './actions/requestInvitation';
+import getGroupData from './actions/getGroupData';
 
 import Login from './components/Login';
-import NewEventForm from './components/NewEventForm';
+import NewGroupForm from './components/NewGroupForm';
 import GroupPage from './components/GroupPage';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -32,11 +34,12 @@ class App extends Component {
     constructor() {
         super();
 
-        this.state = { showMenu:false, pushSupported:IsPushSupported(), subscribed:IsSubscribed(), showGroupCreationForm: false, showGroupEditForm:null, loading: false, isAuthenticated: false, user: null, groups:null, provider:'', error:null, token:null, showGroupPage: null};
+        this.state = { showMenu:false, pushSupported:IsPushSupported(), subscribed:IsSubscribed(), showGroupCreationForm: false,showCreateGameForm:false,showCreatePlayerForm:false, showGroupEditForm: null, loading: false, isAuthenticated: false, user: null, groups:null, provider:'', error:null, token:null, showGroupPage: null};
     }
 
     onNotificationButtonClick = async() =>{
         try {
+            console.log('onNotificationButtonClick this.state.subscribed', this.state.subscribed)
             if (this.state.subscribed) {
                 await unsubscribeUser(this.state.provider, this.state.token);
                 this.setState({subscribed:false, pushSupported: true, showMenu: false})
@@ -62,7 +65,8 @@ class App extends Component {
     };
 
     onCancel = () => {
-        this.setState({ showGroupCreationForm: false, error:null, showGroupEditForm:null, showGroupPage:null})
+        console.log('onCancel')
+        this.setState({ showGroupCreationForm: false,showGroupEditForm:null, error:null, showMenu: false})
     };
 
     onFailure = (error) => {
@@ -111,82 +115,162 @@ class App extends Component {
 
 
 
-            <span id="app-header-text">PokerStats</span>
+            <span id="app-header-text">Groups</span>
         </div>
     };
 
-    publish = (event)=>{
-        this.setState({ showGroupCreationForm: false, error:null, showGroupEditForm:null, loading: true});
+    updateExistingGroup = (group) =>{
+        this.setState({ loading: true, error: null});
         setTimeout(async ()=>{
             try {
-                const newEvent = await createGroup(event, this.state.provider, this.state.token);
-                setupEventDates(newEvent);
-                const events = [newEvent, ...this.state.events];
-                this.setState({ loading: false, events, showGroupPage: newEvent});
-                window.location.replace(`https://im-in.herokuapp.com?eventId=${newEvent.id}`);
-                window.location.href = `https://im-in.herokuapp.com?eventId=${newEvent.id}`;
-
+                const newGroup = await updateGroup(group.id, group, this.state.provider, this.state.token);
+                const groups = [newGroup, ...this.state.groups];
+                this.setState({ loading: false, groups,  showGroupEditForm:null, showGroupCreationForm:null});
+            } catch (error) {
+                this.setState({ loading: false, error,  showGroupEditForm:null, showGroupCreationForm:null});
+            }
+        },0)
+    }
+    createNewGroup = (group) =>{
+        setTimeout(async ()=>{
+            try {
+                const newGroup = await createGroup(group, this.state.provider, this.state.token);
+                const groups = [newGroup, ...this.state.groups];
+                this.setState({ loading: false, groups});
             } catch (error) {
                 this.setState({ loading: false, error});
             }
         },0)
-    };
+    }
 
+    saveGroup = (group)=>{
+        this.setState({ showGroupCreationForm: false, error:null, loading: true});
+        if (group.id){
+            this.updateExistingGroup(group)
+        } else{
+            this.createNewGroup(group)
+        }
 
-    update = (group)=>{
-        this.setState({ showGroupCreationForm: false, error:null, showGroupEditForm:null, loading: true});
-        setTimeout(async ()=>{
-            try {
-                const updatedEvent = await updateGroup(group, this.state.provider, this.state.token);
-                setupEventDates(updatedEvent);
-                const events = this.state.events.map(event=>{
-                    if (event.id === updatedEvent.id){
-                        return updatedEvent;
-                    } else{
-                        return event;
-                    }
-                });
-                this.setState({ loading: false, events});
-
-            } catch (error) {
-                this.setState({ loading: false, error});
-            }
-        },0)
 
     };
 
-    delete = (groupId)=>{
+    delGroup = (groupId)=>{
         if (confirm("Are you sure?")){
-            this.setState({ showGroupCreationForm: false, error:null, showGroupEditForm:null, loading: true});
+            this.setState({ error:null, loading: true});
             setTimeout(async ()=>{
                 try {
-                    const deletedEventId = await deleteGroup(groupId, this.state.provider, this.state.token);
-                    const events = this.state.events.filter(event=>(event.id !== deletedEventId));
-                    this.setState({ loading: false, events});
+                    const deletedGroupId = await deleteGroup(groupId, this.state.provider, this.state.token);
+                    const groups = this.state.groups.filter(group=>(group.id !== deletedGroupId));
+                    this.setState({ loading: false, groups,  showGroupEditForm:null, showGroupCreationForm:null });
 
                 } catch (error) {
                     console.error('error calling delete',error)
-                    this.setState({ loading: false, error});
+                    this.setState({ loading: false, error,  showGroupEditForm:null, showGroupCreationForm:null});
                 }
             },0)
+        }else{
+            this.setState({ showGroupEditForm:null, showGroupCreationForm:null });
         }
     };
 
     goHome = () =>{
-        this.setState({ showMenu:false, showGroupCreationForm: false, showGroupEditForm:null, loading: false, showGroupPage: null});
+        this.setState({ showMenu:false, showGroupCreationForm: false, loading: false, showGroupPage: null, showGroupEditForm:null});
+    };
+
+    showGroup = async (group) =>{
+        if (group.userInGroup){
+            this.setState({showMenu:false, loading:true});
+            getGroupData(group, this.state.provider, this.state.token).then((g)=>{
+
+                g.players = g.players.map(player=>{
+                    let balance = 0;
+                    const playersGames = g.games.filter(game=> {
+                        const play = game.playersData.find(data => data.playerId === player.id);
+                        if (play){
+                            balance += play.cashOut;
+                            balance -= play.buyIn;
+                        }
+                        return play;
+                    });
+                    const gamesCount = playersGames.length;
+
+                    return {...player, gamesCount, balance};
+                }).sort((a,b)=>  a.gamesCount === b.gamesCount ? ((a.balance > b.balance ? -1 : 1)) : (a.gamesCount > b.gamesCount ? -1 : 1));
+
+
+                this.setState({ showGroupPage: g, loading:false});
+            }).catch((e)=>{
+                this.setState({ error: e, loading:false});
+            })
+        } else{
+            if (group.invitationRequested){
+                this.setState({showMenu:false});
+                alert('invitation already requested. you will get an answer in your email.');
+            }else if (confirm("You sre not in this group. would you like to ask for an invitation?")){
+               this.setState({loading:true});
+               requestInvitation(group.id, this.state.provider, this.state.token).then(()=>{
+                   this.setState({loading:false});
+               })
+            } else {
+                this.setState({showMenu:false});
+            }
+        }
+
     };
 
     editGroup = (group) =>{
-        this.setState({ showGroupCreationForm: null, showGroupEditForm:group, loading: false, showGroupPage: null})
+        console.log('editGroup')
+        this.setState({ showMenu:false, showGroupEditForm: group});
     };
 
-    showGroup = (group) =>{
-        //TODO
+    createGame = (group, game) =>{
+        this.setState({ showMenu:false, showCreateGameForm: { group, game }});
     };
+    createPlayer = (group, player) =>{
+        this.setState({ showMenu:false, showCreatePlayerForm: { group, player }});
+    };
+
+    updatePlayerData = (player)=>{
+        console.log('app update player', player);
+        const showGroupPage = {...this.state.showGroupPage};
+        let exist = false;
+        showGroupPage.players = showGroupPage.players.map(p=>{
+            if (p.id !== player.id) return p;
+            exist = true;
+            return player;
+        });
+        if (!exist){
+            showGroupPage.players.push(player)
+        }
+        this.setState({showGroupPage})
+    }
+
+    updatePlayerRemoved = (playerId)=>{
+        console.log('app removed player', playerId);
+        const showGroupPage = {...this.state.showGroupPage};
+        showGroupPage.players = showGroupPage.players.filter(p=> p.id !== playerId);
+
+        this.setState({showGroupPage})
+    }
+
+    updateGame = (game)=>{
+        console.log('app game update', game);
+        const showGroupPage = {...this.state.showGroupPage};
+        let exist = false;
+        showGroupPage.games = showGroupPage.games.map(g=>{
+            if (g.id !== game.id) return g;
+            exist = true;
+            return game;
+        });
+        if (!exist){
+            showGroupPage.games.push(game)
+        }
+        this.setState({showGroupPage})
+    }
 
     render() {
 
-        const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupEditForm, showGroupPage}  = this.state;
+        const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;
         if (loading){
             return  <Loading/>;
         }
@@ -194,15 +278,19 @@ class App extends Component {
             return  <Login onLogin={this.onLogin} />;
         }
 
-        if (showGroupPage){
-            return <GroupPage goHome={this.goHome} group={showGroupPage} user={this.state.user || {}}  edit={this.editGroup}  logout={this.logout}/>
-        }
         if (showGroupEditForm){
-            return  <NewEventForm onCancel={this.onCancel} update={this.update} delete={this.delete} event={showGroupEditForm}  logout={this.logout}/>;
+            return <NewGroupForm onCancel={this.onCancel} saveGroup={this.saveGroup} deleteGroup={this.delGroup} logout={this.logout} group={showGroupEditForm} isUpdate={true}/>;
         }
+
+        if (showGroupPage){
+            return <GroupPage goHome={this.goHome} group={showGroupPage} user={this.state.user} updatePlayerRemoved={this.updatePlayerRemoved} updateGame={this.updateGame} updatePlayerData={this.updatePlayerData}  editGroup={this.editGroup} deleteGroup={this.delGroup}  provider={this.state.provider} token={ this.state.token} logout={this.logout}/>
+        }
+
         if (showGroupCreationForm){
-            return  <NewEventForm onCancel={this.onCancel} publish={this.publish} logout={this.logout}/>;
+            return  <NewGroupForm onCancel={this.onCancel} saveGroup={this.saveGroup} logout={this.logout}/>;
         }
+
+
 
         const header = this.getHeader();
         return (

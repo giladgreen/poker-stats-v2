@@ -1,7 +1,7 @@
 import registerSubscription from './actions/registerSubscription';
 import unregisterSubscription from './actions/unregisterSubscription';
 
-const applicationServerPublicKey = 'BI12f4BJ5DaqMxJERLOdfVX86q5ft7hCbjQ301Ui09ivobYxGpp7nWdheRHnIyJigc2Fvy0wrjMQP9Rbb5EiCLk';
+const applicationServerPublicKey = 'BIzamkxmxtu3jgxzUVL3Pg7AKbbxv2y8dLPPePT6fxXVI9Nl4wBJJpGeTAEofw0etXweRs8COyNrRJ5Aw2lhmXg';
 let isSubscribed = false;
 let swRegistration = null;
 let pushSupported = true;

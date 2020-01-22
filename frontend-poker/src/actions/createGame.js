@@ -3,12 +3,12 @@ import request from 'request';
 import URL_PREFIX from '../url';
 
 
-async function createGame(groupId, gameDate, provider, token) {
+async function createGame(groupId, gameData, provider, token) {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'POST',
       url: `${URL_PREFIX}/groups/${groupId}/games`,
-      body: JSON.stringify({ date: gameDate }),
+      body: JSON.stringify(gameData),
       headers: {
         provider,
         'x-auth-token': token,

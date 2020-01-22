@@ -1,136 +1,70 @@
 import React, { Component } from 'react';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import AppsIcon from '@material-ui/icons/Apps';
-import AddToCalendar from 'react-add-to-calendar';
+import InputRange from 'react-input-range';
+import createGame from '../actions/createGame';
+import createPlayer from '../actions/createPlayer';
+import deletePlayer from '../actions/deletePlayer';
+import updatePlayer from '../actions/updatePlayer';
+import updateGame from '../actions/updateGame';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import GameData from './GameData';
+// import OnGoingGame from './OnGoingGame';
+const ANON_URL = 'https://green-pokerstats.herokuapp.com/images/anonymous2.png';
 
-const SECOND = 1000;
-const MINUTE = 60;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 class GroupPage extends Component {
 
-    getDateParts(date){
+    getImage=()=>{
 
-        const now = new Date();
-        const bigger = now < date ? date : now;
-        const smaller = now < date ? now : date;
-        const totalSeconds =  Math.floor((bigger.getTime() - smaller.getTime()) / SECOND);
-        const days = Math.floor(totalSeconds / DAY);
-        let reminder = totalSeconds - days * DAY;
-        const hours = Math.floor(reminder / HOUR);
-        reminder -=  hours * HOUR;
-        const minutes =  Math.floor(reminder / MINUTE);
-        const seconds = reminder - minutes * MINUTE;
+        this.imageIndex++;
 
-        return {
-            days: days>9 ? `${days}` : `0${days}`,
-            hours:hours>9 ? `${hours}` : `0${hours}`,
-            minutes:minutes>9 ? `${minutes}` : `0${minutes}`,
-            seconds:seconds>9 ? `${seconds}` : `0${seconds}`,
+        if (this.imageIndex > this.imagesCount) {
+            this.imageIndex = 1;
         }
-    }
+        return `backgroundImage${this.imageIndex}.jpg`;
+    };
 
-    setup = (props) => {
-        const { lastConfirmationDate, startDate, endDate, participants, minParticipants, additionalItems } = props.event;
-        this.lastConfirmationDateOver = lastConfirmationDate < new Date();
-        this.eventTime = startDate < new Date() & new Date() < endDate;
-        this.eventIsOver = endDate < new Date();
-        this.eventOn = participants.length >= minParticipants;
-
-        const compareDate = !this.lastConfirmationDateOver ? lastConfirmationDate :
-            (!this.eventTime && !this.eventIsOver ? startDate : endDate);
-        const { days, hours, minutes, seconds } = this.getDateParts(compareDate);
-
-        let selectedItem=null;
-        if (additionalItems.length>0) {
-            const allItems = additionalItems.split('|');
-            participants.forEach(({additionalItem}) => {
-                const index = allItems.findIndex((item => item === additionalItem));
-                if (index >= 0) {
-                    allItems.splice(index, 1);
-                }
-            });
-
-            if (allItems.length > 0) {
-                this.allItems = allItems;
-                selectedItem = allItems[0];
-            }
-        }
-
-        this.calendarEvent = {
-            title: props.event.title,
-            description: props.event.description,
-            location: props.event.location,
-            startTime: props.event.startDate.toISOString(),
-            endTime: props.event.endDate.toISOString(),
-        };
-        return {
-            days, hours, minutes, seconds, selectedItem
-        };
-    }
     constructor(props) {
         super(props);
-        this.backgroundImage = `url(${props.event.imageUrl ||  `backgroundImage1.jpg`})`;
-        this.state = this.setup(props);
-
-        setInterval(()=>{
-            this.setState(this.setup(props))
-        },1000)
+        this.imageIndex = 0;
+        this.imagesCount = 7;
+        this.backgroundImage = `url(${props.group.imageUrl ||  `poker.jpg`})`;
+        this.state = { tabKey: 'summary', newGame: null, editGame: null, gameSummary: null, editPlayerInGame: null, existingPlayerId: null  }
     }
 
-    attendOrUnattend = (attending, eventId)=>{
-        if (attending){
-            return this.props.unattend(eventId)
-        }else{
-            return this.props.attend(eventId, this.state.selectedItem)
-        }
-    };
-    onItemSelected = ({value: selectedItem})=>{
-        this.setState({selectedItem })
-    };
-
-    edit = (event)=>{
-        this.setState({showMenu: false })
-        this.props.edit(event)
-    };
     logout = ()=>{
-        this.setState({showMenu: false })
-        this.props.logout()
+        this.setState({showMenu: false });
+        this.props.logout();
     };
     goHome = ()=>{
-        this.setState({showMenu: false })
-        this.props.goHome()
+        this.setState({showMenu: false });
+        this.props.goHome();
     };
-    onThumbUpClick = async (userId, alreadyPressed) => {
-       const {event: {id: eventId}} = this.props;
-       this.props.onThumbUpClick(eventId, userId, alreadyPressed);
+
+    onKeyChange = (tabKey)=>{
+        this.setState({tabKey });
     };
-    onThumbDownClick = async (userId, alreadyPressed) => {
-        const {event: {id: eventId}} = this.props;
-        this.props.onThumbDownClick(eventId, userId, alreadyPressed);
-    };
+
     getHeader = ()=>{
 
-        const { event, user } = this.props;
-        const isCreator = event.creatorId === user.id;
+        const { group } = this.props;
+        const {isAdmin} = group;
 
         const menuItems = [];
 
-        if (isCreator && !this.lastConfirmationDateOver){
-            menuItems.push(<MenuItem key="menuItem1" onClick={()=>this.edit(event)}>Edit</MenuItem>)
+
+        if (isAdmin){
+            menuItems.push(<MenuItem key="menuItem1" onClick={()=>this.props.editGroup(group)}>Edit Group</MenuItem>);
+            menuItems.push(<MenuItem key="menuItem2" onClick={()=>this.deleteGroup(group.id)}>Delete Group</MenuItem>);
         }
 
-        menuItems.push(<MenuItem key="menuItem2" onClick={this.goHome}>Home</MenuItem>);
-        menuItems.push(<MenuItem key="menuItem3" onClick={this.logout}>Logout</MenuItem>);
+        menuItems.push(<MenuItem key="menuItem5" onClick={this.goHome}>Home</MenuItem>);
+        menuItems.push(<MenuItem key="menuItem6" onClick={this.logout}>Logout</MenuItem>);
 
-        const menuIcon =  <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />;
         return  <div id="app-header">
-            {menuIcon}
+            <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />
 
             {this.state.showMenu &&
             <Menu
@@ -138,8 +72,7 @@ class GroupPage extends Component {
                 anchorEl={ ()=>document.getElementById("menuIcon") }
                 keepMounted
                 open={true}
-                onClose={()=>this.setState({showMenu: !this.state.showMenu})}
-            >
+                onClose={()=>this.setState({showMenu: !this.state.showMenu})} >
 
                 {menuItems}
 
@@ -147,180 +80,774 @@ class GroupPage extends Component {
 
 
 
-            <span id="app-header-text">ImIN</span>
+            <span id="app-header-text">Group Page</span>
         </div>
     };
 
+    createPlayersDataAsFakeGame = () => {
+        const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
+        const max = isMobile ? 7 : 14;
+        const { group: { players} } = this.props;
+
+
+        let playersData = [];
+        if (players.length <max){
+            playersData = players.map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance}));
+        }else{
+
+            let playersSortedByBalance = players.sort((a,b)=> a.balance > b.balance ? -1 :1);
+            let playersSortedByGamesCount = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1);
+            while (playersData.length < max){
+                const playerWithBalance = playersSortedByBalance[0];
+                playersSortedByBalance = playersSortedByBalance.slice(1);
+                if (!playersData.find(p=>p.playerId===playerWithBalance.id)) {
+                    playersData.push({playerId: playerWithBalance.id, buyIn: 0, cashOut: playerWithBalance.balance})
+                }
+                const playerWithGamesCount = playersSortedByGamesCount[0];
+                playersSortedByGamesCount = playersSortedByGamesCount.slice(1);
+                if (!playersData.find(p=>p.playerId===playerWithGamesCount.id)){
+                    playersData.push({playerId: playerWithGamesCount.id, buyIn:0, cashOut: playerWithGamesCount.balance })
+                }
+            }
+        }
+
+        return {
+            playersData
+        }
+    };
+
+    handleNewGameDateChange = (event) =>{
+        const newGame = { ...this.state.newGame, date: event.target.value };
+        this.setState({newGame});
+    };
+    handleNewGameDescriptionChange = (event) =>{
+        const newGame = { ...this.state.newGame, description: event.target.value };
+        this.setState({newGame});
+    };
+    handleEditGameDateChange = (event) =>{
+        const editGame = { ...this.state.editGame, date: event.target.value };
+        this.setState({editGame});
+    };
+    handleEditGameDescriptionChange = (event) =>{
+        const editGame = { ...this.state.editGame, description: event.target.value };
+        this.setState({editGame});
+    };
+
+    createNewGame = () => {
+        const { group, provider, token } = this.props;
+        const game = {
+            date: `${this.state.newGame.date}T20:00:00.000Z`,
+            description: this.state.newGame.description,
+            playersData:[]
+        }
+        console.log('calling create game with body:', game)
+        createGame(group.id, game, provider, token).then((g)=>{
+            this.setState({ newGame: null, editGame: null, gameSummary:null});
+            this.props.updateGame(g);
+        });
+    }
+    createNewPlayer = () => {
+        const { group, provider, token } = this.props;
+        const player = {
+            name: this.state.newPlayer.name,
+            email: this.state.newPlayer.email,
+        }
+        console.log('calling create player with body:', player);
+        createPlayer(group.id, player, provider, token).then((player)=>{
+            this.setState({ newPlayer: null, editPlayer: null,playerSummary:null});
+            this.props.updatePlayerData(player);
+        });
+    }
+    getNewGameSection = () => {
+        const legal = this.state.newGame.date && this.state.newGame.date.length === 10;
+
+        return (<div id="new-game-form">
+                    <h2> Create a new game. </h2>
+                    <div className="new-game-section">
+                        Game date:
+                        <input  className="left-margin" type="date" id="newGameDate" min="2010-01-01" max="2050-01-01" value={this.state.newGame.date} onChange={this.handleNewGameDateChange}/>
+                    </div>
+                    <div className="new-game-section">
+                       description:
+                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.newGame.description} onChange={this.handleNewGameDescriptionChange}/>
+                    </div>
+                    <div className="new-game-section">
+
+                      <button className="button left-margin"  onClick={()=>this.setState({newGame: null})}> Cancel </button>
+                        <button className="button left-margin"  onClick={this.createNewGame} disabled={!legal}> Create </button>
+                    </div>
+
+
+                 </div>);
+    };
+
+    getNewPlayerSection = () => {
+        const legal = this.state.newPlayer.name && this.state.newPlayer.name.length > 0;
+
+        return (<div id="new-player-form">
+                    <h2> Create a new player. </h2>
+
+                    <div className="new-player-section">
+                       name:
+                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.newPlayer.name} onChange={(event)=>{
+                            const newPlayer = {...this.state.newPlayer};
+                            newPlayer.name = event.target.value;
+                            this.setState({newPlayer})
+                        }}/>
+                    </div>
+                    <div className="new-player-section">
+                       email:
+                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.newPlayer.email}onChange={(event)=>{
+                            const newPlayer = {...this.state.newPlayer};
+                            newPlayer.email = event.target.value;
+                            this.setState({newPlayer})
+                        }}/>
+                    </div>
+                    <div className="new-player-section">
+
+                      <button className="button left-margin"  onClick={()=>this.setState({newPlayer: null})}> Cancel </button>
+                        <button className="button left-margin"  onClick={this.createNewPlayer} disabled={!legal}> Create </button>
+                    </div>
+
+
+                 </div>);
+    };
+
+    showCreateGame = () =>{
+        const str = ((new Date()).toISOString()).substring(0,10)
+        this.setState({ newGame: { date:str, description: 'hosted by ..'} })
+    }
+    showCreatePlayer = () =>{
+        this.setState({ newPlayer: {  name: '', email: ''} });
+    }
+
+    onGameEditClick = (game)=>{
+        const editGame = {...game}
+        editGame.date = typeof game.date === 'string' ? game.date.substr(0,10) : ((game.date).toISOString()).substring(0,10);
+        const existingPlayerId = this.findPlayerNotInGame(editGame);
+
+        this.setState({editGame, existingPlayerId});
+    }
+    showGameData = (game) =>{
+        this.setState({ gameSummary: game })
+    }
+
+    showPlayerData = (player) =>{
+        this.setState({ playerSummary: player })
+    }
+
+    getGamePot = (game)=>{
+        return game.playersData.reduce((all, one)=>{
+            return all + one.buyIn;
+        }, 0);
+    }
+    gameDateToString = (game)=>{
+        const addLeaddingZero = (num)=>{
+            const str = `${num}`;
+            if (str.length === 2){
+                return str;
+            } else{
+                return `0${str}`;
+            }
+        };
+
+        const isoDate = typeof  game.date === 'string' ? game.date.substr(0,10) :  game.date.toISOString();
+        const year = parseInt(isoDate.substr(0, 4), 10);
+        const month = addLeaddingZero(parseInt(isoDate.substr(5, 2), 10));
+        const day = addLeaddingZero(parseInt(isoDate.substr(8, 2), 10));
+       // const time = game.date.toTimeString();
+
+        return `${day}/${month}/${year}`;
+    }
+    onPlayerEditClick = (editPlayer) =>{
+        this.setState({ editPlayer });
+    }
+
+    onPlayerDeleteClick = async(playerId) =>{
+        if (confirm("Are you sure?")){
+            try{
+                await deletePlayer(this.props.group.id, playerId, this.props.provider, this.props.token);
+                this.props.updatePlayerRemoved(playerId);
+                this.setState({playerSummary:null})
+            }catch(error){
+                console.error('deletePlayerById error',error);
+            }
+        }
+    }
+
+
+    getPlayerSummary = () =>{
+        const { group } = this.props;
+        const { isAdmin} = group;
+
+
+        return (
+            <div className="playerSummary">
+                <div className="playerSummaryHeader">
+                    <div>
+                        name: {this.state.playerSummary.name}
+                    </div>
+                    <div>
+                        email: {this.state.playerSummary.email}
+                    </div>
+                    <div>
+                        image: {this.state.playerSummary.imageUrl}
+                    </div>
+                    {this.state.playerSummary.imageUrl && this.state.playerSummary.imageUrl.length >0 && <img className="playerPageImage" src={this.state.playerSummary.imageUrl}/>}
+                </div>
+                <div className="buttons-section">
+                    <button onClick={()=>this.setState({playerSummary:null})}>Back</button>
+                    {isAdmin && <button onClick={()=>this.onPlayerEditClick(this.state.playerSummary)} className="left-margin">Edit</button>}
+                    {isAdmin && <button onClick={()=>this.onPlayerDeleteClick(this.state.playerSummary.id)} className="left-margin">Delete</button>}
+                </div>
+
+
+            </div>
+        );
+    }
+    getGamesSummary = () =>{
+        const { group } = this.props;
+        const { isAdmin} = group;
+        return (
+            <div id="gameSummary">
+                <div id="gameSummaryHeader">
+                    <div>
+                        Game summary: {this.gameDateToString(this.state.gameSummary)}
+                    </div>
+                    <div>
+                        {this.state.gameSummary.description}
+                    </div>
+                    <div>
+                        pot size:  {this.getGamePot(this.state.gameSummary)}
+                    </div>
+                </div>
+
+                <GameData Group={group} Game={this.state.gameSummary} />
+                <button onClick={()=>this.setState({editGame:null, gameSummary:null})}>Back</button>
+                {isAdmin && <button onClick={()=>this.onGameEditClick(this.state.gameSummary)} className="left-margin">Edit</button>}
+            </div>
+        );
+    }
+
+    isGameReady = (game)=>{
+        const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
+        const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
+        const diff = totalBuyIn - totalCashOut;
+        const ready = diff === 0 && game.playersData.length >1;
+        return { ready, diff };
+    };
+
+    removePlayerFromGame = (playerId) =>{
+        const editGame = this.state.editGame;
+        editGame.playersData = editGame.playersData.filter(player => player.playerId !==playerId);
+
+        this.setState({editGame})
+    }
+    updateSelectedGame = () =>{
+        const { group, provider, token } = this.props;
+        const data = {
+            id: this.state.editGame.id,
+            date: `${this.state.editGame.date}T20:00:00.000Z`,
+            description: this.state.editGame.description,
+            playersData:this.state.editGame.playersData
+        };
+        console.log('calling update game with body:', data);
+        updateGame(group.id, data.id, data, provider, token).then((game)=>{
+            this.setState({ newGame: null, editGame: null, gameSummary:game});
+            this.props.updateGame(game);
+        });
+
+    }
+    editGamePlayer = (playerId) =>{
+        const game = this.state.editGame;
+        const playerData = game.playersData.find(p=>p.playerId===playerId);
+        const editPlayerInGame = { playerId, buyIn: playerData.buyIn,cashOut: playerData.cashOut };
+        this.setState({editPlayerInGame });
+    }
+    findPlayerNotInGame = (game)=>{
+        const {group} = this.props;
+        const PLAYERS = {};
+        const GAME_PLAYERS = {};
+        group.players.forEach(player=>{
+            PLAYERS[player.id] = player;
+        });
+
+        game.playersData.forEach(player=>{
+            GAME_PLAYERS[player.playerId] = player;
+        });
+        const playa = group.players.find(player => !GAME_PLAYERS[player.id]);
+
+        return playa ? playa.id : null;
+
+    };
+    handleNewPlayerChange = (existingPlayerId)=> {
+        this.setState({existingPlayerId});
+    };
+
+    addCurrentPlayerToGame = () =>{
+        if (!this.state.existingPlayerId){
+
+            return;
+        }
+        const {group} = this.props;
+
+        const editGame = {...this.state.editGame};
+        editGame.playersData.push({
+            buyIn: 50,
+            cashOut: 0,
+            gameId: editGame.id,
+            groupId: group.id,
+            playerId: this.state.existingPlayerId,
+            index: editGame.playersData.length,
+        });
+
+        const existingPlayerId = this.findPlayerNotInGame(editGame);
+        this.setState({existingPlayerId, editGame});
+    };
+
+    saveEditedPlayer = () =>{
+        const { group, provider, token } = this.props;
+        const player = {
+            id: this.state.editPlayer.id,
+            name: this.state.editPlayer.name,
+            email: this.state.editPlayer.email,
+            imageUrl: this.state.editPlayer.imageUrl,
+        }
+        console.log('saveEditedPlayer player', player)
+        updatePlayer(group.id, player.id, player, provider, token).then((p)=>{
+            this.setState({ newPlayer: null, editPlayer: null,playerSummary:null});
+            this.props.updatePlayerData(p);
+        });
+    }
+    getPlayerEdit = () =>{
+        return (
+            <div className="playerEditForm">
+                <div className="playerSummaryHeader">
+                    <div>
+                        name: {this.state.editPlayer.name}
+                        <input  type="text" id="playerName" className="bordered-input left-margin left-pad" value={this.state.editPlayer.name} onChange={(event)=>{
+                            const editPlayer = {...this.state.editPlayer};
+                            editPlayer.name = event.target.value || '';
+                            this.setState({editPlayer});
+                        }}/>
+
+                    </div>
+                    <div>
+                        email:
+                        <input  type="text" id="playerEmail" className="bordered-input left-margin left-pad" value={this.state.editPlayer.email} onChange={(event)=>{
+                            const editPlayer = {...this.state.editPlayer};
+                            editPlayer.email = event.target.value || '';
+                            this.setState({editPlayer});
+                        }}/>
+                    </div>
+                    <div>
+                        image:
+                        <input  type="text" id="playerImage" className="bordered-input left-margin left-pad" value={this.state.editPlayer.imageUrl||''} onChange={(event)=>{
+                            const editPlayer = {...this.state.editPlayer};
+                            editPlayer.imageUrl = event.target.value || '';
+                            this.setState({editPlayer});
+                        }}/>
+                    </div>
+
+                    {this.state.editPlayer.imageUrl && this.state.editPlayer.imageUrl.length >0 && <img className="playerPageImage" src={this.state.editPlayer.imageUrl}/>}
+                </div>
+
+                <div className="buttons-section">
+                    <button onClick={()=>this.setState({editPlayer:null})}>Back</button>
+                    <button onClick={this.saveEditedPlayer} className="left-margin">Save</button>
+
+                </div>
+
+
+            </div>
+        );
+
+    }
+    getGamesEdit = () =>{
+        const { group } = this.props;
+        const PLAYERS = {};
+        const GAME_PLAYERS = {};
+        group.players.forEach(player=>{
+            PLAYERS[player.id] = player;
+        });
+        const game = this.state.editGame;
+
+        game.playersData.forEach(player=>{
+            GAME_PLAYERS[player.playerId] = player;
+        });
+        const players = game.playersData.map(playerData=>{
+            const playerName = PLAYERS[playerData.playerId].name;
+            const playerImageUrl = PLAYERS[playerData.playerId].imageUrl;
+            const onImageError = (ev)=>{
+                if (!ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src= playerImageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+
+            const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL}  onError={onImageError} /> ;
+
+            return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
+                <button className="button" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </button>
+                {image}
+                {playerName} <span className="gray-seprator"> |</span>
+                buy-in: {playerData.buyIn} <span className="gray-seprator"> |</span>
+                cash-out: {playerData.cashOut} <span className="gray-seprator"> |</span>
+                balance: {playerData.cashOut - playerData.buyIn}
+
+                <button className="button remove-player-from-game" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </button>
+
+            </div>);
+        });
+
+
+        const comboVals = group.players.filter(player => !GAME_PLAYERS[player.id]).map(player =>
+            (
+                <option key={`_comboVals_${player.id}`} value={player.id}>
+                    { player.name }
+                </option>
+            )
+        );
+        const { ready, diff } = this.isGameReady(game);
+
+        return (<div className="game-edit-div">
+                    <h2> edit game. </h2>
+                    <div className="new-game-section">
+                        Game date:
+                        <input  className="left-margin" type="date" id="newGameDate" min="2010-01-01" max="2050-01-01" value={this.state.editGame.date} onChange={this.handleEditGameDateChange}/>
+                    </div>
+                    <div className="new-game-section">
+                        description:
+                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.editGame.description} onChange={this.handleEditGameDescriptionChange}/>
+                    </div>
+                    <div>
+                        <div>
+                            <u>{players.length} Players:</u>
+                        </div>
+
+                        <div>
+                            {players}
+                        </div>
+                    </div>
+
+                    <hr/>
+                {
+                    comboVals.length >0 ? (
+                        <div>
+                            <select name="player" value={this.state.existingPlayerId} onChange={(e)=>this.handleNewPlayerChange(e.target.value)}>
+                                {comboVals}
+                            </select>
+                            <button className="button left-margin" onClick={this.addCurrentPlayerToGame}> Add</button>
+                        </div>
+                    ) :<div>no more players</div> }
+                <hr/>
+                <div>
+                    <button className="button left-margin" onClick={()=> this.setState({editGame: null})}> Cancel</button>
+                    <button className="button left-margin" onClick={this.updateSelectedGame}> Save</button>
+                </div>
+                <div>
+                    <br/>
+                    <h3>{ready ? '' : `game still not done (${diff>0 ? diff : -1*diff} ${diff>0 ? 'still in pot':'missing from pot'}).`}</h3>
+                </div>
+
+        </div>);
+    }
+    updateSelectedGamePlayerData = ()=>{
+        const editGame = {...this.state.editGame}
+        const { playerId, cashOut, buyIn } = this.state.editPlayerInGame;
+
+        editGame.playersData = editGame.playersData.map(pd => {
+            if (pd.playerId !== playerId) return pd;
+            return {...pd, cashOut, buyIn };
+        });
+        this.setState({editGame,editPlayerInGame:null});
+    }
+    getEditPlayerInGame = ()=>{
+        const game = this.state.editGame;
+        const { playerId, cashOut, buyIn } = this.state.editPlayerInGame;
+        const player = this.props.group.players.find(p=>p.id===playerId);
+
+
+
+        const onImageError = (ev)=>{
+            if (!ev.target.secondTry){
+                ev.target.secondTry = true;
+                ev.target.src= player.imageUrl;
+            }else{
+                ev.target.src=ANON_URL;
+            }
+        };
+
+        const image = <img alt={player.name} className="playersListImage" src={player.imageUrl || ANON_URL}  onError={onImageError} /> ;
+        const currentPlayerBuyIn = buyIn;
+        const currentPlayerCashOut = cashOut;
+        const maxBuyInRange = currentPlayerBuyIn+300;
+        const maxCashOut = game.playersData.map(data=> data.buyIn - data.cashOut).reduce((all,item)=>(all+item),0);
+
+        const maxCashOutRange = currentPlayerCashOut + maxCashOut;
+
+        return (<div className="edit-player-in-game">
+            <div>
+                <h2>edit player game data:</h2>
+                <h1>{image}{player.name}</h1>
+            </div>
+            <hr/>
+            <div>
+                buy-in:   <input className="editPlayerInput" type="number"  id="buyIn"
+                                 value={this.state.editPlayerInGame.buyIn}
+                                 onChange={(event)=>{
+                                     const editPlayerInGame = {...this.state.editPlayerInGame};
+                                     editPlayerInGame.buyIn=parseInt(event.target.value);
+                                     this.setState({ editPlayerInGame });
+                                 }}/>
+
+                                 <button className="button saveButton" onClick={()=>{
+                                     const editPlayerInGame = {...this.state.editPlayerInGame};
+                                     editPlayerInGame.buyIn=editPlayerInGame.buyIn + 10;
+                                     this.setState({ editPlayerInGame });
+                                 }}> +10 </button>
+                <br/>
+                <br/>
+                <InputRange className="InputRange"
+                            step={10}
+                            formatLabel={value => `${value}₪`}
+                            maxValue={maxBuyInRange}
+                            minValue={0}
+                            value={this.state.editPlayerInGame.buyIn}
+                            onChange={(buyIn) => {
+                                const editPlayerInGame = {...this.state.editPlayerInGame};
+                                editPlayerInGame.buyIn=buyIn;
+                                this.setState({ editPlayerInGame });
+                            }} />
+
+                <br/>
+                <br/>  <br/>
+                <br/>
+            </div>
+            <div>
+                cash-out:  <input className="editPlayerInput" type="number"  id="cashOut"
+                                  value={this.state.editPlayerInGame.cashOut}
+                                  onChange={(event)=>{
+                                      const editPlayerInGame = {...this.state.editPlayerInGame};
+                                      editPlayerInGame.cashOut=parseInt(event.target.value);
+                                      this.setState({ editPlayerInGame });
+                                  }}/>
+
+                                    <button className="button saveButton" onClick={()=>{
+                                        const editPlayerInGame = {...this.state.editPlayerInGame};
+                                        editPlayerInGame.cashOut=editPlayerInGame.cashOut + 10;
+                                        this.setState({ editPlayerInGame });
+                                    }}> +10 </button>
+                <br/>
+                <br/>
+                <InputRange className="InputRange"
+                            step={10}
+                            formatLabel={value => `${value}₪`}
+                            maxValue={maxCashOutRange}
+                            minValue={0}
+                            value={this.state.editPlayerInGame.cashOut}
+                            onChange={cashOut => {
+                                const editPlayerInGame = {...this.state.editPlayerInGame};
+                                editPlayerInGame.cashOut=cashOut;
+                                this.setState({ editPlayerInGame });
+                            }} />
+
+            </div>
+            <div>
+                <br/> <br/>
+                balance: {this.state.editPlayerInGame.cashOut - this.state.editPlayerInGame.buyIn}
+            </div>
+            <div>
+                <button className="button" onClick={()=> this.setState({editPlayerInGame:null})}> Cancel</button>
+                <button className="button left-margin" onClick={this.updateSelectedGamePlayerData}> Save</button>
+            </div>
+        </div>);
+    }
+
+    getGamesTab = () =>{
+        const { group } = this.props;
+        const {games} = group;
+
+        if (this.state.newGame){
+            return this.getNewGameSection()
+        }
+        if (this.state.editGame){
+            if (this.state.editPlayerInGame){
+                return this.getEditPlayerInGame()
+            }
+            return this.getGamesEdit();
+        }
+
+        if (this.state.gameSummary){
+            //const game = this.state.gameSummary;
+            return this.getGamesSummary();
+            //
+            // const { ready } = this.isGameReady(game);
+            // if (ready) return this.getGamesSummary();
+            //
+            // return <OnGoingGame group={group} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={()=>{}}/>
+
+
+        }
+
+        const GAMES = games.sort((a,b)=> a.date > b.date ? -1 : 1).map(game => {
+            const { ready } = this.isGameReady(game);
+            const pot = this.getGamePot(game);
+            const style = {
+                backgroundImage: `url(${game.imageUrl || this.getImage()})`,
+                borderRadiusTop: '50px',
+            };
+
+            return (
+                        <div key={game.id} className={`game-item-div ${ready?'':'game-item-div-not-ready'}`}  onClick={()=>this.showGameData(game)}>
+                            <div key={game.id} className="game-item-div-inner" style={style}>
+                                <div><b>{this.gameDateToString(game) }</b></div>
+                                <div className="group-description">{game.description } </div>
+                                <div className="my-group">{pot} in pot</div>
+
+                            </div>
+
+                            <div className="game-extra-data">
+
+                                <div > {game.playersData.length } players </div>
+                                <div >{ready ? '' : 'GAME NOT READY'} </div>
+                            </div>
+                        </div>
+                   );
+
+        });
+
+
+
+        return (<div id="all-games-div" >
+            <div className="row">
+                <div className="col-xs-6">
+                    <div className="game-item-div plus-sign" onClick={this.showCreateGame}>
+                        +
+                    </div>
+                </div>
+
+                {GAMES}
+
+            </div>
+        </div>)
+
+    }
+
+    getPlayersTab = () =>{
+        const { group } = this.props;
+        const {players} = group;
+
+        if (this.state.newPlayer){
+            return this.getNewPlayerSection()
+        }
+        if (this.state.editPlayer){
+            return this.getPlayerEdit();
+        }
+
+        if (this.state.playerSummary){
+            return this.getPlayerSummary()
+        }
+        console.log('players',players)
+        const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player => {
+
+            const style = {
+                backgroundImage: `url(${player.imageUrl || this.getImage()})`,
+                borderRadiusTop: '50px',
+            };
+
+            return (
+                        <div key={player.id} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
+                            <div key={player.id} className="player-item-div-inner" style={style}>
+                                <div><b>{player.name}</b></div>
+
+                            </div>
+
+                            <div className="player-extra-data">
+                                {  player.gamesCount ?
+                                 (<div>
+                                         <div>  {player.gamesCount} games</div>
+                                     <div>  {player.balance}₪ </div>
+                                 </div>) :
+                                 <div>no games yet</div> }
+
+                            </div>
+                        </div>
+                   );
+
+        });
+
+
+
+        return (<div id="all-games-div" >
+            <div className="row">
+                <div className="col-xs-6">
+                    <div className="player-item-div plus-sign" onClick={this.showCreatePlayer}>
+                        +
+                    </div>
+                </div>
+
+                {PLAYERS}
+
+            </div>
+        </div>)
+
+    }
+
     render() {
-        const { event, user } = this.props;
-        const isCreator = event.creatorId === user.id;
+        const { group } = this.props;
+
+        const fakeGameData = this.createPlayersDataAsFakeGame();
+
 
         const header = this.getHeader();
 
-        const attending = event.participants.some(participant => participant.id === user.id);
-        const eventDay = days[event.startDate.getDay()];
-
-        const eventDate = `${event.startDate.getDate()}/${event.startDate.getMonth() +1}/${event.startDate.getFullYear()}`;
-        const hours = `${event.startDate.getHours()}`;
-        const minutes = `${event.startDate.getMinutes()}`;
-        const eventTime = `${hours.length===1 ? '0':''}${hours}:${minutes.length===1 ? '0':''}${minutes}`;
         const style = {
             backgroundImage: this.backgroundImage,
         };
 
-        const creator = event.participants.find(participant => participant.id === event.creatorId);
-        const creatorImage = creator ? creator.imageUrl : null;
-        const totalParticipants = event.participants.length;
-        const participants = event.participants.slice(0,4).map((participant,index)=>{
-            return <img alt="" className={`event-participantImage event-participantImage${index+1}`} src={participant.imageUrl} key={`event${event.id}_participant${participant.id}`}/>
-        });
-        if (participants.length < totalParticipants){
-            const more = totalParticipants - participants.length;
-            participants.push(<div className="more-participants-circle"> +{more}</div>)
-        }
-        const maxParticipants = event.maxParticipants;
-        const rankingStage = isCreator && this.eventIsOver;
-        const allParticipants = event.participants.map((participant,index)=>{
-            const eventCreator = participant.id === creator.id;
-            const thumbUpPressed = rankingStage && participant.thumb === 1;
-            const thumbDownPressed = rankingStage && participant.thumb === -1;
-            const buttonMode = rankingStage && !eventCreator && index < maxParticipants;
-            const colloredThumb = !rankingStage || eventCreator || index >= maxParticipants;
-            return (<div className="event-page-all-participant-item row" key={`event${event.id}_all_participant${participant.id}`}>
-                {index === maxParticipants && (
-                    <div className="col-xs-12 line" >
-                        <u>standby</u>
-                    </div>
-                )}
-                <div className="col-xs-4" >
-                    <img alt="" className="event-page-all-participant-item-image" src={participant.imageUrl} />
-                </div>
-                <div className="col-xs-5 event-page-all-participant-item-name" >
-                    <div> {participant.firstName} {participant.familyName}</div>
-                    <span className="participant-additional-item" >{participant.additionalItem && participant.additionalItem.length>0 ? ` (${participant.additionalItem})`:''}</span>
-                </div>
-                <div className="col-xs-3 thumbs-div row" >
-                    <div className="col-xs-6" >
-                        <div className={buttonMode ?'ranking-button-mode':''} onClick={buttonMode ? ()=>this.onThumbUpClick(participant.id, thumbUpPressed) : ()=>{}} ><img alt="thumbsUp" className="thumbs-image" src={colloredThumb || thumbUpPressed ?"thumb_up.png": "thumb_up_gray.png"} /></div>
-                        <div className="thumbs-text" >  {participant.thumbsUp}</div>
-                    </div>
-                    <div className="col-xs-6" >
-                        <div className={buttonMode ?'ranking-button-mode':''} onClick={buttonMode ? ()=>this.onThumbDownClick(participant.id, thumbDownPressed) : ()=>{}}><img alt="thumbsDown" className="thumbs-image" src={colloredThumb || thumbDownPressed ? "thumb_down.png" : "thumb_down_gray.png"} /></div>
-                        <div className="thumbs-text">  {participant.thumbsDown}</div>
-                    </div>
-                </div>
-            </div>)
-        });
-
-        const showDropbox =  this.allItems && !attending;
-
-        const dropdown = !showDropbox ? <span/> : (
-                <select id="Dropdown" value={this.state.selectedItem}
-                        onChange={(e) => this.setState({selectedItem: e.target.value})}>
-
-                    {this.allItems.map((item,index)=>{
-                        return  <option key={`${item}_${index}`} value={item}>{item}</option>
-                    })}
-                </select>
-            )
-
-
-
+        const gamesTab = this.getGamesTab();
+        const playersTab = this.getPlayersTab();
         return (
-            <div id="container">
+            <div id="container" className="group-page">
                 {header}
-                <div id="event-image-title-and-timer" className="event-image-title-and-timer" style={style}>
+                <div id="group-image-title" className="group-image-title" style={style}>
                     <div className="row">
                         <div className="col-xs-8 event-page-title">
-                            <div>{event.title}</div>
-                            <div  className="event-page-description">{event.description}</div>
+                            <div>{group.name}</div>
+                            <div  className="event-page-description">{group.description}</div>
 
-                        </div>
-                        <div className="col-xs-1">
-
-                        </div>
-                        <div className="col-xs-3">
-                            { creatorImage &&  <img alt="" className="event-image-creator-image" src={creatorImage}/> }
                         </div>
                     </div>
-                    <div className="row timer-div">
-
-                        <div className="col-xs-2 event-timer-item">
-
-                            <span className="event-timer-number">{this.state.days}</span> <br/>
-                            <span className="event-timer-title">days</span>
-                        </div>
-                        <div className="col-xs-2 event-timer-item">
-                            <span className="event-timer-number">{this.state.hours}</span> <br/>
-                            <span className="event-timer-title">hours</span>
-                        </div>
-                        <div className="col-xs-2 event-timer-item">
-                            <span className="event-timer-number">{this.state.minutes}</span> <br/>
-                            <span className="event-timer-title">minutes</span>
-                        </div>
-                        <div className="col-xs-2 event-timer-item">
-                            <span className="event-timer-number">{this.state.seconds}</span> <br/>
-                            <span className="event-timer-title">seconds</span>
-                        </div>
-                        <div className="col-xs-12 timer-purpose-div">
-                            <span className="timer-purpose-text"> {
-                                !this.lastConfirmationDateOver ? 'To approve attending':
-                                    ( !this.eventTime && !this.eventIsOver ? 'till event' : (this.eventTime ? 'till event ends': 'since event ended'))
-
-                            }</span> <br/>
-
-                        </div>
-                        <div id="event-participants">
-                            {participants}
-                        </div>
-                    </div>
-
-
                 </div>
 
-                <div id="event-details-div">
-                    <div id="event-date-text">
-                       <DateRangeIcon/> {eventDay}, {eventDate} {eventTime}
-                    </div>
-                    <div id="event-location-text">
-                       <LocationOnIcon/> {event.location}
-                    </div>
-                    { showDropbox &&
-                        <div id="event-dropdown-div">
-                            <AppsIcon/> select one: {dropdown}
-                        </div>
-                    }
+                <div id="group-page-data">
+                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" activeKey={this.state.tabKey} onSelect={this.onKeyChange}>
+                        <Tab eventKey="summary" title="summary">
+                            <GameData Group={group} Game={fakeGameData} IsGroupSummary={true}/>
+                        </Tab>
+                        <Tab eventKey="games" title="Games">
+                            <div id="games-tab">
+                                {gamesTab}
+                            </div>
 
-                    {
-                        !this.lastConfirmationDateOver ?
-                        (<button className="approve-button approval-mode" onClick={()=>this.attendOrUnattend(attending, event.id)} >{attending ? "I'M OUT": "I'M IN"}</button>) :
-                        ( (!this.eventTime && !this.eventIsOver) ? (<div id="is-event-on-text"  className={this.eventOn ?'event-on':'event-canceled'}>{this.eventOn ? "IT IS ON!" : "EVENT CANCELED.."} </div>) :
-                        ( this.eventTime ? (<div id="is-event-on-text"  className={this.eventOn ?'event-ongoing':'event-canceled'}>{this.eventOn ? "EVENT ONGOING" : "EVENT CANCELED.."} </div>):(<div id="is-event-on-text"  className={this.eventOn ?'event-over':'event-canceled'}>{this.eventOn ? "EVENT OVER" : "EVENT CANCELED.."} </div>)))
+                        </Tab>
+                        <Tab eventKey="players" title="Players">
+                            <div id="players-tab">
+                                {playersTab}
+                            </div>
+                        </Tab>
+                        <Tab eventKey="statistics" title="Statistics">
+                            statistics
+                        </Tab>
 
-                    }
-
-
-
-
-                    <div id="event-all-participants">
-
-                        <u>participants:</u><br/>
-                        {allParticipants}
-                    </div>
-                     <div id="add-to-my-calendar">  <AddToCalendar event={this.calendarEvent}/></div>
-
-                    {
-                       navigator.share &&
-                        <button id="share-button" onClick={()=>navigator.share({
-                            title: 'ImIN',
-                            text: `${event.title} - ${event.description}, ${event.location}, ${event.startDate}`,
-                            url: `https://im-in.herokuapp.com?eventId=${event.id}`
-                        })} >Share Event</button>
-                    }
-
-
-
+                    </Tabs>
                 </div>
+
+
             </div>
         );
 

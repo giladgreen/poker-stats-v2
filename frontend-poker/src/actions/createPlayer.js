@@ -2,12 +2,12 @@
 import request from 'request';
 import URL_PREFIX from '../url';
 
-async function createPlayer(groupId, playerName, provider, token) {
+async function createPlayer(groupId, playerData, provider, token) {
   return new Promise((resolve, reject) => {
     const options = {
       method: 'POST',
       url: `${URL_PREFIX}/groups/${groupId}/players`,
-      body: JSON.stringify({ name: playerName }),
+      body: JSON.stringify(playerData),
       headers: {
         provider,
         'x-auth-token': token,

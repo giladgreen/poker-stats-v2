@@ -21,17 +21,18 @@
     padding-top: 5px;
 }
 
-#rect-img{
+#sheep-img{
     width: 10vw;
     position: absolute;
     top:3.4vh;
     left:45vw;
 }
-#volunteer-img{
-    width: 25vw;
+#chips-img{
     position: absolute;
+    width: 25vw;
     top:25.5vh;
     left:37vw;
+    z-index: 2;
 }
 #hand-img{
     width: 14vw;
@@ -71,7 +72,8 @@
     height: 18vh;
 }
 #login-space2{
-    height: 20vh;
+    height: 45vh;
+
 }
 @media screen and (max-width: 800px) {
 
@@ -85,17 +87,16 @@
         font-size: 1em;
     }
 
-    #rect-img{
+    #sheep-img{
         width: 30vw;
         top:8vh;
         left:35vw;
     }
-    #volunteer-img{
+    #chips-img{
         width: 80vw;
-        height: 33vh;
-        position: absolute;
         top:32vh;
         left:10vw;
+        height: 33vh;
     }
     #hand-img{
         width: 27vw;

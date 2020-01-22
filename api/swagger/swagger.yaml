@@ -14,6 +14,39 @@ paths:
   /swagger:
     x-swagger-pipe: swagger_raw
 
+  /api/v2/notifications:
+    x-swagger-router-controller: notifications
+    post:
+      operationId: registerNotifications
+      parameters:
+        - name: body
+          in: body
+          description: RegisterNotificationsRequestDefinition
+          required: true
+          schema:
+            $ref: "#/definitions/RegisterNotificationsRequestDefinition"
+      responses:
+        201:
+          description: RegisterNotificationsResponseDefinition
+          schema:
+            $ref: "#/definitions/RegisterNotificationsResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: unregisterNotifications
+      responses:
+        204:
+          description: UnregisterNotificationsResponseDefinition
+          schema:
+            $ref: "#/definitions/UnregisterNotificationsResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
   /api/v2/groups:
     x-swagger-router-controller: groups
     parameters:
@@ -467,6 +500,13 @@ definitions:
     properties:
       name:
         type: string
+  RegisterNotificationsRequestDefinition:
+    type: object
+  RegisterNotificationsResponseDefinition:
+    type: object
+  UnregisterNotificationsResponseDefinition:
+    type: object
+
 
 parameters:
   GroupId:
