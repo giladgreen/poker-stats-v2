@@ -7,6 +7,7 @@ import createPlayer from '../actions/createPlayer';
 import deletePlayer from '../actions/deletePlayer';
 import updatePlayer from '../actions/updatePlayer';
 import updateGame from '../actions/updateGame';
+import deleteGame from '../actions/deleteGame';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -225,6 +226,7 @@ class GroupPage extends Component {
         this.setState({ newPlayer: {  name: '', email: ''} });
     }
 
+
     onGameEditClick = (game)=>{
         const editGame = {...game}
         editGame.date = typeof game.date === 'string' ? game.date.substr(0,10) : ((game.date).toISOString()).substring(0,10);
@@ -349,8 +351,9 @@ class GroupPage extends Component {
                 </div>
 
                 <GameData Group={group} Game={this.state.gameSummary} />
-                <button onClick={()=>this.setState({editGame:null, gameSummary:null})}>Back</button>
-                {isAdmin && <button onClick={()=>this.onGameEditClick(this.state.gameSummary)} className="left-margin">Edit</button>}
+                <button onClick={()=>this.setState({editGame:null, gameSummary:null})} className="button">Back</button>
+                {isAdmin && <button onClick={()=>this.onGameEditClick(this.state.gameSummary)} className="button left-margin">Edit</button>}
+                {isAdmin && <button onClick={this.deleteSelectedGame} className="button left-margin">Delete</button>}
             </div>
         );
     }
@@ -383,7 +386,23 @@ class GroupPage extends Component {
             this.props.updateGame(game);
         });
 
-    }
+    };
+
+    deleteSelectedGame = ()=>{
+        if (confirm("Are you sure?")){
+            try{
+                const { group, provider, token } = this.props;
+                const gameId = this.state.gameSummary.id;
+                deleteGame(group.id, gameId, provider, token).then(()=>{
+                    this.setState({ newGame: null, editGame: null, gameSummary:null});
+                    this.props.removeGame(gameId);
+                });
+            }catch(error){
+                console.error('deleteSelectedGame error', error);
+            }
+        }
+    };
+
     editGamePlayer = (playerId) =>{
         const game = this.state.editGame;
         const playerData = game.playersData.find(p=>p.playerId===playerId);
@@ -741,7 +760,7 @@ class GroupPage extends Component {
             const { ready } = this.isGameReady(game);
             if (ready) return this.getGamesSummary();
 
-            return <OnGoingGame group={group} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
+            return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}  group={group} user={this.props.user} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
 
 
         }

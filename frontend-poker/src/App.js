@@ -264,6 +264,14 @@ class App extends Component {
         }
         this.setState({showGroupPage})
     }
+    removeGame = (gameId)=>{
+        console.log('app game remove', gameId);
+        const showGroupPage = {...this.state.showGroupPage};
+        showGroupPage.games = showGroupPage.games.filter(g=>{
+            return (g.id !== gameId)
+        });
+        this.setState({showGroupPage})
+    }
 
     render() {
 
@@ -280,7 +288,7 @@ class App extends Component {
         }
 
         if (showGroupPage){
-            return <GroupPage goHome={this.goHome} group={showGroupPage} user={this.state.user} updatePlayerRemoved={this.updatePlayerRemoved} updateGame={this.updateGame} updatePlayerData={this.updatePlayerData}  editGroup={this.editGroup} deleteGroup={this.delGroup}  provider={this.state.provider} token={ this.state.token} logout={this.logout}/>
+            return <GroupPage goHome={this.goHome} group={showGroupPage} user={this.state.user} updatePlayerRemoved={this.updatePlayerRemoved} updateGame={this.updateGame} updatePlayerData={this.updatePlayerData}  editGroup={this.editGroup} deleteGroup={this.delGroup} removeGame={this.removeGame}  provider={this.state.provider} token={ this.state.token} logout={this.logout}/>
         }
 
         if (showGroupCreationForm){

@@ -73,7 +73,7 @@ class OnGoingGame extends Component {
             const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
             const positive = player.cashOut - player.buyIn > 0;
             const balance = player.cashOut ? `${positive ? '+':''}${player.cashOut - player.buyIn}₪` : '';
-                return  (<div>
+                return  (<div key={`player${index}`}>
                         <div className={`player player-${(index + 1)}`}>
                             <div className="balance-value">{balance}</div>
                            <div className="bank">
@@ -117,7 +117,8 @@ class OnGoingGame extends Component {
             this.interval = setInterval(this.props.updateOnProgressGame,10000);
         }
 
-        const {onBack, game} = this.props;
+        const {onBack, game, group} = this.props;
+        const {isAdmin} = group;
         if (!game){
             return (
                 <div>
@@ -139,8 +140,9 @@ class OnGoingGame extends Component {
                     <h4>{game.playersData.length} Players. {game.description} </h4>
                     <br/>
                     <div className="backButton">
-                        <button className="button" onClick={this.onBackClicked}> Back</button>
-                        <button className="button" onClick={this.onEditClicked}> Edit</button>
+                        <button className="button " onClick={this.onBackClicked}> Back</button>
+                        <button className="button left-margin" onClick={this.onEditClicked}> Edit</button>
+                        {isAdmin && <button onClick={this.props.deleteSelectedGame} className="button left-margin">Delete</button>}
                     </div>
 
                 </div>
