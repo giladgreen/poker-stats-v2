@@ -370,8 +370,9 @@ select{
     text-shadow: 2px 2px black;
     padding: 10px;
     width: 20vw;
-    height: 14vw;
+    height: 20vw;
     font-size: 2.7em;
+    border-radius: 50px;
 
 }
 
@@ -626,17 +627,19 @@ select{
         width: 40vw;
         height: 40vw;
         margin: 2.9vw;
-
+        border-radius: 20px;
 
     }
 
     .player-item-div-inner{
         text-shadow: 2px 2px black;
-        font-size: 1em;
+        font-size: 1.2em;
         border-radius-top: 5px;
         padding: 5px;
+        padding-left: 10px;
         width: 40vw;
-        height: 25vw;
+        height: 40vw;
+        border-radius: 20px;
     }
 
     #gameSummaryHeader{

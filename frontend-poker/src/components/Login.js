@@ -96,21 +96,30 @@ class Login extends Component {
 
         return (
             <div id="login-page">
-
-                <img id="sheep-img" src="sheep.png" alt='sheep'/>
-                <img id="chips-img" src="Casino-Poker-Chips.png" alt='Chips'/>
-                <div id="login-space1"/>
-                <span className="login-app-name"> P&#1465;o&#1462;ker&#1456;S&#1463;tats</span>
-                <div id="login-space2"/>
-                {facebook}
-                {google}
-
-                <div id="loginErrorSection">
-                    {this.state.error ? this.state.error : ''}
-                </div>
                 <div id="version">
                     version: {version}
                 </div>
+                <div>
+                    <img id="sheep-img" src="sheep.png" alt='sheep'/>
+                </div>
+
+                <div>
+                    <img id="pokerStatsLogo" src="pokerStatsLogo.png" alt='Chips'/>
+                </div>
+
+                <div>
+                    <img id="chips-img" src="Casino-Poker-Chips.png" alt='Chips'/>
+
+                </div>
+
+                <div id="login-buttons-div">
+                    {facebook}
+                    {google}
+                </div>
+                <div id="loginErrorSection">
+                    {this.state.error ? this.state.error : ''}
+                </div>
+
             </div>
         );
 

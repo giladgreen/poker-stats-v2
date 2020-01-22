@@ -16,7 +16,8 @@ import GameData from './GameData';
 import OnGoingGame from './OnGoingGame';
 import CONSTS from '../CONSTS';
 const { ANON_URL } = CONSTS;
-
+const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
+const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 class GroupPage extends Component {
 
     getImage=()=>{
@@ -785,7 +786,7 @@ class GroupPage extends Component {
         const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player => {
 
             const style = {
-                backgroundImage: `url(${player.imageUrl || this.getImage()})`,
+                backgroundImage: `url(${player.imageUrl || FULL_ANON_URL})`,
                 borderRadiusTop: '50px',
             };
 
@@ -793,17 +794,12 @@ class GroupPage extends Component {
                         <div key={player.id} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
                             <div key={player.id} className="player-item-div-inner" style={style}>
                                 <div><b>{player.name}</b></div>
-
-                            </div>
-
-                            <div className="player-extra-data">
                                 {  player.gamesCount ?
-                                 (<div>
-                                         <div>  {player.gamesCount} games</div>
-                                     <div>  {player.balance}₪ </div>
-                                 </div>) :
-                                 <div>no games yet</div> }
-
+                                    (<div>
+                                        <div>  {player.gamesCount} games</div>
+                                        <div>  {player.balance}₪ </div>
+                                    </div>) :
+                                    <div>no games yet</div> }
                             </div>
                         </div>
                    );

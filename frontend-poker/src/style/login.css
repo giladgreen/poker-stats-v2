@@ -23,32 +23,12 @@
 
 #sheep-img{
     width: 10vw;
-    position: absolute;
-    top:3.4vh;
-    left:45vw;
+    margin-top: 2vh;
 }
 #chips-img{
-    position: absolute;
     width: 25vw;
-    top:25.5vh;
-    left:37vw;
-    z-index: 2;
 }
-#hand-img{
-    width: 14vw;
-    position: absolute;
-    top:28vh;
-    left:42vw;
-}
-.login-app-name{
-    font-size: 4.0em;
-    font-family: serif;
 
-}
-.login-app-name-space{
-    font-size: 1em;
-    color:white;
-}
 #version{
     font-size: 1em;
     color: grey;
@@ -68,56 +48,31 @@
     padding: 10px;
     cursor: pointer;
 }
-#login-space1{
-    height: 18vh;
-}
-#login-space2{
-    height: 45vh;
 
-}
 @media screen and (max-width: 800px) {
-
     #login-page {
-
         font-size: 1em;
-        padding-top: 40vw;
+        padding-top: 4vw;
     }
     #loginErrorSection{
         padding-top: 5px;
         font-size: 1em;
     }
-
     #sheep-img{
         width: 30vw;
-        top:8vh;
-        left:35vw;
+        margin-top: 8vh;
     }
     #chips-img{
-        width: 80vw;
-        top:32vh;
-        left:10vw;
-        height: 33vh;
+        width: 85vw;
+        height: 39vh;
+        margin-top: 2vh;
     }
-    #hand-img{
-        width: 27vw;
-        position: absolute;
-        top:34vh;
-        left:36vw;
-    }
-    .login-app-name{
-        margin-top: 100px;
-        font-size: 2.2em;
-        margin-bottom: 40vh;
-    }
-    .login-app-name-space{
-        font-size: 2px;
-    }
+    #pokerStatsLogo{
+        width: 60vw;
 
-    #login-space1{
-        height: 0vh;
     }
-    #login-space2{
-        height: 37vh;
+    #login-buttons-div{
+        padding-top: 5vh;
     }
     #version{
         font-size: 0.9em;
