@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import createGame from '../actions/createGame';
 import createPlayer from '../actions/createPlayer';
 import deletePlayer from '../actions/deletePlayer';
@@ -57,7 +58,6 @@ class GroupPage extends Component {
 
         if (isAdmin){
             menuItems.push(<MenuItem key="menuItem1" onClick={()=>this.props.editGroup(group)}>Edit Group</MenuItem>);
-            menuItems.push(<MenuItem key="menuItem2" onClick={()=>this.deleteGroup(group.id)}>Delete Group</MenuItem>);
         }
 
         menuItems.push(<MenuItem key="menuItem5" onClick={this.goHome}>Home</MenuItem>);
@@ -294,7 +294,7 @@ class GroupPage extends Component {
                     <div>
                         image: {this.state.playerSummary.imageUrl}
                     </div>
-                    {this.state.playerSummary.imageUrl && this.state.playerSummary.imageUrl.length >0 && <img className="playerPageImage" src={this.state.playerSummary.imageUrl}/>}
+                    {this.state.playerSummary.imageUrl && this.state.playerSummary.imageUrl.length >0 && <img alt="" className="playerPageImage" src={this.state.playerSummary.imageUrl}/>}
                 </div>
                 <div className="buttons-section">
                     <button onClick={()=>this.setState({playerSummary:null})}>Back</button>
@@ -341,8 +341,8 @@ class GroupPage extends Component {
     removePlayerFromGame = (playerId) =>{
         const editGame = this.state.editGame;
         editGame.playersData = editGame.playersData.filter(player => player.playerId !==playerId);
-
-        this.setState({editGame})
+        const existingPlayerId = this.findPlayerNotInGame(editGame);
+        this.setState({editGame, existingPlayerId})
     }
     updateSelectedGame = () =>{
         const { group, provider, token } = this.props;
@@ -450,7 +450,7 @@ class GroupPage extends Component {
                         }}/>
                     </div>
 
-                    {this.state.editPlayer.imageUrl && this.state.editPlayer.imageUrl.length >0 && <img className="playerPageImage" src={this.state.editPlayer.imageUrl}/>}
+                    {this.state.editPlayer.imageUrl && this.state.editPlayer.imageUrl.length >0 && <img alt="" className="playerPageImage" src={this.state.editPlayer.imageUrl}/>}
                 </div>
 
                 <div className="buttons-section">
@@ -465,6 +465,7 @@ class GroupPage extends Component {
 
     }
     getGamesEdit = () =>{
+        const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
         const { group } = this.props;
         const PLAYERS = {};
         const GAME_PLAYERS = {};
@@ -491,11 +492,16 @@ class GroupPage extends Component {
             const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL}  onError={onImageError} /> ;
 
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
-                <button className="button" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </button>
+                <button className="button edit-player-in-game-form" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </button>
                 {image}
-                {playerName} <span className="gray-seprator"> |</span>
+                { isMobile && <br/>}
+                {playerName}
+                <span className="gray-seprator"> |</span>
+                { isMobile && <br/>}
                 buy-in: {playerData.buyIn} <span className="gray-seprator"> |</span>
+                { isMobile && <br/>}
                 cash-out: {playerData.cashOut} <span className="gray-seprator"> |</span>
+                { isMobile && <br/>}
                 balance: {playerData.cashOut - playerData.buyIn}
 
                 <button className="button remove-player-from-game" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </button>
@@ -581,17 +587,15 @@ class GroupPage extends Component {
             }
         };
 
-        const image = <img alt={player.name} className="playersListImage" src={player.imageUrl || ANON_URL}  onError={onImageError} /> ;
+        const image = <img alt={player.name} className="playersListImageBig" src={player.imageUrl || ANON_URL}  onError={onImageError} /> ;
         const currentPlayerBuyIn = buyIn;
-        const currentPlayerCashOut = cashOut;
-        const maxBuyInRange = currentPlayerBuyIn+300;
-        const maxCashOut = game.playersData.map(data=> data.buyIn - data.cashOut).reduce((all,item)=>(all+item),0);
+        const maxBuyInRange = currentPlayerBuyIn+100;
+        const totalBuyIn = game.playersData.map(data=> data.buyIn).reduce((all,item)=>(all+item),0);
 
-        const maxCashOutRange = currentPlayerCashOut + maxCashOut;
+        const maxCashOutRange = (totalBuyIn);
 
         return (<div className="edit-player-in-game">
             <div>
-                <h2>edit player game data:</h2>
                 <h1>{image}{player.name}</h1>
             </div>
             <hr/>
@@ -600,15 +604,23 @@ class GroupPage extends Component {
                                  value={this.state.editPlayerInGame.buyIn}
                                  onChange={(event)=>{
                                      const editPlayerInGame = {...this.state.editPlayerInGame};
-                                     editPlayerInGame.buyIn=parseInt(event.target.value);
+                                     editPlayerInGame.buyIn=parseInt(event.target.value, 10);
                                      this.setState({ editPlayerInGame });
                                  }}/>
 
-                                 <button className="button saveButton" onClick={()=>{
+                                 <button className="button left-margin" onClick={()=>{
                                      const editPlayerInGame = {...this.state.editPlayerInGame};
-                                     editPlayerInGame.buyIn=editPlayerInGame.buyIn + 10;
+                                     editPlayerInGame.buyIn=editPlayerInGame.buyIn - 10;
+                                     if (editPlayerInGame.buyIn < 0){
+                                         editPlayerInGame.buyIn = 0;
+                                     }
                                      this.setState({ editPlayerInGame });
-                                 }}> +10 </button>
+                                 }}> -10 </button>
+                                <button className="button left-margin" onClick={()=>{
+                                    const editPlayerInGame = {...this.state.editPlayerInGame};
+                                    editPlayerInGame.buyIn=editPlayerInGame.buyIn + 10;
+                                    this.setState({ editPlayerInGame });
+                                }}> +10 </button>
                 <br/>
                 <br/>
                 <InputRange className="InputRange"
@@ -632,11 +644,20 @@ class GroupPage extends Component {
                                   value={this.state.editPlayerInGame.cashOut}
                                   onChange={(event)=>{
                                       const editPlayerInGame = {...this.state.editPlayerInGame};
-                                      editPlayerInGame.cashOut=parseInt(event.target.value);
+                                      editPlayerInGame.cashOut=parseInt(event.target.value, 10);
                                       this.setState({ editPlayerInGame });
                                   }}/>
 
-                                    <button className="button saveButton" onClick={()=>{
+                                    <button className="button left-margin" onClick={()=>{
+                                        const editPlayerInGame = {...this.state.editPlayerInGame};
+                                        editPlayerInGame.cashOut=editPlayerInGame.cashOut - 10;
+                                        if (editPlayerInGame.cashOut < 0){
+                                            editPlayerInGame.cashOut = 0;
+                                        }
+                                        this.setState({ editPlayerInGame });
+                                    }}> -10 </button>
+
+                                    <button className="button left-margin" onClick={()=>{
                                         const editPlayerInGame = {...this.state.editPlayerInGame};
                                         editPlayerInGame.cashOut=editPlayerInGame.cashOut + 10;
                                         this.setState({ editPlayerInGame });
@@ -713,7 +734,7 @@ class GroupPage extends Component {
                             <div className="game-extra-data">
 
                                 <div > {game.playersData.length } players </div>
-                                <div >{ready ? '' : 'GAME NOT READY'} </div>
+                                <div className='game-not-ready-text' >{ready ? '' : 'GAME NOT READY'} </div>
                             </div>
                         </div>
                    );
@@ -751,7 +772,7 @@ class GroupPage extends Component {
         if (this.state.playerSummary){
             return this.getPlayerSummary()
         }
-        console.log('players',players)
+
         const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player => {
 
             const style = {

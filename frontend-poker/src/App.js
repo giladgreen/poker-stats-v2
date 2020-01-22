@@ -17,17 +17,7 @@ import notificationHelper from "./notificationHelper";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 
-function setupEventDates(event){
-    event.startDate = new Date(event.startDate);
 
-    event.endDate = new Date(event.endDate);
-    event.lastConfirmationDate = new Date(event.lastConfirmationDate);
-    event.participants.forEach(participant=>{
-        participant.confirmationDate = new Date( participant.confirmationDate);
-    });
-    event.participants.sort((a,b)=> a.confirmationDate < b.confirmationDate ? -1 : 1);
-    return event;
-}
 
 class App extends Component {
 
@@ -84,7 +74,7 @@ class App extends Component {
 
     getHeader = ()=>{
 
-        {this.state.pushSupported && <div id="notification">
+        { this.state.pushSupported && <div id="notification">
             <span onClick={this.onNotificationButtonClick}><u> <b>{ this.state.subscribed ? 'disable':'enable'} notifications</b></u></span>
         </div>}
 

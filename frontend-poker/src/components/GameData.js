@@ -83,7 +83,9 @@ class GameData extends Component{
             data.gamesCount = playerObject.gamesCount;
             return data;
         }).sort((a,b)=> a.dif > b.dif ? -1 : 1).filter(d=>d.gamesCount);
-
+        if (!playersInfo || playersInfo.length === 0){
+            return <div>No data yet</div>
+        }
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
         const margin =isMobile ? 2: 5;
 
@@ -98,6 +100,7 @@ class GameData extends Component{
         const PlayerNames2 =  this.getNamesSection(playersInfo,playerWidth,margin,false);
 
         const CurrencySign = '₪';
+
         const PlayerBalance = playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_balance`;
             const {val} = playerInfo;
@@ -138,7 +141,7 @@ class GameData extends Component{
             );
         }));
 
-        const maxPositive = playersInfo[0].dif;
+        const maxPositive =  playersInfo[0].dif;
 
         const positiveRatio = maxPositive === 0 ? 10 : 100/maxPositive;
         let GamePlayerPositives = playersInfo.map((playerInfo)=>{
@@ -154,7 +157,7 @@ class GameData extends Component{
             }
 
             return  (
-                <img key={key} className="barItemPositive" style={barsStyleObject} src={imageUrl}  />
+                <img alt="" key={key} className="barItemPositive" style={barsStyleObject} src={imageUrl}  />
             );
         });
         const maxNegative = playersInfo[playersInfo.length-1].dif;
@@ -173,7 +176,7 @@ class GameData extends Component{
                 height
             }
             return  (
-                <img key={key} className="barItemNegative" style={barsStyleObject} src={imageUrl}  />
+                <img alt="" key={key} className="barItemNegative" style={barsStyleObject} src={imageUrl}  />
             );
         });
 

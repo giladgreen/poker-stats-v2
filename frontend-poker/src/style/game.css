@@ -197,6 +197,12 @@
     max-width: 80vw;
     color: blue;
 }
+.playersListImageBig{
+    height: 50px;
+    width: 40px;
+    margin-left: 3px;
+    margin-right: 4px;
+}
 @media screen and (max-width: 900px) {
 
     .GamePlayerDisplayName{
@@ -230,9 +236,32 @@
     }
 
     .playersListImageBig{
-        width: 100%;
-        border-radius: 14px;
-        max-width: 45vw;
-        max-height: 45vw;
+        height: 50px;
+        width: 40px;
+        margin-left: 3px;
+        margin-right: 4px;
+    }
+    .playersListImage{
+        height: 30px;
+        width: 24px;
+        margin-left: 3px;
+        margin-right: 4px;
+    }
+    .gray-seprator{
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    .editGamePlayerSection{
+        padding: 10px;
+        color: black;
+        font-size: 0.95em;
+    }
+    .remove-player-from-game{
+        font-size: 0.7em;
+        padding: 4px 3px 4px 3px;
+    }
+    .edit-player-in-game-form{
+        font-size: 0.9em;
+        padding: 4px 3px 4px 3px;
     }
 }

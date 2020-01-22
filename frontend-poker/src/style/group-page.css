@@ -424,6 +424,16 @@ select{
 .buttons-section{
     padding-top: 20px;
 }
+
+.game-extra-data{
+    color: black;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 2em;
+}
+.game-not-ready-text{
+    font-size: 0.7em;
+}
 @media screen and (max-width: 800px) {
 
     #group-image-title {
@@ -655,5 +665,14 @@ select{
     }
     .buttons-section{
         padding-top: 10px;
+    }
+    .game-extra-data{
+        color: black;
+        padding-top: 1px;
+        padding-left: 10px;
+        font-size: 1.3em;
+    }
+    .game-not-ready-text{
+        font-size: 0.7em;
     }
 }
