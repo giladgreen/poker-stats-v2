@@ -9,8 +9,10 @@ import Loader from "../containers/Loading";
 import { version } from '../../package.json';
 
 const ONE_DAY = 1000 * 60 * 60 * 24;
-const GOOGLE_CLIENT_ID = "106445399456-n9kdue4hil8bo4uggc5lkr3r5ufqvns7.apps.googleusercontent.com";
-const FACEBOOK_APP_ID = "568337437281618";
+const GOOGLE_CLIENT_ID= '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.googleusercontent.com';
+const FACEBOOK_APP_ID= '2487592561563671';
+
+
 class Login extends Component {
 
     constructor() {
@@ -98,7 +100,7 @@ class Login extends Component {
                 <img id="sheep-img" src="sheep.png" alt='sheep'/>
                 <img id="chips-img" src="Casino-Poker-Chips.png" alt='Chips'/>
                 <div id="login-space1"/>
-                <span className="login-app-name">PokerStats</span>
+                <span className="login-app-name"> P&#1465;o&#1462;ker&#1456;S&#1463;tats</span>
                 <div id="login-space2"/>
                 {facebook}
                 {google}

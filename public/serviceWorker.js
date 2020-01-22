@@ -9,8 +9,8 @@ self.addEventListener('push', function(event) {
     eventLink = link;
     const options = {
         body: text,
-        icon: 'https://im-in.herokuapp.com/imin.png',
-        badge: 'https://im-in.herokuapp.com/imin.png',
+        icon: 'https://www.poker-stats.com/favicon.png',
+        badge: 'https://www.poker-stats.com/favicon.png',
     };
 
     const notificationPromise = self.registration.showNotification(title, options);
