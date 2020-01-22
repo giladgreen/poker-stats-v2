@@ -324,7 +324,7 @@ class GroupPage extends Component {
                 <div className="buttons-section">
                     <button onClick={()=>this.setState({playerSummary:null})}>Back</button>
                     {isAdmin && <button onClick={()=>this.onPlayerEditClick(player)} className="left-margin">Edit</button>}
-                    {isAdmin && <button onClick={()=>this.onPlayerDeleteClick(playerId)} className="left-margin">Delete</button>}
+                    {isAdmin && playerGames.length > 0 && <button onClick={()=>this.onPlayerDeleteClick(playerId)} className="left-margin">Delete</button>}
                 </div>
 
 

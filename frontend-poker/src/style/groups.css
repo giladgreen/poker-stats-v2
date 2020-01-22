@@ -11,6 +11,10 @@
     height: 20vw;
     margin: 1.8vw;
     cursor: pointer;
+    background: white;
+}
+.group-item-div:hover{
+    background: #eaeaea;
 }
 
 .group-item-div-admin{
