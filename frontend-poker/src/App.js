@@ -53,7 +53,7 @@ class App extends Component {
     logout = () => {
         localStorage.removeItem('authData');
         this.setState({isAuthenticated: false, user: null, events:[], error:null, showMenu:false})
-        window.location.replace('https://im-in.herokuapp.com');
+        window.location.replace('https://www.poker-stats.com');
 
     };
 

@@ -868,9 +868,7 @@ class GroupPage extends Component {
                                 {playersTab}
                             </div>
                         </Tab>
-                        <Tab eventKey="statistics" title="Statistics">
-                            statistics
-                        </Tab>
+
 
                     </Tabs>
                 </div>
