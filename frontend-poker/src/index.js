@@ -12,6 +12,7 @@ import './style/groups.css';
 import './style/create-group-form.css';
 import './style/group-page.css';
 import './style/game.css';
+import './style/onGoingGame.css';
 
 ReactDOM.render(
   <App />,

@@ -101,6 +101,9 @@ class OnGoingGame extends Component {
            </div>);
     };
 
+    onEditClicked = ()=>{
+        this.props.onGameEditClick();
+    }
     onBackClicked = ()=>{
         if ( this.interval ){
             clearInterval(this.interval);
@@ -129,7 +132,7 @@ class OnGoingGame extends Component {
         const players =  this.getAsPokerTable() ;
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
-        return (<div className="popupOuter">
+        return (
             <div className="viewGamePopupInner">
                 <div>
                     <h3>Ongoing game. {game.date.AsGameName()}</h3>
@@ -137,15 +140,13 @@ class OnGoingGame extends Component {
                     <br/>
                     <div className="backButton">
                         <button className="button" onClick={this.onBackClicked}> Back</button>
+                        <button className="button" onClick={this.onEditClicked}> Edit</button>
                     </div>
 
                 </div>
                 { isMobile ? <span/> : players}
                  <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>
-
-
-            </div>
-        </div>);
+            </div>);
 
     }
 }

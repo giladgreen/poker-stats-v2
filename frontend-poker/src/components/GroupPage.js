@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
+import getGame from '../actions/getGame';
 import createGame from '../actions/createGame';
 import createPlayer from '../actions/createPlayer';
 import deletePlayer from '../actions/deletePlayer';
@@ -12,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
-// import OnGoingGame from './OnGoingGame';
+import OnGoingGame from './OnGoingGame';
 import CONSTS from '../CONSTS';
 const { ANON_URL } = CONSTS;
 
@@ -689,6 +690,15 @@ class GroupPage extends Component {
         </div>);
     }
 
+    updateOnProgressGame = ()=>{
+        const {group} = this.props;
+        const onGoingGameId = this.state.gameSummary.id;
+        getGame(group.id, onGoingGameId, this.props.provider, this.props.token).then((gameSummary)=>{
+            gameSummary.date = new Date(gameSummary.date);
+            this.setState({gameSummary});
+        })
+    };
+
     getGamesTab = () =>{
         const { group } = this.props;
         const {games} = group;
@@ -704,13 +714,11 @@ class GroupPage extends Component {
         }
 
         if (this.state.gameSummary){
-            //const game = this.state.gameSummary;
-            return this.getGamesSummary();
-            //
-            // const { ready } = this.isGameReady(game);
-            // if (ready) return this.getGamesSummary();
-            //
-            // return <OnGoingGame group={group} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={()=>{}}/>
+            const game = this.state.gameSummary;
+            const { ready } = this.isGameReady(game);
+            if (ready) return this.getGamesSummary();
+
+            return <OnGoingGame group={group} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
 
 
         }
@@ -820,6 +828,8 @@ class GroupPage extends Component {
     }
 
     render() {
+
+
         const { group } = this.props;
 
         const fakeGameData = this.createPlayersDataAsFakeGame();

@@ -17,6 +17,13 @@ import notificationHelper from "./notificationHelper";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 
+Date.prototype.AsGameName = function() {
+    const stringValue = this.toISOString().substr(0,10);
+    const day = stringValue.substr(8,2);
+    const month = stringValue.substr(5,2);
+    const year = stringValue.substr(0,4);
+    return `${day}/${month}/${year}`;
+};
 
 
 class App extends Component {
