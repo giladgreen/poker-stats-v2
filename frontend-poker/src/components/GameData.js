@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-const ANON_URL = 'https://green-pokerstats.herokuapp.com/images/anonymous2.png';
-const GREEN = 'https://green-pokerstats.herokuapp.com/images/green.png';
-const RED = 'https://green-pokerstats.herokuapp.com/images/red.png';
-const TRANSPARENT = 'https://green-pokerstats.herokuapp.com/images/transparent.png';
-
+import { ANON_URL, GREEN, RED, TRANSPARENT} from '../CONSTS';
 import Size from '../sizes';
 const  {Width} = Size;
 class GameData extends Component{

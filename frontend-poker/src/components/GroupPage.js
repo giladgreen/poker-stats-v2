@@ -13,7 +13,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
 // import OnGoingGame from './OnGoingGame';
-const ANON_URL = 'https://green-pokerstats.herokuapp.com/images/anonymous2.png';
+import { ANON_URL } from '../CONSTS';
 
 class GroupPage extends Component {
 

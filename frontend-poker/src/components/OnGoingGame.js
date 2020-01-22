@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const ANON_URL = 'https://green-pokerstats.herokuapp.com/images/anonymous2.png';
+import { ANON_URL} from '../CONSTS';
 
 
 class OnGoingGame extends Component {
