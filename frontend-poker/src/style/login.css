@@ -60,19 +60,19 @@
     }
     #sheep-img{
         width: 30vw;
-        margin-top: 8vh;
+        margin-top: 2vh;
     }
     #chips-img{
         width: 85vw;
         height: 39vh;
-        margin-top: 2vh;
+        margin-top: 1vh;
     }
     #pokerStatsLogo{
         width: 60vw;
 
     }
     #login-buttons-div{
-        padding-top: 5vh;
+        padding-top: 1vh;
     }
     #version{
         font-size: 0.9em;
