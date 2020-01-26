@@ -168,12 +168,12 @@ function getFitting() {
         logger.info(`[UserContext:fitting] creating new user: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
         user = await models.users.create({ ...profile, tokenExpiration: moment().add(1, 'days').toDate(), token: accessToken });
-        sendHtmlMail('A new user has logged in', getHtmlBody(user, provider), EMAIL_USER);
+        sendHtmlMail(`new user: ${user.firstName} ${user.familyName}, has logged in`, getHtmlBody(user, provider), EMAIL_USER);
       } else {
         logger.info(`[UserContext:fitting] user already in db: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
         if (shouldSendMail(user)) {
-          sendHtmlMail('An existing user has logged in', getHtmlBody(user, provider, false), EMAIL_USER);
+          sendHtmlMail(`${user.firstName} ${user.familyName} has logged in`, getHtmlBody(user, provider, false), EMAIL_USER);
         }
 
         const [, results] = await models.users.update({ ...profile, tokenExpiration: moment().add(3, 'hours').toDate(), token: accessToken }, { where: { id: user.id }, returning: true });
