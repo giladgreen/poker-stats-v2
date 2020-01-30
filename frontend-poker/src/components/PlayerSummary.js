@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
 
 const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
@@ -59,6 +59,7 @@ class PlayerSummary extends Component {
                         <XAxis dataKey="name"/>
                         <YAxis/>
                         <CartesianGrid strokeDasharray="0 40"/>
+                        <ReferenceLine y={0} label="Zero" stroke="red"/>
 
                         <Line className="graphLine" type="monotone" key={playerName} dataKey={playerName}  stroke="black"  />
                     </LineChart>
