@@ -449,8 +449,34 @@ select{
     border-radius: 5px;
     margin-top: 10px;
 }
+#gamePlayersData{
+    padding-left: 2vw;
+    padding-top: 2vh;
+}
+.gamePlayerData{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 14px;
+}
+.gamePlayerDataImage{
+    height: 70px;
+    width: 55px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.more-data-text{
+    margin-top: 30px;
+   margin-left: 20px;
+}
 @media screen and (max-width: 800px) {
 
+    .gamePlayerDataImage{
+        height: 90px;
+        width: 72px;
+        border-radius: 12px;
+
+    }
     #group-image-title {
         margin-top: 7vh;
         padding-top: 20px;
@@ -657,8 +683,8 @@ select{
     }
 
     #gameSummaryHeader{
-        text-align: center;
-        padding-left: 0px;
+
+        padding-left: 20px;
     }
     #all-games-div{
         padding-left: 3px;

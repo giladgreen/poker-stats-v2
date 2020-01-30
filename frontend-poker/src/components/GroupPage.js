@@ -14,9 +14,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
+import GameSummary from './GameSummary';
 import OnGoingGame from './OnGoingGame';
 import PlayerSummary from './PlayerSummary';
 import CONSTS from '../CONSTS';
+
 const { ANON_URL } = CONSTS;
 const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
 const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
@@ -290,81 +292,17 @@ class GroupPage extends Component {
             back={()=>this.setState({playerSummary: null})}
             edit={()=>this.onPlayerEditClick(this.state.playerSummary)}
             delete={()=>this.onPlayerDeleteClick(this.state.playerSummary.id)}
-
         />
-        // const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-        // const { group } = this.props;
-        // const { isAdmin} = group;
-        // const player = this.state.playerSummary;
-        // const playerId = player.id;
-        // const playerGames = group.games.map(game=>{
-        //     const playerData = game.playersData.find(p=>p.playerId ===playerId);
-        //     return playerData ? { game, playerData } : false;
-        // }).filter(x=>!!x).map(({ game, playerData })=>{
-        //     return <div key={game.date} className="player-game-data">
-        //         {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}  <span className="gray-seprator"> |</span>
-        //         {isMobile && game.description }
-        //         {isMobile &&  <span className="gray-seprator"> |</span> }
-        //         {isMobile &&  <br/> }
-        //         buy-in: {playerData.buyIn}  <span className="gray-seprator"> |</span>
-        //         cash-out: {playerData.cashOut}  <span className="gray-seprator"> |</span>
-        //         balance: {playerData.cashOut - playerData.buyIn}
-        //         {!isMobile &&   <span className="gray-seprator"> |</span>}
-        //         {!isMobile &&  game.description}
-        //
-        //
-        //     </div>
-        // });
-        //
-        // return (
-        //     <div className="playerSummary">
-        //         <div className="playerSummaryHeader">
-        //             <div>
-        //                 name: {player.name}
-        //             </div>
-        //             <div>
-        //                 email: {player.email}
-        //             </div>
-        //             <img alt="" className="playerPageImage" src={player.imageUrl || ANON_URL}/>
-        //
-        //         </div>
-        //         <div className="playerGames">
-        //             <div><u>{playerGames.length} games:</u></div>
-        //             {playerGames}
-        //         </div>
-        //         <div className="buttons-section">
-        //             <button onClick={()=>this.setState({playerSummary:null})}>Back</button>
-        //             {isAdmin && <button onClick={()=>this.onPlayerEditClick(player)} className="left-margin">Edit</button>}
-        //             {isAdmin && playerGames.length > 0 && <button onClick={()=>this.onPlayerDeleteClick(playerId)} className="left-margin">Delete</button>}
-        //         </div>
-        //
-        //
-        //     </div>
-        // );
     }
     getGamesSummary = () =>{
-        const { group } = this.props;
-        const { isAdmin} = group;
-        return (
-            <div id="gameSummary">
-                <div id="gameSummaryHeader">
-                    <div>
-                        Game summary: {this.gameDateToString(this.state.gameSummary)}
-                    </div>
-                    <div>
-                        {this.state.gameSummary.description}
-                    </div>
-                    <div>
-                        pot size:  {this.getGamePot(this.state.gameSummary)}
-                    </div>
-                </div>
 
-                <GameData Group={group} Game={this.state.gameSummary} />
-                <button onClick={()=>this.setState({editGame:null, gameSummary:null})} className="button">Back</button>
-                {isAdmin && <button onClick={()=>this.onGameEditClick(this.state.gameSummary)} className="button left-margin">Edit</button>}
-                {isAdmin && <button onClick={this.deleteSelectedGame} className="button left-margin">Delete</button>}
-            </div>
-        );
+        return <GameSummary
+            game={this.state.gameSummary}
+            group={this.props.group}
+            back={()=>this.setState({editGame:null, gameSummary:null})}
+            edit={()=>this.onGameEditClick(this.state.gameSummary)}
+            delete={this.deleteSelectedGame}
+        />;
     }
 
     isGameReady = (game)=>{
