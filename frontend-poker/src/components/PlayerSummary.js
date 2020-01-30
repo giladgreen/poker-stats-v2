@@ -45,7 +45,7 @@ class PlayerSummary extends Component {
             const data = [{name:" ",[playerName]:0}];
 
 
-            playerGames.forEach(gameObject =>{
+            playerGames.sort((a,b)=>a.game.date < b.game.date ? -1 : 1).forEach(gameObject =>{
                 const gameDate = gameObject.game.date.AsGameName();
                 const game = {name:gameDate};
                 const playerData = gameObject.playerData;
@@ -55,7 +55,7 @@ class PlayerSummary extends Component {
             });
             graph = (
                 <div className="col-xs-11 ">
-                    <LineChart className="gameGraphLineChart" width={Width} height={SmartPhone ? 260 : 500} data={data}  >
+                    <LineChart className="gameGraphLineChart" width={SmartPhone ? Width : Width*(97/100)} height={SmartPhone ? 260 : 500} data={data}  >
                         <XAxis dataKey="name"/>
                         <YAxis/>
                         <CartesianGrid strokeDasharray="0 40"/>
