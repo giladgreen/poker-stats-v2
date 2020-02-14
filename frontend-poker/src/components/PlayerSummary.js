@@ -61,7 +61,10 @@ class PlayerSummary extends Component {
         let playerBalance = 0;
         let rangeBalance = 0;
         if (playerGames.length > 0) {
-            const data = [{name:" ",[playerName]:0}];
+            const data = [];
+            if (playerGames.length === this.state.sliderValues.max - this.state.sliderValues.min +1 || this.state.sliderValues.min === 0) {
+                data.push({name:" ",[playerName]:0});
+            }
 
             playerGames.forEach((gameObject,index) =>{
                 const gameDate = gameObject.game.date.AsGameName();
