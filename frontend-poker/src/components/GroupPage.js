@@ -52,7 +52,8 @@ class GroupPage extends Component {
     };
 
     onKeyChange = (tabKey)=>{
-        this.setState({tabKey });
+
+        this.setState({tabKey, playerSummary:null, gameSummary: null });
     };
 
     getHeader = ()=>{

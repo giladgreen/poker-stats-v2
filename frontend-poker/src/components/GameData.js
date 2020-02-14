@@ -172,7 +172,7 @@ class GameData extends Component{
                 width:playerWidth-margin,
                 marginRight:margin,
                 height
-            }
+            };
             return  (
                 <img alt="" key={key} className="barItemNegative" style={barsStyleObject} src={imageUrl}  />
             );
@@ -186,8 +186,15 @@ class GameData extends Component{
             {GamePlayerNegatives}
         </div>) : <div/>
 
+
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
+                <div className="black">
+                    {Group.games.length} games ({Group.games[Group.games.length-1].date.AsGameName()} - {Group.games[0].date.AsGameName()})
+                </div>
+                <div className="black">
+                    {players.length} players
+                </div>
                 <div>
                   <span className="white">xx</span>
                 </div>
