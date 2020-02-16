@@ -5,7 +5,6 @@ import CONSTS from '../CONSTS';
 const colors = ["#317F42",  "#14A9B6",  "#D9892B",  "#A23DA3",  "#A3A23D",  "#9189DF",  "#74B0A1",  "#A53542",  "#FD0724",  "#8F6947",  "#FF77E7", "#447F66",  "#55A9A7",  "#D6696B",  "#423D7A"];
 
 const { ANON_URL, GREEN, RED, TRANSPARENT} = CONSTS;
-console.log('ANON_URL',ANON_URL)
 import Size from '../sizes';
 import InputRange from "react-input-range";
 const  {Width} = Size;
@@ -239,9 +238,6 @@ class GameData extends Component{
                 }
         })
 
-        console.log('playersToShow',playersToShow)
-
-
         const playersIdsToNameObjMapper = {};
 
         const data = [];
@@ -274,7 +270,7 @@ class GameData extends Component{
 
                 data.push(gameData)
             });
-        console.log('data',data)
+
         const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
         const menu = playersToShow.map(({id, name,color})=> {
             const style = {
@@ -306,11 +302,11 @@ class GameData extends Component{
 
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
-                <div className="black">
+                {IsGroupSummary && <div className="black">
                     {Group.games.length} games ({Group.games[Group.games.length-1].date.AsGameName()} - {Group.games[0].date.AsGameName()})
-                </div>
+                </div>}
                 <div className="black">
-                    {players.length} players
+                    {IsGroupSummary ? players.length : playersData.length } players
                 </div>
                 <div>
                   <span className="white">xx</span>
@@ -338,7 +334,7 @@ class GameData extends Component{
                 {GamePlayerNegatives}
 
                 <hr/>
-                { Group.games.length>0 && (
+                { IsGroupSummary && Group.games.length>0 && (
                     <div className="black">
                         <div><b>Date range specific data:</b><br/></div>
                         <div>From { Group.games[this.state.sliderValues.min].date.AsGameName()} to { Group.games[this.state.sliderValues.max].date.AsGameName()}</div>
