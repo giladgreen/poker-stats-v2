@@ -254,15 +254,16 @@ class GameData extends Component{
                 const gamePlayers = game.playersData.filter(player => playersIdsToNameObjMapper[player.playerId]).map(player => ({name: playersIdsToNameObjMapper[player.playerId], dif: player.cashOut - player.buyIn }));
                const gameData = {
                    name: game.date.AsGameName()
-               }
+               };
                 gamePlayers.forEach(({name,dif})=>{
-                    gameData[name] = dif;
+                    const prevValue = prevData[name];
+                    gameData[name] = dif + prevValue;
                 });
 
                playersToShow.forEach(playersInfo => {
                    if (!gameData.hasOwnProperty(playersInfo.name)){
                        const prevValue = prevData[playersInfo.name];
-                       gameData[playersInfo.name] =prevValue;
+                       gameData[playersInfo.name] = prevValue;
                    }
                });
 
@@ -270,7 +271,7 @@ class GameData extends Component{
 
                 data.push(gameData)
             });
-
+        console.log('data',data)
         const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
         const menu = playersToShow.map(({id, name,color})=> {
             const style = {
