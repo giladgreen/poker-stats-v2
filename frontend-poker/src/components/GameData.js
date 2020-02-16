@@ -1,12 +1,36 @@
 import React, { Component } from 'react';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
 
 import CONSTS from '../CONSTS';
+const colors = ["#317F42",  "#14A9B6",  "#D9892B",  "#A23DA3",  "#A3A23D",  "#9189DF",  "#74B0A1",  "#A53542",  "#FD0724",  "#8F6947",  "#FF77E7", "#447F66",  "#55A9A7",  "#D6696B",  "#423D7A"];
+
 const { ANON_URL, GREEN, RED, TRANSPARENT} = CONSTS;
 console.log('ANON_URL',ANON_URL)
 import Size from '../sizes';
+import InputRange from "react-input-range";
 const  {Width} = Size;
+const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
 class GameData extends Component{
 
+    constructor(props){
+        super(props);
+        const group = this.props.Group;
+        this.yearsObject = {};
+        group.games.sort((a,b)=>a.date < b.date ? -1 : 1).forEach((game,index)=>{
+            const year = game.date.getYear() + 1900;
+            if (!this.yearsObject[year]){
+                this.yearsObject[year] = {
+                    from: index,
+                    to: index
+                }
+            } else{
+                this.yearsObject[year].to = index;
+            }
+        });
+
+        this.state = { sliderValues: { min: 0, max: group.games.length - 1 } }
+    }
     getPlayerImage(playerInfo, playerWidth, margin){
         const isLoggedInPlayer = playerInfo.isMe;
         const key = `${playerInfo.playerId}_item_image`;
@@ -64,7 +88,7 @@ class GameData extends Component{
     }
 
     render(){
-        const {Group, Game, IsGroupSummary} = this.props;
+        const {Group, Game, IsGroupSummary, playersCount } = this.props;
         const {players} = Group;
         const {playersData} = Game;
         if (playersData.length === 0) {
@@ -187,6 +211,99 @@ class GameData extends Component{
         </div>) : <div/>
 
 
+        const playersIdsToGamesCountObjMapper = {};
+        const filterGames = Group.games
+            .sort((a,b)=>a.date < b.date ? -1 : 1)
+            .filter((game,index) => this.state.sliderValues.min <= index && index <= this.state.sliderValues.max);
+
+        filterGames.forEach(game=>{
+            game.playersData.forEach(({playerId})=>{
+                if (!playersIdsToGamesCountObjMapper.hasOwnProperty(playerId)){
+                    playersIdsToGamesCountObjMapper[playerId] = 0;
+                }
+                playersIdsToGamesCountObjMapper[playerId] =  playersIdsToGamesCountObjMapper[playerId] + 1;
+            });
+        });
+        const playersToShow = Object.keys(playersIdsToGamesCountObjMapper).map((id,index)=>{
+                const name = Group.players.find(p=>p.id===id).name;
+                return {
+                    playerId:id,
+                    gamesCount:playersIdsToGamesCountObjMapper[id],
+                    name,
+                    id,
+                }
+            }).sort((a,b)=>a.gamesCount< b.gamesCount ? 1 : -1).slice(0,playersCount).map((item,index)=>{
+                return {
+                    ...item,
+                    color:  colors[index]
+                }
+        })
+
+        console.log('playersToShow',playersToShow)
+
+
+        const playersIdsToNameObjMapper = {};
+
+        const data = [];
+        const zeros = { name:""};
+        playersToShow.forEach(playersInfo => {
+            playersIdsToNameObjMapper[playersInfo.playerId] = playersInfo.name;
+            zeros[playersInfo.name]=0;
+        });
+        data.push(zeros);
+
+        filterGames
+            .forEach((game)=>{
+                const prevData = data[data.length-1];
+                const gamePlayers = game.playersData.filter(player => playersIdsToNameObjMapper[player.playerId]).map(player => ({name: playersIdsToNameObjMapper[player.playerId], dif: player.cashOut - player.buyIn }));
+               const gameData = {
+                   name: game.date.AsGameName()
+               }
+                gamePlayers.forEach(({name,dif})=>{
+                    gameData[name] = dif;
+                });
+
+               playersToShow.forEach(playersInfo => {
+                   if (!gameData.hasOwnProperty(playersInfo.name)){
+                       const prevValue = prevData[playersInfo.name];
+                       gameData[playersInfo.name] =prevValue;
+                   }
+               });
+
+
+
+                data.push(gameData)
+            });
+        console.log('data',data)
+        const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
+        const menu = playersToShow.map(({id, name,color})=> {
+            const style = {
+                backgroundColor: color,
+            }
+
+            return (<div key={`menu${color}${name}`} className="menuItem" style={style} > {name} ({playersIdsToGamesCountObjMapper[id]} games) </div>);
+        });
+
+        const graph = (
+            <div >
+                <LineChart className="gameGraphLineChart" width={SmartPhone ? Width : Width*(97/100)} height={SmartPhone ? 260 : 500} data={data}  >
+                    <XAxis dataKey="name"/>
+                    <YAxis/>
+                    <CartesianGrid strokeDasharray="0 40"/>
+                    <ReferenceLine y={0} label="Zero" stroke="red"/>
+
+                    {lines}
+                </LineChart>
+                <div className="menu">
+                     {menu}
+                </div>
+            </div>
+        );
+
+        const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
+            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
+        });
+
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
                 <div className="black">
@@ -220,6 +337,32 @@ class GameData extends Component{
                 {PlayerRankingBalance}
                 {GamePlayerNegatives}
 
+                <hr/>
+                { Group.games.length>0 && (
+                    <div className="black">
+                        <div><b>Date range specific data:</b><br/></div>
+                        <div>From { Group.games[this.state.sliderValues.min].date.AsGameName()} to { Group.games[this.state.sliderValues.max].date.AsGameName()}</div>
+                        <div>
+                            <InputRange className="InputRange"
+                                        step={1}
+                                        formatLabel={() => ``}
+                                        maxValue={ Group.games.length - 1}
+                                        minValue={0}
+                                        value={this.state.sliderValues}
+                                        onChange={sliderValues => {
+                                            if (this.state.sliderValues.min < this.state.sliderValues.max){
+                                                this.setState({ sliderValues });
+                                            }
+                                        }} />
+                        </div>
+                        <div>
+                            {graph}
+                        </div>
+                        <div>
+                            {yearsButtons}
+                        </div>
+                    </div>)
+                }
             </div>
         );
 

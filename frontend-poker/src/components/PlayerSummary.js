@@ -26,6 +26,20 @@ class PlayerSummary extends Component {
             return playerData ? {game, playerData} : false;
         }).filter(x => !!x).sort((a,b)=>a.game.date < b.game.date ? -1 : 1);
 
+        this.yearsObject = {};
+        this.playerGames.forEach((game,index)=>{
+            const year = game.game.date.getYear() + 1900;
+            if (!this.yearsObject[year]){
+                this.yearsObject[year] = {
+                    from: index,
+                    to: index
+                }
+            } else{
+                this.yearsObject[year].to = index;
+            }
+        });
+
+
         this.firstGame = this.playerGames.length >0 ? this.playerGames[0] : null;
 
         this.state = { sliderValues: { min: 0, max: this.playerGames.length - 1 } }
@@ -60,11 +74,9 @@ class PlayerSummary extends Component {
         const playerName = player.name;
         let playerBalance = 0;
         let rangeBalance = 0;
+
         if (playerGames.length > 0) {
-            const data = [];
-            if (playerGames.length === this.state.sliderValues.max - this.state.sliderValues.min +1 || this.state.sliderValues.min === 0) {
-                data.push({name:" ",[playerName]:0});
-            }
+            const data = [{name:" B.C. ",[playerName]:0}];
 
             playerGames.forEach((gameObject,index) =>{
                 const gameDate = gameObject.game.date.AsGameName();
@@ -73,7 +85,7 @@ class PlayerSummary extends Component {
                 playerBalance += (playerData.cashOut - playerData.buyIn);
                 if (this.state.sliderValues.min <= index && index <= this.state.sliderValues.max){
                     rangeBalance += (playerData.cashOut - playerData.buyIn);
-                    game[playerName] = playerBalance;
+                    game[playerName] = rangeBalance;
                     data.push(game);
                 }
 
@@ -92,7 +104,9 @@ class PlayerSummary extends Component {
             );
 
         }
-
+        const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
+            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
+        });
 
         return (
             <div className="playerSummary">
@@ -130,13 +144,20 @@ class PlayerSummary extends Component {
                                         maxValue={this.playerGames.length - 1}
                                         minValue={0}
                                         value={this.state.sliderValues}
-                                        onChange={sliderValues => this.setState({ sliderValues })} />
+                                        onChange={sliderValues => {
+                                            if (this.state.sliderValues.min < this.state.sliderValues.max){
+                                                this.setState({ sliderValues });
+                                            }
+                                        }} />
                         </div>
                         <div>
                             balance: {rangeBalance} ({this.state.sliderValues.max - this.state.sliderValues.min + 1} games)
                         </div>
                         <div>
                             {graph}
+                        </div>
+                        <div>
+                            {yearsButtons}
                         </div>
                     </div>
                 )}

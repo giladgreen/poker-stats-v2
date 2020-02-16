@@ -16,7 +16,21 @@
 .group-item-div:hover{
     background: #eaeaea;
 }
+.year-button{
+    margin-left: 10px;
+}
+.menuItem{
+    color: black;
+    margin-left: 10px;
+    margin-top: 3px;
+    border: 1px solid black;
+   border-radius: 13px;
+    max-width: 250px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 
+}
 .group-item-div-admin{
     -webkit-box-shadow: -4px 3px 9px 2px rgba(70, 71, 21,0.71);
     -moz-box-shadow: -4px 3px 9px 2px rgba(70, 71, 21,0.71);
