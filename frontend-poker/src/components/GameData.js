@@ -14,29 +14,29 @@ class GameData extends Component{
 
     createPlayersDataAsFakeGame = (group, max, minIndex, maxIndex) => {
         const { games } = group;
-        const balances = {};
-        const gamesCounts = {};
-        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex).forEach(game=>{
+        this.balances = {};
+        this.gamesCounts = {};
+        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex+1).forEach(game=>{
             game.playersData.forEach(({playerId, buyIn,cashOut})=>{
-                if (!balances.hasOwnProperty(playerId)){
-                    balances[playerId] = 0;
+                if (!this.balances.hasOwnProperty(playerId)){
+                    this.balances[playerId] = 0;
                 }
-                if (!gamesCounts.hasOwnProperty(playerId)){
-                    gamesCounts[playerId] = 0;
+                if (!this.gamesCounts.hasOwnProperty(playerId)){
+                    this.gamesCounts[playerId] = 0;
                 }
-                balances[playerId] =  balances[playerId] + cashOut - buyIn;
-                gamesCounts[playerId] =  gamesCounts[playerId] + 1;
+                this.balances[playerId] =  this.balances[playerId] + cashOut - buyIn;
+                this.gamesCounts[playerId] =  this.gamesCounts[playerId] + 1;
             });
         });
-        const playersData = Object.keys(gamesCounts).map(id=>{
+        const playersData = Object.keys(this.gamesCounts).map(id=>{
             return {
                 id,
                 playerId: id,
                 buyIn:0,
-                cashOut: balances[id],
-                gamesCount: gamesCounts[id]
+                cashOut: this.balances[id],
+                gamesCount: this.gamesCounts[id]
             }
-        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).slice(0,max)
+        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).slice(0,max+1)
 
         return {
             playersData
@@ -136,7 +136,7 @@ class GameData extends Component{
             data.imageUrl = playerObject.imageUrl;
             data.isMe = playerObject.isMe;
             data.name = playerObject.name;
-            data.gamesCount = playerObject.gamesCount;
+            data.gamesCount =  playerObject.gamesCount;
             return data;
         }).sort((a,b)=> a.dif > b.dif ? -1 : 1).filter(d=>d.gamesCount);
         if (!playersInfo || playersInfo.length === 0){
@@ -159,7 +159,7 @@ class GameData extends Component{
 
         const PlayerBalance = playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_balance`;
-            const {val} = playerInfo;
+            const val = IsGroupSummary ? this.balances[playerInfo.playerId] :playerInfo.val;
             const styleObject = {
                 width:playerWidth-margin,
                 marginRight:margin,
@@ -170,18 +170,20 @@ class GameData extends Component{
                 </div>
             );
         });
-        const PlayerGameCount = playersInfo.map(playerInfo=>{
+        const PlayerGameCount = IsGroupSummary ? playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_gamesCount`;
             const styleObject = {
                 width:playerWidth-margin,
                 marginRight:margin,
             };
+
+
             return  (
                 <div key={key} style={styleObject} className="GamePlayerGamesCount"  >
-                    {playerInfo.gamesCount} games
+                    {this.gamesCounts[playerInfo.playerId]} games
                 </div>
             );
-        });
+        }):[];
 
         const PlayerRankingBalance= hasNegatives ? <div/> :( playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_Rankingbalance`;
