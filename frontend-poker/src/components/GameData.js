@@ -211,16 +211,21 @@ class GameData extends Component{
 
 
         const playersIdsToGamesCountObjMapper = {};
+        const playersIdsToBalanceObjMapper = {};
         const filterGames = Group.games
             .sort((a,b)=>a.date < b.date ? -1 : 1)
             .filter((game,index) => this.state.sliderValues.min <= index && index <= this.state.sliderValues.max);
 
         filterGames.forEach(game=>{
-            game.playersData.forEach(({playerId})=>{
+            game.playersData.forEach(({playerId, buyIn,cashOut})=>{
                 if (!playersIdsToGamesCountObjMapper.hasOwnProperty(playerId)){
                     playersIdsToGamesCountObjMapper[playerId] = 0;
                 }
+                if (!playersIdsToBalanceObjMapper.hasOwnProperty(playerId)){
+                    playersIdsToBalanceObjMapper[playerId] = 0;
+                }
                 playersIdsToGamesCountObjMapper[playerId] =  playersIdsToGamesCountObjMapper[playerId] + 1;
+                playersIdsToBalanceObjMapper[playerId] =  playersIdsToBalanceObjMapper[playerId] + cashOut - buyIn;
             });
         });
         const playersToShow = Object.keys(playersIdsToGamesCountObjMapper).map((id,index)=>{
@@ -230,6 +235,7 @@ class GameData extends Component{
                     gamesCount:playersIdsToGamesCountObjMapper[id],
                     name,
                     id,
+                    balance: playersIdsToBalanceObjMapper[id],
                 }
             }).sort((a,b)=>a.gamesCount< b.gamesCount ? 1 : -1).slice(0,playersCount).map((item,index)=>{
                 return {
@@ -273,17 +279,20 @@ class GameData extends Component{
             });
         console.log('data',data)
         const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
-        const menu = playersToShow.map(({id, name,color})=> {
+        const menu = playersToShow.sort((a,b)=>a.balance > b.balance ? -1 : 1).map(({id, name,color, balance})=> {
             const style = {
-                backgroundColor: color,
+                color,
             }
 
-            return (<div key={`menu${color}${name}`} className="menuItem" style={style} > {name} ({playersIdsToGamesCountObjMapper[id]} games) </div>);
+            return (<div key={`menu${color}${name}`} className="menuItem" style={style} > {name}: {balance} ({playersIdsToGamesCountObjMapper[id]} games) </div>);
+        });
+        const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
+            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
         });
 
         const graph = (
             <div >
-                <LineChart className="gameGraphLineChart" width={SmartPhone ? Width : Width*(97/100)} height={SmartPhone ? 260 : 500} data={data}  >
+                <LineChart className="gameGraphLineChart" width={SmartPhone ? Width : Width*(88/100)} height={SmartPhone ? 260 : 500} data={data}  >
                     <XAxis dataKey="name"/>
                     <YAxis/>
                     <CartesianGrid strokeDasharray="0 40"/>
@@ -291,15 +300,15 @@ class GameData extends Component{
 
                     {lines}
                 </LineChart>
+                <div>
+                    {yearsButtons}
+                </div>
                 <div className="menu">
                      {menu}
                 </div>
             </div>
         );
 
-        const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
-            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
-        });
 
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
@@ -355,9 +364,7 @@ class GameData extends Component{
                         <div>
                             {graph}
                         </div>
-                        <div>
-                            {yearsButtons}
-                        </div>
+
                     </div>)
                 }
             </div>

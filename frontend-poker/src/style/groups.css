@@ -20,16 +20,20 @@
     margin-left: 10px;
 }
 .menuItem{
-    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+   background: white;
+    text-shadow: 1px 1px white;
     margin-left: 10px;
 
-    border: 1px solid black;
-   border-radius: 13px;
-    max-width: 250px;
+    border: 1px solid #1b1e2111;
+   border-radius: 6px;
+    max-width: 430px;
     padding-left: 10px;
     padding-top: 3px;
     padding-bottom: 3px;
-    margin-bottom: 5px;
+
+    margin-top: 5px;
 
 }
 .group-item-div-admin{

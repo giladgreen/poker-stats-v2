@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/game.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/game.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/groups.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/groups.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.471d4b27.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/css/main.754743ff.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.471d4b27.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/css/main.754743ff.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.59caa4da.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/js/main.ff02b743.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.59caa4da.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/js/main.ff02b743.js.map" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="1320">
               <caret line="88" column="34" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="34" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -44,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="256" column="17" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
+            <state relative-caret-position="251">
+              <caret line="291" selection-start-line="291" selection-end-line="291" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="n#!!block;n#getPlayerImage#0;n#GameData#0" />
@@ -58,19 +67,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/chart.css">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/game.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="11" selection-start-column="11" selection-end-column="11" />
+            <state relative-caret-position="206">
+              <caret line="198" column="19" selection-start-line="198" selection-start-column="19" selection-end-line="198" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/groups.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="405">
+              <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -109,10 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tabs</find>
-      <find>GameSummary</find>
-      <find>white{</find>
-      <find>key</find>
       <find>rangeBalace</find>
       <find>&lt;PlayerSummary</find>
       <find>playerBalance</find>
@@ -127,7 +132,6 @@
       <find>game.player</find>
       <find>playersInfo</find>
       <find>playersIdsToNameObjMapper</find>
-      <find>colors</find>
       <find>prev</find>
       <find>.sort</find>
       <find>yearsObject</find>
@@ -139,6 +143,11 @@
       <find>fakeGameData</find>
       <find>data.push</find>
       <find>data.p</find>
+      <find>menuItem</find>
+      <find>shadow</find>
+      <find>colors</find>
+      <find>85</find>
+      <find>InputRange</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -202,7 +211,6 @@
         <option value="$PROJECT_DIR$/.eslintignore" />
         <option value="$PROJECT_DIR$/.npmrc" />
         <option value="$PROJECT_DIR$/api/services/notifications.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/game.css" />
         <option value="$PROJECT_DIR$/frontend-poker/public/serviceWorker.js" />
         <option value="$PROJECT_DIR$/frontend-poker/public/index.html" />
         <option value="$PROJECT_DIR$/frontend-poker/src/actions/login.js" />
@@ -223,8 +231,9 @@
         <option value="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/chart.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/groups.css" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/style/game.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/style/groups.css" />
       </list>
     </option>
   </component>
@@ -234,7 +243,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-1334" />
     <option name="y" value="-1057" />
     <option name="width" value="1920" />
@@ -245,7 +254,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -282,6 +290,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,7 +466,8 @@
       <workItem from="1581689193732" duration="844000" />
       <workItem from="1581836506223" duration="11582000" />
       <workItem from="1581864349137" duration="43000" />
-      <workItem from="1581865768771" duration="734000" />
+      <workItem from="1581865768771" duration="1669000" />
+      <workItem from="1582105016643" duration="1539000" />
     </task>
     <servers />
   </component>
@@ -494,10 +504,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="488107000" />
+    <option name="totallyTimeSpent" value="490581000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1333" y="-1057" width="1920" height="971" extended-state="6" />
+    <frame x="-1334" y="-1057" width="1920" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.12300319" />
@@ -514,7 +524,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.07359813" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29556075" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -910,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/game.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2505">
-          <caret line="167" selection-start-line="167" selection-end-line="172" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/group-page.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -954,6 +957,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="88" column="34" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -971,6 +984,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="291" selection-start-line="291" selection-end-line="291" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#getPlayerImage#0;n#GameData#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/chart.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -978,31 +1002,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/game.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="198" column="19" selection-start-line="198" selection-start-column="19" selection-end-line="198" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/groups.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="88" column="34" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="256" column="17" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#getPlayerImage#0;n#GameData#0" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
         </state>
       </provider>
     </entry>
