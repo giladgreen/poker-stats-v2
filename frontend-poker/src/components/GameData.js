@@ -12,9 +12,41 @@ const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera M
 
 class GameData extends Component{
 
+    createPlayersDataAsFakeGame = (group, max, minIndex, maxIndex) => {
+        const { games } = group;
+        const balances = {};
+        const gamesCounts = {};
+        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex).forEach(game=>{
+            game.playersData.forEach(({playerId, buyIn,cashOut})=>{
+                if (!balances.hasOwnProperty(playerId)){
+                    balances[playerId] = 0;
+                }
+                if (!gamesCounts.hasOwnProperty(playerId)){
+                    gamesCounts[playerId] = 0;
+                }
+                balances[playerId] =  balances[playerId] + cashOut - buyIn;
+                gamesCounts[playerId] =  gamesCounts[playerId] + 1;
+            });
+        });
+        const playersData = Object.keys(gamesCounts).map(id=>{
+            return {
+                id,
+                playerId: id,
+                buyIn:0,
+                cashOut: balances[id],
+                gamesCount: gamesCounts[id]
+            }
+        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).slice(0,max)
+
+        return {
+            playersData
+        }
+    };
+
     constructor(props){
         super(props);
-        const group = this.props.Group;
+
+        const group = props.Group;
         this.yearsObject = {};
         group.games.sort((a,b)=>a.date < b.date ? -1 : 1).forEach((game,index)=>{
             const year = game.date.getYear() + 1900;
@@ -28,7 +60,9 @@ class GameData extends Component{
             }
         });
 
-        this.state = { sliderValues: { min: 0, max: group.games.length - 1 } }
+        const sliderValues ={ min: 0, max: group.games.length - 1 };
+        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.Group, props.playersCount, sliderValues.min, sliderValues.max): props.Game;
+        this.state = { sliderValues, Game }
     }
     getPlayerImage(playerInfo, playerWidth, margin){
         const isLoggedInPlayer = playerInfo.isMe;
@@ -87,7 +121,8 @@ class GameData extends Component{
     }
 
     render(){
-        const {Group, Game, IsGroupSummary, playersCount } = this.props;
+        const {Group, IsGroupSummary, playersCount } = this.props;
+        const { Game} = this.state;
         const {players} = Group;
         const {playersData} = Game;
         if (playersData.length === 0) {
@@ -277,7 +312,6 @@ class GameData extends Component{
 
                 data.push(gameData)
             });
-        console.log('data',data)
         const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
         const menu = playersToShow.sort((a,b)=>a.balance > b.balance ? -1 : 1).map(({id, name,color, balance})=> {
             const style = {
@@ -287,7 +321,15 @@ class GameData extends Component{
             return (<div key={`menu${color}${name}`} className="menuItem" style={style} > {name}: {balance} ({playersIdsToGamesCountObjMapper[id]} games) </div>);
         });
         const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
-            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
+            return <button key={`year-${year}`}
+                           className="year-button"
+                           onClick={()=> {
+                               const newState= { sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to }};
+                               if (this.props.IsGroupSummary){
+                                   newState.Game = this.createPlayersDataAsFakeGame(this.props.Group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to );
+                               }
+                               this.setState(newState)
+                           }}>{year}</button>
         });
 
         const graph = (
@@ -309,14 +351,20 @@ class GameData extends Component{
             </div>
         );
 
-
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
+
+                {
+                    (this.props.IsGroupSummary && (this.state.sliderValues.min > 0 || this.state.sliderValues.max < this.props.Group.games.length-1)) &&
+                    <div className="black">
+                        <b>(filtered data)</b>
+                    </div>
+                }
                 {IsGroupSummary && <div className="black">
-                    {Group.games.length} games ({Group.games[Group.games.length-1].date.AsGameName()} - {Group.games[0].date.AsGameName()})
+                    {this.state.sliderValues.max - this.state.sliderValues.min +1 } games ({Group.games[this.state.sliderValues.min].date.AsGameName()} - {Group.games[this.state.sliderValues.max].date.AsGameName()})
                 </div>}
                 <div className="black">
-                    {IsGroupSummary ? players.length : playersData.length } players
+                    { playersData.length } players
                 </div>
                 <div>
                   <span className="white">xx</span>
@@ -357,7 +405,11 @@ class GameData extends Component{
                                         value={this.state.sliderValues}
                                         onChange={sliderValues => {
                                             if (this.state.sliderValues.min < this.state.sliderValues.max){
-                                                this.setState({ sliderValues });
+                                                const newState = { sliderValues };
+                                                if (IsGroupSummary){
+                                                    newState.Game = this.createPlayersDataAsFakeGame(Group, this.props.playersCount, this.state.sliderValues.min, this.state.sliderValues.max);
+                                                }
+                                                this.setState(newState);
                                             }
                                         }} />
                         </div>

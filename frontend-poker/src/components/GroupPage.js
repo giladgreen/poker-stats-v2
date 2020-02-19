@@ -92,40 +92,24 @@ class GroupPage extends Component {
         </div>
     };
 
-    createPlayersDataAsFakeGame = (max) => {
-
-
-        const { group: { players} } = this.props;
-
-
-        let playersData = [];
-        if (players.length < max){
-            playersData = players.map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance}));
-        }else{
-
-            playersData = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance})).slice(0,max);
-
-
-            // let playersSortedByBalance = players.sort((a,b)=> a.balance > b.balance ? -1 :1);
-            // let playersSortedByGamesCount = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1);
-            // while (playersData.length < max){
-            //     const playerWithBalance = playersSortedByBalance[0];
-            //     playersSortedByBalance = playersSortedByBalance.slice(1);
-            //     if (!playersData.find(p=>p.playerId===playerWithBalance.id)) {
-            //         playersData.push({playerId: playerWithBalance.id, buyIn: 0, cashOut: playerWithBalance.balance})
-            //     }
-            //     const playerWithGamesCount = playersSortedByGamesCount[0];
-            //     playersSortedByGamesCount = playersSortedByGamesCount.slice(1);
-            //     if (!playersData.find(p=>p.playerId===playerWithGamesCount.id)){
-            //         playersData.push({playerId: playerWithGamesCount.id, buyIn:0, cashOut: playerWithGamesCount.balance })
-            //     }
-            // }
-        }
-
-        return {
-            playersData
-        }
-    };
+    // createPlayersDataAsFakeGame = (max) => {
+    //
+    //
+    //     const { group: { players} } = this.props;
+    //
+    //
+    //     let playersData = [];
+    //     if (players.length < max){
+    //         playersData = players.map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance}));
+    //     }else{
+    //
+    //         playersData = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).map(p=>({playerId: p.id, buyIn:0, cashOut: p.balance})).slice(0,max);
+    //     }
+    //
+    //     return {
+    //         playersData
+    //     }
+    // };
 
     handleNewGameDateChange = (event) =>{
         const newGame = { ...this.state.newGame, date: event.target.value };
@@ -821,7 +805,7 @@ class GroupPage extends Component {
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         const max = isMobile ? 7 : 8;
-        const fakeGameData = this.createPlayersDataAsFakeGame(max);
+       // const fakeGameData = this.createPlayersDataAsFakeGame(max);
 
 
         const header = this.getHeader();
@@ -848,7 +832,7 @@ class GroupPage extends Component {
                 <div id="group-page-data">
                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" activeKey={this.state.tabKey} onSelect={this.onKeyChange}>
                         <Tab eventKey="summary" title="summary">
-                            <GameData Group={group} Game={fakeGameData} playersCount={max} IsGroupSummary={true}/>
+                            <GameData Group={group}  playersCount={max} IsGroupSummary={true}/>
                         </Tab>
                         <Tab eventKey="games" title="Games">
                             <div id="games-tab">
