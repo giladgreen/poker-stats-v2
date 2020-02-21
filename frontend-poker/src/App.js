@@ -25,6 +25,11 @@ Date.prototype.AsGameName = function() {
     return `${day}/${month}/${year}`;
 };
 
+String.prototype.AsGameName = function() {
+    const date = new Date(this);
+    return date.AsGameName()
+};
+
 
 class App extends Component {
 
@@ -251,15 +256,21 @@ class App extends Component {
     }
 
     updateGame = (game)=>{
-        console.log('app game update', game);
+
         const showGroupPage = {...this.state.showGroupPage};
         let exist = false;
         showGroupPage.games = showGroupPage.games.map(g=>{
             if (g.id !== game.id) return g;
             exist = true;
+            if (typeof game.date === 'string'){
+                game.date = new Date(game.date);
+            }
             return game;
         });
         if (!exist){
+            if (typeof game.date === 'string'){
+                game.date = new Date(game.date);
+            }
             showGroupPage.games.push(game)
         }
         this.setState({showGroupPage})

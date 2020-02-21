@@ -42,6 +42,39 @@ class OnGoingGame extends Component {
         );
     }
 
+    getPlayersDataAsList = () =>{
+        const { game, group: { players:  groupPlayers}} = this.props;
+        const players = game.playersData.map(player=>{
+            const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
+            return {...player, name, imageUrl}
+        }).map((player, index)=>{
+            console.log('player',player)
+            const onImageError = (ev)=>{
+                if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src=player.imageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+            const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
+            const positive = player.cashOut - player.buyIn > 0;
+            const balance =  `${positive ? '+':''}${player.cashOut - player.buyIn}₪`;
+            return  (<div key={`player${index}`} className="mobile-player">
+
+                        {image}
+                        <span className="margin-both-sides">{player.name}:</span>
+
+                        {balance}
+
+            </div>);
+        });
+
+        return (
+            <div className="mobile-players">
+                {players}
+            </div>);
+    }
     getAsPokerTable = () =>{
         const { game, group: { players:  groupPlayers}} = this.props;
         const players = game.playersData.map(player=>{
@@ -131,6 +164,7 @@ class OnGoingGame extends Component {
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
         const players =  this.getAsPokerTable() ;
+        const mobilePlayers = this.getPlayersDataAsList()
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         return (
@@ -143,11 +177,14 @@ class OnGoingGame extends Component {
                         <button className="button " onClick={this.onBackClicked}> Back</button>
                         <button className="button left-margin" onClick={this.onEditClicked}> Edit</button>
                         {isAdmin && <button onClick={this.props.deleteSelectedGame} className="button left-margin">Delete</button>}
+
+                        { isMobile ? <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div> : <div/>}
                     </div>
 
                 </div>
-                { isMobile ? <span/> : players}
-                 <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>
+                { isMobile ? mobilePlayers : players}
+                { isMobile ? <div/> : <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>}
+
             </div>);
 
     }

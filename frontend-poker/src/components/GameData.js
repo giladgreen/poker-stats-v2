@@ -122,7 +122,18 @@ class GameData extends Component{
 
     render(){
         const {Group, IsGroupSummary, playersCount } = this.props;
-        const { Game} = this.state;
+        const { Game, sliderValues} = this.state;
+        //this.state.sliderValues.max - this.state.sliderValues.min
+        if (Group.games.length  -1 < this.state.sliderValues.max){
+            sliderValues.min=0;
+            sliderValues.max=Group.games.length -1;
+            const newSliderValues = {...sliderValues};
+            setTimeout(()=>{
+                this.setState({sliderValues: newSliderValues});
+            },1)
+        }
+
+
         const {players} = Group;
         const {playersData} = Game;
         if (playersData.length === 0) {
@@ -251,7 +262,7 @@ class GameData extends Component{
         const playersIdsToBalanceObjMapper = {};
         const filterGames = Group.games
             .sort((a,b)=>a.date < b.date ? -1 : 1)
-            .filter((game,index) => this.state.sliderValues.min <= index && index <= this.state.sliderValues.max);
+            .filter((game,index) => sliderValues.min <= index && index <= sliderValues.max);
 
         filterGames.forEach(game=>{
             game.playersData.forEach(({playerId, buyIn,cashOut})=>{
@@ -352,19 +363,21 @@ class GameData extends Component{
                 </div>
             </div>
         );
+        const gamesDates = IsGroupSummary ? (
+            <div className="black">
+            {sliderValues.max - sliderValues.min +1 } games ({Group.games[sliderValues.min].date.AsGameName()} - {Group.games[sliderValues.max].date.AsGameName()})
+        </div>):<div/>;
 
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
 
                 {
-                    (this.props.IsGroupSummary && (this.state.sliderValues.min > 0 || this.state.sliderValues.max < this.props.Group.games.length-1)) &&
+                    (this.props.IsGroupSummary && (sliderValues.min > 0 || sliderValues.max < this.props.Group.games.length-1)) &&
                     <div className="black">
                         <b>(filtered data)</b>
                     </div>
                 }
-                {IsGroupSummary && <div className="black">
-                    {this.state.sliderValues.max - this.state.sliderValues.min +1 } games ({Group.games[this.state.sliderValues.min].date.AsGameName()} - {Group.games[this.state.sliderValues.max].date.AsGameName()})
-                </div>}
+                {gamesDates}
                 <div className="black">
                     { playersData.length } players
                 </div>
@@ -397,19 +410,19 @@ class GameData extends Component{
                 { IsGroupSummary && Group.games.length>0 && (
                     <div className="black">
                         <div><b>Date range specific data:</b><br/></div>
-                        <div>From { Group.games[this.state.sliderValues.min].date.AsGameName()} to { Group.games[this.state.sliderValues.max].date.AsGameName()}</div>
+                        <div>From { Group.games[sliderValues.min].date.AsGameName()} to { Group.games[sliderValues.max].date.AsGameName()}</div>
                         <div>
                             <InputRange className="InputRange"
                                         step={1}
                                         formatLabel={() => ``}
                                         maxValue={ Group.games.length - 1}
                                         minValue={0}
-                                        value={this.state.sliderValues}
+                                        value={sliderValues}
                                         onChange={sliderValues => {
-                                            if (this.state.sliderValues.min < this.state.sliderValues.max){
+                                            if (sliderValues.min < sliderValues.max){
                                                 const newState = { sliderValues };
                                                 if (IsGroupSummary){
-                                                    newState.Game = this.createPlayersDataAsFakeGame(Group, this.props.playersCount, this.state.sliderValues.min, this.state.sliderValues.max);
+                                                    newState.Game = this.createPlayersDataAsFakeGame(Group, this.props.playersCount, sliderValues.min, sliderValues.max);
                                                 }
                                                 this.setState(newState);
                                             }

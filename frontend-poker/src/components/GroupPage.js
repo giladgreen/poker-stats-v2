@@ -676,13 +676,16 @@ class GroupPage extends Component {
     };
 
     getGamesTab = () =>{
+
         const { group } = this.props;
         const {games} = group;
-
+        console.log('getGamesTab',games )
         if (this.state.newGame){
+            console.log('on new game')
             return this.getNewGameSection()
         }
         if (this.state.editGame){
+            console.log('on edit game')
             if (this.state.editPlayerInGame){
                 return this.getEditPlayerInGame()
             }
@@ -690,15 +693,17 @@ class GroupPage extends Component {
         }
 
         if (this.state.gameSummary){
+            console.log('on gameSummary')
             const game = this.state.gameSummary;
             const { ready } = this.isGameReady(game);
             if (ready) return this.getGamesSummary();
-
+            console.log('not ready, ',game)
             return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}  group={group} user={this.props.user} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
 
 
         }
 
+        console.log('games to show', games)
         const GAMES = games.sort((a,b)=> a.date > b.date ? -1 : 1).map(game => {
             const { ready } = this.isGameReady(game);
             const pot = this.getGamePot(game);
@@ -802,6 +807,7 @@ class GroupPage extends Component {
 
 
         const { group } = this.props;
+
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         const max = isMobile ? 7 : 8;

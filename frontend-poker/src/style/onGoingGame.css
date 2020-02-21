@@ -315,4 +315,34 @@
     top: -10px;
 }
 
+.viewGamePopupInner{
+    color: black;
+}
 
+@media screen and (max-width: 800px) {
+    .potInTheMiddle{
+        position: relative;
+        left:0vw;
+        top:0vh;
+        font-size: 3em;
+        color: darkgreen;
+        font-weight: bold;
+    }
+.mobile-player{
+    margin-top: 7px;
+    font-size: 1.3em;
+}
+.margin-both-sides{
+    margin-left: 8px;
+    margin-right: 12px;
+}
+    .activeGameCircleImage{
+        width: 40px;
+        height: 45px;
+        border-radius: 100%;
+        position: relative;
+        z-index: 20;
+
+    }
+
+}
