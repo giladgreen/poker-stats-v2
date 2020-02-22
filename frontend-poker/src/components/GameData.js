@@ -28,6 +28,7 @@ class GameData extends Component{
                 this.gamesCounts[playerId] =  this.gamesCounts[playerId] + 1;
             });
         });
+        this.playersCountText = Object.keys(this.balances).length;
         const playersData = Object.keys(this.gamesCounts).map(id=>{
             return {
                 id,
@@ -368,6 +369,7 @@ class GameData extends Component{
             {sliderValues.max - sliderValues.min +1 } games ({Group.games[sliderValues.min].date.AsGameName()} - {Group.games[sliderValues.max].date.AsGameName()})
         </div>):<div/>;
 
+        let playersCountText = IsGroupSummary ?  this.playersCountText : playersData.length;
         return (
             <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
 
@@ -379,7 +381,7 @@ class GameData extends Component{
                 }
                 {gamesDates}
                 <div className="black">
-                    { playersData.length } players
+                    { playersCountText } players
                 </div>
                 <div>
                   <span className="white">xx</span>
