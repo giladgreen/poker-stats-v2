@@ -5,7 +5,7 @@ const models = require('../models');
 const gameHelper = require('../helpers/game');
 
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
-const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt','extra'];
+const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt', 'extra'];
 
 const defaultValues = {
   description: '',
@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId: newGame.id, groupId, extra:{ buyIns:[{ time: new Date(), amount: playerData.buyIn}]}
+      ...playerData, index, gameId: newGame.id, groupId, extra: { buyIns: [{ time: new Date(), amount: playerData.buyIn }] },
     })));
   }
 
@@ -111,7 +111,7 @@ async function updateGame(userContext, groupId, gameId, data) {
     where: {
       groupId,
       gameId,
-    }
+    },
   });
   await models.gamesData.destroy({
     where: {
@@ -133,25 +133,24 @@ async function updateGame(userContext, groupId, gameId, data) {
   });
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => {
-      const currentPlayerData = existingData.find(d=>d.playerId === playerData.playerId);
+      const currentPlayerData = existingData.find(d => d.playerId === playerData.playerId);
       const extra = {
-        buyIns:[]
+        buyIns: [],
       };
       let sum = 0;
       if (currentPlayerData && currentPlayerData.extra && currentPlayerData.extra.buyIns) {
-        currentPlayerData.extra.buyIns.forEach(bi=>{
+        currentPlayerData.extra.buyIns.forEach((bi) => {
           extra.buyIns.push(bi);
           sum += bi.amount;
-        })
+        });
       }
 
       extra.buyIns.push({ time: new Date(), amount: playerData.buyIn - sum });
 
 
       return models.gamesData.create({
-        ...playerData, index, gameId, groupId, extra
-      })
-
+        ...playerData, index, gameId, groupId, extra,
+      });
     }));
   }
   return getGame({ groupId, gameId });
