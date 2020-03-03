@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
@@ -319,7 +320,7 @@ class App extends Component {
 
                 <div className="MainSection">
 
-                    <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}/>
+                    <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}  />
 
                 </div>
 

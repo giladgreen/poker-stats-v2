@@ -365,13 +365,18 @@ class GameData extends Component{
             </div>
         );
         const gamesDates = IsGroupSummary ? (
-            <div className="black">
+            <div className="black"  data-position="right"
+                 data-intro="group summary data"
+                 introId="summary"
+                 data-step={2}>
             {sliderValues.max - sliderValues.min +1 } games ({Group.games[sliderValues.min].date.AsGameName()} - {Group.games[sliderValues.max].date.AsGameName()})
         </div>):<div/>;
 
         let playersCountText = IsGroupSummary ?  this.playersCountText : playersData.length;
         return (
-            <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}>
+            <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}
+
+            >
 
                 {
                     (this.props.IsGroupSummary && (sliderValues.min > 0 || sliderValues.max < this.props.Group.games.length-1)) &&
@@ -411,9 +416,16 @@ class GameData extends Component{
                 <hr/>
                 { IsGroupSummary && Group.games.length>0 && (
                     <div className="black">
-                        <div><b>Date range specific data:</b><br/></div>
+                        <div
+
+                        ><b>Date range specific data:</b><br/></div>
                         <div>From { Group.games[sliderValues.min].date.AsGameName()} to { Group.games[sliderValues.max].date.AsGameName()}</div>
-                        <div>
+                        <div
+                            data-position="right"
+                            data-intro="change dates range"
+                            introId="summary"
+                            data-step={3}
+                        >
                             <InputRange className="InputRange"
                                         step={1}
                                         formatLabel={() => ``}
@@ -430,7 +442,10 @@ class GameData extends Component{
                                             }
                                         }} />
                         </div>
-                        <div>
+                        <div  data-position="right"
+                              data-intro="dates range graph"
+                              introId="summary"
+                              data-step={4}>
                             {graph}
                         </div>
 

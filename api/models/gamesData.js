@@ -30,6 +30,10 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       field: 'group_id',
     },
+    extra: {
+      type: DataTypes.JSON,
+      field: 'extra',
+    },
     ...dateFields,
   }, {
     paranoid: false,

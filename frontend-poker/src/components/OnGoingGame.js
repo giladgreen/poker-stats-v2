@@ -161,6 +161,7 @@ class OnGoingGame extends Component {
                     </div>
                 </div>);
         }
+        const totalCashouts = game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
 
         const players =  this.getAsPokerTable() ;
@@ -178,12 +179,12 @@ class OnGoingGame extends Component {
                         <button className="button left-margin" onClick={this.onEditClicked}> Edit</button>
                         {isAdmin && <button onClick={this.props.deleteSelectedGame} className="button left-margin">Delete</button>}
 
-                        { isMobile ? <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div> : <div/>}
+                        { isMobile ? <div className="potInTheMiddle">{totalBuyIn-totalCashouts}₪ In Pot</div> : <div/>}
                     </div>
 
                 </div>
                 { isMobile ? mobilePlayers : players}
-                { isMobile ? <div/> : <div className="potInTheMiddle">{totalBuyIn}₪ In Pot</div>}
+                { isMobile ? <div/> : <div className="potInTheMiddle">{totalBuyIn-totalCashouts}₪ In Pot</div>}
 
             </div>);
 

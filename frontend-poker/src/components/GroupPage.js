@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const introJs = require('intro.js');
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import getGame from '../actions/getGame';
@@ -20,9 +21,30 @@ import PlayerSummary from './PlayerSummary';
 import CONSTS from '../CONSTS';
 
 const { ANON_URL } = CONSTS;
+
 const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
 const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 class GroupPage extends Component {
+
+    startIntro=()=>{
+        const intro = introJs();
+        const THIS = this;
+        const change = (tabKey)=>{
+            this.setState({tabKey, playerSummary:null, gameSummary: null });
+
+        };
+
+        intro.onbeforechange(function(targetElement) {
+            const introId = targetElement.getAttribute("introId");
+            if (introId && THIS.state.tabKey!==introId){
+                change(introId);
+            }
+
+
+        });
+
+        intro.start();
+    }
 
     getImage=()=>{
 
@@ -70,8 +92,13 @@ class GroupPage extends Component {
 
         menuItems.push(<MenuItem key="menuItem5" onClick={this.goHome}>Home</MenuItem>);
         menuItems.push(<MenuItem key="menuItem6" onClick={this.logout}>Logout</MenuItem>);
-
-        return  <div id="app-header">
+        const introData = {
+            "data-position":"right",
+            "data-intro":"thats it..  enjoy!",
+            "introId":"summary",
+            "data-step":9
+        };
+        return  <div id="app-header" {...introData}>
             <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />
 
             {this.state.showMenu &&
@@ -667,6 +694,9 @@ class GroupPage extends Component {
     }
 
     updateOnProgressGame = ()=>{
+        if (!this.state.gameSummary){
+            return;
+        }
         const {group} = this.props;
         const onGoingGameId = this.state.gameSummary.id;
         getGame(group.id, onGoingGameId, this.props.provider, this.props.token).then((gameSummary)=>{
@@ -679,7 +709,6 @@ class GroupPage extends Component {
 
         const { group } = this.props;
         const {games} = group;
-        console.log('getGamesTab',games )
         if (this.state.newGame){
             console.log('on new game')
             return this.getNewGameSection()
@@ -703,8 +732,7 @@ class GroupPage extends Component {
 
         }
 
-        console.log('games to show', games)
-        const GAMES = games.sort((a,b)=> a.date > b.date ? -1 : 1).map(game => {
+        const GAMES = games.sort((a,b)=> a.date > b.date ? -1 : 1).map((game,index) => {
             const { ready } = this.isGameReady(game);
             const pot = this.getGamePot(game);
             const style = {
@@ -712,8 +740,18 @@ class GroupPage extends Component {
                 borderRadiusTop: '50px',
             };
 
+            const introData = index===0 ? {
+                "data-position":"right",
+                "data-intro":"game data",
+                "introId":"games",
+                "data-step":6
+            }:{};
             return (
-                        <div key={game.id} className={`game-item-div ${ready?'':'game-item-div-not-ready'}`}  onClick={()=>this.showGameData(game)}>
+                        <div key={game.id}
+                             className={`game-item-div ${ready?'':'game-item-div-not-ready'}`}
+                             onClick={()=>this.showGameData(game)}
+                             {...introData}
+                        >
                             <div key={game.id} className="game-item-div-inner" style={style}>
                                 <div><b>{this.gameDateToString(game) }</b></div>
                                 <div className="group-description">{game.description } </div>
@@ -735,7 +773,10 @@ class GroupPage extends Component {
 
         return (<div id="all-games-div" >
             <div className="row">
-                <div className="col-xs-6">
+                <div className="col-xs-6"  data-position="right"
+                     data-intro="create new game"
+                     introId="games"
+                     data-step={5}>
                     <div className="game-item-div plus-sign" onClick={this.showCreateGame}>
                         +
                     </div>
@@ -763,15 +804,22 @@ class GroupPage extends Component {
             return this.getPlayerSummary()
         }
 
-        const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map(player => {
+        const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map((player,index) => {
 
             const style = {
                 backgroundImage: `url(${player.imageUrl || FULL_ANON_URL})`,
                 borderRadiusTop: '50px',
             };
 
+            const introData = index===0 ? {
+                "data-position":"right",
+                "data-intro":"player data",
+                "introId":"players",
+                "data-step":8
+            }:{};
+
             return (
-                        <div key={player.id} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
+                        <div key={player.id} {...introData} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
                             <div key={player.id} className="player-item-div-inner" style={style}>
                                 <div><b>{player.name}</b></div>
                                 {  player.gamesCount ?
@@ -791,7 +839,12 @@ class GroupPage extends Component {
         return (<div id="all-games-div" >
             <div className="row">
                 <div className="col-xs-6">
-                    <div className="player-item-div plus-sign" onClick={this.showCreatePlayer}>
+                    <div className="player-item-div plus-sign"
+                         data-position="right"
+                         data-intro="add new player"
+                         introId="players"
+                         data-step={7}
+                         onClick={this.showCreatePlayer}>
                         +
                     </div>
                 </div>
@@ -825,28 +878,37 @@ class GroupPage extends Component {
         return (
             <div id="container" className="group-page">
                 {header}
-                <div id="group-image-title" className="group-image-title" style={style}>
+
+                <div id="group-image-title" className="group-image-title" style={style}
+
+                >
                     <div className="row">
-                        <div className="col-xs-8 event-page-title">
+                        <div className="col-xs-8 event-page-title" data-position="right" data-intro="group name and description" data-step={1} introId="summary">
                             <div>{group.name}</div>
                             <div  className="event-page-description">{group.description}</div>
 
                         </div>
                     </div>
                 </div>
+                <div className="info-icon info-icon-floating-top-left "  onClick={this.startIntro} >
+                    <img src="https://img.icons8.com/flat_round/64/000000/info.png"/>
+                </div>
 
-                <div id="group-page-data">
+                <div id="group-page-data"  >
                     <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" activeKey={this.state.tabKey} onSelect={this.onKeyChange}>
-                        <Tab eventKey="summary" title="summary">
-                            <GameData Group={group}  playersCount={max} IsGroupSummary={true}/>
+                        <Tab eventKey="summary" title="summary" >
+                            <GameData Group={group}
+                                      playersCount={max}
+
+                                      IsGroupSummary={true}/>
                         </Tab>
-                        <Tab eventKey="games" title="Games">
+                        <Tab eventKey="games" title="Games" >
                             <div id="games-tab">
                                 {gamesTab}
                             </div>
 
                         </Tab>
-                        <Tab eventKey="players" title="Players">
+                        <Tab eventKey="players" title="Players" >
                             <div id="players-tab">
                                 {playersTab}
                             </div>

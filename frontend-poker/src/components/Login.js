@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+
 import FacebookLogin from  'react-facebook-login/dist/facebook-login-render-props';
 import { GoogleLogin } from 'react-google-login';
 
@@ -11,13 +11,22 @@ import { version } from '../../package.json';
 const ONE_DAY = 1000 * 60 * 60 * 24;
 const GOOGLE_CLIENT_ID= '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.googleusercontent.com';
 const FACEBOOK_APP_ID= '2487592561563671';
+const protocol = window.location.protocol;
 
-
+const fb = protocol==='https' && window.location.search && window.location.search.includes('fb=true');
+console.log('fb true');
+const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
     constructor() {
         super();
         this.state = { error: null };
+        if (fb) {
+            setTimeout(()=>{
+                document.getElementById("fbButton").click(); // Click on the checkbox
+
+            },100)
+        }
     }
 
     onFailure = (error) => {
@@ -75,6 +84,7 @@ class Login extends Component {
             }
         }
         const google = (<GoogleLogin
+
             clientId={GOOGLE_CLIENT_ID}
             onSuccess={this.googleResponse}
             onFailure={this.onFailure}
@@ -83,16 +93,16 @@ class Login extends Component {
             )}
         />);
 
-         const facebook = ( <FacebookLogin
+         const facebook = protocol==='https' ? (<FacebookLogin
             disableMobileRedirect={true}
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
             fields="name,email,picture"
             callback={this.facebookResponse}
             render={renderProps => (
-                <div className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
+                <div id="fbButton" className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
             )}
-        />);
+         />) :  <div className="login-button" onClick={()=>{ window.location = httpsUrl}}> LOGIN WITH FACEBOOK</div>;
 
         return (
             <div id="login-page">
@@ -119,6 +129,7 @@ class Login extends Component {
                 <div id="loginErrorSection">
                     {this.state.error ? this.state.error : ''}
                 </div>
+
 
             </div>
         );

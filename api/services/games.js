@@ -5,7 +5,7 @@ const models = require('../models');
 const gameHelper = require('../helpers/game');
 
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
-const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt'];
+const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt','extra'];
 
 const defaultValues = {
   description: '',
@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId: newGame.id, groupId,
+      ...playerData, index, gameId: newGame.id, groupId, extra:{ buyIns:[{ time: new Date(), amount: playerData.buyIn}]}
     })));
   }
 
@@ -107,6 +107,12 @@ async function updateGame(userContext, groupId, gameId, data) {
   await getGame({ groupId, gameId });
   const date = moment(new Date(`${data.date}`.substr(0, 10))).add(12, 'hours').toDate();
 
+  const existingData = await models.gamesData.findAll({
+    where: {
+      groupId,
+      gameId,
+    }
+  });
   await models.gamesData.destroy({
     where: {
       groupId,
@@ -126,9 +132,27 @@ async function updateGame(userContext, groupId, gameId, data) {
     },
   });
   if (playersData) {
-    await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId, groupId,
-    })));
+    await Promise.all(playersData.map((playerData, index) => {
+      const currentPlayerData = existingData.find(d=>d.playerId === playerData.playerId);
+      const extra = {
+        buyIns:[]
+      };
+      let sum = 0;
+      if (currentPlayerData && currentPlayerData.extra && currentPlayerData.extra.buyIns) {
+        currentPlayerData.extra.buyIns.forEach(bi=>{
+          extra.buyIns.push(bi);
+          sum += bi.amount;
+        })
+      }
+
+      extra.buyIns.push({ time: new Date(), amount: playerData.buyIn - sum });
+
+
+      return models.gamesData.create({
+        ...playerData, index, gameId, groupId, extra
+      })
+
+    }));
   }
   return getGame({ groupId, gameId });
 }
