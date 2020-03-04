@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+            <state relative-caret-position="254">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#631#719#0" />
@@ -70,7 +70,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sliderValues</find>
       <find>console.lo</find>
       <find>viewGamePopupInner</find>
       <find>potInTheMiddle</find>
@@ -100,6 +99,7 @@
       <find>totalBuyIn</find>
       <find>.playersData</find>
       <find>fbButton</find>
+      <find>protocol</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -446,7 +446,7 @@
       <workItem from="1582105016643" duration="2319000" />
       <workItem from="1582109659238" duration="4031000" />
       <workItem from="1582283147676" duration="4000000" />
-      <workItem from="1583256625128" duration="13357000" />
+      <workItem from="1583256625128" duration="13602000" />
     </task>
     <servers />
   </component>
@@ -483,7 +483,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="512749000" />
+    <option name="totallyTimeSpent" value="512994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1107" y="-1057" width="1920" height="1057" extended-state="6" />
@@ -987,8 +987,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
+        <state relative-caret-position="254">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#631#719#0" />

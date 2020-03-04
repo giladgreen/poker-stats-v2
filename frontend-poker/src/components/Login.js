@@ -13,10 +13,10 @@ const GOOGLE_CLIENT_ID= '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.goog
 const FACEBOOK_APP_ID= '2487592561563671';
 const protocol = window.location.protocol;
 
-const fb = protocol==='https' && window.location.search && window.location.search.includes('fb=true');
-console.log('-protocol', protocol);
-console.log('-window.location.search', window.location.search);
-console.log('-fb', fb);
+const fb = protocol==='https:' && window.location.search && window.location.search.includes('fb=true');
+console.log('--protocol', protocol);
+console.log('--window.location.search', window.location.search);
+console.log('--fb', fb);
 const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
@@ -105,7 +105,7 @@ class Login extends Component {
             )}
         />);
 
-         const facebook = protocol==='https' ? (<FacebookLogin id="fbButton"
+         const facebook = protocol==='https:' ? (<FacebookLogin id="fbButton"
             disableMobileRedirect={true}
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
