@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId: newGame.id, groupId, extra: { cashOuts:[], buyIns: [{ index: 0, time: new Date(), amount: playerData.buyIn }] },
+      ...playerData, index, gameId: newGame.id, groupId, extra: { cashOuts: [], buyIns: [{ index: 0, time: new Date(), amount: playerData.buyIn }] },
     })));
   }
 
