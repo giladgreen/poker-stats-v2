@@ -68,7 +68,9 @@ class OnGoingGame extends Component {
                         {balance}
                          {player.extra && player.extra.buyIns && player.extra.buyIns.length >0 &&  (
                              <div>
-                            player.extra.buyIns.map((bi,i) => (<div>{i+1}) {bi.time.AsExactTime()} - {bi.amount} buy in  </div>)
+                                 {
+                                     player.extra.buyIns.map((bi,i) => (<div>{i+1}) {bi.time.AsExactTime()} - {bi.amount} buy in  </div>))
+                                 }
                             </div>
                          )}
 
