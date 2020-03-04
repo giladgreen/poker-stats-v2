@@ -144,9 +144,9 @@ async function updateGame(userContext, groupId, gameId, data) {
           sum += bi.amount;
         });
       }
-    if (playerData.buyIn - sum > 0) {
-      extra.buyIns.push({ time: new Date(), amount: playerData.buyIn - sum });
-    }
+      if (playerData.buyIn - sum > 0) {
+        extra.buyIns.push({ time: new Date(), amount: playerData.buyIn - sum });
+      }
 
 
       return models.gamesData.create({
