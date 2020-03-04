@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId: newGame.id, groupId, extra: { cashOuts: [], buyIns: [{ index: 0, time: new Date(), amount: playerData.buyIn }] },
+      ...playerData, index, gameId: newGame.id, groupId, extra: { cashOuts: [], buyIns: [{ time: new Date(), amount: playerData.buyIn }] },
     })));
   }
 
@@ -159,7 +159,6 @@ async function updateGame(userContext, groupId, gameId, data) {
       if (playerData.cashOut - cashOutSum > 0) {
         extra.cashOuts.push({ time: new Date(), amount: playerData.cashOut - cashOutSum });
       }
-
 
       return models.gamesData.create({
         ...playerData, index, gameId, groupId, extra,
