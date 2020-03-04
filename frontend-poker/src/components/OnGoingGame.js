@@ -47,8 +47,7 @@ class OnGoingGame extends Component {
         const players = game.playersData.map(player=>{
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
             return {...player, name, imageUrl }
-        }).map((player, index)=>{
-            console.log('player',player)
+        }).sort((a,b) => a.index < b.index ? -1 : 1).map((player, index)=>{
             const onImageError = (ev)=>{
                 if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
                     ev.target.secondTry = true;
@@ -62,22 +61,50 @@ class OnGoingGame extends Component {
             const balance =  `${positive ? '+':''}${player.cashOut - player.buyIn}₪`;
             //cashOuts
             const inOuts = player.extra ? [
-                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, text: `${bi.time.AsExactTime(2)} - ${bi.amount}₪ buy in`})),
-                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, text: `${co.time.AsExactTime(2)} - ${co.amount}₪ cash out`}))
+                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, text: `${bi.time.AsExactTime(2)} +${bi.amount}₪ buy in`})),
+                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, text: `${co.time.AsExactTime(2)} +${co.amount}₪ cash out`}))
             ].sort((a,b) => a.time < b.time ? -1 : 1) : [];
             return  (<div key={`player${index}`} className="mobile-player">
 
                         {image}
                         <span className="margin-both-sides">{player.name}:</span>
-                        {balance}
-                         {inOuts.map(item => (<div>{item.text}  </div>))}
+
+                         {inOuts.map(item => (<div key={`${player.name}-${item.time}-${item.text}`} className="gray">{item.text}  </div>))}
+                         bottom line:  {balance}
 
             </div>);
         });
 
+        let inouts = game.playersData.map(player=>{
+            const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
+            return {...player, name, imageUrl };
+        }).map((player)=>{
+            const onImageError = (ev)=>{
+                if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
+                    ev.target.secondTry = true;
+                    ev.target.src=player.imageUrl;
+                }else{
+                    ev.target.src=ANON_URL;
+                }
+            };
+            const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
+            //cashOuts
+            const inOuts = player.extra ? [
+                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, image, text: `${bi.time.AsExactTime(2)} ${player.name} added +${bi.amount}₪`})),
+                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, image, text: `${co.time.AsExactTime(2)} ${player.name} took ${co.amount}₪`}))
+            ] : [];
+           return inOuts;
+        });
+        inouts = inouts.reduce((all,item)=>{
+            return [...all,...item]
+        }, []).sort((a,b) => a.time < b.time ? -1 : 1).map((item,index) => (<div key={`${index}-itemm`} >{item.image} {item.text}</div>));
+
         return (
             <div className="mobile-players">
                 {players}
+
+                <hr/>
+                {inouts}
             </div>);
     }
     getAsPokerTable = () =>{

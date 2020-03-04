@@ -28,12 +28,12 @@ Date.prototype.AsGameName = function() {
 };
 
 Date.prototype.AsExactTime = function() {
-    const stringValue = this.toISOString();
-    const day = stringValue.substr(8,2);
-    const month = stringValue.substr(5,2);
-    const year = stringValue.substr(0,4);
-    const time = stringValue.substr(11,8);
-    return `${day}/${month}/${year} ${time}`;
+    // const stringValue = this.toISOString();
+    // const day = stringValue.substr(8,2);
+    // const month = stringValue.substr(5,2);
+    // const year = stringValue.substr(0,4);
+    return this.toISOString().substr(11,5);
+    // return `${time}`;
 };
 
 String.prototype.AsGameName = function() {

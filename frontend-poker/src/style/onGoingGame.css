@@ -318,7 +318,9 @@
 .viewGamePopupInner{
     color: black;
 }
-
+.gray{
+    color: #444444;
+}
 @media screen and (max-width: 800px) {
     .potInTheMiddle{
         position: relative;
@@ -330,6 +332,7 @@
     }
 .mobile-player{
     margin-top: 7px;
+    margin-bottom: 10px;
     font-size: 1.3em;
 }
 .margin-both-sides{
