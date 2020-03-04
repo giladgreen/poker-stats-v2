@@ -12,18 +12,17 @@ const ONE_DAY = 1000 * 60 * 60 * 24;
 const GOOGLE_CLIENT_ID= '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.googleusercontent.com';
 const FACEBOOK_APP_ID= '2487592561563671';
 const protocol = window.location.protocol;
-
-const fb = protocol==='https:' && window.location.search && window.location.search.includes('fb=true');
-console.log('--protocol', protocol);
-console.log('--window.location.search', window.location.search);
-console.log('--fb', fb);
+const isHttps = protocol==='https:';
+const showFB =  isHttps;
+const tryConnectToFB =  isHttps && !!window.location.search && window.location.search.includes('fb=true') ;
+console.log('--fb', { showFB, tryConnectToFB });
 const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
     constructor() {
         super();
         this.state = { error: null };
-        if (fb) {
+        if (tryConnectToFB) {
             setTimeout(()=>{
                 try {
                     const fbButton = document.getElementById("fbButton");
@@ -105,14 +104,14 @@ class Login extends Component {
             )}
         />);
 
-         const facebook = protocol==='https:' ? (<FacebookLogin id="fbButton"
+         const facebook = showFB ? (<FacebookLogin
             disableMobileRedirect={true}
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
             fields="name,email,picture"
             callback={this.facebookResponse}
             render={renderProps => (
-                <div  className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
+                <div id="fbButton" className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
             )}
          />) :  <div className="login-button" onClick={()=>{ window.location = httpsUrl}}> LOGIN WITH FACEBOOK</div>;
 

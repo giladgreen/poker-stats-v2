@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+            <state relative-caret-position="267">
+              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
                 <element signature="e#631#719#0" />
@@ -98,8 +98,8 @@
       <find>FULL_ANON_URL</find>
       <find>totalBuyIn</find>
       <find>.playersData</find>
-      <find>fbButton</find>
       <find>protocol</find>
+      <find>fbButton</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -446,7 +446,7 @@
       <workItem from="1582105016643" duration="2319000" />
       <workItem from="1582109659238" duration="4031000" />
       <workItem from="1582283147676" duration="4000000" />
-      <workItem from="1583256625128" duration="13602000" />
+      <workItem from="1583256625128" duration="14622000" />
     </task>
     <servers />
   </component>
@@ -483,7 +483,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="512994000" />
+    <option name="totallyTimeSpent" value="514014000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1107" y="-1057" width="1920" height="1057" extended-state="6" />
@@ -987,8 +987,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="267">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
             <element signature="e#631#719#0" />
