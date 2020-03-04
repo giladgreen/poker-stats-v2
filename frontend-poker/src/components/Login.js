@@ -14,7 +14,7 @@ const FACEBOOK_APP_ID= '2487592561563671';
 const protocol = window.location.protocol;
 
 const fb = protocol==='https' && window.location.search && window.location.search.includes('fb=true');
-console.log('fb', fb);
+console.log('-fb', fb);
 const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
