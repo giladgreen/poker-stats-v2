@@ -90,14 +90,14 @@ class OnGoingGame extends Component {
             const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
             //cashOuts
             const inOuts = player.extra ? [
-                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, image, text: `${bi.time.AsExactTime(2)} ${player.name} added +${bi.amount}₪`})),
-                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, image, text: `${co.time.AsExactTime(2)} ${player.name} took ${co.amount}₪`}))
+                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, image, timeText:bi.time.AsExactTime(2), text: `${player.name} added +${bi.amount}₪`})),
+                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, image, timeText:co.time.AsExactTime(2), text: `${player.name} took ${co.amount}₪`}))
             ] : [];
            return inOuts;
         });
         inouts = inouts.reduce((all,item)=>{
             return [...all,...item]
-        }, []).sort((a,b) => a.time < b.time ? -1 : 1).map((item,index) => (<div key={`${index}-itemm`} >{item.image} {item.text}</div>));
+        }, []).sort((a,b) => a.time < b.time ? -1 : 1).map((item,index) => (<div className="inout-border" key={`${index}-itemm`} >{item.timeText} {item.image} {item.text}</div>));
 
         return (
             <div className="mobile-players">

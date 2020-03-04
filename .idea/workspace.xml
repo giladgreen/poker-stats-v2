@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" afterDir="false" />
     </list>
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="321" column="18" selection-start-line="321" selection-start-column="18" selection-end-line="321" selection-end-column="18" />
+            <state relative-caret-position="365">
+              <caret line="338" column="31" selection-start-line="338" selection-start-column="31" selection-end-line="338" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -74,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="99" column="101" selection-start-line="99" selection-start-column="101" selection-end-line="99" selection-end-column="101" />
+            <state relative-caret-position="199">
+              <caret line="99" column="104" selection-start-line="99" selection-start-column="104" selection-end-line="99" selection-end-column="104" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -166,8 +165,8 @@
       <find>amount</find>
       <find>index</find>
       <find>mobile-player</find>
-      <find>})</find>
       <find>lodash</find>
+      <find>})</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -252,8 +251,8 @@
         <option value="$PROJECT_DIR$/frontend-poker/.npmrc" />
         <option value="$PROJECT_DIR$/api/services/games.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" />
       </list>
     </option>
   </component>
@@ -506,7 +505,7 @@
       <workItem from="1582105016643" duration="2319000" />
       <workItem from="1582109659238" duration="4031000" />
       <workItem from="1582283147676" duration="4000000" />
-      <workItem from="1583256625128" duration="19577000" />
+      <workItem from="1583256625128" duration="20407000" />
     </task>
     <servers />
   </component>
@@ -543,13 +542,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="518969000" />
+    <option name="totallyTimeSpent" value="519799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.12332112" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.12332112" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -563,7 +562,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.25480768" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.25480768" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1039,20 +1038,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="321" column="18" selection-start-line="321" selection-start-column="18" selection-end-line="321" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="99" column="101" selection-start-line="99" selection-start-column="101" selection-end-line="99" selection-end-column="101" />
+        <state relative-caret-position="199">
+          <caret line="99" column="104" selection-start-line="99" selection-start-column="104" selection-end-line="99" selection-end-column="104" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="338" column="31" selection-start-line="338" selection-start-column="31" selection-end-line="338" selection-end-column="31" />
         </state>
       </provider>
     </entry>
