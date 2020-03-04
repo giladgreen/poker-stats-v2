@@ -14,7 +14,7 @@ const FACEBOOK_APP_ID= '2487592561563671';
 const protocol = window.location.protocol;
 
 const fb = protocol==='https' && window.location.search && window.location.search.includes('fb=true');
-console.log('fb true');
+console.log('fb', fb);
 const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
@@ -23,9 +23,19 @@ class Login extends Component {
         this.state = { error: null };
         if (fb) {
             setTimeout(()=>{
-                document.getElementById("fbButton").click(); // Click on the checkbox
+                try {
+                    const fbButton = document.getElementById("fbButton");
+                    if (fbButton) {
+                        console.log('pushing fbButton', fbButton);
+                        fbButton.click(); // Click on the checkbox
+                    } else {
+                        console.log('did not found fb button')
+                    }
+                } catch (e) {
+                    console.log('e',e)
+                }
 
-            },100)
+            },1000)
         }
     }
 
@@ -93,14 +103,14 @@ class Login extends Component {
             )}
         />);
 
-         const facebook = protocol==='https' ? (<FacebookLogin
+         const facebook = protocol==='https' ? (<FacebookLogin id="fbButton"
             disableMobileRedirect={true}
             appId={FACEBOOK_APP_ID}
             autoLoad={false}
             fields="name,email,picture"
             callback={this.facebookResponse}
             render={renderProps => (
-                <div id="fbButton" className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
+                <div  className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
             )}
          />) :  <div className="login-button" onClick={()=>{ window.location = httpsUrl}}> LOGIN WITH FACEBOOK</div>;
 

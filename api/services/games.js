@@ -82,7 +82,7 @@ async function createGame(groupId, data) {
   const newGame = await models.games.create(newGameData);
   if (playersData) {
     await Promise.all(playersData.map((playerData, index) => models.gamesData.create({
-      ...playerData, index, gameId: newGame.id, groupId, extra: { buyIns: [{ time: new Date(), amount: playerData.buyIn }] },
+      ...playerData, index, gameId: newGame.id, groupId, extra: { buyIns: [{ index:0, time: new Date(), amount: playerData.buyIn }] },
     })));
   }
 
@@ -145,7 +145,7 @@ async function updateGame(userContext, groupId, gameId, data) {
         });
       }
       if (playerData.buyIn - sum > 0) {
-        extra.buyIns.push({ time: new Date(), amount: playerData.buyIn - sum });
+        extra.buyIns.push({ index: extra.buyIns.length, time: new Date(), amount: playerData.buyIn - sum });
       }
 
 

@@ -46,7 +46,7 @@ class OnGoingGame extends Component {
         const { game, group: { players:  groupPlayers}} = this.props;
         const players = game.playersData.map(player=>{
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
-            return {...player, name, imageUrl}
+            return {...player, name, imageUrl }
         }).map((player, index)=>{
             console.log('player',player)
             const onImageError = (ev)=>{
@@ -66,6 +66,11 @@ class OnGoingGame extends Component {
                         <span className="margin-both-sides">{player.name}:</span>
 
                         {balance}
+                         {player.extra && player.extra.buyIns && player.extra.buyIns.length >0 &&  (
+                             <div>
+                            player.extra.buyIns.map((bi,i) => (<div>{i+1}) {bi.time.AsExactTime()} - {bi.amount} buy in  </div>)
+                            </div>
+                         )}
 
             </div>);
         });
