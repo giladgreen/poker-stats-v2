@@ -710,11 +710,9 @@ class GroupPage extends Component {
         const { group } = this.props;
         const {games} = group;
         if (this.state.newGame){
-            console.log('on new game')
             return this.getNewGameSection()
         }
         if (this.state.editGame){
-            console.log('on edit game')
             if (this.state.editPlayerInGame){
                 return this.getEditPlayerInGame()
             }
@@ -722,11 +720,9 @@ class GroupPage extends Component {
         }
 
         if (this.state.gameSummary){
-            console.log('on gameSummary')
             const game = this.state.gameSummary;
             const { ready } = this.isGameReady(game);
             if (ready) return this.getGamesSummary();
-            console.log('not ready, ',game)
             return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}  group={group} user={this.props.user} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
 
 

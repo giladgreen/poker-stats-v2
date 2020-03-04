@@ -11,16 +11,7 @@ class UserGroups extends Component {
 
 
     startIntro=()=>{
-        const intro = introJs();
-        intro.onchange(function(targetElement) {
-            console.log('onchange targetElement',targetElement)
-        });
-        intro.onbeforechange(function(targetElement) {
-            console.log('onbeforechange targetElement',targetElement)
-        });
-
-
-        intro.start();
+        introJs().start();
     }
     getImage=()=>{
 

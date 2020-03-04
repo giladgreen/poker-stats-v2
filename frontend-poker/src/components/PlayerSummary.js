@@ -8,7 +8,6 @@ const body = document.getElementsByTagName('body')[0];
 const windowWidth = window.innerWidth || document.documentElement.clientWidth || body.clientWidth;
 const Width = windowWidth;
 
-console.log('Width',Width)
 import CONSTS from '../CONSTS';
 const { ANON_URL } = CONSTS;
 

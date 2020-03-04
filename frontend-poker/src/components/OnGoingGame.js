@@ -60,19 +60,17 @@ class OnGoingGame extends Component {
             const image =  <img alt={player.name} className="activeGameCircleImage" src={player.imageUrl || ANON_URL}  onError={onImageError} />
             const positive = player.cashOut - player.buyIn > 0;
             const balance =  `${positive ? '+':''}${player.cashOut - player.buyIn}₪`;
+            //cashOuts
+            const inOuts = player.extra ? [
+                ...(player.extra.buyIns || []).map(bi=> ({ time:bi.time, text: `${bi.time.AsExactTime(2)} - ${bi.amount}₪ buy in`})),
+                ...(player.extra.cashOuts || []).map(co=> ({ time:co.time, text: `${co.time.AsExactTime(2)} - ${co.amount}₪ cash out`}))
+            ].sort((a,b) => a.time < b.time ? -1 : 1) : [];
             return  (<div key={`player${index}`} className="mobile-player">
 
                         {image}
                         <span className="margin-both-sides">{player.name}:</span>
-
                         {balance}
-                         {player.extra && player.extra.buyIns && player.extra.buyIns.length >0 &&  (
-                             <div>
-                                 {
-                                     player.extra.buyIns.map((bi,i) => (<div>{i+1}) {bi.time.AsExactTime()} - {bi.amount} buy in  </div>))
-                                 }
-                            </div>
-                         )}
+                         {inOuts.map(item => (<div>{item.text}  </div>))}
 
             </div>);
         });

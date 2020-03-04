@@ -15,7 +15,6 @@ const protocol = window.location.protocol;
 const isHttps = protocol==='https:';
 const showFB =  isHttps;
 const tryConnectToFB =  isHttps && !!window.location.search && window.location.search.includes('fb=true') ;
-console.log('--fb', { showFB, tryConnectToFB });
 const httpsUrl = 'https://www.poker-stats.com?fb=true';
 class Login extends Component {
 
@@ -29,8 +28,6 @@ class Login extends Component {
                     if (fbButton) {
                         console.log('pushing fbButton', fbButton);
                         fbButton.click(); // Click on the checkbox
-                    } else {
-                        console.log('did not found fb button')
                     }
                 } catch (e) {
                     console.log('e',e)

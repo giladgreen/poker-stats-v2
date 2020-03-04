@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
@@ -41,9 +42,8 @@ String.prototype.AsGameName = function() {
 };
 
 
-String.prototype.AsExactTime = function() {
-    const date = new Date(this);
-    return date.AsExactTime()
+String.prototype.AsExactTime = function(hours) {
+    return moment(this).add(hours, 'hours').toDate().AsExactTime()
 };
 
 
