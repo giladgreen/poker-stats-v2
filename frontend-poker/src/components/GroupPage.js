@@ -8,6 +8,7 @@ import createPlayer from '../actions/createPlayer';
 import deletePlayer from '../actions/deletePlayer';
 import updatePlayer from '../actions/updatePlayer';
 import updateGame from '../actions/updateGame';
+import postImage from '../actions/postImage';
 import deleteGame from '../actions/deleteGame';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -18,6 +19,7 @@ import GameData from './GameData';
 import GameSummary from './GameSummary';
 import OnGoingGame from './OnGoingGame';
 import PlayerSummary from './PlayerSummary';
+import ImageUploader from './ImageUploader';
 import CONSTS from '../CONSTS';
 
 const { ANON_URL } = CONSTS;
@@ -563,9 +565,21 @@ class GroupPage extends Component {
                     <br/>
                     <h3>{ready ? '' : `game still not done (${diff>0 ? diff : -1*diff} ${diff>0 ? 'still in pot':'missing from pot'}).`}</h3>
                 </div>
-
+                <button onClick={()=>this.showImageUploaderForm({ gameId: game.id})} >upload image for this game</button>
         </div>);
     }
+
+    showImageUploaderForm = ({ gameId })=>{
+        this.setState({ imageUploaderData: { gameId }});
+    }
+
+
+    hideImageUploaderForm = ()=>{
+        this.setState({ imageUploaderData: null});
+    }
+
+
+
     updateSelectedGamePlayerData = ()=>{
         const editGame = {...this.state.editGame}
         const { playerId, cashOut, buyIn } = this.state.editPlayerInGame;
@@ -852,10 +866,21 @@ class GroupPage extends Component {
 
     }
 
+    uploadImage = (image, tags) =>{
+        console.log('uploadImage', image, tags);
+        postImage(image, tags, this.props.provider, this.props.token)
+            .then((data) => console.log('image uploaded',data))
+            .catch((e)=> console.log('problem uploading image', e));
+    }
+
     render() {
 
 
         const { group } = this.props;
+
+        if (this.state.imageUploaderData){
+            return <ImageUploader Group={group} {...this.state.imageUploaderData} close={this.hideImageUploaderForm} uploadImage={this.uploadImage}/>
+        }
 
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 

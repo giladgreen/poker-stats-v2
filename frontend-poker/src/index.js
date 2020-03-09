@@ -16,6 +16,7 @@ import './style/chart.css';
 import './style/introjs.min.css';
 import './style/introjs-nazanin.css';
 import './style/intro.css';
+import './style/image-uploader.css';
 
 ReactDOM.render(
   <App />,

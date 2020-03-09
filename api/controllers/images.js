@@ -13,6 +13,17 @@ function addImage(req, res, next) {
     .catch(next);
 }
 
+function deleteImage(req, res, next) {
+  const { userContext } = req;
+  const { imageId } = req.getAllParams();
+  imageService.deleteImage(userContext, imageId)
+    .then((data) => {
+      res.status(HttpStatus.NO_CONTENT).send(data);
+    })
+    .catch(next);
+}
+
 module.exports = {
   addImage,
+  deleteImage,
 };

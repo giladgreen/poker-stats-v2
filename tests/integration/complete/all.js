@@ -48,7 +48,7 @@ async function getGroup(groupId, expectedStatus = 200, Token = token) {
 }
 
 async function postImage(playerIds, gameIds, groupIds, expectedStatus = 201, Token = token) {
-  await request(server)
+  const { body} = await request(server)
     .post('/api/v2/images')
     .set(provider, GOOGLE)
     .set(authTokenHeader, Token)
@@ -57,6 +57,17 @@ async function postImage(playerIds, gameIds, groupIds, expectedStatus = 201, Tok
       image, playerIds, gameIds, groupIds,
     })
     .expect(contentTypeHeader, 'application/json; charset=utf-8')
+    .expect(expectedStatus);
+
+  return body.imageId;
+}
+
+async function removeImage(imageId, expectedStatus = 204, Token = token) {
+  return request(server)
+    .delete(`/api/v2/images/${imageId}`)
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, Token)
+    .set(acceptHeader, 'application/json')
     .expect(expectedStatus);
 }
 
@@ -426,11 +437,14 @@ describe('full integration test,', function () {
       await postImage([], [], undefined, 400);
       await postImage([], [], [], 400);
       await postImage(['7'], [], [], 400);
-      await postImage([], [], [groupId]);
+      const imageId = await postImage([], [], [groupId]);
       await postImage([playerId], [], []);
       await postImage([playerId], [gameId], []);
       await postImage([playerId], [gameId], [groupId]);
       await postImage([playerId], [gameId], [groupId, '2'], 400);
+
+      await removeImage('imageId', 400);
+      await removeImage(imageId)
     });
   });
 });

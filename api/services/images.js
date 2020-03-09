@@ -1,6 +1,29 @@
-const { badRequest } = require('boom');
+const { badRequest, forbidden } = require('boom');
 
 const models = require('../models');
+
+async function deleteImage(userContext, imageId) {
+  if (!userContext || !userContext.id) {
+    throw badRequest('missing user id');
+  }
+  if (!imageId) {
+    throw badRequest('missing imageId');
+  }
+
+  const image = await models.images.findOne({where: { id: imageId }});
+  if (!image){
+    throw badRequest('image not found');
+  }
+  if (image.uploadedBy !== userContext.id){
+    throw forbidden('only the user that uploaded the image can remove it');
+  }
+
+  await models.tags.destroy({where:{ imageId }});
+  await models.images.destroy({where: { id: imageId }});
+  return {
+    status: 'image was removed'
+  }
+}
 
 async function addImage(userContext, image, playerIds, gameIds, groupIds) {
   if (!userContext || !userContext.id) {
@@ -38,6 +61,7 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
   await Promise.all(playerIds.map(playerId => models.tags.create({ imageId, playerId })));
 
   return {
+    imageId,
     image,
     playerIds,
     gameIds,
@@ -47,4 +71,5 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
 
 module.exports = {
   addImage,
+  deleteImage,
 };

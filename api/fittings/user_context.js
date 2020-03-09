@@ -52,7 +52,7 @@ async function validateRequestPermissions(request) {
   if (request.method === 'POST' && request.url.includes('/groups')) {
     return;
   }
-  if (request.method === 'POST' && request.url.includes('/images')) {
+  if ((request.method === 'POST' || request.method === 'DELETE') && request.url.includes('/images')) {
     return;
   }
   if (request.url.includes('/invitations-requests')) {
