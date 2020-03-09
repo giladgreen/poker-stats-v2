@@ -10,19 +10,19 @@ async function deleteImage(userContext, imageId) {
     throw badRequest('missing imageId');
   }
 
-  const image = await models.images.findOne({where: { id: imageId }});
-  if (!image){
+  const image = await models.images.findOne({ where: { id: imageId } });
+  if (!image) {
     throw badRequest('image not found');
   }
-  if (image.uploadedBy !== userContext.id){
+  if (image.uploadedBy !== userContext.id) {
     throw forbidden('only the user that uploaded the image can remove it');
   }
 
-  await models.tags.destroy({where:{ imageId }});
-  await models.images.destroy({where: { id: imageId }});
+  await models.tags.destroy({ where: { imageId } });
+  await models.images.destroy({ where: { id: imageId } });
   return {
-    status: 'image was removed'
-  }
+    status: 'image was removed',
+  };
 }
 
 async function addImage(userContext, image, playerIds, gameIds, groupIds) {

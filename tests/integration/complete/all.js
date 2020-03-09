@@ -48,7 +48,7 @@ async function getGroup(groupId, expectedStatus = 200, Token = token) {
 }
 
 async function postImage(playerIds, gameIds, groupIds, expectedStatus = 201, Token = token) {
-  const { body} = await request(server)
+  const { body } = await request(server)
     .post('/api/v2/images')
     .set(provider, GOOGLE)
     .set(authTokenHeader, Token)
@@ -444,7 +444,7 @@ describe('full integration test,', function () {
       await postImage([playerId], [gameId], [groupId, '2'], 400);
 
       await removeImage('imageId', 400);
-      await removeImage(imageId)
+      await removeImage(imageId);
     });
   });
 });
