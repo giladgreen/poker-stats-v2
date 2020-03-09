@@ -82,6 +82,27 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /api/v2/images:
+    x-swagger-router-controller: images
+    post:
+      operationId: addImage
+      parameters:
+        - name: body
+          in: body
+          description: The new image data
+          required: true
+          schema:
+            $ref: "#/definitions/CreateImageRequestDefinition"
+      responses:
+        201:
+          description: ImageDefinition
+          schema:
+            $ref: "#/definitions/ImageDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups/{groupId}:
     x-swagger-router-controller: groups
     parameters:
@@ -483,7 +504,6 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/PlayerGameDataDefinition"
-
   CreatePlayerRequestDefinition:
     type: object
     required:
@@ -506,7 +526,42 @@ definitions:
     type: object
   UnregisterNotificationsResponseDefinition:
     type: object
-
+  CreateImageRequestDefinition:
+    type: object
+    required:
+      - image
+    properties:
+      image:
+        type: string
+      playerIds:
+        type: array
+        items:
+          type: string
+      gameIds:
+        type: array
+        items:
+          type: string
+      groupIds:
+        type: array
+        items:
+          type: string
+  ImageDefinition:
+    type: object
+    properties:
+      image:
+        type: string
+      playerIds:
+        type: array
+        items:
+          type: string
+      gameIds:
+        type: array
+        items:
+          type: string
+      groupIds:
+        type: array
+        items:
+          type: string
 
 parameters:
   GroupId:

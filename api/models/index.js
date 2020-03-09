@@ -89,6 +89,7 @@ Object.keys(models).forEach((modelName) => {
   }
 });
 module.exports = {
+  NOW: Sequelize.NOW,
   sequelize,
   Sequelize,
   ...models,

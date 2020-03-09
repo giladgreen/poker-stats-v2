@@ -46,6 +46,7 @@
                 "cash_out integer",
                 "buy_in integer",
                 "index integer",
+                "extra json",
                 "group_id text REFERENCES groups(id)",
                 "created_at timestamp without time zone NOT NULL",
                 "updated_at timestamp without time zone NOT NULL",
@@ -87,6 +88,30 @@
                 "user_id text",
                 "group_id text",
                 "Status text",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "images",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "image text",
+                "user_id text",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
+        },
+        {
+            "tableName":  "tags",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "player_id text",
+                "game_id text",
+                "group_id text",
+                "image_id text NOT NULL",
                 "created_at timestamp without time zone NOT NULL",
                 "updated_at timestamp without time zone NOT NULL",
                 "deleted_at timestamp without time zone"
