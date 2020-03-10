@@ -67,7 +67,7 @@ async function getImages({ playerIds, gameIds, groupIds }) {
     },
   });
 
-  const images = models.images.findAll({
+  const images = await models.images.findAll({
     where: {
       id: {
         [Op.in]: imageIds,

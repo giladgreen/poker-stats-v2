@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/image-data.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/services/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/images.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="-65">
+              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -534,7 +530,7 @@
       <workItem from="1582283147676" duration="4000000" />
       <workItem from="1583256625128" duration="20606000" />
       <workItem from="1583652138341" duration="7386000" />
-      <workItem from="1583752924892" duration="34539000" />
+      <workItem from="1583752924892" duration="34684000" />
     </task>
     <servers />
   </component>
@@ -571,7 +567,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="561923000" />
+    <option name="totallyTimeSpent" value="562068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="952" extended-state="6" />
@@ -1202,8 +1198,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/images.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="-65">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
         </state>
       </provider>
     </entry>
