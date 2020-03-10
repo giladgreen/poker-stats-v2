@@ -198,6 +198,22 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /api/v2/groups/{groupId}/images:
+    x-swagger-router-controller: images
+    parameters:
+      - $ref: '#/parameters/GroupId'
+    get:
+      operationId: getGroupImages
+      responses:
+        200:
+          description: GetGroupImagesResponseDefinition
+          schema:
+            $ref: "#/definitions/GetGroupImagesResponseDefinition"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups/{groupId}/players/{playerId}:
     x-swagger-router-controller: players
     parameters:
@@ -479,6 +495,13 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/PlayerDefinition"
+  GetGroupImagesResponseDefinition:
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: "#/definitions/ImageDefinition"
   CreateGroupRequestDefinition:
     type: object
     required:
@@ -562,6 +585,8 @@ definitions:
   ImageDefinition:
     type: object
     properties:
+      uploadedBy:
+        type: string
       imageId:
         type: string
       image:

@@ -55,6 +55,9 @@ async function validateRequestPermissions(request) {
   if ((request.method === 'POST' || request.method === 'DELETE') && request.url.includes('/images')) {
     return;
   }
+  if (request.method === 'GET' && request.url.includes('/groups/') && request.url.includes('/images')) {
+    return;
+  }
   if (request.url.includes('/invitations-requests')) {
     return;
   }

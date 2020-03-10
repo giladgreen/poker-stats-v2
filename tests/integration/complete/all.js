@@ -232,6 +232,19 @@ async function listGames(groupId, count) {
   });
 }
 
+async function listImages(groupId, count) {
+  const { body } = await request(server)
+    .get(`/api/v2/groups/${groupId}/images`)
+    .set(acceptHeader, 'application/json')
+    .set(provider, GOOGLE)
+    .set(authTokenHeader, token)
+    .expect(contentTypeHeader, 'application/json; charset=utf-8')
+    .expect(200);
+  body.should.have.property('results').which.is.a.Array();
+
+  should(body.results.length).eql(count);
+}
+
 async function getGame(groupId, gameId, description) {
   const { body } = await request(server)
     .get(`/api/v2/groups/${groupId}/games/${gameId}`)
@@ -432,17 +445,18 @@ describe('full integration test,', function () {
       await sendInvitationRequestApproval(invitationRequestId, invitationRequestPlayerId);
       await getGroup(groupId, 200);
 
-
       await postImage(undefined, undefined, undefined, 400);
       await postImage([], [], undefined, 400);
       await postImage([], [], [], 400);
       await postImage(['7'], [], [], 400);
-      const imageId = await postImage([], [], [groupId]);
-      await postImage([playerId], [], []);
-      await postImage([playerId], [gameId], []);
-      await postImage([playerId], [gameId], [groupId]);
       await postImage([playerId], [gameId], [groupId, '2'], 400);
 
+      const imageId = await postImage([], [], [groupId]);
+      await postImage([playerId], [gameId], [groupId]);
+      await postImage([playerId], [], []);
+      await postImage([playerId], [gameId], []);
+
+      await listImages(groupId, 2);
       await removeImage('imageId', 400);
       await removeImage(imageId);
     });

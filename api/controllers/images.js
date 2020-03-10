@@ -23,7 +23,17 @@ function deleteImage(req, res, next) {
     .catch(next);
 }
 
+function getGroupImages(req, res, next) {
+  const { groupId } = req.getAllParams();
+  imageService.getImages({ groupIds: [groupId] })
+    .then((results) => {
+      res.status(HttpStatus.OK).send({ results });
+    })
+    .catch(next);
+}
+
 module.exports = {
   addImage,
   deleteImage,
+  getGroupImages,
 };
