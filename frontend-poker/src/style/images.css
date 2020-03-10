@@ -11,6 +11,10 @@
     cursor: pointer;
     background: white;
 }
+.image-item-div-plus-sign {
+    width: 20vw;
+    height: 20vw;
+}
 .image-item-div:hover{
     background: #eaeaea;
 }
@@ -30,10 +34,14 @@
         border-radius: 20px;
 
     }
+    .image-item-div-plus-sign {
+        width: 40vw;
+        height: 40vw;
+    }
     .image-item-div-innerimg{
         width: 40vw;
         height: 40vw;
-       
+
         border-radius: 20px;
     }
 }

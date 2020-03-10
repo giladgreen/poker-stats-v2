@@ -24,10 +24,11 @@ class ImagesTab extends Component {
 
         return <div className="row">
             <div className="col-xs-6">
-                <div className="image-item-div plus-sign"
+                <div className="image-item-div"
 
                      onClick={this.showCreateImage}>
-                    +
+                    <img src="plus.png" className="image-item-div-plus-sign"/>
+
                 </div>
             </div>
             {IMAGES}

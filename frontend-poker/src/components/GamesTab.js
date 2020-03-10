@@ -251,8 +251,9 @@ class GamesTab extends Component {
         return (<div id="all-games-div" >
             <div className="row">
                 <div className="col-xs-6">
-                    <div className="game-item-div plus-sign" onClick={this.showCreateGame}>
-                        +
+                    <div className="game-item-div" onClick={this.showCreateGame}>
+
+                        <img src="plus.png" className="game-item-div-plus-sign"/>
                     </div>
                 </div>
 

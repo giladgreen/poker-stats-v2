@@ -1,7 +1,17 @@
 import request from 'request';
+import resizebase64 from 'resize-base64';
 import URL_PREFIX from '../url';
 
 async function postImage(base64image, tags, provider, token) {
+
+  try {
+    console.log('before',base64image)
+    base64image = resizebase64(base64image,700, 700);
+    console.log('after',base64image)
+  } catch (e) {
+    console.log('error!!',e)
+  }
+
   const { playerIds, gameIds, groupIds } = tags;
   return new Promise((resolve, reject) => {
     const options = {

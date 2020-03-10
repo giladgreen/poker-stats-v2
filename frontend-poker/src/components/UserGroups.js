@@ -61,10 +61,9 @@ class UserGroups extends Component {
         return (<div id="user-groups" >
             <div className="row">
                 <div className="">
-                    <div className="group-item-div plus-sign"
-
+                    <div className="group-item-div"
                          onClick={this.props.createGroup}>
-                        +
+                        <img src="plus.png" className="group-item-div-plus-sign"/>
                     </div>
                 </div>
                 {groupsItems}

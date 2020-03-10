@@ -337,6 +337,12 @@ select{
     cursor: pointer;
     background: white;
 }
+.game-item-div-plus-sign{
+
+    width: 20vw;
+    height: 20vw;
+
+}
 .game-item-div:hover{
     background: #eaeaea;
 }
@@ -367,6 +373,10 @@ select{
     margin: 1.8vw;
     cursor: pointer;
     background: white;
+}
+.player-item-div-plus-sign{
+    width: 20vw;
+    height: 20vw;
 }
 .player-item-div:hover{
     background: #eaeaea;
@@ -653,7 +663,10 @@ select{
 
 
     }
-
+    .game-item-div-plus-sign{
+        width: 40vw;
+        height: 40vw;
+    }
     .game-item-div-inner{
         text-shadow: 2px 2px black;
         font-size: 1em;
@@ -670,7 +683,10 @@ select{
         border-radius: 20px;
 
     }
-
+    .player-item-div-plus-sign{
+        width: 40vw;
+        height: 40vw;
+    }
     .player-item-div-inner{
         text-shadow: 2px 2px black;
         font-size: 1.2em;

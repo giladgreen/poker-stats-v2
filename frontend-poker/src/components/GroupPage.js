@@ -319,10 +319,10 @@ class GroupPage extends Component {
         return (<div id="all-games-div" >
             <div className="row">
                 <div className="col-xs-6">
-                    <div className="player-item-div plus-sign"
-
+                    <div className="player-item-div"
                          onClick={this.showCreatePlayer}>
-                        +
+                        <img src="plus.png" className="player-item-div-plus-sign"/>
+
                     </div>
                 </div>
 

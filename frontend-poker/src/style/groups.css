@@ -13,6 +13,11 @@
     cursor: pointer;
     background: white;
 }
+.group-item-div-plus-sign{
+    width: 20vw;
+    height: 20vw;
+}
+
 .group-item-div:hover{
     background: #eaeaea;
 }
@@ -75,8 +80,11 @@
         width: 40vw;
         height: 40vw;
         margin: 2.9vw;
+    }
 
-
+    .group-item-div-plus-sign{
+        width: 40vw;
+        height: 40vw;
     }
 
     .group-item-div-inner{
