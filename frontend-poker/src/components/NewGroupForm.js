@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
 
 import Menu from '@material-ui/core/Menu';
@@ -41,11 +42,8 @@ class NewGroupForm extends Component {
         this.props.delete(this.state.group.id)
     };
 
+    // eslint-disable-next-line
     getHeader = ()=>{
-
-        {this.state.pushSupported && <div id="notification">
-            <span onClick={this.onNotificationButtonClick}><u> <b>{ this.state.subscribed ? 'disable':'enable'} notifications</b></u></span>
-        </div>}
 
         const menuItems = [];
 

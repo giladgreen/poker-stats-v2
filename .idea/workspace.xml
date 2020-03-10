@@ -2,13 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api/controllers/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/image-uploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/image-uploader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/complete/all.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/complete/all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/components/NewGameForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/ShowAlert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/ShowErrorAlert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/ShowSuccessAlert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/images.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/social-auth-example.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.a3ecbc19.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/css/main.a3ecbc19.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.7a78a903.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/build/static/js/main.7a78a903.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/rename.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/createGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/createGroup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/createPlayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/deleteGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/deleteGroup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/deletePlayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/getGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/requestInvitation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/updateGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/updateGroup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/actions/updatePlayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/Game.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/GameData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/Group.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/Groups.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/components/OnGoingGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/containers/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/containers/Loading.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/sizes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/game.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/loader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/style/onGoingGame.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/url.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,31 +93,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
+            <state relative-caret-position="-850">
+              <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
               <folding>
-                <element signature="n#!!block;n#listGroups#0" />
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#421#606#0" />
+                <element signature="e#500#544#0" />
+                <element signature="e#639#1270#0" />
+                <element signature="e#680#856#0" />
+                <element signature="e#749#792#0" />
+                <element signature="e#797#846#0" />
+                <element signature="n#!!block;n#constructor#0;n#GamesTab#0" />
+                <element signature="e#1604#1661#0" />
+                <element signature="e#1695#1825#0" />
+                <element signature="e#2381#2502#0" />
+                <element signature="e#2553#2681#0" />
+                <element signature="e#3423#3809#0" />
+                <element signature="e#3461#3492#0" />
+                <element signature="e#3690#3802#0" />
+                <element signature="e#11933#12358#0" />
+                <element signature="e#12070#12122#0" />
+                <element signature="e#12167#12230#0" />
+                <element signature="e#13007#13365#0" />
+                <element signature="e#18978#19089#0" />
+                <element signature="e#19031#19078#0" />
+                <element signature="e#19118#19429#0" />
+                <element signature="e#19135#19422#0" />
+                <element signature="e#20750#21884#0" />
+                <element signature="e#20879#21012#0" />
+                <element signature="e#21053#21858#0" />
+                <element signature="e#21257#21578#0" />
+                <element signature="e#21600#21835#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/images.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/controllers/images.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -60,43 +137,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>notFound</find>
-      <find>missing token headers</find>
-      <find>req</find>
-      <find>require('../models')</find>
-      <find>catch</find>
-      <find>playerId</find>
-      <find>gameSummary</find>
+      <find>showGameData</find>
+      <find>onGameEditClick</find>
+      <find>updateOnProgressGame</find>
+      <find>getImage</find>
+      <find>gameDateToString</find>
+      <find>props</find>
+      <find>remoteUpdateGame</find>
+      <find>handleNewGameDateChange</find>
       <find>editGame</find>
-      <find>.editGame</find>
-      <find>button</find>
-      <find>disabled</find>
-      <find>this.state.editGame</find>
-      <find>todo</find>
+      <find>editPlayerInGame</find>
+      <find>editGamePlayer</find>
+      <find>getGamesEdit</find>
+      <find>isGameReady</find>
+      <find>addCurrentPlayerToGame</find>
+      <find>updateSelectedGame</find>
+      <find>getGamePot</find>
+      <find>uploadImage</find>
+      <find>imageUploaderData</find>
+      <find>hideImageUploaderForm</find>
+      <find>ShowSuccessAlert</find>
+      <find>postImage</find>
+      <find>&gt; Add&lt;</find>
+      <find>existingPlayerId</find>
+      <find>showError</find>
+      <find>&lt;button</find>
       <find>image</find>
-      <find>imageup</find>
-      <find>showImageUploaderForm</find>
-      <find>TODO</find>
-      <find>showima</find>
-      <find>token</find>
-      <find>&lt;option</find>
-      <find>comboVals</find>
-      <find>tagedPlayers</find>
-      <find>ImageId</find>
-      <find>ImageDefinition</find>
-      <find>operation not allowed</find>
-      <find>GetPlayersResponseDefinition</find>
-      <find>ImageDefinition:</find>
-      <find>op</find>
-      <find>uploadedBy</find>
-      <find>getGroupImages</find>
+      <find>deleteSelectedGame</find>
+      <find>delete</find>
+      <find>app game remove</find>
+      <find>showSuccessDeleteGame</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -117,14 +194,15 @@
       <dir>$PROJECT_DIR$/test-client/src</dir>
       <dir>$PROJECT_DIR$/frontend-poker/src/</dir>
       <dir>$PROJECT_DIR$/test-client</dir>
-      <dir>$PROJECT_DIR$/frontend-poker/src/style</dir>
-      <dir>$PROJECT_DIR$/frontend-poker/src/components</dir>
       <dir>$PROJECT_DIR$/api</dir>
       <dir>$PROJECT_DIR$/frontend-poker</dir>
-      <dir>$PROJECT_DIR$/frontend-poker/src</dir>
       <dir>$PROJECT_DIR$/api/models</dir>
       <dir>$PROJECT_DIR$/tests/unit</dir>
       <dir>$PROJECT_DIR$/api/services</dir>
+      <dir>$PROJECT_DIR$/frontend-poker/src/style</dir>
+      <dir>$PROJECT_DIR$/frontend-poker/src/components</dir>
+      <dir>$PROJECT_DIR$/frontend-poker/</dir>
+      <dir>$PROJECT_DIR$/frontend-poker/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -133,39 +211,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test-client/src/style/loader.css" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/loader.css" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/getUsers.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/registerSubscription.js" />
-        <option value="$PROJECT_DIR$/api/services/groups.js" />
-        <option value="$PROJECT_DIR$/tests/unit/services/groups.js" />
-        <option value="$PROJECT_DIR$/.eslintignore" />
-        <option value="$PROJECT_DIR$/.npmrc" />
-        <option value="$PROJECT_DIR$/api/services/notifications.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/public/serviceWorker.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/public/index.html" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/login.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/CONSTS.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/login.css" />
         <option value="$PROJECT_DIR$/test-client/src/components/PlayerSummary.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/group-page.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/create-event-form.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/chart.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/game.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/groups.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/intro.css" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" />
         <option value="$PROJECT_DIR$/api/models/gamesData.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/url.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" />
         <option value="$PROJECT_DIR$/frontend-poker/.npmrc" />
         <option value="$PROJECT_DIR$/api/services/games.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" />
         <option value="$PROJECT_DIR$/api/models/index.js" />
         <option value="$PROJECT_DIR$/api/models/tags.js" />
@@ -173,10 +230,6 @@
         <option value="$PROJECT_DIR$/api/models/images.js" />
         <option value="$PROJECT_DIR$/tests/unit/services/images.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/Login.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/index.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/image-uploader.css" />
         <option value="$PROJECT_DIR$/test-client/src/actions/getGroupData.js" />
         <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
@@ -184,6 +237,31 @@
         <option value="$PROJECT_DIR$/api/controllers/images.js" />
         <option value="$PROJECT_DIR$/api/services/images.js" />
         <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/style/images.css" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/Games.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/index.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/XXX.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/Alert.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/ShowAlert.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/ShowErrorAlert.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/ShowSuccessAlert.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/actions/createGame.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/NewGameForm.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" />
       </list>
     </option>
   </component>
@@ -194,10 +272,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1108" />
-    <option name="y" value="-1057" />
-    <option name="width" value="1920" />
-    <option name="height" value="1057" />
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="952" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -215,43 +292,34 @@
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="integration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="integration" type="462c0819:PsiDirectoryNode" />
-              <item name="complete" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="unit" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,10 +353,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
+      <recent name="$PROJECT_DIR$/frontend-poker/src/containers" />
       <recent name="$PROJECT_DIR$/frontend-poker/src/actions" />
       <recent name="$PROJECT_DIR$/tests/unit/services" />
       <recent name="$PROJECT_DIR$/api/services" />
-      <recent name="$PROJECT_DIR$/api/controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -438,7 +506,7 @@
       <workItem from="1582283147676" duration="4000000" />
       <workItem from="1583256625128" duration="20606000" />
       <workItem from="1583652138341" duration="7386000" />
-      <workItem from="1583752924892" duration="11297000" />
+      <workItem from="1583752924892" duration="28647000" />
     </task>
     <servers />
   </component>
@@ -475,16 +543,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538681000" />
+    <option name="totallyTimeSpent" value="556031000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1108" y="-1057" width="1920" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="952" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.17518637" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.15689866" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.16135882" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.39808917" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.63060987" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5106157" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -494,7 +563,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.43842888" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.07646356" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -559,7 +628,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/services/images.js</url>
-          <line>109</line>
+          <line>110</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
@@ -637,104 +706,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/.npmrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="322" selection-start-line="321" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migration/data.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/usersPlayers.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/players.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/invitationsRequests.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/gamesData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/groups.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migration/mongoToPostgres.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="53" column="12" selection-start-line="53" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/default.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/emails.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/games.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="35" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/notifications.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/games.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="20" column="6" selection-start-line="17" selection-start-column="3" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migration/db_schemas.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/helpers/sequelize.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -764,88 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/createGame.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6356">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#getPlayerImage#0;n#GameData#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test-client/src/components/Group.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="161" column="35" selection-start-line="161" selection-end-line="162" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/postImage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="24" column="58" lean-forward="true" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-          <folding>
-            <element signature="e#1#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="414" lean-forward="true" selection-start-line="394" selection-start-column="3" selection-end-line="414" />
-          <folding>
-            <element signature="e#79#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -906,13 +799,6 @@
     <entry file="file://$PROJECT_DIR$/test-client/src/actions/login.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test-client/src/actions/getGroupData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="91" column="50" lean-forward="true" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -961,6 +847,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="396" column="30" lean-forward="true" selection-start-line="396" selection-start-column="30" selection-end-line="396" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!block;n#listGroups#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/images.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/images.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -968,19 +871,310 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/images.js">
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+        <state relative-caret-position="433">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/integration/complete/all.js">
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
+        <state relative-caret-position="-335">
           <folding>
-            <element signature="n#!!block;n#listGroups#0" />
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-client/src/actions/getGroupData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="86" column="10" lean-forward="true" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/group-page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="471" selection-start-line="471" selection-end-line="471" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/images.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="100" column="27" selection-start-line="100" selection-start-column="27" selection-end-line="100" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GameData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="328" column="180" selection-start-line="328" selection-start-column="180" selection-end-line="328" selection-end-column="180" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#getPlayerImage#0;n#GameData#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/notificationHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/node_modules/react-dom/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/containers/ShowAlert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#10#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/containers/ShowSuccessAlert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/containers/ShowErrorAlert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/createGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding>
+            <element signature="e#1#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/postImage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#48#89#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#ImageUploader#0" />
+            <element signature="e#1079#1137#0" />
+            <element signature="e#1160#1401#0" />
+            <element signature="e#1426#2059#0" />
+            <element signature="e#2108#2156#0" />
+            <element signature="e#2193#2319#0" />
+            <element signature="e#2341#2887#0" />
+            <element signature="n#!!block;n#render#0;n#ImageUploader#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/NewGameForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="51" column="53" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="211" column="82" selection-start-line="211" selection-start-column="64" selection-end-line="211" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#4285#4648#0" />
+            <element signature="e#4680#10073#0" />
+            <element signature="e#4899#5114#0" />
+            <element signature="e#4938#5045#0" />
+            <element signature="e#5049#5104#0" />
+            <element signature="e#5701#6192#0" />
+            <element signature="e#5889#6189#0" />
+            <element signature="e#6210#6610#0" />
+            <element signature="e#6262#6594#0" />
+            <element signature="e#6444#6519#0" />
+            <element signature="e#6627#6900#0" />
+            <element signature="e#6679#6884#0" />
+            <element signature="e#6961#7567#0" />
+            <element signature="e#7310#7563#0" />
+            <element signature="e#7673#9621#0" />
+            <element signature="e#7706#8209#0" />
+            <element signature="e#7900#8206#0" />
+            <element signature="e#8227#8633#0" />
+            <element signature="e#8279#8617#0" />
+            <element signature="e#8465#8542#0" />
+            <element signature="e#8651#8926#0" />
+            <element signature="e#8703#8910#0" />
+            <element signature="e#8987#9601#0" />
+            <element signature="e#9340#9597#0" />
+            <element signature="e#10109#10534#0" />
+            <element signature="e#10246#10298#0" />
+            <element signature="e#10343#10406#0" />
+            <element signature="e#9678#9742#0" />
+            <element signature="e#9801#9851#0" />
+            <element signature="e#17154#17265#0" />
+            <element signature="e#17207#17254#0" />
+            <element signature="e#16138#16259#0" />
+            <element signature="e#16310#16438#0" />
+            <element signature="e#16466#16824#0" />
+            <element signature="e#17162#17431#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="296" column="11" lean-forward="true" selection-start-line="296" selection-start-column="11" selection-end-line="296" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/deleteGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="382" column="64" lean-forward="true" selection-start-line="382" selection-start-column="64" selection-end-line="382" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#GroupPage#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-850">
+          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#421#606#0" />
+            <element signature="e#500#544#0" />
+            <element signature="e#639#1270#0" />
+            <element signature="e#680#856#0" />
+            <element signature="e#749#792#0" />
+            <element signature="e#797#846#0" />
+            <element signature="n#!!block;n#constructor#0;n#GamesTab#0" />
+            <element signature="e#1604#1661#0" />
+            <element signature="e#1695#1825#0" />
+            <element signature="e#2381#2502#0" />
+            <element signature="e#2553#2681#0" />
+            <element signature="e#3423#3809#0" />
+            <element signature="e#3461#3492#0" />
+            <element signature="e#3690#3802#0" />
+            <element signature="e#11933#12358#0" />
+            <element signature="e#12070#12122#0" />
+            <element signature="e#12167#12230#0" />
+            <element signature="e#13007#13365#0" />
+            <element signature="e#18978#19089#0" />
+            <element signature="e#19031#19078#0" />
+            <element signature="e#19118#19429#0" />
+            <element signature="e#19135#19422#0" />
+            <element signature="e#20750#21884#0" />
+            <element signature="e#20879#21012#0" />
+            <element signature="e#21053#21858#0" />
+            <element signature="e#21257#21578#0" />
+            <element signature="e#21600#21835#0" />
           </folding>
         </state>
       </provider>

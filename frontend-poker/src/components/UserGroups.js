@@ -31,14 +31,10 @@ class UserGroups extends Component {
                 backgroundImage: `url(${group.imageUrl || this.getImage()})`,
                 borderRadiusTop: '50px',
             };
-            const introData = index === 0 ? {
-                "data-position":"right",
-                "data-intro":"enter group data if you already belong to it, or request to be invited to group",
-                "data-step":2
-            } : {};
 
 
-            return (<div key={group.id} {...introData} className={`group-item-div ${group.isAdmin ? 'group-item-div-admin' : ''}`}  onClick={()=>this.props.showGroup(group)}>
+
+            return (<div key={group.id}  className={`group-item-div ${group.isAdmin ? 'group-item-div-admin' : ''}`}  onClick={()=>this.props.showGroup(group)}>
                 <div key={group.id} className="group-item-div-inner" style={style}>
                     <div><b>{group.name }</b></div>
                     <div className="group-description">{group.userInGroup ? group.description : 'not in this group' }</div>
@@ -66,18 +62,12 @@ class UserGroups extends Component {
             <div className="row">
                 <div className="">
                     <div className="group-item-div plus-sign"
-                         data-position="right" data-intro="add a new group here" data-step={1}
+
                          onClick={this.props.createGroup}>
                         +
                     </div>
                 </div>
                 {groupsItems}
-
-                <div className="info-icon"  onClick={this.startIntro} >
-                    <img src="https://img.icons8.com/flat_round/64/000000/info.png"/>
-                </div>
-
-
             </div>
         </div>)
 

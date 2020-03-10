@@ -1,7 +1,5 @@
-
 import request from 'request';
 import URL_PREFIX from '../url';
-
 
 async function postImage(base64image, tags, provider, token) {
   const { playerIds, gameIds, groupIds } = tags;
@@ -25,6 +23,7 @@ async function postImage(base64image, tags, provider, token) {
     console.log('about to post a new image. tags:', tags);
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
+
         if (error) {
           console.error('request cb error', error);
           return reject('failed to post image');

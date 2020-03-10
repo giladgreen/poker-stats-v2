@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
 import moment from 'moment';
 
@@ -18,7 +19,7 @@ import UserGroups from "./components/UserGroups";
 import notificationHelper from "./notificationHelper";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
-
+// eslint-disable-next-line
 Date.prototype.AsGameName = function() {
     const stringValue = this.toISOString().substr(0,10);
     const day = stringValue.substr(8,2);
@@ -26,7 +27,7 @@ Date.prototype.AsGameName = function() {
     const year = stringValue.substr(0,4);
     return `${day}/${month}/${year}`;
 };
-
+// eslint-disable-next-line
 Date.prototype.AsExactTime = function() {
     // const stringValue = this.toISOString();
     // const day = stringValue.substr(8,2);
@@ -35,13 +36,13 @@ Date.prototype.AsExactTime = function() {
     return this.toISOString().substr(11,5);
     // return `${time}`;
 };
-
+// eslint-disable-next-line
 String.prototype.AsGameName = function() {
     const date = new Date(this);
     return date.AsGameName()
 };
 
-
+// eslint-disable-next-line
 String.prototype.AsExactTime = function(hours) {
     return moment(this).add(hours, 'hours').toDate().AsExactTime()
 };
@@ -102,9 +103,6 @@ class App extends Component {
 
     getHeader = ()=>{
 
-        { this.state.pushSupported && <div id="notification">
-            <span onClick={this.onNotificationButtonClick}><u> <b>{ this.state.subscribed ? 'disable':'enable'} notifications</b></u></span>
-        </div>}
 
         const menuItems = [];
         if (this.state.pushSupported){

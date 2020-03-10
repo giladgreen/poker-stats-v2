@@ -10,7 +10,7 @@ class OnGoingGame extends Component {
 
         const { buyIn, cashOut, playerId} = playerData;
         const { name, imageUrl='' } = groupPlayers.find(p=>p.id === playerId);
-        const bottomLine = (parseInt(cashOut) - parseInt(buyIn));
+        const bottomLine = (parseInt(cashOut, 10) - parseInt(buyIn, 10));
         const buyInValue = `${buyIn>0?'+':''}${buyIn}₪`;
         const cashOutValue = `${cashOut>0?'+':''}${cashOut}₪`;
         const bottomLineValue = `${bottomLine>0?'+':''}${bottomLine}₪`;
@@ -112,16 +112,16 @@ class OnGoingGame extends Component {
         const players = game.playersData.map(player=>{
             let all = player.buyIn;
             const blues =  (50 * (Math.floor(all/50)));
-            all = all - blues;
+            all -= blues;
             const hasBlue = blues>0;
             const greens =  (25 * (Math.floor(all/25)));
-            all = all - greens;
+            all -= greens;
             const hasGreen = greens>0;
             const blacks =  (10 * (Math.floor(all/10)));
-            all = all - blacks;
+            all -= blacks;
             const hasBlack = blacks>0;
             const reds =  (5 * (Math.floor(all/5)));
-            all = all - reds;
+            all -= reds;
             const hasRed = reds>0;
             const hasGray = all >0;
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);

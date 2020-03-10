@@ -47,7 +47,7 @@ class GameData extends Component{
     constructor(props){
         super(props);
 
-        const group = props.Group;
+        const group = props.group;
         this.yearsObject = {};
         group.games.sort((a,b)=>a.date < b.date ? -1 : 1).forEach((game,index)=>{
             const year = game.date.getYear() + 1900;
@@ -62,7 +62,7 @@ class GameData extends Component{
         });
 
         const sliderValues ={ min: 0, max: group.games.length - 1 };
-        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.Group, props.playersCount, sliderValues.min, sliderValues.max): props.Game;
+        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max): props.Game;
         this.state = { sliderValues, Game }
     }
     getPlayerImage(playerInfo, playerWidth, margin){
@@ -122,12 +122,12 @@ class GameData extends Component{
     }
 
     render(){
-        const {Group, IsGroupSummary, playersCount } = this.props;
+        const {group, IsGroupSummary, playersCount } = this.props;
         const { Game, sliderValues} = this.state;
         //this.state.sliderValues.max - this.state.sliderValues.min
-        if (Group.games.length  -1 < this.state.sliderValues.max){
+        if (group.games.length  -1 < this.state.sliderValues.max){
             sliderValues.min=0;
-            sliderValues.max=Group.games.length -1;
+            sliderValues.max=group.games.length -1;
             const newSliderValues = {...sliderValues};
             setTimeout(()=>{
                 this.setState({sliderValues: newSliderValues});
@@ -135,7 +135,7 @@ class GameData extends Component{
         }
 
 
-        const {players} = Group;
+        const {players} = group;
         const {playersData} = Game;
         if (playersData.length === 0) {
             return <div> no players yet</div>
@@ -261,7 +261,7 @@ class GameData extends Component{
 
         const playersIdsToGamesCountObjMapper = {};
         const playersIdsToBalanceObjMapper = {};
-        const filterGames = Group.games
+        const filterGames = group.games
             .sort((a,b)=>a.date < b.date ? -1 : 1)
             .filter((game,index) => sliderValues.min <= index && index <= sliderValues.max);
 
@@ -273,12 +273,12 @@ class GameData extends Component{
                 if (!playersIdsToBalanceObjMapper.hasOwnProperty(playerId)){
                     playersIdsToBalanceObjMapper[playerId] = 0;
                 }
-                playersIdsToGamesCountObjMapper[playerId] =  playersIdsToGamesCountObjMapper[playerId] + 1;
+                playersIdsToGamesCountObjMapper[playerId] += 1;
                 playersIdsToBalanceObjMapper[playerId] =  playersIdsToBalanceObjMapper[playerId] + cashOut - buyIn;
             });
         });
         const playersToShow = Object.keys(playersIdsToGamesCountObjMapper).map((id,index)=>{
-                const name = Group.players.find(p=>p.id===id).name;
+                const name = group.players.find(p=>p.id===id).name;
                 return {
                     playerId:id,
                     gamesCount:playersIdsToGamesCountObjMapper[id],
@@ -326,7 +326,7 @@ class GameData extends Component{
 
                 data.push(gameData)
             });
-        const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" key={playerInfo.name} dataKey={playerInfo.name}  stroke={playerInfo.color}  />);
+        const lines = playersToShow.map(playerInfo=> <Line key={`line${playerInfo.name}`} className="graphLine" type="monotone" dataKey={playerInfo.name} stroke={playerInfo.color} />);
         const menu = playersToShow.sort((a,b)=>a.balance > b.balance ? -1 : 1).map(({id, name,color, balance})=> {
             const style = {
                 color,
@@ -340,7 +340,7 @@ class GameData extends Component{
                            onClick={()=> {
                                const newState= { sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to }};
                                if (this.props.IsGroupSummary){
-                                   newState.Game = this.createPlayersDataAsFakeGame(this.props.Group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to );
+                                   newState.Game = this.createPlayersDataAsFakeGame(this.props.group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to );
                                }
                                this.setState(newState)
                            }}>{year}</button>
@@ -365,11 +365,8 @@ class GameData extends Component{
             </div>
         );
         const gamesDates = IsGroupSummary ? (
-            <div className="black"  data-position="right"
-                 data-intro="group summary data"
-                 introId="summary"
-                 data-step={2}>
-            {sliderValues.max - sliderValues.min +1 } games ({Group.games[sliderValues.min].date.AsGameName()} - {Group.games[sliderValues.max].date.AsGameName()})
+            <div className="black" >
+            {sliderValues.max - sliderValues.min +1 } games ({group.games[sliderValues.min].date.AsGameName()} - {group.games[sliderValues.max].date.AsGameName()})
         </div>):<div/>;
 
         let playersCountText = IsGroupSummary ?  this.playersCountText : playersData.length;
@@ -379,7 +376,7 @@ class GameData extends Component{
             >
 
                 {
-                    (this.props.IsGroupSummary && (sliderValues.min > 0 || sliderValues.max < this.props.Group.games.length-1)) &&
+                    (this.props.IsGroupSummary && (sliderValues.min > 0 || sliderValues.max < this.props.group.games.length-1)) &&
                     <div className="black">
                         <b>(filtered data)</b>
                     </div>
@@ -414,38 +411,30 @@ class GameData extends Component{
                 {GamePlayerNegatives}
 
                 <hr/>
-                { IsGroupSummary && Group.games.length>0 && (
+                { IsGroupSummary && group.games.length>0 && (
                     <div className="black">
                         <div
 
                         ><b>Date range specific data:</b><br/></div>
-                        <div>From { Group.games[sliderValues.min].date.AsGameName()} to { Group.games[sliderValues.max].date.AsGameName()}</div>
-                        <div
-                            data-position="right"
-                            data-intro="change dates range"
-                            introId="summary"
-                            data-step={3}
-                        >
+                        <div>From { group.games[sliderValues.min].date.AsGameName()} to { group.games[sliderValues.max].date.AsGameName()}</div>
+                        <div>
                             <InputRange className="InputRange"
                                         step={1}
                                         formatLabel={() => ``}
-                                        maxValue={ Group.games.length - 1}
+                                        maxValue={ group.games.length - 1}
                                         minValue={0}
                                         value={sliderValues}
                                         onChange={sliderValues => {
                                             if (sliderValues.min < sliderValues.max){
                                                 const newState = { sliderValues };
                                                 if (IsGroupSummary){
-                                                    newState.Game = this.createPlayersDataAsFakeGame(Group, this.props.playersCount, sliderValues.min, sliderValues.max);
+                                                    newState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, sliderValues.min, sliderValues.max);
                                                 }
                                                 this.setState(newState);
                                             }
                                         }} />
                         </div>
-                        <div  data-position="right"
-                              data-intro="dates range graph"
-                              introId="summary"
-                              data-step={4}>
+                        <div>
                             {graph}
                         </div>
 

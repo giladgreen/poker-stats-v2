@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import registerSubscription from './actions/registerSubscription';
 import unregisterSubscription from './actions/unregisterSubscription';
 
@@ -7,6 +8,7 @@ let swRegistration = null;
 let pushSupported = true;
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  // eslint-disable-next-line
   const base64 = (base64String + padding)
     .replace(/\-/g, '+')
     .replace(/_/g, '/');

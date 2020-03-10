@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { Component } from 'react';
+import ShowErrorAlert from '../containers/ShowErrorAlert';
+import ShowSuccessAlert from '../containers/ShowSuccessAlert';
 
 class ImageUploader extends Component {
 
@@ -9,24 +12,25 @@ class ImageUploader extends Component {
             image: null,
             playerIds: [],
             groupIds: [],
-            gameIds: []
+            gameIds: [],
+            showError: null,
+            showSuccess: null
         };
 
-        if (props.Group){
-            initialState.groupIds = [props.Group.id]
+        if (props.group){
+            initialState.groupIds = [props.group.id]
         }
 
         if (props.gameId){
             initialState.gameIds = [props.gameId]
         }
-        if (props.Group && props.gameId){
-            const game = props.Group.games.find(g => g.id === props.gameId);
+        if (props.group && props.gameId){
+            const game = props.group.games.find(g => g.id === props.gameId);
 
             if (game && game.playersData && game.playersData.length >0){
                 initialState.taggedPlayerId = game.playersData[0].playerId;
             }
         }
-
 
         this.state = initialState;
     }
@@ -52,16 +56,33 @@ class ImageUploader extends Component {
             gameIds
         };
 
-        this.props.uploadImage(image, tags);
-        this.props.close();
+        this.props.uploadImage(image, tags).then(()=>{
+            this.setState({ showSuccess: true});
+            setTimeout(()=>{
+                this.setState({ showSuccess: null});
+                this.props.close();
+            },10)
+
+        }).catch(()=>{
+
+            this.setState({ showError: true});
+            setTimeout(()=>{
+                this.setState({ showError: null});
+                this.props.close();
+            },10)
+        })
+
     };
+
     handleNewPlayerChange = (taggedPlayerId)=> {
         this.setState({taggedPlayerId});
     };
+
     removePlayerTag = (playerId) =>{
         const playerIds = [...this.state.playerIds].filter(id => id !== playerId);
         this.setState({playerIds});
     }
+
     tagPlayer = () =>{
         if (!this.state.taggedPlayerId){
             return;
@@ -70,8 +91,8 @@ class ImageUploader extends Component {
         playerIds.push(this.state.taggedPlayerId);
 
         let taggedPlayerId = null;
-        if (this.props.Group){
-            const availablePlayersToTag = this.props.Group.players.filter(p=> !playerIds.includes(p.id));
+        if (this.props.group){
+            const availablePlayersToTag = this.props.group.players.filter(p=> !playerIds.includes(p.id));
 
             if (availablePlayersToTag.length > 0){
                 taggedPlayerId = availablePlayersToTag[0].id;
@@ -81,33 +102,35 @@ class ImageUploader extends Component {
         this.setState({taggedPlayerId, playerIds});
     };
 
-
     render() {
-        const { Group } = this.props;
+
+       const { showError, showSuccess} = this.state;
+
+        const { group } = this.props;
         const { image, groupIds, gameIds, playerIds } = this.state;
         let groupName = '';
         let gameDate = '';
         let tagedPlayers = [];
-        if (Group && groupIds[0] === Group.id) {
-            groupName = Group.name;
+        if (group && groupIds[0] === group.id) {
+            groupName = group.name;
         }
         if (gameIds.length === 1){
-            const game = Group.games.find(g => g.id === gameIds[0]);
+            const game = group.games.find(g => g.id === gameIds[0]);
             gameDate = game ? game.date.AsGameName() : '';
         }
-        if (Group && playerIds.length > 0){
-            tagedPlayers = Group.players.filter(p=> playerIds.includes(p.id)).map(p=>{
-                return <ul>{p.name} <button onClick={()=>this.removePlayerTag(p.id)} >remove tag</button></ul>
+        if (group && playerIds.length > 0){
+            tagedPlayers = group.players.filter(p=> playerIds.includes(p.id)).map(p=>{
+                return <ul key={`_tag_${p.id}`}>{p.name} <button onClick={()=>this.removePlayerTag(p.id)} >remove tag</button></ul>
             });
         }
 
         let tagPlayers = <div/>;
-        if (Group && image) {
-           const availablePlayersToTag = Group.players.filter(p => !playerIds.includes(p.id)).map(p=> ({ id:p.id, name:p.name }));
+        if (group && image) {
+           const availablePlayersToTag = group.players.filter(p => !playerIds.includes(p.id)).map(p=> ({ id:p.id, name:p.name }));
            if (availablePlayersToTag.length >0) {
                const comboVals = availablePlayersToTag.map(player =>
                    (
-                       <option key={`__comboVals_${player.id}`} value={player.id}>
+                       <option key={`_x_comboVals_${player.id}`} value={player.id}>
                            { player.name }
                        </option>
                    )
@@ -129,7 +152,7 @@ class ImageUploader extends Component {
 
 
         }
-
+        // eslint-disable-next-line
         return (
             <div id="image-uploader">
 
@@ -141,7 +164,7 @@ class ImageUploader extends Component {
                         <input type="file" accept=".png,.jpg,.jpeg" id="imgInput" onChange={this.readURL}/>
                     </div>
                     <div>
-                        {image && <img id='image-uploader-preview' src={image} alt='preview image'/>}
+                        {image && <img alt="image" id='image-uploader-preview' src={image}/>}
                     </div>
                     {!image &&  <div>
                        no image selected yet
@@ -160,6 +183,8 @@ class ImageUploader extends Component {
                 <div>
                     <button className="button" onClick={this.props.close}> cancel </button>
                 </div>
+                { showError && <ShowErrorAlert message={"failed to upload image"}/>}
+                { showSuccess && <ShowSuccessAlert message={"image uploaded successfully"}/>}
             </div>
         );
 

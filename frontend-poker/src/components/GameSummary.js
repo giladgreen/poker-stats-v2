@@ -98,7 +98,7 @@ class GamePage extends Component {
                     </div>
                 </div>
 
-                <GameData Group={group} Game={game} />
+                <GameData group={group} Game={game} />
 
                 {isAdmin && <button onClick={this.props.edit} className="button left-margin">Edit</button>}
                 {isAdmin && <button onClick={this.props.delete} className="button left-margin">Delete</button>}
