@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
-
+import ImageData from './ImageData';
 class ImagesTab extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { }
+        console.log('ImagesTab ctor',props)
+        this.state = { selectedImage: null}
     }
 
     showCreateImage = () =>{
         this.setState({ showCreateImage: true });
-    }
+    };
 
     render() {
         const { group } = this.props;
+        if (this.state.selectedImage){
+            const data = {
+                group,
+                ...this.state.selectedImage
+            };
+            return <ImageData {...data} />
+        }
+
+
         const {images} = group;
         const IMAGES = images.map((image) => {
             return (
-                <div key={image.id} className="image-item-div" >
+                <div key={image.id} className="image-item-div" onClick={()=>{this.setState({selectedImage:image})}}>
                     <img className="image-item-div-innerimg" alt={`uploaded by ${image.uploadedBy}`} src={image.image}/>
                 </div>
             );

@@ -15,41 +15,38 @@ class ImageData extends Component {
     render() {
 
        const { image, group, uploadedBy, playerIds, gameIds, groupIds} = this.props;
-
-
-        // eslint-disable-next-line
-        return (
-            <div id="image-uploader">
-
+       const game = group.games.find(g=>g.id === gameIds[0]);
+       const gameDate = game ? game.date.AsGameName() : 'unknown';
+       const players = group.players.filter(p => groupIds.includes(p.id)).map(p=>{
+           return <ul> {p.name}</ul>
+       })
+       return (
+            <div id="image-data">
                 <div>
-                    <div>
-                        choose image:
-                    </div>
-                    <div>
-                        <input type="file" accept=".png,.jpg,.jpeg" id="imgInput" onChange={this.readURL}/>
-                    </div>
-                    <div>
-                        {image && <img alt="image" id='image-uploader-preview' src={image}/>}
-                    </div>
-                    {!image &&  <div>
-                       no image selected yet
-                    </div> }
+                    <img alt="image" id="image-data-preview" src={image}/>
                 </div>
-                {groupIds.length > 0 && <div> Tagging the group ({groupName})</div>}
-                {gameIds.length > 0 && <div> Tagging the game ({gameDate})</div>}
-                {playerIds.length > 0 && <div> Tagging players:</div>}
-                {tagedPlayers.length > 0 && <div> {tagedPlayers}</div>}
-                <hr/>
-                {tagPlayers}
                 <div>
-                    <button className="button" disabled={!image} onClick={this.uploadImage}> Upload </button>
+                    Uploaded by: {uploadedBy}
                 </div>
 
                 <div>
-                    <button className="button" onClick={this.props.close}> cancel </button>
+                    <b><u>Tags:</u></b>
+                    <div>
+                        Group: {group.name}
+                    </div>
+                    <div>
+                        Game: {gameDate}
+                    </div>
+                    <div>
+                        Players:
+                    </div>
+                    <div>
+                        {players}
+
+                    </div>
                 </div>
-                { showError && <ShowErrorAlert message={"failed to upload image"}/>}
-                { showSuccess && <ShowSuccessAlert message={"image uploaded successfully"}/>}
+
+
             </div>
         );
 

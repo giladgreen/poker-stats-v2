@@ -1,0 +1,12 @@
+#image-data{
+    background: #cceeff;
+    padding: 2vw;
+    color: black;
+}
+#image-data div{
+    color: black;
+}
+#image-uploader-preview{
+    max-height: 50vh;
+    max-width: 96vw;
+}

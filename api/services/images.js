@@ -1,4 +1,5 @@
 const { badRequest, forbidden } = require('boom');
+const logger = require('./logger');
 
 const models = require('../models');
 
@@ -74,6 +75,8 @@ async function getImages({ playerIds, gameIds, groupIds }) {
     },
   });
 
+  logger.info('##########');
+  logger.info('########## images.map(imageDbObject => imageDbObject.uploadedBy):', images.map(imageDbObject => imageDbObject.uploadedBy));
   const users = await models.users.findAll({
     where: {
       id: {
@@ -81,6 +84,8 @@ async function getImages({ playerIds, gameIds, groupIds }) {
       },
     },
   });
+  logger.info('########## users count:', users.length);
+  logger.info('########## users:', users.map(u => `${u.firstName} ${u.familyName}`).join(','));
 
   return images.map((imageDbObject) => {
     const imageId = imageDbObject.id;
@@ -90,6 +95,7 @@ async function getImages({ playerIds, gameIds, groupIds }) {
     const imagePlayerIds = [...new Set(imageTags.filter(tag => tag.playerId !== null).map(tag => tag.playerId))];
 
     const uploadedByUser = users.find(user => user.id === imageDbObject.uploadedBy);
+    logger.info('%%% uploadedByUser', uploadedByUser);
     const uploadedBy = uploadedByUser ? `${uploadedByUser.firstName} ${uploadedByUser.familyName}` : 'unknown';
     return {
       id: imageId,
