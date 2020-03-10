@@ -74,15 +74,26 @@ async function getImages({ playerIds, gameIds, groupIds }) {
     },
   });
 
+  const users = await models.users.findAll({
+    where: {
+      id: {
+        [Op.in]: images.map(imageDbObject => imageDbObject.uploadedBy),
+      },
+    },
+  });
+
   return images.map((imageDbObject) => {
     const imageId = imageDbObject.id;
     const imageTags = allTags.filter(tag => tag.imageId === imageId);
     const imageGroupIds = [...new Set(imageTags.filter(tag => tag.groupId !== null).map(tag => tag.groupId))];
     const imageGameIds = [...new Set(imageTags.filter(tag => tag.gameId !== null).map(tag => tag.gameId))];
     const imagePlayerIds = [...new Set(imageTags.filter(tag => tag.playerId !== null).map(tag => tag.playerId))];
+
+    const uploadedByUser = users.find(user => user.id === imageDbObject.uploadedBy);
+    const uploadedBy = uploadedByUser ? `${uploadedByUser.firstName} ${uploadedByUser.familyName}` : 'unknown';
     return {
       id: imageId,
-      uploadedBy: imageDbObject.uploadedBy,
+      uploadedBy,
       image: imageDbObject.image,
       groupIds: imageGroupIds,
       gameIds: imageGameIds,
