@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 
 import React, { Component } from 'react';
 import ShowErrorAlert from '../containers/ShowErrorAlert';
@@ -50,18 +51,19 @@ class ImageUploader extends Component {
     }
 
     uploadImage = () =>{
+        const { updateImage, uploadImage: remoteUploadImage, close } = this.props;
         const { image, playerIds, groupIds, gameIds } = this.state;
         const tags = {
             playerIds,
             groupIds,
             gameIds
         };
-
-        this.props.uploadImage(image, tags).then(()=>{
+        remoteUploadImage(image, tags).then((imageObject)=>{
             this.setState({ showSuccess: true});
+            updateImage(imageObject);
             setTimeout(()=>{
-                this.setState({ showSuccess: null});
-                this.props.close();
+
+                close();
             },10)
 
         }).catch(()=>{
@@ -69,7 +71,7 @@ class ImageUploader extends Component {
             this.setState({ showError: true});
             setTimeout(()=>{
                 this.setState({ showError: null});
-                this.props.close();
+                close();
             },10)
         })
 
@@ -129,6 +131,10 @@ class ImageUploader extends Component {
         if (group && image) {
            const availablePlayersToTag = group.players.filter(p => !playerIds.includes(p.id)).map(p=> ({ id:p.id, name:p.name }));
            if (availablePlayersToTag.length >0) {
+               if (!this.state.taggedPlayerId){
+                  setImmediate(()=> this.setState({ taggedPlayerId: availablePlayersToTag[0].id }));
+               }
+
                const comboVals = availablePlayersToTag.map(player =>
                    (
                        <option key={`_x_comboVals_${player.id}`} value={player.id}>
@@ -141,7 +147,7 @@ class ImageUploader extends Component {
                        <div>
                            add players tags:
                        </div>
-                       <select name="player" value={this.state.taggedPlayerId} onChange={(e)=>this.handleNewPlayerChange(e.target.value)}>
+                       <select name="player" value={this.state.taggedPlayerId || ''} onChange={(e)=>this.handleNewPlayerChange(e.target.value)}>
                            {comboVals}
                        </select>
                        <button className="button left-margin" disabled={!this.state.taggedPlayerId} onClick={this.tagPlayer}> Tag player</button>

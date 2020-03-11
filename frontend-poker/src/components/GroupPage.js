@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import 'react-input-range/lib/css/index.css';
 import getGame from '../actions/getGame';
@@ -352,7 +354,6 @@ class GroupPage extends Component {
         };
 
         const playersTab = this.getPlayersTab();
-
         return (
             <div id="container" className="group-page">
                 {header}
@@ -384,6 +385,8 @@ class GroupPage extends Component {
                                           getGame={getGame}
                                           removeGroupGame={this.props.removeGame}
                                           updateGroupGame={this.props.updateGame}
+                                          removeGame={this.props.removeGame}
+                                          updateImage={this.props.updateImage}
                                           setClearAll={ (func)=> { this.clearGamesTabSelections = func }}
                                           user={this.props.user}
                                           provider={this.props.provider}
@@ -399,7 +402,12 @@ class GroupPage extends Component {
 
                         <Tab eventKey="images" title="Images" >
                             <div id="images-tab">
-                                <ImagesTab group={group} provider={this.props.provider} token={this.props.token}/>
+                                <ImagesTab group={group}
+                                           provider={this.props.provider}
+                                           token={this.props.token}
+                                           removeImage={this.props.removeImage}
+                                           uploadImage={this.props.uploadImage}
+                                           updateImage={this.props.updateImage}/>
                             </div>
                         </Tab>
 

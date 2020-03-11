@@ -5,9 +5,7 @@ import URL_PREFIX from '../url';
 async function postImage(base64image, tags, provider, token) {
 
   try {
-    console.log('before',base64image)
     base64image = resizebase64(base64image,700, 700);
-    console.log('after',base64image)
   } catch (e) {
     console.log('error!!',e)
   }
@@ -29,8 +27,7 @@ async function postImage(base64image, tags, provider, token) {
         'Content-Type': 'application/json',
       },
     };
-    console.log('about to post a new image. options:', options);
-    console.log('about to post a new image. tags:', tags);
+
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
 

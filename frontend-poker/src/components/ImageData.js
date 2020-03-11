@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 
 import React, { Component } from 'react';
 import deleteImage from '../actions/deleteImage';
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
-
 
 class ImageData extends Component {
 
@@ -16,11 +16,12 @@ class ImageData extends Component {
 
     removeImage = ()=>{
         if (confirm("Are you sure?")){
-            const { id: imageId, close, provider, token} = this.props;
+            const { id: imageId, close, provider, token, removeImage} = this.props;
             deleteImage(imageId, provider, token).then(()=>{
                 this.setState({ showSuccessDeleteImage: true});
                 setTimeout(()=>{
                     this.setState({ showSuccessDeleteImage: null});
+                    removeImage(imageId);
                     close();
                 },100)
             }).catch((e)=>{

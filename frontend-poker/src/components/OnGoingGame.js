@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import CONSTS from '../CONSTS';
 const { ANON_URL } = CONSTS;
@@ -107,6 +109,7 @@ class OnGoingGame extends Component {
                 {inouts}
             </div>);
     }
+
     getAsPokerTable = () =>{
         const { game, group: { players:  groupPlayers}} = this.props;
         const players = game.playersData.map(player=>{

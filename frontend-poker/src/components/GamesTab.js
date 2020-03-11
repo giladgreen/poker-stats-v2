@@ -1,8 +1,8 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import 'react-input-range/lib/css/index.css';
 import OnGoingGame from "./OnGoingGame";
-
-import postImage from "../actions/postImage";
 import GameSummary from "./GameSummary";
 import NewGameForm from "./NewGameForm";
 import createGame from "../actions/createGame";
@@ -174,11 +174,6 @@ class GamesTab extends Component {
         />;
     }
 
-    uploadImage = async (image, tags) =>{
-        console.log('uploadImage', image, tags);
-        return postImage(image, tags, this.props.provider, this.props.token)
-    }
-
     render(){
 
         const { group } = this.props;
@@ -200,6 +195,7 @@ class GamesTab extends Component {
                                  close={this.closeEditGameForm}
                                  remoteUpdateGame={updateGame}
                                  updateGroupGame={this.props.updateGroupGame}
+                                 updateImage={this.props.updateImage}
                                  user={this.props.user}
                                  provider={this.props.provider}
                                  token={this.props.token}
@@ -210,7 +206,15 @@ class GamesTab extends Component {
             const game = this.state.gameSummary;
             const { ready } = this.isGameReady(game);
             if (ready) return this.getGamesSummary();
-            return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}  group={group} user={this.props.user} gameId={game.id} game={game} onBack={()=>this.setState({gameSummary: null})} updateOnProgressGame={this.updateOnProgressGame} onGameEditClick={()=>this.onGameEditClick(game)}/>
+            return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}
+                                updateImage={this.props.updateImage}
+                                group={group}
+                                user={this.props.user}
+                                gameId={game.id}
+                                game={game}
+                                onBack={()=>this.setState({gameSummary: null})}
+                                updateOnProgressGame={this.updateOnProgressGame}
+                                onGameEditClick={()=>this.onGameEditClick(game)}/>
 
 
         }
@@ -247,7 +251,6 @@ class GamesTab extends Component {
 
         });
         const { showErrorOnDeleteGame, showSuccessDeleteGame } = this.state;
-        console.log('render')
         return (<div id="all-games-div" >
             <div className="row">
                 <div className="col-xs-6">

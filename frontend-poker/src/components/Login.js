@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 
 import FacebookLogin from  'react-facebook-login/dist/facebook-login-render-props';
@@ -26,7 +28,6 @@ class Login extends Component {
                 try {
                     const fbButton = document.getElementById("fbButton");
                     if (fbButton) {
-                        console.log('pushing fbButton', fbButton);
                         fbButton.click(); // Click on the checkbox
                     }
                 } catch (e) {

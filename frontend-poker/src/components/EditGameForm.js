@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
@@ -22,7 +24,6 @@ class EditGameForm extends Component {
             imageUploaderData: null,
             showError: null,
             showSuccess: null,
-            showSuccessDelete: null
         }
     }
 
@@ -291,7 +292,7 @@ class EditGameForm extends Component {
         }
 
         if (this.state.imageUploaderData){
-            return <ImageUploader group={group} {...this.state.imageUploaderData} close={this.hideImageUploaderForm} uploadImage={this.uploadImage}/>
+            return <ImageUploader group={group} {...this.state.imageUploaderData} close={this.hideImageUploaderForm} uploadImage={this.uploadImage} updateImage={this.props.updateImage}/>
         }
 
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
@@ -350,7 +351,7 @@ class EditGameForm extends Component {
             )
         );
         const { ready, diff } = this.isGameReady(game);
-        const { showError, showSuccess, showSuccessDelete} = this.state;
+        const { showError, showSuccess} = this.state;
         return (<div className="game-edit-div">
             <h2> edit game. </h2>
             <div className="new-game-section">

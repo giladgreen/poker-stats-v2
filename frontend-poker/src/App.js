@@ -297,6 +297,28 @@ class App extends Component {
         });
         this.setState({showGroupPage})
     }
+    updateImage = (image)=>{
+        const showGroupPage = {...this.state.showGroupPage};
+        let exist = false;
+        showGroupPage.images = showGroupPage.images.map(im=>{
+            if (im.id !== image.id) return im;
+            exist = true;
+
+            return im;
+        });
+        if (!exist){
+            showGroupPage.images.push(image)
+        }
+        this.setState({showGroupPage})
+    }
+    removeImage = (imageId)=>{
+        console.log('app image remove', imageId);
+        const showGroupPage = {...this.state.showGroupPage};
+        showGroupPage.images = showGroupPage.images.filter(im=>{
+            return (im.id !== imageId)
+        });
+        this.setState({showGroupPage})
+    }
 
     render() {
 
@@ -313,7 +335,19 @@ class App extends Component {
         }
 
         if (showGroupPage){
-            return <GroupPage goHome={this.goHome} group={showGroupPage} user={this.state.user} updatePlayerRemoved={this.updatePlayerRemoved} updateGame={this.updateGame} updatePlayerData={this.updatePlayerData}  editGroup={this.editGroup} deleteGroup={this.delGroup} removeGame={this.removeGame}  provider={this.state.provider} token={ this.state.token} logout={this.logout}/>
+            return <GroupPage goHome={this.goHome}
+                              group={showGroupPage}
+                              user={this.state.user}
+                              updatePlayerRemoved={this.updatePlayerRemoved}
+                              updateGame={this.updateGame}
+                              updatePlayerData={this.updatePlayerData}
+                              editGroup={this.editGroup}
+                              deleteGroup={this.delGroup}
+                              removeGame={this.removeGame}
+                              updateImage={this.updateImage}
+                              removeImage={this.removeImage}
+                              provider={this.state.provider}
+                              token={ this.state.token} logout={this.logout}/>
         }
 
         if (showGroupCreationForm){
