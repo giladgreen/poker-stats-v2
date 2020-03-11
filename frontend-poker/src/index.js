@@ -21,6 +21,7 @@ import './style/introjs-nazanin.css';
 import './style/intro.css';
 import './style/image-uploader.css';
 import './style/images.css';
+import './style/image-data.css';
 
 const options = {
     // you can also just use 'bottom center'

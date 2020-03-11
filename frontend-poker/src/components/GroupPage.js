@@ -399,7 +399,7 @@ class GroupPage extends Component {
 
                         <Tab eventKey="images" title="Images" >
                             <div id="images-tab">
-                                <ImagesTab group={group} />
+                                <ImagesTab group={group} provider={this.props.provider} token={this.props.token}/>
                             </div>
                         </Tab>
 
