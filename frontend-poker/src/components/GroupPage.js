@@ -370,7 +370,7 @@ class GroupPage extends Component {
 
 
                 <div id="group-page-data"  >
-                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" style={{fontSize: "0.8em"}} activeKey={this.state.tabKey} onSelect={this.onKeyChange} variant="pills">
+                    <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" style={{fontSize: isMobile ? "0.8em" : "1em"}} activeKey={this.state.tabKey} onSelect={this.onKeyChange} variant="pills">
                         <Tab eventKey="summary" title="summary" >
                             <GameData group={group}
                                       playersCount={max}
