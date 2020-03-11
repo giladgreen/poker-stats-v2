@@ -186,13 +186,14 @@ class ImageUploader extends Component {
                 <hr/>
                 {tagPlayers}
                 <div>
-                    <button className="button" disabled={!image} onClick={this.uploadImage}> Upload </button>
+                    { uploading && <div>please wait..</div>}
+                    <button className="button" disabled={!image || uploading} onClick={this.uploadImage}> Upload </button>
                 </div>
 
                 <div>
-                    <button className="button" onClick={this.props.close}> cancel </button>
+                    <button className="button" disabled={uploading} onClick={this.props.close}> cancel </button>
                 </div>
-                { uploading && <div>please wait..</div>}
+
                 { showError && <ShowErrorAlert message={"failed to upload image"}/>}
                 { showSuccess && <ShowSuccessAlert message={"image uploaded successfully"}/>}
             </div>

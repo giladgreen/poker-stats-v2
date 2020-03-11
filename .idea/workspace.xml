@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="372" column="126" selection-start-line="372" selection-start-column="126" selection-end-line="372" selection-end-column="126" />
+            <state relative-caret-position="88">
+              <caret line="366" column="30" lean-forward="true" selection-start-line="366" selection-start-column="30" selection-end-line="366" selection-end-column="30" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#90#131#0" expanded="true" />
@@ -69,27 +69,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="99" column="48" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="48" />
-              <folding>
-                <element signature="e#219#1228#0" />
-                <element signature="e#1233#2199#0" />
-                <element signature="e#3101#4317#0" />
-                <element signature="e#4321#5337#0" />
-                <element signature="e#5341#5792#0" />
-                <element signature="e#5796#7079#0" />
-                <element signature="e#7083#8079#0" />
-                <element signature="e#8083#9340#0" />
-                <element signature="e#9344#9979#0" />
-                <element signature="e#9983#10574#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
@@ -110,6 +89,18 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#90#131#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -174,12 +165,12 @@
       <find>ImageDe</find>
       <find>ImageDefinition</find>
       <find>uploadedBy</find>
-      <find>uploadImage</find>
       <find>isAdmin</find>
       <find>removeGame</find>
       <find>tab</find>
       <find>tabs</find>
       <find>tab{</find>
+      <find>uploadImage</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -263,12 +254,12 @@
         <option value="$PROJECT_DIR$/frontend-poker/src/style/loader.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
         <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" />
         <option value="$PROJECT_DIR$/api/services/images.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
       </list>
     </option>
   </component>
@@ -278,8 +269,8 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-1106" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1109" />
     <option name="y" value="-1057" />
     <option name="width" value="1920" />
     <option name="height" value="982" />
@@ -536,7 +527,7 @@
       <workItem from="1582283147676" duration="4000000" />
       <workItem from="1583256625128" duration="20606000" />
       <workItem from="1583652138341" duration="7386000" />
-      <workItem from="1583752924892" duration="44212000" />
+      <workItem from="1583752924892" duration="44645000" />
     </task>
     <servers />
   </component>
@@ -573,13 +564,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="571596000" />
+    <option name="totallyTimeSpent" value="572029000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1106" y="-1057" width="1920" height="982" extended-state="0" />
+    <frame x="-1106" y="-1057" width="1920" height="980" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.1368477" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.1368477" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -593,7 +584,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.39100346" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3919075" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1064,17 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#49#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -1090,17 +1070,6 @@
             <element signature="e#8083#9340#0" />
             <element signature="e#9344#9979#0" />
             <element signature="e#9983#10574#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#90#131#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1164,12 +1133,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="372" column="126" selection-start-line="372" selection-start-column="126" selection-end-line="372" selection-end-column="126" />
+        <state relative-caret-position="88">
+          <caret line="366" column="30" lean-forward="true" selection-start-line="366" selection-start-column="30" selection-end-line="366" selection-end-column="30" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#90#131#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#GroupPage#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#90#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
