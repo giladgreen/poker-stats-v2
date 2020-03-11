@@ -5,7 +5,7 @@ import URL_PREFIX from '../url';
 async function postImage(base64image, tags, provider, token) {
 
   try {
-    base64image = resizebase64(base64image,700, 700);
+    base64image = resizebase64(base64image,500, 500);
   } catch (e) {
     console.log('error!!',e)
   }
