@@ -7,6 +7,7 @@ import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
 import requestInvitation from './actions/requestInvitation';
 import getGroupData from './actions/getGroupData';
+import getGroupImages from './actions/getGroupImages';
 
 import Login from './components/Login';
 import NewGroupForm from './components/NewGroupForm';
@@ -213,11 +214,33 @@ class App extends Component {
                     return {...player, gamesCount, balance};
                 }).sort((a,b)=>  a.gamesCount === b.gamesCount ? ((a.balance > b.balance ? -1 : 1)) : (a.gamesCount > b.gamesCount ? -1 : 1));
 
-
                 this.setState({ showGroupPage: g, loading:false});
             }).catch((e)=>{
                 this.setState({ error: e, loading:false});
             })
+
+            getGroupImages(group, this.state.provider, this.state.token).then((images)=>{
+
+                const showGroupPage = {...this.state.showGroupPage};
+
+                if (showGroupPage){
+                    showGroupPage.images = images;
+                    this.setState({showGroupPage});
+                } else{
+                    setTimeout(()=>{
+                        const showGroupPage = {...this.state.showGroupPage};
+                        if (showGroupPage){
+                            showGroupPage.images = images;
+                            this.setState({showGroupPage});
+                        }
+                    },10000)
+                }
+
+            }).catch((e)=>{
+                console.log('error getting images',e)
+            })
+
+
         } else{
             if (group.invitationRequested){
                 this.setState({showMenu:false});
@@ -297,6 +320,7 @@ class App extends Component {
         });
         this.setState({showGroupPage})
     }
+
     updateImage = (image)=>{
         const showGroupPage = {...this.state.showGroupPage};
         let exist = false;

@@ -22,18 +22,10 @@ async function getGroupData(group, provider, token){
         "Content-Type":'application/json'
       }
     };
-    const imagesOptions = {
-      method: 'GET',
-      url: `${URL_PREFIX}/groups/${group.id}/images/`,
-      headers:{
-        provider,
-        "x-auth-token": token,
-        "Content-Type":'application/json'
-      }
-    };
+
     let players;
     let games;
-    let images;
+
     request(playersOptions, (error, response, body) =>{
       if (error || response.statusCode>=400){
         if (error){
@@ -46,10 +38,10 @@ async function getGroupData(group, provider, token){
         }
       }else{
         players = JSON.parse(body).results;
-        if (players && games && images){
+        if (players && games){
           const userContextString = response.headers['x-user-context'];
           const userContext = JSON.parse(decodeURI(userContextString));
-          return resolve({ ...group, players, games, images, userContext});
+          return resolve({ ...group, players, games, images:[], userContext});
         }
       }
     });
@@ -70,34 +62,15 @@ async function getGroupData(group, provider, token){
             date: new Date(game.date)
           }
         });
-        if (players && games && images){
+        if (players && games){
           const userContextString = response.headers['x-user-context'];
           const userContext = JSON.parse(decodeURI(userContextString));
 
-          return resolve({ ...group, players, games, images, userContext});
+          return resolve({ ...group, players, games, images:[], userContext});
         }
       }
     });
-    request(imagesOptions, (error, response, body) =>{
-      if (error || response.statusCode>=400){
-        if (error){
-          console.error('request cb error.failed to get group images', error);
-          return reject('failed to get group data');
-        }else{
-          const bodyObj = JSON.parse(body) ;
-          console.error('failed to get group images',bodyObj);
-          return reject(bodyObj.title);
-        }
-      }else{
-        images = JSON.parse(body).results;
-        if (players && games && images){
-          const userContextString = response.headers['x-user-context'];
-          const userContext = JSON.parse(decodeURI(userContextString));
 
-          return resolve({ ...group, players, games, images, userContext});
-        }
-      }
-    });
 
   })
 };
