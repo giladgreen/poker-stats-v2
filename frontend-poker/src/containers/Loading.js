@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-
+import { version } from '../../package.json';
 export default class Loader extends Component {
     render() {
         const heart =  <i className="emSvgSize em-svg em-hearts"></i>;
@@ -10,6 +10,7 @@ export default class Loader extends Component {
 
         return  (
             <div id="loader">
+                <div className="app-version">V.{version}</div>
                 <div className="loader">
                     <span id="loaderSpan1" className="loaderSpan">{heart}</span>
                     <span id="loaderSpan2" className="loaderSpan">{spade}</span>

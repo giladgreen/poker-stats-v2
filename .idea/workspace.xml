@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/actions/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/actions/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/loader.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/loader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.1172cb09.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/css/main.1172cb09.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.52eb00c9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/js/main.52eb00c9.js.map" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,34 +43,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/Login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="249" column="15" selection-start-line="249" selection-start-column="4" selection-end-line="249" selection-end-column="15" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="300" selection-start-line="300" selection-end-line="300" />
+            <state relative-caret-position="165">
+              <caret line="325" column="19" selection-start-line="325" selection-start-column="19" selection-end-line="325" selection-end-column="19" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#3830#4928#0" />
@@ -108,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="278">
@@ -117,6 +89,36 @@
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#90#131#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/containers/Loading.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="e#1#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/loader.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -134,27 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#180#1858#0" />
-                <element signature="e#1892#5227#0" />
-                <element signature="e#5255#8092#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="143" column="17" lean-forward="true" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
+            <state relative-caret-position="349">
+              <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#49#90#0" expanded="true" />
@@ -203,9 +189,9 @@
       <find>&lt;GroupPage</find>
       <find>postImage</find>
       <find>'before</find>
-      <find>removeGame</find>
-      <find>uploadImage</find>
       <find>updateImage</find>
+      <find>uploadImage</find>
+      <find>removeGame</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -244,8 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/api/models/gamesData.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/url.js" />
         <option value="$PROJECT_DIR$/api/services/games.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/onGoingGame.css" />
         <option value="$PROJECT_DIR$/api/models/index.js" />
@@ -262,7 +246,6 @@
         <option value="$PROJECT_DIR$/frontend-poker/src/components/Games.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
         <option value="$PROJECT_DIR$/frontend-poker/src/containers/XXX.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/containers/Alert.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/containers/ShowAlert.js" />
@@ -292,9 +275,12 @@
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/style/loader.css" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
       </list>
     </option>
   </component>
@@ -339,14 +325,21 @@
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
@@ -564,7 +557,7 @@
       <workItem from="1582283147676" duration="4000000" />
       <workItem from="1583256625128" duration="20606000" />
       <workItem from="1583652138341" duration="7386000" />
-      <workItem from="1583752924892" duration="41875000" />
+      <workItem from="1583752924892" duration="42459000" />
     </task>
     <servers />
   </component>
@@ -601,13 +594,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="569259000" />
+    <option name="totallyTimeSpent" value="569843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1106" y="-1057" width="1920" height="982" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.1368477" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.1368477" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -621,7 +614,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.1384083" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30795848" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -764,20 +757,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="57" column="70" selection-start-line="57" selection-start-column="70" selection-end-line="57" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-996">
-          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/models/tags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -920,13 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1092,7 +1064,7 @@
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
+          <caret line="176" column="41" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#0#41#0" expanded="true" />
@@ -1156,17 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#3830#4928#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-633">
@@ -1178,17 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="143" column="17" lean-forward="true" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#49#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
@@ -1196,6 +1146,52 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#90#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/style/loader.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/containers/Loading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="325" column="19" selection-start-line="325" selection-start-column="19" selection-end-line="325" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#3830#4928#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#49#90#0" expanded="true" />
           </folding>
         </state>
       </provider>

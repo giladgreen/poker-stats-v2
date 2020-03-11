@@ -8,6 +8,12 @@
   background-color: white;
   z-index: 99999;
 }
+.app-version{
+  font-size: 0.9em;
+  margin-left: 5px;
+  margin-top: 3px;
+  color: #5a6268;
+}
 .loader {
   position: absolute;
   left: 50%;

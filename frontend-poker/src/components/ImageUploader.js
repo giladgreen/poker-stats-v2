@@ -16,7 +16,8 @@ class ImageUploader extends Component {
             groupIds: [],
             gameIds: [],
             showError: null,
-            showSuccess: null
+            showSuccess: null,
+            uploading:false
         };
 
         if (props.group){
@@ -58,8 +59,9 @@ class ImageUploader extends Component {
             groupIds,
             gameIds
         };
+        this.setState({ uploading: true })
         remoteUploadImage(image, tags).then((imageObject)=>{
-            this.setState({ showSuccess: true});
+            this.setState({ showSuccess: true, uploading: false});
             updateImage(imageObject);
             setTimeout(()=>{
 
@@ -68,7 +70,7 @@ class ImageUploader extends Component {
 
         }).catch(()=>{
 
-            this.setState({ showError: true});
+            this.setState({ showError: true, uploading: false});
             setTimeout(()=>{
                 this.setState({ showError: null});
                 close();
@@ -107,7 +109,7 @@ class ImageUploader extends Component {
 
     render() {
 
-       const { showError, showSuccess} = this.state;
+       const { showError, showSuccess, uploading} = this.state;
 
         const { group } = this.props;
         const { image, groupIds, gameIds, playerIds } = this.state;
@@ -190,6 +192,7 @@ class ImageUploader extends Component {
                 <div>
                     <button className="button" onClick={this.props.close}> cancel </button>
                 </div>
+                { uploading && <div>please wait..</div>}
                 { showError && <ShowErrorAlert message={"failed to upload image"}/>}
                 { showSuccess && <ShowSuccessAlert message={"image uploaded successfully"}/>}
             </div>
