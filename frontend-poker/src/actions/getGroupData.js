@@ -66,7 +66,7 @@ async function getGroupData(group, provider, token){
           const userContextString = response.headers['x-user-context'];
           const userContext = JSON.parse(decodeURI(userContextString));
 
-          return resolve({ ...group, players, games, images:[], userContext});
+          return resolve({ ...group, players, games, images:[], gotImages: false, userContext});
         }
       }
     });

@@ -33,6 +33,7 @@ class ImagesTab extends Component {
     }
 
     render() {
+        console.log('image tab render')
         const { group } = this.props;
         if (this.state.selectedImage){
             return <ImageData group={group}
@@ -49,24 +50,25 @@ class ImagesTab extends Component {
         }
 
 
-        const {images} = group;
+        const {images, gotImages} = group;
+        console.log('gotImages', gotImages)
         const IMAGES = images.map((image) => {
             return (
                 <div key={`${image.id}`} className="image-item-div" onClick={()=>{this.enterImagePage(image)}}>
                     <img key={`${image.id}__`} className="image-item-div-innerimg" alt={`uploaded by ${image.uploadedByName}`} src={image.image}/>
                 </div>
             );
-        });
+        })
 
         return <div className="row">
             <div className="col-xs-6">
                 <div className="image-item-div"
-
                      onClick={this.showImageUploaderForm}>
                     <img src="plus.png" key="plus" className="image-item-div-plus-sign"/>
 
                 </div>
             </div>
+            { gotImages ? <div/> : <div className="loading-imaging-text">a few seconds, we are loading the images..</div>  }
             {IMAGES}
         </div>;
 

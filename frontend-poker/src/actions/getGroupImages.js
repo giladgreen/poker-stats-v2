@@ -15,22 +15,24 @@ async function getGroupImages(group, provider, token){
     };
     let images;
 
-    request(imagesOptions, (error, response, body) =>{
-      if (error || response.statusCode>=400){
-        if (error){
-          console.error('request cb error.failed to get group images', error);
-          return reject('failed to get group data');
-        }else{
-          const bodyObj = JSON.parse(body) ;
-          console.error('failed to get group images',bodyObj);
-          return reject(bodyObj.title);
-        }
-      }else{
-        images = JSON.parse(body).results;
-        return resolve(images);
-      }
+   request(imagesOptions, (error, response, body) =>{
+       if (error || response.statusCode>=400){
+           if (error){
+               console.error('request cb error.failed to get group images', error);
+               return reject('failed to get group data');
+           }else{
+               const bodyObj = JSON.parse(body) ;
+               console.error('failed to get group images',bodyObj);
+               return reject(bodyObj.title);
+           }
+       }else{
+           images = JSON.parse(body).results;
+           return resolve(images);
+       }
 
-    });
+   });
+
+
 
   })
 };
