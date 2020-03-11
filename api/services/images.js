@@ -16,7 +16,7 @@ async function deleteImage(userContext, imageId) {
   if (!image) {
     throw badRequest('image not found');
   }
-  if (image.uploadedBy !== userContext.id) {
+  if (image.uploadedBy !== userContext.id && !userContext.isAdmin) {
     throw forbidden('only the user that uploaded the image can remove it');
   }
 
@@ -90,10 +90,11 @@ async function getImages({ playerIds, gameIds, groupIds }) {
     const imagePlayerIds = [...new Set(imageTags.filter(tag => tag.playerId !== null).map(tag => tag.playerId))];
 
     const uploadedByUser = users.find(user => user.id === imageDbObject.uploadedBy);
-    const uploadedBy = uploadedByUser ? `${uploadedByUser.firstName} ${uploadedByUser.familyName}` : 'unknown';
+    const uploadedByName = uploadedByUser ? `${uploadedByUser.firstName} ${uploadedByUser.familyName}` : 'unknown';
     return {
       id: imageId,
-      uploadedBy,
+      uploadedByName,
+      uploadedById: imageDbObject.uploadedBy,
       image: imageDbObject.image,
       groupIds: imageGroupIds,
       gameIds: imageGameIds,
@@ -137,8 +138,15 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
   await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
   await Promise.all(playerIds.map(playerId => models.tags.create({ imageId, playerId })));
 
+  const user = await models.users.findOne({
+    where: {
+      id: userContext.id,
+    },
+  });
+
   return {
-    uploadedBy: userContext.id,
+    uploadedById: userContext.id,
+    uploadedByName: user ? `${user.firstName} ${user.familyName}` : 'unknown',
     imageId,
     image,
     playerIds,

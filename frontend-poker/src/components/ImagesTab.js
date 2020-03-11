@@ -37,6 +37,7 @@ class ImagesTab extends Component {
         if (this.state.selectedImage){
             return <ImageData group={group}
                               close={this.closeImagePage}
+                              user={this.props.user}
                               {...this.state.selectedImage}
                               provider={this.props.provider}
                               removeImage={this.props.removeImage}
@@ -52,7 +53,7 @@ class ImagesTab extends Component {
         const IMAGES = images.map((image) => {
             return (
                 <div key={`${image.id}`} className="image-item-div" onClick={()=>{this.enterImagePage(image)}}>
-                    <img key={`${image.id}__`} className="image-item-div-innerimg" alt={`uploaded by ${image.uploadedBy}`} src={image.image}/>
+                    <img key={`${image.id}__`} className="image-item-div-innerimg" alt={`uploaded by ${image.uploadedByName}`} src={image.image}/>
                 </div>
             );
         });

@@ -405,6 +405,7 @@ class GroupPage extends Component {
                                 <ImagesTab group={group}
                                            provider={this.props.provider}
                                            token={this.props.token}
+                                           user={this.props.user}
                                            removeImage={this.props.removeImage}
                                            uploadImage={this.props.uploadImage}
                                            updateImage={this.props.updateImage}/>

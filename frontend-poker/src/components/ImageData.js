@@ -35,7 +35,14 @@ class ImageData extends Component {
     }
     render() {
         const { showErrorOnDeleteImage,showSuccessDeleteImage } = this.state;
-       const { image, group, uploadedBy, playerIds, gameIds} = this.props;
+       const { image, group, uploadedByName, uploadedById, playerIds, gameIds, user} = this.props;
+       const curentUserId = user.id;
+       let isAdmin = false;
+       if (group && user && user.groups && user.groups[group.id]){
+           isAdmin = user.groups[group.id].isAdmin;
+       }
+       const canDelete = isAdmin || curentUserId === uploadedById;
+        console.log('user',user)
        const game = group.games.find(g=>g.id === gameIds[0]);
        const gameDate = game ? game.date.AsGameName() : 'unknown';
 
@@ -50,7 +57,7 @@ class ImageData extends Component {
                         <img alt="image" id="image-data-preview" src={image}/>
                     </div>
                     <div>
-                        Uploaded by: {uploadedBy}
+                        Uploaded by: {uploadedByName}
                     </div>
                     <hr/>
                     <div>
@@ -72,7 +79,7 @@ class ImageData extends Component {
                             <button className="close-button" onClick={this.props.close} >back</button>
                         </div>
                         <div>
-                            <button className="delete-image-button" onClick={this.removeImage} >DELETE IMAGE</button>
+                            <button disabled={!canDelete} className="delete-image-button" onClick={this.removeImage} >DELETE IMAGE</button>
                         </div>
                     </div>
 
