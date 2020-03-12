@@ -49,7 +49,7 @@ class ImagesTab extends Component {
         }
 
 
-        const {images, gotImages} = group;
+        const {images} = group;
         const IMAGES = images.map((image) => {
             return (
                 <div key={`${image.id}`} className="image-item-div" onClick={()=>{this.enterImagePage(image)}}>
@@ -66,7 +66,6 @@ class ImagesTab extends Component {
 
                 </div>
             </div>
-            { gotImages ? <div/> : <div className="loading-imaging-text">a few seconds, we are loading the images..</div>  }
             {IMAGES}
         </div>;
 

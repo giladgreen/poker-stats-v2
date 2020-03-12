@@ -7,7 +7,6 @@ import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
 import requestInvitation from './actions/requestInvitation';
 import getGroupData from './actions/getGroupData';
-import getGroupImages from './actions/getGroupImages';
 
 import Login from './components/Login';
 import NewGroupForm from './components/NewGroupForm';
@@ -217,29 +216,6 @@ class App extends Component {
                 this.setState({ showGroupPage: g, loading:false});
             }).catch((e)=>{
                 this.setState({ error: e, loading:false});
-            })
-
-            getGroupImages(group, this.state.provider, this.state.token).then((images)=>{
-
-                const showGroupPage = {...this.state.showGroupPage};
-
-                if (showGroupPage){
-                    showGroupPage.images = images;
-                    showGroupPage.gotImages = true;
-                    this.setState({showGroupPage});
-                } else{
-                    setTimeout(()=>{
-                        const showGroupPage = {...this.state.showGroupPage};
-                        if (showGroupPage){
-                            showGroupPage.images = images;
-                            showGroupPage.gotImages = true;
-                            this.setState({showGroupPage});
-                        }
-                    },10000)
-                }
-
-            }).catch((e)=>{
-                console.log('error getting images',e)
             })
 
 
