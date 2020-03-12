@@ -1,5 +1,6 @@
 const models = require('../../api/models');
 const googleTokenStrategy = require('../../api/helpers/google-auth');
+
 const { STORAGE } = require('../../config');
 
 const GOOGLE = 'google';
@@ -17,6 +18,7 @@ function mockGoogleTokenStrategy(sandbox, {
     token,
   });
 }
+
 const mockedGroupPayload = {
   name: 'test',
   createdAt: new Date(),

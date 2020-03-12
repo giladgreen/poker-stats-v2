@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/img-has-alt */
 
 import React, { Component } from 'react';
+
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
 
@@ -161,6 +162,8 @@ class ImageUploader extends Component {
 
 
         }
+
+
         // eslint-disable-next-line
         return (
             <div id="image-uploader">

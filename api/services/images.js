@@ -1,8 +1,9 @@
 const { badRequest, forbidden } = require('boom');
-
+const Cloudinary = require('../helpers/cloudinary');
 const models = require('../models');
 
 const { Op } = models.Sequelize;
+
 
 async function deleteImage(userContext, imageId) {
   if (!userContext || !userContext.id) {
@@ -132,7 +133,9 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
     throw badRequest('player not found', { playerIds });
   }
 
-  const { id: imageId } = await models.images.create({ image, uploadedBy: userContext.id });
+  const url = await Cloudinary.upload(image);
+
+  const { id: imageId } = await models.images.create({ image: url, uploadedBy: userContext.id });
 
   await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
   await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));

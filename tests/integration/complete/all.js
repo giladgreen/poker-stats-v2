@@ -177,6 +177,7 @@ async function deletePlayer(groupId, playerId) {
 
   should(body).be.an.Object();
 }
+
 async function updatePlayer(groupId, playerId, name) {
   const payload = {
     name,
@@ -193,6 +194,7 @@ async function updatePlayer(groupId, playerId, name) {
   should(body).be.an.Object();
   body.should.have.property('name').which.is.a.String().eql(name);
 }
+
 async function createPlayer(groupId, name) {
   const payload = {
     name,
@@ -282,6 +284,7 @@ async function deleteGame(groupId, gameId) {
 
   should(body).be.an.Object();
 }
+
 async function updateGame(groupId, gameId, description, players) {
   const payload = {
     date: new Date(),
@@ -306,6 +309,7 @@ async function updateGame(groupId, gameId, description, players) {
   body.should.have.property('playersData').which.is.a.Array();
   should(body.playersData.length).eql(players.length);
 }
+
 async function createGame(groupId, description, players) {
   const payload = {
     date: new Date(),
@@ -373,7 +377,6 @@ async function sendInvitationRequestApproval(invitationRequestId, invitationRequ
   should(body).be.an.Object();
   body.should.have.property('status').which.is.a.String().eql('invitation approved');
 }
-
 
 describe('full integration test,', function () {
   this.timeout(8000);
