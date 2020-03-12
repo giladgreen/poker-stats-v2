@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
+import ImageSlider from '../components/ImageSlider';
+
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
 
 const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
@@ -131,6 +133,8 @@ class PlayerSummary extends Component {
 
                     <img alt="" className="playerPageImage" src={player.imageUrl || ANON_URL}/>
 
+                    <ImageSlider  group={this.props.group} playerId={this.props.player.id}  />
+
                 </div>
                 <hr/>
                 {/*`${this.playerGames[value.min].game.date.AsGameName()} - ${this.playerGames[value.max].game.date.AsGameName()} `*/}
@@ -174,7 +178,6 @@ class PlayerSummary extends Component {
 
                     {playerGamesDivs}
                 </div>
-
             </div>
         );
     }

@@ -22,6 +22,7 @@ import './style/intro.css';
 import './style/image-uploader.css';
 import './style/images.css';
 import './style/image-data.css';
+import './style/image-slider.css';
 
 const options = {
     // you can also just use 'bottom center'

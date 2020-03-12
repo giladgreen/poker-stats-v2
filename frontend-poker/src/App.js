@@ -313,7 +313,6 @@ class App extends Component {
         this.setState({showGroupPage})
     }
     removeImage = (imageId)=>{
-        console.log('app image remove', imageId);
         const showGroupPage = {...this.state.showGroupPage};
         showGroupPage.images = showGroupPage.images.filter(im=>{
             return (im.id !== imageId)

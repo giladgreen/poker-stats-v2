@@ -9,6 +9,8 @@ const colors = ["#317F42",  "#14A9B6",  "#D9892B",  "#A23DA3",  "#A3A23D",  "#91
 const { ANON_URL, GREEN, RED, TRANSPARENT} = CONSTS;
 import Size from '../sizes';
 import InputRange from "react-input-range";
+import ImageSlider from '../components/ImageSlider';
+
 const  {Width} = Size;
 const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
@@ -440,7 +442,12 @@ class GameData extends Component{
                             {graph}
                         </div>
 
+
                     </div>)
+                }
+
+                {!IsGroupSummary &&
+                <ImageSlider group={group} gameId={Game.id}/>
                 }
             </div>
         );
