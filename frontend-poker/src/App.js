@@ -305,11 +305,10 @@ class App extends Component {
         showGroupPage.images = showGroupPage.images.map(im=>{
             if (im.id !== image.id) return im;
             exist = true;
-
             return im;
         });
         if (!exist){
-            showGroupPage.images.push(image)
+            showGroupPage.images = [image, ...showGroupPage.images]
         }
         this.setState({showGroupPage})
     }
