@@ -4,7 +4,6 @@ const models = require('../models');
 
 const { Op } = models.Sequelize;
 
-
 async function deleteImage(userContext, imageId) {
   if (!userContext || !userContext.id) {
     throw badRequest('missing user id');
@@ -23,6 +22,8 @@ async function deleteImage(userContext, imageId) {
 
   await models.tags.destroy({ where: { imageId } });
   await models.images.destroy({ where: { id: imageId } });
+  await Cloudinary.delete(image.publicId);
+
   return {
     status: 'image was removed',
   };
@@ -133,9 +134,9 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
     throw badRequest('player not found', { playerIds });
   }
 
-  const url = await Cloudinary.upload(image);
+  const { url, publicId } = await Cloudinary.upload(image);
 
-  const { id: imageId } = await models.images.create({ image: url, uploadedBy: userContext.id });
+  const { id: imageId } = await models.images.create({ image: url, publicId, uploadedBy: userContext.id });
 
   await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
   await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
@@ -151,7 +152,7 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
     uploadedById: userContext.id,
     uploadedByName: user ? `${user.firstName} ${user.familyName}` : 'unknown',
     imageId,
-    image,
+    image: url,
     playerIds,
     gameIds,
     groupIds,

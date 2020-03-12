@@ -16,6 +16,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       field: 'user_id',
     },
+    publicId: {
+      type: DataTypes.STRING,
+      field: 'public_id',
+    },
     ...dateFields,
   }, {
     paranoid: true,
