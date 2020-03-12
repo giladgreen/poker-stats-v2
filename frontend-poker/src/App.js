@@ -361,7 +361,6 @@ class App extends Component {
         }
 
         if (showGroupPage){
-            console.log('app render')
             return <GroupPage goHome={this.goHome}
                               group={showGroupPage}
                               user={this.state.user}

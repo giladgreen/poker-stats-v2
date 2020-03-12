@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/helpers/cloudinary.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/helpers/cloudinary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migration/db_schemas.json" beforeDir="false" afterPath="$PROJECT_DIR$/migration/db_schemas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/images.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="90">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="n#!!block;n#getImages#0" />
               </folding>
@@ -35,10 +36,44 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="363" selection-start-line="363" selection-end-line="363" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#36#77#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/helpers/cloudinary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="517">
               <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/postImage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -47,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/api/models/images.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -57,6 +92,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
               <caret line="101" column="26" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#90#131#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,15 +153,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/helpers/google-auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -127,9 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showSuccessDelete</find>
-      <find>console.log</find>
-      <find>&lt;ImageUploader</find>
       <find>&lt;ImagesTab</find>
       <find>&lt;GroupPage</find>
       <find>postImage</find>
@@ -157,6 +193,9 @@
       <find>stub</find>
       <find>.stub</find>
       <find>cloudinary</find>
+      <find>cloud</find>
+      <find>gotImages</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -183,10 +222,10 @@
       <dir>$PROJECT_DIR$/frontend-poker/src/style</dir>
       <dir>$PROJECT_DIR$/</dir>
       <dir>$PROJECT_DIR$/frontend-poker/src/components</dir>
-      <dir>$PROJECT_DIR$/frontend-poker/src</dir>
       <dir>$PROJECT_DIR$/frontend-poker</dir>
       <dir>$PROJECT_DIR$/api/services</dir>
       <dir>$PROJECT_DIR$/tests</dir>
+      <dir>$PROJECT_DIR$/frontend-poker/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -225,20 +264,16 @@
         <option value="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/Login.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/loader.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/containers/Loading.js" />
         <option value="$PROJECT_DIR$/api/swagger/swagger.yaml" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/images.css" />
         <option value="$PROJECT_DIR$/frontend-poker/src/actions/getGroupImages.js" />
         <option value="$PROJECT_DIR$/frontend-poker/public/index.html" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" />
         <option value="$PROJECT_DIR$/frontend-poker/.npmrc" />
         <option value="$PROJECT_DIR$/tests/helpers/groups.js" />
         <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
@@ -246,6 +281,10 @@
         <option value="$PROJECT_DIR$/migration/db_schemas.json" />
         <option value="$PROJECT_DIR$/api/helpers/cloudinary.js" />
         <option value="$PROJECT_DIR$/api/services/images.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/package.json" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/actions/postImage.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/App.js" />
+        <option value="$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js" />
       </list>
     </option>
   </component>
@@ -277,24 +316,27 @@
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="migration" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -486,7 +528,7 @@
       <workItem from="1583752924892" duration="45671000" />
       <workItem from="1583935336250" duration="1040000" />
       <workItem from="1583953571928" duration="2700000" />
-      <workItem from="1583962688235" duration="5601000" />
+      <workItem from="1583962688235" duration="6317000" />
     </task>
     <servers />
   </component>
@@ -523,17 +565,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="582396000" />
+    <option name="totallyTimeSpent" value="583112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1108" y="-1057" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.11927582" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.2087327" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.7006369" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.37791932" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.63060987" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.29988465" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -543,7 +585,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.19745223" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.22292994" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -879,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/swagger/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -956,17 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3762">
-          <caret line="227" column="51" selection-start-line="227" selection-start-column="51" selection-end-line="227" selection-end-column="51" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#36#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/getGroupData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1206">
@@ -1005,31 +1029,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/postImage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="54" column="72" selection-start-line="54" selection-start-column="72" selection-end-line="54" selection-end-column="72" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#90#131#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,7 +1060,7 @@
     <entry file="file://$PROJECT_DIR$/api/helpers/google-auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="565">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
@@ -1104,7 +1107,7 @@
     <entry file="file://$PROJECT_DIR$/api/models/images.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="21" column="6" lean-forward="true" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1115,19 +1118,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/images.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="n#!!block;n#getImages#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/helpers/cloudinary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
+        <state relative-caret-position="517">
           <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/images.js">
+    <entry file="file://$PROJECT_DIR$/frontend-poker/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="504">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/actions/postImage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
-            <element signature="n#!!block;n#getImages#0" />
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="363" selection-start-line="363" selection-end-line="363" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#36#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/components/ImagesTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#90#131#0" expanded="true" />
           </folding>
         </state>
       </provider>

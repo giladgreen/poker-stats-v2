@@ -13,57 +13,7 @@ class ImagesTab extends Component {
     }
 
     showImageUploaderForm = ()=>{
-
-            window.cloudinary.openUploadWidget({
-                    cloudName: "www-poker-stats-com",
-                    uploadPreset: "pokerstatsimages",
-                    sources: [
-                        "local",
-                        "url",
-                        "camera",
-                    ],
-                    showAdvancedOptions: false,
-                    cropping: false,
-                    multiple: false,
-                    defaultSource: "local",
-                    styles: {
-                        palette: {
-                            window: "#FFFFFF",
-                            windowBorder: "#90A0B3",
-                            tabIcon: "#0078FF",
-                            menuIcons: "#5A616A",
-                            textDark: "#000000",
-                            textLight: "#FFFFFF",
-                            link: "#0078FF",
-                            action: "#FF620C",
-                            inactiveTabIcon: "#0E2F5A",
-                            error: "#F44235",
-                            inProgress: "#0078FF",
-                            complete: "#20B832",
-                            sourceBg: "#E4EBF1"
-                        },
-                        fonts: {
-                            default: {
-                                active: true
-                            }
-                        }
-                    }
-                },
-                (err, info) => {
-                    if (!err) {
-                        if (info.event === "success"){
-                            console.log("Upload Widget event - ", info);
-                        }
-
-                    }else{
-                        console.log('error',err)
-                    }
-                });
-
-
-
-
-       // this.setState({ showImageUploader: true});
+       this.setState({ showImageUploader: true});
     }
 
     hideImageUploaderForm = ()=>{
@@ -83,7 +33,6 @@ class ImagesTab extends Component {
     }
 
     render() {
-        console.log('image tab render')
         const { group } = this.props;
         if (this.state.selectedImage){
             return <ImageData group={group}
@@ -101,7 +50,6 @@ class ImagesTab extends Component {
 
 
         const {images, gotImages} = group;
-        console.log('gotImages', gotImages)
         const IMAGES = images.map((image) => {
             return (
                 <div key={`${image.id}`} className="image-item-div" onClick={()=>{this.enterImagePage(image)}}>

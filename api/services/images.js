@@ -22,7 +22,10 @@ async function deleteImage(userContext, imageId) {
 
   await models.tags.destroy({ where: { imageId } });
   await models.images.destroy({ where: { id: imageId } });
-  await Cloudinary.delete(image.publicId);
+  if (image.publicId) {
+    await Cloudinary.delete(image.publicId);
+
+  }
 
   return {
     status: 'image was removed',
