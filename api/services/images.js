@@ -71,6 +71,7 @@ async function getImages({ playerIds, gameIds, groupIds }) {
   });
 
   const images = await models.images.findAll({
+    order: [['createdAt', 'ASC']],
     where: {
       id: {
         [Op.in]: imageIds,
