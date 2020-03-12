@@ -24,7 +24,6 @@ async function deleteImage(userContext, imageId) {
   await models.images.destroy({ where: { id: imageId } });
   if (image.publicId) {
     await Cloudinary.delete(image.publicId);
-
   }
 
   return {
