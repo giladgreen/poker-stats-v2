@@ -14,19 +14,19 @@ class Cloudinary {
   }
 
   delete(publicId) {
-      return new Promise(async (resolve, reject) => {
-          if (publicId === 'public_id') {
-              return resolve();
-          }
-          this.cloudinary.uploader.destroy(publicId, (error, result) => {
-              if (error) {
-                  logger.error('got error from cloudinary.destroy', error.message);
-                  return reject(error);
-              }
-              logger.info('got response from cloudinary.destroy', JSON.stringify(result));
-              return resolve(result);
-          });
+    return new Promise(async (resolve, reject) => {
+      if (publicId === 'public_id') {
+        return resolve();
+      }
+      this.cloudinary.uploader.destroy(publicId, (error, result) => {
+        if (error) {
+          logger.error('got error from cloudinary.destroy', error.message);
+          return reject(error);
+        }
+        logger.info('got response from cloudinary.destroy', JSON.stringify(result));
+        return resolve(result);
       });
+    });
   }
 
   upload(image) {
@@ -40,7 +40,7 @@ class Cloudinary {
           return reject(error);
         }
         logger.info('got response from cloudinary.upload', JSON.stringify(result));
-        return resolve({ url: result.secure_url || result.secureUrl, publicId: result.public_id || result.publicId }  );
+        return resolve({ url: result.secure_url || result.secureUrl, publicId: result.public_id || result.publicId });
       });
     });
   }
