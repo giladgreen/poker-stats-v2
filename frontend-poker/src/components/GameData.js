@@ -66,7 +66,7 @@ class GameData extends Component{
         });
 
         const sliderValues ={ min: 0, max: group.games.length - 1 };
-        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max): props.Game;
+        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max): props.game;
         this.state = { sliderValues, Game }
     }
     getPlayerImage(playerInfo, playerWidth, margin){

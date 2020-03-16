@@ -1,55 +1,35 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
+import _ from 'lodash';
 import GameData from './GameData';
+import WhoOwesWho from '../containers/WhoOwesWho';
 import CONSTS from '../CONSTS';
 
 const { ANON_URL } = CONSTS;
 class GamePage extends Component {
 
-    getGamePot = (game)=>{
-        return game.playersData.reduce((all, one)=>{
-            return all + one.buyIn;
-        }, 0);
+    showWhoOwesWho = ()=>{
+        this.setState({ shouldShowWhoOwesWho: !this.state.shouldShowWhoOwesWho })
     }
-
-    gameDateToString = (game)=>{
-        const addLeaddingZero = (num)=>{
-            const str = `${num}`;
-            if (str.length === 2){
-                return str;
-            } else{
-                return `0${str}`;
-            }
-        };
-
-        const isoDate = typeof  game.date === 'string' ? game.date.substr(0,10) :  game.date.toISOString();
-        const year = parseInt(isoDate.substr(0, 4), 10);
-        const month = addLeaddingZero(parseInt(isoDate.substr(5, 2), 10));
-        const day = addLeaddingZero(parseInt(isoDate.substr(8, 2), 10));
-
-        return `${day}/${month}/${year}`;
-    }
-    render(){
-        const { group, game } = this.props;
+    constructor(props){
+        super(props);
+        const { group, game } = props;
         const { isAdmin} = group;
         console.log('group',group);
         console.log('game',game);
-
-
-
-
+        this.state = {shouldShowWhoOwesWho: false}
 
         const gamePlayersData =  game.playersData.map(player=>{
-           const data =  group.players.find(p=> p.id === player.playerId);
-           return {
-               id: player.playerId,
-               name: data.name,
-               imageUrl: data.imageUrl,
-               cashOut: player.cashOut,
-               buyIn: player.buyIn,
-               balance:  player.cashOut -  player.buyIn
-           }
+            const data =  group.players.find(p=> p.id === player.playerId);
+            return {
+                id: player.playerId,
+                name: data.name,
+                imageUrl: data.imageUrl,
+                cashOut: player.cashOut,
+                buyIn: player.buyIn,
+                balance:  player.cashOut -  player.buyIn
+            }
         }).sort((a,b)=> a.name < b.name ? -1 : 1).map(((player,index) =>{
 
             const onImageError = (ev)=>{
@@ -81,6 +61,38 @@ class GamePage extends Component {
 
             </div>);
         }))
+        this.game = game;
+        this.gamePlayersData = gamePlayersData;
+        this.isAdmin = isAdmin;
+    }
+    getGamePot = (game)=>{
+        return game.playersData.reduce((all, one)=>{
+            return all + one.buyIn;
+        }, 0);
+    }
+
+    gameDateToString = (game)=>{
+        const addLeaddingZero = (num)=>{
+            const str = `${num}`;
+            if (str.length === 2){
+                return str;
+            } else{
+                return `0${str}`;
+            }
+        };
+
+        const isoDate = typeof  game.date === 'string' ? game.date.substr(0,10) :  game.date.toISOString();
+        const year = parseInt(isoDate.substr(0, 4), 10);
+        const month = addLeaddingZero(parseInt(isoDate.substr(5, 2), 10));
+        const day = addLeaddingZero(parseInt(isoDate.substr(8, 2), 10));
+
+        return `${day}/${month}/${year}`;
+    }
+    render(){
+        const group = this.props.group;
+        const game = this.game;
+        const gamePlayersData = this.gamePlayersData;
+        const isAdmin = this.isAdmin;
 
         return (
             <div id="gameSummary">
@@ -100,11 +112,12 @@ class GamePage extends Component {
                     </div>
                 </div>
 
-                <GameData group={group} Game={game} />
+                <GameData group={group} game={game} />
 
                 {isAdmin && <button onClick={this.props.edit} className="button left-margin">Edit</button>}
                 {isAdmin && <button onClick={this.props.delete} className="button left-margin">Delete</button>}
-
+                <button onClick={this.showWhoOwesWho} className="button left-margin"> {this.state.shouldShowWhoOwesWho ? 'Hide' :'Show'} Who Owes Who</button>
+                { this.state.shouldShowWhoOwesWho && <WhoOwesWho group={group} game={game} /> }
                 <div className="more-data-text"><u>more data:</u></div>
                 <div id="gamePlayersData" className="row">
 
