@@ -18,15 +18,18 @@ body {
   height: 10vh;
   background: black;
   color: white;
-  font-size: 4em;
+  font-size: 3.3em;
   border-bottom: 2px solid #333333;
+}
+.sheep-logo{
+  height: 9vh;
 }
 #simple-menu{
   z-index: 9999999;
 
 }
 #app-header-text{
-  padding-left: 8vw;
+  padding-left: 2vw;
 }
 .IconButton{
   padding-left: 17px;
@@ -124,10 +127,15 @@ button{
   #app-header{
     width: 100vw;
     height: 7vh;
-    font-size: 1.9em;
+    font-size: 1.2em;
+  }
+  .sheep-logo{
+    height: 5.5vh;
+    margin-top: 5px;
   }
   #app-header-text{
-    padding-left: 10vw;
+    padding-left: 0px;
+    font-size: 0.9em;
   }
   #app-header-logout{
     padding-top: 5px;

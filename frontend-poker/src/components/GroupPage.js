@@ -93,7 +93,7 @@ class GroupPage extends Component {
 
 
 
-            <span id="app-header-text">Group Page</span>
+            <span id="app-header-text"><img src="pokerStatsLogoWithSheep.png" className="sheep-logo"/>Group Page</span>
         </div>
     };
 

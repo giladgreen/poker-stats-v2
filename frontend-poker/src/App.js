@@ -131,7 +131,7 @@ class App extends Component {
 
 
 
-            <span id="app-header-text"><img src="pokerStatsLogoWithSheep.png" className="sheep-logo"/>   Groups</span>
+            <span id="app-header-text"><img src="pokerStatsLogoWithSheep.png" className="sheep-logo"/> Groups</span>
         </div>
     };
 
