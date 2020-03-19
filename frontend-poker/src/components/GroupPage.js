@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import 'react-input-range/lib/css/index.css';
 import getGame from '../actions/getGame';
 import createGame from '../actions/createGame';
-import createPlayer from '../actions/createPlayer';
-import deletePlayer from '../actions/deletePlayer';
-import updatePlayer from '../actions/updatePlayer';
 import updateGame from '../actions/updateGame';
 import deleteGame from '../actions/deleteGame';
 import Menu from '@material-ui/core/Menu';
@@ -16,16 +13,12 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
 import GameSummary from './GameSummary';
-import PlayerSummary from './PlayerSummary';
 import ImagesTab from './ImagesTab';
 import ImageUploader from './ImageUploader';
 import GamesTab from './GamesTab';
-import CONSTS from '../CONSTS';
+import PlayersTab from "./PlayersTab";
 
-const { ANON_URL } = CONSTS;
 
-const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
-const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 class GroupPage extends Component {
 
     constructor(props) {
@@ -53,18 +46,6 @@ class GroupPage extends Component {
         this.clearGamesTabSelections();
         this.setState({tabKey });
     };
-
-    showCreatePlayer = () =>{
-        this.setState({ newPlayer: {  name: '', email: ''} });
-    }
-
-    showPlayerData = (player) =>{
-        this.setState({ playerSummary: player })
-    }
-
-    onPlayerEditClick = (editPlayer) =>{
-        this.setState({ editPlayer });
-    }
 
     handleNewPlayerChange = (existingPlayerId)=> {
         this.setState({existingPlayerId});
@@ -116,19 +97,6 @@ class GroupPage extends Component {
         </div>
     };
 
-    createNewPlayer = () => {
-        const { group, provider, token } = this.props;
-        const player = {
-            name: this.state.newPlayer.name,
-            email: this.state.newPlayer.email,
-        }
-        console.log('calling create player with body:', player);
-        createPlayer(group.id, player, provider, token).then((player)=>{
-            this.setState({ newPlayer: null, editPlayer: null,playerSummary:null});
-            this.props.updatePlayerData(player);
-        });
-    }
-
     getNewGameSection = () => {
         const legal = this.state.newGame.date && this.state.newGame.date.length === 10;
 
@@ -152,60 +120,6 @@ class GroupPage extends Component {
                  </div>);
     };
 
-    getNewPlayerSection = () => {
-        const legal = this.state.newPlayer.name && this.state.newPlayer.name.length > 0;
-
-        return (<div id="new-player-form">
-                    <h2> Create a new player. </h2>
-
-                    <div className="new-player-section">
-                       name:
-                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.newPlayer.name} onChange={(event)=>{
-                            const newPlayer = {...this.state.newPlayer};
-                            newPlayer.name = event.target.value;
-                            this.setState({newPlayer})
-                        }}/>
-                    </div>
-                    <div className="new-player-section">
-                       email:
-                        <input  type="text" id="newGameExtra" className="bordered-input left-margin left-pad" value={this.state.newPlayer.email}onChange={(event)=>{
-                            const newPlayer = {...this.state.newPlayer};
-                            newPlayer.email = event.target.value;
-                            this.setState({newPlayer})
-                        }}/>
-                    </div>
-                    <div className="new-player-section">
-
-                      <button className="button left-margin"  onClick={()=>this.setState({newPlayer: null})}> Cancel </button>
-                        <button className="button left-margin"  onClick={this.createNewPlayer} disabled={!legal}> Create </button>
-                    </div>
-
-
-                 </div>);
-    };
-
-    onPlayerDeleteClick = async(playerId) =>{
-        if (confirm("Are you sure?")){
-            try{
-                await deletePlayer(this.props.group.id, playerId, this.props.provider, this.props.token);
-                this.props.updatePlayerRemoved(playerId);
-                this.setState({playerSummary:null})
-            }catch(error){
-                console.error('deletePlayerById error',error);
-            }
-        }
-    }
-
-    getPlayerSummary = () =>{
-        return <PlayerSummary
-            player={this.state.playerSummary}
-            group={this.props.group}
-            back={()=>this.setState({playerSummary: null})}
-            edit={()=>this.onPlayerEditClick(this.state.playerSummary)}
-            delete={()=>this.onPlayerDeleteClick(this.state.playerSummary.id)}
-        />
-    }
-
     getGamesSummary = () =>{
         return <GameSummary
             game={this.state.gameSummary}
@@ -214,125 +128,6 @@ class GroupPage extends Component {
             edit={()=>this.onGameEditClick(this.state.gameSummary)}
             delete={this.deleteSelectedGame}
         />;
-    }
-
-    saveEditedPlayer = () =>{
-        const { group, provider, token } = this.props;
-        const player = {
-            id: this.state.editPlayer.id,
-            name: this.state.editPlayer.name,
-            email: this.state.editPlayer.email,
-            imageUrl: this.state.editPlayer.imageUrl,
-        }
-        console.log('saveEditedPlayer player', player)
-        updatePlayer(group.id, player.id, player, provider, token).then((p)=>{
-            this.setState({ newPlayer: null, editPlayer: null,playerSummary:null});
-            this.props.updatePlayerData(p);
-        });
-    }
-
-    getPlayerEdit = () =>{
-        return (
-            <div className="playerEditForm">
-                <div className="playerSummaryHeader">
-                    <div>
-                        name: {this.state.editPlayer.name}
-                        <input  type="text" id="playerName" className="bordered-input left-margin left-pad" value={this.state.editPlayer.name} onChange={(event)=>{
-                            const editPlayer = {...this.state.editPlayer};
-                            editPlayer.name = event.target.value || '';
-                            this.setState({editPlayer});
-                        }}/>
-
-                    </div>
-                    <div>
-                        email:
-                        <input  type="text" id="playerEmail" className="bordered-input left-margin left-pad" value={this.state.editPlayer.email} onChange={(event)=>{
-                            const editPlayer = {...this.state.editPlayer};
-                            editPlayer.email = event.target.value || '';
-                            this.setState({editPlayer});
-                        }}/>
-                    </div>
-                    <div>
-                        image:
-                        <input  type="text" id="playerImage" className="bordered-input left-margin left-pad" value={this.state.editPlayer.imageUrl||''} onChange={(event)=>{
-                            const editPlayer = {...this.state.editPlayer};
-                            editPlayer.imageUrl = event.target.value || '';
-                            this.setState({editPlayer});
-                        }}/>
-                    </div>
-
-                    {this.state.editPlayer.imageUrl && this.state.editPlayer.imageUrl.length >0 && <img alt="" className="playerPageImage" src={this.state.editPlayer.imageUrl}/>}
-                </div>
-
-                <div className="buttons-section">
-                    <button onClick={()=>this.setState({editPlayer:null})}>Back</button>
-                    <button onClick={this.saveEditedPlayer} className="left-margin">Save</button>
-
-                </div>
-
-
-            </div>
-        );
-
-    }
-
-    getPlayersTab = () =>{
-        const { group } = this.props;
-        const {players} = group;
-
-        if (this.state.newPlayer){
-            return this.getNewPlayerSection()
-        }
-        if (this.state.editPlayer){
-            return this.getPlayerEdit();
-        }
-
-        if (this.state.playerSummary){
-            return this.getPlayerSummary()
-        }
-
-        const PLAYERS = players.sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map((player,index) => {
-
-            const style = {
-                backgroundImage: `url(${player.imageUrl || FULL_ANON_URL})`,
-                borderRadiusTop: '50px',
-            };
-
-
-
-            return (
-                        <div key={player.id} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
-                            <div key={player.id} className="player-item-div-inner" style={style}>
-                                <div><b>{player.name}</b></div>
-                                {  player.gamesCount ?
-                                    (<div>
-                                        <div>  {player.gamesCount} games</div>
-                                        <div>  {player.balance}₪ </div>
-                                    </div>) :
-                                    <div>no games yet</div> }
-                            </div>
-                        </div>
-                   );
-
-        });
-
-
-
-        return (<div id="all-games-div" >
-            <div className="row">
-                <div className="col-xs-6">
-                    <div className="player-item-div"
-                         onClick={this.showCreatePlayer}>
-                        <img src="plus.png" className="player-item-div-plus-sign"/>
-
-                    </div>
-                </div>
-
-                {PLAYERS}
-
-            </div>
-        </div>)
-
     }
 
     render() {
@@ -353,7 +148,6 @@ class GroupPage extends Component {
             backgroundImage: this.backgroundImage,
         };
 
-        const playersTab = this.getPlayersTab();
         return (
             <div id="container" className="group-page">
                 {header}
@@ -396,7 +190,14 @@ class GroupPage extends Component {
                         </Tab>
                         <Tab eventKey="players" title="Players" >
                             <div id="players-tab">
-                                {playersTab}
+                                <PlayersTab
+                                group={group}
+                                updatePlayerData={this.props.updatePlayerData}
+                                updatePlayerRemoved={this.props.updatePlayerRemoved}
+                                user={this.props.user}
+                                provider={this.props.provider}
+                                token={this.props.token}/>
+
                             </div>
                         </Tab>
 

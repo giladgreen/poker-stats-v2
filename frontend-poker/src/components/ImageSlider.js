@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 
 class ImageSlider extends Component {
