@@ -1,7 +1,8 @@
 /* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
 import moment from 'moment';
-
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
