@@ -1,0 +1,185 @@
+#online-game-tab{
+    margin-top: 4px;
+    background: black;
+    color: white;
+    width: 110vw;
+    margin-left: -5vw;
+    padding-left: 7vw;
+    padding-right: 15vw;
+    padding-top: 10px;
+    height: 100vh;
+    position:relative;
+}
+#clock{
+    color: #eaeaea;
+    z-index: 30;
+    font-size: 2em;
+    position: absolute;
+    top:1.5vh;
+    left:5.7vw;
+
+
+}
+#table-image{
+    position: absolute;
+    top:8vh;
+    left:8vw;
+    width: 78vw;
+    height: 60vh;
+    z-index: 1;
+}
+
+.card{
+    border: 2px solid white;
+    outline: 1px solid black;
+
+    border-radius: 5px;
+
+}
+
+
+.left-card{
+    z-index: 20;
+    transform: rotate(-8deg);
+}
+.right-card{
+    z-index: 21;
+    transform: rotate(8deg);
+}
+.player-div{
+    position:relative;
+}
+.card1{
+    position: absolute;
+    left: 0vw;
+}
+.card2{
+    position: absolute;
+    left: 3.2vw;
+}
+
+.player-info{
+    z-index: 19;
+    border-radius: 5px;
+    position: absolute;
+    left: 4vw;
+    width: 9.2vw;
+    height: 10vh;
+    background: white;
+    color: black;
+    padding-top: 2.7vh;
+    padding-left: 8.4vh;
+    border: 1px solid black;
+}
+.button{
+    z-index: 22;
+    border-radius: 50%;
+    position: absolute;
+    left: 12.1vw;
+    width: 2vw;
+    height: 2vw;
+    padding-top: 0.14vw;
+    padding-left: 0.6vw;
+    font-size: 1.3em;
+    top:-1.5vh;
+}
+#dealer-button{
+    background: mediumpurple;
+    color: white;
+
+}
+#small-blind-button{
+    background: #9fcdff;
+    color: black;
+    font-size: 1em;
+    padding-top: 0.35vw;
+    padding-left: 0.47vw;
+}
+#big-blind-button{
+    background: #9fcdff;
+    color: black;
+    font-size: 1em;
+    padding-top: 0.35vw;
+    padding-left: 0.47vw;
+
+}
+.player-name{
+    color: #6c757d;
+}
+
+.player-balance{
+    color: #4a535b;
+    font-weight: bold;
+}
+#active-timer-div{
+    margin-top: 1vh;
+    margin-left: -1.4vw;
+    width: 6.2vw;
+    position: relative;
+    background: #eeeeee;
+    height: 1vh;
+}
+
+#active-timer{
+
+    position: relative;
+    background: forestgreen;
+    height: 1vh;
+
+}
+
+
+.player{
+    position: absolute;
+    width: 13vw;
+    height: 10vh;
+    z-index: 3;
+}
+.active-player{
+    background: rgba(232,174,0,0.53);
+    -webkit-box-shadow: -6px 8px 35px 24px rgba(232,174,0,0.58);
+    -moz-box-shadow: -6px 8px 35px 24px rgba(232,174,0,0.58);
+    box-shadow: -6px 8px 35px 24px rgba(232,174,0,0.58);
+    border-radius: 30%;
+}
+
+#player1{
+    top:8vh;
+    left:43vw;
+}
+
+#player2{
+    top:13vh;
+    left:58vw;
+}
+
+#player3{
+    top:29vh;
+    left:69vw;
+}
+
+#player4{
+    top:51vh;
+    left:58vw;
+}
+
+#player5{
+    top:56vh;
+    left:43vw;
+}
+
+#player6{
+    top:51vh;
+    left:26vw;
+}
+
+#player7{
+    top:29vh;
+    left:16vw;
+}
+
+#player8{
+    top:13vh;
+    left:27vw;
+}
+
