@@ -142,25 +142,76 @@
     box-shadow: -6px 8px 35px 24px rgba(232,174,0,0.58);
     border-radius: 30%;
 }
+.player-pot{
+    position: absolute;
+    width: 4.3vw;
+    height: 2.7vw;
+    border-radius: 25px;
+    background: #eec117;
+    color: white;
+    font-weight: bold;
+    font-size: 1.9em;
+    z-index: 2;
+    padding-top: 3px;
+    alignment: center;
+    text-align: center;
+}
+.player-status{
+    position: absolute;
+    width: 3.8vw;
+    height: 1.8vw;
+    border-radius: 20px;
+    background: #117a8b;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    z-index: 30;
+    padding-top: 0px;
+    alignment: center;
+    text-align: center;
 
+    top:10vh;
+    left:1.3vw;
+}
 #player1{
     top:8vh;
     left:43vw;
 }
 
+#player1-pot{
+    top:12.5vh;
+    left:3.5vw;
+}
+
+
+
 #player2{
     top:13vh;
     left:58vw;
 }
+#player2-pot{
+    top:12.5vh;
+    left:2.2vw;
+}
+
 
 #player3{
     top:29vh;
     left:69vw;
 }
 
+#player3-pot{
+    top:5.7vh;
+    left:-4.3vw;
+}
+
 #player4{
     top:51vh;
     left:58vw;
+}
+#player4-pot{
+    top:-6.4vh;
+    left:0.5vw;
 }
 
 #player5{
@@ -168,9 +219,19 @@
     left:43vw;
 }
 
+#player5-pot{
+    top:-6.4vh;
+    left:3.5vw;
+}
+
 #player6{
     top:51vh;
     left:26vw;
+}
+
+#player6-pot{
+    top:-6.4vh;
+    left:5vw;
 }
 
 #player7{
@@ -178,8 +239,19 @@
     left:16vw;
 }
 
+#player7-pot{
+    top:3.2vh;
+    left:13.4vw;
+}
+
 #player8{
     top:13vh;
     left:27vw;
+}
+
+
+#player8-pot{
+    top:10.6vh;
+    left:8.5vw;
 }
 

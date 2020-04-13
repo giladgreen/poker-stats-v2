@@ -39,14 +39,14 @@ class OnlineGame extends Component {
                 name: "Gilad",
                 balance: 300,
                 cards: ['6C','9S'],
-                active: true
+                active: true,
             },{
                 name: "Saar",
-                balance: 50
+                balance: 50,
             },{
                 name: "Ran",
                 balance: 400,
-                dealer:true
+                dealer:true,
             },{
                 name: "Bar",
                 balance: 180,
@@ -69,11 +69,12 @@ class OnlineGame extends Component {
                 name: "Ori",
                 balance: 90,
                 status: 'raise',
-                pot:3
+                pot:30
             },{
                 name: "Tal",
                 balance: 45,
-                status:'fold'
+                status:'fold',
+
             }]
         }
 
@@ -160,6 +161,7 @@ class OnlineGame extends Component {
                     const card2 = player.cards ? `./cards/${player.cards[1]}.png` : './cards/back.png';
                     return  <div key={`player_${index}`} id={`player${index+1}`} className={`player ${player.active ? 'active-player' : ''}`}>
                         <div className="player-div">
+
                             <img className={`card left-card card1`} src={card1} />
                             <img className={`card right-card card2`} src={card2} />
                             <div className="player-info" >
@@ -177,7 +179,11 @@ class OnlineGame extends Component {
                             { player.dealer && <div id="dealer-button" className="button"> D </div>}
                             { player.small && <div id="small-blind-button" className="button"> SB </div>}
                             { player.big && <div id="big-blind-button" className="button"> BB </div>}
+
+                            {player.pot && <div id={`player${index+1}-pot`} className="player-pot">{player.pot}</div>}
+                            {player.status && <div id={`player${index+1}-status`} className="player-status">{player.status}</div>}
                         </div>
+
                     </div>
                 })}
 
