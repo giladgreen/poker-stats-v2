@@ -169,11 +169,11 @@
     font-weight: bold;
     font-size: 1.3em;
     z-index: 10;
-    padding-top: 2px;
+    padding-top: 3px;
     alignment: center;
     text-align: center;
 
-    top:9.4vh;
+    top:9.7vh;
     left:1.1vw;
 }
 #player1{
@@ -260,10 +260,11 @@
 #buttons{
     position: absolute;
     top: 78vh;
-    left: 51vw;
+    left: 18vw;
+    width: 83vw;
                     border: 1px solid transparent;
 
-    width: 50vw;
+
     height: 30vh;
 
 }
@@ -271,14 +272,22 @@
     border: 2px solid grey;
     border-radius: 15px;
     height: 8vh;
-    width: 6.7vw;
+    width: 7.5vw;
     text-align: center;
     font-weight: bold;
     font-size: 2em;
     padding-top: 1.7vh;
 }
 
-.big-button:hover{
+.inactive-button{
+    opacity: 50%;
+}
+
+.active-button{
+    cursor: pointer;
+}
+
+.active-button:hover{
     background: #222222;
 }
 
@@ -288,36 +297,134 @@
     right: 0vw;
 }
 
+#check-button{
+    position: absolute;
+    top: 0px;
+    right: 8vw;
+}
+
 #call-button{
     position: absolute;
     top: 0px;
-    right: 7vw;
+    right: 16vw;
 }
 
-#raise-button{
+#toggle-raise-button{
     position: absolute;
     top: 0px;
-    right: 14vw;
+    right: 24vw;
 }
 
+
+#raise-buttons{
+    position: relative;
+    top: 9vh;
+    border: 2px solid #eaeaea33;
+    border-radius: 15px;
+    height: 10vh;
+    background: #eaeaea11;
+}
+#raise-button{
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+
+    height: 8vh;
+    width: 9vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-top: 1.7vh;
+}
+.raise-button-add-remove{
+    position: absolute;
+    top: 1vh;
+    height: 8vh;
+    width: 4vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-top: 1.7vh;
+}
+.raise-button-pot-ref{
+    position: absolute;
+    top: 1vh;
+    height: 8vh;
+    width: 5vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-top: 1.7vh;
+}
+#raise-button-add-100{
+    right: 11vw;
+}
+#raise-button-add-10{
+    right: 15.5vw;
+}
+#raise-button-add-1{
+    right: 20vw;
+}
+
+#raise-input{
+    position: absolute;
+    top: 1.5vh;
+    right: 24.6vw;
+
+    height: 6.6vh;
+    width: 9vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.1em;
+    border-radius: 20px;
+}
+
+#raise-button-sub-1{
+    right: 35vw;
+}
+
+#raise-button-sub-10{
+    right: 39.5vw;
+}
+#raise-button-sub-100{
+    right: 44vw;
+}
+#raise-button-2-3{
+    right: 49vw;
+}
+#raise-button-1-2{
+    right: 54.5vw;
+}
+#raise-button-1-3{
+    right: 60vw;
+}
+#raise-button-5x{
+    right: 66vw;
+}
+#raise-button-3x{
+    right: 71.5vw;
+}
+#raise-button-2x{
+    right: 77vw;
+}
 #community-pot{
     position: relative;
-    top: 26vh;
-    left: 42vw;
+    top: 24vh;
+    left: 40vw;
 
-    width: 8vw;
-    height: 4vh;
+    width: 6vw;
+    height: 4.5vh;
     z-index: 10;
     text-align: center;
     font-weight: bold;
     color: #eaeaea;
-   font-size: 2em;
-    background: #11881152;
-    border-radius: 50%;
+    font-size: 2em;
+    border: 1px solid white;
+    border-radius: 16px;
 }
 #community-cards{
     position: relative;
-    top: 28vh;
+    top: 25vh;
     left: 30vw;
     border: 1px solid transparent;
     width: 35vw;
@@ -327,23 +434,22 @@
 .community-card{
     position: absolute;
     top: 0px;
-    width: 6vw;
+    width: 5vw;
     height: 14vh;
-
     border-radius: 9px;
 }
 #community-card-1{
     left:0;
 }
 #community-card-2{
-    left:7vw;
+    left:5.5vw;
 }
 #community-card-3{
-    left:14vw;
+    left:11vw;
 }
 #community-card-4{
-    left:22vw;
+    left:18vw;
 }
 #community-card-5{
-    left:29vw;
+    left:25vw;
 }

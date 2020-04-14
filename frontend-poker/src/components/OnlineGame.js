@@ -29,7 +29,7 @@ const mockGame = {
     bigBlind: 1,
     time: 10,
     board:['6H','7C', 'KD'],
-    pot: 5.5,
+    pot: 1225,
     timer: 10,
     players: [{
         name: "Gilad",
@@ -77,15 +77,20 @@ const mockGame = {
 
 class OnlineGame extends Component {
 
+    toggleRaiseButton = ()=>{
+        this.setState({raiseEnabled:!this.state.raiseEnabled, raiseValue:this.state.game.bigBlind})
+    }
+
     constructor(props) {
         super(props);
         console.log('### gameId=', props.gameId)
 
         const game = {
-
+            smallBlind:0.5,
+            bigBlind:1,
         }
         const gameTime = 'game not started yet';
-        this.state = { game, gameTime, communityCards:[] }
+        this.state = { game, gameTime, communityCards:[], raiseEnabled: false, raiseValue:game.bigBlind }
 
         // setInterval(()=>{
         //     const gameTime = this.getGameTime(this.state.game.startDate);
@@ -170,6 +175,10 @@ class OnlineGame extends Component {
         };
         return `${result.days}:${result.hours}:${result.minutes}:${result.seconds}`;
     }
+    setRaiseValue = (newVal) =>{
+        const big = this.state.game.bigBlind;
+        this.setState({raiseValue: newVal>=big ? parseFloat(newVal) : big});
+    }
     render() {
 
 
@@ -218,7 +227,7 @@ class OnlineGame extends Component {
                 })}
 
                 <div id="community-pot">
-                   1250
+                    {this.state.game.pot}
                 </div>
                 <div id="community-cards">
                     <img id="community-card-1" className="community-card" src={communityCards[0]} />
@@ -228,9 +237,33 @@ class OnlineGame extends Component {
                     <img id="community-card-5" className="community-card" src={communityCards[4]} />
                 </div>
                 <div id="buttons">
-                    <div id="fold-button" className="big-button"> Fold </div>
-                    <div id="call-button" className="big-button"> Call </div>
-                    <div id="raise-button" className="big-button"> Raise </div>
+                    <div id="fold-button" className="big-button inactive-button"> Fold </div>
+                    <div id="check-button" className="big-button active-button"> Check </div>
+                    <div id="call-button" className="big-button inactive-button"> Call </div>
+                    <div id="toggle-raise-button" className="big-button active-button" onClick={this.toggleRaiseButton}> Raise... </div>
+                    {this.state.raiseEnabled && <div id="raise-buttons">
+                        <div id="raise-button" className="big-button active-button" onClick={this.toggleRaiseButton}> Raise {this.state.raiseValue}</div>
+                        <div id="raise-button-add-100" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue(this.state.raiseValue+100)}> +100</div>
+                        <div id="raise-button-add-10" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue+10)}> +10</div>
+                        <div id="raise-button-add-1" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue+1)}> +1</div>
+
+
+                        <input id="raise-input" type="number" min={this.state.game.bigBlind} value={this.state.raiseValue} onChange={(e)=> this.setState({raiseValue: parseFloat(e.target.value)})}/>
+
+                        <div id="raise-button-sub-1" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue-1)}> -1</div>
+                        <div id="raise-button-sub-10" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue-10)}> -10</div>
+                        <div id="raise-button-sub-100" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue-100)}> -100</div>
+
+                        <div id="raise-button-2-3" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (2* this.state.game.pot / 3).toFixed(0))}> 2/3 pot</div>
+                        <div id="raise-button-1-2" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (this.state.game.pot / 2).toFixed(0))}> 1/2 pot</div>
+                        <div id="raise-button-1-3" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (this.state.game.pot / 3).toFixed(0))}> 1/3 pot</div>
+
+                        <div id="raise-button-5x" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (this.state.game.bigBlind * 5).toFixed(0))}> BB X 5</div>
+                        <div id="raise-button-3x" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (this.state.game.bigBlind * 3).toFixed(0))}> BB X 3</div>
+                        <div id="raise-button-2x" className="big-button active-button raise-button-pot-ref" onClick={()=> this.setRaiseValue( (this.state.game.bigBlind * 2).toFixed(0))}> BB X 2</div>
+
+
+                    </div>}
                 </div>
 
             </div>
