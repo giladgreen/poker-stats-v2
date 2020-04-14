@@ -1,4 +1,4 @@
-#online-game-tab{
+#online-game-screen{
     margin-top: 4px;
     background: black;
     color: white;
@@ -15,24 +15,22 @@
     z-index: 30;
     font-size: 2em;
     position: absolute;
-    top:1.5vh;
+    top:2vh;
     left:5.7vw;
-
-
 }
 #table-image{
     position: absolute;
-    top:8vh;
-    left:8vw;
-    width: 78vw;
-    height: 60vh;
+    top:3vh;
+    left:0vw;
+    width: 105vw;
+    height: 70vh;
     z-index: 1;
+                             border: 2px solid transparent;
 }
 
 .card{
     border: 2px solid white;
     outline: 1px solid black;
-
     border-radius: 5px;
 
 }
@@ -62,13 +60,13 @@
     z-index: 19;
     border-radius: 5px;
     position: absolute;
-    left: 4vw;
-    width: 9.2vw;
+    left: 5.2vw;
+    width: 8.0vw;
     height: 10vh;
     background: white;
-    color: black;
-    padding-top: 2.7vh;
-    padding-left: 8.4vh;
+    font-size: 1.3em;
+    padding-top: 2vh;
+    padding-left: 6vh;
     border: 1px solid black;
 }
 .button{
@@ -112,12 +110,16 @@
     font-weight: bold;
 }
 #active-timer-div{
-    margin-top: 1vh;
-    margin-left: -1.4vw;
-    width: 6.2vw;
-    position: relative;
-    background: #eeeeee;
+    position: absolute;
+    z-index: 20;
+    left: 4vw;
+    width: 6.9vw;
     height: 1vh;
+    margin-top: 8.82vh;
+    margin-left: 2.22vw;
+    background: #eeeeee;
+    border-bottom-right-radius: 3px;
+
 }
 
 #active-timer{
@@ -125,7 +127,7 @@
     position: relative;
     background: forestgreen;
     height: 1vh;
-
+    border-bottom-right-radius: 3px;
 }
 
 
@@ -152,71 +154,70 @@
     font-weight: bold;
     font-size: 1.9em;
     z-index: 2;
-    padding-top: 3px;
+    padding-top: 6px;
     alignment: center;
     text-align: center;
+
 }
 .player-status{
     position: absolute;
-    width: 3.8vw;
+    width: 4vw;
     height: 1.8vw;
     border-radius: 20px;
     background: #117a8b;
     color: white;
     font-weight: bold;
     font-size: 1.3em;
-    z-index: 30;
-    padding-top: 0px;
+    z-index: 10;
+    padding-top: 2px;
     alignment: center;
     text-align: center;
 
-    top:10vh;
-    left:1.3vw;
+    top:9.4vh;
+    left:1.1vw;
 }
 #player1{
-    top:8vh;
-    left:43vw;
+    top:4vh;
+    left:49vw;
 }
 
 #player1-pot{
-    top:12.5vh;
-    left:3.5vw;
+    top:11.3vh;
+    left:7.2vw;
 }
-
-
 
 #player2{
-    top:13vh;
-    left:58vw;
+    top:9vh;
+    left:71vw;
 }
 #player2-pot{
-    top:12.5vh;
-    left:2.2vw;
+    top:9.5vh;
+    left:-4.2vw;
 }
 
 
 #player3{
-    top:29vh;
-    left:69vw;
+    top:31vh;
+    left:85vw;
 }
 
 #player3-pot{
     top:5.7vh;
-    left:-4.3vw;
+    left:-4.7vw;
 }
 
 #player4{
-    top:51vh;
-    left:58vw;
+    top:56vh;
+    left:71vw;
 }
 #player4-pot{
     top:-6.4vh;
-    left:0.5vw;
+    left:-1.3vw;
 }
 
 #player5{
-    top:56vh;
-    left:43vw;
+    top:60vh;
+    left:49vw;
 }
 
 #player5-pot{
@@ -225,28 +226,28 @@
 }
 
 #player6{
-    top:51vh;
-    left:26vw;
+    top:56vh;
+    left:28vw;
 }
 
 #player6-pot{
-    top:-6.4vh;
-    left:5vw;
+    top:-5.8vh;
+    left:7vw;
 }
 
 #player7{
-    top:29vh;
-    left:16vw;
+    top:31vh;
+    left:14vw;
 }
 
 #player7-pot{
-    top:3.2vh;
-    left:13.4vw;
+    top:10.82vh;
+    left:10.4vw;
 }
 
 #player8{
-    top:13vh;
-    left:27vw;
+    top:9vh;
+    left:28vw;
 }
 
 
@@ -255,3 +256,94 @@
     left:8.5vw;
 }
 
+
+#buttons{
+    position: absolute;
+    top: 78vh;
+    left: 51vw;
+                    border: 1px solid transparent;
+
+    width: 50vw;
+    height: 30vh;
+
+}
+.big-button{
+    border: 2px solid grey;
+    border-radius: 15px;
+    height: 8vh;
+    width: 6.7vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 1.7vh;
+}
+
+.big-button:hover{
+    background: #222222;
+}
+
+#fold-button{
+    position: absolute;
+    top: 0px;
+    right: 0vw;
+}
+
+#call-button{
+    position: absolute;
+    top: 0px;
+    right: 7vw;
+}
+
+#raise-button{
+    position: absolute;
+    top: 0px;
+    right: 14vw;
+}
+
+#community-pot{
+    position: relative;
+    top: 26vh;
+    left: 42vw;
+
+    width: 8vw;
+    height: 4vh;
+    z-index: 10;
+    text-align: center;
+    font-weight: bold;
+    color: #eaeaea;
+   font-size: 2em;
+    background: #11881152;
+    border-radius: 50%;
+}
+#community-cards{
+    position: relative;
+    top: 28vh;
+    left: 30vw;
+    border: 1px solid transparent;
+    width: 35vw;
+    height: 17vh;
+    z-index: 10;
+}
+.community-card{
+    position: absolute;
+    top: 0px;
+    width: 6vw;
+    height: 14vh;
+
+    border-radius: 9px;
+}
+#community-card-1{
+    left:0;
+}
+#community-card-2{
+    left:7vw;
+}
+#community-card-3{
+    left:14vw;
+}
+#community-card-4{
+    left:22vw;
+}
+#community-card-5{
+    left:29vw;
+}

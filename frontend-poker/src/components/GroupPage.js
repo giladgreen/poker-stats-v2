@@ -13,7 +13,6 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import GameData from './GameData';
 import GameSummary from './GameSummary';
-import OnlineGame from './OnlineGame';
 import ImagesTab from './ImagesTab';
 import ImageUploader from './ImageUploader';
 import GamesTab from './GamesTab';
@@ -213,12 +212,6 @@ class GroupPage extends Component {
                                            updateImage={this.props.updateImage}/>
                             </div>
                         </Tab>
-
-
-                        <Tab eventKey="online" title="Online-Game"  >
-                            <OnlineGame group={group}/>
-                        </Tab>
-
 
                     </Tabs>
                 </div>

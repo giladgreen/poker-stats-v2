@@ -1,8 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
 import moment from 'moment';
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
@@ -17,8 +15,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Loading from './containers/Loading';
 import UserGroups from "./components/UserGroups";
+import OnlineGame from "./components/OnlineGame";
 import notificationHelper from "./notificationHelper";
 
+const ONLINE_GAME_ID = 'onlinegameid';
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 // eslint-disable-next-line
 Date.prototype.AsGameName = function() {
@@ -30,12 +30,7 @@ Date.prototype.AsGameName = function() {
 };
 // eslint-disable-next-line
 Date.prototype.AsExactTime = function() {
-    // const stringValue = this.toISOString();
-    // const day = stringValue.substr(8,2);
-    // const month = stringValue.substr(5,2);
-    // const year = stringValue.substr(0,4);
     return this.toISOString().substr(11,5);
-    // return `${time}`;
 };
 // eslint-disable-next-line
 String.prototype.AsGameName = function() {
@@ -322,6 +317,13 @@ class App extends Component {
     }
 
     render() {
+        const search = window.location.search || '';
+        const onlineMode = search.includes(ONLINE_GAME_ID);
+        if (onlineMode){
+            const queryItems = search.substr(1).split('&');
+            const gameId = queryItems.find(qi=>qi.startsWith(ONLINE_GAME_ID)).split('=')[1];
+            return <OnlineGame gameId={gameId}/>
+        }
 
         const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;
         if (loading){
