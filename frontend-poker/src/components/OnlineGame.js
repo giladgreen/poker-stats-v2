@@ -28,7 +28,8 @@ const mockGame = {
     smallBlind: 0.5,
     bigBlind: 1,
     time: 10,
-    board:['6H','7C', 'KD'],
+    currency:'$',
+    board:['6H','7C', 'KD','AS'],
     pot: 1225,
     timer: 10,
     players: [{
@@ -88,6 +89,7 @@ class OnlineGame extends Component {
         const game = {
             smallBlind:0.5,
             bigBlind:1,
+            currency:'$',
         }
         const gameTime = 'game not started yet';
         this.state = { game, gameTime, communityCards:[], raiseEnabled: false, raiseValue:game.bigBlind }
@@ -100,12 +102,11 @@ class OnlineGame extends Component {
             const game = mockGame;
 
             const communityCards = game.board || [];
-            communityCards[0] = communityCards[0] ? `./cards/${communityCards[0]}.png` : './cards/back.png';
-            console.log('communityCards[0]',communityCards[0])
-            communityCards[1] = communityCards[1] ? `./cards/${communityCards[1]}.png` : './cards/back.png';
-            communityCards[2] = communityCards[2] ? `./cards/${communityCards[2]}.png` : './cards/back.png';
-            communityCards[3] = communityCards[3] ? `./cards/${communityCards[3]}.png` : './cards/back.png';
-            communityCards[4] = communityCards[4] ? `./cards/${communityCards[4]}.png` : './cards/back.png';
+            communityCards[0] = communityCards[0] ? `./cards/${communityCards[0]}.png` : null;
+            communityCards[1] = communityCards[1] ? `./cards/${communityCards[1]}.png` : null;
+            communityCards[2] = communityCards[2] ? `./cards/${communityCards[2]}.png` : null;
+            communityCards[3] = communityCards[3] ? `./cards/${communityCards[3]}.png` : null;
+            communityCards[4] = communityCards[4] ? `./cards/${communityCards[4]}.png` : null;
 
             game.startDate=new Date();
             const gameTime = this.getGameTime(game.startDate);
@@ -181,7 +182,7 @@ class OnlineGame extends Component {
     }
     render() {
 
-
+        const {currency} = this.state.game;
 
         const {communityCards} = this.state;
         const gameTime = this.state.gameTime;
@@ -208,7 +209,7 @@ class OnlineGame extends Component {
                                     {player.name}
                                 </div>
                                 <div className="player-balance">
-                                    {player.balance}
+                                    {player.balance}{currency}
                                 </div>
 
 
@@ -217,7 +218,7 @@ class OnlineGame extends Component {
                             { player.small && <div id="small-blind-button" className="button"> SB </div>}
                             { player.big && <div id="big-blind-button" className="button"> BB </div>}
 
-                            {player.pot && <div id={`player${index+1}-pot`} className="player-pot">{player.pot}</div>}
+                            {player.pot && <div id={`player${index+1}-pot`} className="player-pot">{player.pot}{currency}</div>}
                             {player.status && <div  className="player-status">{player.status}</div>}
 
                             { player.active && <div id="active-timer-div" style={activeTimerStyle}/>}
@@ -227,14 +228,14 @@ class OnlineGame extends Component {
                 })}
 
                 <div id="community-pot">
-                    {this.state.game.pot}
+                    {this.state.game.pot}{currency}
                 </div>
                 <div id="community-cards">
-                    <img id="community-card-1" className="community-card" src={communityCards[0]} />
-                    <img id="community-card-2" className="community-card" src={communityCards[1]} />
-                    <img id="community-card-3" className="community-card" src={communityCards[2]} />
-                    <img id="community-card-4" className="community-card" src={communityCards[3]} />
-                    <img id="community-card-5" className="community-card" src={communityCards[4]} />
+                    {communityCards[0] && <img id="community-card-1" className="community-card" src={communityCards[0]} />}
+                    {communityCards[1] && <img id="community-card-2" className="community-card" src={communityCards[1]} />}
+                    {communityCards[2] && <img id="community-card-3" className="community-card" src={communityCards[2]} />}
+                    {communityCards[3] && <img id="community-card-4" className="community-card" src={communityCards[3]} />}
+                    {communityCards[4] && <img id="community-card-5" className="community-card" src={communityCards[4]} />}
                 </div>
                 <div id="buttons">
                     <div id="fold-button" className="big-button inactive-button"> Fold </div>
@@ -242,7 +243,7 @@ class OnlineGame extends Component {
                     <div id="call-button" className="big-button inactive-button"> Call </div>
                     <div id="toggle-raise-button" className="big-button active-button" onClick={this.toggleRaiseButton}> Raise... </div>
                     {this.state.raiseEnabled && <div id="raise-buttons">
-                        <div id="raise-button" className="big-button active-button" onClick={this.toggleRaiseButton}> Raise {this.state.raiseValue}</div>
+                        <div id="raise-button" className="big-button active-button" onClick={this.toggleRaiseButton}> Raise {this.state.raiseValue}{currency}</div>
                         <div id="raise-button-add-100" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue(this.state.raiseValue+100)}> +100</div>
                         <div id="raise-button-add-10" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue+10)}> +10</div>
                         <div id="raise-button-add-1" className="big-button active-button raise-button-add-remove" onClick={()=> this.setRaiseValue( this.state.raiseValue+1)}> +1</div>

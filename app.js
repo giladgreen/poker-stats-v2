@@ -6,10 +6,14 @@ const app = express();
 const path = require('path');
 const compression = require('compression');
 const favicon = require('serve-favicon');
+const socketIO = require('socket.io');
+const http = require('http');
+
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const { NODE_ENV, SERVER_PORT } = require('./config.js');
 const logger = require('./api/services/logger');
+const onlineGamesService = require('./api/services/online-games');
 const terminate = require('./api/helpers/terminate');
 
 const limiter = rateLimit({
@@ -57,12 +61,20 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
 
   swaggerExpress.register(app);
 
+  logger.info('port', SERVER_PORT);
+  // app.listen(port);
 
-  const port = SERVER_PORT;
-  logger.info('port', port);
-  app.listen(port);
-  logger.info('[lifecycle]: core service is now listening', {
-    port,
+  const server = http.createServer(app);
+  const io = socketIO.listen(server);
+
+  server.listen(SERVER_PORT, () => {
+    logger.info('### startListening ##');
+    logger.info(`Node app is running on port:  ${SERVER_PORT}`);
+    // Whenever someone connects this gets executed
+
+    io.on('connection', (socket) => {
+      onlineGamesService.initNewConnection(socket);
+    });
   });
 });
 

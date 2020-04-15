@@ -117,6 +117,16 @@
                 "updated_at timestamp without time zone NOT NULL",
                 "deleted_at timestamp without time zone"
             ]
+        },
+        {
+            "tableName":  "online_games",
+            "columns" : [
+                "id text PRIMARY KEY",
+                "data json",
+                "created_at timestamp without time zone NOT NULL",
+                "updated_at timestamp without time zone NOT NULL",
+                "deleted_at timestamp without time zone"
+            ]
         }
     ]
 }
