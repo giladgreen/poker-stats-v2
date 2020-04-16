@@ -17,10 +17,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Loading from './containers/Loading';
 import UserGroups from "./components/UserGroups";
-// import OnlineMode from "./components/OnlineMode";
+
 import notificationHelper from "./notificationHelper";
 
-const ONLINE = 'online';
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 // eslint-disable-next-line
 Date.prototype.AsGameName = function() {
@@ -320,11 +319,6 @@ class App extends Component {
     }
 
     render() {
-        // const search = window.location.search || '';
-        // const onlineMode = search.includes(ONLINE);
-        // if (onlineMode){
-        //     return <OnlineMode />
-        // }
 
         const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;
         if (loading){

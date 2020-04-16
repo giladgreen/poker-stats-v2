@@ -24,8 +24,6 @@ import './style/images.css';
 import './style/image-data.css';
 import './style/image-slider.css';
 import './style/who-owes-who.css';
-import './style/online-game.css';
-import './style/online-mode.css';
 
 const options = {
     // you can also just use 'bottom center'

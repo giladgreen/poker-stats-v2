@@ -4,6 +4,7 @@
     top: 0;
     width: 100vw;
     height: 100vh;
+    padding-bottom: 2vh;
     background-color: white;
     z-index: 99999;
     color: black;
@@ -25,8 +26,12 @@
     width: 10vw;
     margin-top: 2vh;
 }
+#pokerStatsLogo{
+
+}
 #chips-img{
     width: 25vw;
+    margin-top: -2vh;
 }
 
 #version{
@@ -48,7 +53,10 @@
     padding: 10px;
     cursor: pointer;
 }
-
+#login-buttons-div{
+    border: 4px solid transparent;
+    margin-top: -8vh;
+}
 @media screen and (max-width: 800px) {
     #login-page {
         font-size: 1em;
@@ -60,7 +68,7 @@
     }
     #sheep-img{
         width: 30vw;
-        margin-top: 2vh;
+        margin-top: 3vh;
     }
     #chips-img{
         width: 85vw;
@@ -73,6 +81,7 @@
     }
     #login-buttons-div{
         padding-top: 1vh;
+        margin-top: -2vh;
     }
     #version{
         font-size: 0.9em;
