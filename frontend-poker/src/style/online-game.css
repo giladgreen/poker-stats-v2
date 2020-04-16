@@ -111,7 +111,7 @@
     padding-left: 6vh;
     border: 1px solid black;
 }
-.button{
+#online-game-screen .button{
     z-index: 22;
     border-radius: 50%;
     position: absolute;
