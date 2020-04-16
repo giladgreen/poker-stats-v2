@@ -1,4 +1,6 @@
 /* eslint-disable no-lone-blocks */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import moment from 'moment';
 import createGroup from './actions/createGroup';
@@ -15,10 +17,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Loading from './containers/Loading';
 import UserGroups from "./components/UserGroups";
-import OnlineGame from "./components/OnlineGame";
+import OnlineMode from "./components/OnlineMode";
 import notificationHelper from "./notificationHelper";
 
-const ONLINE_GAME_ID = 'onlinegameid';
+const ONLINE = 'online';
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 // eslint-disable-next-line
 Date.prototype.AsGameName = function() {
@@ -28,6 +30,7 @@ Date.prototype.AsGameName = function() {
     const year = stringValue.substr(0,4);
     return `${day}/${month}/${year}`;
 };
+
 // eslint-disable-next-line
 Date.prototype.AsExactTime = function() {
     return this.toISOString().substr(11,5);
@@ -318,11 +321,9 @@ class App extends Component {
 
     render() {
         const search = window.location.search || '';
-        const onlineMode = search.includes(ONLINE_GAME_ID);
+        const onlineMode = search.includes(ONLINE);
         if (onlineMode){
-            const queryItems = search.substr(1).split('&');
-            const gameId = queryItems.find(qi=>qi.startsWith(ONLINE_GAME_ID)).split('=')[1];
-            return <OnlineGame gameId={gameId}/>
+            return <OnlineMode />
         }
 
         const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;

@@ -7,7 +7,7 @@ const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 try {
   webpush.setVapidDetails('https://www.poker-stats.com', publicVapidKey, privateVapidKey);
 } catch (e) {
-  logger.error('error in setVapidDetails', { e });
+  logger.error('error in setVapidDetails', { error: e.message });
 }
 
 function registerNotifications(userContext, subscription) {

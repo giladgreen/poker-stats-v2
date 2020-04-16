@@ -10,13 +10,55 @@
     height: 100vh;
     position:relative;
 }
+#connection-status{
+    font-family: "Arial Black";
+    z-index: 30;
+    font-size: 2em;
+    position: absolute;
+    top:1vh;
+    left:5.7vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+}
+.connected-to-server{
+    border: 3px solid forestgreen;
+    color: forestgreen;
+}
+.disconnected-from-server{
+    border: 3px solid darkred;
+    color: darkred;
+}
+
 #clock{
     color: #eaeaea;
     z-index: 30;
     font-size: 2em;
     position: absolute;
+    top:7.6vh;
+    left:6.3vw;
+}
+#blinds-data{
+    color: white;
+    z-index: 30;
+    font-size: 2.4em;
+    position: absolute;
     top:2vh;
-    left:5.7vw;
+    right:6.3vw;
+    font-weight: bold;
+    font-family: "Arial Black"
+}
+#hand-clock{
+    color: forestgreen;
+    z-index: 30;
+    font-size: 2.2em;
+    position: absolute;
+    top:7vh;
+    right:6.3vw;
+    font-weight: bold;
+    font-family: "Arial Black"
 }
 #table-image{
     position: absolute;
@@ -176,87 +218,6 @@
     top:9.7vh;
     left:1.1vw;
 }
-#player1{
-    top:4vh;
-    left:49vw;
-}
-
-#player1-pot{
-    top:11.3vh;
-    left:7.2vw;
-}
-
-#player2{
-    top:9vh;
-    left:71vw;
-}
-#player2-pot{
-    top:9.5vh;
-    left:-4.2vw;
-}
-
-
-#player3{
-    top:31vh;
-    left:85vw;
-}
-
-#player3-pot{
-    top:5.7vh;
-    left:-4.7vw;
-}
-
-#player4{
-    top:56vh;
-    left:71vw;
-}
-#player4-pot{
-    top:-6.4vh;
-    left:-1.3vw;
-}
-
-#player5{
-    top:60vh;
-    left:49vw;
-}
-
-#player5-pot{
-    top:-6.4vh;
-    left:3.5vw;
-}
-
-#player6{
-    top:56vh;
-    left:28vw;
-}
-
-#player6-pot{
-    top:-5.8vh;
-    left:7vw;
-}
-
-#player7{
-    top:31vh;
-    left:14vw;
-}
-
-#player7-pot{
-    top:10.82vh;
-    left:10.4vw;
-}
-
-#player8{
-    top:9vh;
-    left:28vw;
-}
-
-
-#player8-pot{
-    top:10.6vh;
-    left:8.5vw;
-}
-
-
 #buttons{
     position: absolute;
     top: 78vh;
@@ -453,3 +414,90 @@
 #community-card-5{
     left:25vw;
 }
+
+#player1{
+    top:60vh;
+    left:49vw;
+}
+
+#player1-pot{
+    top:-6.4vh;
+    left:3.5vw;
+}
+
+
+#player2{
+    top:56vh;
+    left:28vw;
+}
+
+#player2-pot{
+    top:-5.8vh;
+    left:7vw;
+}
+
+#player3{
+    top:31vh;
+    left:14vw;
+}
+
+#player3-pot{
+    top:10.82vh;
+    left:10.4vw;
+}
+
+#player4{
+    top:9vh;
+    left:28vw;
+}
+
+
+#player4-pot{
+    top:10.6vh;
+    left:8.5vw;
+}
+
+
+
+
+#player5{
+    top:4vh;
+    left:49vw;
+}
+
+#player5-pot{
+    top:11.3vh;
+    left:7.2vw;
+}
+
+#player6{
+    top:9vh;
+    left:71vw;
+}
+#player6-pot{
+    top:9.5vh;
+    left:-4.2vw;
+}
+
+
+#player7{
+    top:31vh;
+    left:85vw;
+}
+
+#player7-pot{
+    top:5.7vh;
+    left:-4.7vw;
+}
+
+#player8{
+    top:56vh;
+    left:71vw;
+}
+#player8-pot{
+    top:-6.4vh;
+    left:-1.3vw;
+}
+
+
+

@@ -74,6 +74,7 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
 
     io.on('connection', (socket) => {
       onlineGamesService.initNewConnection(socket);
+      socket.on('disconnect', () => onlineGamesService.disconnect(socket));
     });
   });
 });
