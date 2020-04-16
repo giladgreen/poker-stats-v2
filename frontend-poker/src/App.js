@@ -17,7 +17,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import Loading from './containers/Loading';
 import UserGroups from "./components/UserGroups";
-import OnlineMode from "./components/OnlineMode";
+// import OnlineMode from "./components/OnlineMode";
 import notificationHelper from "./notificationHelper";
 
 const ONLINE = 'online';
@@ -320,11 +320,11 @@ class App extends Component {
     }
 
     render() {
-        const search = window.location.search || '';
-        const onlineMode = search.includes(ONLINE);
-        if (onlineMode){
-            return <OnlineMode />
-        }
+        // const search = window.location.search || '';
+        // const onlineMode = search.includes(ONLINE);
+        // if (onlineMode){
+        //     return <OnlineMode />
+        // }
 
         const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;
         if (loading){
