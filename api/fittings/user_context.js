@@ -12,11 +12,13 @@ const facebookTokenStrategy = require('../helpers/facebook-auth');
 const LEGAL_PROVIDERS = ['facebook', 'google'];
 
 async function getGroups(userContext) {
+  logger.info('user_context middleware, userContext:',userContext);
   const userPlayers = await models.usersPlayers.findAll({
     where: {
       userId: userContext.id,
     },
   });
+  logger.info('user_context middleware, found userPlayers:',userPlayers.length);
 
   const result = {};
   userPlayers.forEach(({ groupId, isAdmin, playerId }) => {
@@ -25,6 +27,8 @@ async function getGroups(userContext) {
       playerId,
     };
   });
+  logger.info('user_context middleware, result:',{ result });
+
   return result;
 }
 
