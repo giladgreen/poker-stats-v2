@@ -40,7 +40,7 @@ class ErrorHandler {
      */
   handleBoomError(error) {
     if (isBoom(error)) {
-      this.logger.error('[module:swagger-error-handler]: BoomError was produced', JSON.stringify(error));
+      //this.logger.error('[module:swagger-error-handler]: BoomError was produced', JSON.stringify(error));
       const { output: { statusCode, payload: { message } } } = error;
       const body = {
         title: message,
@@ -63,7 +63,7 @@ class ErrorHandler {
      */
   handleSwaggerError(error) {
     if (error instanceof Error && typeof error.code === 'string') {
-      this.logger.error('[module:swagger-error-handler]: native Swagger error was produced', JSON.stringify(error));
+      //this.logger.error('[module:swagger-error-handler]: native Swagger error was produced', JSON.stringify(error));
       const body = {
         title: error.message,
       };
@@ -85,7 +85,7 @@ class ErrorHandler {
      */
   handleGenericError(error) {
     if (error instanceof Error) {
-      this.logger.error('[module:swagger-error-handler]: some unexpected error happened', error);
+      //this.logger.error('[module:swagger-error-handler]: some unexpected error happened', error);
       return {
         statusCode: 500,
         body: { title: 'An internal server error occurred' },
@@ -101,7 +101,7 @@ class ErrorHandler {
      * @returns {Object|Boolean}
      */
   handleUnknownError(error) {
-    this.logger.error('[module:swagger-error-handler]: some unexpected error happened, which is not an instance of Error class', error);
+    this.logger.error(`[module:swagger-error-handler]: some unexpected error happened, which is not an instance of Error class, ${error.message}` );
     return {
       statusCode: 500,
       body: { title: 'An internal server error occurred' },

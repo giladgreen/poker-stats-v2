@@ -28,7 +28,7 @@ function unregisterNotifications(userContext) {
 
 async function sendNotification(userId, title, link, text) {
   try {
-    logger.info('sendNotification', userId, title, link, text);
+    //logger.info('sendNotification', userId, title, link, text);
     const user = await models.users.findOne({
       where: {
         id: userId,
@@ -43,10 +43,10 @@ async function sendNotification(userId, title, link, text) {
     const subscription = JSON.parse(user.subscription);
 
     return webpush.sendNotification(subscription, payload).catch((error) => {
-      logger.error(error.stack);
+      //logger.error(error.stack);
     });
   } catch (e) {
-    logger.error('error sending notification', e);
+    //logger.error('error sending notification', e);
   }
 }
 module.exports = {

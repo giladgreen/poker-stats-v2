@@ -23,7 +23,7 @@ class Cloudinary {
           logger.error('got error from cloudinary.destroy', error.message);
           return reject(error);
         }
-        logger.info('got response from cloudinary.destroy', JSON.stringify(result));
+        //logger.info('got response from cloudinary.destroy', JSON.stringify(result));
         return resolve(result);
       });
     });
@@ -39,7 +39,7 @@ class Cloudinary {
           logger.error('got error from cloudinary.upload', error.message);
           return reject(error);
         }
-        logger.info('got response from cloudinary.upload', JSON.stringify(result));
+        //logger.info('got response from cloudinary.upload', JSON.stringify(result));
         return resolve({ url: result.secure_url || result.secureUrl, publicId: result.public_id || result.publicId });
       });
     });

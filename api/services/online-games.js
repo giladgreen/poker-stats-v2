@@ -194,11 +194,11 @@ async function onPlayerActionEvent(socket, data) {
 }
 function disconnect(socket) {
   // TODO:send update to all that the players status is disconnected..
-  logger.info('socket disconnected ', socket.id);
+  //logger.info('socket disconnected ', socket.id);
 }
 function initNewConnection(socket) {
   socket.id = `${(new Date()).getTime()}`;
-  logger.info('socket connected ', socket.id);
+  //logger.info('socket connected ', socket.id);
   socket.emit('connected', { socketId: socket.id });
 
   socket.on('createGame', gameCreatorData => onCreateGameEvent(socket, gameCreatorData));
