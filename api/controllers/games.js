@@ -13,7 +13,6 @@ function getGame(req, res, next) {
 }
 
 async function filterResults(res, userId, hideGames) {
-  logger.info('filterResults', {userId, hideGames})
   if (!hideGames){
     return res;
   }
@@ -26,7 +25,7 @@ async function filterResults(res, userId, hideGames) {
   if (!userPlayer){
     return res;
   }
-  logger.info('filterResults userPlayer', {userId, hideGames, userPlayer:userPlayer.toJSON()});
+  logger.info('filterResults userPlayer exist', {userId, hideGames, userPlayer:userPlayer.toJSON()});
 
   const filteredResults = res.results.filter(game => game.playersData.some(playData => playData.playerId === userPlayer.playerId));
   return {
