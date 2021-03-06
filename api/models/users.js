@@ -22,6 +22,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       field: 'image_url',
     },
+    hideGames: {
+      type: DataTypes.BOOLEAN,
+      field: 'hide_games',
+      defaultValue: false
+    },
     token: {
       type: DataTypes.TEXT,
       defaultValue: null,

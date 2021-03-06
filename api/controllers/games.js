@@ -10,11 +10,34 @@ function getGame(req, res, next) {
     })
     .catch(next);
 }
+
+async function filterResults(res, userId, hideGames) {
+  if (!hideGames){
+    return res;
+  }
+  const userPlayer = await models.usersPlayers.findOne({
+    where: {
+      userId,
+    },
+  });
+
+  if (!userPlayer){
+    return res;
+  }
+
+  const filteredResults = res.results.filter(game => game.playersData.some(playData => playData.playerId === userPlayer.playerId));
+  return {
+    metadata: res.metadata,
+    results: filteredResults,
+  };
+}
 function getGames(req, res, next) {
   const { groupId, limit, offset } = req.getAllParams();
+  const { userContext: { id: userId, hideGames } } = req;
+
   gamesService.getGames(groupId, limit, offset)
     .then((result) => {
-      res.send(result);
+      filterResults(result, userId, hideGames).then(filteredResult => res.send(filteredResult)).catch(next);
     })
     .catch(next);
 }
