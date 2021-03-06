@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status-codes');
 const gamesService = require('../services/games');
-
+const logger = require('../services/logger');
 function getGame(req, res, next) {
   const { userContext } = req;
   const { groupId, gameId } = req.getAllParams();
@@ -12,6 +12,7 @@ function getGame(req, res, next) {
 }
 
 async function filterResults(res, userId, hideGames) {
+  logger.info('filterResults', {userId, hideGames})
   if (!hideGames){
     return res;
   }
@@ -24,6 +25,7 @@ async function filterResults(res, userId, hideGames) {
   if (!userPlayer){
     return res;
   }
+  logger.info('filterResults userPlayer', {userId, hideGames, resultsCount:res.results.length, userPlayer:userPlayer.toJSON()});
 
   const filteredResults = res.results.filter(game => game.playersData.some(playData => playData.playerId === userPlayer.playerId));
   return {
