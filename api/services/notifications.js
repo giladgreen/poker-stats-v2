@@ -46,7 +46,7 @@ async function sendNotification(userId, title, link, text) {
       logger.error(error.stack);
     });
   } catch (e) {
-    logger.error('error sending notification', e);
+    logger.error('error sending notification.', e);
   }
 }
 module.exports = {
