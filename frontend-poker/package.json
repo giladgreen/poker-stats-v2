@@ -9,7 +9,7 @@
     "@material-ui/pickers": "^3.2.8",
     "date-fns": "^2.8.1",
     "intro.js": "^2.9.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "react": "^16.10.2",
     "react-add-to-calendar": "^0.1.5",
