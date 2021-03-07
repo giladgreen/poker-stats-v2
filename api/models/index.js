@@ -34,6 +34,7 @@ if (STORAGE === 'DB') {
     },
   });
 }
+
 function createLocalStorageForModel(modelName) {
   localStorage[modelName] = {};
   return {
