@@ -114,21 +114,25 @@ class OnGoingGame extends Component {
         const { game, group: { players:  groupPlayers}} = this.props;
         const players = game.playersData.map(player=>{
             let all = player.buyIn;
-            const blues =  (50 * (Math.floor(all/50)));
-            all -= blues;
-            const hasBlue = blues>0;
-            const greens =  (25 * (Math.floor(all/25)));
-            all -= greens;
-            const hasGreen = greens>0;
-            const blacks =  (10 * (Math.floor(all/10)));
-            all -= blacks;
-            const hasBlack = blacks>0;
-            const reds =  (5 * (Math.floor(all/5)));
-            all -= reds;
-            const hasRed = reds>0;
-            const hasGray = all >0;
+            const bluesCount =  Math.floor(all/50);
+            const hasBlue = bluesCount>0;
+            all -= 50 * bluesCount;
+            const greensCount = Math.floor(all/25);
+            const hasGreen = greensCount>0;
+            all -= 25 * greensCount;
+
+            const blacksCount =  Math.floor(all/10);
+            const hasBlack = blacksCount>0;
+            all -= 10 * blacksCount;
+
+            const redsCount =  Math.floor(all/5);
+            const hasRed = redsCount>0;
+
+            all -= 5 * redsCount;
+            const greysCount = all;
+            const hasGrey = greysCount >0;
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
-            return {...player, hasBlue,hasGreen,hasBlack,hasRed,hasGray, name, imageUrl}
+            return {...player, hasBlue, bluesCount,hasGreen, greensCount,hasBlack, blacksCount,hasRed, redsCount,hasGrey, greysCount, name, imageUrl}
         }).map((player, index)=>{
             const onImageError = (ev)=>{
                 if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
@@ -146,11 +150,11 @@ class OnGoingGame extends Component {
                             <div className="balance-value">{balance}</div>
                            <div className="bank">
                                <div className="bank-value">{ player.buyIn}</div>
-                               {player.hasBlue ? <div className="jetons v-50"></div> :<div/>}
-                               {player.hasGreen ?<div className="jetons v-25"></div> :<div/>}
-                               {player.hasBlack ?<div className="jetons v-10"></div> :<div/>}
-                               {player.hasRed ?<div className="jetons v-5"></div> :<div/>}
-                               {player.hasGray ?<div className="jetons v-1"></div> :<div/>}
+                               {player.hasBlue ? <div className="jetons v-50">x{player.bluesCount}</div> :<div/>}
+                               {player.hasGreen ?<div className="jetons v-25">x{player.greensCount}</div> :<div/>}
+                               {player.hasBlack ?<div className="jetons v-10">x{player.blacksCount}</div> :<div/>}
+                               {player.hasRed ?<div className="jetons v-5">x{player.redsCount}</div> :<div/>}
+                               {player.hasGrey ?<div className="jetons v-1">x{player.greysCount}</div> :<div/>}
                            </div>
                            <div className="avatar">{image}</div>
                            <div className="name">{player.name.split(' ')[0]}</div>
@@ -183,6 +187,10 @@ class OnGoingGame extends Component {
     render = () =>{
         if (!this.interval ){
             this.interval = setInterval(this.props.updateOnProgressGame,5000);
+            setTimeout(()=>{
+                console.log('going to show the game now..');
+                document.getElementById("ongoingGameTopBuffer").scrollIntoView();
+            } ,1000)
         }
 
         const {onBack, game, group} = this.props;
@@ -204,9 +212,10 @@ class OnGoingGame extends Component {
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         return (
-            <div className="viewGamePopupInner">
-                <div>
-                    <h3>Ongoing game..  {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}</h3>
+            <div className="viewGamePopupInner" >
+                <div id="ongoingGameTopBuffer" > </div>
+                <div >
+                    <h3 >Ongoing game..  {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}</h3>
                     <h4>{game.playersData.length} Players. {game.description} </h4>
                     <br/>
                     <div className="backButton">
