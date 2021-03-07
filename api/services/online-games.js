@@ -1,4 +1,4 @@
-const logger = require('./logger');
+// const logger = require('./logger');
 // const models = require('../models');
 
 const MAX_TABLE_PLAYERS = 8;
@@ -192,13 +192,13 @@ async function onPlayerActionEvent(socket, data) {
   await saveGame(game);
   updateGamePlayers(game);
 }
-function disconnect(socket) {
+function disconnect() {
   // TODO:send update to all that the players status is disconnected..
-  //logger.info('socket disconnected ', socket.id);
+  // logger.info('socket disconnected ', socket.id);
 }
 function initNewConnection(socket) {
   socket.id = `${(new Date()).getTime()}`;
-  //logger.info('socket connected ', socket.id);
+  // logger.info('socket connected ', socket.id);
   socket.emit('connected', { socketId: socket.id });
 
   socket.on('createGame', gameCreatorData => onCreateGameEvent(socket, gameCreatorData));

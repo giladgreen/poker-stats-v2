@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/games.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fittings/user_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/user_context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/helpers/cloudinary.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/helpers/cloudinary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/games.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/online-games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/online-games.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/swagger/errorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/errorHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,23 +31,78 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
+        <entry file="file://$PROJECT_DIR$/api/models/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="139" column="52" lean-forward="true" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+            <state relative-caret-position="504">
+              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/default.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/production.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="733">
+              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.huskyrc.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/services/notifications.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/services/online-games.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
               <folding>
-                <element signature="n#!!block;n#getHtmlBody#0" />
-                <element signature="n#!!block;n#shouldSendMail#0" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/models/index.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.npmrc">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/swagger/errorHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state>
+              <caret column="40" selection-start-column="40" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend-poker/src/notificationHelper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -53,7 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>wait</find>
       <find>timeout</find>
       <find>version</find>
       <find>em-spades</find>
@@ -83,6 +149,7 @@
       <find>allCount</find>
       <find>model</find>
       <find>[UserContext:fitting]</find>
+      <find>eslint</find>
     </findStrings>
     <replaceStrings>
       <replace>function()</replace>
@@ -121,8 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend-poker/src/style/images.css" />
-        <option value="$PROJECT_DIR$/frontend-poker/src/actions/getGroupImages.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" />
         <option value="$PROJECT_DIR$/tests/helpers/groups.js" />
         <option value="$PROJECT_DIR$/tests/integration/complete/all.js" />
@@ -153,12 +218,9 @@
         <option value="$PROJECT_DIR$/migration/db_schemas.json" />
         <option value="$PROJECT_DIR$/api/models/online-games.js" />
         <option value="$PROJECT_DIR$/api/models/onlineGames.js" />
-        <option value="$PROJECT_DIR$/.npmrc" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/api/services/notifications.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/online-mode.css" />
-        <option value="$PROJECT_DIR$/api/services/online-games.js" />
         <option value="$PROJECT_DIR$/frontend-poker/src/style/online-game.css" />
         <option value="$USER_HOME$/node/lib/node_modules/ntl/index.js" />
         <option value="$PROJECT_DIR$/frontend-poker/.npmrc" />
@@ -172,6 +234,11 @@
         <option value="$PROJECT_DIR$/api/controllers/games.js" />
         <option value="$PROJECT_DIR$/api/fittings/user_context.js" />
         <option value="$PROJECT_DIR$/api/models/index.js" />
+        <option value="$PROJECT_DIR$/config/production.yaml" />
+        <option value="$PROJECT_DIR$/.npmrc" />
+        <option value="$PROJECT_DIR$/api/services/online-games.js" />
+        <option value="$PROJECT_DIR$/api/swagger/errorHandler.js" />
+        <option value="$PROJECT_DIR$/api/services/notifications.js" />
       </list>
     </option>
   </component>
@@ -209,18 +276,29 @@
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="fittings" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="swagger" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="poker-stats-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="poker-stats-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend-poker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -234,7 +312,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -245,19 +323,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/frontend-poker/src/style" />
+      <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
+      <recent name="$PROJECT_DIR$/api/models" />
+      <recent name="$PROJECT_DIR$/api/services" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
       <recent name="$PROJECT_DIR$/test-client/src/style" />
       <recent name="$PROJECT_DIR$/test-client/src/containers" />
       <recent name="$PROJECT_DIR$/test-client/src/components" />
       <recent name="$PROJECT_DIR$/api/helpers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend-poker/src/style" />
-      <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
-      <recent name="$PROJECT_DIR$/api/models" />
-      <recent name="$PROJECT_DIR$/api/services" />
-      <recent name="$PROJECT_DIR$/frontend-poker/src/containers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -449,7 +527,7 @@
       <workItem from="1598179805784" duration="994000" />
       <workItem from="1598423688955" duration="9000" />
       <workItem from="1607073506913" duration="1841000" />
-      <workItem from="1615100915160" duration="1320000" />
+      <workItem from="1615100915160" duration="1756000" />
     </task>
     <servers />
   </component>
@@ -486,17 +564,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="688752000" />
+    <option name="totallyTimeSpent" value="689188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-501" width="2560" height="1417" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.20810167" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49798387" visible="true" weight="0.20810167" />
       <window_info id="Structure" order="1" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info id="Favorites" order="2" sideWeight="0.5020161" side_tool="true" weight="0.18620269" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.11367127" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.42703533" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.48062953" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23244552" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -506,7 +584,7 @@
       <window_info anchor="bottom" id="Docker" order="8" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.27966103" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.54761904" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -521,22 +599,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>41</line>
+          <line>43</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>22</line>
+          <line>24</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>25</line>
+          <line>27</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>30</line>
+          <line>32</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -561,7 +639,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/fittings/user_context.js</url>
-          <line>200</line>
+          <line>199</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -649,21 +727,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend-poker/src/socket/package.json" />
-    <entry file="file://$PROJECT_DIR$/frontend-poker/public/serviceWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/public/pokerStatsLogoWithSheep.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/public/sheep.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend-poker/public/pokerStatsLogo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/public/poker.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -807,13 +870,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend-poker/node_modules/react-facebook-login/dist/facebook-login-render-props.js" />
-    <entry file="file://$PROJECT_DIR$/.npmrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/invitations.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2736">
@@ -858,9 +914,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/swagger/utils.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/swagger/errorHandler.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/api/fittings/utils.js">
@@ -911,9 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/default.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/games.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -935,17 +985,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" column="11" selection-start-line="33" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/fittings/user_context.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="139" column="52" lean-forward="true" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+          <caret line="139" column="51" selection-start-line="139" selection-start-column="51" selection-end-line="139" selection-end-column="51" />
           <folding>
             <element signature="n#!!block;n#getHtmlBody#0" />
             <element signature="n#!!block;n#shouldSendMail#0" />
@@ -956,7 +999,57 @@
     <entry file="file://$PROJECT_DIR$/api/models/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/default.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/production.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.npmrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.huskyrc.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/online-games.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend-poker/src/notificationHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/swagger/errorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/notifications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
         </state>
       </provider>
     </entry>

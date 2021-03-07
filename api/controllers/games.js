@@ -2,6 +2,7 @@ const HttpStatus = require('http-status-codes');
 const gamesService = require('../services/games');
 const models = require('../models');
 const logger = require('../services/logger');
+
 function getGame(req, res, next) {
   const { userContext } = req;
   const { groupId, gameId } = req.getAllParams();
@@ -13,7 +14,7 @@ function getGame(req, res, next) {
 }
 
 async function filterResults(res, userId, hideGames) {
-  if (!hideGames){
+  if (!hideGames) {
     return res;
   }
   const userPlayer = await models.usersPlayers.findOne({
@@ -22,10 +23,10 @@ async function filterResults(res, userId, hideGames) {
     },
   });
 
-  if (!userPlayer){
+  if (!userPlayer) {
     return res;
   }
-  logger.info('filterResults userPlayer exist', {userId, hideGames, userPlayer:userPlayer.toJSON()});
+  logger.info('filterResults userPlayer exist', { userId, hideGames, userPlayer: userPlayer.toJSON() });
 
   const filteredResults = res.results.filter(game => game.playersData.some(playData => playData.playerId === userPlayer.playerId));
   return {

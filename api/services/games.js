@@ -36,7 +36,7 @@ async function getGame({ groupId, gameId }) {
 }
 
 async function getGames(groupId, limit = 1000, offset = 0) {
-  const allCount = await models.games.count({ where: { groupId }});
+  const allCount = await models.games.count({ where: { groupId } });
   const allGames = await models.games.findAll({
     limit,
     offset,

@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
     hideGames: {
       type: DataTypes.BOOLEAN,
       field: 'hide_games',
-      defaultValue: false
+      defaultValue: false,
     },
     token: {
       type: DataTypes.TEXT,

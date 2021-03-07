@@ -134,10 +134,10 @@ function getFitting() {
       if (!LEGAL_PROVIDERS.includes(provider)) {
         throw `unknown provider: ${provider}`;
       }
-      logger.info(`[UserContext:fitting] 1 `);
+      logger.info('[UserContext:fitting] 1 ');
       let existingUser;
       try {
-         existingUser = await models.users.findOne({
+        existingUser = await models.users.findOne({
           where: {
             token: accessToken,
             tokenExpiration: {
@@ -146,15 +146,14 @@ function getFitting() {
           },
         });
       } catch (e) {
-        logger.info(`[UserContext:fitting] ERROR `);
+        logger.info('[UserContext:fitting] ERROR ');
         logger.info(e.message);
         logger.info(e);
         throw e;
       }
-      logger.info(`[UserContext:fitting] NO ERROR `);
+      logger.info('[UserContext:fitting] NO ERROR ');
 
       if (existingUser) {
-
         const userContext = existingUser.toJSON();
         request.userContext = userContext;
         logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
