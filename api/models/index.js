@@ -13,7 +13,20 @@ const localStorage = {};
 let sequelize;
 if (STORAGE === 'DB') {
 
-  sequelize = new Sequelize(dbConnectionString, { dialect:'postgres',dialectOptions: {ssl: true}, logging: false, native:true, ssl: true, pool: { acquire: 2000 } });
+  sequelize = new Sequelize(dbConnectionString, {
+    dialect:'postgres',
+    logging: false,
+    native:true,
+    ssl: true,
+    dialectOptions: {
+      ssl: {
+        require:true
+      }
+    },
+    pool: {
+      acquire: 2000
+    }
+  });
 }
 function createLocalStorageForModel(modelName) {
   localStorage[modelName] = {};
