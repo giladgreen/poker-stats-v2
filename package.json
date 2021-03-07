@@ -6,10 +6,11 @@
     "node": "8.9.0"
   },
   "scripts": {
+    "start": "node app.js",
     "test:ut": "mocha tests/unit/**/*.js --exit",
     "test:integration": "mocha tests/integration/**/*.js --exit",
     "test:all": "mocha tests/**/**/*.js --exit",
-    "start": "node app.js",
+
     "migration": "node migration/mongoToPostgres.js",
     "commit-and-push": "git add . && git commit -am \"a\" && git push",
     "lint": "./node_modules/.bin/eslint \"./**/*.js\" --fix",
@@ -37,12 +38,11 @@
     "passport-google-token": "^0.1.2",
     "passport-oauth": "^1.0.0",
     "path": "^0.12.7",
-    "pg": "^7.8.0",
-    "pg-hstore": "^2.3.2",
-    "pg-native": "^3.0.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "sequelize": "^5.0.0-beta.16",
+    "sequelize": "6.5.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.3.0",
     "swagger-express-mw": "^0.1.0",

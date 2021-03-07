@@ -1,3 +1,6 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
 const pg = require('pg');
 
 pg.defaults.ssl = true;
@@ -5,6 +8,8 @@ pg.defaults.ssl = true;
 const Sequelize = require('sequelize');
 const fs = require('fs');
 const uuid = require('uuid');
+
+const DataTypes = Sequelize.DataTypes;
 
 const { DATABASE_URL, STORAGE } = require('../../config.js');
 
@@ -16,11 +21,12 @@ if (STORAGE === 'DB') {
   sequelize = new Sequelize(dbConnectionString, {
     dialect: 'postgres',
     logging: false,
-    native: true,
+
     ssl: true,
     dialectOptions: {
       ssl: {
         require: true,
+        rejectUnauthorized: false,
       },
     },
     pool: {
@@ -92,7 +98,7 @@ const models = fs.readdirSync(__dirname)
     if (STORAGE === 'DB') {
       return {
         ...all,
-        [modelName]: sequelize.import(`${__dirname}/${fileName}`),
+        [modelName]: require(`${__dirname}/${fileName}`)(sequelize, DataTypes),
       };
     }
     return {
