@@ -44,7 +44,7 @@
     "request-promise": "^4.2.4",
     "sequelize": "6.5.0",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "swagger-express-mw": "^0.1.0",
     "url": "^0.11.0",
     "utils": "^0.3.1",
