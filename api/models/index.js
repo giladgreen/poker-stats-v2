@@ -1,16 +1,19 @@
+const pg = require('pg');
+pg.defaults.ssl = true;
+
 const Sequelize = require('sequelize');
 const fs = require('fs');
 const uuid = require('uuid');
 
 const { DATABASE_URL, STORAGE } = require('../../config.js');
-const logger = require('../services/logger');
 
 const dbConnectionString = DATABASE_URL;
+
 const localStorage = {};
 let sequelize;
 if (STORAGE === 'DB') {
 
-  sequelize = new Sequelize(dbConnectionString, { logging: false, ssl: true, pool: { acquire: 2000 } });
+  sequelize = new Sequelize(dbConnectionString, { dialect:'postgres',dialectOptions: {ssl: true}, logging: false, native:true, ssl: true, pool: { acquire: 2000 } });
 }
 function createLocalStorageForModel(modelName) {
   localStorage[modelName] = {};
