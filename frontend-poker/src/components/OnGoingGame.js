@@ -182,7 +182,7 @@ class OnGoingGame extends Component {
 
     render = () =>{
         if (!this.interval ){
-            this.interval = setInterval(this.props.updateOnProgressGame,10000);
+            this.interval = setInterval(this.props.updateOnProgressGame,5000);
         }
 
         const {onBack, game, group} = this.props;
@@ -206,7 +206,7 @@ class OnGoingGame extends Component {
         return (
             <div className="viewGamePopupInner">
                 <div>
-                    <h3>Ongoing game. {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}</h3>
+                    <h3>Ongoing game..  {(typeof game.date === 'string' ? new Date(game.date) : game.date).AsGameName()}</h3>
                     <h4>{game.playersData.length} Players. {game.description} </h4>
                     <br/>
                     <div className="backButton">

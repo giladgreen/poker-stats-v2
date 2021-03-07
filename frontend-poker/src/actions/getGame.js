@@ -3,6 +3,8 @@ import request from 'request';
 import URL_PREFIX from '../url';
 
 async function getGame(groupId, gameId, provider, token) {
+  console.log('getGame ' )
+  console.trace()
   return new Promise((resolve, reject) => {
     const options = {
       method: 'GET',
@@ -13,7 +15,7 @@ async function getGame(groupId, gameId, provider, token) {
         'Content-Type': 'application/json',
       },
     };
-
+    console.log('getting gamer data')
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
         if (error) {
