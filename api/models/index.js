@@ -2,12 +2,15 @@ const Sequelize = require('sequelize');
 const fs = require('fs');
 const uuid = require('uuid');
 
-const { DATABASE_URL, STORAGE } = require('./../../config.js');
+const { DATABASE_URL, STORAGE } = require('../../config.js');
+const logger = require('../services/logger');
 
 const dbConnectionString = DATABASE_URL;
 const localStorage = {};
 let sequelize;
 if (STORAGE === 'DB') {
+  logger.info('#### dbConnectionString: '+dbConnectionString);
+  
   sequelize = new Sequelize(dbConnectionString, { logging: false, ssl: true, pool: { acquire: 2000 } });
 }
 function createLocalStorageForModel(modelName) {
