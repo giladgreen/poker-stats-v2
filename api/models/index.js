@@ -9,8 +9,7 @@ const dbConnectionString = DATABASE_URL;
 const localStorage = {};
 let sequelize;
 if (STORAGE === 'DB') {
-  logger.info('#### dbConnectionString: '+dbConnectionString);
-  
+
   sequelize = new Sequelize(dbConnectionString, { logging: false, ssl: true, pool: { acquire: 2000 } });
 }
 function createLocalStorageForModel(modelName) {

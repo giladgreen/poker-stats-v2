@@ -134,6 +134,8 @@ function getFitting() {
       if (!LEGAL_PROVIDERS.includes(provider)) {
         throw `unknown provider: ${provider}`;
       }
+      logger.info(`[UserContext:fitting] 1 `);
+
       const existingUser = await models.users.findOne({
         where: {
           token: accessToken,
@@ -142,12 +144,16 @@ function getFitting() {
           },
         },
       });
+      logger.info(`[UserContext:fitting] 2 `);
 
       if (existingUser) {
+        logger.info(`[UserContext:fitting] 3 `);
+
         const userContext = existingUser.toJSON();
         request.userContext = userContext;
         logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
         await validateRequestPermissions(request);
+        logger.info(`[UserContext:fitting] 4 `);
 
         await models.users.update({
           tokenExpiration: moment().add(1, 'days').toDate(),
@@ -157,11 +163,16 @@ function getFitting() {
             id: existingUser.id,
           },
         });
+        logger.info(`[UserContext:fitting] 5 `);
+
         response.setHeader('x-user-context', encodeURI(JSON.stringify(userContext)));
         return next();
       }
+      logger.info(`[UserContext:fitting] 6 `);
 
       const profile = await getProfile(provider, accessToken);
+      logger.info(`[UserContext:fitting] 7 `);
+
       logger.info(`[UserContext:fitting] user request by: ${profile.firstName} ${profile.familyName}. (${profile.email})`);
 
       // create/update user in db
