@@ -43,7 +43,7 @@ async function sendNotification(userId, title, link, text) {
     const subscription = JSON.parse(user.subscription);
 
     return webpush.sendNotification(subscription, payload).catch((error) => {
-       logger.error(error.stack);
+      logger.error(error.stack);
     });
   } catch (e) {
     logger.error('error sending notification', e);
