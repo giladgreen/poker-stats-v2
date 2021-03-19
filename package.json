@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "poker-stats-v2",
   "engines": {
-    "node": "12.00.0"
+    "node": "12.0.0"
   },
   "scripts": {
     "start": "node app.js",
