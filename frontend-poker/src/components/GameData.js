@@ -67,7 +67,7 @@ class GameData extends Component{
 
         const sliderValues ={ min: 0, max: group.games.length - 1 };
         const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max): props.game;
-        this.state = { sliderValues, Game }
+        this.state = { sliderValues, Game, isPlaying: false }
     }
     getPlayerImage(playerInfo, playerWidth, margin){
         const isLoggedInPlayer = playerInfo.isMe;
@@ -342,16 +342,54 @@ class GameData extends Component{
             return <button key={`year-${year}`}
                            className="year-button"
                            onClick={()=> {
-                               const newState= { sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to }};
+                               const newState= { isPlaying:false, sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to }};
                                if (this.props.IsGroupSummary){
                                    newState.Game = this.createPlayersDataAsFakeGame(this.props.group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to );
                                }
                                this.setState(newState)
                            }}>{year}</button>
         });
+        yearsButtons.push( <button key={`all-years`}
+                                   className="year-button"
+                                   onClick={()=> {
+                                       const newState= { isPlaying:false, sliderValues: { min: 0, max: group.games.length -1 }};
+                                       this.setState(newState)
+                                   }}>All</button>)
+
+
+        const playStopButton = <button key={`play-all`}
+                                  className="year-button"
+                                  onClick={()=> {
+                                      const newState= {};
+                                      if (!this.state.isPlaying) {
+                                          newState.sliderValues = { min: 0, max: 1 };
+                                          newState.isPlaying = true;
+                                          const update = ()=>{
+                                              const innerNewState = { sliderValues: { min: 0, max: this.state.sliderValues.max + 1 }};
+                                              if (this.state.sliderValues.max > group.games.length -1){
+                                                  this.state.sliderValues.max = 1;
+                                              }
+                                              innerNewState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, 0,  this.state.sliderValues.max );
+
+                                              if (this.state.isPlaying) {
+                                                  this.setState(innerNewState);
+                                                  setTimeout(update,200)
+                                              }
+                                          }
+
+                                          setTimeout(update,1500)
+
+
+                                      }else{
+                                          newState.isPlaying = false;
+                                      }
+                                      this.setState(newState)
+                                  }}>{ this.state.isPlaying ? 'Stop' : 'Play'}</button>
 
         const graph = (
             <div >
+
+                {playStopButton}
                 <LineChart className="gameGraphLineChart" width={SmartPhone ? Width : Width*(88/100)} height={SmartPhone ? 260 : 500} data={data}  >
                     <XAxis dataKey="name"/>
                     <YAxis/>

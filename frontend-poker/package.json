@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "2.0.30",
+  "version": "2.0.34",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
@@ -36,6 +36,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
-    "build-and-deploy": "npm version patch && rm -fr /Users/giladgreen/dev/temp/poker-stats-v2/frontend-poker/build && react-scripts build && rm -fr /Users/giladgreen/dev/temp/poker-stats-v2/public/* && mv -f /Users/giladgreen/dev/temp/poker-stats-v2/frontend-poker/build/* /Users/giladgreen/dev/temp/poker-stats-v2/public && echo 'now only push'"
+    "build": "react-scripts build",
+    "build-and-deploy": "npm version patch && rm -fr /Users/giladgreen/dev/poker-stats-v2/frontend-poker/build && react-scripts build && rm -fr /Users/giladgreen/dev/poker-stats-v2/public/* && mv -f /Users/giladgreen/dev/poker-stats-v2/frontend-poker/build/* /Users/giladgreen/dev/poker-stats-v2/public && echo 'now only push'"
   }
 }
