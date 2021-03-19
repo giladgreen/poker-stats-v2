@@ -362,18 +362,18 @@ class GameData extends Component{
                                   onClick={()=> {
                                       const newState= {};
                                       if (!this.state.isPlaying) {
-                                          newState.sliderValues = { min: 0, max: 1 };
+                                          newState.sliderValues = { min: 0, max: 4 };
                                           newState.isPlaying = true;
                                           const update = ()=>{
                                               const innerNewState = { sliderValues: { min: 0, max: this.state.sliderValues.max + 1 }};
-                                              if (this.state.sliderValues.max > group.games.length -1){
-                                                  this.state.sliderValues.max = 1;
+                                              if (innerNewState.sliderValues.max > group.games.length -1){
+                                                  innerNewState.sliderValues.max = 4;
                                               }
                                               innerNewState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, 0,  this.state.sliderValues.max );
 
                                               if (this.state.isPlaying) {
                                                   this.setState(innerNewState);
-                                                  setTimeout(update,200)
+                                                  setTimeout(update,70)
                                               }
                                           }
 
