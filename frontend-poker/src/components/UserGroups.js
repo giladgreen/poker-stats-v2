@@ -44,7 +44,7 @@ class UserGroups extends Component {
             return (<div key={group.id}  className={`group-item-div ${group.isAdmin ? 'group-item-div-admin' : ''}`}  onClick={()=>this.props.showGroup(group)}>
                         <div key={group.id} className="group-item-div-inner" style={style}>
                             <div><b  className="text-shadow">{group.name }</b></div>
-                            <div className="group-description">{group.userInGroup ? group.description : 'not in this group' }</div>
+                            <div className="group-description text-shadow">{group.userInGroup ? group.description : 'not in this group' }</div>
 
                             <div className="my-group">{group.userInGroup ? '' : (group.invitationRequested ? 'invitation was requested': 'click to ask for an invitation') }</div>
 
