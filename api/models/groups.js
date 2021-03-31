@@ -14,6 +14,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       defaultValue: '',
     },
+    imageUrl: {
+      type: DataTypes.TEXT,
+      defaultValue: null,
+      field: 'image_url',
+    },
     ...dateFields,
   }, {
     paranoid: true,

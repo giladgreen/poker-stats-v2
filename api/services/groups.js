@@ -1,7 +1,7 @@
 const { notFound, badRequest } = require('boom');
 const models = require('../models');
 
-const attributes = ['id', 'name', 'createdAt', 'description'];
+const attributes = ['id', 'name', 'createdAt', 'description', 'imageUrl'];
 
 async function getGroup(userContext, groupId) {
   const group = await models.groups.findOne({
@@ -52,9 +52,6 @@ async function getGroups(userContext, limit = 1000, offset = 0) {
   await Promise.all(results.map(async (group) => {
     group.gamesCount = await models.games.count({ where: { groupId: group.id } });
     group.playersCount = await models.players.count({ where: { groupId: group.id } });
-    if (group.id === '8bc07fc7-ca7c-4bcf-a64d-0bdfb3bdabbc'){
-      group.imageUrl = 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1617170409/gi013x9u2ycrytobbnt0.png';
-    }
   }));
 
   return {
