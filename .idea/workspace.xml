@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/UserGroups.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/group-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/group-page.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -428,7 +433,9 @@
       <workItem from="1607073506913" duration="1841000" />
       <workItem from="1615100915160" duration="6834000" />
       <workItem from="1616152600674" duration="5067000" />
-      <workItem from="1617187224949" duration="1719000" />
+      <workItem from="1617187224949" duration="2265000" />
+      <workItem from="1617628050733" duration="1603000" />
+      <workItem from="1617717184069" duration="1505000" />
     </task>
     <servers />
   </component>

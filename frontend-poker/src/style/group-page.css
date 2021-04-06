@@ -343,6 +343,14 @@ select{
     height: 20vw;
 
 }
+.game-mvp{
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .game-item-div:hover{
     background: #eaeaea;
 }
@@ -452,6 +460,9 @@ select{
 }
 .game-not-ready-text{
     font-size: 0.7em;
+}
+.game-mvp-text{
+    font-size: 0.6em;
 }
 .player-game-data{
     border: 1px solid black;
@@ -667,6 +678,12 @@ select{
         width: 40vw;
         height: 40vw;
     }
+    .game-mvp{
+        width: 20px;
+        height: 20px;
+
+    }
+
     .game-item-div-inner{
         text-shadow: 2px 2px black;
         font-size: 1em;
@@ -733,5 +750,8 @@ select{
     }
     .game-not-ready-text{
         font-size: 0.7em;
+    }
+    .game-mvp-text{
+        font-size: 0.3em;
     }
 }

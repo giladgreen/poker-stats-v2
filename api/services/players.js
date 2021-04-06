@@ -1,7 +1,7 @@
 const { notFound, badRequest } = require('boom');
 const models = require('../models');
 
-const attributes = ['id', 'name', 'email', 'groupId', 'createdAt', 'imageUrl'];
+const attributes = ['id', 'name', 'email', 'groupId', 'createdAt', 'imageUrl', 'videoUrl'];
 const defaultValues = {
   email: '',
 };
@@ -50,6 +50,7 @@ async function getPlayers(groupId, userId, limit = 1000, offset = 0) {
       if (user) {
         player.email = user.email || player.email;
         player.imageUrl = player.imageUrl || user.imageUrl;
+        player.videoUrl = player.videoUrl || user.videoUrl;
         player.firstName = user.firstName;
         player.familyName = user.familyName;
         player.name = player.name || `${user.firstName} ${user.familyName}`;

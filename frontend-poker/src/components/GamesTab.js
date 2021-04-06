@@ -10,6 +10,7 @@ import updateGame from "../actions/updateGame";
 import EditGameForm from "./EditGameForm";
 import ShowAlert from '../containers/ShowAlert';
 import ShowErrorAlert from '../containers/ShowErrorAlert';
+const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
 class GamesTab extends Component {
 
@@ -227,6 +228,16 @@ class GamesTab extends Component {
                 borderRadiusTop: '50px',
             };
 
+            const playersData = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }));
+            const mvp = playersData.reduce(function(a, b) {
+                return a.bottomLine > b.bottomLine ? a : b;
+            });
+            const mvpPlayerData = group.players.find(p=>p.id === mvp.playerId);
+            const mvpName = mvpPlayerData ?
+                mvpPlayerData.name ? mvpPlayerData.name : ( mvpPlayerData.firstName ? `${mvpPlayerData.firstName} ${mvpPlayerData.familyName}` : null)
+                : null;
+            const mvpBalance = `+${mvp.bottomLine}`;
+            const mvpImageUrl = mvpPlayerData ? mvpPlayerData.imageUrl : null;
 
             return (
                 <div key={game.id}
@@ -245,6 +256,12 @@ class GamesTab extends Component {
 
                         <div > {game.playersData.length } players </div>
                         <div className='game-not-ready-text' >{ready ? '' : 'GAME NOT READY'} </div>
+                        <div className='game-mvp-text' >
+                            {ready && mvpPlayerData && mvpName ? <span> <b>MVP</b><img src={mvpImageUrl} className="game-mvp"/>
+
+                        {mvpName} {mvpBalance}  </span> : <span></span>}
+
+                        </div>
                     </div>
                 </div>
             );
