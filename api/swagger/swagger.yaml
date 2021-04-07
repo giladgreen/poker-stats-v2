@@ -117,6 +117,18 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /api/v2/keep-alive:
+    x-swagger-router-controller: keepalive
+    get:
+      operationId: keepAlive
+      responses:
+        200:
+          description: GroupDefinition
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /api/v2/groups/{groupId}:
     x-swagger-router-controller: groups
     parameters:
