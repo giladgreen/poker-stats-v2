@@ -124,6 +124,8 @@ paths:
       responses:
         200:
           description: GroupDefinition
+          schema:
+            $ref: "#/definitions/KeepAliveResponseDefinition"
         default:
           description: Error
           schema:
@@ -541,6 +543,11 @@ definitions:
     type: object
     properties:
       groupId:
+        type: string
+  KeepAliveResponseDefinition:
+    type: object
+    properties:
+      status:
         type: string
   UpdateGameRequestDefinition:
     type: object

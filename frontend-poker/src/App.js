@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
 import moment from 'moment';
+import keepAlive from './actions/keepAlive';
 import createGroup from './actions/createGroup';
 import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
@@ -21,6 +22,9 @@ import UserGroups from "./components/UserGroups";
 import notificationHelper from "./notificationHelper";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
+
+const KEEP_ALIVE_INTERVAL = 1000 * 60 * 10;
+
 // eslint-disable-next-line
 Date.prototype.AsGameName = function() {
     const stringValue = this.toISOString().substr(0,10);
@@ -97,6 +101,7 @@ class App extends Component {
 
     onLogin = async ({userContext, provider, token, groups}) => {
         this.setState({user: userContext, groups, loading: false, isAuthenticated: true, error:null, provider, token})
+        setInterval(keepAlive, KEEP_ALIVE_INTERVAL)
     };
 
     getHeader = ()=>{
