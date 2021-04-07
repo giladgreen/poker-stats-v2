@@ -121,7 +121,7 @@ function getFitting() {
     try {
       logger.info(`[UserContext:fitting] ${request.method} request.`);
 
-      if (request.method === 'OPTIONS' || request.url.includes('approved=') || request.url.includes('well-known')) {
+      if (request.method === 'OPTIONS' || request.url.includes('approved=') || request.url.includes('well-known') || request.url.includes('keep-alive')) {
         return next();
       }
 
