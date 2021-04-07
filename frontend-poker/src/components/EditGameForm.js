@@ -27,7 +27,6 @@ class EditGameForm extends Component {
         }
     }
 
-    //MOVE
     updateSelectedGamePlayerData = ()=>{
         const editGame = {...this.state.editGame};
         const { playerId, cashOut, buyIn } = this.state.editPlayerInGame;
@@ -40,7 +39,6 @@ class EditGameForm extends Component {
         this.setState({editGame,editPlayerInGame:null});
     }
 
-    //MOVE
     getEditPlayerInGame = ()=>{
         const game = this.state.editGame;
         const { playerId, buyIn } = this.state.editPlayerInGame;
@@ -151,7 +149,14 @@ class EditGameForm extends Component {
             </div>
             <div>
                 <button className="button" onClick={()=> this.setState({editPlayerInGame:null})}> Cancel</button>
-                <button className="button left-margin" onClick={this.updateSelectedGamePlayerData}> Save</button>
+                <button className="button left-margin" onClick={this.updateSelectedGamePlayerData}> Save Player</button>
+                <button className="button left-margin" onClick={()=>{
+                    this.updateSelectedGamePlayerData();
+                    setTimeout(()=>{
+                        this.updateSelectedGame();
+                    },500)
+                }}> Save Game</button>
+
             </div>
         </div>);
     }

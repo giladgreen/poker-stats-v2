@@ -140,7 +140,7 @@ class App extends Component {
 
     updateExistingGroup = (group) =>{
         this.setState({ loading: true, error: null});
-        setTimeout(async ()=>{
+        setImmediate(async ()=>{
             try {
                 const newGroup = await updateGroup(group.id, group, this.state.provider, this.state.token);
                 const groups = [newGroup, ...this.state.groups];
@@ -148,10 +148,10 @@ class App extends Component {
             } catch (error) {
                 this.setState({ loading: false, error,  showGroupEditForm:null, showGroupCreationForm:null});
             }
-        },0)
+        })
     }
     createNewGroup = (group) =>{
-        setTimeout(async ()=>{
+        setImmediate(async ()=>{
             try {
                 const newGroup = await createGroup(group, this.state.provider, this.state.token);
                 const groups = [newGroup, ...this.state.groups];
@@ -159,7 +159,7 @@ class App extends Component {
             } catch (error) {
                 this.setState({ loading: false, error});
             }
-        },0)
+        })
     }
 
     saveGroup = (group)=>{
@@ -176,7 +176,7 @@ class App extends Component {
     delGroup = (groupId)=>{
         if (confirm("Are you sure?")){
             this.setState({ error:null, loading: true});
-            setTimeout(async ()=>{
+            setImmediate(async ()=>{
                 try {
                     const deletedGroupId = await deleteGroup(groupId, this.state.provider, this.state.token);
                     const groups = this.state.groups.filter(group=>(group.id !== deletedGroupId));
@@ -186,7 +186,7 @@ class App extends Component {
                     console.error('error calling delete',error)
                     this.setState({ loading: false, error,  showGroupEditForm:null, showGroupCreationForm:null});
                 }
-            },0)
+            })
         }else{
             this.setState({ showGroupEditForm:null, showGroupCreationForm:null });
         }
