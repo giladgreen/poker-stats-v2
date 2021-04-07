@@ -23,7 +23,7 @@ import notificationHelper from "./notificationHelper";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 
-const KEEP_ALIVE_INTERVAL = 1000 * 60 * 10;
+const KEEP_ALIVE_INTERVAL = 1000 * 60 * 5;
 
 // eslint-disable-next-line
 Date.prototype.AsGameName = function() {

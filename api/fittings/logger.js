@@ -15,7 +15,7 @@ function getFitting() {
       if (!imageCall || response.statusCode > 200) {
         const endTime = new Date();
         log.debug('[fitting:logger]: outgoing response', {
-          method: request.method, url: request.url, status: response.statusCode, duration: endTime - startTime,
+          nl:'', method: request.method, url: request.url, status: response.statusCode, duration: endTime - startTime,
         });
       }
     });

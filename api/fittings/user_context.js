@@ -119,8 +119,6 @@ function shouldSendMail(user) {
 function getFitting() {
   return async function UserContext({ request, response }, next) {
     try {
-      logger.info(`[UserContext:fitting] ${request.method} request.`);
-
       if (request.method === 'OPTIONS' || request.url.includes('approved=') || request.url.includes('well-known') || request.url.includes('keep-alive')) {
         return next();
       }
@@ -134,7 +132,6 @@ function getFitting() {
       if (!LEGAL_PROVIDERS.includes(provider)) {
         throw `unknown provider: ${provider}`;
       }
-      logger.info('[UserContext:fitting] 1 ');
       let existingUser;
       try {
         existingUser = await models.users.findOne({
@@ -151,12 +148,11 @@ function getFitting() {
         logger.info(e);
         throw e;
       }
-      logger.info('[UserContext:fitting] NO ERROR ');
 
       if (existingUser) {
         const userContext = existingUser.toJSON();
         request.userContext = userContext;
-        logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
+        //logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
         await validateRequestPermissions(request);
 
         await models.users.update({

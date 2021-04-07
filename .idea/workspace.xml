@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend-poker/src/actions/keepAlive.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/keepalive.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/keepalive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/swagger/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fittings/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/fittings/logger.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -219,6 +217,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
