@@ -229,15 +229,20 @@ class GamesTab extends Component {
             };
 
             const playersData = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }));
-            const mvp = playersData.reduce(function(a, b) {
-                return a.bottomLine > b.bottomLine ? a : b;
-            });
-            const mvpPlayerData = group.players.find(p=>p.id === mvp.playerId);
-            const mvpName = mvpPlayerData ?
-                mvpPlayerData.name ? mvpPlayerData.name : ( mvpPlayerData.firstName ? `${mvpPlayerData.firstName} ${mvpPlayerData.familyName}` : null)
-                : null;
-            const mvpBalance = `+${mvp.bottomLine}`;
-            const mvpImageUrl = mvpPlayerData ? mvpPlayerData.imageUrl : null;
+            let mvp, mvpPlayerData, mvpName, mvpBalance, mvpImageUrl;
+            if (playersData && playersData.length){
+                mvp = playersData.reduce(function(a, b) {
+                    return a.bottomLine > b.bottomLine ? a : b;
+                });
+                mvpPlayerData = group.players.find(p=>p.id === mvp.playerId);
+                mvpName = mvpPlayerData ?
+                    mvpPlayerData.name ? mvpPlayerData.name : ( mvpPlayerData.firstName ? `${mvpPlayerData.firstName} ${mvpPlayerData.familyName}` : null)
+                    : null;
+                mvpBalance = `+${mvp.bottomLine}`;
+                mvpImageUrl = mvpPlayerData ? mvpPlayerData.imageUrl : null;
+            }
+
+
 
             return (
                 <div key={game.id}
@@ -257,9 +262,16 @@ class GamesTab extends Component {
                         <div > {game.playersData.length } players </div>
                         <div className='game-not-ready-text' >{ready ? '' : 'GAME NOT READY'} </div>
                         <div className='game-mvp-text' >
-                            {ready && mvpPlayerData && mvpName ? <span> <b>MVP</b><img src={mvpImageUrl} className="game-mvp"/>
+                            {ready && mvpPlayerData && mvpName ?
+                                <span>
+                                    <b>MVP</b>
+                                    {isMobile ? <div></div> : <span></span>}
+                                    <img src={mvpImageUrl} className="game-mvp"/>
 
-                        {mvpName} {mvpBalance}  </span> : <span></span>}
+                                    {mvpName} {mvpBalance}
+                                </span>
+
+                                : <span></span>}
 
                         </div>
                     </div>
