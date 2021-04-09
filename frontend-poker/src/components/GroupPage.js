@@ -19,7 +19,6 @@ import GamesTab from './GamesTab';
 import PlayersTab from "./PlayersTab";
 import GrayBubbleButton from '../containers/GrayBubbleButton';
 import GreenBubbleButton from '../containers/GreenBubbleButton';
-import RedBubbleButton from '../containers/RedBubbleButton';
 
 class GroupPage extends Component {
 

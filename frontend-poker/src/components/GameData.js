@@ -20,6 +20,16 @@ class GameData extends Component{
         const { games } = group;
         this.balances = {};
         this.gamesCounts = {};
+        this.lastFourMonthGamesCount = {};
+        const fourMonthMinIndex = maxIndex - 12  < 0 ? 0 :maxIndex - 12;
+        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(fourMonthMinIndex, maxIndex+1).forEach(game=>{
+            game.playersData.forEach(({playerId})=>{
+                if (!this.lastFourMonthGamesCount.hasOwnProperty(playerId)){
+                    this.lastFourMonthGamesCount[playerId] = 0;
+                }
+                this.lastFourMonthGamesCount[playerId] =  this.lastFourMonthGamesCount[playerId] + 1;
+            });
+        });
         games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex+1).forEach(game=>{
             game.playersData.forEach(({playerId, buyIn,cashOut})=>{
                 if (!this.balances.hasOwnProperty(playerId)){
@@ -33,16 +43,18 @@ class GameData extends Component{
             });
         });
         this.playersCountText = Object.keys(this.balances).length;
-        const playersData = Object.keys(this.gamesCounts).map(id=>{
+        console.log('gamesCounts',this.gamesCounts)
+        console.log('lastFourMonthGamesCount',this.lastFourMonthGamesCount)
+        const playersData = Object.keys(this.lastFourMonthGamesCount).map(id=>{
             return {
                 id,
                 playerId: id,
                 buyIn:0,
                 cashOut: this.balances[id],
+                lastFourMonthGamesCount: this.lastFourMonthGamesCount[id],
                 gamesCount: this.gamesCounts[id]
             }
-        }).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 :1).slice(0,max+1)
-
+        }).sort((a,b)=> a.lastFourMonthGamesCount > b.lastFourMonthGamesCount ? -1 :1).slice(0,max+1)
         return {
             playersData
         }
@@ -50,7 +62,6 @@ class GameData extends Component{
 
     constructor(props){
         super(props);
-
         const group = props.group;
         this.yearsObject = {};
         group.games.sort((a,b)=>a.date < b.date ? -1 : 1).forEach((game,index)=>{
@@ -144,7 +155,6 @@ class GameData extends Component{
         if (playersData.length === 0) {
             return <div> no players yet</div>
         }
-        console.log('playersData')
         const playersInfo = playersData.map(playerData=>{
             const data = { ...playerData }
             const playerObject = players.find(player=>player.id ===data.playerId);

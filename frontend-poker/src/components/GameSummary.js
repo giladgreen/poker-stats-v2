@@ -7,17 +7,18 @@ import CONSTS from '../CONSTS';
 import GrayBubbleButton from '../containers/GrayBubbleButton';
 import RedBubbleButton from '../containers/RedBubbleButton';
 const { ANON_URL } = CONSTS;
-class GamePage extends Component {
+class GameSummary extends Component {
 
     showWhoOwesWho = ()=>{
         this.setState({ shouldShowWhoOwesWho: !this.state.shouldShowWhoOwesWho })
     }
     constructor(props){
         super(props);
+        console.log('gamesummary ctor',props);
         const { group, game } = props;
         const { isAdmin} = group;
-        console.log('group',group);
-        console.log('game',game);
+
+
         this.state = {shouldShowWhoOwesWho: false}
 
         const gamePlayersData =  game.playersData.map(player=>{
@@ -130,4 +131,4 @@ class GamePage extends Component {
     }
 }
 
-export default GamePage;
+export default GameSummary;
