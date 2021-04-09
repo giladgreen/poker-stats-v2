@@ -159,13 +159,8 @@
 .transparentTextColor{
     color:transparent;
 }
-.InputRange{
-    max-width: 80vw;
-    margin-bottom: 15px;
-}
-.input-range {
-    width: 92%;
-}
+
+
 .playersListImage{
     height: 48px;
     width: 40px;
@@ -199,12 +194,17 @@
     margin-bottom: 5px;
     color: blue;
 }
+.input-range {
+    width: 92%;
+}
 .playersListImageBig{
     height: 50px;
     width: 40px;
     margin-left: 3px;
     margin-right: 4px;
 }
+
+
 @media screen and (max-width: 900px) {
 
     .GamePlayerDisplayName{
@@ -265,5 +265,8 @@
     .edit-player-in-game-form{
         font-size: 0.9em;
         padding: 4px 3px 4px 3px;
+    }
+    .editPlayerInput{
+        max-width: 30vw;
     }
 }

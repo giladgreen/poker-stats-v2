@@ -5,7 +5,9 @@ import InputRange from 'react-input-range';
 import ImageSlider from '../components/ImageSlider';
 
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
 const body = document.getElementsByTagName('body')[0];
@@ -108,7 +110,7 @@ class PlayerSummary extends Component {
 
         }
         const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
-            return <button key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</button>
+            return <GrayBubbleButton key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</GrayBubbleButton>
         });
 console.log('player',player)
         return (
@@ -168,11 +170,11 @@ console.log('player',player)
                 )}
 
                 <div className="buttons-section">
-                    <button onClick={this.props.back}>Back</button>
+                    <GrayBubbleButton onClick={this.props.back}>Back</GrayBubbleButton>
                     {isAdmin &&
-                    <button onClick={this.props.edit} className="left-margin">Edit</button>}
+                    <GrayBubbleButton onClick={this.props.edit} className="left-margin">Edit</GrayBubbleButton>}
                     {isAdmin && playerGames.length === 0 &&
-                    <button onClick={this.props.delete} className="left-margin">Delete</button>}
+                    <RedBubbleButton onClick={this.props.delete} className="left-margin">Delete</RedBubbleButton>}
                 </div>
                 <div className="playerGames">
 

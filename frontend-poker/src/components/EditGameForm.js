@@ -8,6 +8,8 @@ import postImage from "../actions/postImage";
 import ImageUploader from "./ImageUploader";
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
 
 const { ANON_URL } = CONSTS;
 
@@ -74,19 +76,19 @@ class EditGameForm extends Component {
                                      this.setState({ editPlayerInGame });
                                  }}/>
 
-                <button className="button left-margin" onClick={()=>{
+                <GrayBubbleButton className="button left-margin" onClick={()=>{
                     const editPlayerInGame = {...this.state.editPlayerInGame};
                     editPlayerInGame.buyIn -= 10;
                     if (editPlayerInGame.buyIn < 0){
                         editPlayerInGame.buyIn = 0;
                     }
                     this.setState({ editPlayerInGame });
-                }}> -10 </button>
-                <button className="button left-margin" onClick={()=>{
+                }}> -10 </GrayBubbleButton>
+                <GrayBubbleButton className="button left-margin" onClick={()=>{
                     const editPlayerInGame = {...this.state.editPlayerInGame};
                     editPlayerInGame.buyIn += 10;
                     this.setState({ editPlayerInGame });
-                }}> +10 </button>
+                }}> +10 </GrayBubbleButton>
                 <br/>
                 <br/>
                 <InputRange className="InputRange"
@@ -114,20 +116,20 @@ class EditGameForm extends Component {
                                       this.setState({ editPlayerInGame });
                                   }}/>
 
-                <button className="button left-margin" onClick={()=>{
+                <GrayBubbleButton className="button left-margin" onClick={()=>{
                     const editPlayerInGame = {...this.state.editPlayerInGame};
                     editPlayerInGame.cashOut -= 10;
                     if (editPlayerInGame.cashOut < 0){
                         editPlayerInGame.cashOut = 0;
                     }
                     this.setState({ editPlayerInGame });
-                }}> -10 </button>
+                }}> -10 </GrayBubbleButton>
 
-                <button className="button left-margin" onClick={()=>{
+                <GrayBubbleButton className="button left-margin" onClick={()=>{
                     const editPlayerInGame = {...this.state.editPlayerInGame};
                     editPlayerInGame.cashOut += 10;
                     this.setState({ editPlayerInGame });
-                }}> +10 </button>
+                }}> +10 </GrayBubbleButton>
                 <br/>
                 <br/>
                 <InputRange className="InputRange"
@@ -148,14 +150,14 @@ class EditGameForm extends Component {
                 balance: {this.state.editPlayerInGame.cashOut - this.state.editPlayerInGame.buyIn}
             </div>
             <div>
-                <button className="button" onClick={()=> this.setState({editPlayerInGame:null})}> Cancel</button>
-                <button className="button left-margin" onClick={this.updateSelectedGamePlayerData}> Save Player</button>
-                <button className="button left-margin" onClick={()=>{
+                <GrayBubbleButton className="button" onClick={()=> this.setState({editPlayerInGame:null})}> Cancel</GrayBubbleButton>
+                <GreenBubbleButton className="button left-margin" onClick={this.updateSelectedGamePlayerData}> Save Player</GreenBubbleButton>
+                <GreenBubbleButton className="button left-margin" onClick={()=>{
                     this.updateSelectedGamePlayerData();
                     setTimeout(()=>{
                         this.updateSelectedGame();
                     },500)
-                }}> Save Game</button>
+                }}> Save Game</GreenBubbleButton>
 
             </div>
         </div>);
@@ -330,7 +332,7 @@ class EditGameForm extends Component {
             const image =  <img alt={playerName} className="playersListImage" src={playerImageUrl || ANON_URL} onError={onImageError} /> ;
 
             return (<div key={`_playerData_${playerData.playerId}`} className="editGamePlayerSection">
-                <button className="button edit-player-in-game-form" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </button>
+                <GreenBubbleButton className="button edit-player-in-game-form" onClick={()=>this.editGamePlayer(playerData.playerId)}> edit </GreenBubbleButton>
                 {image}
                 { isMobile && <br/>}
                 {playerName}
@@ -342,7 +344,7 @@ class EditGameForm extends Component {
                 { isMobile && <br/>}
                 balance: {playerData.cashOut - playerData.buyIn}
 
-                <button className="button remove-player-from-game" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </button>
+                <GrayBubbleButton className="button remove-player-from-game" onClick={()=>this.removePlayerFromGame(playerData.playerId)}> remove </GrayBubbleButton>
 
             </div>);
         });
@@ -383,19 +385,19 @@ class EditGameForm extends Component {
                         <select name="player" value={this.state.existingPlayerId} onChange={(e)=>this.handleNewPlayerChange(e.target.value)}>
                             {comboVals}
                         </select>
-                        <button className="button left-margin" onClick={this.addCurrentPlayerToGame}> Add player</button>
+                        <GreenBubbleButton className="button left-margin" onClick={this.addCurrentPlayerToGame}> Add player</GreenBubbleButton>
                     </div>
                 ) :<div>no more players</div> }
             <hr/>
             <div>
-                <button className="button left-margin" onClick={this.props.close}> Cancel</button>
-                <button className="button left-margin" onClick={this.updateSelectedGame}> Save</button>
+                <GrayBubbleButton className="button left-margin" onClick={this.props.close}> Cancel</GrayBubbleButton>
+                <GreenBubbleButton className="button left-margin" onClick={this.updateSelectedGame}> Save</GreenBubbleButton>
             </div>
             <div>
                 <br/>
                 <h3>{ready ? '' : `game still not done (${diff>0 ? diff : -1*diff} ${diff>0 ? 'still in pot':'missing from pot'}).`}</h3>
             </div>
-            <button onClick={()=>this.showImageUploaderForm({ gameId: game.id})} >upload image for this game</button>
+            <GreenBubbleButton onClick={()=>this.showImageUploaderForm({ gameId: game.id})} >upload image for this game</GreenBubbleButton>
             { showError && <ShowErrorAlert message={"failed to update game"}/>}
             { showSuccess && <ShowSuccessAlert message={"game updated successfully"}/>}
         </div>);

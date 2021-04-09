@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import deleteImage from '../actions/deleteImage';
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 class ImageData extends Component {
 
     constructor(props) {
@@ -76,10 +77,10 @@ class ImageData extends Component {
 
                         </div>
                         <div>
-                            <button className="close-button" onClick={this.props.close} >back</button>
+                            <GrayBubbleButton className="close-button" onClick={this.props.close} >back</GrayBubbleButton>
                         </div>
                         <div>
-                            <button disabled={!canDelete} className="delete-image-button" onClick={this.removeImage} >DELETE IMAGE</button>
+                            <RedBubbleButton disabled={!canDelete} className="delete-image-button" onClick={this.removeImage} >DELETE IMAGE</RedBubbleButton>
                         </div>
                     </div>
 

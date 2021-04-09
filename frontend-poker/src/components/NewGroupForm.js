@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 
 
 class NewGroupForm extends Component {
@@ -98,10 +100,10 @@ class NewGroupForm extends Component {
                     </div>
 
                     <div className="row top-margin">
-                        <button className="button left-pad"  onClick={this.props.onCancel}> Cancel </button>
+                        <GrayBubbleButton className="button left-pad"  onClick={this.props.onCancel}> Cancel </GrayBubbleButton>
 
-                        <button className="button left-pad left-margin" onClick={()=>this.props.saveGroup(this.state.group)} disabled={!isLegalGroup}>{this.state.update ? 'update' : 'save'}</button>
-                        { this.state.update && <button className="button left-pad left-margin" onClick={()=>this.props.deleteGroup(this.state.group.id)} disabled={!isLegalGroup}> delete</button>}
+                        <GreenBubbleButton className="button left-pad left-margin" onClick={()=>this.props.saveGroup(this.state.group)} disabled={!isLegalGroup}>{this.state.update ? 'update' : 'save'}</GreenBubbleButton>
+                        { this.state.update && <RedBubbleButton className="button left-pad left-margin" onClick={()=>this.props.deleteGroup(this.state.group.id)} disabled={!isLegalGroup}> delete</RedBubbleButton>}
                     </div>
 
 

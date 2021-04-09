@@ -5,7 +5,9 @@ import React, { Component } from 'react';
 
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 class ImageUploader extends Component {
 
     constructor(props) {
@@ -153,7 +155,7 @@ class ImageUploader extends Component {
                        <select name="player" value={this.state.taggedPlayerId || ''} onChange={(e)=>this.handleNewPlayerChange(e.target.value)}>
                            {comboVals}
                        </select>
-                       <button className="button left-margin" disabled={!this.state.taggedPlayerId} onClick={this.tagPlayer}> Tag player</button>
+                       <GrayBubbleButton className="button left-margin" disabled={!this.state.taggedPlayerId} onClick={this.tagPlayer}> Tag player</GrayBubbleButton>
                </div>);
 
 
@@ -190,11 +192,11 @@ class ImageUploader extends Component {
                 {tagPlayers}
                 <div>
                     { uploading && <div>please wait..</div>}
-                    <button className="button" disabled={!image || uploading} onClick={this.uploadImage}> Upload </button>
+                    <GreenBubbleButton className="button" disabled={!image || uploading} onClick={this.uploadImage}> Upload </GreenBubbleButton>
                 </div>
 
                 <div>
-                    <button className="button" disabled={uploading} onClick={this.props.close}> cancel </button>
+                    <GrayBubbleButton className="button" disabled={uploading} onClick={this.props.close}> cancel </GrayBubbleButton>
                 </div>
 
                 { showError && <ShowErrorAlert message={"failed to upload image"}/>}

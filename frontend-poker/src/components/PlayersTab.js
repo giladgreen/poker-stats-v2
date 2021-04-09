@@ -9,7 +9,9 @@ import PlayerSummary from "./PlayerSummary";
 import CONSTS from '../CONSTS';
 
 const { ANON_URL } = CONSTS;
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
 const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 
@@ -106,8 +108,8 @@ class PlayersTab extends Component {
             </div>
             <div className="new-player-section">
 
-                <button className="button left-margin"  onClick={()=>this.setState({newPlayer: null})}> Cancel </button>
-                <button className="button left-margin"  onClick={this.createNewPlayer} disabled={!legal}> Create </button>
+                <GrayBubbleButton className="button left-margin"  onClick={()=>this.setState({newPlayer: null})}> Cancel </GrayBubbleButton>
+                <GreenBubbleButton className="button left-margin"  onClick={this.createNewPlayer} disabled={!legal}> Create </GreenBubbleButton>
             </div>
 
 
@@ -163,8 +165,8 @@ class PlayersTab extends Component {
                 </div>
 
                 <div className="buttons-section">
-                    <button onClick={()=>this.setState({editPlayer:null})}>Back</button>
-                    <button onClick={this.saveEditedPlayer} className="left-margin">Save</button>
+                    <GrayBubbleButton onClick={()=>this.setState({editPlayer:null})}>Back</GrayBubbleButton>
+                    <GreenBubbleButton onClick={this.saveEditedPlayer} className="left-margin">Save</GreenBubbleButton>
 
                 </div>
 

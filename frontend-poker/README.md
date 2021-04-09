@@ -306,7 +306,7 @@ While you can still use `require()` and `module.exports`, we encourage you to us
 
 For example:
 
-### `Button.js`
+### `GrayBubbleButton.js`
 
 ```js
 import React, { Component } from 'react';
@@ -360,11 +360,11 @@ This project setup uses [Webpack](https://webpack.github.io/) for handling all a
 }
 ```
 
-### `Button.js`
+### `GrayBubbleButton.js`
 
 ```js
 import React, { Component } from 'react';
-import './Button.css'; // Tell Webpack that Button.js uses these styles
+import './Button.css'; // Tell Webpack that GrayBubbleButton.js uses these styles
 
 class Button extends Component {
   render() {

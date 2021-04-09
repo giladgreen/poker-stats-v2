@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/img-has-alt */
 import React, { Component } from 'react';
-import _ from 'lodash';
 import GameData from './GameData';
 import WhoOwesWho from '../containers/WhoOwesWho';
 import CONSTS from '../CONSTS';
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 const { ANON_URL } = CONSTS;
 class GamePage extends Component {
 
@@ -97,7 +97,7 @@ class GamePage extends Component {
         return (
             <div id="gameSummary">
                 <div id="gameSummaryHeader">
-                    <button onClick={this.props.back} className="button">Back</button>
+                    <GrayBubbleButton onClick={this.props.back} className="button">Back</GrayBubbleButton>
                     <div>
                         <b><u>Game summary</u></b>
                     </div>
@@ -114,9 +114,9 @@ class GamePage extends Component {
 
                 <GameData group={group} game={game} />
 
-                {isAdmin && <button onClick={this.props.edit} className="button left-margin">Edit</button>}
-                {isAdmin && <button onClick={this.props.delete} className="button left-margin">Delete</button>}
-                <button onClick={this.showWhoOwesWho} className="button left-margin"> {this.state.shouldShowWhoOwesWho ? 'Hide' :'Show'} Who Owes Who</button>
+                {isAdmin && <GrayBubbleButton onClick={this.props.edit} className="button left-margin">Edit</GrayBubbleButton>}
+                {isAdmin && <RedBubbleButton onClick={this.props.delete} className="button left-margin">Delete</RedBubbleButton>}
+                <GrayBubbleButton onClick={this.showWhoOwesWho} className="button left-margin"> {this.state.shouldShowWhoOwesWho ? 'Hide' :'Show'} Who Owes Who</GrayBubbleButton>
                 { this.state.shouldShowWhoOwesWho && <WhoOwesWho group={group} game={game} /> }
                 <div className="more-data-text"><u>more data:</u></div>
                 <div id="gamePlayersData" className="row">

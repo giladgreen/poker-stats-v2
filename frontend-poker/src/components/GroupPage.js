@@ -17,7 +17,9 @@ import ImagesTab from './ImagesTab';
 import ImageUploader from './ImageUploader';
 import GamesTab from './GamesTab';
 import PlayersTab from "./PlayersTab";
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 
 class GroupPage extends Component {
 
@@ -112,13 +114,14 @@ class GroupPage extends Component {
                     </div>
                     <div className="new-game-section">
 
-                      <button className="button left-margin"  onClick={()=>this.setState({newGame: null})}> Cancel </button>
-                        <button className="button left-margin"  onClick={this.createNewGame} disabled={!legal}> Create </button>
+                      <GrayBubbleButton className="button left-margin"  onClick={()=>this.setState({newGame: null})}> Cancel </GrayBubbleButton>
+                        <GreenBubbleButton className="button left-margin"  onClick={this.createNewGame} disabled={!legal}> Create </GreenBubbleButton>
                     </div>
 
 
                  </div>);
     };
+
 
     getGamesSummary = () =>{
         return <GameSummary

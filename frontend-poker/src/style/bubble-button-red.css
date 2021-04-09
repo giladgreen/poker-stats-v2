@@ -1,0 +1,20 @@
+.confetti-button-red {
+    background-color: #721c24;
+    color: #fff;
+    box-shadow: 0 2px 25px rgba(200, 130, 130, 0.5);
+}
+
+
+.confetti-button-red:before {
+    background-image: radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, transparent 20%, #721c24 20%, transparent 30%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, transparent 10%, #721c24 15%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%);
+}
+
+.confetti-button-red:after {
+    background-image: radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, transparent 10%, #721c24 15%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%), radial-gradient(circle, #721c24 20%, transparent 20%);
+}
+
+.confetti-button-red:active {
+
+    background-color: #762c24;
+    box-shadow: 0 2px 25px rgba(212, 120, 130, 0.2);
+}

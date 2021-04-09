@@ -144,6 +144,7 @@ class GameData extends Component{
         if (playersData.length === 0) {
             return <div> no players yet</div>
         }
+        console.log('playersData')
         const playersInfo = playersData.map(playerData=>{
             const data = { ...playerData }
             const playerObject = players.find(player=>player.id ===data.playerId);
@@ -159,10 +160,9 @@ class GameData extends Component{
             return <div>No data yet</div>
         }
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-        const margin =isMobile ? 2: 5;
+        const margin = isMobile ? 2: 5;
 
         const hasNegatives = playersInfo.filter(p=>p.dif<=0).length > 0;
-
 
         const width = IsGroupSummary ? (isMobile ? 0.8 * Width : 0.93 * Width) : (  isMobile ? 0.80 * Width :  0.63 * Width);
         const playerWidth = playersInfo.length < 3 ? width / 4 :  width / playersInfo.length;

@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import CONSTS from '../CONSTS';
 const { ANON_URL } = CONSTS;
-
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import RedBubbleButton from '../containers/RedBubbleButton';
 class OnGoingGame extends Component {
 
     createPlayerRow = (playerData) =>{
@@ -184,56 +185,8 @@ class OnGoingGame extends Component {
         this.props.onBack();
     };
 
-    constructor(props) {
-        super(props);
-        const { game} = this.props;
-        const showTal = game &&  "61b2705b-1841-4611-994f-616c88c364d9" === game.id;
-        this.state = {
-            showTal,
-            direction : 'front',
-            isLeft: true
-        };
-
-        const markAsRight = ()=>{
-            this.setState({ direction: 'right'});
-        }
-        const markAsLeft = ()=>{
-            this.setState({ direction: 'left'});
-        }
-        const markAsFront = (isLeft)=>{
-            this.setState({ direction: 'front', isLeft});
-        }
-        if (showTal){
-            const animation = ()=>{
-                setTimeout(()=>{
-                    markAsRight();
-                    setTimeout(()=>{
-                        markAsFront(false);
-                        setTimeout(()=>{
-                            markAsLeft();
-                            setTimeout(()=>{
-                                markAsFront(true);
-                                animation();
-                            },5000)
-
-                        },5000)
-
-                    },5000)
-                },5000)
-            }
-
-            animation();
-        }
-    }
-
     render = () =>{
-        if (!this.interval ){
-            this.interval = setInterval(this.props.updateOnProgressGame,5000);
-            setTimeout(()=>{
-                console.log('going to show the game now..');
-                document.getElementById("ongoingGameTopBuffer").scrollIntoView();
-            } ,1000)
-        }
+
 
         const {onBack, game, group} = this.props;
         const {isAdmin} = group;
@@ -242,7 +195,7 @@ class OnGoingGame extends Component {
                 <div>
                     no game
                     <div className="backButton">
-                        <button className="button" onClick={onBack}> Back</button>
+                        <GrayBubbleButton className="button" onClick={onBack}> Back</GrayBubbleButton>
                     </div>
                 </div>);
         }
@@ -252,20 +205,14 @@ class OnGoingGame extends Component {
         const players =  this.getAsPokerTable() ;
         const mobilePlayers = this.getPlayersDataAsList()
         const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        if (!isMobile && !this.interval ){
+            this.interval = setInterval(this.props.updateOnProgressGame,5000);
+            setTimeout(()=>{
+                console.log('going to show the game now..');
+                document.getElementById("ongoingGameTopBuffer").scrollIntoView();
+            } ,1000)
+        }
 
-        const showTal = this.state.showTal;
-        const talFront =  <img src="https://res.cloudinary.com/www-poker-stats-com/image/upload/v1617788620/tal_character.png" id={this.state.isLeft ? 'tal-left-side':'tal-right-side'}/>;
-        const talGoingRight =  <img src="https://res.cloudinary.com/www-poker-stats-com/image/upload/v1617789246/tal_character-right-profile.png" id="talGoingRight"/>;
-        const talGoingLeft =  <img src="https://res.cloudinary.com/www-poker-stats-com/image/upload/v1617789246/tal_character-left-profile.png" id="talGoingLeft"/>;
-        let tal = talFront;
-        if (this.state.direction === 'right'){
-            tal = talGoingRight;
-        }
-        if (this.state.direction === 'left'){
-            tal = talGoingLeft;
-        }
-        const talChar = !isMobile && showTal ?  <div className="Tal-b-day">{tal}</div>: <div></div>;
-        const talBdayMessage = !isMobile && showTal ?  <div className="Tal-b-day-message">Happy Birthday Tal</div>: <div></div>;
         return (
             <div className="viewGamePopupInner" >
                 <div id="ongoingGameTopBuffer" > </div>
@@ -274,18 +221,20 @@ class OnGoingGame extends Component {
                     <h4>{game.playersData.length} Players. {game.description} </h4>
                     <br/>
                     <div className="backButton">
-                        <button className="button " onClick={this.onBackClicked}> Back</button>
-                        <button className="button left-margin" onClick={this.onEditClicked}> Edit</button>
-                        {isAdmin && <button onClick={this.props.deleteSelectedGame} className="button left-margin">Delete</button>}
+                        <GrayBubbleButton className="button " onClick={this.onBackClicked}> Back</GrayBubbleButton>
+                        <GrayBubbleButton className="button left-margin" onClick={this.onEditClicked}> Edit</GrayBubbleButton>
+                        {isAdmin && <RedBubbleButton onClick={this.props.deleteSelectedGame} className="button left-margin">Delete</RedBubbleButton>}
 
                         { isMobile ? <div className="potInTheMiddle">{totalBuyIn-totalCashouts}₪ In Pot</div> : <div/>}
+                    </div>
+                    <div className="backButton">
+                        { !isMobile ? <GrayBubbleButton className="button" onClick={()=>{  document.getElementById("ongoingGameTopBuffer").scrollIntoView(); }}> Focus On Table</GrayBubbleButton> :<div></div>}
                     </div>
 
                 </div>
                 { isMobile ? mobilePlayers : players}
                 { isMobile ? <div/> : <div className="potInTheMiddle">{totalBuyIn-totalCashouts}₪ In Pot</div>}
-                {talChar}
-                {talBdayMessage}
+
 
             </div>);
 

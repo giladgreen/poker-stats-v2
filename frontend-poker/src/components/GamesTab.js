@@ -240,7 +240,7 @@ class GamesTab extends Component {
                     : null;
                 mvpBalance = `+${mvp.bottomLine}`;
                 mvpImageUrl = mvpPlayerData ? mvpPlayerData.imageUrl : null;
-                if (mvpImageUrl && !game.imageUrl){
+                if (ready && mvpImageUrl && !game.imageUrl){
                     style.backgroundImage = `url(${mvpImageUrl}), url(${this.getImage()})`
                     style.backgroundSize = isMobile ? '60px 100px, cover': '160px 280px, cover'
                     style.backgroundRepeat = 'no-repeat, repeat'

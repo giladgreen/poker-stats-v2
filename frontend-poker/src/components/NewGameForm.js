@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ShowErrorAlert from '../containers/ShowErrorAlert';
 import ShowSuccessAlert from '../containers/ShowSuccessAlert';
+import GrayBubbleButton from '../containers/GrayBubbleButton';
+import GreenBubbleButton from '../containers/GreenBubbleButton';
 
 class NewGameForm extends Component {
 
@@ -63,8 +65,8 @@ class NewGameForm extends Component {
             </div>
             <div className="new-game-section">
 
-                <button className="button left-margin"  onClick={this.props.close}> Cancel </button>
-                <button className="button left-margin"  onClick={this.createNewGame} disabled={!legal}> Create </button>
+                <GrayBubbleButton className="left-margin"  onClick={this.props.close}> Cancel </GrayBubbleButton>
+                <GreenBubbleButton className="left-margin"  onClick={this.createNewGame} disabled={!legal}> Create </GreenBubbleButton>
             </div>
 
             { showError && <ShowErrorAlert message={"failed to create new game"}/>}

@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/GrayBubbleButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/GreenBubbleButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/containers/RedBubbleButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/bubble-button-general.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/bubble-button-gray.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/bubble-button-green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend-poker/src/style/bubble-button-red.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameSummary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GroupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/ImageUploader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/NewGameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/NewGameForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/NewGroupForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/OnGoingGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/PlayerSummary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/PlayersTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/PlayersTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/style/game.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/style/game.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -222,7 +243,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend-poker/src/actions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend-poker/src/style" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -235,11 +256,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend-poker/src/style" />
+      <recent name="$PROJECT_DIR$/frontend-poker/src/containers" />
       <recent name="$PROJECT_DIR$/frontend-poker/src/actions" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/frontend-poker/src/style" />
-      <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend-poker/src/components" />
@@ -433,7 +454,7 @@
       <workItem from="1617187224949" duration="2265000" />
       <workItem from="1617628050733" duration="1603000" />
       <workItem from="1617717184069" duration="1505000" />
-      <workItem from="1617807994445" duration="2084000" />
+      <workItem from="1617807994445" duration="8662000" />
     </task>
     <servers />
   </component>
