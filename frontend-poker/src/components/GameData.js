@@ -16,7 +16,7 @@ const SmartPhone = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera M
 
 class GameData extends Component{
 
-    createPlayersDataAsFakeGame = (group, max, minIndex, maxIndex) => {
+    createPlayersDataAsFakeGame = (group, max, minIndex, maxIndex, showSummaryByMoney) => {
         const { games } = group;
         this.balances = {};
         this.gamesCounts = {};
@@ -31,14 +31,27 @@ class GameData extends Component{
             });
         });
         games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex+1).forEach(game=>{
+
+            const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
+                .reduce(function(a, b) {
+                    return a.bottomLine > b.bottomLine ? a : b;
+                }).playerId
+
+
             game.playersData.forEach(({playerId, buyIn,cashOut})=>{
+
                 if (!this.balances.hasOwnProperty(playerId)){
                     this.balances[playerId] = 0;
                 }
                 if (!this.gamesCounts.hasOwnProperty(playerId)){
                     this.gamesCounts[playerId] = 0;
                 }
-                this.balances[playerId] =  this.balances[playerId] + cashOut - buyIn;
+                if (showSummaryByMoney){
+                    this.balances[playerId] =  this.balances[playerId] + cashOut - buyIn;
+                } else{
+                    this.balances[playerId] =  this.balances[playerId] + (playerId === mvpPlayerId ? 1 : 0);//TODO
+                }
+
                 this.gamesCounts[playerId] =  this.gamesCounts[playerId] + 1;
             });
         });
@@ -60,8 +73,14 @@ class GameData extends Component{
         }
     };
 
+    updateAfterSwitch(){
+        const showSummaryByMoney = !this.state.showSummaryByMoney;
+        const Game = this.createPlayersDataAsFakeGame(this.prop.group, this.prop.playersCount, this.state.sliderValues.min, this.state.sliderValues.max, showSummaryByMoney);
+        this.setState({ Game, showSummaryByMoney });
+    }
     constructor(props){
         super(props);
+        this.prop = props
         const group = props.group;
         this.yearsObject = {};
         group.games.sort((a,b)=>a.date < b.date ? -1 : 1).forEach((game,index)=>{
@@ -77,9 +96,10 @@ class GameData extends Component{
         });
 
         const sliderValues ={ min: 0, max: group.games.length - 1 };
-        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max): props.game;
-        this.state = { sliderValues, Game, isPlaying: false }
+        const Game = props.IsGroupSummary ? this.createPlayersDataAsFakeGame(props.group, props.playersCount, sliderValues.min, sliderValues.max, true): props.game;
+        this.state = { sliderValues, Game, isPlaying: false, showSummaryByMoney: true, IsGroupSummary: props.IsGroupSummary }
     }
+
     getPlayerImage(playerInfo, playerWidth, margin){
         const isLoggedInPlayer = playerInfo.isMe;
         const key = `${playerInfo.playerId}_item_image`;
@@ -138,8 +158,8 @@ class GameData extends Component{
 
     render(){
         const {group, IsGroupSummary, playersCount } = this.props;
-        const { Game, sliderValues} = this.state;
-        //this.state.sliderValues.max - this.state.sliderValues.min
+        const { Game, sliderValues, showSummaryByMoney} = this.state;
+
         if (group.games.length  -1 < this.state.sliderValues.max){
             sliderValues.min=0;
             sliderValues.max=group.games.length -1;
@@ -181,7 +201,7 @@ class GameData extends Component{
         const PlayerNames1 =  this.getNamesSection(playersInfo,playerWidth,margin,true);
         const PlayerNames2 =  this.getNamesSection(playersInfo,playerWidth,margin,false);
 
-        const CurrencySign = '₪';
+        const CurrencySign = showSummaryByMoney ? '₪' : ' out of';
 
         const PlayerBalance = playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_balance`;
@@ -192,7 +212,7 @@ class GameData extends Component{
             };
             return  (
                 <div key={key} style={styleObject} className="GamePlayerBalace"  >
-                    {val}<span className="GamePlayerBalaceCurrencySign">{CurrencySign}</span>
+                    <span className="GamePlayerBalaceCurrencySign">{showSummaryByMoney ? '':'mvp in '}</span> {val}<span className="GamePlayerBalaceCurrencySign">{CurrencySign}</span>
                 </div>
             );
         });
@@ -354,7 +374,7 @@ class GameData extends Component{
                            onClick={()=> {
                                const newState= { isPlaying:false, sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to }};
                                if (this.props.IsGroupSummary){
-                                   newState.Game = this.createPlayersDataAsFakeGame(this.props.group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to );
+                                   newState.Game = this.createPlayersDataAsFakeGame(this.props.group, this.props.playersCount, this.yearsObject[year].from, this.yearsObject[year].to, this.state.showSummaryByMoney );
                                }
                                this.setState(newState)
                            }}>{year}</button>
@@ -363,6 +383,8 @@ class GameData extends Component{
                                    className="year-button"
                                    onClick={()=> {
                                        const newState= { isPlaying:false, sliderValues: { min: 0, max: group.games.length -1 }};
+                                       newState.Game = this.createPlayersDataAsFakeGame(this.prop.group, this.prop.playersCount, newState.sliderValues.min, newState.sliderValues.max, this.state.showSummaryByMoney);
+
                                        this.setState(newState)
                                    }}>All</button>)
 
@@ -379,7 +401,7 @@ class GameData extends Component{
                                               if (innerNewState.sliderValues.max > group.games.length -1){
                                                   innerNewState.sliderValues.max = 4;
                                               }
-                                              innerNewState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, 0,  this.state.sliderValues.max );
+                                              innerNewState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, 0,  this.state.sliderValues.max, this.state.showSummaryByMoney );
 
                                               if (this.state.isPlaying) {
                                                   this.setState(innerNewState);
@@ -437,6 +459,7 @@ class GameData extends Component{
                 <div className="black">
                     { playersCountText } players
                 </div>
+
                 <div>
                   <span className="white">xx</span>
                 </div>
@@ -462,6 +485,9 @@ class GameData extends Component{
                 {PlayerRankingBalance}
                 {GamePlayerNegatives}
 
+                <div>
+                    {this.state.IsGroupSummary ? <button onClick={()=>this.updateAfterSwitch()}> { this.state.showSummaryByMoney ? 'switch to games won mode':'switch back'}</button> : <span></span>}
+                </div>
                 <hr/>
                 { IsGroupSummary && group.games.length>0 && (
                     <div className="black">
@@ -480,7 +506,7 @@ class GameData extends Component{
                                             if (sliderValues.min < sliderValues.max){
                                                 const newState = { sliderValues };
                                                 if (IsGroupSummary){
-                                                    newState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, sliderValues.min, sliderValues.max);
+                                                    newState.Game = this.createPlayersDataAsFakeGame(group, this.props.playersCount, sliderValues.min, sliderValues.max, this.state.showSummaryByMoney);
                                                 }
                                                 this.setState(newState);
                                             }

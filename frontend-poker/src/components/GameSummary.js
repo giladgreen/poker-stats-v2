@@ -113,7 +113,7 @@ class GameSummary extends Component {
                     </div>
                 </div>
 
-                <GameData group={group} game={game} />
+                <GameData group={group} game={game}  />
 
                 {isAdmin && <GrayBubbleButton onClick={this.props.edit} className="button left-margin">Edit</GrayBubbleButton>}
                 {isAdmin && <RedBubbleButton onClick={this.props.delete} className="button left-margin">Delete</RedBubbleButton>}
