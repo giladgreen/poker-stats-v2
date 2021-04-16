@@ -19,60 +19,53 @@ class GameData extends Component{
     createPlayersDataAsFakeGame = (group, max, minIndex, maxIndex, showSummaryByMoney) => {
         const { games } = group;
         this.balances = {};
-        this.gamesCounts = {};
-        this.lastFourMonthGamesCount = {};
+        this.totalGamesCounts = {};
+        this.gamesCount = {};
         const fourMonthMinIndex = showSummaryByMoney ? maxIndex - 12  < 0 ? 0 :maxIndex - 12 : minIndex;
-        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(fourMonthMinIndex, maxIndex+1).forEach(game=>{
-            const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
-                .reduce(function(a, b) {
-                    return a.bottomLine > b.bottomLine ? a : b;
-                }).playerId
-
+        const sortedGames = games.sort((a,b)=> a.date < b.date ? -1 :1);
+        sortedGames.slice(fourMonthMinIndex, maxIndex+1).forEach(game=>{
             game.playersData.forEach(({playerId})=>{
-                if (!this.lastFourMonthGamesCount.hasOwnProperty(playerId)){
-                    this.lastFourMonthGamesCount[playerId] = 0;
+                if (!this.gamesCount.hasOwnProperty(playerId)){
+                    this.gamesCount[playerId] = 0;
                 }
-                this.lastFourMonthGamesCount[playerId] =  this.lastFourMonthGamesCount[playerId] + (showSummaryByMoney ? 1 : (mvpPlayerId===playerId ? 1 : 0));
+                this.gamesCount[playerId] =  this.gamesCount[playerId] + (showSummaryByMoney ? 1 : (game.mvpPlayerId===playerId ? 1 : 0));
             });
         });
-        games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex+1).forEach(game=>{
-
-            const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
-                .reduce(function(a, b) {
-                    return a.bottomLine > b.bottomLine ? a : b;
-                }).playerId
-
+        sortedGames.slice(minIndex, maxIndex+1).forEach(game=>{
 
             game.playersData.forEach(({playerId, buyIn,cashOut})=>{
 
                 if (!this.balances.hasOwnProperty(playerId)){
                     this.balances[playerId] = 0;
                 }
-                if (!this.gamesCounts.hasOwnProperty(playerId)){
-                    this.gamesCounts[playerId] = 0;
+                if (!this.totalGamesCounts.hasOwnProperty(playerId)){
+                    this.totalGamesCounts[playerId] = 0;
                 }
                 if (showSummaryByMoney){
                     this.balances[playerId] =  this.balances[playerId] + cashOut - buyIn;
                 } else{
-                    this.balances[playerId] =  this.balances[playerId] + (playerId === mvpPlayerId ? 1 : 0);//TODO
+                    this.balances[playerId] =  this.balances[playerId] + (playerId === game.mvpPlayerId ? 1 : 0);//TODO
                 }
 
-                this.gamesCounts[playerId] =  this.gamesCounts[playerId] + 1;
+                this.totalGamesCounts[playerId] =  this.totalGamesCounts[playerId] + 1;
             });
         });
         this.playersCountText = Object.keys(this.balances).length;
-        console.log('gamesCounts',this.gamesCounts)
-        console.log('lastFourMonthGamesCount',this.lastFourMonthGamesCount)
-        const playersData = Object.keys(this.lastFourMonthGamesCount).map(id=>{
+
+        const playersData = Object.keys(this.gamesCount).map(id=>{
             return {
                 id,
                 playerId: id,
                 buyIn:0,
                 cashOut: this.balances[id],
-                lastFourMonthGamesCount: this.lastFourMonthGamesCount[id],
-                gamesCount: this.gamesCounts[id]
+                lastFourMonthGamesCount: this.gamesCount[id],
+                gamesCount: this.totalGamesCounts[id],
+                percentage: showSummaryByMoney ? undefined : Math.floor(this.balances[id] * 100 / this.totalGamesCounts[id])
             }
-        }).sort((a,b)=> a.lastFourMonthGamesCount > b.lastFourMonthGamesCount ? -1 :1).slice(0,max+1)
+        }).sort((a,b)=> {
+            return a.lastFourMonthGamesCount > b.lastFourMonthGamesCount ? -1 : (a.lastFourMonthGamesCount < b.lastFourMonthGamesCount ? 1 : (a.gamesCount < b.gamesCount ? -1 : 1))
+        }).slice(0,max+1).filter(item => showSummaryByMoney ? true : item.cashOut > 0 && item.gamesCount > 0);
+
         return {
             playersData
         }
@@ -221,6 +214,7 @@ class GameData extends Component{
                 </div>
             );
         });
+
         const PlayerGameCount = IsGroupSummary ? playersInfo.map(playerInfo=>{
             const key = `${playerInfo.playerId}_item_gamesCount`;
             const styleObject = {
@@ -231,7 +225,19 @@ class GameData extends Component{
 
             return  (
                 <div key={key} style={styleObject} className="GamePlayerGamesCount"  >
-                    {this.gamesCounts[playerInfo.playerId]} games
+                    {this.totalGamesCounts[playerInfo.playerId]} games
+                </div>
+            );
+        }):[];
+        const PlayerPercentages = IsGroupSummary ? playersInfo.map(playerInfo=>{
+            const key = `${playerInfo.playerId}_item_percentage`;
+            const styleObject = {
+                width:playerWidth-margin,
+                marginRight:margin,
+            };
+            return  (
+                <div key={key} style={styleObject} className="GamePlayerGamesCount"  >
+                      <div className="GamePlayersGamesCount"> {`(${playerInfo.percentage}%)`} </div>
                 </div>
             );
         }):[];
@@ -484,6 +490,7 @@ class GameData extends Component{
                     {PlayerBalance}
                 </div>
                 {IsGroupSummary ?<div className="GamePlayersGamesCount"> {PlayerGameCount} </div> : <div/> }
+                {IsGroupSummary && !showSummaryByMoney ? <div className="GamePlayersGamesCount"> {PlayerPercentages} </div> : <div/> }
                 <br/>
                 <br/>
                 {GamePlayerPositives}

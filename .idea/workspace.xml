@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/EditGameForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GameData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/components/GamesTab.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,7 +435,7 @@
       <workItem from="1617187224949" duration="2265000" />
       <workItem from="1617628050733" duration="1603000" />
       <workItem from="1617717184069" duration="1505000" />
-      <workItem from="1617807994445" duration="13603000" />
+      <workItem from="1617807994445" duration="16490000" />
     </task>
     <servers />
   </component>

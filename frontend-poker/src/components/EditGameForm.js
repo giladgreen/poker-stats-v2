@@ -269,12 +269,10 @@ class EditGameForm extends Component {
         this.setState({editGame});
     };
 
-    isGameReady = (game)=>{
+    getGameDiff = (game)=>{
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
         const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
-        const diff = totalBuyIn - totalCashOut;
-        const ready = diff === 0 && game.playersData.length >1;
-        return { ready, diff };
+        return totalBuyIn - totalCashOut;
     };
 
     removePlayerFromGame = (playerId) =>{
@@ -357,7 +355,8 @@ class EditGameForm extends Component {
                 </option>
             )
         );
-        const { ready, diff } = this.isGameReady(game);
+        const { ready } = game;
+        const diff = this.getGameDiff(game);
         const { showError, showSuccess} = this.state;
         return (<div className="game-edit-div">
             <h2> edit game. </h2>

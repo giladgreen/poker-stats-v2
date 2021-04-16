@@ -151,12 +151,10 @@ class GamesTab extends Component {
 
     };
 
-    isGameReady = (game)=>{
+    getGameDiff = (game)=>{
         const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
         const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
-        const diff = totalBuyIn - totalCashOut;
-        const ready = diff === 0 && game.playersData.length >1;
-        return { ready, diff };
+        return totalBuyIn - totalCashOut;
     };
 
     getGamePot = (game)=>{
@@ -205,7 +203,7 @@ class GamesTab extends Component {
 
         if (this.state.gameSummary){
             const game = this.state.gameSummary;
-            const { ready } = this.isGameReady(game);
+            const { ready } = game;
             if (ready) return this.getGamesSummary();
             return <OnGoingGame deleteSelectedGame={this.deleteSelectedGame}
                                 updateImage={this.props.updateImage}
@@ -221,26 +219,28 @@ class GamesTab extends Component {
         }
 
         const GAMES = games.sort((a,b)=> a.date > b.date ? -1 : 1).map((game,index) => {
-            const { ready } = this.isGameReady(game);
+            const { ready } = game;
             const pot = this.getGamePot(game);
             const style = {
                 backgroundImage: `url(${game.imageUrl || this.getImage()})`,
                 borderRadiusTop: '50px',
             };
 
-            const playersData = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }));
-            let mvp, mvpPlayerData, mvpName, mvpBalance, mvpImageUrl;
-            if (playersData && playersData.length){
-                mvp = playersData.reduce(function(a, b) {
-                    return a.bottomLine > b.bottomLine ? a : b;
-                });
-                mvpPlayerData = group.players.find(p=>p.id === mvp.playerId);
+            let mvpPlayerId, mvpPlayerData, mvpName, mvpBalance, mvpImageUrl;
+            if (ready){
+                mvpPlayerId = game.mvpPlayerId;
+
+                mvpPlayerData = group.players.find(p=>p.id === mvpPlayerId);
+
+                const mvp = game.playersData.find(item => item.playerId===mvpPlayerId);
+                const mvpBottomLine = mvp.cashOut - mvp.buyIn;
+
                 mvpName = mvpPlayerData ?
                     mvpPlayerData.name ? mvpPlayerData.name : ( mvpPlayerData.firstName ? `${mvpPlayerData.firstName} ${mvpPlayerData.familyName}` : null)
                     : null;
-                mvpBalance = `+${mvp.bottomLine}`;
+                mvpBalance = `+${mvpBottomLine}`;
                 mvpImageUrl = mvpPlayerData ? mvpPlayerData.imageUrl : null;
-                if (ready && mvpImageUrl && !game.imageUrl){
+                if (mvpImageUrl && !game.imageUrl){
                     style.backgroundImage = `url(${mvpImageUrl}), url(${this.getImage()})`
                     style.backgroundSize = isMobile ? '60px 100px, cover': '160px 280px, cover'
                     style.backgroundRepeat = 'no-repeat, repeat'
