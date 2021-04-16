@@ -21,13 +21,18 @@ class GameData extends Component{
         this.balances = {};
         this.gamesCounts = {};
         this.lastFourMonthGamesCount = {};
-        const fourMonthMinIndex = maxIndex - 12  < 0 ? 0 :maxIndex - 12;
+        const fourMonthMinIndex = showSummaryByMoney ? maxIndex - 12  < 0 ? 0 :maxIndex - 12 : minIndex;
         games.sort((a,b)=> a.date < b.date ? -1 :1).slice(fourMonthMinIndex, maxIndex+1).forEach(game=>{
+            const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
+                .reduce(function(a, b) {
+                    return a.bottomLine > b.bottomLine ? a : b;
+                }).playerId
+
             game.playersData.forEach(({playerId})=>{
                 if (!this.lastFourMonthGamesCount.hasOwnProperty(playerId)){
                     this.lastFourMonthGamesCount[playerId] = 0;
                 }
-                this.lastFourMonthGamesCount[playerId] =  this.lastFourMonthGamesCount[playerId] + 1;
+                this.lastFourMonthGamesCount[playerId] =  this.lastFourMonthGamesCount[playerId] + (showSummaryByMoney ? 1 : (mvpPlayerId===playerId ? 1 : 0));
             });
         });
         games.sort((a,b)=> a.date < b.date ? -1 :1).slice(minIndex, maxIndex+1).forEach(game=>{

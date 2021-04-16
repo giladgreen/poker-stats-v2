@@ -34,6 +34,12 @@ async function getGame({ groupId, gameId }) {
   })).map(data => data.toJSON());
   return game;
 }
+function isGameReady(game){
+  const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
+  const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
+  const diff = totalBuyIn - totalCashOut;
+  return diff === 0 && game.playersData.length >1;
+}
 
 async function getGames(groupId, limit = 1000, offset = 0) {
   const allCount = await models.games.count({ where: { groupId } });
@@ -57,6 +63,13 @@ async function getGames(groupId, limit = 1000, offset = 0) {
 
   const results = allGames.map(game => game.toJSON()).map((game) => {
     game.description = game.description || '';
+    game.ready = isGameReady(game);
+    if (game.ready){
+      game.mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
+          .reduce(function(a, b) {
+            return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
+          }).playerId;
+    }
     return game;
   });
 
