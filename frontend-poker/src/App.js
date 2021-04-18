@@ -56,7 +56,22 @@ class App extends Component {
     constructor() {
         super();
 
-        this.state = { showMenu:false, pushSupported:IsPushSupported(), subscribed:IsSubscribed(), showGroupCreationForm: false,showCreateGameForm:false,showCreatePlayerForm:false, showGroupEditForm: null, loading: false, isAuthenticated: false, user: null, groups:null, provider:'', error:null, token:null, showGroupPage: null};
+        this.state = {
+            showMenu:false,
+            subscribed:IsSubscribed(),
+            showGroupCreationForm: false,
+            showCreateGameForm:false,
+            showCreatePlayerForm:false,
+            showGroupEditForm: null,
+            loading: false,
+            isAuthenticated: false,
+            user: null,
+            groups:null,
+            provider:'',
+            error:null,
+            token:null,
+            showGroupPage: null
+        };
     }
 
     onNotificationButtonClick = async() =>{
@@ -64,10 +79,10 @@ class App extends Component {
             console.log('onNotificationButtonClick this.state.subscribed', this.state.subscribed)
             if (this.state.subscribed) {
                 await unsubscribeUser(this.state.provider, this.state.token);
-                this.setState({subscribed:false, pushSupported: true, showMenu: false})
+                this.setState({subscribed:false, showMenu: false})
             } else {
                 await subscribeUser(this.state.provider, this.state.token);
-                this.setState({subscribed:true, pushSupported: true, showMenu: false})
+                this.setState({subscribed:true, showMenu: false})
             }
         } catch (e) {
             console.log('onNotificationButtonClick Error', e)
@@ -109,7 +124,7 @@ class App extends Component {
 
 
         const menuItems = [];
-        if (this.state.pushSupported){
+        if (IsPushSupported()){
             menuItems.push( <MenuItem key="menuItem1" onClick={this.onNotificationButtonClick}>{ this.state.subscribed ? 'disable':'enable'} notifications</MenuItem> )
         }
         menuItems.push(<MenuItem key="menuItem2" onClick={this.createGroup}>Create New Group</MenuItem>)
