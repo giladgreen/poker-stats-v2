@@ -7,6 +7,11 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    subscription: {
+      type: DataTypes.TEXT,
+      field: 'subscription',
+      defaultValue: null,
+    },
     firstName: {
       type: DataTypes.TEXT,
       field: 'first_name',
