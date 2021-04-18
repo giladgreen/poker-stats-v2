@@ -50,6 +50,9 @@ async function validateRequestPermissions(request) {
   if (request.method === 'POST' && request.url.includes('/players')) {
     return;
   }
+  if (request.url.includes('/notifications') && (request.method === 'POST' || request.method === 'DELETE')) {
+    return;
+  }
   if (request.method === 'POST' && request.url.includes('/groups')) {
     return;
   }
