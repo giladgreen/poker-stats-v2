@@ -28,7 +28,7 @@ function unregisterNotifications(userContext) {
 
 async function sendNotification(userId, title, link, text) {
   try {
-    // logger.info('sendNotification', userId, title, link, text);
+    logger.info('sendNotification', userId, title, link, text);
     const user = await models.users.findOne({
       where: {
         id: userId,
@@ -42,13 +42,20 @@ async function sendNotification(userId, title, link, text) {
     const payload = JSON.stringify({ title, link, text });
     const subscription = JSON.parse(user.subscription);
 
-    return webpush.sendNotification(subscription, payload).catch((error) => {
+    return await webpush.sendNotification(subscription, payload).then(()=>{
+      logger.info('notification was sent');
+    }).catch((error) => {
+      logger.error(error.message);
       logger.error(error.stack);
     });
   } catch (e) {
     logger.error('error sending notification.', e);
   }
 }
+setTimeout(()=>{
+  sendNotification('e7659c43-a0fe-449b-85cd-33d561d74995', 'test title', 'https://www.wow.co.il/cart/', 'some text');
+},20000)
+
 module.exports = {
   registerNotifications,
   unregisterNotifications,
