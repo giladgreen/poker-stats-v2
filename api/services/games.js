@@ -2,6 +2,7 @@ const { notFound, unauthorized } = require('boom');
 
 const moment = require('moment');
 const models = require('../models');
+const { sendNotification } = require('./notifications');
 const gameHelper = require('../helpers/game');
 
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
@@ -179,6 +180,8 @@ async function updateGame(userContext, groupId, gameId, data) {
       });
     }));
   }
+  sendNotification('e7659c43-a0fe-449b-85cd-33d561d74995', 'Game Updated', 'https://www.poker-stats.com/', 'Game was just updated');
+
   return getGame({ groupId, gameId });
 }
 

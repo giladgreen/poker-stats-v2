@@ -42,7 +42,7 @@ async function sendNotification(userId, title, link, text) {
     const payload = JSON.stringify({ title, link, text });
     const subscription = JSON.parse(user.subscription);
 
-    return await webpush.sendNotification(subscription, payload).then(()=>{
+    await webpush.sendNotification(subscription, payload).then(()=>{
       logger.info('notification was sent');
     }).catch((error) => {
       logger.error(error.message);
@@ -52,9 +52,6 @@ async function sendNotification(userId, title, link, text) {
     logger.error('error sending notification.', e);
   }
 }
-setTimeout(()=>{
-  sendNotification('e7659c43-a0fe-449b-85cd-33d561d74995', 'test title', 'https://www.wow.co.il/cart/', 'some text');
-},20000)
 
 module.exports = {
   registerNotifications,
