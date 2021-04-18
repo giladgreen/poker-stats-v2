@@ -1,0 +1,22 @@
+$gray-color: #818181;
+$different-gray-color: #808184;
+$darker-gray-color: rgba(125, 120, 130, 0.2);
+.confetti-button-gray {
+    background-color: $gray-color;
+    color: #fff;
+    box-shadow: 0 2px 25px rgba(130, 130, 130, 0.5);
+
+}
+
+.confetti-button-gray:before {
+    background-image: radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, transparent 20%, $gray-color 20%, transparent 30%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $gray-color 15%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%);
+}
+
+.confetti-button-gray:after {
+    background-image: radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $gray-color 15%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%), radial-gradient(circle, $gray-color 20%, transparent 20%);
+}
+
+.confetti-button-gray:active {
+    background-color: $different-gray-color;
+    box-shadow: 0 2px 25px $darker-gray-color;
+}

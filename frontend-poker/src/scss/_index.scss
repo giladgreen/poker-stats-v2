@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: white;
+  color: white;
+  font-size: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.text-shadow{
+  text-shadow: 1px 1px black;
+}
+
+#app-header{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 10vh;
+  background: black;
+  color: white;
+  font-size: 3.3em;
+  border-bottom: 2px solid #333333;
+}
+.sheep-logo{
+  height: 9vh;
+}
+#simple-menu{
+  z-index: 9999999;
+
+}
+#app-header-text{
+  padding-left: 2vw;
+}
+.IconButton{
+  padding-left: 17px;
+}
+#notification{
+  margin-top: 8vh;
+  text-align: center;
+  background: white;
+  color: #1d2124;
+  font-size: 1em;
+  cursor: pointer;
+
+}
+#app-header-logout{
+  position: fixed;
+  top:0;
+  right:10px;
+  color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 0.7em;
+}
+.MainSection {
+  margin-top: 7vh;
+  padding-top: 10px;
+  padding-left: 40px;
+
+}
+.menu-icon{
+  position: fixed;
+  top:10px;
+  right:10px;
+  font-size: 3em;
+
+}
+.event-item-div{
+  -webkit-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+  -moz-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+  box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+  border-radius: 50px;
+  width: 20vw;
+  height: 20vw;
+  margin: 1.8vw;
+  cursor: pointer;
+
+}
+.event-item-div-inner{
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius-top: 50px;
+  padding: 10px;
+  width: 20vw;
+  height: 14vw;
+  font-size: 2.7em;
+}
+.participantsImagesDiv{
+
+}
+.participantImage{
+  position: relative;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  top:10px;
+}
+.participantImage1{
+  left:5px;
+}
+.participantImage2{
+  left:-8px;
+}
+.participantImage3{
+  left:-17px;
+}
+.participantImage4{
+  left:-28px;
+}
+
+.plus-sign{
+  color: #666666;
+  font-size: 15em;
+  padding-top: 0vw;
+  padding-left: 6.5vw;
+}
+button{
+  border-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  #app-header{
+    width: 100vw;
+    height: 7vh;
+    font-size: 1.2em;
+  }
+  .sheep-logo{
+    height: 5.5vh;
+    margin-top: 5px;
+  }
+  #app-header-text{
+    padding-left: 0px;
+    font-size: 0.9em;
+  }
+  #app-header-logout{
+    padding-top: 5px;
+    font-size: 0.7em;
+  }
+  .MainSection {
+    padding-left: 16px;
+
+  }
+  .events-header{
+    font-size: 1.5em;
+  }
+  #user-events{
+    margin-left:-20px;
+  }
+  .event-item-div{
+    -webkit-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    -moz-box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    box-shadow: -4px 3px 9px 2px rgba(0,0,0,0.31);
+    border-radius: 5px;
+    width: 40vw;
+    height: 40vw;
+    margin: 2.9vw;
+
+    text-shadow: 2px 2px black;
+  }
+  .participantsImagesDiv{
+
+  }
+  .participantImage{
+    width: 10vw;
+    height: 10vw;
+    top:5px;
+  }
+  .participantImage1{
+    left:5px;
+  }
+  .participantImage2{
+    left:-8px;
+  }
+  .participantImage3{
+    left:-17px;
+  }
+  .participantImage4{
+    left:-28px;
+  }
+
+  .plus-sign{
+
+    font-size: 4em;
+    padding-top: 20px;
+    padding-left: 56px;
+  }
+  button{
+
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
+  .menu-icon{
+    position: fixed;
+    top:10px;
+    right:10px;
+    font-size: 1.4em;
+  }
+
+  .event-item-div{
+    border-radius: 5px;
+    width: 40vw;
+    height: 40vw;
+    margin: 2.9vw;
+  }
+  .plus-sign{
+    font-size: 5.5em;
+    padding-top: 0vw;
+    padding-left: 12vw;
+  }
+  .event-item-div-inner{
+    font-size: 1em;
+    border-radius-top: 5px;
+    padding: 5px;
+    width: 40vw;
+    height: 25vw;
+  }
+
+  .participantImage{
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    top:5px;
+  }
+  .participantImage1{
+    left:5px;
+  }
+  .participantImage2{
+    left:-8px;
+  }
+  .participantImage3{
+    left:-17px;
+  }
+  .participantImage4{
+    left:-28px;
+  }
+
+
+
+}

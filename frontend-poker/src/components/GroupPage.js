@@ -19,7 +19,7 @@ import GamesTab from './GamesTab';
 import PlayersTab from "./PlayersTab";
 import GrayBubbleButton from '../containers/GrayBubbleButton';
 import GreenBubbleButton from '../containers/GreenBubbleButton';
-
+import { version } from '../../package.json';
 class GroupPage extends Component {
 
     constructor(props) {
@@ -76,6 +76,7 @@ class GroupPage extends Component {
 
         menuItems.push(<MenuItem key="menuItem5" onClick={this.goHome}>Home</MenuItem>);
         menuItems.push(<MenuItem key="menuItem6" onClick={this.logout}>Logout</MenuItem>);
+        menuItems.push(<MenuItem key="menuItem6" onClick={()=>{}}><div><hr/> <span className="version-menu-item-text">version: </span><span className="version-menu-item-number">{version}</span></div></MenuItem>);
 
         return  <div id="app-header" >
             <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />

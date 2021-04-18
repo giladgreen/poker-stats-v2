@@ -4,30 +4,7 @@ import App from './App';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
-import './style/bootstrap.css';
-import './style/loader.css';
-import './style/index.css';
-import './style/login.css';
-import './style/create-event-form.css';
-import './style/event-page.css';
-import './style/groups.css';
-import './style/create-group-form.css';
-import './style/group-page.css';
-import './style/game.css';
-import './style/onGoingGame.css';
-import './style/chart.css';
-import './style/introjs.min.css';
-import './style/introjs-nazanin.css';
-import './style/intro.css';
-import './style/image-uploader.css';
-import './style/images.css';
-import './style/image-data.css';
-import './style/image-slider.css';
-import './style/who-owes-who.css';
-import './style/bubble-button-general.css';
-import './style/bubble-button-gray.css';
-import './style/bubble-button-green.css';
-import './style/bubble-button-red.css';
+import './style/app.css';
 
 const options = {
     // you can also just use 'bottom center'

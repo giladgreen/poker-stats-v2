@@ -1,0 +1,42 @@
+#image-uploader{
+    background: #9fcdff;
+    position: absolute;
+    top: 1vh;
+    left: 10vw;
+    padding: 2vw;
+    width: 80vw;
+    height: 92vh;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+#image-uploader input{
+   max-width: 70vw;;
+}
+
+
+#image-uploader img{
+   max-width: 70vw;;
+}
+
+
+#image-uploader div{
+    margin-top: 10px;
+
+}
+
+#image-uploader select{
+   background: #eaeaea;
+
+}
+
+#image-uploader input{
+    background: #eaeaea;
+    border-radius: 20px;
+
+}
+
+#image-uploader-preview{
+    max-height: 70vh;
+    max-width: 96vw;
+}

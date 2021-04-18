@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import GrayBubbleButton from '../containers/GrayBubbleButton';
 import GreenBubbleButton from '../containers/GreenBubbleButton';
 import RedBubbleButton from '../containers/RedBubbleButton';
-
+import { version } from '../../package.json';
 
 class NewGroupForm extends Component {
 
@@ -55,6 +55,7 @@ class NewGroupForm extends Component {
         }
 
         menuItems.push(<MenuItem key="menuItem5" onClick={this.logout}>Logout</MenuItem>)
+        menuItems.push(<MenuItem key="menuItem6" onClick={()=>{}}><div><hr/> <span className="version-menu-item-text">version: </span><span className="version-menu-item-number">{version}</span></div></MenuItem>);
 
 
         const menuIcon =  <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />;

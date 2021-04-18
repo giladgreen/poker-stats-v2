@@ -98,7 +98,7 @@ class Login extends Component {
             onSuccess={this.googleResponse}
             onFailure={this.onFailure}
             render={renderProps => (
-                <div className="login-button" onClick={renderProps.onClick}> LOGIN WITH GOOGLE</div>
+                <div className="login-button login-button-google" onClick={renderProps.onClick}> LOGIN WITH GOOGLE</div>
             )}
         />);
 
@@ -109,9 +109,9 @@ class Login extends Component {
             fields="name,email,picture"
             callback={this.facebookResponse}
             render={renderProps => (
-                <div id="fbButton" className="login-button" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
+                <div id="fbButton" className="login-button login-button-fb" onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</div>
             )}
-         />) :  <div className="login-button" onClick={()=>{ window.location = httpsUrl}}> LOGIN WITH FACEBOOK</div>;
+         />) :  <div className="login-button login-button-fb" onClick={()=>{ window.location = httpsUrl}}> LOGIN WITH FACEBOOK</div>;
 
         return (
             <div id="login-page">
@@ -127,14 +127,12 @@ class Login extends Component {
                 </div>
 
                 <div>
-                    <img id="chips-img" src="Casino-Poker-Chips.png" alt='Chips'/>
+                    <img id="chips-img" src="https://res.cloudinary.com/www-poker-stats-com/image/upload/v1618731943/Casino-Poker-Chips-croped.png" alt='Chips'/>
 
                 </div>
 
-                <div id="login-buttons-div">
-                    {facebook}
-                    {google}
-                </div>
+                {facebook}
+                {google}
                 <div id="loginErrorSection">
                     {this.state.error ? this.state.error : ''}
                 </div>

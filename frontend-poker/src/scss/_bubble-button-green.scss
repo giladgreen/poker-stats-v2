@@ -1,0 +1,24 @@
+$green-color: #1e7e34;
+$different-green-color: #1e7e44;
+$darker-green-color: rgba(125, 200, 130, 0.2);
+
+.confetti-button-green {
+    background-color: $green-color;
+    color: #fff;
+    box-shadow: 0 2px 25px $darker-green-color;
+}
+
+
+.confetti-button-green:before {
+    background-image: radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, transparent 20%, $green-color 20%, transparent 30%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $green-color 15%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%);
+}
+
+.confetti-button-green:after {
+    background-image: radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $green-color 15%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%), radial-gradient(circle, $green-color 20%, transparent 20%);
+}
+
+.confetti-button-green:active {
+
+    background-color: $different-green-color;
+    box-shadow: 0 2px 25px $darker-green-color;
+}

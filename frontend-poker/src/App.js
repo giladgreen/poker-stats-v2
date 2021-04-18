@@ -20,6 +20,7 @@ import Loading from './containers/Loading';
 import UserGroups from "./components/UserGroups";
 
 import notificationHelper from "./notificationHelper";
+import {version} from "../package.json";
 
 const {IsSubscribed, IsPushSupported, subscribeUser,unsubscribeUser} = notificationHelper;
 
@@ -113,6 +114,7 @@ class App extends Component {
         }
         menuItems.push(<MenuItem key="menuItem2" onClick={this.createGroup}>Create New Group</MenuItem>)
         menuItems.push(<MenuItem key="menuItem3" onClick={this.logout}>Logout</MenuItem>)
+        menuItems.push(<MenuItem key="menuItem6" onClick={()=>{}}><div><hr/> <span className="version-menu-item-text">version: </span><span className="version-menu-item-number">{version}</span></div></MenuItem>);
 
 
         const menuIcon =  <MenuIcon id="menuIcon" fontSize="inherit" className='menu-icon' onClick={()=>this.setState({showMenu: !this.state.showMenu})} />;
