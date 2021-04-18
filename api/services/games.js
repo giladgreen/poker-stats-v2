@@ -4,6 +4,7 @@ const moment = require('moment');
 const models = require('../models');
 const { sendNotification } = require('./notifications');
 const gameHelper = require('../helpers/game');
+const logger = require('./logger');
 
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt', 'extra'];
@@ -185,23 +186,27 @@ async function updateGame(userContext, groupId, gameId, data) {
 
   const game = await getGame({ groupId, gameId });
   if (ready){
-    const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
-        .reduce(function(a, b) {
-          return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
-        }).playerId;
-    let mvpPlayer;
-    if (mvpPlayerId){
-      mvpPlayer = await models.players.findOne({
-        where: {
-          groupId,
-          playerId: mvpPlayerId,
-        },
-      });
-    }
-    const text = mvpPlayer ? `MVP: ${mvpPlayer.name}` : 'Game is done';
-    const link = mvpPlayer ? mvpPlayer.imageUrl : 'https://www.poker-stats.com/';
+    try {
+      const mvpPlayerId = game.playersData.map(data => ({playerId: data.playerId, bottomLine: data.cashOut - data.buyIn}))
+          .reduce(function (a, b) {
+            return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
+          }).playerId;
+      let mvpPlayer;
+      if (mvpPlayerId) {
+        mvpPlayer = await models.players.findOne({
+          where: {
+            groupId,
+            playerId: mvpPlayerId,
+          },
+        });
+      }
+      const text = mvpPlayer ? `MVP: ${mvpPlayer.name}` : 'Game is done';
+      const link = mvpPlayer ? mvpPlayer.imageUrl : 'https://www.poker-stats.com/';
 
-    sendNotification(GILAD_USER_ID, 'Game Updated', link, text);
+      sendNotification(GILAD_USER_ID, 'Game Updated', link, text);
+    } catch (e) {
+      logger.error('error sending update game notification',e.message, e.stack);
+    }
   }
 
   return game;

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ded5d8-87c2-405f-8fc3-f9d3d873e80a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-poker/src/notificationHelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/games.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/services/games.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/swagger/errorHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/swagger/errorHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -432,7 +434,7 @@
       <workItem from="1617187224949" duration="2265000" />
       <workItem from="1617628050733" duration="1603000" />
       <workItem from="1617717184069" duration="1505000" />
-      <workItem from="1617807994445" duration="25994000" />
+      <workItem from="1617807994445" duration="26521000" />
     </task>
     <servers />
   </component>
@@ -516,22 +518,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>43</line>
+          <line>44</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>24</line>
+          <line>25</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>27</line>
+          <line>28</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/api/swagger/errorHandler.js</url>
-          <line>32</line>
+          <line>33</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

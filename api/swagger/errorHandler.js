@@ -21,6 +21,7 @@ class ErrorHandler {
      * @param next
      */
   middleware(errorRaw, req, res, next) {
+    console.log('error middleware, ', errorRaw);
     if (!errorRaw) {
       next();
       return false;
