@@ -196,7 +196,7 @@ async function updateGame(userContext, groupId, gameId, data) {
         mvpPlayer = await models.players.findOne({
           where: {
             groupId,
-            playerId: mvpPlayerId,
+            id: mvpPlayerId,
           },
         });
       }
