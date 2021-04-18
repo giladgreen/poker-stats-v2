@@ -56,7 +56,7 @@ async function updateUnsubscriptionOnServer(subscription, provider, token) {
 }
 
 function subscribeUser(provider, token) {
-  if (isSubscribed) {
+  if (isSubscribed || !pushSupported) {
     return;
   }
   const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);

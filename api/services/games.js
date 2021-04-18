@@ -8,6 +8,8 @@ const gameHelper = require('../helpers/game');
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt', 'extra'];
 
+const GILAD_USER_ID='e7659c43-a0fe-449b-85cd-33d561d74995';
+
 const defaultValues = {
   description: '',
   date: (new Date()).toISOString(),
@@ -180,9 +182,29 @@ async function updateGame(userContext, groupId, gameId, data) {
       });
     }));
   }
-  sendNotification('e7659c43-a0fe-449b-85cd-33d561d74995', 'Game Updated', 'https://www.poker-stats.com/', 'Game was just updated');
 
-  return getGame({ groupId, gameId });
+  const game = await getGame({ groupId, gameId });
+  if (ready){
+    const mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
+        .reduce(function(a, b) {
+          return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
+        }).playerId;
+    let mvpPlayer;
+    if (mvpPlayerId){
+      mvpPlayer = await models.players.findOne({
+        where: {
+          groupId,
+          playerId: mvpPlayerId,
+        },
+      });
+    }
+    const text = mvpPlayer ? `MVP: ${mvpPlayer.name}` : 'Game is done';
+    const link = mvpPlayer ? mvpPlayer.imageUrl : 'https://www.poker-stats.com/';
+
+    sendNotification(GILAD_USER_ID, 'Game Updated', link, text);
+  }
+
+  return game;
 }
 
 async function deleteGame(userContext, groupId, gameId) {
