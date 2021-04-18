@@ -38,11 +38,11 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
       swRegistration = swReg;
     })
     .catch((error) => {
-     // console.error('Service Worker Error', error);
+     console.error('Service Worker Error', error);
       pushSupported = false;
     });
 } else {
-  //console.warn('Push messaging is not supported');
+  console.warn('Push messaging is not supported');
   pushSupported = false;
 }
 async function updateSubscriptionOnServer(subscription, provider, token) {
