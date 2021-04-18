@@ -31,7 +31,7 @@ if (subscription) {
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   //console.log('Service Worker and Push is supported');
 
-  navigator.serviceWorker.register('serviceWorker.js')
+  navigator.serviceWorker.register('service-worker.js')
     .then((swReg) => {
      // console.log('Service Worker is registered', swReg);
 
