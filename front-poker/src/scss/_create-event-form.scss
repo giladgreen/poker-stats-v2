@@ -1,0 +1,249 @@
+
+#create-event-form {
+    background-color: white;
+    z-index: 100;
+    color: #5a6268;
+    text-align: left;
+    font-size: 1em;
+}
+#event-link{
+    color: #1b1e21;
+    font-size: 2em;
+    padding-top: 5vw;
+    padding-left: 25vw;
+}
+.white{
+    color: white;
+}
+.black{
+    color: black;
+}
+.top-margin{
+    margin-top: 20px;
+}
+.small-top-margin{
+    margin-top: 15px;
+}
+.publish-button{
+    background: black;
+    color: white;
+    width: 80vw;
+    margin-left: 8vw;
+    height: 60px;
+    border-radius: 20px;
+}
+.delete-button{
+    margin-top: 10px;
+    background: black;
+    color: white;
+    width: 80vw;
+    margin-left: 8vw;
+    height: 60px;
+    border-radius: 20px;
+}
+.publish-button:disabled{
+    background: #AAAAAA;
+    color: #AAAAAA;
+    border-color: #AAAAAA;
+    text-shadow: 0px 0px 5px #CCDDCC;
+}
+
+#create-event-form-wrapper{
+    padding-top: 13vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+.new-event-form-item-label{
+    font-size: 1.5em;
+    color: #5a6268;
+}
+.new-event-form-item-label-left-padding{
+    padding-left: 10px;
+}
+.formTextInput-full-width{
+    width: 40%;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #5a6268;
+}
+
+.formDateInput{
+    width: 10vw;
+    font-size: 1.1em;
+    margin-bottom: 5vh;
+    border: none;
+    border-bottom: 1px solid #5a6268;
+}
+.datePicker{
+    font-size: 1.1em;
+}
+.formNumberInput-small-width{
+    font-size: 1.7em;
+
+    border: none;
+    border-bottom: 1px solid #5a6268;
+    width: 17vw;
+    padding-left: 6vw;
+}
+.formNumberInput-third-width{
+    font-size: 1.2em;
+    border: none;
+    border-bottom: 1px solid #5a6268;
+    width: 170px;
+}
+.paddingLeft{
+    padding-left: 30px;
+}
+.marginLeft{
+    margin-left: 0px;
+}
+.hours-text{
+    color: #5a6268;
+    font-size: 1.1em;
+    padding-left: 18px;
+}
+.formNumberInput-half-width{
+    font-size: 1.2em;
+    margin-bottom: 5vh;
+    border: none;
+    border-bottom: 1px solid #5a6268;
+    width: 9.5vw;
+    padding-left: 10px;
+}
+
+
+.red-text{
+    color: red;
+}
+
+.selectedEventImage{
+    border: 3px solid yellow;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #AAAAAA;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #AAAAAA;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #AAAAAA;
+}
+
+#create-page-cancel-link{
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    font-size: 0.8em;
+}
+
+.react-tagsinput {
+    background-color: white;
+    border: 1px solid #bbbbbb;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-top: 5px;
+    width:90vw;
+}
+
+.react-tagsinput--focused {
+    border-color: #5a6268;
+}
+
+.react-tagsinput-tag {
+    background-color: #cde69c;
+    border-radius: 2px;
+    border: 1px solid #a5d24a;
+    color: #638421;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.react-tagsinput-remove {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.react-tagsinput-tag a::before {
+    content: " ×";
+}
+
+.react-tagsinput-input {
+    background: transparent;
+    border: 0;
+    color: #777;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    outline: none;
+    padding: 5px;
+    width: 80px;
+}
+.red-border{
+    border: 2px solid red;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    #create-event-form-wrapper{
+        padding-top: 10vh;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    .new-event-form-item-label{
+        font-size: 1em;
+    }
+
+    .formTextInput-full-width{
+        width: 100%;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        border: none;
+        border-bottom: 1px solid #5a6268;
+    }
+
+    .formDateInput{
+        width: 28vw;
+        font-size: 0.8em;
+        margin-bottom: 5vh;
+        border: none;
+        border-bottom: 1px solid #5a6268;
+    }
+    .datePicker{
+        font-size: 0.8em;
+    }
+    .formNumberInput-small-width{
+        font-size: 1.2em;
+
+        border: none;
+        border-bottom: 1px solid #5a6268;
+        width: 17vw;
+        padding-left: 6vw;
+    }
+    .formNumberInput-third-width{
+        font-size: 1.2em;
+        border: none;
+        border-bottom: 1px solid #5a6268;
+        width: 70px;
+    }
+    .formNumberInput-half-width{
+        font-size: 1.2em;
+        margin-bottom: 5vh;
+        border: none;
+        border-bottom: 1px solid #5a6268;
+        width: 35vw;
+        padding-left: 20px;
+    }
+
+}

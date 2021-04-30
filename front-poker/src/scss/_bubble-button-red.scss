@@ -1,0 +1,24 @@
+$red-color: #721c24;
+$different-red-color: #601a28;
+$darker-red-color: rgba(212, 120, 130, 0.2);
+
+.confetti-button-red {
+    background-color: $red-color;
+    color: #fff;
+    box-shadow: 0 2px 25px $darker-red-color;
+}
+
+
+.confetti-button-red:before {
+    background-image: radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, transparent 20%, $red-color 20%, transparent 30%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $red-color 15%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%);
+}
+
+.confetti-button-red:after {
+    background-image: radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, transparent 10%, $red-color 15%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%), radial-gradient(circle, $red-color 20%, transparent 20%);
+}
+
+.confetti-button-red:active {
+
+    background-color: $different-red-color;
+    box-shadow: 0 2px 25px $darker-red-color;
+}

@@ -1,0 +1,469 @@
+#event-page{
+    background-color: white;
+    z-index: 100;
+    text-align: left;
+    font-size: 1em;
+    top:0;
+    left:0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#event-image-title-and-timer{
+    position: absolute;
+    margin-top: 10vh;
+    padding-top: 20px;
+}
+.event-image-title-and-timer{
+    background: black;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px;
+    width:   100vw;
+    height:  45vh;
+}
+.event-page-title{
+    padding-left: 35px;
+    padding-right: 42px;
+    font-size: 5em;
+    text-shadow: 5px 5px black;
+
+}
+
+.event-page-description{
+    padding-left: -5px;
+    font-size: 0.8em;
+    color: #DDDDDD;
+    text-shadow: 4px 4px black;
+
+}
+.event-image-creator-image{
+    position: absolute;
+    top:5vh;
+    right: 4vw;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    z-index: 999;
+}
+.timer-div{
+    margin-top: -3vh;
+    padding-left: 20vw;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+.event-timer-item{
+    font-weight: bold;
+    padding-right: 4vw;
+    padding-left: 4vw;
+    margin-left: 5px;
+    margin-right: 6px;
+    background-color: #ffffff66;
+}
+
+.event-timer-number {
+    font-size: 4.5em;
+
+}
+.event-timer-title{
+    font-size: 2em;
+}
+#event-participants{
+
+    position: absolute;
+    top: 43.2vh;
+    left:0vw;
+    width: 100vw;
+    height: 70px;
+}
+
+.event-participantImage{
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    border-radius: 50%;
+    border: 8px solid white;
+}
+.event-participantImage1{
+    left:20px;
+}
+.event-participantImage2{
+    left:0px;
+}
+.event-participantImage3{
+    left:-19px;
+}
+.event-participantImage4{
+    left:-40px;
+}
+
+.more-participants-circle{
+    position: relative;
+    border: 8px solid white;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    width: 10vw;
+    height: 10vw;
+    left:-70px;
+    text-align: center;
+    font-size: 5.1em;
+    display: inline-block;
+
+}
+
+#event-details-div{
+    position: absolute;
+    left: 30vw;
+    top: 80vh;
+    background: white;
+    color:black;
+    font-size: 2em;
+}
+#event-date-text{
+    padding-top: 10px;
+}
+#event-location-text{
+    padding-top: 15px;
+}
+#event-approve-button-div{
+
+}
+#herehere{
+}
+#combo{
+    color: black;
+}
+.approve-button{
+    position: absolute;
+    top: 15vh;
+    left: 10vw;
+    width: 60vw;
+    margin-left: -20vw;
+    background: black;
+    color: white;
+    height: 90px;
+    border-radius: 20px;
+    z-index: 99999;
+
+}
+
+
+#is-event-on-text{
+    position: absolute;
+    top: 15vh;
+    left: 0vw;
+    width: 80vw;
+    margin-left: -10vw;
+
+    color: white;
+    height: 60px;
+    border-radius: 20px;
+    z-index: 99999;
+
+}
+.event-on{
+    font-size: 2.5em;
+    padding-left: 15vw;
+    background: green;
+}
+.approval-mode{
+    font-size: 2em;
+}
+.event-ongoing{
+    font-size: 1.7em;
+    padding-top: 7px;
+    padding-left: 10vw;
+    background: green;
+}
+
+.event-over{
+    font-size: 2em;
+    padding-top: 5px;
+    padding-left: 12vw;
+    background: gray;
+}
+
+.event-canceled{
+    padding-top: 10px;
+    padding-left: 5vw;
+    background: darkred;
+    font-size: 1.6em;
+}
+#event-all-participants{
+    margin-top: 130px;
+    margin-left: -30px;
+}
+.event-page-all-participant-item{
+    margin: 5px;
+    padding: 5px;
+    margin-left: -20px;
+    border: 1px solid #b8daff33;
+    border-radius: 10px;
+}
+
+.event-page-all-participant-item-image{
+   width: 45px;
+   height: 45px;
+    border-radius: 50%;
+}
+.event-page-all-participant-item-name{
+    font-size: 1.3em;
+    padding-left: 10px;
+}
+#event-page-edit-link{
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    font-size: 0.8em;
+}
+#event-dropdown-div{
+    margin-top: 10px;
+}
+#Dropdown{
+
+    border: 1px solid #333333;
+    border-radius: 6px;
+    background: black;
+    color: white;
+    width: 130px;
+
+}
+select{
+    padding-left: 10px;
+}
+.line{
+    width:80vw;
+
+}
+.participant-additional-item{
+    font-size: 0.7em;
+}
+
+
+.timer-purpose-div{
+    text-align: center;
+    width:50vw;
+    padding-top: 15px;
+    font-size: 1.5em;
+}
+.timer-purpose-text{
+    font-size: 1.5em;
+}
+.thumbs-div{
+    margin-left: 25px;
+    padding-left: 10px;
+}
+.thumbs-image{
+    width: 35px;
+    margin: 10px;
+}
+.thumbs-text{
+    padding-left: 25px;
+}
+#add-to-my-calendar{
+    border: 3px solid black;
+    height: 80px;
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5vw;
+    background: #0f6674;
+    color: #dddddd;
+    width: 30vw;
+}
+#share-button{
+    border: 3px solid black;
+    height: 80px;
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    margin-left: 5vw;
+    background: #0f6674;
+    color: #dddddd;
+    width: 30vw;
+
+}
+
+.ranking-button-mode{
+    background: #55555533;
+    border: 1px solid #555555;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+
+    #event-image-title-and-timer {
+        margin-top: 7vh;
+        padding-top: 20px;
+    }
+    .event-image-title-and-timer{
+        background: black;
+        background-color: black;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 5px;
+        width:   100vw;
+        height:  52vh;
+    }
+    .event-page-title{
+        padding-left: 35px;
+        padding-right: 42px;
+        font-size: 2.5em;
+        text-shadow: 2px 2px black;
+
+    }
+    .event-image-creator-image{
+        top:5vh;
+        right: 4vw;
+        width: 17vw;
+        height: 17vw;
+    }
+
+
+    .timer-div{
+        padding-top: 7vh;
+        padding-left: 0.5vh;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px black;
+    }
+    .event-timer-item{
+        font-weight: bold;
+        padding-right: 3vw;
+        padding-left: 3vw;
+        margin-left: 3px;
+        margin-right: 4px;
+        background-color: #ffffff66;
+    }
+
+    .event-timer-number {
+        font-size: 2.5em;
+
+    }
+
+    .event-timer-title{
+        font-size: 1em;
+    }
+    #event-participants{
+
+        position: absolute;
+        top: 48.5vh;
+        left:0vw;
+        width: 100vw;
+        height: 70px;
+    }
+
+    .event-participantImage{
+        width: 20vw;
+        height: 20vw;
+        position: relative;
+        border-radius: 50%;
+        border: 4px solid white;
+    }
+    .event-participantImage1{
+        left:20px;
+    }
+    .event-participantImage2{
+        left:0px;
+    }
+    .event-participantImage3{
+        left:-19px;
+    }
+    .event-participantImage4{
+        left:-40px;
+    }
+
+    .more-participants-circle{
+        position: relative;
+        border: 4px solid white;
+        border-radius: 50%;
+        background: black;
+        color: white;
+        width: 20vw;
+        height: 20vw;
+        left:-60px;
+        text-align: center;
+        font-size: 2.1em;
+        display: inline-block;
+
+    }
+    .timer-purpose-div{
+        padding-top: 0px;
+        font-size: 1.5em;
+        width:100vw;
+
+    }
+    .timer-purpose-text{
+        font-size: 1em;
+    }
+
+    #event-details-div{
+        position: absolute;
+        left: 20vw;
+        top: 67vh;
+        background: white;
+        color:black;
+        font-size: 1em;
+    }
+    #event-date-text{
+        padding-top: 10px;
+    }
+    #event-location-text{
+        padding-top: 15px;
+    }
+
+    .approve-button{
+        top: 20vh;
+        left: 0vw;
+
+        width: 80vw;
+        margin-left: -10vw;
+
+        height: 60px;
+        border-radius: 20px;
+
+
+    }
+    #add-to-my-calendar{
+        width: 80vw;
+        height: 50px;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding: 5px;
+
+        border-radius: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: -30px;
+
+    }
+    #share-button{
+
+        height: 50px;
+        font-weight: bold;
+        font-size: 1.3em;
+        padding: 5px;
+
+        border-radius: 20px;
+        margin-bottom: 15px;
+        margin-left: -30px;
+
+        width: 80vw;
+
+    }
+
+}
