@@ -5,7 +5,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import GreenBubbleButton from '../containers/GreenBubbleButton';
 import generalRequest from '../actions/generalRequest';
-// import JSONTree from 'react-json-tree'
+import JSONTree from 'react-json-tree'
 
 
 
@@ -120,7 +120,7 @@ class Postman extends Component {
                     <div>
                         result body:
                         <div>
-                            {/*<JSONTree data={this.state.bodyObj} />*/}
+                            <JSONTree data={this.state.bodyObj} />
                         </div>
                     </div>
 
@@ -129,7 +129,7 @@ class Postman extends Component {
 
                         result headers
                         <div>
-                            {/*<JSONTree data={this.state.headers} />*/}
+                            <JSONTree data={this.state.headers} />
                         </div>
                     </div>
 
