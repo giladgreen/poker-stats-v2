@@ -589,6 +589,9 @@ definitions:
     properties:
       image:
         type: string
+      playerImage:
+        type: boolean
+        default: false
       playerIds:
         type: array
         items:

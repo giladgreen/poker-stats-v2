@@ -2,7 +2,7 @@ import request from 'request';
 import URL_PREFIX from '../url';
 import resizebase64 from 'resize-base64';
 
-async function postImage(base64image, tags, provider, token) {
+async function postImage(base64image, tags, playerImage, provider, token) {
 
   try {
     console.log('before',base64image)
@@ -22,6 +22,7 @@ async function postImage(base64image, tags, provider, token) {
         gameIds: gameIds || [],
         groupIds: groupIds || [],
         image: base64image,
+        playerImage,
       }),
       headers: {
         provider,

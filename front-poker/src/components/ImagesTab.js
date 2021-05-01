@@ -28,7 +28,7 @@ class ImagesTab extends Component {
     }
 
     uploadImage = async (image, tags) =>{
-        return postImage(image, tags, this.props.provider, this.props.token);
+        return postImage(image, tags, false, this.props.provider, this.props.token);
     }
 
     render() {

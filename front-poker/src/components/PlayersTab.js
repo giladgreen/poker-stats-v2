@@ -4,12 +4,10 @@ import createPlayer from "../actions/createPlayer";
 import updatePlayer from "../actions/updatePlayer";
 import deletePlayer from "../actions/deletePlayer";
 import PlayerSummary from "./PlayerSummary";
-
 import CONSTS from '../CONSTS';
-
-
 import GrayBubbleButton from '../containers/GrayBubbleButton';
 import GreenBubbleButton from '../containers/GreenBubbleButton';
+import postImage from '../actions/postImage';
 
 const baseUrl = window.location.origin === 'http://localhost:3000' ? 'http://www.poker-stats.com' : window.location.origin;
 const { ANON_URL } = CONSTS;
@@ -131,6 +129,40 @@ class PlayersTab extends Component {
         });
     }
 
+    uploadImage = async (image) =>{
+        const tags = { playerIds:[], gameIds:[], groupIds:[] };
+        return postImage(image, tags, this.props.provider, this.props.token);
+    }
+     onReaderLoad = async(e) => {
+         const { group, provider, token } = this.props;
+         try {
+             const res = await postImage(e.target.result, {
+                 playerIds: [],
+                 gameIds: [],
+                 groupIds: []
+             }, true, provider, token);
+             console.log('res', res);
+             const newImageUrl = res.image;
+
+             const newState = {...this.state};
+             newState.editPlayer.imageUrl = newImageUrl;
+             this.setState(newState)
+
+         } catch (e) {
+             console.log('e', e);
+         }
+    }
+    readURL = (e) => {
+        e.preventDefault();
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = this.onReaderLoad;
+            reader.readAsDataURL(e.target.files[0]);
+
+        }
+    }
+
+
     getPlayerEdit = () =>{
         return (
             <div className="playerEditForm">
@@ -153,14 +185,16 @@ class PlayersTab extends Component {
                         }}/>
                     </div>
                     <div>
-                        image:
+                        image URL:
                         <input  type="text" id="playerImage" className="bordered-input left-margin left-pad" value={this.state.editPlayer.imageUrl||''} onChange={(event)=>{
                             const editPlayer = {...this.state.editPlayer};
                             editPlayer.imageUrl = event.target.value || '';
                             this.setState({editPlayer});
                         }}/>
                     </div>
-
+                    <div>
+                        OR <input type="file" accept=".png,.jpg,.jpeg" id="imgInput" onChange={this.readURL}/>
+                    </div>
                     {this.state.editPlayer.imageUrl && this.state.editPlayer.imageUrl.length >0 && <img alt="" className="playerPageImage" src={this.state.editPlayer.imageUrl}/>}
                 </div>
 

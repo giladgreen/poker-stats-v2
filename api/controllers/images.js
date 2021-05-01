@@ -4,9 +4,9 @@ const imageService = require('../services/images');
 function addImage(req, res, next) {
   const { userContext } = req;
   const {
-    image, playerIds, gameIds, groupIds,
+    image, playerIds, gameIds, groupIds, playerImage
   } = req.getBody();
-  imageService.addImage(userContext, image, playerIds, gameIds, groupIds)
+  imageService.addImage(userContext, image, playerIds, gameIds, groupIds, playerImage)
     .then((data) => {
       res.status(HttpStatus.CREATED).send(data);
     })

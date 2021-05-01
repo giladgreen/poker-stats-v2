@@ -108,14 +108,14 @@ async function getImages({ playerIds, gameIds, groupIds }) {
   });
 }
 
-async function addImage(userContext, image, playerIds, gameIds, groupIds) {
+async function addImage(userContext, image, playerIds, gameIds, groupIds, playerImage) {
   if (!userContext || !userContext.id) {
     throw badRequest('missing user id');
   }
   if (!image) {
     throw badRequest('missing image data');
   }
-  if ((!playerIds || playerIds.length === 0) && (!gameIds || gameIds.length === 0) && (!groupIds || groupIds.length === 0)) {
+  if (!playerImage && (!playerIds || playerIds.length === 0) && (!gameIds || gameIds.length === 0) && (!groupIds || groupIds.length === 0)) {
     throw badRequest('must supply at least one (non empty array) of:  "playerIds" / "gameIds" / "groupIds"');
   }
   groupIds = groupIds || [];
@@ -138,8 +138,11 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds) {
   }
 
   const { url, publicId } = await Cloudinary.upload(image);
+  let imageId;
+  if (!playerImage){
+     imageId = await models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
+  }
 
-  const { id: imageId } = await models.images.create({ image: url, publicId, uploadedBy: userContext.id });
 
   await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
   await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
