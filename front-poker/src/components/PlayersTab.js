@@ -15,10 +15,12 @@ const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 
 class PlayersTab extends Component {
 
+    setupPlayers = ()=>{
+
+    }
     constructor(props) {
         super(props);
-        const {players} = props.group;
-
+        const {players} = this.props.group;
         this.PLAYERS = (players || []).sort((a,b)=> a.gamesCount > b.gamesCount ? -1 : 1).map((player,index) => {
             const style = {
                 backgroundImage: `url(${player.imageUrl || FULL_ANON_URL})`,
@@ -126,6 +128,12 @@ class PlayersTab extends Component {
         updatePlayer(group.id, player.id, player, provider, token).then((p)=>{
             this.setState({ newPlayer: null, editPlayer: null,playerSummary:null});
             updatePlayerData(p);
+            setTimeout(()=>{
+                console.log('1 sec later');
+
+                window.location.reload(false);
+            },1000)
+
         });
     }
 
@@ -134,7 +142,7 @@ class PlayersTab extends Component {
         return postImage(image, tags, this.props.provider, this.props.token);
     }
      onReaderLoad = async(e) => {
-         const { group, provider, token } = this.props;
+         const { provider, token } = this.props;
          try {
              const res = await postImage(e.target.result, {
                  playerIds: [],
@@ -164,6 +172,7 @@ class PlayersTab extends Component {
 
 
     getPlayerEdit = () =>{
+        console.log('EditPlayer render');
         return (
             <div className="playerEditForm">
                 <div className="playerSummaryHeader">
@@ -212,6 +221,7 @@ class PlayersTab extends Component {
 
 
     render() {
+        console.log('PlayersTab render', this.props);
         if (this.state.newPlayer){
             return this.getNewPlayerSection()
         }

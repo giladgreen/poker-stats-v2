@@ -8,7 +8,7 @@ import updateGroup from './actions/updateGroup';
 import deleteGroup from './actions/deleteGroup';
 import requestInvitation from './actions/requestInvitation';
 import getGroupData from './actions/getGroupData';
-
+import Postman from './components/Postman';
 import Login from './components/Login';
 import NewGroupForm from './components/NewGroupForm';
 import GroupPage from './components/GroupPage';
@@ -150,7 +150,7 @@ class App extends Component {
 
 
 
-            <span id="app-header-text"><img src="pokerStatsLogoWithSheep.png" className="sheep-logo"/> Groups</span>
+            <span id="app-header-text"><img src="pokerStatsLogoWithSheep.png" className="sheep-logo" alt=""/> Groups</span>
         </div>
     };
 
@@ -267,8 +267,8 @@ class App extends Component {
     };
 
     updatePlayerData = (player)=>{
-        console.log('app update player', player);
-        const showGroupPage = {...this.state.showGroupPage};
+        console.log('updatePlayerData. new player data:', player);
+        const showGroupPage = {...this.state.showGroupPage, players: [...this.state.showGroupPage.players]};
         let exist = false;
         showGroupPage.players = showGroupPage.players.map(p=>{
             if (p.id !== player.id) return p;
@@ -278,6 +278,9 @@ class App extends Component {
         if (!exist){
             showGroupPage.players.push(player)
         }
+        console.log('updatePlayerData. state before:', this.state.showGroupPage);
+        console.log('updatePlayerData. state after:', showGroupPage);
+
         this.setState({showGroupPage})
     }
 
@@ -340,8 +343,10 @@ class App extends Component {
     }
 
     render() {
-
         const {loading, isAuthenticated, groups, showGroupCreationForm, showGroupPage, showGroupEditForm}  = this.state;
+        if (window.location.search && window.location.search.includes('postman')){
+            return <Postman/>;
+        }
         if (loading){
             return  <Loading/>;
         }
