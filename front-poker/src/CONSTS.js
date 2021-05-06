@@ -3,9 +3,10 @@ const GREEN = 'green.png';
 const RED = 'red.png';
 const TRANSPARENT = 'transparent.png';
 
-export default {
+const defaults = {
     ANON_URL,
     GREEN,
     RED,
     TRANSPARENT
 };
+export default defaults;

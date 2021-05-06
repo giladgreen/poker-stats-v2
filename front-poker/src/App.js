@@ -378,7 +378,7 @@ class App extends Component {
             return  <NewGroupForm onCancel={this.onCancel} saveGroup={this.saveGroup} logout={this.logout}/>;
         }
 
-
+        const siteUnderConstruction = this.state.user && this.state.user.id === 'e7659c43-a0fe-449b-85cd-33d561d74995';
 
         const header = this.getHeader();
         return (
@@ -388,11 +388,14 @@ class App extends Component {
                 </div>
                 {header}
 
-
                 <div className="MainSection">
-
+                    { siteUnderConstruction ?
+                        <div id="site-under-construction-image-div">
+                            <img id="site-under-construction-image" srv="under-construction.jpeg"/>
+                        </div>
+                        :
                     <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}  />
-
+                    }
                 </div>
 
             </div>);
