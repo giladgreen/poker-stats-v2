@@ -391,7 +391,7 @@ class App extends Component {
                 <div className="MainSection">
                     { siteUnderConstruction ?
                         <div id="site-under-construction-image-div">
-                            <img id="site-under-construction-image" srv="under-construction.jpeg"/>
+                            <img id="site-under-construction-image" srv="https://www.poker-stats.com/under-construction.jpeg"/>
                         </div>
                         :
                     <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}  />
