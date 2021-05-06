@@ -11346,23 +11346,12 @@ body {
   padding-left: 40px;
 }
 
-#site-under-construction-image-div {
-  background: black;
-  position: fixed;
-  top: 10vh;
-  left: 0vw;
-  width: 100vw;
-  height: 90vh;
-  z-index: 9999999;
-}
-
 #site-under-construction-image {
-  position: relative;
-  top: 10vh;
-  left: 10vw;
-  width: 80%;
-  height: 80%;
-  z-index: 9999999999;
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  width: 100%;
+  height: 100%;
 }
 
 .menu-icon {
@@ -11455,20 +11444,6 @@ button {
 
   .MainSection {
     padding-left: 16px;
-  }
-
-  #site-under-construction-image-div {
-    top: 7vh;
-    left: 0vw;
-    width: 100vw;
-    height: 93vh;
-  }
-
-  #site-under-construction-image {
-    top: 4vh;
-    left: 4vw;
-    width: 92%;
-    height: 60%;
   }
 
   .events-header {

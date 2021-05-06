@@ -378,7 +378,7 @@ class App extends Component {
             return  <NewGroupForm onCancel={this.onCancel} saveGroup={this.saveGroup} logout={this.logout}/>;
         }
 
-        const siteUnderConstruction = this.state.user && this.state.user.id === 'e7659c43-a0fe-449b-85cd-33d561d74995';
+        const siteUnderConstruction = this.state.user && (this.state.user.id === '4271b8f8-c447-4cdc-9ebf-c655e4811a4f' || this.state.user.id === 'cd5d8442-9d26-4e90-9ec9-454e880a2b4f') ;
 
         const header = this.getHeader();
         return (
@@ -390,9 +390,8 @@ class App extends Component {
 
                 <div className="MainSection">
                     { siteUnderConstruction ?
-                        <div id="site-under-construction-image-div">
-                            <img id="site-under-construction-image" srv="https://www.poker-stats.com/under-construction.jpeg"/>
-                        </div>
+
+                            <img id="site-under-construction-image" src="under.png" alt="under-construction"/>
                         :
                     <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}  />
                     }
