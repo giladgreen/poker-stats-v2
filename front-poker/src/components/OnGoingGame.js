@@ -133,7 +133,7 @@ class OnGoingGame extends Component {
             const hasGrey = greysCount >0;
             const { name, imageUrl } = groupPlayers.find(p=>p.id === player.playerId);
             return {...player, hasBlue, bluesCount,hasGreen, greensCount,hasBlack, blacksCount,hasRed, redsCount,hasGrey, greysCount, name, imageUrl}
-        }).map((player, index)=>{
+        }).sort((playerA,playerB) => playerA.name > playerB.name ? -1 : 1 ).map((player, index)=>{
             const onImageError = (ev)=>{
                 if (player.imageUrl && player.imageUrl.length>1 && !ev.target.secondTry){
                     ev.target.secondTry = true;

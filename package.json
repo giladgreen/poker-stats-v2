@@ -14,7 +14,8 @@
     "commit-and-push": "git add . && git commit -am \"a\" && git push",
     "lint": "./node_modules/.bin/eslint \"./**/*.js\" --fix",
     "edit-swagger": "swagger project edit",
-    "test:coverage": "nyc npm run test:all && nyc check-coverage"
+    "test:coverage": "nyc npm run test:all && nyc check-coverage",
+    "push": "git add . && git commit -am 'a' && git push"
   },
   "main": "app.js",
   "dependencies": {
