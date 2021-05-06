@@ -377,8 +377,9 @@ class App extends Component {
         if (showGroupCreationForm){
             return  <NewGroupForm onCancel={this.onCancel} saveGroup={this.saveGroup} logout={this.logout}/>;
         }
-
-        const siteUnderConstruction = this.state.user && (this.state.user.id === '4271b8f8-c447-4cdc-9ebf-c655e4811a4f' || this.state.user.id === 'cd5d8442-9d26-4e90-9ec9-454e880a2b4f') ;
+        const ori= '4271b8f8-c447-4cdc-9ebf-c655e4811a4f';
+        const saar = 'cd5d8442-9d26-4e90-9ec9-454e880a2b4f';
+        const siteUnderConstruction = this.state.user && this.state.user.id === saar;
 
         const header = this.getHeader();
         return (
