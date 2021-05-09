@@ -36,7 +36,7 @@ function getGroupImages(req, res, next) {
 
 imagesRoutes.post('/images', addImage);
 imagesRoutes.delete('/images/:imageId', deleteImage);
-imagesRoutes.get('/groups/{groupId}/images', getGroupImages);
+imagesRoutes.get('/groups/:groupId/images', getGroupImages);
 
 module.exports = {
   addImage,
