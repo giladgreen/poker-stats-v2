@@ -139,8 +139,8 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds, player
 
   const { url, publicId } = await Cloudinary.upload(image);
   let imageId;
-  if (!playerImage){
-     imageId = await models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
+  if (!playerImage) {
+    imageId = await models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
   }
 
 

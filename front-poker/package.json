@@ -1,6 +1,6 @@
 {
   "name": "front-poker",
-  "version": "3.0.7",
+  "version": "3.0.16",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.8.0",
@@ -36,13 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-and-deploy": "npm version patch && rm -fr /Users/giladgreen/dev/poker-stats-v2/front-poker/build && react-scripts build && rm -fr /Users/giladgreen/dev/poker-stats-v2/public/* && mv -f /Users/giladgreen/dev/poker-stats-v2/front-poker/build/* /Users/giladgreen/dev/poker-stats-v2/public && echo 'now only push'",
-    "watch": "cd src && sass --watch scss:style"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "watch": "cd src && sass --watch scss:style",
+    "lint": "./node_modules/.bin/eslint \"./**/*.js*\" --fix"
   },
   "browserslist": {
     "production": [

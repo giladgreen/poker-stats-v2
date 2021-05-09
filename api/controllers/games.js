@@ -1,11 +1,13 @@
 const HttpStatus = require('http-status-codes');
+const gamesRoutes = require('express').Router();
 const gamesService = require('../services/games');
 const models = require('../models');
 const logger = require('../services/logger');
 
+
 function getGame(req, res, next) {
   const { userContext } = req;
-  const { groupId, gameId } = req.getAllParams();
+  const { gameId, groupId } = req.params;
   gamesService.getGame({ userContext, groupId, gameId })
     .then((game) => {
       res.send(game);
@@ -34,9 +36,10 @@ async function filterResults(res, userId, hideGames) {
     results: filteredResults,
   };
 }
+
 function getGames(req, res, next) {
-  const { groupId, limit, offset } = req.getAllParams();
-  const { userContext: { id: userId, hideGames } } = req;
+  const { groupId } = req.params;
+  const { userContext: { id: userId, hideGames }, query: { limit, offset } } = req;
 
   gamesService.getGames(groupId, limit, offset)
     .then((result) => {
@@ -46,8 +49,8 @@ function getGames(req, res, next) {
 }
 
 function createGame(req, res, next) {
-  const { groupId } = req.getAllParams();
-  const data = req.getBody();
+  const { groupId } = req.params;
+  const data = req.body;
   gamesService.createGame(groupId, data)
     .then((game) => {
       res.status(HttpStatus.CREATED).send(game);
@@ -56,8 +59,9 @@ function createGame(req, res, next) {
 }
 
 function updateGame(req, res, next) {
-  const { groupId, gameId } = req.getAllParams();
-  const data = req.getBody();
+  const { groupId, gameId } = req.params;
+  const data = req.body;
+
   const { userContext } = req;
 
   gamesService.updateGame(userContext, groupId, gameId, data)
@@ -66,8 +70,9 @@ function updateGame(req, res, next) {
     })
     .catch(next);
 }
+
 function deleteGame(req, res, next) {
-  const { groupId, gameId } = req.getAllParams();
+  const { groupId, gameId } = req.params;
   const { userContext } = req;
 
   gamesService.deleteGame(userContext, groupId, gameId)
@@ -77,10 +82,17 @@ function deleteGame(req, res, next) {
     .catch(next);
 }
 
+gamesRoutes.get('/groups/:groupId/games', getGames);
+gamesRoutes.post('/groups/:groupId/games', createGame);
+gamesRoutes.get('/groups/:groupId/games/:gameId', getGame);
+gamesRoutes.patch('/groups/:groupId/games/:gameId', updateGame);
+gamesRoutes.delete('/groups/:groupId/games/:gameId', deleteGame);
+
 module.exports = {
   createGame,
   getGame,
   getGames,
   updateGame,
   deleteGame,
+  gamesRoutes,
 };

@@ -14,7 +14,7 @@ async function updateGame(groupId, gameId, data, provider, token) {
         'Content-Type': 'application/json',
       },
     };
-    console.log('updateGame options',options)
+    console.log('updateGame options', options);
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
         if (error) {

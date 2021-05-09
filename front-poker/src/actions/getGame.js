@@ -3,7 +3,7 @@ import request from 'request';
 import URL_PREFIX from '../url';
 
 async function getGame(groupId, gameId, provider, token) {
-  console.log('getGame ' )
+  console.log('getGame ');
 
   return new Promise((resolve, reject) => {
     const options = {

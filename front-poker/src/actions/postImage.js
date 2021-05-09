@@ -1,15 +1,14 @@
 import request from 'request';
-import URL_PREFIX from '../url';
 import resizebase64 from 'resize-base64';
+import URL_PREFIX from '../url';
 
 async function postImage(base64image, tags, playerImage, provider, token) {
-
   try {
-    console.log('before',base64image)
-    base64image = resizebase64(base64image,600, 600);
-    console.log('after',base64image)
+    console.log('before', base64image);
+    base64image = resizebase64(base64image, 600, 600);
+    console.log('after', base64image);
   } catch (e) {
-    console.log('error!!',e)
+    console.log('error!!', e);
   }
 
   const { playerIds, gameIds, groupIds } = tags;
@@ -33,7 +32,6 @@ async function postImage(base64image, tags, playerImage, provider, token) {
 
     request(options, (error, response, body) => {
       if (error || response.statusCode >= 400) {
-
         if (error) {
           console.error('request cb error', error);
           return reject('failed to post image');

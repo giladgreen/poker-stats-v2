@@ -2,7 +2,7 @@
 
 module.exports = {
   NODE_ENV: process.env.NODE_ENV,
-  SERVER_PORT: process.env.PORT || 5000,
+  SERVER_PORT: process.env.PORT || 5001,
   EMAIL_USER: process.env.EMAIL_USER,
   EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
   FACEBOOK_AUTH_CLIENT_ID: process.env.FACEBOOK_AUTH_CLIENT_ID || '2487592561563671',
@@ -14,9 +14,9 @@ module.exports = {
   URL_PREFIX: process.env.URL_PREFIX,
   GOOGLE_CLIENT_ID: '819855379342-js3mkfftkk25qopes38dcbhr4oorup45.apps.googleusercontent.com',
   FACEBOOK_APP_ID: '2487592561563671',
-  ANON_URL: 'https://green-pokerstats.herokuapp.com/images/anonymous2.png',
-  GREEN: 'https://green-pokerstats.herokuapp.com/images/green.png',
-  RED: 'https://green-pokerstats.herokuapp.com/images/red.png',
+  ANON_URL: 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552184/anonymous2.png',
+  GREEN: 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/green.png',
+  RED: 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/red.png',
   WHITE: 'https://green-pokerstats.herokuapp.com/images/white.png',
-  TRANSPARENT: 'https://green-pokerstats.herokuapp.com/images/transparent.png',
+  TRANSPARENT: 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/transparent.png',
 };

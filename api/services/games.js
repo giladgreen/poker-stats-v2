@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-nested-ternary */
 const { notFound, unauthorized } = require('boom');
 
 const moment = require('moment');
@@ -9,7 +11,7 @@ const logger = require('./logger');
 const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt', 'extra'];
 
-const GILAD_USER_ID='e7659c43-a0fe-449b-85cd-33d561d74995';
+const GILAD_USER_ID = 'e7659c43-a0fe-449b-85cd-33d561d74995';
 
 const defaultValues = {
   description: '',
@@ -38,11 +40,11 @@ async function getGame({ groupId, gameId }) {
   })).map(data => data.toJSON());
   return game;
 }
-function isGameReady(game){
-  const totalBuyIn = game.playersData.map(pd=>pd.buyIn).reduce((total, num)=>  total + num, 0);
-  const totalCashOut =game.playersData.map(pd=>pd.cashOut).reduce((total, num)=>  total + num, 0);
+function isGameReady(game) {
+  const totalBuyIn = game.playersData.map(pd => pd.buyIn).reduce((total, num) => total + num, 0);
+  const totalCashOut = game.playersData.map(pd => pd.cashOut).reduce((total, num) => total + num, 0);
   const diff = totalBuyIn - totalCashOut;
-  return diff === 0 && game.playersData.length >1;
+  return diff === 0 && game.playersData.length > 1;
 }
 
 async function getGames(groupId, limit = 1000, offset = 0) {
@@ -68,11 +70,9 @@ async function getGames(groupId, limit = 1000, offset = 0) {
   const results = allGames.map(game => game.toJSON()).map((game) => {
     game.description = game.description || '';
     game.ready = isGameReady(game);
-    if (game.ready){
+    if (game.ready) {
       game.mvpPlayerId = game.playersData.map(data => ({ playerId: data.playerId, bottomLine: data.cashOut - data.buyIn }))
-          .reduce(function(a, b) {
-            return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
-          }).playerId;
+        .reduce((a, b) => (a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b)))).playerId;
     }
     return game;
   });
@@ -185,12 +185,10 @@ async function updateGame(userContext, groupId, gameId, data) {
   }
 
   const game = await getGame({ groupId, gameId });
-  if (ready){
+  if (ready) {
     try {
-      const mvpPlayerId = game.playersData.map(data => ({playerId: data.playerId, bottomLine: data.cashOut - data.buyIn}))
-          .reduce(function (a, b) {
-            return a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b));
-          }).playerId;
+      const mvpPlayerId = game.playersData.map(pdata => ({ playerId: pdata.playerId, bottomLine: pdata.cashOut - pdata.buyIn }))
+        .reduce((a, b) => (a.bottomLine > b.bottomLine ? a : (a.bottomLine < b.bottomLine ? b : (a.buyIn < b.buyIn ? a : b)))).playerId;
       let mvpPlayer;
       if (mvpPlayerId) {
         mvpPlayer = await models.players.findOne({
@@ -205,7 +203,7 @@ async function updateGame(userContext, groupId, gameId, data) {
 
       sendNotification(GILAD_USER_ID, 'Game Updated', link, text);
     } catch (e) {
-      logger.error('error sending update game notification',e.message, e.stack);
+      logger.error('error sending update game notification', e.message, e.stack);
     }
   }
 

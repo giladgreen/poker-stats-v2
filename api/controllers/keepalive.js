@@ -1,9 +1,13 @@
 const HttpStatus = require('http-status-codes');
+const keepAliveRoutes = require('express').Router();
 
-function keepAlive(req, res, next) {
-    res.status(HttpStatus.OK).send({ status: 'still alive' });
+function keepAlive(req, res) {
+  res.status(HttpStatus.OK).send({ status: 'still alive' });
 }
 
+keepAliveRoutes.get('/keep-alive', keepAlive);
+
 module.exports = {
-    keepAlive,
+  keepAlive,
+  keepAliveRoutes,
 };

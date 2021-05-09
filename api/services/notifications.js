@@ -42,7 +42,7 @@ async function sendNotification(userId, title, link, text) {
     const payload = JSON.stringify({ title, link, text });
     const subscription = JSON.parse(user.subscription);
 
-    await webpush.sendNotification(subscription, payload).then(()=>{
+    await webpush.sendNotification(subscription, payload).then(() => {
       logger.info('notification was sent');
     }).catch((error) => {
       logger.error(error.message);

@@ -1,9 +1,11 @@
 const HttpStatus = require('http-status-codes');
+const groupsRoutes = require('express').Router();
 const groupsService = require('../services/groups');
+
 
 function getGroup(req, res, next) {
   const { userContext } = req;
-  const { groupId } = req.getAllParams();
+  const { groupId } = req.params;
   groupsService.getGroup(userContext, groupId)
     .then((group) => {
       res.send(group);
@@ -12,8 +14,7 @@ function getGroup(req, res, next) {
 }
 
 function getGroups(req, res, next) {
-  const { userContext } = req;
-  const { limit, offset } = req.getAllParams();
+  const { userContext, query: { limit, offset } } = req;
   groupsService.getGroups(userContext, limit, offset)
     .then((result) => {
       res.send(result);
@@ -23,7 +24,7 @@ function getGroups(req, res, next) {
 
 function createGroup(req, res, next) {
   const { userContext } = req;
-  const data = req.getBody();
+  const data = req.body;
   groupsService.createGroup(userContext, data)
     .then((group) => {
       res.status(HttpStatus.CREATED).send(group);
@@ -33,16 +34,17 @@ function createGroup(req, res, next) {
 
 function updateGroup(req, res, next) {
   const { userContext } = req;
-  const { groupId } = req.getAllParams();
-  const data = req.getBody();
+  const { groupId } = req.params;
+  const data = req.body;
   groupsService.updateGroup(userContext, groupId, data)
     .then((group) => {
       res.send(group);
     })
     .catch(next);
 }
+
 function deleteGroup(req, res, next) {
-  const { groupId } = req.getAllParams();
+  const { groupId } = req.params;
   groupsService.deleteGroup(groupId)
     .then(() => {
       res.status(HttpStatus.NO_CONTENT).send({ deleted: true });
@@ -50,10 +52,19 @@ function deleteGroup(req, res, next) {
     .catch(next);
 }
 
+
+groupsRoutes.get('/groups', getGroups);
+groupsRoutes.post('/groups', createGroup);
+groupsRoutes.get('/groups/:groupId', getGroup);
+groupsRoutes.patch('/groups/:groupId', updateGroup);
+groupsRoutes.delete('/groups/:groupId', deleteGroup);
+
+
 module.exports = {
   createGroup,
   getGroup,
   getGroups,
   updateGroup,
   deleteGroup,
+  groupsRoutes,
 };

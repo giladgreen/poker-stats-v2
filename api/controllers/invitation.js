@@ -1,9 +1,10 @@
 const HttpStatus = require('http-status-codes');
+const invitationRoutes = require('express').Router();
+
 const invitationsService = require('../services/invitations');
 
 function createInvitationRequest(req, res, next) {
-  const body = req.getBody();
-  const { requestedGroupId } = body;
+  const { requestedGroupId } = req.body;
   const { userContext } = req;
   const userId = userContext.id;
   invitationsService.createInvitationRequest(requestedGroupId, userId)
@@ -15,8 +16,10 @@ function createInvitationRequest(req, res, next) {
 
 function answerInvitationRequest(req, res, next) {
   const {
-    invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin,
-  } = req.getAllParams();
+    invitationRequestId,
+  } = req.params;
+
+  const { invitationRequestPlayerId, approved, setAsAdmin } = req.query;
 
   invitationsService.answerInvitationRequest(invitationRequestId, invitationRequestPlayerId, approved, setAsAdmin)
     .then((status) => {
@@ -25,7 +28,12 @@ function answerInvitationRequest(req, res, next) {
     .catch(next);
 }
 
+invitationRoutes.post('/invitations-requests', createInvitationRequest);
+invitationRoutes.get('/invitations-requests/:invitationRequestId', answerInvitationRequest);
+
+
 module.exports = {
   createInvitationRequest,
   answerInvitationRequest,
+  invitationRoutes,
 };

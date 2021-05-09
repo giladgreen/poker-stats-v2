@@ -4,7 +4,7 @@ import URL_PREFIX from '../url';
 
 async function login(provider, token) {
   return new Promise((resolve, reject) => {
-   // console.log('login URL_PREFIX', URL_PREFIX);
+    // console.log('login URL_PREFIX', URL_PREFIX);
 
     const options = {
       url: `${URL_PREFIX}/groups/`,

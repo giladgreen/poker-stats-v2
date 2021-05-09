@@ -4,9 +4,9 @@ const RED = 'red.png';
 const TRANSPARENT = 'transparent.png';
 
 const defaults = {
-    ANON_URL,
-    GREEN,
-    RED,
-    TRANSPARENT
+  ANON_URL,
+  GREEN,
+  RED,
+  TRANSPARENT,
 };
 export default defaults;

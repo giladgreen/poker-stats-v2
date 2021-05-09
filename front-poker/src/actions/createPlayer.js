@@ -1,4 +1,5 @@
-
+/* eslint-disable no-console */
+/* eslint-disable prefer-promise-reject-errors */
 import request from 'request';
 import URL_PREFIX from '../url';
 

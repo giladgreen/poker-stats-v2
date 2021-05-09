@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
+/* eslint-disable no-mixed-operators */
 /* eslint-disable no-useless-escape */
 import registerSubscription from './actions/registerSubscription';
 import unregisterSubscription from './actions/unregisterSubscription';
@@ -29,16 +33,16 @@ if (subscription) {
 }
 
 if ('serviceWorker' in navigator && 'PushManager' in window) {
-  //console.log('Service Worker and Push is supported');
+  // console.log('Service Worker and Push is supported');
 
   navigator.serviceWorker.register('service-worker.js')
     .then((swReg) => {
-     // console.log('Service Worker is registered', swReg);
+      // console.log('Service Worker is registered', swReg);
 
       swRegistration = swReg;
     })
     .catch((error) => {
-     console.error('Service Worker Error', error);
+      console.error('Service Worker Error', error);
       pushSupported = false;
     });
 } else {
@@ -65,16 +69,16 @@ function subscribeUser(provider, token) {
     applicationServerKey,
   })
     .then((subscription) => {
-      //console.log('User is subscribed.');
+      // console.log('User is subscribed.');
 
       updateSubscriptionOnServer(subscription, provider, token);
-      //console.log('user is subscribed to push notifications');
+      // console.log('user is subscribed to push notifications');
       isSubscribed = true;
     });
 }
 
 function unsubscribeUser(provider, token) {
-  //console.log('unsubscribeUser');
+  // console.log('unsubscribeUser');
   localStorage.removeItem('subscription');
   if (!isSubscribed) {
     return;
@@ -89,7 +93,7 @@ function unsubscribeUser(provider, token) {
 }
 
 function IsSubscribed() {
- // console.log('IsSubscribed()', isSubscribed);
+  // console.log('IsSubscribed()', isSubscribed);
   return isSubscribed;
 }
 function IsPushSupported() {

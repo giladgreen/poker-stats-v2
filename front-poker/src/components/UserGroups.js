@@ -22,7 +22,7 @@ class UserGroups extends Component {
     startIntro(){
         introJs().start();
     }
-    getImage=()=>{
+    getImage(){
 
         this.imageIndex++;
 
@@ -32,7 +32,7 @@ class UserGroups extends Component {
         return `backgroundImage${this.imageIndex}.jpg`;
     }
 
-    getGroupsDiv=({ groups, showAddGroupItem})=>{
+    getGroupsDiv({ groups, showAddGroupItem}){
 
         const groupsItems = groups.map((group) => {
             const style = {

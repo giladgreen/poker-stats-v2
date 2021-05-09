@@ -392,7 +392,7 @@ class App extends Component {
                 <div className="MainSection">
                     { siteUnderConstruction ?
 
-                            <img id="site-under-construction-image" src="under.png" alt="under-construction"/>
+                            <img id="site-under-construction-image" src="https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552184/under.png" alt="under-construction"/>
                         :
                     <UserGroups createGroup={this.createGroup} groups={groups} showGroup={this.showGroup}  />
                     }

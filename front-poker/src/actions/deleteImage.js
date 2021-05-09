@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable prefer-promise-reject-errors */
 import request from 'request';
 import URL_PREFIX from '../url';
 
 async function deleteImage(imageId, provider, token) {
-
   return new Promise((resolve, reject) => {
     const options = {
       method: 'DELETE',

@@ -1,20 +1,26 @@
-const SwaggerExpress = require('swagger-express-mw');
-
 const express = require('express');
-
-const app = express();
 const path = require('path');
 const compression = require('compression');
 const favicon = require('serve-favicon');
-const socketIO = require('socket.io');
-const http = require('http');
-
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
-const { NODE_ENV, SERVER_PORT } = require('./config.js');
+const transactionIdMiddlewares = require('./api/middlewares/transaction_id');
+const loggerMiddlewares = require('./api/middlewares/logger');
+const userContextMiddlewares = require('./api/middlewares/user_context');
+const errorHandler = require('./api/middlewares/error_handler');
+const { NODE_ENV, SERVER_PORT } = require('./config');
 const logger = require('./api/services/logger');
-const onlineGamesService = require('./api/services/online-games');
+const { gamesRoutes } = require('./api/controllers/games');
+const { groupsRoutes } = require('./api/controllers/groups');
+const { imagesRoutes } = require('./api/controllers/images');
+const { invitationRoutes } = require('./api/controllers/invitation');
+const { notificationsRoutes } = require('./api/controllers/notifications');
+const { playersRoutes } = require('./api/controllers/players');
+const { keepAliveRoutes } = require('./api/controllers/keepalive');
 const terminate = require('./api/helpers/terminate');
+
+const router = express.Router();
+const app = express();
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
@@ -40,48 +46,38 @@ app.use((req, res, next) => {
   res.header('Access-Control-Expose-Headers', '*');
   next();
 });
-
+app.use(transactionIdMiddlewares);
+app.use(loggerMiddlewares);
+app.use(userContextMiddlewares);
+app.use('/api/v2', router);
 
 logger.info('app started..');
-/**
- * Swagger initialization on top of express
- */
-const config = {
-  appRoot: __dirname,
-};
+
 
 logger.info('[lifecycle]: core service is booting up', {
   environment: NODE_ENV,
 });
 
 
-SwaggerExpress.create(config, (err, swaggerExpress) => {
-  if (err) { throw err; }
+router.use('', gamesRoutes);
+router.use('', groupsRoutes);
+router.use('', imagesRoutes);
+router.use('', invitationRoutes);
+router.use('', keepAliveRoutes);
+router.use('', notificationsRoutes);
+router.use('', playersRoutes);
+app.use(errorHandler);
 
-
-  swaggerExpress.register(app);
-
-  logger.info('port', SERVER_PORT);
-  // app.listen(port);
-
-  const server = http.createServer(app);
-  const io = socketIO.listen(server);
-
-  server.listen(SERVER_PORT, () => {
-    logger.info('### startListening ##');
-    logger.info(`Node app is running on port:  ${SERVER_PORT}`);
-    // Whenever someone connects this gets executed
-
-    io.on('connection', (socket) => {
-      onlineGamesService.initNewConnection(socket);
-      socket.on('disconnect', () => onlineGamesService.disconnect(socket));
-    });
-  });
+app.listen(SERVER_PORT, () => {
+  logger.info('### startListening ##');
+  logger.info(`Node app is running on port:  ${SERVER_PORT}`);
 });
+
 
 module.exports = {
   server: app,
 };
+
 const exitHandler = terminate(app, {
   coredump: false, timeout: 500,
 });
