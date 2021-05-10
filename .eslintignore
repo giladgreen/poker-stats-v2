@@ -2,11 +2,13 @@ node_modules/
 public/
 front-poker/
 migration/
+dist/
+tests/
 **/migration/
 **/node_modules/
 **/*.min.js
 **/coverage/**/*.js
 **/test-client/**/*.js
 **/Gruntfile.js
-**/terminate.js
+**/terminate.ts
 **/front**/*.*

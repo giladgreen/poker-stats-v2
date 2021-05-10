@@ -9,4 +9,4 @@ migration/
 **/test-client/**/*.js
 **/frontend-poker/**/*.js
 **/Gruntfile.js
-**/terminate.js
+**/terminate.ts

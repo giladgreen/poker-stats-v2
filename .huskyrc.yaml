@@ -1,3 +1,1 @@
 hooks:
-  pre-commit: "npm run lint"
-  post-commit: "npm run test:all"
