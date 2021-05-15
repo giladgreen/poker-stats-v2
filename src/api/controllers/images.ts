@@ -2,6 +2,7 @@ import HttpStatus from 'http-status-codes';
 import express from 'express';
 import imageService from '../services/images';
 import { Request, Response} from '../../types/declerations';
+import logger from '../services/logger';
 
 export const imagesRoutes = express.Router();
 
@@ -10,6 +11,8 @@ export function addImage(req: Request, res:Response, next: Function) {
   const {
     image, playerIds, gameIds, groupIds, playerImage,
   } = req.body;
+  logger.info('got request to add image. user context:',userContext)
+  logger.info(' image:',image,' playerIds:',playerIds,'gameIds:',gameIds,'groupIds:', groupIds, 'playerImage:',playerImage);
   imageService.addImage(userContext, image, playerIds, gameIds, groupIds, playerImage)
     .then((data) => {
       res.status(HttpStatus.CREATED).send(data);

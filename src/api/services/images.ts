@@ -2,6 +2,7 @@ import { badRequest, forbidden } from'boom';
 import Cloudinary from '../helpers/cloudinary';
 import Models from'../models';
 import {UserContext} from "../../types/declerations";
+import logger from './logger';
 
 const { Op } = Models.Sequelize;
 
@@ -144,12 +145,15 @@ async function addImage(userContext:UserContext, image:any, playerIds:string[], 
   }
 // @ts-ignore
   const { url, publicId } = await Cloudinary.upload(image);
-  let imageId: string;
+  let imageId: string = '';
   if (!playerImage) {
+    logger.info('NOT playerImage, about to insert to image db, url:',url,'publicId:',publicId)
     // @ts-ignore
-    imageId = await Models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
+    imageId = (await Models.images.create({ image: url, publicId, uploadedBy: userContext.id })).id;
+  } else{
+    logger.info('playerImage, about to insert to image db, url:',url,'publicId:',publicId)
   }
-
+  logger.info(`imageId: ${imageId}`)
 // @ts-ignore
   await Promise.all(groupIds.map(groupId => Models.tags.create({ imageId, groupId })));
   // @ts-ignore

@@ -697,12 +697,12 @@
         "affectsGlobalScope": false
       },
       "./src/api/services/images.ts": {
-        "version": "e6298ffddccd0a0ddb9367c51b0216ef630659b546bf865a89b81070adb8f632",
+        "version": "0fe61d5c595382168c92bf320ab0f34e91be55714e2e9e0c6b23041cf87a565e",
         "signature": "d9cf09fe20ff2f2e327ea9ee9ebfd20d32cd0394314144061878bbaa69d9488d",
         "affectsGlobalScope": false
       },
       "./src/api/controllers/images.ts": {
-        "version": "afec29eb051dac5b7de25857cf3262f832acaf2cb2da1593860f805252c4775d",
+        "version": "b633719d214fe2e7d27e22abfdf4f8426f123ad0a91b0a67ef18d7cda8c3ed08",
         "signature": "12673c683a7775b463cbef774f99a233486bb5aaff8bf684585175c92d37718b",
         "affectsGlobalScope": false
       },
@@ -1746,6 +1746,7 @@
       "./src/api/controllers/images.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./src/api/services/images.ts",
+        "./src/api/services/logger.ts",
         "./src/global.d.ts",
         "./src/types/declerations.ts"
       ],
@@ -1866,6 +1867,7 @@
         "./node_modules/@types/boom/index.d.ts",
         "./src/api/helpers/cloudinary.ts",
         "./src/api/models/index.ts",
+        "./src/api/services/logger.ts",
         "./src/types/declerations.ts"
       ],
       "./src/api/services/invitations.ts": [
