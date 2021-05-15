@@ -1,5 +1,6 @@
 const { badRequest, forbidden } = require('boom');
 const Cloudinary = require('../helpers/cloudinary');
+const logger = require('./logger');
 const models = require('../models');
 
 const { Op } = models.Sequelize;
@@ -139,14 +140,19 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds, player
 
   const { url, publicId } = await Cloudinary.upload(image);
   let imageId;
+  logger.info(`Add image. publicId: ${publicId}  url: ${url}, playerImage:${playerImage}`);
+
   if (!playerImage) {
     imageId = await models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
   }
+  logger.info(`Add image. imageId: ${imageId}  `);
 
+  if (imageId){
+    await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
+    await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
+    await Promise.all(playerIds.map(playerId => models.tags.create({ imageId, playerId })));
+  }
 
-  await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
-  await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
-  await Promise.all(playerIds.map(playerId => models.tags.create({ imageId, playerId })));
 
   const user = await models.users.findOne({
     where: {
