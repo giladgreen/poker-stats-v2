@@ -133,8 +133,11 @@ function shouldSendMail(user:any) {
 }
 
 async function userContextMiddlewares(request: Request, response:Response, next:Function) {
+  console.log('*** user context start')
+  console.log('*** request headers', request.headers)
   try {
     if (request.method === 'OPTIONS' || request.url.includes('approved=') || request.url.includes('well-known') || request.url.includes('keep-alive')) {
+      console.log('*** user context start: ignoring')
       return next();
     }
 
@@ -142,10 +145,13 @@ async function userContextMiddlewares(request: Request, response:Response, next:
     const provider = <string>headers.provider;
     const accessToken = <string>headers['x-auth-token'];
     if (!provider || !accessToken) {
+      console.log('*** user context start: missing token headers')
       throw 'missing token headers';
     }
+    console.log('*** user context start: provider',provider, 'accessToken', accessToken)
     // @ts-ignore
     if (!LEGAL_PROVIDERS.includes(provider)) {
+      console.log('*** user context start: unknown provider')
       throw `unknown provider: ${provider}`;
     }
     let existingUser;
@@ -160,6 +166,8 @@ async function userContextMiddlewares(request: Request, response:Response, next:
         },
       });
     } catch (e) {
+      console.log('*** user context start: get user throw error')
+      console.log('*** error:',e.message)
       logger.info('[UserContext:fitting] ERROR ');
       logger.info(e.message);
       logger.info(e);
@@ -168,6 +176,7 @@ async function userContextMiddlewares(request: Request, response:Response, next:
 
     if (existingUser) {
       const userContext = existingUser.toJSON();
+      console.log('*** existingUser:',existingUser)
       request.userContext = userContext;
       // logger.info(`[UserContext:fitting] user exist, and is using token saved in db: ${userContext.firstName} ${userContext.familyName} (${userContext.email})`);
       await validateRequestPermissions(request);
@@ -182,6 +191,8 @@ async function userContextMiddlewares(request: Request, response:Response, next:
       });
       response.setHeader('x-user-context', encodeURI(JSON.stringify(userContext)));
       return next();
+    } else{
+      console.log('*** no existingUser:')
     }
 
     const profile = await getProfile(provider, accessToken);
@@ -231,8 +242,11 @@ async function userContextMiddlewares(request: Request, response:Response, next:
   } catch (error) {
     if (typeof error === 'string') {
       logger.error(`[UserContext:fitting] error: ${error} `);
+      console.log('##### 1')
       return next(unauthorized(error));
     }
+    console.log('##### 2')
+
     logger.error(`[UserContext:fitting] error: ${JSON.stringify(error)} `);
     return next(unauthorized('failed to login'));
   }

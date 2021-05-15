@@ -1,6 +1,5 @@
-
-
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.TRANSPARENT = exports.WHITE = exports.RED = exports.GREEN = exports.ANON_URL = exports.FACEBOOK_APP_ID = exports.GOOGLE_CLIENT_ID = exports.URL_PREFIX = exports.DATABASE_URL = exports.STORAGE = exports.GOOGLE_AUTH_CLIENT_SECRET = exports.GOOGLE_AUTH_CLIENT_ID = exports.FACEBOOK_AUTH_CLIENT_SECRET = exports.FACEBOOK_AUTH_CLIENT_ID = exports.EMAIL_PASSWORD = exports.EMAIL_USER = exports.SERVER_PORT = exports.NODE_ENV = void 0;
 // process.env.NODE_ENV = 'local';
 exports.NODE_ENV = process.env.NODE_ENV;
@@ -21,4 +20,5 @@ exports.GREEN = 'https=//res.cloudinary.com/www-poker-stats-com/image/upload/v16
 exports.RED = 'https=//res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/red.png';
 exports.WHITE = 'https=//green-pokerstats.herokuapp.com/images/white.png';
 exports.TRANSPARENT = 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/transparent.png';
-// # sourceMappingURL=config.js.map
+console.log('DATABASE_URL', exports.DATABASE_URL);
+//# sourceMappingURL=config.js.map

@@ -18,3 +18,4 @@ export const RED= 'https=//res.cloudinary.com/www-poker-stats-com/image/upload/v
 export const WHITE= 'https=//green-pokerstats.herokuapp.com/images/white.png';
 export const TRANSPARENT= 'https://res.cloudinary.com/www-poker-stats-com/image/upload/v1620552183/transparent.png';
 
+console.log('DATABASE_URL',DATABASE_URL)

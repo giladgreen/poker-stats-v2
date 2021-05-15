@@ -20,8 +20,13 @@ class GoogleTokenStrategy extends OAuth2Strategy {
   authenticate(accessToken:string) {
     return new Promise((resolve, reject) => {
       // eslint-disable-next-line no-underscore-dangle
+      console.log('*** calling auth on google with accessToken:',accessToken)
+      console.log('*** get https://www.googleapis.com/oauth2/v1/userinfo')
       this._oauth2.get('https://www.googleapis.com/oauth2/v1/userinfo', accessToken, (err:any, body:any) => {
         if (err) {
+          console.log('**************')
+          console.log('*** got error:',err)
+          console.log('**************')
           return reject(new InternalOAuthError('failed to fetch user profile', err));
         }
         try {
