@@ -234,39 +234,46 @@ function addImage(userContext, image, playerIds, gameIds, groupIds, playerImage)
                 case 4:
                     _a = _b.sent(), url = _a.url, publicId = _a.publicId;
                     imageId = '';
-                    if (!!playerImage) return [3 /*break*/, 6];
+                    if (!!playerImage) return [3 /*break*/, 7];
                     logger_1.default.info('NOT playerImage, about to insert to image db, url:', url, 'publicId:', publicId);
+                    // @ts-ignore
                     return [4 /*yield*/, models_1.default.images.create({ image: url, publicId: publicId, uploadedBy: userContext.id })];
                 case 5:
                     // @ts-ignore
-                    imageId = (_b.sent()).id;
-                    return [3 /*break*/, 7];
+                    _b.sent();
+                    return [4 /*yield*/, models_1.default.images.findOne({ where: { image: url, publicId: publicId, uploadedBy: userContext.id } })];
                 case 6:
-                    logger_1.default.info('playerImage, about to insert to image db, url:', url, 'publicId:', publicId);
-                    _b.label = 7;
+                    // @ts-ignore
+                    imageId = (_b.sent()).id;
+                    return [3 /*break*/, 8];
                 case 7:
+                    logger_1.default.info('playerImage, about to insert to image db, url:', url, 'publicId:', publicId);
+                    _b.label = 8;
+                case 8:
                     logger_1.default.info("imageId: " + imageId);
+                    if (!imageId) return [3 /*break*/, 12];
                     // @ts-ignore
                     return [4 /*yield*/, Promise.all(groupIds.map(function (groupId) { return models_1.default.tags.create({ imageId: imageId, groupId: groupId }); }))];
-                case 8:
-                    // @ts-ignore
-                    _b.sent();
-                    // @ts-ignore
-                    return [4 /*yield*/, Promise.all(gameIds.map(function (gameId) { return models_1.default.tags.create({ imageId: imageId, gameId: gameId }); }))];
                 case 9:
                     // @ts-ignore
                     _b.sent();
                     // @ts-ignore
-                    return [4 /*yield*/, Promise.all(playerIds.map(function (playerId) { return models_1.default.tags.create({ imageId: imageId, playerId: playerId }); }))];
+                    return [4 /*yield*/, Promise.all(gameIds.map(function (gameId) { return models_1.default.tags.create({ imageId: imageId, gameId: gameId }); }))];
                 case 10:
                     // @ts-ignore
                     _b.sent();
-                    return [4 /*yield*/, models_1.default.users.findOne({
-                            where: {
-                                id: userContext.id,
-                            },
-                        })];
+                    // @ts-ignore
+                    return [4 /*yield*/, Promise.all(playerIds.map(function (playerId) { return models_1.default.tags.create({ imageId: imageId, playerId: playerId }); }))];
                 case 11:
+                    // @ts-ignore
+                    _b.sent();
+                    _b.label = 12;
+                case 12: return [4 /*yield*/, models_1.default.users.findOne({
+                        where: {
+                            id: userContext.id,
+                        },
+                    })];
+                case 13:
                     user = _b.sent();
                     return [2 /*return*/, {
                             uploadedById: userContext.id,

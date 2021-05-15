@@ -146,21 +146,26 @@ async function addImage(userContext:UserContext, image:any, playerIds:string[], 
 // @ts-ignore
   const { url, publicId } = await Cloudinary.upload(image);
   let imageId: string = '';
+
   if (!playerImage) {
     logger.info('NOT playerImage, about to insert to image db, url:',url,'publicId:',publicId)
     // @ts-ignore
-    imageId = (await Models.images.create({ image: url, publicId, uploadedBy: userContext.id })).id;
+    await Models.images.create({ image: url, publicId, uploadedBy: userContext.id });
+    // @ts-ignore
+    imageId = (await Models.images.findOne({ where: { image: url, publicId, uploadedBy: userContext.id } })).id;
   } else{
     logger.info('playerImage, about to insert to image db, url:',url,'publicId:',publicId)
   }
   logger.info(`imageId: ${imageId}`);
+  if (imageId) {
+    // @ts-ignore
+    await Promise.all(groupIds.map(groupId => Models.tags.create({ imageId, groupId })));
+    // @ts-ignore
+    await Promise.all(gameIds.map(gameId => Models.tags.create({ imageId, gameId })));
+    // @ts-ignore
+    await Promise.all(playerIds.map(playerId => Models.tags.create({ imageId, playerId })));
+  }
 
-// @ts-ignore
-  await Promise.all(groupIds.map(groupId => Models.tags.create({ imageId, groupId })));
-  // @ts-ignore
-  await Promise.all(gameIds.map(gameId => Models.tags.create({ imageId, gameId })));
-  // @ts-ignore
-  await Promise.all(playerIds.map(playerId => Models.tags.create({ imageId, playerId })));
 // @ts-ignore
   const user = await Models.users.findOne({
     where: {
