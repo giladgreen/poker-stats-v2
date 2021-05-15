@@ -144,7 +144,7 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds, player
 
   if (!playerImage) {
     await models.images.create({ image: url, publicId, uploadedBy: userContext.id });
-    imageId = (await models.images.findOne({ image: url, publicId, uploadedBy: userContext.id })).id;
+    imageId = (await models.images.findOne({ where: { image: url, publicId, uploadedBy: userContext.id }})).id;
   }
   logger.info(`Add image. imageId: ${imageId}  `);
 
