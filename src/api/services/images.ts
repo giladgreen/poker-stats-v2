@@ -153,7 +153,8 @@ async function addImage(userContext:UserContext, image:any, playerIds:string[], 
   } else{
     logger.info('playerImage, about to insert to image db, url:',url,'publicId:',publicId)
   }
-  logger.info(`imageId: ${imageId}`)
+  logger.info(`imageId: ${imageId}`);
+
 // @ts-ignore
   await Promise.all(groupIds.map(groupId => Models.tags.create({ imageId, groupId })));
   // @ts-ignore

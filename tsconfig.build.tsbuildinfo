@@ -697,7 +697,7 @@
         "affectsGlobalScope": false
       },
       "./src/api/services/images.ts": {
-        "version": "0fe61d5c595382168c92bf320ab0f34e91be55714e2e9e0c6b23041cf87a565e",
+        "version": "551a84df37084c6ac90ff1a1699b11b5115a8a26057339a52339878b611fcd30",
         "signature": "d9cf09fe20ff2f2e327ea9ee9ebfd20d32cd0394314144061878bbaa69d9488d",
         "affectsGlobalScope": false
       },
@@ -1061,7 +1061,7 @@
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "outDir": "./dist",
+      "outDir": "./dist2",
       "rootDir": "./src",
       "project": "./tsconfig.build.json",
       "configFilePath": "./tsconfig.build.json"
