@@ -143,11 +143,12 @@ async function addImage(userContext, image, playerIds, gameIds, groupIds, player
   logger.info(`Add image. publicId: ${publicId}  url: ${url}, playerImage:${playerImage}`);
 
   if (!playerImage) {
-    imageId = await models.images.create({ image: url, publicId, uploadedBy: userContext.id }).id;
+    await models.images.create({ image: url, publicId, uploadedBy: userContext.id });
+    imageId = (await models.images.findOne({ image: url, publicId, uploadedBy: userContext.id })).id;
   }
   logger.info(`Add image. imageId: ${imageId}  `);
 
-  if (imageId){
+  if (imageId) {
     await Promise.all(groupIds.map(groupId => models.tags.create({ imageId, groupId })));
     await Promise.all(gameIds.map(gameId => models.tags.create({ imageId, gameId })));
     await Promise.all(playerIds.map(playerId => models.tags.create({ imageId, playerId })));
