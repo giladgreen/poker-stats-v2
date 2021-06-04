@@ -1,5 +1,5 @@
 const { notFound } = require('boom');
-const stringSimilarity = require("string-similarity");
+const stringSimilarity = require('string-similarity');
 const models = require('../models');
 const logger = require('./logger');
 const { sendHtmlMail } = require('./emails');
@@ -111,13 +111,13 @@ function getLinkAddress(invitationRequestId, playerId, approved, setAsAdmin) {
   return `${pokerStatsUrlPrefix}/invitations-requests/${invitationRequestId}?invitationRequestPlayerId=${playerId}&approved=${approved}&setAsAdmin=${setAsAdmin}`;
 }
 
-function getPlayersLinks(players, userName, invitationRequestId){
+function getPlayersLinks(players, userName, invitationRequestId) {
   const nameToScore = {};
-  stringSimilarity.findBestMatch(userName, players.map((p)=>p.name.toLowerCase())).ratings.forEach(item =>{
-    nameToScore[item.target] = item.rating
+  stringSimilarity.findBestMatch(userName, players.map(p => p.name.toLowerCase())).ratings.forEach((item) => {
+    nameToScore[item.target] = item.rating;
   });
 
-  return players.sort((a,b)=>(nameToScore[a.name.toLowerCase()] < nameToScore[b.name.toLowerCase()] ? -1 : 1)).map((player) => {
+  return players.sort((a, b) => (nameToScore[a.name.toLowerCase()] > nameToScore[b.name.toLowerCase()] ? -1 : 1)).map((player) => {
     const nonAdminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, false);
     const adminApproveAddress = getLinkAddress(invitationRequestId, player.id, true, true);
     /* istanbul ignore next */
