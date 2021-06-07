@@ -125,7 +125,7 @@ class GameData extends Component{
     }
 
     getNamesSection(playersData, playerWidth, margin, first){
-        console.log('getNamesSection', playersData)
+
         return playersData.map(playerData=>{
 
             const key = `${playerData.id}_item_name`;

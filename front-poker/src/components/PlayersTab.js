@@ -28,7 +28,7 @@ class PlayersTab extends Component {
             };
 
             return (
-                <div key={`plyr_${player.id}`} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
+                <div key={`plyr_${player.id}`} id={`plyr_${player.id}`} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
                     <div className="player-item-div-inner" style={style}>
                         <div><b>{player.name}</b></div>
                         {  player.gamesCount ?
