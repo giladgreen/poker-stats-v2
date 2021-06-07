@@ -221,7 +221,7 @@ class PlayersTab extends Component {
 
 
     render() {
-        console.log('PlayersTab render', this.props);
+
         if (this.state.newPlayer){
             return this.getNewPlayerSection()
         }

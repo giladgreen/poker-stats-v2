@@ -13,7 +13,7 @@ class GameSummary extends Component {
     }
     constructor(props){
         super(props);
-        console.log('gamesummary ctor',props);
+
         const { group, game } = props;
         const { isAdmin} = group;
 
@@ -92,7 +92,6 @@ class GameSummary extends Component {
         const group = this.props.group;
         const game = this.game;
         const gamePlayersData = this.gamePlayersData;
-        console.log('gamePlayersData',gamePlayersData)
         const isAdmin = this.isAdmin;
 
         return (
