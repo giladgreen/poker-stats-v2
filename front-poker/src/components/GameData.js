@@ -146,7 +146,7 @@ class GameData extends Component{
                 width:playerWidth-margin,
                 marginRight:margin,
             };
-            console.log('-playerData', playerData)
+
             return  (
                 <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playerData.playerId)}}>
                     {displayName}

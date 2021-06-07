@@ -112,7 +112,7 @@ class PlayerSummary extends Component {
         const yearsButtons = Object.keys(this.yearsObject).sort().map(year=>{
             return <GrayBubbleButton key={`year-${year}`} className="year-button" onClick={()=> this.setState({ sliderValues: { min: this.yearsObject[year].from, max: this.yearsObject[year].to } })}>{year}</GrayBubbleButton>
         });
-console.log('player',player)
+
         return (
             <div className="playerSummary">
                 <div className="playerSummaryHeader">

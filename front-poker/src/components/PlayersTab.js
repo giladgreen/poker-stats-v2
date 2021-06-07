@@ -26,9 +26,9 @@ class PlayersTab extends Component {
                 backgroundImage: `url(${player.imageUrl || FULL_ANON_URL})`,
                 borderRadiusTop: '50px',
             };
-console.log('player',player)
+
             return (
-                <div key={`plyr_${player.playerId}`}  className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
+                <div key={`plyr_${player.playerId}`} id={`plyr_${player.id}`} className={`player-item-div`}  onClick={()=>this.showPlayerData(player)}>
                     <div id={`plyr_${player.playerId}`} className="player-item-div-inner" style={style}>
                         <div><b>{player.name}</b></div>
                         {  player.gamesCount ?
