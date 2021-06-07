@@ -6,6 +6,7 @@ import CONSTS from '../CONSTS';
 import Size from '../sizes';
 import InputRange from "react-input-range";
 import ImageSlider from '../components/ImageSlider';
+import goToPlayerPage from '../actions/goToPlayerPage';
 const colors = ["#317F42",  "#14A9B6",  "#D9892B",  "#A23DA3",  "#A3A23D",  "#9189DF",  "#74B0A1",  "#A53542",  "#FD0724",  "#8F6947",  "#FF77E7", "#447F66",  "#55A9A7",  "#D6696B",  "#423D7A"];
 
 const { ANON_URL, GREEN, RED, TRANSPARENT} = CONSTS;
@@ -145,7 +146,7 @@ class GameData extends Component{
                 marginRight:margin,
             };
             return  (
-                <div key={key} style={styleObject} className={className}>
+                <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playersData.playerId)}}>
                     {displayName}
                 </div>
             );
@@ -207,8 +208,8 @@ class GameData extends Component{
                 marginRight:margin,
             };
             return  (
-                <div key={key} style={styleObject} className="GamePlayerBalace"  >
-                    <span className="GamePlayerBalaceCurrencySign">{showSummaryByMoney ? '':'mvp in '}</span> {val}<span className="GamePlayerBalaceCurrencySign">{CurrencySign}</span>
+                <div key={key} style={styleObject} className="GamePlayerBalance"  >
+                    <span className="GamePlayerBalanceCurrencySign">{showSummaryByMoney ? '':'mvp in '}</span> {val}<span className="GamePlayerBalanceCurrencySign">{CurrencySign}</span>
                 </div>
             );
         });
@@ -248,7 +249,7 @@ class GameData extends Component{
                 marginRight:margin,
             }
             return  (
-                <div key={key} style={styleObject} className="GamePlayerBalace"  >
+                <div key={key} style={styleObject} className="GamePlayerBalance"  >
                     {playerInfo.val}
                 </div>
             );

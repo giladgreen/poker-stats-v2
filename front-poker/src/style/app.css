@@ -13785,7 +13785,7 @@ select {
   border-radius: 20px;
 }
 
-.GamePlayerBalace {
+.GamePlayerBalance {
   font-size: 1.8em;
   font-weight: bold;
   float: left;
@@ -13793,7 +13793,7 @@ select {
   color: #0a0b30;
 }
 
-.GamePlayerBalaceCurrencySign {
+.GamePlayerBalanceCurrencySign {
   font-size: 0.5em;
 }
 
@@ -13856,7 +13856,7 @@ select {
     font-size: 0.7em;
   }
 
-  .GamePlayerBalace {
+  .GamePlayerBalance {
     font-size: 0.7em;
   }
 
@@ -13869,7 +13869,7 @@ select {
     font-size: 0.55em;
   }
 
-  .GamePlayerBalace {
+  .GamePlayerBalance {
     font-size: 0.5em;
   }
 
