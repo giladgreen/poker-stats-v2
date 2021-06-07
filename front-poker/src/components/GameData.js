@@ -128,7 +128,7 @@ class GameData extends Component{
         console.log('getNamesSection', playersData)
         return playersData.map(playerData=>{
 
-            const key = `${playerData.playerId}_item_name`;
+            const key = `${playerData.id}_item_name`;
             let displayName= playerData.name.trim();
 
             let className = "GamePlayerDisplayName";
@@ -147,7 +147,7 @@ class GameData extends Component{
                 marginRight:margin,
             };
             return  (
-                <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playersData.playerId)}}>
+                <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playerData.id)}}>
                     {displayName}
                 </div>
             );
