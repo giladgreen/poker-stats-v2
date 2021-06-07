@@ -148,7 +148,7 @@ class GameData extends Component{
             };
             console.log('-playerData', playerData)
             return  (
-                <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playerData.id)}}>
+                <div key={key} style={styleObject} className={className} onClick={()=>{goToPlayerPage(playerData.playerId)}}>
                     {displayName}
                 </div>
             );
