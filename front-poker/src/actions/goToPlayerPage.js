@@ -1,3 +1,5 @@
+const isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
 async function sleep(time) {
   return new Promise((acc)=>{
     setTimeout(()=>{acc()},time);
@@ -24,7 +26,7 @@ async function goToPlayerPage(playerId) {
   await sleep(200);
   playerItem.click();
   await sleep(100);
-  window.scrollTo(0, 100);
+  window.scrollTo(0, isMobile ? 200 : 250);
 }
 
 export default goToPlayerPage;

@@ -130,8 +130,9 @@ class Login extends Component {
 
                 </div>
 
-                {facebook}
+
                 {google}
+                {facebook}
                 <div id="loginErrorSection">
                     {this.state.error ? this.state.error : ''}
                 </div>
