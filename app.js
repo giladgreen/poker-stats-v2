@@ -32,7 +32,7 @@ const faviconPath = path.join(PUBLIC, 'favicon.png');
 app.use((request, response, next) => {
   if (request.method.toUpperCase() === 'OPTIONS') {
     logger.info('OPTIONS..');
-    response.header('Access-Control-Allow-Origin', '*');
+    response.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
     response.header('Access-Control-Allow-Methods', '*');
     response.header('Access-Control-Expose-Headers', '*');
     return response.send({});
@@ -51,7 +51,7 @@ app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Blu
 app.use(limiter);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Expose-Headers', '*');
   next();
