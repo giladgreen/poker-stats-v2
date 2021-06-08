@@ -116,6 +116,7 @@ class PlayerSummary extends Component {
         return (
             <div className="playerSummary">
                 <div className="playerSummaryHeader">
+                    <img alt="" className="playerPageImage leftyImage" src={player.imageUrl || ANON_URL}/>
                     <div>
                         name: {player.name}
                     </div>
@@ -133,9 +134,9 @@ class PlayerSummary extends Component {
                         </div>
                     ) : <div>no games yet</div>}
 
-                    <img alt="" className="playerPageImage" src={player.imageUrl || ANON_URL}/>
 
-                    <ImageSlider  group={this.props.group} playerId={this.props.player.id}  />
+
+
 
                 </div>
                 <hr/>
@@ -176,6 +177,7 @@ class PlayerSummary extends Component {
                     {isAdmin && playerGames.length === 0 &&
                     <RedBubbleButton onClick={this.props.delete} className="left-margin">Delete</RedBubbleButton>}
                 </div>
+                <ImageSlider  group={this.props.group} playerId={this.props.player.id}  />
                 <div className="playerGames">
 
                     {playerGamesDivs}

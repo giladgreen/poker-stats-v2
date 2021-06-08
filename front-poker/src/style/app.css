@@ -15594,6 +15594,11 @@ select {
   box-shadow: 0 2px 25px rgba(212, 120, 130, 0.2);
 }
 
+.leftyImage {
+  float: right;
+  margin-right: 15px;
+}
+
 #postman {
   padding: 1vw;
   color: black;
