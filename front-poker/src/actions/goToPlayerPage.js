@@ -23,6 +23,8 @@ async function goToPlayerPage(playerId) {
   playerItem.scrollIntoView();
   await sleep(200);
   playerItem.click();
+  await sleep(100);
+  window.scrollTo(0, 100);
 }
 
 export default goToPlayerPage;

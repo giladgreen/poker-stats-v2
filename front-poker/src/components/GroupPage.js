@@ -44,6 +44,7 @@ class GroupPage extends Component {
 
     onKeyChange = (tabKey)=>{
         this.clearGamesTabSelections();
+        this.clearPlayersTabSelections();
         this.setState({tabKey });
     };
 
@@ -196,6 +197,7 @@ class GroupPage extends Component {
                                 group={group}
                                 updatePlayerData={this.props.updatePlayerData}
                                 updatePlayerRemoved={this.props.updatePlayerRemoved}
+                                setClearAll={ (func)=> { this.clearPlayersTabSelections = func }}
                                 user={this.props.user}
                                 provider={this.props.provider}
                                 token={this.props.token}/>

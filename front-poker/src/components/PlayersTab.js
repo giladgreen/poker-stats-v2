@@ -15,6 +15,10 @@ const FULL_ANON_URL = `${baseUrl}/${ANON_URL}`;
 
 class PlayersTab extends Component {
 
+    clearAll = () =>{
+        this.setState({newPlayer: null, editPlayer: null, playerSummary: null})
+    }
+
     setupPlayers = ()=>{
 
     }
@@ -45,6 +49,9 @@ class PlayersTab extends Component {
 
 
         this.state = { newPlayer: null, editPlayer: null, playerSummary: null };
+        setTimeout(()=>{
+            props.setClearAll(this.clearAll);
+        },100)
     }
 
     showPlayerData = (player) =>{

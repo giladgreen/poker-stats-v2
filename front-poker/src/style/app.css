@@ -13286,6 +13286,7 @@ select {
 
 .playerSummaryHeader {
   color: black;
+  margin-bottom: 110px;
 }
 
 .playerEditForm {
@@ -15595,7 +15596,7 @@ select {
 }
 
 .leftyImage {
-  float: right;
+  float: left;
   margin-right: 15px;
 }
 
