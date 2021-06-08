@@ -11635,11 +11635,11 @@ button {
   z-index: 100003;
 }
 
-.login-button-fb {
+.login-button-google {
   top: 71vh;
 }
 
-.login-button-google {
+.login-button-fb {
   top: 82vh;
 }
 
@@ -11670,11 +11670,11 @@ button {
     height: 7vh;
   }
 
-  .login-button-fb {
+  .login-button-google {
     top: 76vh;
   }
 
-  .login-button-google {
+  .login-button-fb {
     top: 84vh;
   }
 }

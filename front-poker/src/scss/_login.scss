@@ -89,14 +89,15 @@
     height: 9vh;
     z-index: 100003;
 }
-
-.login-button-fb{
+.login-button-google{
     top: 71vh;
 }
+.login-button-fb{
 
-.login-button-google{
     top: 82vh;
 }
+
+
 
 @include mobile-vertical {
     #sheep-img{
@@ -124,14 +125,14 @@
         left: 10vw;
         height: 7vh;
     }
-
-    .login-button-fb{
+    .login-button-google{
         top: 76vh;
     }
-
-    .login-button-google{
+    .login-button-fb{
         top: 84vh;
     }
+
+
 }
 //@media screen and (max-width: 800px) {
 //    #login-page {
