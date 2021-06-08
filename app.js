@@ -29,6 +29,13 @@ const limiter = rateLimit({
 
 const PUBLIC = path.join(__dirname, 'public');
 const faviconPath = path.join(PUBLIC, 'favicon.png');
+app.use((request, response, next) => {
+     if (request.method.toUpperCase() === 'OPTIONS'){
+       response.send({});
+     } else{
+       next();
+     }
+});
 app.use(compression());
 app.use(express.static(PUBLIC));
 app.use(favicon(faviconPath));
