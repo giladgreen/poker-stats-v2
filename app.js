@@ -30,11 +30,11 @@ const limiter = rateLimit({
 const PUBLIC = path.join(__dirname, 'public');
 const faviconPath = path.join(PUBLIC, 'favicon.png');
 app.use((request, response, next) => {
-     if (request.method.toUpperCase() === 'OPTIONS'){
-       response.send({});
-     } else{
-       next();
-     }
+  if (request.method.toUpperCase() === 'OPTIONS') {
+    response.send({});
+  } else {
+    next();
+  }
 });
 app.use(compression());
 app.use(express.static(PUBLIC));
@@ -48,7 +48,7 @@ app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Blu
 app.use(limiter);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Expose-Headers', '*');
   next();
