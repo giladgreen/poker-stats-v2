@@ -30,6 +30,16 @@ const limiter = rateLimit({
 const PUBLIC = path.join(__dirname, 'public');
 const faviconPath = path.join(PUBLIC, 'favicon.png');
 
+
+app.use((request, res, next) => {
+  logger.info('temp middleware before: incoming request', {
+    method: request.method,
+    url: request.url,
+    resHeaders: res.headers,
+  });
+  next();
+});
+
 app.use(compression());
 app.use(express.static(PUBLIC));
 app.use(favicon(faviconPath));
@@ -42,11 +52,20 @@ app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Blu
 app.use(limiter);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Expose-Headers', '*');
   next();
 });
+app.use((request, res, next) => {
+  logger.info('temp middleware after: incoming request', {
+    method: request.method,
+    url: request.url,
+    resHeaders: res.headers,
+  });
+  next();
+});
+
 app.use(transactionIdMiddlewares);
 app.use(loggerMiddlewares);
 app.use(userContextMiddlewares);
