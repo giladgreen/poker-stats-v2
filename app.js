@@ -35,7 +35,7 @@ app.use((request, res, next) => {
   logger.info('temp middleware before: incoming request', {
     method: request.method,
     url: request.url,
-    resHeaders: res.headers,
+    res,
   });
   next();
 });
@@ -61,7 +61,7 @@ app.use((request, res, next) => {
   logger.info('temp middleware after: incoming request', {
     method: request.method,
     url: request.url,
-    resHeaders: res.headers,
+    res,
   });
   next();
 });
