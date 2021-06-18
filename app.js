@@ -30,16 +30,6 @@ const limiter = rateLimit({
 const PUBLIC = path.join(__dirname, 'public');
 const faviconPath = path.join(PUBLIC, 'favicon.png');
 
-
-app.use((request, res, next) => {
-  logger.info('temp middleware before: incoming request', {
-    method: request.method,
-    url: request.url,
-    res,
-  });
-  next();
-});
-
 app.use(compression());
 app.use(express.static(PUBLIC));
 app.use(favicon(faviconPath));
@@ -57,14 +47,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Expose-Headers', '*');
   next();
 });
-app.use((request, res, next) => {
-  logger.info('temp middleware after: incoming request', {
-    method: request.method,
-    url: request.url,
-    res,
-  });
-  next();
-});
+
 
 app.use(transactionIdMiddlewares);
 app.use(loggerMiddlewares);
