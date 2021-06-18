@@ -457,9 +457,7 @@ class GameData extends Component{
 
         let playersCountText = IsGroupSummary ?  this.playersCountText : playersData.length;
         return (
-            <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`}
-
-            >
+            <div className={`allPlayersSummary ${IsGroupSummary ? 'groupSummary': ''}`} >
 
                 {
                     (this.props.IsGroupSummary && (sliderValues.min > 0 || sliderValues.max < this.props.group.games.length-1)) &&
@@ -490,7 +488,7 @@ class GameData extends Component{
                 <div className="GamePlayerBalance">
                     {PlayerBalance}
                 </div>
-                {IsGroupSummary ?<div className="GamePlayersGamesCount"> {PlayerGameCount} </div> : <div/> }
+                {IsGroupSummary ?<div className="GamePlayersGamesCount"> {PlayerGameCount} </div> : <div className="GamePlayersGamesCount">  </div> }
                 {IsGroupSummary && !showSummaryByMoney ? <div className="GamePlayersGamesCount"> {PlayerPercentages} </div> : <div/> }
                 <br/>
                 <br/>
