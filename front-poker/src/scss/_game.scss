@@ -125,9 +125,7 @@
 .GamePlayerImages{
     clear: both;
 }
-.GamePlayerBalance{
-    clear: both;
-}
+
 .GamePlayerGamesCount{
     font-size: 0.8em;
     float: left;
@@ -151,6 +149,7 @@
     float: left;
     text-align: center;
     color: rgb(10, 11, 48);
+    // clear: both;
 }
 
 .GamePlayerBalanceCurrencySign{
