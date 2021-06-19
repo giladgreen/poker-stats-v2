@@ -32,10 +32,10 @@
 }
 #sheep-img{
     position: fixed;
-    left: 40vw;
-    top: 0vh;
-    width: 20vw;
-    height: 20vh;
+    left: 41vw;
+    top: 1vh;
+    width: 18vw;
+    height: 17vh;
     background-color: white;
     z-index: 100000;
 
@@ -101,8 +101,10 @@
 
 @include mobile-vertical {
     #sheep-img{
-        left: 30vw;
-        width: 40vw;
+        left: 31vw;
+        width: 38vw;
+        top: 2vh;
+        height: 16vh;
     }
 
     #pokerStatsLogo{
