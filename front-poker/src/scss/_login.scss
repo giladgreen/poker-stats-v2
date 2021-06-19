@@ -32,21 +32,21 @@
 }
 #sheep-img{
     position: fixed;
-    left: 45vw;
-    top: 2vh;
-    width: 10vw;
-    height: 14vh;
+    left: 40vw;
+    top: 0vh;
+    width: 20vw;
+    height: 20vh;
     background-color: white;
     z-index: 100000;
 
 }
 #pokerStatsLogo{
     position: fixed;
-    left: 38vw;
-    top: 17vh;
-    width: 24vw;
-    height: 12vh;
-    background-color: white;
+    left: 36vw;
+    top: 15.5vh;
+    width: 28vw;
+    height: 15vh;
+
     z-index: 100001;
 }
 
@@ -101,13 +101,13 @@
 
 @include mobile-vertical {
     #sheep-img{
-        left: 35vw;
-        width: 30vw;
+        left: 30vw;
+        width: 40vw;
     }
 
     #pokerStatsLogo{
-        left: 24vw;
-        width: 50vw;
+        left: 20vw;
+        width: 60vw;
         top: 15vh
     }
 
