@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const transactionIdMiddlewares = require('./api/middlewares/transaction_id');
 const loggerMiddlewares = require('./api/middlewares/logger');
-const userContextMiddlewares = require('./api/middlewares/user_context');
 const errorHandler = require('./api/middlewares/error_handler');
 const { NODE_ENV, SERVER_PORT } = require('./config');
 const logger = require('./api/services/logger');
@@ -49,10 +48,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use(transactionIdMiddlewares);
 app.use(loggerMiddlewares);
-app.use(userContextMiddlewares);
+
 app.use('/api/v2', router);
 
 logger.info('app started..');

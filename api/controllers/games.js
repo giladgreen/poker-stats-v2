@@ -3,6 +3,7 @@ const gamesRoutes = require('express').Router({ mergeParams: true });
 const gamesService = require('../services/games');
 const models = require('../models');
 const logger = require('../services/logger');
+const userContextMiddlewares = require('../middlewares/user_context');
 
 
 function getGame(req, res, next) {
@@ -82,11 +83,11 @@ function deleteGame(req, res, next) {
     .catch(next);
 }
 
-gamesRoutes.get('/groups/:groupId/games', getGames);
-gamesRoutes.post('/groups/:groupId/games', createGame);
-gamesRoutes.get('/groups/:groupId/games/:gameId', getGame);
-gamesRoutes.patch('/groups/:groupId/games/:gameId', updateGame);
-gamesRoutes.delete('/groups/:groupId/games/:gameId', deleteGame);
+gamesRoutes.get('/groups/:groupId/games', userContextMiddlewares, getGames);
+gamesRoutes.post('/groups/:groupId/games', userContextMiddlewares, createGame);
+gamesRoutes.get('/groups/:groupId/games/:gameId', userContextMiddlewares, getGame);
+gamesRoutes.patch('/groups/:groupId/games/:gameId', userContextMiddlewares, updateGame);
+gamesRoutes.delete('/groups/:groupId/games/:gameId', userContextMiddlewares, deleteGame);
 
 module.exports = {
   createGame,

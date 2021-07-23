@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status-codes');
 const invitationRoutes = require('express').Router({ mergeParams: true });
-
+const userContextMiddlewares = require('../middlewares/user_context');
 const invitationsService = require('../services/invitations');
 
 function createInvitationRequest(req, res, next) {
@@ -28,8 +28,8 @@ function answerInvitationRequest(req, res, next) {
     .catch(next);
 }
 
-invitationRoutes.post('/invitations-requests', createInvitationRequest);
-invitationRoutes.get('/invitations-requests/:invitationRequestId', answerInvitationRequest);
+invitationRoutes.post('/invitations-requests', userContextMiddlewares, createInvitationRequest);
+invitationRoutes.get('/invitations-requests/:invitationRequestId', userContextMiddlewares, answerInvitationRequest);
 
 
 module.exports = {

@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status-codes');
 const imagesRoutes = require('express').Router({ mergeParams: true });
-
+const userContextMiddlewares = require('../middlewares/user_context');
 const imageService = require('../services/images');
 
 function addImage(req, res, next) {
@@ -34,9 +34,9 @@ function getGroupImages(req, res, next) {
     .catch(next);
 }
 
-imagesRoutes.post('/images', addImage);
-imagesRoutes.delete('/images/:imageId', deleteImage);
-imagesRoutes.get('/groups/:groupId/images', getGroupImages);
+imagesRoutes.post('/images', userContextMiddlewares, addImage);
+imagesRoutes.delete('/images/:imageId', userContextMiddlewares, deleteImage);
+imagesRoutes.get('/groups/:groupId/images', userContextMiddlewares, getGroupImages);
 
 module.exports = {
   addImage,

@@ -130,6 +130,12 @@ function shouldSendMail(user) {
 
 async function userContextMiddlewares(request, response, next) {
   try {
+    logger.info('#############');
+    logger.info('#############');
+    logger.info('userContextMiddlewares');
+    logger.info('req.params');
+    logger.info(request.params);
+    logger.info('#############');
     if (request.method === 'OPTIONS' || request.url.includes('approved=') || request.url.includes('well-known') || request.url.includes('keep-alive')) {
       return next();
     }

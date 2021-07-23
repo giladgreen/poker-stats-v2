@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status-codes');
 const playersRoutes = require('express').Router({ mergeParams: true });
-
+const userContextMiddlewares = require('../middlewares/user_context');
 const playersService = require('../services/players');
 
 function getPlayer(req, res, next) {
@@ -52,11 +52,11 @@ function deletePlayer(req, res, next) {
     .catch(next);
 }
 
-playersRoutes.post('/groups/:groupId/players', createPlayer);
-playersRoutes.get('/groups/:groupId/players', getPlayers);
-playersRoutes.get('/groups/:groupId/players/:playerId', getPlayer);
-playersRoutes.patch('/groups/:groupId/players/:playerId', updatePlayer);
-playersRoutes.delete('/groups/:groupId/players/:playerId', deletePlayer);
+playersRoutes.post('/groups/:groupId/players', userContextMiddlewares, createPlayer);
+playersRoutes.get('/groups/:groupId/players', userContextMiddlewares, getPlayers);
+playersRoutes.get('/groups/:groupId/players/:playerId', userContextMiddlewares, getPlayer);
+playersRoutes.patch('/groups/:groupId/players/:playerId', userContextMiddlewares, updatePlayer);
+playersRoutes.delete('/groups/:groupId/players/:playerId', userContextMiddlewares, deletePlayer);
 
 module.exports = {
   createPlayer,

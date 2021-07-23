@@ -1,7 +1,7 @@
 const HttpStatus = require('http-status-codes');
 const groupsRoutes = require('express').Router({ mergeParams: true });
 const groupsService = require('../services/groups');
-
+const userContextMiddlewares = require('../middlewares/user_context');
 
 function getGroup(req, res, next) {
   const { userContext } = req;
@@ -53,11 +53,11 @@ function deleteGroup(req, res, next) {
 }
 
 
-groupsRoutes.get('/groups', getGroups);
-groupsRoutes.post('/groups', createGroup);
-groupsRoutes.get('/groups/:groupId', getGroup);
-groupsRoutes.patch('/groups/:groupId', updateGroup);
-groupsRoutes.delete('/groups/:groupId', deleteGroup);
+groupsRoutes.get('/groups', userContextMiddlewares, getGroups);
+groupsRoutes.post('/groups', userContextMiddlewares, createGroup);
+groupsRoutes.get('/groups/:groupId', userContextMiddlewares, getGroup);
+groupsRoutes.patch('/groups/:groupId', userContextMiddlewares, updateGroup);
+groupsRoutes.delete('/groups/:groupId', userContextMiddlewares, deleteGroup);
 
 
 module.exports = {
