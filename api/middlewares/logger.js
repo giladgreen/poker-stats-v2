@@ -7,6 +7,7 @@ function loggerMiddlewares(request, response, next) {
     log.debug('[fitting:logger]: incoming request', {
       method: request.method,
       url: request.url,
+      reqParams: request.params
     });
   }
 

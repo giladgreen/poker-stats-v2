@@ -32,6 +32,11 @@ async function getGroups(userContext) {
 
 async function validateRequestPermissions(request) {
   const { groupId } = request.params;
+  if (!groupId) {
+    logger.info(`[validateRequestPermissions] NO groupId`);
+
+  }
+
   logger.info(`[validateRequestPermissions] groupId: ${groupId} `);
   logger.info(`[validateRequestPermissions] userContext before: ${JSON.stringify(request.userContext)} `);
 
