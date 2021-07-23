@@ -8,6 +8,7 @@ function loggerMiddlewares(request, response, next) {
       method: request.method,
       url: request.url,
       reqParams: request.params,
+      reqQuery: request.query,
     });
   }
 
