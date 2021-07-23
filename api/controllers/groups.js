@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status-codes');
-const groupsRoutes = require('express').Router();
+const groupsRoutes = require('express').Router({ mergeParams: true });
 const groupsService = require('../services/groups');
 
 

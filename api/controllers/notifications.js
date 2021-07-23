@@ -1,4 +1,4 @@
-const notificationsRoutes = require('express').Router();
+const notificationsRoutes = require('express').Router({ mergeParams: true });
 const notificationsService = require('../services/notifications');
 
 

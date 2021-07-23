@@ -1,5 +1,6 @@
 const HttpStatus = require('http-status-codes');
-const playersRoutes = require('express').Router();
+const playersRoutes = require('express').Router({ mergeParams: true });
+
 const playersService = require('../services/players');
 
 function getPlayer(req, res, next) {

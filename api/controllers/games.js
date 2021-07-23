@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status-codes');
-const gamesRoutes = require('express').Router();
+const gamesRoutes = require('express').Router({ mergeParams: true });
 const gamesService = require('../services/games');
 const models = require('../models');
 const logger = require('../services/logger');

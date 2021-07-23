@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status-codes');
-const imagesRoutes = require('express').Router();
+const imagesRoutes = require('express').Router({ mergeParams: true });
 
 const imageService = require('../services/images');
 

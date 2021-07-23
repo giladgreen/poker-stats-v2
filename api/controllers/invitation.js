@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status-codes');
-const invitationRoutes = require('express').Router();
+const invitationRoutes = require('express').Router({ mergeParams: true });
 
 const invitationsService = require('../services/invitations');
 
