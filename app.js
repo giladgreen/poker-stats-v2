@@ -19,7 +19,8 @@ const { playersRoutes } = require('./api/controllers/players');
 const { keepAliveRoutes } = require('./api/controllers/keepalive');
 const terminate = require('./api/helpers/terminate');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
+
 const app = express();
 
 const limiter = rateLimit({
