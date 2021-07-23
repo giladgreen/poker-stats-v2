@@ -32,10 +32,15 @@ async function getGroups(userContext) {
 
 async function validateRequestPermissions(request) {
   const { groupId } = request.params;
+  logger.info(`[validateRequestPermissions] groupId: ${groupId} `);
+  logger.info(`[validateRequestPermissions] userContext before: ${JSON.stringify(request.userContext)} `);
+
   request.userContext.groups = await getGroups(request.userContext);
   request.userContext.inGroup = groupId && request.userContext.groups[groupId];
   request.userContext.isAdmin = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].isAdmin;
   request.userContext.playerId = groupId && request.userContext.groups[groupId] && request.userContext.groups[groupId].playerId;
+
+  logger.info(`[validateRequestPermissions] userContext after: ${JSON.stringify(request.userContext)} `);
 
   if (groupId && !request.userContext.inGroup) {
     logger.info(`[validateRequestPermissions] user not belong to group. user context: ${JSON.stringify(request.userContext)} `);
@@ -60,9 +65,6 @@ async function validateRequestPermissions(request) {
   if ((request.method === 'POST' || request.method === 'DELETE') && request.url.includes('/images')) {
     return;
   }
-  if (request.method === 'GET' && request.url.includes('/groups/') && request.url.includes('/images')) {
-    return;
-  }
   if (request.url.includes('/invitations-requests')) {
     return;
   }
@@ -70,7 +72,7 @@ async function validateRequestPermissions(request) {
     return;
   }
 
-  logger.info(`[validateRequestPermissions] bad credentials user context: ${JSON.stringify(request.userContext)} `);
+  logger.info(`[validateRequestPermissions] permissions failed, user can not ${request.method} to url: ${request.url} `);
   throw 'operation not allowed';
 }
 
