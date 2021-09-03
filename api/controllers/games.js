@@ -29,9 +29,11 @@ async function filterResults(res, userId, hideGames) {
   if (!userPlayer) {
     return res;
   }
-  logger.info('filterResults userPlayer exist', { userId, hideGames, userPlayer: userPlayer.toJSON() });
+  logger.info('filterResults userPlayer exist', { userId, hideGames, userPlayer: userPlayer.toJSON(), countBeforeFilter: res.results.length });
 
   const filteredResults = res.results.filter(game => !game.hideFromSome);
+  logger.info('filterResults after filter', { countAfterFilter: filteredResults.length });
+
   return {
     metadata: res.metadata,
     results: filteredResults,

@@ -8,7 +8,7 @@ const { sendNotification } = require('./notifications');
 const gameHelper = require('../helpers/game');
 const logger = require('./logger');
 
-const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt'];
+const gameAttributes = ['id', 'description', 'date', 'ready', 'groupId', 'createdAt', 'hideFromSome'];
 const gameDataAttributes = ['playerId', 'buyIn', 'cashOut', 'index', 'updatedAt', 'extra'];
 
 const GILAD_USER_ID = 'e7659c43-a0fe-449b-85cd-33d561d74995';
