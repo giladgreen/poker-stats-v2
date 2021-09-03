@@ -23,6 +23,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    hideFromSome: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      field: 'hide_from_some',
+    },
     ...dateFields,
   }, {
     paranoid: true,

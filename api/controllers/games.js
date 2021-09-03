@@ -31,7 +31,7 @@ async function filterResults(res, userId, hideGames) {
   }
   logger.info('filterResults userPlayer exist', { userId, hideGames, userPlayer: userPlayer.toJSON() });
 
-  const filteredResults = res.results.filter(game => game.playersData.some(playData => playData.playerId === userPlayer.playerId));
+  const filteredResults = res.results.filter(game => !game.hideFromSome);
   return {
     metadata: res.metadata,
     results: filteredResults,
